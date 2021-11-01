@@ -34,6 +34,7 @@
         "php": "~7.4.0 || ~8.0.0",
         "composer/installers": "^1.2",
         "drupal/admin_audit_trail": "^1.0@alpha",
+        "drupal/bootstrap": "^3.21",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
@@ -45,8 +46,7 @@
         "itk-dev/os2forms-digital-post": "dev-develop",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
-        "os2forms/os2forms_forloeb_profile": "^1.1",
-        "drupal/bootstrap": "^3.21"
+        "os2forms/os2forms_forloeb_profile": "^1.1"
     },
     "require-dev": {
         "drupal/core-dev": "^8.8"
@@ -57,6 +57,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "discard-changes": true,
         "sort-packages": true
     },
     "extra": {
@@ -136,5 +137,12 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
-    }
+    },
+     "scripts": {
+        "post-install-cmd": [
+            "# Due to <https://github.com/vaimo/composer-patches/issues/85> we have to apply a patch to the OpenID Connect module ourselves",
+            "# Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)",
+            "cd web/modules/contrib/openid_connect && git checkout . && curl --silent --location https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff | patch --strip=1 --forward || true"
+        ]
+     }
 }
