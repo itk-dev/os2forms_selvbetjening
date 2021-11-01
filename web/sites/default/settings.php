@@ -790,16 +790,15 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  */
 $settings['skip_permissions_hardening'] = TRUE;
 
-$databases['default']['default'] = array (
-  'database' => 'db',
-  'username' => 'db',
-  'password' => 'db',
-  'prefix' => '',
-  'host' => 'mariadb',
-  'port' => '',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
+$databases['default']['default'] = [
+ 'database' => getenv('DATABASE_DATABASE') ?: 'db',
+ 'username' => getenv('DATABASE_USERNAME') ?: 'db',
+ 'password' => getenv('DATABASE_PASSWORD') ?: 'db',
+ 'host' => getenv('DATABASE_HOST') ?: 'mariadb',
+ 'port' => getenv('DATABASE_PORT') ?: '',
+ 'driver' => getenv('DATABASE_DRIVER') ?: 'mysql',
+ 'prefix' => '',
+];
 $settings['config_sync_directory'] = '../config/sync';
 
 /**
