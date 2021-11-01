@@ -37,6 +37,11 @@ These instructions will get you a copy of the project up and running on your loc
    os2forms_forloeb_profile --existing-config
    ```
 
+6. Download and install external libraries
+   ```sh
+   docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
+   ```
+
 You should now be able to browse to the application
 
 ```shell

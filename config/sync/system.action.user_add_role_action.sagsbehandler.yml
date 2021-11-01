@@ -1,0 +1,14 @@
+uuid: dd3ad43c-2fff-49f4-a63e-06a772875ec8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.sagsbehandler
+  module:
+    - user
+id: user_add_role_action.sagsbehandler
+label: 'Add the Sagsbehandler role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: sagsbehandler

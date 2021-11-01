@@ -1,0 +1,14 @@
+uuid: 33d8194c-cc62-4f24-9430-b181b22ee8b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.medarbejder
+  module:
+    - user
+id: user_add_role_action.medarbejder
+label: 'Add the Medarbejder role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: medarbejder

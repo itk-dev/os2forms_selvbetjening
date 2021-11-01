@@ -1,0 +1,22 @@
+uuid: b83d58a6-1fa0-4942-981b-edb84b22365e
+langcode: da
+status: true
+dependencies:
+  theme:
+    - claro
+_core:
+  default_config_hash: 7cvXIzw8NabmQCWMPqBz0mvIQZzXUZB3OeOTa5eqbCo
+id: claro_primary_local_tasks
+theme: claro
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primære faneblade'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

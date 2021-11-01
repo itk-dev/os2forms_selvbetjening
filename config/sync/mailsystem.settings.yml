@@ -1,0 +1,12 @@
+theme: current
+defaults:
+  sender: SMTPMailSystem
+  formatter: php_mail
+_core:
+  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
+modules:
+  webform:
+    none:
+      formatter: webform_php_mail
+      sender: SMTPMailSystem
+langcode: da

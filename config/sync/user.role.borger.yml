@@ -1,0 +1,13 @@
+uuid: fe4413c3-994e-4dad-a58e-3901378ac6f2
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: TsCQjdnxJ5STVwGbGIoKwol4DeF4wNdvIQ3c61XHuD0
+id: borger
+label: borger
+weight: 10
+is_admin: null
+permissions:
+  - 'access content'
+  - 'display eu cookie compliance popup'

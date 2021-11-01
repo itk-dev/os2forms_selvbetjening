@@ -1,0 +1,14 @@
+uuid: 4c7e4ce2-b4f7-4927-82bb-af136ddf125f
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: YNrKbYrWWjeubUUM8AsQ19KnX7cU1elACR14CZJHmdg
+id: days
+label: Dage
+category: 'Dato og tid'
+likert: false
+options: 'Søndag: Søndag Mandag: Mandag Tirsdag: Tirsdag Onsdag: Onsdag Torsdag: Torsdag Fredag: Fredag Lørdag: Lørdag'

@@ -1,0 +1,14 @@
+uuid: 10dc1b23-793d-4e30-84c0-b82b888ef7e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.forloeb_designer
+  module:
+    - user
+id: user_remove_role_action.forloeb_designer
+label: 'Remove the Forløb designer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: forloeb_designer

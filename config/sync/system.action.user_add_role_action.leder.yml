@@ -1,0 +1,14 @@
+uuid: 3a5fed21-4bcb-47ae-a161-1c728f4ef023
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.leder
+  module:
+    - user
+id: user_add_role_action.leder
+label: 'Add the Leder role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: leder

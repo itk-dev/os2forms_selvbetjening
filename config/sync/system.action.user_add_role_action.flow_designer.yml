@@ -1,0 +1,14 @@
+uuid: 6a1fff47-f0bc-4db0-a9ca-6c7db9028d25
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.flow_designer
+  module:
+    - user
+id: user_add_role_action.flow_designer
+label: 'Add the Flow designer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: flow_designer

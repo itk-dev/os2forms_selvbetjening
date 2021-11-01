@@ -1,0 +1,28 @@
+uuid: bd5745be-66e1-4d0e-bac2-457a16cad464
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.forloebsside
+  enforced:
+    module:
+      - os2forms_forloeb
+  module:
+    - text
+_core:
+  default_config_hash: xnC56gBok-XFsPRYUxPqAHJgUy88nCN4-hF0d574Kfs
+id: node.forloebsside.body
+field_name: body
+entity_type: node
+bundle: forloebsside
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,12 @@
+title: 'Job Application'
+description: 'A job application webform template.'
+elements: "information:\n  '#title': 'Your Information'\n  '#type': webform_section\n  first_name:\n    '#title': 'First Name'\n    '#type': textfield\n    '#required': true\n  last_name:\n    '#title': 'Last Name'\n    '#type': textfield\n    '#required': true\n  gender:\n    '#type': webform_radios_other\n    '#title': Gender\n    '#options': gender\n    '#required': true\ncontact_information:\n  '#title': 'Contact Information'\n  '#type': webform_section\n  contact:\n    '#type': webform_contact\n    '#title': Contact\n    '#title_display': invisible\n    '#name__access': false\n    '#company__access': false\nresume:\n  '#title': 'Your Resume'\n  '#type': webform_section\n  resume_method:\n    '#type': radios\n    '#options':\n      attach: 'Attach resume file'\n      paste: 'Paste your resume'\n    '#prefix': '<div class=\"container-inline\">'\n    '#suffix': '</div>'\n    '#default_value': attach\n  resume_file:\n    '#type': managed_file\n    '#title': Resume\n    '#title_display': invisible\n    '#states':\n      visible:\n        ':input[name=\"resume_method\"]':\n          value: attach\n      required:\n        ':input[name=\"resume_method\"]':\n          value: attach\n      enabled:\n        ':input[name=\"resume_method\"]':\n          value: attach\n  resume_text:\n    '#type': textarea\n    '#title': Resume\n    '#title_display': invisible\n    '#states':\n      visible:\n        ':input[name=\"resume_method\"]':\n          value: paste\n      required:\n        ':input[name=\"resume_method\"]':\n          value: paste\n      enabled:\n        ':input[name=\"resume_method\"]':\n          value: paste\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': Apply\n"
+settings:
+  confirmation_message: 'Thank you for applying.'
+handlers:
+  email_notification:
+    label: 'Email Notification'
+    settings:
+      from_name: '[webform_submission:values:first_name] [webform_submission:values:last_name]'
+      subject: _default
+      body: _default

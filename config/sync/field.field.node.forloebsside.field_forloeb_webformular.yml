@@ -1,0 +1,30 @@
+uuid: d3f56854-39cd-4833-b263-8cdfe400cfd2
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_forloeb_webformular
+    - node.type.forloebsside
+  enforced:
+    module:
+      - os2forms_forloeb
+  module:
+    - webform
+_core:
+  default_config_hash: pyLNXL2Z1vSISuN3xcrJnOayPzBU6s8ZoMt7zvVZ94M
+id: node.forloebsside.field_forloeb_webformular
+field_name: field_forloeb_webformular
+entity_type: node
+bundle: forloebsside
+label: 'Forløb (webformular)'
+description: 'Her kan man indsætte et forløb, der er en webformular med indbygget flow.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

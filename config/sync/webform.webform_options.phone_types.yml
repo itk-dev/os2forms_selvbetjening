@@ -1,0 +1,14 @@
+uuid: 724d017c-dc1e-4417-b244-1fe57074286d
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: LkO63Zl2cP_l9YdjzWI8dWoD9uD0pytkPiUiUM2bo9A
+id: phone_types
+label: Telefontype
+category: Demografisk
+likert: false
+options: "Home: Home\nOffice: Office\nCell: Cell\n"

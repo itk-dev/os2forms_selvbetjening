@@ -1,0 +1,14 @@
+uuid: 9f3e1337-dbc2-434c-98b8-e48abb949af0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.forloeb_designer
+  module:
+    - user
+id: user_add_role_action.forloeb_designer
+label: 'Add the Forløb designer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: forloeb_designer

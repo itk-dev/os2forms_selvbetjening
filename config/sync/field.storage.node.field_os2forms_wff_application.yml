@@ -1,0 +1,22 @@
+uuid: 5c576704-d372-42d1-8303-1652b70da937
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: DMu9fYIjxtplkk4vBEvqTPuiat7PH7kVuntf4oAWS04
+id: node.field_os2forms_wff_application
+field_name: field_os2forms_wff_application
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

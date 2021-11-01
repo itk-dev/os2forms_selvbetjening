@@ -1,0 +1,21 @@
+always_save_userinfo: true
+connect_existing_users: true
+override_registration_settings: true
+end_session_enabled: true
+user_login_display: above
+redirect_login: ''
+redirect_logout: ''
+userinfo_mappings:
+  timezone: zoneinfo
+_core:
+  default_config_hash: yb6wo2M1jLJ_sG3dDzfjXLSMUFIEDNh5j59LWsHzcV0
+langcode: da
+role_mappings:
+  administrator: {  }
+  flow_designer: {  }
+  forloeb_designer: {  }
+  sagsbehandler: {  }
+  medarbejder: {  }
+  leder: {  }
+  virksomhed: {  }
+  borger: {  }

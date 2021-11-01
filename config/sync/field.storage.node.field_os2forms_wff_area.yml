@@ -1,0 +1,22 @@
+uuid: 89cfe109-e11f-4aa7-840a-da64530dcbb3
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: WCrTepMpf1D0FAyxd002LMQJW7UmXq4bUbAUfORmduU
+id: node.field_os2forms_wff_area
+field_name: field_os2forms_wff_area
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

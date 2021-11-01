@@ -1,0 +1,34 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Udfør
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+      fields:
+        process_id:
+          separator: ', '
+        process_name:
+          separator: ', '
+        template_id:
+          separator: ', '
+        created:
+          label: Oprettet
+          separator: ', '
+        completed:
+          label: Gennemført
+          separator: ', '
+        admin_operations:
+          label: Handlinger
+  all_flows_full:
+    display_title: Side
