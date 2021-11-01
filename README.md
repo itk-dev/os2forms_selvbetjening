@@ -31,9 +31,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 5. Install profile
    ```sh
-   docker-compose exec phpfpm vendor/bin/drush si os2forms_forloeb_profile \
-   --db-url=mysql://db:db@mariadb/db \
-   --account-pass=admin --site-name=Selvbetjening
+   docker-compose exec phpfpm vendor/bin/drush site:install \
+   os2forms_forloeb_profile --existing-config
    ```
 
 You should now be able to browse to the application
