@@ -9,6 +9,8 @@ These instructions will get you a copy of the project up and running on your loc
 * [Docker](https://www.docker.com/)
 * [Docker Compose](https://docs.docker.com/compose/)
 
+### Installation
+
 1. Clone the git repository
    ```sh
    git clone git@github.com:itk-dev/os2forms_selvbetjening selvbetjening
@@ -40,3 +42,13 @@ You should now be able to browse to the application
 ```shell
 open http://$(docker-compose port nginx 80)
 ```
+
+### Configuration
+
+Some modules included in this project needs additional configuration.
+Take a look at the following modules on how to configure them:
+
+* [OS2Forms CPR Lookup](https://github.com/itk-dev/os2forms_cpr_lookup)
+* [OS2Forms CVR Lookup](https://github.com/itk-dev/os2forms_cvr_lookup)
+* [OS2Forms Digital Post](https://github.com/itk-dev/os2forms_digital_post)
+* [OS2Forms NemLogin OpenID Connect](https://github.com/itk-dev/os2forms_nemlogin_openid_connect)
