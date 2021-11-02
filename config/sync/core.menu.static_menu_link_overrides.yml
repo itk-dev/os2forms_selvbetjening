@@ -42,49 +42,49 @@ definitions:
     expanded: false
     enabled: true
   system__admin_content:
-    weight: -92
+    weight: -93
     menu_name: admin
     parent: system.admin
-    enabled: true
     expanded: false
+    enabled: true
   system__admin_structure:
-    weight: -91
+    weight: -92
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
   system__themes_page:
-    weight: -90
+    weight: -91
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
   system__modules_list:
-    weight: -89
+    weight: -90
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
   system__admin_config:
-    weight: -88
+    weight: -89
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
   entity__user__collection:
-    weight: -87
+    weight: -88
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
   system__admin_reports:
-    weight: -86
+    weight: -87
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
   help__main:
-    weight: -85
+    weight: -86
     menu_name: admin
     parent: system.admin
     expanded: false
@@ -165,6 +165,12 @@ definitions:
     weight: -11
     menu_name: admin
     parent: system.admin_content
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__help:
+    weight: -100
+    menu_name: admin
+    parent: system.admin
     expanded: false
     enabled: true
 _core:

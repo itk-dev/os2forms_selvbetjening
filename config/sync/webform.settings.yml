@@ -147,6 +147,7 @@ element:
     os2forms_nemid_company_city: os2forms_nemid_company_city
     os2forms_nemid_company_cvr: os2forms_nemid_company_cvr
     os2forms_nemid_company_name: os2forms_nemid_company_name
+    os2forms_nemid_company_p_number: os2forms_nemid_company_p_number
     os2forms_nemid_company_rid: os2forms_nemid_company_rid
     os2forms_nemid_cpr: os2forms_nemid_cpr
     os2forms_nemid_kommunekode: os2forms_nemid_kommunekode
@@ -155,6 +156,7 @@ element:
     os2forms_nemid_pid: os2forms_nemid_pid
     password: password
     password_confirm: password_confirm
+    webform_attachment_os2forms_sbsys_xml: webform_attachment_os2forms_sbsys_xml
 html_editor:
   tidy: true
   disabled: false
