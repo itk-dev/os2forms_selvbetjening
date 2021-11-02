@@ -34,6 +34,7 @@ module:
   history: 0
   honeypot: 0
   image: 0
+  itkdev_openid_connect: 0
   language: 0
   libraries: 0
   link: 0
@@ -66,6 +67,7 @@ module:
   path: 0
   path_alias: 0
   permissions_by_term: 0
+  r4032login: 0
   rdf: 0
   redirect: 0
   rest: 0
@@ -111,7 +113,6 @@ module:
   webform_ui: 0
   workflow_participants: 0
   workflows: 0
-  r4032login: 0
   pathauto: 1
   externalauth: 10
   views: 10
