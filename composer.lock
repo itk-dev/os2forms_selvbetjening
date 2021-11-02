@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4b9c7966a1011e56140dc240f2c27f6",
+    "content-hash": "8ef5d2a6be5118552e04e459aa7ec31e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8191,6 +8191,30 @@
                 "source": "https://github.com/itk-dev/serviceplatformen/tree/1.1.0"
             },
             "time": "2021-06-18T08:12:25+00:00"
+        },
+        {
+            "name": "itk-dev/web_accessibility_statement",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/web_accessibility_statement.git",
+                "reference": "b27f2ea237f0712896f7440727c17c47a543e3ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/web_accessibility_statement/zipball/b27f2ea237f0712896f7440727c17c47a543e3ea",
+                "reference": "b27f2ea237f0712896f7440727c17c47a543e3ea",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Provides path for accessibility statement",
+            "support": {
+                "issues": "https://github.com/itk-dev/web_accessibility_statement/issues",
+                "source": "https://github.com/itk-dev/web_accessibility_statement/tree/master"
+            },
+            "time": "2021-03-15T09:57:10+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -19113,7 +19137,8 @@
         "drupal/admin_audit_trail": 15,
         "drupal/openid_connect": 20,
         "itk-dev/os2forms-digital-post": 20,
-        "itk-dev/os2forms_nemlogin_openid_connect": 20
+        "itk-dev/os2forms_nemlogin_openid_connect": 20,
+        "itk-dev/web_accessibility_statement": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

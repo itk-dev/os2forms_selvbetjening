@@ -92,6 +92,7 @@ module:
   user: 0
   user_default_page: 0
   views_ui: 0
+  web_accessibility_statement: 0
   webform: 0
   webform_access: 0
   webform_attachment: 0
