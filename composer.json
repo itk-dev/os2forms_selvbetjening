@@ -39,6 +39,7 @@
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/memcache": "^2.3",
+        "drupal/menu_link_attributes": "^1.2",
         "drupal/openid_connect": "2.x-dev@dev",
         "drupal/permissions_by_term": "2.25",
         "drupal/system_status": "^2.9",
