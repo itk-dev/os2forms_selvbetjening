@@ -143,7 +143,9 @@
         "post-install-cmd": [
             "# Due to <https://github.com/vaimo/composer-patches/issues/85> we have to apply a patch to the OpenID Connect module ourselves",
             "# Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)",
-            "cd web/modules/contrib/openid_connect && git checkout . && curl --silent --location https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff | patch --strip=1 --forward || true"
+            "cd web/modules/contrib/openid_connect && git checkout . && curl --silent --location https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff | patch --strip=1 --forward || true",
+
+            "vendor/bin/drush webform:libraries:download"
         ]
      }
 }

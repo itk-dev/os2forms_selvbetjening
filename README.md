@@ -59,8 +59,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 5. Install profile
    ```sh
-   docker-compose exec phpfpm vendor/bin/drush site:install \
-   os2forms_forloeb_profile --existing-config
+   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
    ```
 
 6. Download and install external libraries
@@ -110,4 +109,18 @@ $settings['locale_custom_strings_en'][''] = [
 $settings['locale_custom_strings_da'][''] = [
    'Log in with @client_title' => 'Medarbejderlogin',
 ];
+```
+
+## Production
+
+```sh
+composer install --no-dev --optimize-autoloader
+```
+
+Install site as described above.
+
+Apply updates by running
+
+```sh
+vendor/bin/drush --yes deploy
 ```
