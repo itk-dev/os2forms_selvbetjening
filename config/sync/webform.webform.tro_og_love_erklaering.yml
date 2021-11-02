@@ -1,0 +1,220 @@
+uuid: 2982a6e7-c798-46e0-9d5a-41c827d53d7d
+langcode: da
+status: open
+dependencies:
+  module:
+    - os2forms
+    - webform_entity_print
+    - webform_revisions
+third_party_settings:
+  webform_revisions:
+    contentEntity_id: '47'
+  os2forms:
+    os2forms_nemid:
+      webform_type: personal
+      nemlogin_auto_redirect: 0
+  webform_entity_print:
+    template:
+      header: ''
+      footer: ''
+      css: ''
+    export_types:
+      pdf:
+        enabled: true
+        link_text: ''
+        link_attributes: {  }
+      word_docx:
+        enabled: false
+        link_text: ''
+        link_attributes: {  }
+open: null
+close: null
+weight: 0
+uid: 60
+template: false
+archive: false
+id: tro_og_love_erklaering
+title: 'Tro og Love Erklæring'
+description: 'Tro og Love erkl&aelig;ring som sendes ud i forbindelse med ny- eller genans&aelig;ttelser'
+category: MBU
+elements: "vejledning:\n  '#type': webform_wizard_page\n  '#title': Vejledning\n  vejledning_overskrift_markup:\n    '#type': webform_markup\n    '#markup': '<h2><strong>VEJLEDNING TIL &rdquo;TRO OG LOVE ERKL&AElig;RING &ndash; ANS&AElig;TTELSE P&Aring; M&Aring;NEDSL&Oslash;N&rdquo;</strong></h2>'\n  vejledning_markup:\n    '#type': webform_markup\n    '#markup': |\n      <p>Erkl&aelig;ringen udfyldes med tidligere besk&aelig;ftigelse, som er relevant for beregning af erfarings-, pensions- og jubil&aelig;umsanciennitet. Det er dig som l&oslash;nmodtager, der har pligt til at oplyse om dine tidligere ans&aelig;ttelser, der kan v&aelig;re relevante i forhold til denne ans&aelig;ttelse. Det er vigtigt, at oplysningerne er korrekte, idet det kan f&aring; betydning for dine l&oslash;n- og pensionsvilk&aring;r.</p>\n      \n      <p><br />\n      <strong>Erfaringsanciennitet:</strong></p>\n      \n      <ul>\n      \t<li>I de fleste tilf&aelig;lde kun tidligere besk&aelig;ftigelse inden for det samme fagomr&aring;de/uddannelsesomr&aring;de.</li>\n      </ul>\n      \n      <p><br />\n      <strong>Pensionsanciennitet:</strong></p>\n      \n      <ul>\n      \t<li>Tidligere ans&aelig;ttelse som m&aring;nedsl&oslash;nnet medarbejder ved en kommune eller en region/amtskommune. (Ans&aelig;ttelse ved Staten, i privat virksomhed og udlandet skal ikke p&aring;f&oslash;res).</li>\n      \t<li>Ans&aelig;ttelse medregnes uanset, at den tidligere ans&aelig;ttelse har v&aelig;ret en anden overenskomst/stillingskategori end nyans&aelig;ttelsen.</li>\n      \t<li>Ans&aelig;ttelse i l&oslash;nnet praktik, l&oslash;ntilskud, jobtr&aelig;ning og puljejob kan ogs&aring; medregnes.</li>\n      </ul>\n      \n      <p><br />\n      <strong>Jubil&aelig;umsanciennitet:</strong></p>\n      \n      <ul>\n      \t<li>I de fleste tilf&aelig;lde kun tidligere besk&aelig;ftigelse inden for Aarhus Kommune.</li>\n      \t<li>For l&aelig;rere og b&oslash;rnehaveklasseledere ansat som tjenestem&aelig;nd i den lukkede gruppe&nbsp;og i den halvlukkede gruppe samt for overenskomstansatte l&aelig;rere/b&oslash;rnehaveklasseledere i 93-gruppen, er det ans&aelig;ttelse i samtlige kommuner, som skal medregnes.</li>\n      \t<li>For Kommunale tjenestem&aelig;nd samt overenskomstansatte t&aelig;lles kun ans&aelig;ttelser indenfor Aarhus kommune med.</li>\n      \t<li>For reglementsansatte p&aelig;dagoger er det ans&aelig;ttelse som reglementsansat i samtlige kommuner, som skal medregnes</li>\n      </ul>\n      \nstamoplysninger:\n  '#type': webform_wizard_page\n  '#title': Stamoplysninger\n  indledende_tekst_markup:\n    '#type': webform_markup\n    '#markup': |\n      <strong>TRO OG LOVE ERKL&AElig;RING &ndash; ANS&AElig;TTELSE P&Aring; M&Aring;NEDSL&Oslash;N</strong><br />\n      &nbsp;\n      \n  navn_personnummer:\n    '#type': webform_flexbox\n    personnummmer:\n      '#type': cpr_element\n      '#title': Personnummmer\n    navn:\n      '#type': cpr_name_element\n      '#title': Navn\n      '#multiple': false\n      '#readonly': true\n  stilling_tjenestested_ansaettelsesdato:\n    '#type': webform_flexbox\n    stilling:\n      '#type': textfield\n      '#title': Stilling\n    tjensested:\n      '#type': textfield\n      '#title': Tjensested\n    ansaettelsesdato:\n      '#type': date\n      '#title': Ansættelsesdato\n      '#title_display': before\n      '#help_display': title_before\n      '#date_date_format': ''\ntidligere_beskaeftigelse:\n  '#type': webform_wizard_page\n  '#title': 'Tidligere beskæftigelse'\n  tidligere_beskaeftigelse_markup:\n    '#type': webform_markup\n    '#markup': |\n      <h2><strong>Oplysning om tidligere besk&aelig;ftigelse</strong></h2>\n      <br />\n      Oplysning om tidligere besk&aelig;ftigelse til brug ved ans&aelig;ttelsen. Anvendes til beregning af erfarings-, pensions- og jubil&aelig;umsanciennitet. Udfyldes ved enhver <strong>nyans&aelig;ttelse </strong>samt <strong>genans&aelig;ttelse</strong> i Aarhus Kommune.\n      \n  markup_maanedsloen:\n    '#type': webform_markup\n    '#markup': '<h3><strong>M&aring;nedsl&oslash;n</strong></h3>'\n  maanedsloennet_tidligere_beskaeftigelse_angives_med_tidligste_an:\n    '#type': webform_custom_composite\n    '#title': 'Månedslønnet tidligere beskæftigelse (angives med tidligste ansættelse først)'\n    '#title_display': before\n    '#element':\n      ansaettelse:\n        '#type': textfield\n        '#title': 'Ansættelse (Arbejdssted/Stilling):'\n      fra:\n        '#type': date\n        '#title': 'Fra (dd.mm.åååå):'\n      til:\n        '#type': date\n        '#title': 'Til (dd.mm.åååå):'\n      timer:\n        '#type': textfield\n        '#title': 'Antal timer pr. uge:'\n      varighed:\n        '#type': textfield\n        '#title': 'Ansættelsens  varighed (år – måneder - dage):'\ntidligere_timeloennede_beskaeftigelse:\n  '#type': webform_wizard_page\n  '#title': 'Tidligere timelønnede beskæftigelse'\n  markup_timeloen:\n    '#type': webform_markup\n    '#markup': |\n      <h2><strong>Timel&oslash;n</strong></h2>\n      Hvis du ingen relevant timel&oslash;nnet besk&aelig;ftigelse har, skal du blot indtaste &quot;0&quot; i feltet timer.&nbsp;&nbsp;<br />\n      &nbsp;\n  timeloennet_tidligere_beskaeftigelse:\n    '#type': webform_custom_composite\n    '#title': 'Timelønnet tidligere beskæftigelse (angives med tidligste ansættelse først)'\n    '#title_display': before\n    '#element':\n      ansaettelse:\n        '#type': textfield\n        '#title': 'Ansættelse (Arbejdssted/Stilling):'\n      fra:\n        '#type': date\n        '#title': 'Fra (dd.mm.åååå):'\n      til:\n        '#type': date\n        '#title': 'Til (dd.mm.åååå):'\n      timer:\n        '#type': textfield\n        '#title': 'Antal timer i alt:'\n      varighed:\n        '#type': textfield\n        '#title': 'Ansættelsens  varighed (år – måneder - dage):'\n  timeloennede_markup:\n    '#type': webform_markup\n    '#markup': '<em>*Ved anf&oslash;rsel af timel&oslash;nsans&aelig;ttelser skal du, hvis du &oslash;nsker en beregning af, hvorvidt timerne t&aelig;ller med som anciennitet, vedl&aelig;gge kopier af dine l&oslash;nsedler i forbindelse med dine timel&oslash;nsans&aelig;ttelser, da vi skal have dokumentation for, hvor mange timer du har haft pr. m&aring;ned.</em>'\n  upload_filer:\n    '#type': webform_document_file\n    '#title': 'Upload filer'\n    '#multiple': 5\n    '#file_placeholder': 'Vedl&aelig;g kopier af dine l&oslash;nsedler i forbindelse med dine timel&oslash;nsans&aelig;ttelser.'\n    '#file_preview': name\nafviklede_timer_i_indevaerende_kalenderaar:\n  '#type': webform_wizard_page\n  '#title': 'Afviklede timer i indeværende kalenderår'\n  flexbox_omsorgsdage:\n    '#type': webform_flexbox\n    omsorgsdage:\n      '#type': textfield\n      '#title': Omsorgsdage\n      '#help': '<span style=\"font-size:11.0pt\"><span style=\"font-family:&quot;Calibri&quot;,sans-serif\">2 dage pr. barn under 7 &aring;r</span></span>'\n      '#title_display': before\n    ikke_relevant:\n      '#type': checkbox\n      '#title': 'Ikke relevant'\n  flexbox_seniordage:\n    '#type': webform_flexbox\n    seniordage:\n      '#type': textfield\n      '#title': Seniordage\n    ikke_relevant_seniordage:\n      '#type': checkbox\n      '#title': 'Ikke relevant'\n  flexbox_ferie:\n    '#type': webform_flexbox\n    optjent_ferie:\n      '#type': textfield\n      '#title': 'Optjent ferie'\n      '#description': 'Optjent ferie i dage'\n      '#help': 'Optjent ferie fra tidligere arbejdsgiver.&nbsp;Se opg&oslash;relse fra din tidligere arbejdsgiver i din e-Boks.'\n    ingen_optjent_ferie:\n      '#type': checkbox\n      '#title': 'Ingen optjent ferie'\n      '#help': 'Ingen optjent ferie fra tidligere arbejdsgiver'\n      '#title_display': before\n  tidligere_aftalebaserede_barselsaftaler:\n    '#type': textarea\n    '#title': 'Tidligere aftalebaserede barselsaftaler'\nactions:\n  '#type': webform_actions\n  '#title': 'Send knap(per)'"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: true
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: all
+  purge_days: 5
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

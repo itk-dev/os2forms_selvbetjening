@@ -1,0 +1,13 @@
+uuid: 15f00fc1-a260-4271-a12a-0c6fa9ade81d
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: sOb26JSy3fGpWkvR0WYN6_hMqj_6d1rvbvrkzp1yya0
+id: node_make_sticky_action
+label: 'Gør indhold klæbrigt'
+type: node
+plugin: node_make_sticky_action
+configuration: {  }

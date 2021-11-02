@@ -1,0 +1,1566 @@
+uuid: 622fede8-5f00-413c-999a-5eae4887aee3
+langcode: da
+status: true
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - maestro
+    - user
+_core:
+  default_config_hash: viC4SS65u0gG4DwH30J09CYMoIH7_yLXjLW7smsMRwA
+id: maestro_outstanding_tasks
+label: 'Flow udestående opgaver'
+module: views
+description: 'All active interactive tasks that are outstanding'
+tag: maestro
+base_table: maestro_production_assignments
+base_field: id
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: perm
+        options:
+          perm: 'administer maestro production assignment entities'
+      cache:
+        type: none
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Udfør
+          reset_button: false
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          expose_sort_order: true
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      pager:
+        type: mini
+        options:
+          items_per_page: 10
+          offset: 0
+          id: 0
+          total_pages: null
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- Alle -'
+            offset: false
+            offset_label: Forskydning
+          tags:
+            previous: ��
+            next: ��
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            rendered_entity: rendered_entity
+            by_variable: by_variable
+            assign_id: assign_id
+            id: id
+            queue_id: queue_id
+          info:
+            rendered_entity:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            by_variable:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            assign_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            queue_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
+      row:
+        type: fields
+        options:
+          inline: {  }
+          separator: ''
+          hide_empty: false
+          default_field_elements: true
+      fields:
+        queue_id_1:
+          id: queue_id_1
+          table: maestro_production_assignments
+          field: queue_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: K
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: nowrap
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_entity_id
+          settings: {  }
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_production_assignments
+          entity_field: queue_id
+          plugin_id: field
+        task_label:
+          id: task_label
+          table: maestro_queue
+          field: task_label
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: Opgave
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_queue
+          entity_field: task_label
+          plugin_id: field
+        process_name:
+          id: process_name
+          table: maestro_process
+          field: process_name
+          relationship: process_id
+          group_type: group
+          admin_label: ''
+          label: Procesnavn
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_process
+          entity_field: process_name
+          plugin_id: field
+        assign_id:
+          id: assign_id
+          table: maestro_production_assignments
+          field: assign_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Tildelt til'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_production_assignments
+          entity_field: assign_id
+          plugin_id: field
+        active_handler:
+          id: active_handler
+          table: maestro_queue
+          field: active_handler
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: Håndtering
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          entity_type: maestro_queue
+          plugin_id: maestro_active_handler
+        handler:
+          id: handler
+          table: maestro_queue
+          field: handler
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: Håndtering
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_queue
+          entity_field: handler
+          plugin_id: field
+        created_1:
+          id: created_1
+          table: maestro_queue
+          field: created
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: 'Opgave tildelt'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_queue
+          entity_field: created
+          plugin_id: field
+        created:
+          id: created
+          table: maestro_process
+          field: created
+          relationship: process_id
+          group_type: group
+          admin_label: ''
+          label: 'Proces startet'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_process
+          entity_field: created
+          plugin_id: field
+        admin_operations:
+          id: admin_operations
+          table: maestro_queue
+          field: admin_operations
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: Handlinger
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          entity_type: maestro_queue
+          plugin_id: maestro_admin_operations
+      filters:
+        archived:
+          id: archived
+          table: maestro_queue
+          field: archived
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: maestro_queue
+          entity_field: archived
+          plugin_id: numeric
+        status:
+          id: status
+          table: maestro_queue
+          field: status
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: maestro_queue
+          entity_field: status
+          plugin_id: numeric
+        process_name:
+          id: process_name
+          table: maestro_process
+          field: process_name
+          relationship: process_id
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: process_name_op
+            label: Procesnavn
+            description: 'Filtrér ud fra procesnavn'
+            use_operator: false
+            operator: process_name_op
+            identifier: process_name
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: Procesnavn
+            description: null
+            identifier: process_name
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: maestro_process
+          entity_field: process_name
+          plugin_id: string
+        task_label:
+          id: task_label
+          table: maestro_queue
+          field: task_label
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: task_label_op
+            label: Opgavenavn
+            description: 'Filtrer på opgave navn'
+            use_operator: false
+            operator: task_label_op
+            identifier: task_label
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: maestro_queue
+          entity_field: task_label
+          plugin_id: string
+      sorts: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: Introduktion
+          empty: true
+          tokenize: false
+          content:
+            value: 'Rapport over udestående eller aktive interaktive opgaver for alle Flows som er aktive og ikke er færdige. Du har mulighed for at filtrere resultaterne til kun at vise opgaver fra et specifik Flow, hvor der kan være mange selvbetjeningsforløb i et Flow. Filtréring af resultater ud fra opgave navn er også mulig. Mulighederne inkluderer også muligheden for at omfordele den opgaveansvarlige på en udvalgt opgave. '
+            format: basic_html
+          plugin_id: text
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: 'Total antal: [view:total-rows] '
+            format: basic_html
+          plugin_id: text
+      empty: {  }
+      relationships:
+        queue_id:
+          id: queue_id
+          table: maestro_production_assignments
+          field: queue_id
+          relationship: none
+          group_type: group
+          admin_label: 'Maestro Queue'
+          required: true
+          entity_type: maestro_production_assignments
+          entity_field: queue_id
+          plugin_id: standard
+        process_id:
+          id: process_id
+          table: maestro_queue
+          field: process_id
+          relationship: queue_id
+          group_type: group
+          admin_label: 'Maestro Process'
+          required: true
+          entity_type: maestro_queue
+          entity_field: process_id
+          plugin_id: standard
+      arguments: {  }
+      display_extenders: {  }
+      title: 'Udestående interaktive opgaver'
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - user.permissions
+      tags: {  }
+  maestro_outstanding_tasks:
+    display_plugin: page
+    id: maestro_outstanding_tasks
+    display_title: 'Udestående opgaver'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: outstanding-tasks
+      menu:
+        type: normal
+        title: 'Udestående opgaver'
+        description: ''
+        expanded: false
+        parent: ''
+        weight: 0
+        context: '0'
+        menu_name: tools
+      display_description: ''
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - user.permissions
+      tags: {  }
+  taskconsole_display:
+    display_plugin: page
+    id: taskconsole_display
+    display_title: 'Task Console Display'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: outstanding-tasks-taskconsole
+      display_description: ''
+      fields:
+        queue_id_1:
+          id: queue_id_1
+          table: maestro_production_assignments
+          field: queue_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: K
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: nowrap
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_entity_id
+          settings: {  }
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_production_assignments
+          entity_field: queue_id
+          plugin_id: field
+        task_label:
+          id: task_label
+          table: maestro_queue
+          field: task_label
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: Opgave
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_queue
+          entity_field: task_label
+          plugin_id: field
+        process_name:
+          id: process_name
+          table: maestro_process
+          field: process_name
+          relationship: process_id
+          group_type: group
+          admin_label: ''
+          label: Procesnavn
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_process
+          entity_field: process_name
+          plugin_id: field
+        assign_id:
+          id: assign_id
+          table: maestro_production_assignments
+          field: assign_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Tildelt til'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_production_assignments
+          entity_field: assign_id
+          plugin_id: field
+        handler:
+          id: handler
+          table: maestro_queue
+          field: handler
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: Håndtering
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_queue
+          entity_field: handler
+          plugin_id: field
+        created_1:
+          id: created_1
+          table: maestro_queue
+          field: created
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          label: 'Opgave tildelt'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_queue
+          entity_field: created
+          plugin_id: field
+        created:
+          id: created
+          table: maestro_process
+          field: created
+          relationship: process_id
+          group_type: group
+          admin_label: ''
+          label: 'Proces startet'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: maestro_process
+          entity_field: created
+          plugin_id: field
+      defaults:
+        fields: false
+        filters: false
+        filter_groups: false
+        arguments: false
+      filters:
+        archived:
+          id: archived
+          table: maestro_queue
+          field: archived
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: maestro_queue
+          entity_field: archived
+          plugin_id: numeric
+        status:
+          id: status
+          table: maestro_queue
+          field: status
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: maestro_queue
+          entity_field: status
+          plugin_id: numeric
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      arguments:
+        process_id:
+          id: process_id
+          table: maestro_process
+          field: process_id
+          relationship: process_id
+          group_type: group
+          admin_label: ''
+          default_action: empty
+          exception:
+            value: all
+            title_enable: false
+            title: Alle
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: maestro_process
+          entity_field: process_id
+          plugin_id: numeric
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - user.permissions
+      tags: {  }

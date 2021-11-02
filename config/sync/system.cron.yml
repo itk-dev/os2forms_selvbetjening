@@ -1,0 +1,7 @@
+threshold:
+  requirements_warning: 172800
+  requirements_error: 1209600
+logging: 1
+langcode: da
+_core:
+  default_config_hash: fyBhkXfqhpQa0FT0tG_5-NT51artA50ac8DFAzT0UFk

@@ -1,0 +1,14 @@
+uuid: 0afc6a56-54ee-4330-a4fd-3c1dc0007b92
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.sagsbehandler
+  module:
+    - user
+id: user_remove_role_action.sagsbehandler
+label: 'Remove the Sagsbehandler role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: sagsbehandler

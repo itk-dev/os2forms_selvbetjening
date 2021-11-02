@@ -1,0 +1,3 @@
+participant_message:
+  body:
+    value: "Greetings [user:name],\n\n You have been added as a workflow participant to [node:title].\n\n[node:url:absolute]"

@@ -1,0 +1,287 @@
+uuid: 8955bef0-30f5-4fad-ba89-200be370e3b2
+langcode: da
+status: true
+dependencies: {  }
+id: apv_pernille_2
+label: 'APV pernille 2'
+app_group: 0
+canvas_height: 900
+canvas_width: 800
+default_workflow_timeline_stage_count: 0
+show_details: false
+validated: false
+views_attached:
+  maestro_entity_identifiers:
+    view_machine_name: maestro_entity_identifiers
+    view_weight: -10
+    view_display: 'taskconsole_display;Task Console Display'
+  maestro_completed_tasks:
+    view_machine_name: maestro_completed_tasks
+    view_weight: -9
+    view_display: default;Master
+variables:
+  leder:
+    variable_id: leder
+    variable_value: '0'
+  initiator:
+    variable_id: initiator
+    variable_value: '0'
+  workflow_timeline_stage_count:
+    variable_id: workflow_timeline_stage_count
+    variable_value: ''
+  workflow_current_stage:
+    variable_id: workflow_current_stage
+    variable_value: ''
+  workflow_current_stage_message:
+    variable_id: workflow_current_stage_message
+    variable_value: ''
+  amr:
+    variable_id: amr
+    variable_value: '0'
+  amr-mail:
+    variable_id: amr-mail
+    variable_value: '0'
+initiator: null
+workflow_timeline_stage_count: null
+workflow_current_stage: null
+workflow_current_stage_message: null
+tasks:
+  start:
+    id: start
+    tasktype: MaestroStart
+    label: Start
+    nextstep: 'leder_var,send_amr'
+    nextfalsestep: ''
+    top: '42'
+    left: '42'
+    assignby: fixed
+    assignto: engine
+  end:
+    id: end
+    tasktype: MaestroEnd
+    label: End
+    nextstep: ''
+    nextfalsestep: ''
+    top: '420'
+    left: '200'
+    assignby: fixed
+    assignto: engine
+  leder_var:
+    id: leder_var
+    label: 'leder variabel'
+    tasktype: MaestroSetProcessVariable
+    nextstep: udfyldt
+    nextfalsestep: ''
+    top: '30'
+    left: '290'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+  send_amr:
+    id: send_amr
+    label: 'Send AMR'
+    tasktype: MaestroSetProcessVariable
+    nextstep: amr_var
+    nextfalsestep: ''
+    top: '180'
+    left: '140'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+    data:
+      spv:
+        variable: amr
+        method: bycontentfunction
+        variable_value: 'maestro_webform_spv_fetch_submission_value:submission,send_til_arbejdsmiljoerepraesentant'
+    assigned: ''
+    runonce: false
+    handler: ''
+    showindetail: true
+    participate_in_workflow_status_stage: false
+    workflow_status_stage_number: 0
+    workflow_status_stage_message: ''
+    notifications:
+      notification_assignment_subject: null
+      notification_assignment: null
+      notification_reminder_subject: null
+      notification_reminder: null
+      notification_escalation_subject: null
+      notification_escalation: null
+      reminder_after: null
+      escalation_after: null
+  amr_var:
+    id: amr_var
+    label: AMR
+    tasktype: MaestroSetProcessVariable
+    nextstep: udfyldt
+    nextfalsestep: ''
+    top: '130'
+    left: '290'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+  accept:
+    id: accept
+    label: 'Leder accept'
+    tasktype: MaestroInteractive
+    nextstep: end
+    nextfalsestep: ''
+    top: '325'
+    left: '355'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+    handler: maestro_accept_only_form
+    data:
+      modal: notmodal
+      redirect_to: taskconsole
+    assigned: 'user:variable:leder'
+    runonce: false
+    showindetail: true
+    participate_in_workflow_status_stage: false
+    workflow_status_stage_number: 0
+    workflow_status_stage_message: ''
+    notifications:
+      notification_assignment_subject: ''
+      notification_assignment: 'Log på selvbetjening.aarhuskommune.dk og find en opgave.'
+      notification_reminder_subject: ''
+      notification_reminder: ''
+      notification_escalation_subject: ''
+      notification_escalation: ''
+      reminder_after: 14
+      escalation_after: 0
+      notification_assignments: 'user:variable:leder:assignment,user:variable:leder:reminder'
+  udfyldt:
+    id: udfyldt
+    label: udfyldt
+    tasktype: MaestroIf
+    nextstep: send_til
+    nextfalsestep: ''
+    top: '70'
+    left: '470'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+    data:
+      if:
+        method: bylasttaskstatus
+        variable: leder
+        operator: '='
+        variable_value: kiog@
+        status: '1'
+    assigned: ''
+    runonce: false
+    handler: ''
+    showindetail: true
+    participate_in_workflow_status_stage: false
+    workflow_status_stage_number: 0
+    workflow_status_stage_message: ''
+    notifications:
+      notification_assignment_subject: null
+      notification_assignment: null
+      notification_reminder_subject: null
+      notification_reminder: null
+      notification_escalation_subject: null
+      notification_escalation: null
+      reminder_after: null
+      escalation_after: null
+  send_til:
+    id: send_til
+    label: 'send til AMR'
+    tasktype: MaestroIf
+    nextstep: form_amr
+    nextfalsestep: accept
+    top: '200'
+    left: '500'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+    data:
+      if:
+        method: byvariable
+        variable: amr
+        operator: '='
+        variable_value: 'yes'
+        status: '1'
+    assigned: ''
+    runonce: false
+    handler: ''
+    showindetail: true
+    participate_in_workflow_status_stage: false
+    workflow_status_stage_number: 0
+    workflow_status_stage_message: ''
+    notifications:
+      notification_assignment_subject: null
+      notification_assignment: null
+      notification_reminder_subject: null
+      notification_reminder: null
+      notification_escalation_subject: null
+      notification_escalation: null
+      reminder_after: null
+      escalation_after: null
+  form_amr:
+    id: form_amr
+    label: 'Formular _AMR'
+    tasktype: MaestroWebform
+    nextstep: accept
+    nextfalsestep: ''
+    top: '390'
+    left: '550'
+    assignby: fixed
+    assignto: ''
+    raphael: ''
+    to: ''
+    pointedfrom: ''
+    falsebranch: ''
+    lines: {  }
+    data:
+      unique_id: submission_amr
+      webform_machine_name: ansoegning_om_hjemmearbejde_amr_
+      modal: notmodal
+      skip_webform_handlers: 0
+      webform_nodes_attached_to: none
+      use_nodes_attached: 0
+      webform_nodes_attached_variable: none
+      redirect_to: taskconsole
+      show_edit_form: 0
+    assigned: 'user:variable:amr-mail'
+    runonce: false
+    handler: ''
+    showindetail: true
+    participate_in_workflow_status_stage: false
+    workflow_status_stage_number: 0
+    workflow_status_stage_message: ''
+    notifications:
+      notification_assignment_subject: ''
+      notification_assignment: ''
+      notification_reminder_subject: ''
+      notification_reminder: ''
+      notification_escalation_subject: ''
+      notification_escalation: ''
+      reminder_after: 0
+      escalation_after: 0
+      notification_assignments: 'user:variable:amr-mail:assignment'

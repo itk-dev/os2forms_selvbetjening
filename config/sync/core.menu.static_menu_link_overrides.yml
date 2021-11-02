@@ -1,0 +1,172 @@
+definitions:
+  admin_toolbar_tools__plugin:
+    weight: 1
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__flush_rendercache:
+    weight: 2
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__flush_menu:
+    weight: 3
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__flush_static:
+    weight: 4
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__flush_twig:
+    weight: 5
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  'admin_toolbar_tools__extra_links:flush_views':
+    weight: 7
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__theme_rebuild:
+    weight: 8
+    menu_name: admin
+    parent: admin_toolbar_tools.flush
+    expanded: false
+    enabled: true
+  system__admin_content:
+    weight: -92
+    menu_name: admin
+    parent: system.admin
+    enabled: true
+    expanded: false
+  system__admin_structure:
+    weight: -91
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__themes_page:
+    weight: -90
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__modules_list:
+    weight: -89
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__admin_config:
+    weight: -88
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  entity__user__collection:
+    weight: -87
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__admin_reports:
+    weight: -86
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  help__main:
+    weight: -85
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  dblog__overview:
+    weight: -49
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  entity__field_storage_config__collection:
+    weight: -48
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  'admin_toolbar_tools__extra_links:views_ui__field_list':
+    weight: -40
+    menu_name: admin
+    parent: entity.field_storage_config.collection
+    expanded: false
+    enabled: true
+  dblog__access_denied:
+    weight: -47
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  dblog__page_not_found:
+    weight: -46
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  dblog__search:
+    weight: -45
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  system__status:
+    weight: -44
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  locale__translate_status:
+    weight: -43
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  views_ui__reports_plugins:
+    weight: -40
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  webform__reports_plugins:
+    weight: -39
+    menu_name: admin
+    parent: system.admin_reports
+    expanded: false
+    enabled: true
+  comment__admin:
+    weight: -10
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+  'admin_toolbar_tools__extra_links:node__add':
+    weight: -9
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+  'admin_toolbar_tools__extra_links:view__files':
+    weight: -11
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+_core:
+  default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM
+langcode: da

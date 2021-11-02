@@ -1,0 +1,15 @@
+uuid: f97671a0-a3cd-431d-b3e5-185e77fb1663
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 97tvtzGOa8_flb22CzSjgtm_YkiGMHvEBO-6q2K9V_U
+id: node_search
+label: Indhold
+path: node
+weight: -10
+plugin: node_search
+configuration:
+  rankings: {  }

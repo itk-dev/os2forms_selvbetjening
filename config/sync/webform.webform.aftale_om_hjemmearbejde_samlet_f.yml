@@ -1,0 +1,234 @@
+uuid: d899ba91-4492-4933-978e-58b4b4c18a73
+langcode: da
+status: open
+dependencies:
+  module:
+    - maestro_webform
+    - os2forms
+    - webform_entity_print
+    - webform_revisions
+third_party_settings:
+  webform_revisions:
+    contentEntity_id: '54'
+  os2forms:
+    os2forms_nemid:
+      webform_type: ''
+      nemlogin_auto_redirect: 0
+  webform_entity_print:
+    template:
+      header: ''
+      footer: ''
+      css: ''
+    export_types:
+      pdf:
+        enabled: true
+        link_text: ''
+        link_attributes: {  }
+      word_docx:
+        enabled: false
+        link_text: ''
+        link_attributes: {  }
+open: null
+close: null
+weight: 0
+uid: 10
+template: false
+archive: false
+id: aftale_om_hjemmearbejde_samlet_f
+title: 'Aftale om hjemmearbejde - samlet leder'
+description: ''
+category: BA
+elements: "side:\n  '#type': webform_wizard_page\n  '#title': 'Personlige oplysninger'\n  markup:\n    '#type': webform_markup\n    '#display_on': both\n    '#markup': |\n      <p>Denne blanket&nbsp;underst&oslash;tter&nbsp;den lokale aftale om distancearbejde.&nbsp;N&aring;r du har udfyldt sp&oslash;rgeskemaet, sendes det videre til din n&aelig;rmeste leder, som bruger&nbsp;hjemmeAPV&rsquo;en&nbsp;i sin beslutning om&nbsp;godkendelse af aftalen om fast hjemmearbejde.&nbsp;&nbsp;</p>\n      \n      <p>&nbsp;</p>\n      \n      <p>Aftalen&nbsp;foruds&aelig;tter,&nbsp;at du er i&nbsp;tilpas&nbsp;l&oslash;bende dialog med din n&aelig;rmeste leder om, hvordan og hvor ofte du arbejder hjemmefra.&nbsp;</p>\n      \n      <p>&nbsp;</p>\n      \n      <p>Det anbefales at&nbsp;du ser denne film&nbsp;(mangler link)&nbsp;om indretning af arbejdspladsen for at f&aring; et overblik over kontorindretningen. Helst inden du&nbsp;besvarer&nbsp;APV-tjeklisten.&nbsp;</p>\n      \n      <p>&nbsp;</p>\n      \n  mere:\n    '#type': webform_more\n    '#more_title': 'Gode råd til dit arbejdsmiljø derhjemme'\n    '#more': |\n      <p>Helt overordnet er det vigtigt,&nbsp;at du l&oslash;bende har dialog med din leder om trivsel, opgavel&oslash;sning og feedback. Hvis du arbejder meget hjemmefra, s&aring;&nbsp;kan det v&aelig;re et s&aelig;rligt opm&aelig;rksomhedspunkt, da dialogen er vigtig for et godt arbejdsmilj&oslash;.&nbsp;</p>\n      \n      <p>&nbsp;</p>\n      \n      <p>Husk&nbsp;ogs&aring;&nbsp;at forebygge gener ved meget sk&aelig;rmarbejde. Det er en god id&eacute; b&aring;de p&aring; kontoret og p&aring; hjemmekontoret&nbsp;- se &oslash;velser her:&nbsp;<a href=\"https://www.arbejdsmiljoweb.dk/krop-og-sundhed/fysisk-aktivitet/oevelser_med_elastik\">https://www.arbejdsmiljoweb.dk/krop-og-sundhed/fysisk-aktivitet/oevelser_med_elastik</a>&nbsp;</p>\n      \n      <p>&nbsp;</p>\n      \n      <p>Et sidste r&aring;d er, at du med fordel kan benytte muligheden&nbsp;for at sidde flere forskellige steder hjemmefra. Herved f&aring;r du noget af den variation ind i dagligdagen,&nbsp;som for mange kommer mere naturlig,&nbsp;n&aring;r man er p&aring; kontorarbejdspladsen.&nbsp;</p>\n      \n  dine_oplysninger:\n    '#type': webform_section\n    '#title': 'Dine oplysninger'\n    medarbejder_navn:\n      '#type': textfield\n      '#title': 'Dit navn:'\n      '#required': true\n    medarbejder_az_id_:\n      '#type': email\n      '#title': 'Din e-mail: '\n      '#required': true\n    leder_e_mail_:\n      '#type': email\n      '#title': 'Din leders e-mail:'\n      '#required': true\n    send_til_arbejdsmiljoerepraesentant:\n      '#type': checkboxes\n      '#title': 'Send til arbejdsmiljørepræsentant'\n      '#options':\n        'yes': Ja\n        'no': Nej\n      '#required': true\n    arbejdsmiljoerepraesentant:\n      '#type': email\n      '#title': 'Din arbejdsmiljørepræsentants e-mail:'\n      '#states':\n        visible:\n          ':input[name=\"send_til_arbejdsmiljoerepraesentant[yes]\"]':\n            checked: true\n    ergonomi_:\n      '#type': webform_section\n      '#title': 'Ergonomi på hjemmearbejdet'\n      arbejdsstilling:\n        '#type': webform_likert\n        '#title': Arbejdsstilling\n        '#questions':\n          bord: 'Har du et egnet bord at sidde/stå ved (hæve-sænkebord er ikke et krav)'\n          stol: 'Har du en god stol at sidde på? '\n          Skærm: 'Kan du indstille din skærm? (fx højde, lysstyrke mv) '\n          mus: 'Har du adgang til en ekstern mus? '\n          tastatur: 'Har du adgang til et eksternt tastatur? '\n        '#answers':\n          Ja: Ja\n          Nej: Nej\n        '#required': true\n      klima:\n        '#type': webform_likert\n        '#title': Klima\n        '#questions':\n          luft: 'Kan du lufte ud? '\n          traek: 'Kan du undgå at sidde i træk? '\n          temperatur: 'Kan du regulere temperaturen? '\n        '#answers':\n          Ja: Ja\n          Nej: Nej\n        '#required': true\n      andet:\n        '#type': webform_likert\n        '#title': Andet\n        '#questions':\n          lys: 'Kan du undgå blænding fra lys og reflekser i skærmen? '\n          ryddelighed: 'Forebygger du ulykker?   -- fx ved at hænge ledninger op, så du undgår snubleulykker.'\n          lyd: 'Oplever du udfordringer med støj? '\n          egnet: 'Vurderes hjemmearbejdspladsen samlet set velegnet?'\n        '#answers':\n          Ja: Ja\n          Nej: Nej\n        '#required': true\n      oevrige_kommentarer_til_hjemmearbejdspladsens_arbejdsmiljoe_:\n        '#type': textarea\n        '#title': 'Øvrige kommentarer til hjemmearbejdspladsens arbejdsmiljø '\namr:\n  '#type': fieldset\n  '#title': AMR\n  amr_kommentar:\n    '#type': textarea\n    '#title': amr_kommentar\nleder:\n  '#type': fieldset\n  '#title': Leder\n  terms_of_service:\n    '#type': webform_terms_of_service\n    '#title': 'Jeg godkender medarbejdserens ønsker om hjemmearbejdsplads.'\n    '#terms_content': 'Ovenst&aring;ende forhold er acceptable for en hjemmearbejdsplads.'\n  skal_tr_informeres_:\n    '#type': checkboxes\n    '#title': 'Skal TR informeres:'\n    '#options':\n      Ja: Ja\n      Nej: Nej\n    '#options__properties': ''\n  tr_e_mail_:\n    '#type': textfield\n    '#title': 'TR e-mail: '\n    '#states':\n      visible:\n        ':input[name=\"skal_tr_informeres_[Ja]\"]':\n          checked: true"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: true
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles:
+      - leder
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  opret_forloeb_fra_flow:
+    id: maestro
+    label: 'Opret forløb fra Flow'
+    notes: ''
+    handler_id: opret_forloeb_fra_flow
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      maestro_template: hjemmearbejde
+      maestro_message_success: ''
+      maestro_message_failure: ''
+variants: {  }

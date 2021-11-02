@@ -1,0 +1,59 @@
+uuid: ed641599-0ccd-4c31-8da0-f78f44656ce1
+langcode: da
+status: true
+dependencies: {  }
+id: nannas_flow
+label: 'Nannas flow'
+app_group: 0
+canvas_height: 900
+canvas_width: 800
+default_workflow_timeline_stage_count: 1
+show_details: false
+validated: false
+views_attached:
+  maestro_completed_tasks:
+    view_machine_name: maestro_completed_tasks
+    view_weight: -9
+    view_display: default;Master
+  maestro_entity_identifiers:
+    view_machine_name: maestro_entity_identifiers
+    view_weight: -10
+    view_display: 'taskconsole_display;Task Console Display'
+variables:
+  initiator:
+    variable_id: initiator
+    variable_value: '0'
+  workflow_timeline_stage_count:
+    variable_id: workflow_timeline_stage_count
+    variable_value: ''
+  workflow_current_stage:
+    variable_id: workflow_current_stage
+    variable_value: ''
+  workflow_current_stage_message:
+    variable_id: workflow_current_stage_message
+    variable_value: ''
+initiator: null
+workflow_timeline_stage_count: null
+workflow_current_stage: null
+workflow_current_stage_message: null
+tasks:
+  start:
+    id: start
+    tasktype: MaestroStart
+    label: Start
+    nextstep: end
+    nextfalsestep: ''
+    top: '50'
+    left: '50'
+    assignby: fixed
+    assignto: engine
+  end:
+    id: end
+    tasktype: MaestroEnd
+    label: End
+    nextstep: ''
+    nextfalsestep: ''
+    top: '200'
+    left: '200'
+    assignby: fixed
+    assignto: engine

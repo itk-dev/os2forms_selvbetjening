@@ -1,0 +1,74 @@
+uuid: 89651b3b-993b-4b66-b8a1-fa81a2ce5643
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.forloebsside
+    - node.type.webform
+  enforced:
+    module:
+      - os2forms_forloeb
+  module:
+    - content_moderation
+    - workflow_participants
+third_party_settings:
+  workflow_participants:
+    editor_transitions:
+      unpublish: unpublish
+      republish: republish
+    reviewer_transitions:
+      republish: republish
+_core:
+  default_config_hash: p3QtDEbkZg211Tn8B67GmDmFKPvdELm3IuEUS4_OcWg
+id: udgivelse_af_forlob_og_webformularer
+label: 'Udgivelse af forløb og webformularer'
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: 0
+    published:
+      label: Published
+      published: true
+      default_revision: true
+      weight: 1
+    unpublished:
+      published: false
+      default_revision: true
+      label: Unpublished
+      weight: 2
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: 0
+      from:
+        - draft
+        - published
+    publish:
+      label: Publish
+      to: published
+      weight: 1
+      from:
+        - draft
+        - published
+    republish:
+      label: Republish
+      from:
+        - unpublished
+      to: published
+      weight: 3
+    unpublish:
+      label: Unpublish
+      from:
+        - published
+      to: unpublished
+      weight: 2
+  entity_types:
+    node:
+      - forloebsside
+      - webform
+  default_moderation_state: draft

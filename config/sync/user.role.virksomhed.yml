@@ -1,0 +1,13 @@
+uuid: 05204520-d54d-41fb-a383-658b1f621c21
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: SAKAhG41yLV5zfWMxfTe55qH7M7B1e1-odAO-DufcVc
+id: virksomhed
+label: Virksomhed
+weight: 9
+is_admin: null
+permissions:
+  - 'access content'
+  - 'display eu cookie compliance popup'

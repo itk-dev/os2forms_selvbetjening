@@ -1,0 +1,14 @@
+uuid: 4523de29-534e-4ed4-a32b-cbc52b1c4a30
+langcode: da
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: k3aUaZXGDuhkek2TZIee0PApOPTvYZLadziekdyHA5A
+id: user_search
+label: Brugere
+path: user
+weight: 0
+plugin: user_search
+configuration: {  }

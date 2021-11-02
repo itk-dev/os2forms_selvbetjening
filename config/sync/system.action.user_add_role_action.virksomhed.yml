@@ -1,0 +1,14 @@
+uuid: 5a3689a9-e801-4c97-9992-550b9be00276
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.virksomhed
+  module:
+    - user
+id: user_add_role_action.virksomhed
+label: 'Add the Virksomhed role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: virksomhed

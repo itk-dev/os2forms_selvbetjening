@@ -1,0 +1,13 @@
+uuid: 76329de1-f168-4d6a-aee0-acfc40bec40d
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 2B9uF8NL5gutNKSdPRAhhAsDWFZZG1PJOBmx0aBGd_0
+id: node_publish_action
+label: 'Udgiv indhold'
+type: node
+plugin: 'entity:publish_action:node'
+configuration: {  }

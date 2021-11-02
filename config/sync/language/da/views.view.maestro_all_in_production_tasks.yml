@@ -1,0 +1,118 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Udfør
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Forskydning
+      fields:
+        id:
+          admin_label: K
+          label: K
+          separator: ', '
+        task_label:
+          label: Etiket
+          separator: ', '
+        process_id_1:
+          separator: ', '
+        process_name:
+          separator: ', '
+        task_class_name:
+          separator: ', '
+        task_id:
+          label: Maskinnavn
+          separator: ', '
+        created:
+          label: Oprettet
+          separator: ', '
+        changed:
+          label: Ændret
+          separator: ', '
+        is_interactive:
+          separator: ', '
+        handler:
+          label: Håndtering
+          separator: ', '
+        num_escalations_sent:
+          separator: ', '
+        num_reminders_sent:
+          separator: ', '
+        last_escalation_time:
+          separator: ', '
+        admin_operations:
+          label: Handlinger
+      header:
+        area:
+          admin_label: Introduktion
+  maestro_all_active_tasks_full:
+    display_options:
+      fields:
+        id:
+          admin_label: K
+          label: K
+          separator: ', '
+        task_label:
+          label: Etiket
+          separator: ', '
+        process_id_1:
+          separator: ', '
+        process_name:
+          separator: ', '
+        task_class_name:
+          separator: ', '
+        task_id:
+          label: Maskinnavn
+          separator: ', '
+        created:
+          label: Oprettet
+          separator: ', '
+        is_interactive:
+          separator: ', '
+        handler:
+          label: Håndtering
+          separator: ', '
+        num_escalations_sent:
+          separator: ', '
+        num_reminders_sent:
+          separator: ', '
+        last_escalation_time:
+          separator: ', '
+        admin_operations:
+          label: Handlinger
+  maestro_all_active_tasks_lean:
+    display_options:
+      fields:
+        id:
+          admin_label: K
+          label: K
+          separator: ', '
+        task_label:
+          separator: ', '
+        process_id_1:
+          separator: ', '
+        process_name:
+          separator: ', '
+        task_class_name:
+          separator: ', '
+        task_id:
+          label: Maskinnavn
+          separator: ', '
+        created:
+          label: Oprettet
+          separator: ', '
+        is_interactive:
+          separator: ', '
+        active_handler:
+          label: Håndtering
+        admin_operations:
+          label: Handlinger
