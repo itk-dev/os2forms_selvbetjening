@@ -46,6 +46,7 @@ module:
   maestro_webform: 0
   mailsystem: 0
   masquerade: 0
+  menu_link_attributes: 0
   menu_link_content: 0
   menu_ui: 0
   node: 0
