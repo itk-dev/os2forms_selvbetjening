@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains webform element hook implementations.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\os2forms_user_field_lookup\WebformElementHelper;
+
+/**
+ * Implements hook_webform_element_default_properties_alter().
+ *
+ * @see WebformElementHelper::alterDefaultProperties()
+ */
+function os2forms_user_field_lookup_webform_element_default_properties_alter(array &$properties, array &$definition) {
+  Drupal::service(WebformElementHelper::class)->alterDefaultProperties($properties, $definition);
+}
+
+/**
+ * Implements hook_webform_element_translatable_properties_alter().
+ *
+ * @see WebformElementHelper::alterTranslatableProperties()
+ */
+function os2forms_user_field_lookup_webform_element_translatable_properties_alter(array &$properties, array &$definition) {
+  Drupal::service(WebformElementHelper::class)->alterTranslatableProperties($properties, $definition);
+}
+
+/**
+ * Implements hook_webform_element_configuration_form_alter().
+ *
+ * @see WebformElementHelper::alterConfigurationForm()
+ */
+function os2forms_user_field_lookup_webform_element_configuration_form_alter(&$form, FormStateInterface $form_state) {
+  Drupal::service(WebformElementHelper::class)->alterConfigurationForm($form, $form_state);
+}
