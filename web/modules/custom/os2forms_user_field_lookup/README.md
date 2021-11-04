@@ -22,6 +22,11 @@ Add a User Field Element to a form and select a user field name on the element.
 When the form is displayed by an authenticated user, the field will be populated
 with the value of the selected field.
 
+### Elements
+
+* User Field Element
+* User Field Element (checkbox)
+
 ## Coding standards
 
 Run phpcs with the provided configuration:

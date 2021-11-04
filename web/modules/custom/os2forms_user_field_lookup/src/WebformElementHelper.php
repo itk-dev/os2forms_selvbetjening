@@ -7,6 +7,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\field\Entity\FieldConfig;
+use Drupal\os2forms_user_field_lookup\Plugin\WebformElement\UserFieldElementCheckbox;
 
 /**
  * Webform element helper with webform element hook implementations.
@@ -54,19 +55,23 @@ class WebformElementHelper {
     $elementPlugin = $formObject->getWebformElementPlugin();
     $pluginDefinition = $elementPlugin->getPluginDefinition();
 
-    // Get some built-in user fields plus all custom fields.
-    $userFieldDefinitions = array_filter(
-      $this->entityFieldManager->getFieldDefinitions('user', 'user'),
-      static function (FieldDefinitionInterface $field) {
-        return in_array($field->getName(), ['name', 'mail'], TRUE)
-          || $field instanceof FieldConfig;
-      }
-    );
-    $options = array_map(static function (FieldDefinitionInterface $field) {
-      return $field->getLabel();
-    }, $userFieldDefinitions);
-
     if ('os2forms_user_field_lookup' === ($pluginDefinition['provider'] ?? NULL)) {
+      // Get some built-in user fields plus all custom fields.
+      $userFieldDefinitions = array_filter(
+        $this->entityFieldManager->getFieldDefinitions('user', 'user'),
+        UserFieldElementCheckbox::class === $pluginDefinition['class'] ?
+          static function (FieldDefinitionInterface $field) {
+            return $field instanceof FieldConfig && in_array($field->getType(), ['boolean'], TRUE);
+          } :
+          static function (FieldDefinitionInterface $field) {
+            return in_array($field->getName(), ['name', 'mail'], TRUE)
+              || ($field instanceof FieldConfig && in_array($field->getType(), ['string'], TRUE));
+          }
+      );
+      $options = array_map(static function (FieldDefinitionInterface $field) {
+        return $field->getLabel();
+      }, $userFieldDefinitions);
+
       $form['element']['os2forms_user_field_lookup_field_name'] = [
         '#type' => 'select',
         '#title' => $this->t('User field name'),
