@@ -8214,12 +8214,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "ebfd9c1c22b86fcdea8886793518856b6217d6dd"
+                "reference": "6ba0854e53d0c3f371e9eb9090d1bcb4c1055b9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/ebfd9c1c22b86fcdea8886793518856b6217d6dd",
-                "reference": "ebfd9c1c22b86fcdea8886793518856b6217d6dd",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/6ba0854e53d0c3f371e9eb9090d1bcb4c1055b9a",
+                "reference": "6ba0854e53d0c3f371e9eb9090d1bcb4c1055b9a",
                 "shasum": ""
             },
             "require": {
@@ -8271,7 +8271,7 @@
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2021-08-20T10:15:43+00:00"
+            "time": "2021-11-09T06:39:58+00:00"
         },
         {
             "name": "itk-dev/os2forms_cvr_lookup",
