@@ -7,6 +7,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\field\Entity\FieldConfig;
+use Drupal\os2forms_user_field_lookup\Plugin\WebformElement\UserFieldElement;
 use Drupal\os2forms_user_field_lookup\Plugin\WebformElement\UserFieldElementCheckbox;
 
 /**
@@ -56,17 +57,9 @@ class WebformElementHelper {
     $pluginDefinition = $elementPlugin->getPluginDefinition();
 
     if ('os2forms_user_field_lookup' === ($pluginDefinition['provider'] ?? NULL)) {
-      // Get some built-in user fields plus all custom fields.
       $userFieldDefinitions = array_filter(
         $this->entityFieldManager->getFieldDefinitions('user', 'user'),
-        UserFieldElementCheckbox::class === $pluginDefinition['class'] ?
-          static function (FieldDefinitionInterface $field) {
-            return $field instanceof FieldConfig && in_array($field->getType(), ['boolean'], TRUE);
-          } :
-          static function (FieldDefinitionInterface $field) {
-            return in_array($field->getName(), ['name', 'mail'], TRUE)
-              || ($field instanceof FieldConfig && in_array($field->getType(), ['string'], TRUE));
-          }
+        $this->getUserFieldDefinitionFilter($pluginDefinition)
       );
       $options = array_map(static function (FieldDefinitionInterface $field) {
         return $field->getLabel();
@@ -79,6 +72,31 @@ class WebformElementHelper {
         '#options' => $options,
         '#empty_option' => $this->t('- Select -'),
       ];
+    }
+  }
+
+  /**
+   * Get filter for user field definitions.
+   */
+  private function getUserFieldDefinitionFilter(array $pluginDefinition) {
+    switch ($pluginDefinition['class']) {
+      case UserFieldElementCheckbox::class:
+        // Get all custom boolean fields.
+        return static function (FieldDefinitionInterface $field) {
+          return $field instanceof FieldConfig && in_array($field->getType(), ['boolean'], TRUE);
+        };
+
+      case UserFieldElement::class:
+        // Get name and email plus all custom string fields.
+        return static function (FieldDefinitionInterface $field) {
+          return in_array($field->getName(), ['name', 'mail'], TRUE)
+          || ($field instanceof FieldConfig && in_array($field->getType(), ['string'], TRUE));
+        };
+
+      default:
+        return static function (FieldDefinitionInterface $field) {
+          return FALSE;
+        };
     }
   }
 
