@@ -1,5 +1,12 @@
 # ITK Dev OpenID Connect
 
+* Disables honeypot on the OpenID Connect login form (cf.
+  [itkdev_openid_connect_honeypot_form_protections_alter](itkdev_openid_connect.module)).
+* Disarms “User default page” rules during OpenID Connect login flow if it has a
+  stored redirect destination (cf.
+  [itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter](itkdev_openid_connect.module)).
+
+
 ## Configuration
 
 Edit `settings.local.php` to define your OpenID Connect secret and endpoints:
