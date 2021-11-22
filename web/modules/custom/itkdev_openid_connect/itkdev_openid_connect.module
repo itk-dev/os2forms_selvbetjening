@@ -18,9 +18,10 @@ function itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter(ar
   // Check if we're in the OpenID Connect login flow.
   $current_route = \Drupal::service('current_route_match')->getRouteName();
   if ('openid_connect.redirect_controller_redirect' === $current_route) {
-    // Check if OpenID Connect has stored a redirect destination.
+    // Check if OpenID Connect has stored a redirect destination that's
+    // different from `'user'` (cf. OpenIDConnectSession::saveDestination()).
     $destination = \Drupal::service('openid_connect.session')->retrieveDestination(FALSE);
-    if (isset($destination['destination'])) {
+    if (isset($destination['destination']) && 'user' !== $destination['destination']) {
       // OpenID Connect has a redirect. User default page should ignore the
       // current route.
       $ignored_routes[] = $current_route;
