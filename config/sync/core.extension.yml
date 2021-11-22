@@ -63,6 +63,7 @@ module:
   os2forms_nemid: 0
   os2forms_nemlogin_openid_connect: 0
   os2forms_sbsys: 0
+  os2forms_user_field_lookup: 0
   os2web_datalookup: 0
   os2web_nemlogin: 0
   os2web_simplesaml: 0

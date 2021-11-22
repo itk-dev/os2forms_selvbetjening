@@ -1,0 +1,24 @@
+uuid: 713bb127-796d-4379-a4da-901aefe992d0
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_is_leader
+  module:
+    - user
+id: user.user.field_is_leader
+field_name: field_is_leader
+entity_type: user
+bundle: user
+label: 'Leder?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nej
+field_type: boolean
