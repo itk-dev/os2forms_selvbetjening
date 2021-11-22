@@ -41,7 +41,7 @@
         "drupal/core-recommended": "^8.8",
         "drupal/memcache": "^2.3",
         "drupal/menu_link_attributes": "^1.2",
-        "drupal/openid_connect": "2.x-dev@dev",
+        "drupal/openid_connect": "^2.0",
         "drupal/permissions_by_term": "2.25",
         "drupal/system_status": "^2.9",
         "drupal/webform_config_ignore": "^1.2",
@@ -94,6 +94,9 @@
             },
             "drupal/dynamic_entity_reference": {
                 "D8 compatible patch for the current 2.x version (https://www.drupal.org/project/dynamic_entity_reference/issues/3120952#comment-14141038)": "https://www.drupal.org/files/issues/2021-06-22/entityquery-reference-joins-should-specify-target_type-3120952-24.patch"
+            },
+            "drupal/openid_connect": {
+                "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
             }
         },
         "installer-paths": {
@@ -146,10 +149,6 @@
     },
      "scripts": {
         "post-install-cmd": [
-            "# Due to <https://github.com/vaimo/composer-patches/issues/85> we have to apply a patch to the OpenID Connect module ourselves",
-            "# Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)",
-            "cd web/modules/contrib/openid_connect && git checkout . && curl --silent --location https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff | patch --strip=1 --forward || true",
-
             "vendor/bin/drush webform:libraries:download"
         ]
      }
