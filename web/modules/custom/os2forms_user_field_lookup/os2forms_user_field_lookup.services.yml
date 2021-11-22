@@ -1,0 +1,4 @@
+services:
+  Drupal\os2forms_user_field_lookup\WebformElementHelper:
+    arguments:
+      - '@entity_field.manager'
