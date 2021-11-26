@@ -50,6 +50,7 @@
         "itk-dev/os2forms-digital-post": "dev-develop",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
+        "itk-dev/os2forms_user_field_lookup": "dev-develop",
         "itk-dev/web_accessibility_statement": "dev-master",
         "os2forms/os2forms_forloeb_profile": "^1.1"
     },

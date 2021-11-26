@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf4e41b93c26c99cbbbd205e65870104",
+    "content-hash": "749a109950f27028bfa23ad0c09c4868",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8367,6 +8367,42 @@
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
             },
             "time": "2021-06-24T09:40:57+00:00"
+        },
+        {
+            "name": "itk-dev/os2forms_user_field_lookup",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_user_field_lookup.git",
+                "reference": "685e5b06d68c22f3aa772eaeb15b4d501689f555"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_user_field_lookup/zipball/685e5b06d68c22f3aa772eaeb15b4d501689f555",
+                "reference": "685e5b06d68c22f3aa772eaeb15b4d501689f555",
+                "shasum": ""
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "Use user field data in webforms.",
+            "support": {
+                "issues": "https://github.com/itk-dev/os2forms_user_field_lookup/issues",
+                "source": "https://github.com/itk-dev/os2forms_user_field_lookup/tree/develop"
+            },
+            "time": "2021-11-05T08:53:51+00:00"
         },
         {
             "name": "itk-dev/serviceplatformen",
@@ -19362,6 +19398,7 @@
         "drupal/openid_connect": 20,
         "itk-dev/os2forms-digital-post": 20,
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
+        "itk-dev/os2forms_user_field_lookup": 20,
         "itk-dev/web_accessibility_statement": 20
     },
     "prefer-stable": true,

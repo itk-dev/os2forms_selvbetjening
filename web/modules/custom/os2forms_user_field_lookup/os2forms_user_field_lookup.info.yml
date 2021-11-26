@@ -1,0 +1,6 @@
+name: OS2Forms User Field Lookup
+type: module
+description: Use user field data in webforms.
+package: OS2Forms
+core: 8.x
+core_version_requirement: ^8 || ^9

@@ -1,0 +1,20 @@
+uuid: fb908c57-a4b2-4fc6-a293-1f74385a1f6f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_az_ident
+  module:
+    - user
+id: user.user.field_az_ident
+field_name: field_az_ident
+entity_type: user
+bundle: user
+label: az-ident
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
