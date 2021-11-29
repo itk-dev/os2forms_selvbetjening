@@ -101,7 +101,7 @@ class Helper {
       '#type' => 'checkboxes',
       '#required' => TRUE,
       '#title' => t('Access'),
-      '#default_value' => 'settings' === $hook ? $defaultSettings : [],
+      '#default_value' => $defaultSettings ?? [],
       '#options' => $term_data,
       '#description' => t('Limit access to this webform.'),
     ];
