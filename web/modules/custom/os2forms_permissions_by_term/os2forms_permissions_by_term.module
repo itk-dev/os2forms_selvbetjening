@@ -28,5 +28,5 @@ function os2forms_permissions_by_term_form_webform_settings_form_alter(array &$f
  * Deny access to webforms based on permissions_by_term.
  */
 function os2forms_permissions_by_term_webform_access(WebformInterface $webform, $operation, AccountInterface $account) {
-  \Drupal::service('os2forms_permissions_by_term.helper')->webformAccess($webform, $operation, $account);
+  return \Drupal::service('os2forms_permissions_by_term.helper')->webformAccess($webform, $operation, $account);
 }

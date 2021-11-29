@@ -6,5 +6,5 @@
 function os2forms_webform_list_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
   // Define a new list builder class.
-  $entity_types['webform']->setListBuilderClass('Drupal\os2forms_webform_list\customWebformEntityListBuilder');
+  $entity_types['webform']->setListBuilderClass('Drupal\os2forms_webform_list\CustomWebformEntityListBuilder');
 }

@@ -107,9 +107,9 @@ class Helper {
     ];
 
     // Set access value automatically if user only has one term option.
-    if (1 === count($term_data)) {
+    if ('add' === $hook && 1 === count($term_data)) {
       $form['os2forms_permissions_by_term']['os2forms_access']['#disabled'] = TRUE;
-      $form['os2forms_permissions_by_term']['os2forms_access']['#value'] = $term_data;
+      $form['os2forms_permissions_by_term']['os2forms_access']['#value'] = [array_key_first($term_data) => array_key_first($term_data)];
     }
 
     $form['actions']['submit']['#submit'][] = [$this, 'webformSubmit'];
@@ -141,7 +141,6 @@ class Helper {
         // We don't use permission by term to determine access to the actual webform.
         // This could probably be removed, but is left in to show we are aware of this operation.
         return AccessResult::neutral();
-        break;
 
       case 'update':
       case 'delete':
@@ -152,12 +151,9 @@ class Helper {
       case 'submission_view_own':
       case 'submission_purge_any':
         // Allow access if no term is set for the form or a webform term match the users term.
-        if (empty($webformPermissionsByTerm) || !empty(array_intersect($webformPermissionsByTerm, $userTerms))) {
-          return AccessResult::neutral();
-        } else {
-          return AccessResult::forbidden();
-        }
-        break;
+      return empty($webformPermissionsByTerm) || !empty(array_intersect($webformPermissionsByTerm, $userTerms))
+          ? AccessResult::neutral()
+          : AccessResult::forbidden();
     }
   }
 
