@@ -52,6 +52,8 @@
 # delete all of the `modules/custom` lines below.
 # ------------------------------------------------------------------
 /web/modules/custom/*
+!/web/modules/custom/os2forms_webform_list
+!/web/modules/custom/os2forms_permissions_by_term
 !/web/modules/custom/itkdev_openid_connect
 !/web/modules/custom/os2forms_user_field_lookup
 
