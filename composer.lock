@@ -8993,12 +8993,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb.git",
-                "reference": "5773ad58e0f59a236238b959541d812a9b387417"
+                "reference": "8393d7bf969a602f8467c1d8ade2040f039a42e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/5773ad58e0f59a236238b959541d812a9b387417",
-                "reference": "5773ad58e0f59a236238b959541d812a9b387417",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/8393d7bf969a602f8467c1d8ade2040f039a42e9",
+                "reference": "8393d7bf969a602f8467c1d8ade2040f039a42e9",
                 "shasum": ""
             },
             "require": {
@@ -9067,7 +9067,7 @@
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb/issues",
                 "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/develop"
             },
-            "time": "2021-11-26T11:22:30+00:00"
+            "time": "2021-11-29T12:16:12+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
