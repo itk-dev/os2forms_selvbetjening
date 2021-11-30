@@ -7,6 +7,10 @@ redirect_login: ''
 redirect_logout: ''
 userinfo_mappings:
   timezone: zoneinfo
+  field_az_ident: az_ident
+  field_department: department
+  field_is_leader: is_leader
+  field_name: full_name
 _core:
   default_config_hash: yb6wo2M1jLJ_sG3dDzfjXLSMUFIEDNh5j59LWsHzcV0
 langcode: da

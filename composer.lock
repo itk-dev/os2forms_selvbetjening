@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "749a109950f27028bfa23ad0c09c4868",
+    "content-hash": "c85f5fd0e8695c9920ba1eafd0ba228b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4705,11 +4705,17 @@
         },
         {
             "name": "drupal/openid_connect",
-            "version": "dev-2.x",
+            "version": "2.0.0-alpha11",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/openid_connect.git",
-                "reference": "220a1f1f7f7026548e1a66998c2184d550ef416d"
+                "reference": "2.0.0-alpha11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/openid_connect-2.0.0-alpha11.zip",
+                "reference": "2.0.0-alpha11",
+                "shasum": "431b68ea89c50c5f0751a65abd108dad81e67531"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -4719,15 +4725,12 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
-                    "version": "2.x-dev",
-                    "datestamp": "1631654844",
+                    "version": "2.0.0-alpha11",
+                    "datestamp": "1631655050",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -19395,7 +19398,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/admin_audit_trail": 15,
-        "drupal/openid_connect": 20,
         "itk-dev/os2forms-digital-post": 20,
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20,
