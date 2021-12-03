@@ -14,6 +14,7 @@ module:
   config_entity_revisions: 0
   config_filter: 0
   config_ignore: 0
+  config_translation: 0
   contact: 0
   content_moderation: 0
   contextual: 0
@@ -120,6 +121,7 @@ module:
   workflow_participants: 0
   workflows: 0
   pathauto: 1
+  content_translation: 10
   externalauth: 10
   views: 10
   os2forms_forloeb_profile: 1000
