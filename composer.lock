@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "036c457416c27f2ececa6c966a47f731",
+    "content-hash": "4502418a68aba21fd01021236ea7a772",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6157,6 +6157,60 @@
             }
         },
         {
+            "name": "drupal/webform_node_element",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webform_node_element.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_node_element-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "c0512e9fe437cc5da7d0cd4750388da666b12a4b"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/webform": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1637242231",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Finn Lewis",
+                    "homepage": "https://www.drupal.org/user/119432"
+                },
+                {
+                    "name": "alarcombe",
+                    "homepage": "https://www.drupal.org/user/172759"
+                },
+                {
+                    "name": "cafuego",
+                    "homepage": "https://www.drupal.org/user/218525"
+                }
+            ],
+            "description": "Webform Node Element is a module that allows you to include node content in a webform without using the PHP input filter.",
+            "homepage": "https://www.drupal.org/project/webform_node_element",
+            "support": {
+                "source": "https://git.drupalcode.org/project/webform_node_element",
+                "issues": "https://www.drupal.org/project/issues/search/webform_node_element"
+            }
+        },
+        {
             "name": "drupal/webform_permissions_by_term",
             "version": "1.2.0",
             "source": {
@@ -8993,12 +9047,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb.git",
-                "reference": "8393d7bf969a602f8467c1d8ade2040f039a42e9"
+                "reference": "56c21975e7ff0d7c0e51bd3d75a744370df1b38b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/8393d7bf969a602f8467c1d8ade2040f039a42e9",
-                "reference": "8393d7bf969a602f8467c1d8ade2040f039a42e9",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/56c21975e7ff0d7c0e51bd3d75a744370df1b38b",
+                "reference": "56c21975e7ff0d7c0e51bd3d75a744370df1b38b",
                 "shasum": ""
             },
             "require": {
@@ -9030,6 +9084,7 @@
                 "drupal/ultimate_cron": "2.0.0-alpha5",
                 "drupal/user_default_page": "2.0.0-rc1",
                 "drupal/webform_composite": "1.0-rc2",
+                "drupal/webform_node_element": "1.2",
                 "drupal/webform_remote_handlers": "^1.6.0",
                 "drupal/webform_rest": "^4.0.0-beta2",
                 "drupal/webform_scheduled_tasks": "^2.0",
@@ -9065,22 +9120,22 @@
             "description": "This module adds Maestro workflow engine and functionality to produce advanced workflows",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/develop"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/1.8.1-rc"
             },
-            "time": "2021-11-29T12:16:12+00:00"
+            "time": "2021-12-08T11:28:01+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
-            "version": "dev-develop",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb_profile.git",
-                "reference": "ae7c694d2bc2baa205d7c533a62a0f1f99ff348e"
+                "reference": "332e6294c99c7eb5edbb12e01b7e330a81eb8d22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/ae7c694d2bc2baa205d7c533a62a0f1f99ff348e",
-                "reference": "ae7c694d2bc2baa205d7c533a62a0f1f99ff348e",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/332e6294c99c7eb5edbb12e01b7e330a81eb8d22",
+                "reference": "332e6294c99c7eb5edbb12e01b7e330a81eb8d22",
                 "shasum": ""
             },
             "require": {
@@ -9113,9 +9168,9 @@
             "description": "This profile adds the configuration and initial install of OS2forms 2.1 med Forløb.",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb_profile/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/develop"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.3.0"
             },
-            "time": "2021-11-26T12:32:53+00:00"
+            "time": "2021-11-29T13:37:08+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -19207,12 +19262,6 @@
             "version": "dev-develop",
             "alias": "1.7.0",
             "alias_normalized": "1.7.0.0"
-        },
-        {
-            "package": "os2forms/os2forms_forloeb_profile",
-            "version": "dev-develop",
-            "alias": "1.1.1",
-            "alias_normalized": "1.1.1.0"
         }
     ],
     "minimum-stability": "dev",
@@ -19222,7 +19271,6 @@
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20,
         "itk-dev/web_accessibility_statement": 20,
-        "os2forms/os2forms_forloeb_profile": 20,
         "os2forms/os2forms_forloeb": 20
     },
     "prefer-stable": true,
