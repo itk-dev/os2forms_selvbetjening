@@ -8,3 +8,18 @@ function os2forms_webform_list_entity_type_alter(array &$entity_types) {
   // Define a new list builder class.
   $entity_types['webform']->setListBuilderClass('Drupal\os2forms_webform_list\CustomWebformEntityListBuilder');
 }
+
+/**
+ * Implements hook_form_FORMID_alter()
+ */
+function os2forms_webform_list_query_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
+  $routeCall = \Drupal::request()->attributes->get('_route');
+  if ('entity.webform.autocomplete' === $routeCall) {
+    $query->andConditionGroup()
+      ->condition('uid', [2,4], 'IN');
+    //$groupId = $query->setWhereGroup();
+    // @phpstan-ignore-next-line
+    //$query->addWhere($groupId, 'media_field_data.uid', $this->currentUser->id(), '=');
+    $a =1;
+  }
+}
