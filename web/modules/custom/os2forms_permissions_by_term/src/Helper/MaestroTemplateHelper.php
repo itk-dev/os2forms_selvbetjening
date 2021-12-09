@@ -38,7 +38,7 @@ class MaestroTemplateHelper {
   protected AccountProxyInterface $account;
 
   /**
-   * Helper constructor.
+   * Maestro template helper constructor.
    *
    * @param \Drupal\permissions_by_term\Service\AccessStorage $accessStorage
    *   The permissions by term access storage.
@@ -115,6 +115,7 @@ class MaestroTemplateHelper {
    * Change access on maestro templates related operations.
    *
    * @param ConfigEntityInterface $maestroTemplate
+   *   The entity to set access for.
    * @param $operation
    *   The operation being performed on the webform.
    * @param AccountInterface $account
@@ -132,13 +133,9 @@ class MaestroTemplateHelper {
 
     switch ($operation) {
       case 'view':
-        // We don't use permission by term to determine access to the actual webform.
-        // This could probably be removed, but is left in to show we are aware of this operation.
-        return AccessResult::neutral();
-
       case 'update':
       case 'delete':
-        // Allow access if no term is set for the form or a webform term match the users term.
+        // Allow access if no term is set for the template or a maestro template term match the users term.
         return empty($maestroTemplatePermissionsByTerm) || !empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))
           ? AccessResult::neutral()
           : AccessResult::forbidden();
@@ -148,7 +145,7 @@ class MaestroTemplateHelper {
   /**
    * Custom submit handler for maestro template add/edit form.
    *
-   * Set permission by term as a thirdPartySetting of the maestro template..
+   * Set permission by term as a thirdPartySetting of the maestro template.
    *
    * @param array $form
    *   The maestro template add/edit form.
@@ -156,7 +153,7 @@ class MaestroTemplateHelper {
    *   The state of the form.
    */
   public function maestroTemplateSubmit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
-    // Get the settings from the webform config entity.
+    // Get the settings from the maestro templates config entity.
     $maestroTemplateSettingsForm = $form_state->getFormObject();
     $maestroTemplate = $maestroTemplateSettingsForm->getEntity();
     $maestroTemplate->setThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings', $form_state->getValue(['maestro_template_permissions_by_term', 'os2forms_access']));
