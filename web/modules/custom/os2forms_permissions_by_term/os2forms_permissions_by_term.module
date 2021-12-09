@@ -30,3 +30,11 @@ function os2forms_permissions_by_term_form_webform_settings_form_alter(array &$f
 function os2forms_permissions_by_term_webform_access(WebformInterface $webform, $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.helper')->webformAccess($webform, $operation, $account);
 }
+
+function os2forms_permissions_by_term_form_maestro_template_add_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->maestroTemplateformAlter($form, $form_state, 'add');
+}
+
+function os2forms_permissions_by_term_form_maestro_template_edit_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->maestroTemplateformAlter($form, $form_state, 'settings');
+}
