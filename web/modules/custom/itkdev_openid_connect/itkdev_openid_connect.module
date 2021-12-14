@@ -15,6 +15,8 @@ function itkdev_openid_connect_honeypot_form_protections_alter(array &$options, 
 
 /**
   * Implements hook_user_default_page_login_ignore_whitelist_alter().
+  *
+  * @todo Add to Helper service class.
   */
 function itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter(array &$ignored_routes) {
   // Check if we're in the OpenID Connect login flow.
@@ -33,6 +35,8 @@ function itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter(ar
 
 /**
  * Implements hook_openid_connect_claims_alter().
+ *
+ * @todo Add to Helper service class.
  */
 function itkdev_openid_connect_openid_connect_claims_alter(array &$claims) {
   $claims['full_name'] = [
@@ -63,6 +67,8 @@ function itkdev_openid_connect_openid_connect_claims_alter(array &$claims) {
 
 /**
  * Implements hook_openid_connect_userinfo_alter().
+ *
+ * @todo Add to Helper service class.
  */
 function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, array $context) {
   // Prefer email as Drupal user name.
@@ -85,6 +91,14 @@ function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, a
   $userinfo['is_leader'] = 0;
 }
 
+/**
+ * Implements hook_openid_connect_userinfo_save().
+ *
+ * @param UserInterface $account
+ *   The current user account.
+ * @param array $context
+ *   Context information from open id connect module.
+ */
 function itkdev_openid_connect_openid_connect_userinfo_save(UserInterface $account, array $context) {
-  \Drupal::logger('itkdev_openid_connect')->notice($context['user_data']['Office']);
+  \Drupal::service('itkdev_openid_connect.helper')->userInfoSave($account, $context);
 }
