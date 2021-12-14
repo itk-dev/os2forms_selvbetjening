@@ -4,4 +4,3 @@ services:
     arguments:
       - '@permissions_by_term.access_storage'
       - '@entity_type.manager'
-      - '@logger.factory'
