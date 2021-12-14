@@ -9,6 +9,7 @@ label: Leder
 weight: 8
 is_admin: null
 permissions:
+  - 'access administration pages'
   - 'access any webform configuration'
   - 'access content'
   - 'access content overview'
