@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\user\UserInterface;
+
 /**
  * Implements hook_honeypot_form_protections_alter().
  *
@@ -81,4 +83,8 @@ function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, a
 
   // @todo this information is not yet provided by the Idp.
   $userinfo['is_leader'] = 0;
+}
+
+function itkdev_openid_connect_openid_connect_userinfo_save(UserInterface $account, array $context) {
+  \Drupal::logger('itkdev_openid_connect')->notice($context['user_data']['Office']);
 }

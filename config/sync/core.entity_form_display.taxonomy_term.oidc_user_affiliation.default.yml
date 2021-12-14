@@ -1,0 +1,33 @@
+uuid: 12c7e1b9-5195-4496-b565-2e3d7b36fb82
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.oidc_user_affiliation.field_oidc_office
+    - taxonomy.vocabulary.oidc_user_affiliation
+id: taxonomy_term.oidc_user_affiliation.default
+targetEntityType: taxonomy_term
+bundle: oidc_user_affiliation
+mode: default
+content:
+  field_oidc_office:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

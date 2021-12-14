@@ -1,0 +1,19 @@
+uuid: 822b976a-e4a7-4d04-93ee-ad042f2788c0
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_oidc_office
+    - taxonomy.vocabulary.oidc_user_affiliation
+id: taxonomy_term.oidc_user_affiliation.field_oidc_office
+field_name: field_oidc_office
+entity_type: taxonomy_term
+bundle: oidc_user_affiliation
+label: 'OIDC Office'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

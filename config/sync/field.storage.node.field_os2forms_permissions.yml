@@ -1,0 +1,20 @@
+uuid: b29f76c1-d328-4923-9321-b9443dfbc902
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_os2forms_permissions
+field_name: field_os2forms_permissions
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

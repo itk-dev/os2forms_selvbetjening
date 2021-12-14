@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.webform.body
+    - field.field.node.webform.field_os2forms_permissions
     - field.field.node.webform.field_os2forms_wff_application
     - field.field.node.webform.field_os2forms_wff_area
     - field.field.node.webform.webform
     - node.type.webform
+    - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
+    - content_moderation
     - path
     - text
     - webform
@@ -21,29 +24,42 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 0
+    weight: 1
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
+      show_summary: false
     third_party_settings: {  }
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_os2forms_permissions:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 4
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 12
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -51,31 +67,36 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 8
     third_party_settings: {  }
     region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 120
+    weight: 13
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 9
     third_party_settings: {  }
     region: content
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     region: content
+  translation:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
     weight: 5
@@ -87,13 +108,15 @@ content:
     third_party_settings: {  }
     region: content
   url_redirects:
-    weight: 50
+    weight: 11
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   webform:
-    weight: 0
-    settings: {  }
+    weight: 3
+    settings:
+      default_data: true
+      webforms: {  }
     third_party_settings: {  }
     type: webform_entity_reference_select
     region: content
