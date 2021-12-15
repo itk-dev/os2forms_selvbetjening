@@ -3,14 +3,14 @@ langcode: da
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.oidc_user_affiliation.field_oidc_office
-    - taxonomy.vocabulary.oidc_user_affiliation
-id: taxonomy_term.oidc_user_affiliation.default
+    - field.field.taxonomy_term.user_affiliation.field_claim
+    - taxonomy.vocabulary.user_affiliation
+id: taxonomy_term.user_affiliation.default
 targetEntityType: taxonomy_term
-bundle: oidc_user_affiliation
+bundle: user_affiliation
 mode: default
 content:
-  field_oidc_office:
+  field_claim:
     weight: 1
     settings:
       size: 60

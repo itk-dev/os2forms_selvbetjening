@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - taxonomy
-id: taxonomy_term.field_oidc_office
-field_name: field_oidc_office
+id: taxonomy_term.field_claim
+field_name: field_claim
 entity_type: taxonomy_term
 type: string
 settings:

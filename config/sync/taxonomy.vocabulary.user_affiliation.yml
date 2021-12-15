@@ -3,6 +3,6 @@ langcode: da
 status: true
 dependencies: {  }
 name: Affiliation
-vid: oidc_user_affiliation
+vid: user_affiliation
 description: ''
 weight: 0

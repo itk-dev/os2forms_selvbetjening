@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_os2forms_permissions
     - node.type.webform
-    - taxonomy.vocabulary.oidc_user_affiliation
+    - taxonomy.vocabulary.user_affiliation
 id: node.webform.field_os2forms_permissions
 field_name: field_os2forms_permissions
 entity_type: node
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      oidc_user_affiliation: oidc_user_affiliation
+      user_affiliation: user_affiliation
     sort:
       field: name
       direction: asc

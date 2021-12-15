@@ -49,12 +49,13 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function userInfoSave(UserInterface $account, array $context) {
-    $vid = 'oidc_user_affiliation';
+    $vid = 'user_affiliation';
+    $claim = 'Office';
     $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($vid);
     foreach ($terms as $term) {
       $termsObj = $this->entityTypeManager->getStorage('taxonomy_term')->load($term->tid);
-      $office = $termsObj->field_oidc_office->value;
-      if (isset($office) && $office === $context['user_data']['Office']) {
+      $field_claim = $termsObj->field_claim->value;
+      if (isset($field_claim) && $field_claim === $context['user_data'][$claim]) {
         $this->accessStorage->addTermPermissionsByUserIds([$account->id()], $term->tid);
       }
     }

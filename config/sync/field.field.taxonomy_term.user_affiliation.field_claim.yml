@@ -3,13 +3,13 @@ langcode: da
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.field_oidc_office
-    - taxonomy.vocabulary.oidc_user_affiliation
-id: taxonomy_term.oidc_user_affiliation.field_oidc_office
-field_name: field_oidc_office
+    - field.storage.taxonomy_term.field_claim
+    - taxonomy.vocabulary.user_affiliation
+id: taxonomy_term.user_affiliation.field_claim
+field_name: field_claim
 entity_type: taxonomy_term
-bundle: oidc_user_affiliation
-label: 'OIDC Office'
+bundle: user_affiliation
+label: 'Claim'
 description: ''
 required: false
 translatable: false

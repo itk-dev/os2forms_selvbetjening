@@ -3,9 +3,9 @@ langcode: da
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.oidc_user_affiliation
-id: taxonomy_term.oidc_user_affiliation
+    - taxonomy.vocabulary.user_affiliation
+id: taxonomy_term.user_affiliation
 target_entity_type_id: taxonomy_term
-target_bundle: oidc_user_affiliation
+target_bundle: user_affiliation
 default_langcode: site_default
 language_alterable: false
