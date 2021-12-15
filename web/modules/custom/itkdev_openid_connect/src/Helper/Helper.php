@@ -50,7 +50,7 @@ class Helper {
    */
   public function userInfoSave(UserInterface $account, array $context) {
     $vid = 'oidc_user_affiliation';
-    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($vid);
     foreach ($terms as $term) {
       $termsObj = $this->entityTypeManager->getStorage('taxonomy_term')->load($term->tid);
       $office = $termsObj->field_oidc_office->value;

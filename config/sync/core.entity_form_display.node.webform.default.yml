@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.webform.field_os2forms_wff_area
     - field.field.node.webform.webform
     - node.type.webform
-    - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
     - content_moderation
     - path
