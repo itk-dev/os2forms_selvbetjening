@@ -55,9 +55,14 @@ class Helper {
     foreach ($terms as $term) {
       $termsObj = $this->entityTypeManager->getStorage('taxonomy_term')->load($term->tid);
       $field_claim = $termsObj->field_claim->value;
-      if (isset($field_claim) && $field_claim === $context['user_data'][$claim]) {
-        $this->accessStorage->addTermPermissionsByUserIds([$account->id()], $term->tid);
+      $values = (array)$context['user_data'][$claim];
+      foreach ($values as $value) {
+        if (isset($field_claim) && $field_claim === $value) {
+          $this->accessStorage->addTermPermissionsByUserIds([$account->id()], $term->tid);
+        }
       }
     }
   }
+
+
 }
