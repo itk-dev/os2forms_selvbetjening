@@ -46,6 +46,7 @@
         "drupal/memcache": "^2.3",
         "drupal/menu_link_attributes": "^1.2",
         "drupal/openid_connect": "^2.0",
+        "drupal/permissions_by_term": "2.25.0",
         "drupal/system_status": "^2.9",
         "drupal/webform_config_ignore": "^1.2",
         "drush/drush": "^10.6",
