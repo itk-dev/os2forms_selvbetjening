@@ -3,7 +3,6 @@
 namespace Drupal\os2forms_webform_list;
 
 use Drupal\webform\WebformEntityListBuilder;
-use Drupal\webform\WebformInterface;
 
 /**
  * Defines a class to build a listing of webform entities.

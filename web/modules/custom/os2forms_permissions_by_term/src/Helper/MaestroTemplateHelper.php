@@ -3,6 +3,7 @@
 namespace Drupal\os2forms_permissions_by_term\Helper;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -11,9 +12,9 @@ use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\webform\WebformInterface;
 
 /**
- * Helper class for os2forms permissions by term.
+ * Helper class for maestro templates permissions by term.
  */
-class Helper {
+class MaestroTemplateHelper {
 
   /**
    * Permissions by term access storage
@@ -37,7 +38,7 @@ class Helper {
   protected AccountProxyInterface $account;
 
   /**
-   * Helper constructor.
+   * Maestro template helper constructor.
    *
    * @param \Drupal\permissions_by_term\Service\AccessStorage $accessStorage
    *   The permissions by term access storage.
@@ -68,7 +69,7 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    *
    */
-  public function webformAlter(array &$form, FormStateInterface $form_state, $hook) {
+  public function maestroTemplateFormAlter(array &$form, FormStateInterface $form_state, $hook) {
     $term_data = [];
     $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
     $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
@@ -76,52 +77,45 @@ class Helper {
     foreach ($terms as $term) {
       $term_data[$term->id()] = $term->label();
     }
-
-    // Make sure title is first when creating a new webform.
-    if ('add' === $hook) {
-      $form['title']['#weight'] = -100;
-    }
-
-    // Get default settings for webform.
     if ('settings' === $hook) {
-      $webform_settings_form = $form_state->getFormObject();
-      $webform = $webform_settings_form->getEntity();
-      $defaultSettings = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
+      $meastroSettingsForm = $form_state->getFormObject();
+      $mastroTemplate = $meastroSettingsForm->getEntity();
+      $defaultSettings = $mastroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
     }
 
-    $form['os2forms_permissions_by_term'] = [
+    $form['maestro_template_permissions_by_term'] = [
       '#type' => 'details',
       '#open' => TRUE,
-      '#title' => 'Webform access',
+      '#title' => 'Meastro template access',
       '#tree' => TRUE,
       '#weight' => -99,
     ];
 
-    $form['os2forms_permissions_by_term']['os2forms_access'] = [
+    $form['maestro_template_permissions_by_term']['os2forms_access'] = [
       '#type' => 'checkboxes',
       '#required' => TRUE,
       '#title' => t('Access'),
       '#default_value' => $defaultSettings ?? [],
       '#options' => $term_data,
-      '#description' => t('Limit access to this webform.'),
+      '#description' => t('Limit access to this template.'),
     ];
 
     // Set access value automatically if user only has one term option.
     if ('add' === $hook && 1 === count($term_data)) {
-      $form['os2forms_permissions_by_term']['os2forms_access']['#disabled'] = TRUE;
-      $form['os2forms_permissions_by_term']['os2forms_access']['#value'] = [array_key_first($term_data) => array_key_first($term_data)];
+      $form['maestro_template_permissions_by_term']['os2forms_access']['#disabled'] = TRUE;
+      $form['maestro_template_permissions_by_term']['os2forms_access']['#value'] = [array_key_first($term_data) => array_key_first($term_data)];
     }
 
-    $form['actions']['submit']['#submit'][] = [$this, 'webformSubmit'];
+    $form['actions']['submit']['#submit'][] = [$this, 'maestroTemplateSubmit'];
   }
 
   /**
    * Implementation of hook_ENTITY_TYPE_access().
    *
-   * Check access on webform related operations.
+   * Change access on maestro templates related operations.
    *
-   * @param WebformInterface $webform
-   *   The webform we check access for.
+   * @param ConfigEntityInterface $maestroTemplate
+   *   The entity to set access for.
    * @param $operation
    *   The operation being performed on the webform.
    * @param AccountInterface $account
@@ -132,46 +126,37 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function webformAccess(WebformInterface $webform, $operation, AccountInterface $account) {
+  public function maestroTemplateAccess(ConfigEntityInterface $maestroTemplate, $operation, AccountInterface $account) {
     $user = $this->entityTypeManager->getStorage('user')->load($account->id());
     $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
-    $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
+    $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
+
     switch ($operation) {
       case 'view':
-        // We don't use permission by term to determine access to the actual webform.
-        // This could probably be removed, but is left in to show we are aware of this operation.
-        return AccessResult::neutral();
-
       case 'update':
       case 'delete':
-      case 'duplicate':
-      case 'test':
-      case 'submission_page':
-      case 'submission_view_any':
-      case 'submission_view_own':
-      case 'submission_purge_any':
-        // Allow access if no term is set for the form or a webform term match the users term.
-      return empty($webformPermissionsByTerm) || !empty(array_intersect($webformPermissionsByTerm, $userTerms))
+        // Allow access if no term is set for the template or a maestro template term match the users term.
+        return empty($maestroTemplatePermissionsByTerm) || !empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))
           ? AccessResult::neutral()
           : AccessResult::forbidden();
     }
   }
 
   /**
-   * Custom submit handler for webform add/edit form.
+   * Custom submit handler for maestro template add/edit form.
    *
-   * Set permission by term as a thirdPartySetting of the webform.
+   * Set permission by term as a thirdPartySetting of the maestro template.
    *
    * @param array $form
-   *   The webform add/edit form.
+   *   The maestro template add/edit form.
    * @param FormStateInterface $form_state
    *   The state of the form.
    */
-  public function webformSubmit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
-    // Get the settings from the webform config entity.
-    $webform_settings_form = $form_state->getFormObject();
-    $webform = $webform_settings_form->getEntity();
-    $webform->setThirdPartySetting('os2forms_permissions_by_term', 'settings', $form_state->getValue(['os2forms_permissions_by_term', 'os2forms_access']));
-    $webform->save();
+  public function maestroTemplateSubmit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+    // Get the settings from the maestro templates config entity.
+    $maestroTemplateSettingsForm = $form_state->getFormObject();
+    $maestroTemplate = $maestroTemplateSettingsForm->getEntity();
+    $maestroTemplate->setThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings', $form_state->getValue(['maestro_template_permissions_by_term', 'os2forms_access']));
+    $maestroTemplate->save();
   }
 }
