@@ -9,6 +9,7 @@ label: 'Forløb designer'
 weight: 5
 is_admin: null
 permissions:
+  - 'access administration pages'
   - 'access any webform configuration'
   - 'access content'
   - 'access content overview'

@@ -9,6 +9,7 @@ label: Sagsbehandler
 weight: 6
 is_admin: null
 permissions:
+  - 'access administration pages'
   - 'access content overview'
   - 'access files overview'
   - 'access site in maintenance mode'
