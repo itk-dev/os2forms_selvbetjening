@@ -1,0 +1,34 @@
+uuid: 6298b82f-2592-4707-86b7-a3fb7cf00dc3
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.user_affiliation.field_claim
+    - taxonomy.vocabulary.user_affiliation
+  module:
+    - text
+id: taxonomy_term.user_affiliation.default
+targetEntityType: taxonomy_term
+bundle: user_affiliation
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_claim:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true

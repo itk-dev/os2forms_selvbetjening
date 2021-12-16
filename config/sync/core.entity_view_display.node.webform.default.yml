@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webform.body
+    - field.field.node.webform.field_os2forms_permissions
     - field.field.node.webform.field_os2forms_wff_application
     - field.field.node.webform.field_os2forms_wff_area
     - field.field.node.webform.webform
@@ -22,19 +23,25 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     region: content
+  content_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   webform:
-    weight: 102
+    weight: 3
     label: hidden
-    settings: {  }
+    settings:
+      source_entity: true
     third_party_settings: {  }
     type: webform_entity_reference_entity_view
     region: content
@@ -42,6 +49,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_os2forms_permissions: true
   field_os2forms_wff_application: true
   field_os2forms_wff_area: true
   langcode: true
