@@ -79,9 +79,6 @@ module:
   redirect: 0
   rest: 0
   restui: 0
-  rules: 0
-  rules_token: 0
-  rules_webform: 0
   search: 0
   serialization: 0
   shortcut: 0
@@ -94,7 +91,6 @@ module:
   text: 0
   token: 0
   toolbar: 0
-  typed_data: 0
   ultimate_cron: 0
   user: 0
   user_default_page: 0

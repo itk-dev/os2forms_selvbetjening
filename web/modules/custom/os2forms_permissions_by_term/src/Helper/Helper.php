@@ -3,6 +3,7 @@
 namespace Drupal\os2forms_permissions_by_term\Helper;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -37,6 +38,13 @@ class Helper {
   protected AccountProxyInterface $account;
 
   /**
+   * Configuration Factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactory
+   */
+  protected ConfigFactory $configFactory;
+
+  /**
    * Helper constructor.
    *
    * @param \Drupal\permissions_by_term\Service\AccessStorage $accessStorage
@@ -45,11 +53,14 @@ class Helper {
    *   The entity type manager.
    * @param \Drupal\Core\Session\AccountProxyInterface $account
    *   The Account proxy interface.
+   * @param \Drupal\Core\Config\ConfigFactory $configFactory
+   *   The config factory.
    */
-  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account) {
+  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account,  ConfigFactory $configFactory) {
     $this->accessStorage = $accessStorage;
     $this->entityTypeManager = $entity_type_manager;
     $this->account = $account;
+    $this->configFactory = $configFactory;
   }
 
   /**
@@ -71,7 +82,18 @@ class Helper {
   public function webformAlter(array &$form, FormStateInterface $form_state, $hook) {
     $term_data = [];
     $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
-    $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
+    if (1 === (int)$this->account->id()) {
+      $userTerms = [];
+      $permissionsByTermBundles = $this->configFactory->get('permissions_by_term.settings')->get('target_bundles');
+      foreach ($permissionsByTermBundles as $bundle) {
+        $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($bundle);
+        foreach ($terms as $term) {
+          $userTerms[] = $term->tid;
+        }
+      }
+    } else {
+      $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
+    }
     $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadMultiple($userTerms);
     foreach ($terms as $term) {
       $term_data[$term->id()] = $term->label();
@@ -133,6 +155,9 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function webformAccess(WebformInterface $webform, $operation, AccountInterface $account) {
+    if (1 == $account->id()) {
+      return AccessResult::neutral();
+    }
     $user = $this->entityTypeManager->getStorage('user')->load($account->id());
     $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
     $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');

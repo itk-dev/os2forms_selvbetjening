@@ -42,7 +42,7 @@
         "drupal/memcache": "^2.3",
         "drupal/menu_link_attributes": "^1.2",
         "drupal/openid_connect": "^2.0",
-        "drupal/permissions_by_term": "2.25",
+        "drupal/permissions_by_term": "2.25.0",
         "drupal/system_status": "^2.9",
         "drupal/webform_config_ignore": "^1.2",
         "drush/drush": "^10.6",
@@ -52,7 +52,7 @@
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
         "itk-dev/os2forms_user_field_lookup": "dev-develop",
         "itk-dev/web_accessibility_statement": "dev-master",
-        "os2forms/os2forms_forloeb_profile": "^1.1"
+        "os2forms/os2forms_forloeb_profile": "dev-develop"
     },
     "require-dev": {
         "drupal/core-dev": "^8.8"
@@ -91,9 +91,6 @@
             },
             "drupal/core": {
                 "Allow site install with profile containing hook_install": "https://www.drupal.org/files/issues/2020-11-25/2982052-55.patch"
-            },
-            "drupal/dynamic_entity_reference": {
-                "D8 compatible patch for the current 2.x version (https://www.drupal.org/project/dynamic_entity_reference/issues/3120952#comment-14141038)": "https://www.drupal.org/files/issues/2021-06-22/entityquery-reference-joins-should-specify-target_type-3120952-24.patch"
             },
             "drupal/openid_connect": {
                 "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
