@@ -28,10 +28,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/os2forms_forloeb_profile"
         }
     ],
     "require": {
@@ -56,7 +52,7 @@
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
         "itk-dev/os2forms_user_field_lookup": "dev-develop",
         "itk-dev/web_accessibility_statement": "dev-master",
-        "os2forms/os2forms_forloeb_profile": "dev-feature/os2forms-2.8"
+        "os2forms/os2forms_forloeb_profile": "dev-develop"
     },
     "require-dev": {
         "drupal/core-dev": "^8.8"

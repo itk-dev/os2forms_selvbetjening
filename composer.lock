@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c42bfcc096d67ed258f431825aacb174",
+    "content-hash": "778ce53df94aab31f67798c5cdf5c45b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9137,20 +9137,20 @@
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
-            "version": "dev-feature/os2forms-2.8",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_forloeb_profile.git",
-                "reference": "56dd245b3d3de34abdc97c7edf5529318846c2c9"
+                "url": "https://github.com/OS2Forms/os2forms_forloeb_profile.git",
+                "reference": "bc18b1cae2cd9c238fcdba22df3894d4b8fa8bb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_forloeb_profile/zipball/56dd245b3d3de34abdc97c7edf5529318846c2c9",
-                "reference": "56dd245b3d3de34abdc97c7edf5529318846c2c9",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/bc18b1cae2cd9c238fcdba22df3894d4b8fa8bb7",
+                "reference": "bc18b1cae2cd9c238fcdba22df3894d4b8fa8bb7",
                 "shasum": ""
             },
             "require": {
-                "drupal/core": "^8",
+                "drupal/core": "^8 || ^9",
                 "drupal/gin": "^3.0",
                 "os2forms/os2forms": "^2.8",
                 "os2forms/os2forms_forloeb": "^1.8",
@@ -9172,14 +9172,16 @@
                     }
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "EUPL-1.2"
             ],
             "description": "This profile adds the configuration and initial install of OS2forms 2.1 med Forløb.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_forloeb_profile/tree/feature/os2forms-2.8"
+                "issues": "https://github.com/OS2Forms/os2forms_forloeb_profile/issues",
+                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/develop"
             },
-            "time": "2021-12-16T13:39:12+00:00"
+            "time": "2021-12-17T10:49:37+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
