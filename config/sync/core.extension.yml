@@ -106,6 +106,7 @@ module:
   webform_entity_print_attachment: 0
   webform_migrate: 0
   webform_node: 0
+  webform_node_element: 0
   webform_permissions_by_term: 0
   webform_remote_handlers: 0
   webform_rest: 0
