@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4be9438911edb8a05c280afea9a4ed45",
+    "content-hash": "55ec39abe2f454d290e4c69f3ee55864",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6799,16 +6799,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.12.40",
+            "version": "8.12.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "cafb3497dce678e9643ec3eba38be251a67d7469"
+                "reference": "c7b9f89a25e37e8bb650a378c3eabcbdafedeafd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/cafb3497dce678e9643ec3eba38be251a67d7469",
-                "reference": "cafb3497dce678e9643ec3eba38be251a67d7469",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/c7b9f89a25e37e8bb650a378c3eabcbdafedeafd",
+                "reference": "c7b9f89a25e37e8bb650a378c3eabcbdafedeafd",
                 "shasum": ""
             },
             "require": {
@@ -6868,7 +6868,7 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php"
             },
-            "time": "2021-12-23T11:54:39+00:00"
+            "time": "2022-01-11T10:10:37+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -7549,17 +7549,17 @@
             "time": "2021-12-07T12:11:13+00:00"
         },
         {
-            "name": "itk-dev/os2forms-cpr-lookup",
-            "version": "1.5.0",
+            "name": "itk-dev/os2forms_cpr_lookup",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_cpr_lookup.git",
-                "reference": "0e541ed735d1291e1928087a2d683b479b2b4374"
+                "reference": "85610714d105dc3761ad34ab687d8be02c809c7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/0e541ed735d1291e1928087a2d683b479b2b4374",
-                "reference": "0e541ed735d1291e1928087a2d683b479b2b4374",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/85610714d105dc3761ad34ab687d8be02c809c7f",
+                "reference": "85610714d105dc3761ad34ab687d8be02c809c7f",
                 "shasum": ""
             },
             "require": {
@@ -7602,74 +7602,10 @@
             ],
             "description": "Provides integration to CPR service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.5.0",
+                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.1",
                 "issues": "https://github.com/itk-dev/os2forms_cpr_lookup/issues"
             },
-            "time": "2021-12-14T13:49:51+00:00"
-        },
-        {
-            "name": "itk-dev/os2forms-digital-post",
-            "version": "dev-feature/os2forms-3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "7cf1ecf280b8626cbf5a234eab76454b8bebe535"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/7cf1ecf280b8626cbf5a234eab76454b8bebe535",
-                "reference": "7cf1ecf280b8626cbf5a234eab76454b8bebe535",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "~0.8.0",
-                "ext-soap": "*",
-                "http-interop/http-factory-guzzle": "^1.0.0",
-                "itk-dev/os2forms-cpr-lookup": "^1.1",
-                "itk-dev/serviceplatformen": "^1.1",
-                "os2forms/os2forms": "^3.0",
-                "php-http/guzzle6-adapter": "^2.0.1",
-                "symfony/property-access": "^4.4",
-                "wsdltophp/packagebase": "^5.0"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3",
-                "wsdltophp/packagegenerator": "^4.0"
-            },
-            "type": "drupal-module",
-            "autoload": {
-                "Drupal\\os2forms_digital_post\\": "src/"
-            },
-            "scripts": {
-                "coding-standards-check/phpcs": [
-                    "phpcs --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-check": [
-                    "@coding-standards-check/phpcs"
-                ],
-                "coding-standards-apply/phpcs": [
-                    "phpcbf --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-apply": [
-                    "@coding-standards-apply/phpcs"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Steen Risom",
-                    "email": "lats@aarhus.dk"
-                }
-            ],
-            "description": "Provides integration to Print service provided by Serviceplatformen.",
-            "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/feature/os2forms-3",
-                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
-            },
-            "time": "2021-12-16T12:33:10+00:00"
+            "time": "2022-01-11T10:10:41+00:00"
         },
         {
             "name": "itk-dev/os2forms_cvr_lookup",
@@ -7720,6 +7656,71 @@
                 "issues": "https://github.com/itk-dev/os2forms_cvr_lookup/issues"
             },
             "time": "2021-08-05T10:08:17+00:00"
+        },
+        {
+            "name": "itk-dev/os2forms_digital_post",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
+                "reference": "bf16d8fd6786e3ec0ffba320c44aad2436ab15d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/bf16d8fd6786e3ec0ffba320c44aad2436ab15d9",
+                "reference": "bf16d8fd6786e3ec0ffba320c44aad2436ab15d9",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "~0.8.0",
+                "ext-soap": "*",
+                "http-interop/http-factory-guzzle": "^1.0.0",
+                "itk-dev/os2forms_cpr_lookup": "^1.6",
+                "itk-dev/serviceplatformen": "^1.1",
+                "os2forms/os2forms": "^3.0",
+                "php-http/guzzle6-adapter": "^2.0.1",
+                "symfony/property-access": "^4.4",
+                "wsdltophp/packagebase": "^5.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "wsdltophp/packagegenerator": "^4.0"
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "autoload": {
+                "Drupal\\os2forms_digital_post\\": "src/"
+            },
+            "scripts": {
+                "coding-standards-check/phpcs": [
+                    "phpcs --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/phpcs"
+                ],
+                "coding-standards-apply/phpcs": [
+                    "phpcbf --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/phpcs"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Steen Risom",
+                    "email": "lats@aarhus.dk"
+                }
+            ],
+            "description": "Provides integration to Print service provided by Serviceplatformen.",
+            "support": {
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
+                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
+            },
+            "time": "2022-01-11T10:12:34+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -20231,7 +20232,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/os2forms-digital-post": 20,
+        "itk-dev/os2forms_digital_post": 20,
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20,
         "itk-dev/web_accessibility_statement": 20
