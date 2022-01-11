@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac8f654afdde7304e11bba043bde5502",
+    "content-hash": "c3fa72021310c2fc436aa1caba9240b0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -11595,16 +11595,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-ldap",
-            "version": "v0.9.16",
+            "version": "v0.9.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-ldap.git",
-                "reference": "1eaff0af2d441fa015be1ced54d258c20cdd98c4"
+                "reference": "40f1bfe0c4ac2f91cf8e52d22fa6ec2fe1c03066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-ldap/zipball/1eaff0af2d441fa015be1ced54d258c20cdd98c4",
-                "reference": "1eaff0af2d441fa015be1ced54d258c20cdd98c4",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-ldap/zipball/40f1bfe0c4ac2f91cf8e52d22fa6ec2fe1c03066",
+                "reference": "40f1bfe0c4ac2f91cf8e52d22fa6ec2fe1c03066",
                 "shasum": ""
             },
             "require": {
@@ -11647,7 +11647,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-ldap/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-ldap"
             },
-            "time": "2022-01-03T23:12:23+00:00"
+            "time": "2022-01-11T12:50:47+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-memcachemonitor",

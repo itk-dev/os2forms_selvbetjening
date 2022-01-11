@@ -132,6 +132,9 @@
             },
             "drupal/openid_connect": {
                 "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
+            },
+            "drupal/user_default_page": {
+                "https://www.drupal.org/project/user_default_page/issues/3246986#comment-14276612": "https://www.drupal.org/files/issues/2021-11-01/user_default_page-3246986-2.patch"
             }
         },
         "installer-paths": {
