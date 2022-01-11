@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55ec39abe2f454d290e4c69f3ee55864",
+    "content-hash": "ac8f654afdde7304e11bba043bde5502",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5608,10 +5608,10 @@
         {
             "name": "drupal/webform_embed",
             "version": "1.x-dev",
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform_embed-8.x-1.x-dev.zip",
-                "shasum": ""
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/issue/webform_embed-3149360.git",
+                "reference": "3149360-automated-drupal-9"
             },
             "type": "drupal-module"
         },

@@ -6,15 +6,17 @@
     "homepage": "https://github.com/itk-dev/os2forms_selvbetjening",
     "repositories": [
         {
+            "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9",
             "type": "package",
             "package": {
                 "name": "drupal/webform_embed",
-                "type": "drupal-module",
+                "//": "@see https://github.com/OS2Forms/os2forms/blob/master/composer.json#L27",
                 "version": "1.x-dev",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://ftp.drupal.org/files/projects/webform_embed-8.x-1.x-dev.zip",
-                    "shasum": ""
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupalcode.org/issue/webform_embed-3149360.git",
+                    "type": "git",
+                    "reference": "3149360-automated-drupal-9"
                 }
             }
         },
