@@ -7728,12 +7728,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "ccb9b5a98c11f5f07cf48f55fbb9557c19376b59"
+                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/ccb9b5a98c11f5f07cf48f55fbb9557c19376b59",
-                "reference": "ccb9b5a98c11f5f07cf48f55fbb9557c19376b59",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/b223de1adb5653c08e26bccad516c4c548ae12f9",
+                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9",
                 "shasum": ""
             },
             "require": {
@@ -7765,7 +7765,7 @@
                 "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/develop",
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
             },
-            "time": "2021-06-24T09:40:57+00:00"
+            "time": "2022-01-11T10:53:44+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
