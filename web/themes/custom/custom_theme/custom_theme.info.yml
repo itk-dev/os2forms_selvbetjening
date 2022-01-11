@@ -1,7 +1,7 @@
 name: 'Custom theme'
 type: theme
 description: 'A beautiful custom theme.'
-core: 8.x
+core_version_requirement: ^8 || ^9
 base theme: bootstrap
 package: Custom
 
