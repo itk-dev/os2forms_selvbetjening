@@ -8619,16 +8619,16 @@
         },
         {
             "name": "os2forms/os2forms_forloeb",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb.git",
-                "reference": "5fadc85ef1d40b45691dd4e21c01399cf8d959eb"
+                "reference": "4b4bd5e393c968ee9204c847e97335cfc6168f6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/5fadc85ef1d40b45691dd4e21c01399cf8d959eb",
-                "reference": "5fadc85ef1d40b45691dd4e21c01399cf8d959eb",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/4b4bd5e393c968ee9204c847e97335cfc6168f6d",
+                "reference": "4b4bd5e393c968ee9204c847e97335cfc6168f6d",
                 "shasum": ""
             },
             "require": {
@@ -8695,9 +8695,9 @@
             "description": "This module adds Maestro workflow engine and functionality to produce advanced workflows",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/1.9.0"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/1.9.1"
             },
-            "time": "2021-12-20T09:42:02+00:00"
+            "time": "2022-01-11T08:55:29+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
