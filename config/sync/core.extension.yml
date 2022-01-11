@@ -100,7 +100,6 @@ module:
   webform_access: 0
   webform_attachment: 0
   webform_composite: 0
-  webform_config_ignore: 0
   webform_embed: 0
   webform_entity_print: 0
   webform_entity_print_attachment: 0

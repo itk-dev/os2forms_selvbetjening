@@ -1,14 +1,43 @@
 {
-    "name": "drupal/recommended-project",
-    "description": "Project template for Drupal 8 projects with a relocated document root",
+    "name": "itk-dev/selvbetjening",
+    "description": "selvbetjening.aarhuskommune.dk",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://www.drupal.org/project/drupal",
-    "support": {
-        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
-        "chat": "https://www.drupal.org/node/314178"
-    },
+    "homepage": "https://github.com/itk-dev/os2forms_selvbetjening",
     "repositories": [
+        {
+            "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9",
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_embed",
+                "//": "@see https://github.com/OS2Forms/os2forms/blob/master/composer.json#L27",
+                "version": "1.x-dev",
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupalcode.org/issue/webform_embed-3149360.git",
+                    "type": "git",
+                    "reference": "3149360-automated-drupal-9"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_permissions_by_term",
+                "version": "1.2.0",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://ftp.drupal.org/files/projects/webform_permissions_by_term-8.x-1.2.zip",
+                    "reference": "8.x-1.2",
+                    "shasum": "eabcfdbbbc850986fdd0d8b3a26cad8d6b5d675e"
+                },
+                "require": {
+                    "drupal/core": "~8.0 || ^9.0",
+                    "drupal/permissions_by_term": "*"
+                },
+                "type": "drupal-module"
+            }
+        },
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -32,30 +61,27 @@
     ],
     "require": {
         "php": "~7.4.0 || ~8.0.0",
-        "composer/installers": "^1.2",
-        "drupal/admin_audit_trail": "^1.0@alpha",
-        "drupal/bootstrap": "^3.21",
+        "composer/installers": "^1.9",
+        "drupal/bootstrap": "^3.23",
         "drupal/config_ignore": "^2.3",
-        "drupal/core-composer-scaffold": "^8.8",
-        "drupal/core-project-message": "^8.8",
-        "drupal/core-recommended": "^8.8",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-project-message": "^9.1",
+        "drupal/core-recommended": "^9.1",
         "drupal/memcache": "^2.3",
         "drupal/menu_link_attributes": "^1.2",
         "drupal/openid_connect": "^2.0",
-        "drupal/permissions_by_term": "2.25.0",
         "drupal/system_status": "^2.9",
-        "drupal/webform_config_ignore": "^1.2",
         "drush/drush": "^10.6",
-        "itk-dev/os2forms-cpr-lookup": "^1.3",
-        "itk-dev/os2forms-digital-post": "dev-develop",
+        "itk-dev/os2forms_cpr_lookup": "^1.6",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
+        "itk-dev/os2forms_digital_post": "dev-develop",
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
         "itk-dev/os2forms_user_field_lookup": "dev-develop",
         "itk-dev/web_accessibility_statement": "dev-master",
-        "os2forms/os2forms_forloeb_profile": "dev-develop"
+        "os2forms/os2forms_forloeb_profile": "1.6.0-rc"
     },
     "require-dev": {
-        "drupal/core-dev": "^8.8"
+        "drupal/core-dev": "^9.1"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -67,6 +93,10 @@
         "sort-packages": true
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
@@ -77,8 +107,16 @@
             "force-reset": true
         },
         "patches": {
+            "drupal/coc_forms_auto_export": {
+               "3240592 - Problem with phpseclib requirement in 2.x": "https://www.drupal.org/files/issues/2021-10-04/requirement-namespace-3240592-1.patch"
+            },
             "drupal/webform": {
                 "Add support for Set to state": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/add-set-to-state-3159806-2-modified-5.19.patch"
+            },
+            "drupal/webform_permissions_by_term": {
+               "3192241 - Too few arguments after Permissions by Term update to 2.28": "https://www.drupal.org/files/issues/2021-12-10/too-few-arguments-access-check_3192241-3.patch",
+               "3142184 - Automated Drupal 9 compatibility fixes": "https://www.drupal.org/files/issues/2020-06-28/webform_permissions_by_term.1.x-dev.rector.patch",
+               "Enabled D9 support": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/webform_permissions_by_term-d9.patch"
             },
             "drupal/webform_migrate": {
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
@@ -90,10 +128,13 @@
                 "Duplicated Attachments using webforms": "https://www.drupal.org/files/issues/2020-06-18/smtp-2995290-17.patch"
             },
             "drupal/core": {
-                "Allow site install with profile containing hook_install": "https://www.drupal.org/files/issues/2020-11-25/2982052-55.patch"
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2021-09-27/2982052-73.patch"
             },
             "drupal/openid_connect": {
                 "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
+            },
+            "drupal/user_default_page": {
+                "https://www.drupal.org/project/user_default_page/issues/3246986#comment-14276612": "https://www.drupal.org/files/issues/2021-11-01/user_default_page-3246986-2.patch"
             }
         },
         "installer-paths": {
@@ -144,9 +185,9 @@
             ]
         }
     },
-     "scripts": {
+    "scripts": {
         "post-install-cmd": [
             "vendor/bin/drush webform:libraries:download"
         ]
-     }
+    }
 }
