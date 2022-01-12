@@ -140,6 +140,11 @@ element:
   default_empty_option_required: ''
   default_empty_option_optional: ''
   excluded_elements:
+    color: color
+    container: container
+    entity_autocomplete: entity_autocomplete
+    item: item
+    label: label
     os2forms_nemid_address: os2forms_nemid_address
     os2forms_nemid_city: os2forms_nemid_city
     os2forms_nemid_coaddress: os2forms_nemid_coaddress
@@ -156,7 +161,29 @@ element:
     os2forms_nemid_pid: os2forms_nemid_pid
     password: password
     password_confirm: password_confirm
+    processed_text: processed_text
+    search: search
     webform_attachment_os2forms_sbsys_xml: webform_attachment_os2forms_sbsys_xml
+    webform_attachment_token: webform_attachment_token
+    webform_attachment_twig: webform_attachment_twig
+    webform_attachment_url: webform_attachment_url
+    webform_codemirror: webform_codemirror
+    webform_computed_token: webform_computed_token
+    webform_computed_twig: webform_computed_twig
+    webform_email_confirm: webform_email_confirm
+    webform_email_multiple: webform_email_multiple
+    webform_entity_checkboxes: webform_entity_checkboxes
+    webform_entity_radios: webform_entity_radios
+    webform_entity_select: webform_entity_select
+    webform_height: webform_height
+    webform_link: webform_link
+    webform_mapping: webform_mapping
+    webform_message: webform_message
+    webform_name: webform_name
+    webform_same: webform_same
+    webform_signature: webform_signature
+    webform_tableselect_sort: webform_tableselect_sort
+    webform_telephone: webform_telephone
 html_editor:
   tidy: true
   disabled: false
