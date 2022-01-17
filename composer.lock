@@ -7663,12 +7663,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "bf16d8fd6786e3ec0ffba320c44aad2436ab15d9"
+                "reference": "4fe6b35ca88dce35a5f1f6b01f55d8685a3fe753"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/bf16d8fd6786e3ec0ffba320c44aad2436ab15d9",
-                "reference": "bf16d8fd6786e3ec0ffba320c44aad2436ab15d9",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/4fe6b35ca88dce35a5f1f6b01f55d8685a3fe753",
+                "reference": "4fe6b35ca88dce35a5f1f6b01f55d8685a3fe753",
                 "shasum": ""
             },
             "require": {
@@ -7720,7 +7720,7 @@
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-01-11T10:12:34+00:00"
+            "time": "2022-01-17T10:21:06+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -20243,5 +20243,5 @@
         "php": "~7.4.0 || ~8.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
