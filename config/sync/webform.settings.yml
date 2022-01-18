@@ -1,6 +1,6 @@
 settings:
   default_status: open
-  default_page_base_path: form
+  default_page_base_path: '/form'
   default_ajax: false
   default_ajax_effect: fade
   default_ajax_speed: 500
