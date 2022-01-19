@@ -207,3 +207,4 @@ yarn-error.log
 
 config/sync/maestro.maestro_template.*
 config/sync/webform.webform_options.*
+config/sync/webform.webform.*
