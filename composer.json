@@ -72,7 +72,7 @@
         "drupal/openid_connect": "^2.0",
         "drupal/system_status": "^2.9",
         "drush/drush": "^10.6",
-        "itk-dev/os2forms_cpr_lookup": "^1.6",
+        "itk-dev/os2forms_cpr_lookup": "^1.6.3",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
         "itk-dev/os2forms_digital_post": "dev-develop",
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
