@@ -78,7 +78,7 @@
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
         "itk-dev/os2forms_user_field_lookup": "dev-develop",
         "itk-dev/web_accessibility_statement": "dev-master",
-        "os2forms/os2forms_forloeb_profile": "1.6.0-rc"
+        "os2forms/os2forms_forloeb_profile": "1.7.0-rc"
     },
     "require-dev": {
         "drupal/core-dev": "^9.1"
