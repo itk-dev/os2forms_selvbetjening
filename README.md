@@ -124,3 +124,6 @@ Apply updates by running
 ```sh
 vendor/bin/drush --yes deploy
 ```
+
+Configure the [`memcache` module](https://www.drupal.org/project/memcache):
+<https://git.drupalcode.org/project/memcache/blob/8.x-2.x/README.txt>
