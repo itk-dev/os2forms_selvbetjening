@@ -26,6 +26,7 @@ permissions:
   - 'administer block_content display'
   - 'administer block_content form display'
   - 'administer display modes'
+  - 'administer content types'
   - 'administer node display'
   - 'administer node form display'
   - 'administer taxonomy_term display'

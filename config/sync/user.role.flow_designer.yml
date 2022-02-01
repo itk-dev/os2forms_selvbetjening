@@ -21,6 +21,7 @@ permissions:
   - 'add maestro queue entities'
   - 'administer block_content display'
   - 'administer block_content form display'
+  - 'administer content types'
   - 'administer display modes'
   - 'administer maestro entity identifiers entities'
   - 'administer maestro production assignment entities'
