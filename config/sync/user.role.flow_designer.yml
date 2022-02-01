@@ -5,7 +5,7 @@ dependencies: {  }
 _core:
   default_config_hash: FuuYYl7dBxmUUArvRKKBSiWjGH8UJR6cxgF0OmOYHiQ
 id: flow_designer
-label: 'Flow designer'
+label: Flowdesigner
 weight: 4
 is_admin: null
 permissions:
@@ -21,6 +21,7 @@ permissions:
   - 'add maestro queue entities'
   - 'administer block_content display'
   - 'administer block_content form display'
+  - 'administer content types'
   - 'administer display modes'
   - 'administer maestro entity identifiers entities'
   - 'administer maestro production assignment entities'
@@ -42,21 +43,27 @@ permissions:
   - 'bypass honeypot protection'
   - 'create forloebsside content'
   - 'create webform'
+  - 'create webform content'
   - 'delete any forloebsside content'
+  - 'delete any webform content'
   - 'delete forloebsside revisions'
   - 'delete maestro entity identifiers entities'
   - 'delete maestro process entities'
   - 'delete maestro production assignment entities'
   - 'delete maestro queue entities'
   - 'delete own forloebsside content'
+  - 'delete own webform content'
+  - 'delete webform revisions'
   - 'delete webform submissions any node'
   - 'delete webform submissions own node'
   - 'edit any forloebsside content'
+  - 'edit any webform content'
   - 'edit maestro entity identifiers entities'
   - 'edit maestro process entities'
   - 'edit maestro production assignment entities'
   - 'edit maestro queue entities'
   - 'edit own forloebsside content'
+  - 'edit own webform content'
   - 'edit webform submissions any node'
   - 'edit webform submissions own node'
   - 'entity print access bundle contact'
@@ -90,6 +97,7 @@ permissions:
   - 'entity print access type user'
   - 'entity print access type webform_submission'
   - 'revert forloebsside revisions'
+  - 'revert webform revisions'
   - 'search content'
   - 'start maestro process'
   - 'start template form_approval_flow'
@@ -112,5 +120,6 @@ permissions:
   - 'view maestro task console'
   - 'view own unpublished content'
   - 'view the administration theme'
+  - 'view webform revisions'
   - 'view webform submissions any node'
   - 'view webform submissions own node'

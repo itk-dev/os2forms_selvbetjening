@@ -5,7 +5,7 @@ dependencies: {  }
 _core:
   default_config_hash: oPL1IfV9McRYjNAICLwje0l5khmTZ2HSwYl3EfunVKA
 id: forloeb_designer
-label: 'Forløb designer'
+label: Selvbetjeningsdesigner
 weight: 5
 is_admin: null
 permissions:
@@ -26,6 +26,7 @@ permissions:
   - 'administer block_content display'
   - 'administer block_content form display'
   - 'administer display modes'
+  - 'administer content types'
   - 'administer node display'
   - 'administer node form display'
   - 'administer taxonomy_term display'
