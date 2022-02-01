@@ -127,3 +127,9 @@ vendor/bin/drush --yes deploy
 
 Configure the [`memcache` module](https://www.drupal.org/project/memcache):
 <https://git.drupalcode.org/project/memcache/blob/8.x-2.x/README.txt>
+
+
+## Production Database
+The database of production must never be copied to a local development environment, as its data contains personal data. 
+
+If developers need an actual database for local development, the stg-environment can be made ready for download by ensuring that you delete all submissions and other informations that can have personal character, before downloading. 
