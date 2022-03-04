@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: 1_Gl5LPSicxXDiwxqfbkMXVD4bzqBrtsnOSL7ukwHi8
+langcode: da
 favicon:
   mimetype: image/vnd.microsoft.icon
   path: ''
@@ -12,6 +15,3 @@ logo:
   path: ''
   url: ''
   use_default: true
-langcode: da
-_core:
-  default_config_hash: 1_Gl5LPSicxXDiwxqfbkMXVD4bzqBrtsnOSL7ukwHi8

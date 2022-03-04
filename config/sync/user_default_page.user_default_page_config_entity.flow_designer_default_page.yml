@@ -12,7 +12,6 @@ label: 'Flow designer default page'
 user_roles:
   flow_designer: flow_designer
 users: null
-weight: 1
 login_redirect: /maestro/templates/list
 login_redirect_message: 'Velkommen tilbage, her kan du arbejde med flow skabeloner.'
 logout_redirect: ''

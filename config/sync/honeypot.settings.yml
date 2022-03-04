@@ -1,10 +1,13 @@
+_core:
+  default_config_hash: k8UIEOLDy09rsrzq2WEY7kC6gj1QZhfon-C7lVM9Fv0
+langcode: da
+protect_all_forms: true
 unprotected_forms:
   - user_login_form
   - search_form
   - search_block_form
   - views_exposed_form
   - honeypot_settings_form
-protect_all_forms: true
 log: true
 element_name: url
 time_limit: 5
@@ -17,6 +20,3 @@ form_settings:
   node_article_form: false
   node_page_form: false
   node_webform_form: false
-langcode: da
-_core:
-  default_config_hash: k8UIEOLDy09rsrzq2WEY7kC6gj1QZhfon-C7lVM9Fv0

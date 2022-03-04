@@ -18,116 +18,12 @@ base_table: maestro_production_assignments
 base_field: id
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'administer maestro production assignment entities'
-      cache:
-        type: none
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Udfør
-          reset_button: false
-          reset_button_label: Gendan
-          exposed_sorts_label: 'Sortér efter'
-          expose_sort_order: true
-          sort_asc_label: Stigende
-          sort_desc_label: Faldende
-      pager:
-        type: mini
-        options:
-          items_per_page: 10
-          offset: 0
-          id: 0
-          total_pages: null
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Antal elementer'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- Alle -'
-            offset: false
-            offset_label: Forskydning
-          tags:
-            previous: ��
-            next: ��
-      style:
-        type: table
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            rendered_entity: rendered_entity
-            by_variable: by_variable
-            assign_id: assign_id
-            id: id
-            queue_id: queue_id
-          info:
-            rendered_entity:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            by_variable:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            assign_id:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            id:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            queue_id:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
-      row:
-        type: fields
-        options:
-          inline: {  }
-          separator: ''
-          hide_empty: false
-          default_field_elements: true
+      title: 'Udestående interaktive opgaver'
       fields:
         queue_id_1:
           id: queue_id_1
@@ -136,6 +32,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: maestro_production_assignments
+          entity_field: queue_id
+          plugin_id: field
           label: K
           exclude: false
           alter:
@@ -190,9 +89,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_production_assignments
-          entity_field: queue_id
-          plugin_id: field
         task_label:
           id: task_label
           table: maestro_queue
@@ -200,6 +96,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: task_label
+          plugin_id: field
           label: Opgave
           exclude: false
           alter:
@@ -255,9 +154,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_queue
-          entity_field: task_label
-          plugin_id: field
         process_name:
           id: process_name
           table: maestro_process
@@ -265,6 +161,9 @@ display:
           relationship: process_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_process
+          entity_field: process_name
+          plugin_id: field
           label: Procesnavn
           exclude: false
           alter:
@@ -320,9 +219,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_process
-          entity_field: process_name
-          plugin_id: field
         assign_id:
           id: assign_id
           table: maestro_production_assignments
@@ -330,6 +226,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: maestro_production_assignments
+          entity_field: assign_id
+          plugin_id: field
           label: 'Tildelt til'
           exclude: false
           alter:
@@ -385,9 +284,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_production_assignments
-          entity_field: assign_id
-          plugin_id: field
         active_handler:
           id: active_handler
           table: maestro_queue
@@ -395,6 +291,8 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          plugin_id: maestro_active_handler
           label: Håndtering
           exclude: false
           alter:
@@ -436,8 +334,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          entity_type: maestro_queue
-          plugin_id: maestro_active_handler
         handler:
           id: handler
           table: maestro_queue
@@ -445,6 +341,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: handler
+          plugin_id: field
           label: Håndtering
           exclude: true
           alter:
@@ -500,9 +399,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_queue
-          entity_field: handler
-          plugin_id: field
         created_1:
           id: created_1
           table: maestro_queue
@@ -510,6 +406,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: created
+          plugin_id: field
           label: 'Opgave tildelt'
           exclude: false
           alter:
@@ -567,9 +466,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_queue
-          entity_field: created
-          plugin_id: field
         created:
           id: created
           table: maestro_process
@@ -577,6 +473,9 @@ display:
           relationship: process_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_process
+          entity_field: created
+          plugin_id: field
           label: 'Proces startet'
           exclude: false
           alter:
@@ -634,9 +533,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_process
-          entity_field: created
-          plugin_id: field
         admin_operations:
           id: admin_operations
           table: maestro_queue
@@ -644,6 +540,8 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          plugin_id: maestro_admin_operations
           label: Handlinger
           exclude: false
           alter:
@@ -685,8 +583,44 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          entity_type: maestro_queue
-          plugin_id: maestro_admin_operations
+      pager:
+        type: mini
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ��
+            previous: ��
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Antal elementer'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- Alle -'
+            offset: false
+            offset_label: Forskydning
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Udfør
+          reset_button: false
+          reset_button_label: Gendan
+          exposed_sorts_label: 'Sortér efter'
+          expose_sort_order: true
+          sort_asc_label: Stigende
+          sort_desc_label: Faldende
+      access:
+        type: perm
+        options:
+          perm: 'administer maestro production assignment entities'
+      cache:
+        type: none
+        options: {  }
+      empty: {  }
+      sorts: {  }
+      arguments: {  }
       filters:
         archived:
           id: archived
@@ -695,6 +629,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: archived
+          plugin_id: numeric
           operator: '='
           value:
             min: ''
@@ -708,14 +645,14 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -728,9 +665,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: maestro_queue
-          entity_field: archived
-          plugin_id: numeric
         status:
           id: status
           table: maestro_queue
@@ -738,6 +672,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: status
+          plugin_id: numeric
           operator: '='
           value:
             min: ''
@@ -751,14 +688,14 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -771,9 +708,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: maestro_queue
-          entity_field: status
-          plugin_id: numeric
         process_name:
           id: process_name
           table: maestro_process
@@ -781,6 +715,9 @@ display:
           relationship: process_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_process
+          entity_field: process_name
+          plugin_id: string
           operator: word
           value: ''
           group: 1
@@ -791,6 +728,8 @@ display:
             description: 'Filtrér ud fra procesnavn'
             use_operator: false
             operator: process_name_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: process_name
             required: false
             remember: false
@@ -799,8 +738,6 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: Procesnavn
@@ -813,9 +750,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: maestro_process
-          entity_field: process_name
-          plugin_id: string
         task_label:
           id: task_label
           table: maestro_queue
@@ -823,6 +757,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: task_label
+          plugin_id: string
           operator: word
           value: ''
           group: 1
@@ -833,6 +770,8 @@ display:
             description: 'Filtrer på opgave navn'
             use_operator: false
             operator: task_label_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: task_label
             required: false
             remember: false
@@ -841,8 +780,6 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -855,39 +792,76 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: maestro_queue
-          entity_field: task_label
-          plugin_id: string
-      sorts: {  }
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: Introduktion
-          empty: true
-          tokenize: false
-          content:
-            value: 'Rapport over udestående eller aktive interaktive opgaver for alle Flows som er aktive og ikke er færdige. Du har mulighed for at filtrere resultaterne til kun at vise opgaver fra et specifik Flow, hvor der kan være mange selvbetjeningsforløb i et Flow. Filtréring af resultater ud fra opgave navn er også mulig. Mulighederne inkluderer også muligheden for at omfordele den opgaveansvarlige på en udvalgt opgave. '
-            format: basic_html
-          plugin_id: text
-      footer:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: false
-          content:
-            value: 'Total antal: [view:total-rows] '
-            format: basic_html
-          plugin_id: text
-      empty: {  }
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            rendered_entity: rendered_entity
+            by_variable: by_variable
+            assign_id: assign_id
+            id: id
+            queue_id: queue_id
+          default: '-1'
+          info:
+            rendered_entity:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            by_variable:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            assign_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            queue_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
       relationships:
         queue_id:
           id: queue_id
@@ -896,10 +870,10 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Maestro Queue'
-          required: true
           entity_type: maestro_production_assignments
           entity_field: queue_id
           plugin_id: standard
+          required: true
         process_id:
           id: process_id
           table: maestro_queue
@@ -907,13 +881,39 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: 'Maestro Process'
-          required: true
           entity_type: maestro_queue
           entity_field: process_id
           plugin_id: standard
-      arguments: {  }
+          required: true
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: Introduktion
+          plugin_id: text
+          empty: true
+          content:
+            value: 'Rapport over udestående eller aktive interaktive opgaver for alle Flows som er aktive og ikke er færdige. Du har mulighed for at filtrere resultaterne til kun at vise opgaver fra et specifik Flow, hvor der kan være mange selvbetjeningsforløb i et Flow. Filtréring af resultater ud fra opgave navn er også mulig. Mulighederne inkluderer også muligheden for at omfordele den opgaveansvarlige på en udvalgt opgave. '
+            format: basic_html
+          tokenize: false
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: 'Total antal: [view:total-rows] '
+            format: basic_html
+          tokenize: false
       display_extenders: {  }
-      title: 'Udestående interaktive opgaver'
     cache_metadata:
       max-age: 0
       contexts:
@@ -925,23 +925,23 @@ display:
         - user.permissions
       tags: {  }
   maestro_outstanding_tasks:
-    display_plugin: page
     id: maestro_outstanding_tasks
     display_title: 'Udestående opgaver'
+    display_plugin: page
     position: 1
     display_options:
+      display_description: ''
       display_extenders: {  }
       path: outstanding-tasks
       menu:
         type: normal
         title: 'Udestående opgaver'
         description: ''
-        expanded: false
-        parent: ''
         weight: 0
-        context: '0'
+        expanded: false
         menu_name: tools
-      display_description: ''
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: 0
       contexts:
@@ -953,14 +953,11 @@ display:
         - user.permissions
       tags: {  }
   taskconsole_display:
-    display_plugin: page
     id: taskconsole_display
     display_title: 'Task Console Display'
+    display_plugin: page
     position: 2
     display_options:
-      display_extenders: {  }
-      path: outstanding-tasks-taskconsole
-      display_description: ''
       fields:
         queue_id_1:
           id: queue_id_1
@@ -969,6 +966,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: maestro_production_assignments
+          entity_field: queue_id
+          plugin_id: field
           label: K
           exclude: true
           alter:
@@ -1023,9 +1023,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_production_assignments
-          entity_field: queue_id
-          plugin_id: field
         task_label:
           id: task_label
           table: maestro_queue
@@ -1033,6 +1030,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: task_label
+          plugin_id: field
           label: Opgave
           exclude: false
           alter:
@@ -1088,9 +1088,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_queue
-          entity_field: task_label
-          plugin_id: field
         process_name:
           id: process_name
           table: maestro_process
@@ -1098,6 +1095,9 @@ display:
           relationship: process_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_process
+          entity_field: process_name
+          plugin_id: field
           label: Procesnavn
           exclude: true
           alter:
@@ -1153,9 +1153,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_process
-          entity_field: process_name
-          plugin_id: field
         assign_id:
           id: assign_id
           table: maestro_production_assignments
@@ -1163,6 +1160,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: maestro_production_assignments
+          entity_field: assign_id
+          plugin_id: field
           label: 'Tildelt til'
           exclude: false
           alter:
@@ -1218,9 +1218,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_production_assignments
-          entity_field: assign_id
-          plugin_id: field
         handler:
           id: handler
           table: maestro_queue
@@ -1228,6 +1225,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: handler
+          plugin_id: field
           label: Håndtering
           exclude: true
           alter:
@@ -1283,9 +1283,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_queue
-          entity_field: handler
-          plugin_id: field
         created_1:
           id: created_1
           table: maestro_queue
@@ -1293,6 +1290,9 @@ display:
           relationship: queue_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_queue
+          entity_field: created
+          plugin_id: field
           label: 'Opgave tildelt'
           exclude: false
           alter:
@@ -1350,9 +1350,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_queue
-          entity_field: created
-          plugin_id: field
         created:
           id: created
           table: maestro_process
@@ -1360,6 +1357,9 @@ display:
           relationship: process_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_process
+          entity_field: created
+          plugin_id: field
           label: 'Proces startet'
           exclude: false
           alter:
@@ -1417,105 +1417,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: maestro_process
-          entity_field: created
-          plugin_id: field
-      defaults:
-        fields: false
-        filters: false
-        filter_groups: false
-        arguments: false
-      filters:
-        archived:
-          id: archived
-          table: maestro_queue
-          field: archived
-          relationship: queue_id
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: '0'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: maestro_queue
-          entity_field: archived
-          plugin_id: numeric
-        status:
-          id: status
-          table: maestro_queue
-          field: status
-          relationship: queue_id
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: '0'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: maestro_queue
-          entity_field: status
-          plugin_id: numeric
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       arguments:
         process_id:
           id: process_id
@@ -1524,6 +1425,9 @@ display:
           relationship: process_id
           group_type: group
           admin_label: ''
+          entity_type: maestro_process
+          entity_field: process_id
+          plugin_id: numeric
           default_action: empty
           exception:
             value: all
@@ -1538,8 +1442,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -1551,9 +1455,105 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
-          entity_type: maestro_process
-          entity_field: process_id
+      filters:
+        archived:
+          id: archived
+          table: maestro_queue
+          field: archived
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          entity_type: maestro_queue
+          entity_field: archived
           plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        status:
+          id: status
+          table: maestro_queue
+          field: status
+          relationship: queue_id
+          group_type: group
+          admin_label: ''
+          entity_type: maestro_queue
+          entity_field: status
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+      path: outstanding-tasks-taskconsole
     cache_metadata:
       max-age: 0
       contexts:

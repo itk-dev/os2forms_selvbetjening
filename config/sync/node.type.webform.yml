@@ -2,11 +2,11 @@ uuid: 93f4279c-9265-4b25-8dbd-f0caf1dc4a2b
 langcode: da
 status: true
 dependencies:
+  module:
+    - menu_ui
   enforced:
     module:
       - webform_node
-  module:
-    - menu_ui
 third_party_settings:
   menu_ui:
     available_menus:

@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: N_uSEkpzYJOtcfvF2ngoGgCnKEBQDMHPTnOwC2Djj4I
+langcode: da
 bypass_transactional_safe_connection: false
 queue:
   enabled: false
@@ -31,6 +34,3 @@ scheduler:
       - '*/10+@ * * * *'
   simple:
     rule: '*/15+@ * * * *'
-langcode: da
-_core:
-  default_config_hash: N_uSEkpzYJOtcfvF2ngoGgCnKEBQDMHPTnOwC2Djj4I

@@ -12,7 +12,6 @@ label: 'Forløbs designer default page'
 user_roles:
   forloeb_designer: forloeb_designer
 users: null
-weight: 2
 login_redirect: /admin/structure/webform
 login_redirect_message: 'Velkommen tilbage, her kan du arbejde med webformularer.'
 logout_redirect: ''
