@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: Zuo-L-sYCplemzz8j3UZNjzaG4OQejK8qHJn4vIOBwc
+langcode: da
 cache:
   page:
     max_age: 1800
@@ -13,6 +16,3 @@ js:
   preprocess: true
   gzip: true
 stale_file_threshold: 2592000
-langcode: da
-_core:
-  default_config_hash: Zuo-L-sYCplemzz8j3UZNjzaG4OQejK8qHJn4vIOBwc

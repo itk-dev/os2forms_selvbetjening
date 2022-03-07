@@ -13,12 +13,12 @@ pattern: 'content/[node:field_os2forms_wff_application:entity:name]/[node:title]
 selection_criteria:
   c6e82172-e76f-406f-bdce-b4b4a8331591:
     id: node_type
-    bundles:
-      webform: webform
     negate: false
+    uuid: c6e82172-e76f-406f-bdce-b4b4a8331591
     context_mapping:
       node: node
-    uuid: c6e82172-e76f-406f-bdce-b4b4a8331591
+    bundles:
+      webform: webform
 selection_logic: and
 weight: -5
 relationships: {  }

@@ -9,7 +9,7 @@ id: taxonomy_term.user_affiliation.field_claim
 field_name: field_claim
 entity_type: taxonomy_term
 bundle: user_affiliation
-label: 'Claim'
+label: Claim
 description: ''
 required: false
 translatable: false
