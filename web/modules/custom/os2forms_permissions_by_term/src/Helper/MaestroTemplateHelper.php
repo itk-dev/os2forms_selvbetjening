@@ -3,12 +3,14 @@
 namespace Drupal\os2forms_permissions_by_term\Helper;
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\permissions_by_term\Service\AccessStorage;
 
 /**
@@ -45,6 +47,11 @@ class MaestroTemplateHelper {
   protected ConfigFactory $configFactory;
 
   /**
+   * @var \Drupal\os2forms_permissions_by_term\Helper\Helper
+   */
+  protected Helper $helper;
+
+  /**
    * Maestro template helper constructor.
    *
    * @param \Drupal\permissions_by_term\Service\AccessStorage $accessStorage
@@ -55,12 +62,15 @@ class MaestroTemplateHelper {
    *   The Account proxy interface.
    * @param \Drupal\Core\Config\ConfigFactory $configFactory
    *   The config factory.
+   * @param \Drupal\os2forms_permissions_by_term\Helper\Helper $helper
+   *   The config factory.
    */
-  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory) {
+  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory, Helper $helper) {
     $this->accessStorage = $accessStorage;
     $this->entityTypeManager = $entity_type_manager;
     $this->account = $account;
     $this->configFactory = $configFactory;
+    $this->helper = $helper;
   }
 
   /**
@@ -98,6 +108,13 @@ class MaestroTemplateHelper {
     foreach ($terms as $term) {
       $term_data[$term->id()] = $term->label();
     }
+
+    // Remove any options that allow anonymous access to the maestro template.
+    $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
+    foreach ($anonymousTerms as $termId) {
+      unset($term_data[$termId]);
+    }
+
     if ('settings' === $hook) {
       $meastroSettingsForm = $form_state->getFormObject();
       $mastroTemplate = $meastroSettingsForm->getEntity();
@@ -182,5 +199,33 @@ class MaestroTemplateHelper {
     $maestroTemplate = $maestroTemplateSettingsForm->getEntity();
     $maestroTemplate->setThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings', $form_state->getValue(['maestro_template_permissions_by_term', 'os2forms_access']));
     $maestroTemplate->save();
+  }
+
+  /**
+   * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
+   *
+   * Alter the field webform_entity_reference widget.
+   *
+   * @param array $form
+   *   The form element.
+   * @param FormStateInterface $form_state
+   *   The state of the form.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function fieldWidgetMaestroTaskEditFormAlter(array &$form, FormStateInterface $form_state) {
+    if (array_key_exists('webform_machine_name', $form)) {
+      foreach ($form['webform_machine_name']['#options'] as $key => $option) {
+        if (!$option instanceof TranslatableMarkup) {
+          $webform = $this->entityTypeManager->getStorage('webform')->load($key);
+          /** @var \Drupal\webform\WebformInterface $webform */
+          $accessResult = $this->helper->webformAccess($webform, 'update', $this->account);
+          if ($accessResult instanceof AccessResultForbidden) {
+            unset($form['webform_machine_name']['#options'][$key]);
+          }
+        }
+      }
+    }
   }
 }
