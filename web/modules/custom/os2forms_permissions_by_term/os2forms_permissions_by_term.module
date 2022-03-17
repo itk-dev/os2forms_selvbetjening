@@ -68,10 +68,7 @@ function os2forms_permissions_by_term_form_webform_settings_form_alter(array &$f
  *   The state of the form.
  */
 function os2forms_permissions_by_term_form_node_form_alter(array &$form, FormStateInterface $form_state) {
-    $node = $form_state->getFormObject()->getEntity();
-    if('webform' === $node->bundle()) {
-      \Drupal::service('os2forms_permissions_by_term.helper')->nodeFormAlter($form, $form_state);
-    }
+  \Drupal::service('os2forms_permissions_by_term.helper')->nodeFormAlter($form, $form_state);
 }
 
 /**
@@ -181,9 +178,7 @@ function os2forms_permissions_by_term_field_widget_multivalue_webform_entity_ref
  *   The id of the form.
  */
 function os2forms_permissions_by_term_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id) {
-  if ('template_edit_task' == $form_id) {
-    \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->fieldWidgetMaestroTaskEditFormAlter($form, $form_state);
-  }
+  \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->fieldWidgetMaestroTaskEditFormAlter($form, $form_state, $form_id);
 }
 
 /**
@@ -197,8 +192,5 @@ function os2forms_permissions_by_term_form_alter(array &$form, \Drupal\Core\Form
  *   The context of the options list.
  */
 function os2forms_permissions_by_term_options_list_alter(array &$options, array $context) {
-  // Alter the field_os2forms_permissions options list.
-  if ('node.field_os2forms_permissions' == $context['fieldDefinition']->getFieldStorageDefinition()->id()) {
-    \Drupal::service('os2forms_permissions_by_term.helper')->optionsListAlter($options, $context);
-  }
+  \Drupal::service('os2forms_permissions_by_term.helper')->optionsListAlter($options, $context);
 }

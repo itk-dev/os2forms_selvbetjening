@@ -6,6 +6,7 @@ services:
       - '@entity_type.manager'
       - '@current_user'
       - '@config.factory'
+
   os2forms_permissions_by_term.maestro_template_helper:
     class: Drupal\os2forms_permissions_by_term\Helper\MaestroTemplateHelper
     arguments:
@@ -14,6 +15,7 @@ services:
       - '@current_user'
       - '@config.factory'
       - '@os2forms_permissions_by_term.helper'
+
   os2forms_permissions_by_term.route_subscriber:
     class: Drupal\os2forms_permissions_by_term\Routing\RouteSubscriber
     tags:

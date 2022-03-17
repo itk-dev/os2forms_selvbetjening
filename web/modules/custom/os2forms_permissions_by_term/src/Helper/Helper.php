@@ -86,67 +86,70 @@ class Helper {
    *
    */
   public function webformAlter(array &$form, FormStateInterface $form_state, $hook) {
-    $term_data = [];
-    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
-    if (1 === (int)$this->account->id()) {
-      $userTerms = [];
-      $permissionsByTermBundles = $this->configFactory->get('permissions_by_term.settings')->get('target_bundles');
-      foreach ($permissionsByTermBundles as $bundle) {
-        $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($bundle);
-        foreach ($terms as $term) {
-          $userTerms[] = $term->tid;
+    $node = $form_state->getFormObject()->getEntity();
+    if('webform' === $node->bundle()) {
+      $term_data = [];
+      $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+      if (1 === (int)$this->account->id()) {
+        $userTerms = [];
+        $permissionsByTermBundles = $this->configFactory->get('permissions_by_term.settings')->get('target_bundles');
+        foreach ($permissionsByTermBundles as $bundle) {
+          $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($bundle);
+          foreach ($terms as $term) {
+            $userTerms[] = $term->tid;
+          }
         }
+      } else {
+        $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
       }
-    } else {
-      $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
+      $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadMultiple($userTerms);
+      foreach ($terms as $term) {
+        $term_data[$term->id()] = $term->label();
+      }
+
+      // Remove any options that allow anonymous access to the webform.
+      $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
+      foreach ($anonymousTerms as $termId) {
+        unset($term_data[$termId]);
+      }
+
+      // Make sure title is first when creating a new webform.
+      if ('add' === $hook) {
+        $form['title']['#weight'] = -100;
+      }
+
+      // Get default settings for webform.
+      if ('settings' === $hook) {
+        $webform_settings_form = $form_state->getFormObject();
+        $webform = $webform_settings_form->getEntity();
+        $defaultSettings = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
+      }
+
+      $form['os2forms_permissions_by_term'] = [
+        '#type' => 'details',
+        '#open' => TRUE,
+        '#title' => 'Webform access',
+        '#tree' => TRUE,
+        '#weight' => -99,
+      ];
+
+      $form['os2forms_permissions_by_term']['os2forms_access'] = [
+        '#type' => 'checkboxes',
+        '#required' => TRUE,
+        '#title' => t('Access'),
+        '#default_value' => $defaultSettings ?? [],
+        '#options' => $term_data,
+        '#description' => t('Limit access to this webform.'),
+      ];
+
+      // Set access value automatically if user only has one term option.
+      if ('add' === $hook && 1 === count($term_data)) {
+        $form['os2forms_permissions_by_term']['os2forms_access']['#disabled'] = TRUE;
+        $form['os2forms_permissions_by_term']['os2forms_access']['#value'] = [array_key_first($term_data) => array_key_first($term_data)];
+      }
+
+      $form['actions']['submit']['#submit'][] = [$this, 'webformSubmit'];
     }
-    $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadMultiple($userTerms);
-    foreach ($terms as $term) {
-      $term_data[$term->id()] = $term->label();
-    }
-
-    // Remove any options that allow anonymous access to the webform.
-    $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
-    foreach ($anonymousTerms as $termId) {
-      unset($term_data[$termId]);
-    }
-
-    // Make sure title is first when creating a new webform.
-    if ('add' === $hook) {
-      $form['title']['#weight'] = -100;
-    }
-
-    // Get default settings for webform.
-    if ('settings' === $hook) {
-      $webform_settings_form = $form_state->getFormObject();
-      $webform = $webform_settings_form->getEntity();
-      $defaultSettings = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
-    }
-
-    $form['os2forms_permissions_by_term'] = [
-      '#type' => 'details',
-      '#open' => TRUE,
-      '#title' => 'Webform access',
-      '#tree' => TRUE,
-      '#weight' => -99,
-    ];
-
-    $form['os2forms_permissions_by_term']['os2forms_access'] = [
-      '#type' => 'checkboxes',
-      '#required' => TRUE,
-      '#title' => t('Access'),
-      '#default_value' => $defaultSettings ?? [],
-      '#options' => $term_data,
-      '#description' => t('Limit access to this webform.'),
-    ];
-
-    // Set access value automatically if user only has one term option.
-    if ('add' === $hook && 1 === count($term_data)) {
-      $form['os2forms_permissions_by_term']['os2forms_access']['#disabled'] = TRUE;
-      $form['os2forms_permissions_by_term']['os2forms_access']['#value'] = [array_key_first($term_data) => array_key_first($term_data)];
-    }
-
-    $form['actions']['submit']['#submit'][] = [$this, 'webformSubmit'];
   }
 
   /**
@@ -262,13 +265,13 @@ class Helper {
       $webformReference = $form['webform']['widget'][0]['target_id']['#default_value'];
       // If a webform is referenced from the node add message and default value.
       if ($webformReference) {
+        $referencedWebform = $this->entityTypeManager->getStorage('webform')->load($webformReference);
+        $anonymousUser = User::getAnonymousUser();
         $url = URL::fromRoute('entity.webform.settings_access', ['webform' => $webformReference])->toString();
         $form['field_os2forms_permissions']['widget'][0]['#prefix'] =
           '<div class="alert alert-warning">' . $this->t('Anonymous access to view this content is set on <a href="@url">the related webform access page</a> . (Create submissions permission)', ['@url' => $url]) . '</div>';
         foreach ($anonymousTerms as $termId) {
           $form['field_os2forms_permissions']['widget'][$termId]['#disabled'] = TRUE;
-          $referencedWebform = $this->entityTypeManager->getStorage('webform')->load($webformReference);
-          $anonymousUser = User::getAnonymousUser();
           if($referencedWebform->access('submission_create', $anonymousUser)) {
             $form['field_os2forms_permissions']['widget']['#default_value'][] = $termId;
           }
@@ -287,6 +290,7 @@ class Helper {
    * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
    *
    * Alter the field webform_entity_reference widget.
+   * Hide options if user is not allowed to access the webform.
    *
    * @param array $elements
    *   The form element.
@@ -309,6 +313,7 @@ class Helper {
    * Implements hook_options_list_alter().
    *
    * Change options list field for node.field_os2forms_permissions.
+   * Add anonymous option to allow the form to be displayed for anonymous users.
    *
    * @param array $options
    *   The options of the list.
@@ -319,11 +324,14 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function optionsListAlter(array &$options, array $context) {
-    $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
-    foreach ($anonymousTerms as $termId) {
-      $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($termId);
-      $label = $this->t('@term_label (Note: View permission only. This setting depends on the related webform.)', ['@term_label' => $term->label()]);
-      $options = array($termId => $label) + $options;
+    // Alter the field_os2forms_permissions options list.
+    if ('node.field_os2forms_permissions' == $context['fieldDefinition']->getFieldStorageDefinition()->id()) {
+      $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
+      foreach ($anonymousTerms as $termId) {
+        $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($termId);
+        $label = $this->t('@term_label (Note: View permission only. This setting depends on the related webform.)', ['@term_label' => $term->label()]);
+        $options = array($termId => $label) + $options;
+      }
     }
   }
 }

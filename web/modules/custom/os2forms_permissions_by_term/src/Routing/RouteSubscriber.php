@@ -14,6 +14,8 @@ class RouteSubscriber extends RouteSubscriberBase {
    * {@inheritdoc}
    */
   protected function alterRoutes(RouteCollection $collection) {
+    // Disallow access to webform submission collection page showing submissions from all webforms.
+    // Submissions should only be accessible in relation to a specific webform.
     $route = $collection->get('entity.webform_submission.collection');
     if ($route) {
       $route->setRequirement('_access', 'FALSE');

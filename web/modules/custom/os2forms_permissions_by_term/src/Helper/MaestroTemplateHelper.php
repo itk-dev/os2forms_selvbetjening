@@ -205,24 +205,29 @@ class MaestroTemplateHelper {
    * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
    *
    * Alter the field webform_entity_reference widget.
+   * Hide webform options from maestro templates if user is not allowed to update the webform.
    *
    * @param array $form
    *   The form element.
    * @param FormStateInterface $form_state
    *   The state of the form.
+   * @param string $form_id
+   *   The id of the form.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function fieldWidgetMaestroTaskEditFormAlter(array &$form, FormStateInterface $form_state) {
-    if (array_key_exists('webform_machine_name', $form)) {
-      foreach ($form['webform_machine_name']['#options'] as $key => $option) {
-        if (!$option instanceof TranslatableMarkup) {
-          $webform = $this->entityTypeManager->getStorage('webform')->load($key);
-          /** @var \Drupal\webform\WebformInterface $webform */
-          $accessResult = $this->helper->webformAccess($webform, 'update', $this->account);
-          if ($accessResult instanceof AccessResultForbidden) {
-            unset($form['webform_machine_name']['#options'][$key]);
+  public function fieldWidgetMaestroTaskEditFormAlter(array &$form, FormStateInterface $form_state, string $form_id) {
+    if ('template_edit_task' == $form_id) {
+      if (array_key_exists('webform_machine_name', $form)) {
+        foreach ($form['webform_machine_name']['#options'] as $key => $option) {
+          if (!$option instanceof TranslatableMarkup) {
+            $webform = $this->entityTypeManager->getStorage('webform')->load($key);
+            /** @var \Drupal\webform\WebformInterface $webform */
+            $accessResult = $this->helper->webformAccess($webform, 'update', $this->account);
+            if ($accessResult instanceof AccessResultForbidden) {
+              unset($form['webform_machine_name']['#options'][$key]);
+            }
           }
         }
       }
