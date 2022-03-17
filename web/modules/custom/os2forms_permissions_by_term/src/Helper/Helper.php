@@ -6,6 +6,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Field\FieldFilteredMarkup;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
@@ -20,6 +21,14 @@ use Drupal\webform\WebformInterface;
  * Helper class for os2forms permissions by term.
  */
 class Helper {
+
+
+  /**
+   * The options in node webformSelect.
+   *
+   * @var array
+   */
+  private array $webformSelectOptions = [];
 
   use StringTranslationTrait;
   /**
@@ -299,14 +308,9 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function fieldWidgetWebformEntityReferenceFormAlter(array &$elements) {
-    foreach ($elements[0]['target_id']['#options'] as $key => $option) {
-      $webform = $this->entityTypeManager->getStorage('webform')->load($key);
-      /** @var \Drupal\webform\WebformInterface $webform */
-      $accessResult = $this->webformAccess($webform, 'update', $this->account);
-      if ($accessResult instanceof AccessResultForbidden) {
-        unset($elements[0]['target_id']['#options'][$key]);
-      }
-    }
+    $options = $elements[0]['target_id']['#options'];
+    $this->addWebformSelectOptions($options);
+    $elements[0]['target_id']['#options'] = $this->webformSelectOptions;
   }
 
   /**
@@ -331,6 +335,44 @@ class Helper {
         $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($termId);
         $label = $this->t('@term_label (Note: View permission only. This setting depends on the related webform.)', ['@term_label' => $term->label()]);
         $options = array($termId => $label) + $options;
+      }
+    }
+  }
+
+  /**
+   * Add to the private variable webformSelectOptions.
+   *
+   * @param array $options
+   *   The options to to pick from.
+   * @param string|null $parent
+   *   A parent key if the option is a child.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function addWebformSelectOptions(array $options, string $parent = NULL) {
+    foreach ($options as $key => $option) {
+      if ($option instanceof FieldFilteredMarkup) {
+        if ($parent) {
+          $webform = $this->entityTypeManager->getStorage('webform')->load($key);
+          /** @var \Drupal\webform\WebformInterface $webform */
+          $accessResult = $this->webformAccess($webform, 'update', $this->account);
+          if (!$accessResult instanceof AccessResultForbidden) {
+            // Webform module only allows for one level of grouping, so we can safely assume only one level nesting.
+            $this->webformSelectOptions[$parent][$key] = $option;
+          }
+        }
+        else {
+          $webform = $this->entityTypeManager->getStorage('webform')->load($key);
+          /** @var \Drupal\webform\WebformInterface $webform */
+          $accessResult = $this->webformAccess($webform, 'update', $this->account);
+          if (!$accessResult instanceof AccessResultForbidden) {
+            $this->webformSelectOptions[$key] = $option;
+          }
+        }
+      }
+      else {
+        $this->addWebformSelectOptions($option, $key);
       }
     }
   }
