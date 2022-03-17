@@ -4,10 +4,30 @@
  * @file
  * Contains hooks related to OS2Forms permissions by term module.
  */
+
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
+use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
 use Drupal\webform\WebformInterface;
 use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * We need the hook_options_list_alter() in this module to trigger after the one in permissions_by_term module.
+ */
+function os2forms_permissions_by_term_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    // Move our hook_options_list_alter() implementation to the end of the list so it is handled after permissions_by_term module.
+    case 'options_list_alter':
+      $temp = $implementations['os2forms_permissions_by_term'];
+      unset($implementations['os2forms_permissions_by_term']);
+      $implementations['os2forms_permissions_by_term'] = $temp;
+      break;
+  }
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -38,6 +58,20 @@ function os2forms_permissions_by_term_form_webform_settings_form_alter(array &$f
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Alter the node add/edit form.
+ *
+ * @param array $form
+ *   The form to alter.
+ * @param FormStateInterface $form_state
+ *   The state of the form.
+ */
+function os2forms_permissions_by_term_form_node_form_alter(array &$form, FormStateInterface $form_state) {
+  \Drupal::service('os2forms_permissions_by_term.helper')->nodeFormAlter($form, $form_state);
+}
+
+/**
  * Implements hook_ENTITY_TYPE_access() for webform entities.
  *
  * Deny access to webforms based on permissions_by_term.
@@ -53,6 +87,24 @@ function os2forms_permissions_by_term_form_webform_settings_form_alter(array &$f
  */
 function os2forms_permissions_by_term_webform_access(WebformInterface $webform, $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.helper')->webformAccess($webform, $operation, $account);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access() for node entities.
+ *
+ * Allow/deny access to node.
+ *
+ * @param NodeInterface $node
+ *   The entity to set access on.
+ * @param $operation
+ *   The operation to check access for.
+ * @param AccountInterface $account
+ *   The user account.
+ * @return mixed
+ *   The changed entity permissions.
+ */
+function os2forms_permissions_by_term_node_access(NodeInterface $node, $operation, AccountInterface $account) {
+  return \Drupal::service('os2forms_permissions_by_term.helper')->nodeAccess($node, $operation, $account);
 }
 
 /**
@@ -99,4 +151,46 @@ function os2forms_permissions_by_term_form_maestro_template_edit_form_alter(arra
  */
 function os2forms_permissions_by_term_maestro_template_access(ConfigEntityInterface $maestroTemplate, $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->maestroTemplateAccess($maestroTemplate, $operation, $account);
+}
+
+/**
+ * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
+ *
+ * Alter the field webform_entity_reference widget.
+ *
+ * @param array $elements
+ *   The form element.
+ */
+function os2forms_permissions_by_term_field_widget_multivalue_webform_entity_reference_select_form_alter(array &$elements) {
+  \Drupal::service('os2forms_permissions_by_term.helper')->fieldWidgetWebformEntityReferenceFormAlter($elements);
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Alter maestro template edit form.
+ *
+ * @param array $form
+ *   The form to alter.
+ * @param FormStateInterface $form_state
+ *   The state of the form.
+ * @param string $form_id
+ *   The id of the form.
+ */
+function os2forms_permissions_by_term_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id) {
+  \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->fieldWidgetMaestroTaskEditFormAlter($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_options_list_alter().
+ *
+ * Change options list field for node.field_os2forms_permissions.
+ *
+ * @param array $options
+ *   The options of the list.
+ * @param array $context
+ *   The context of the options list.
+ */
+function os2forms_permissions_by_term_options_list_alter(array &$options, array $context) {
+  \Drupal::service('os2forms_permissions_by_term.helper')->optionsListAlter($options, $context);
 }
