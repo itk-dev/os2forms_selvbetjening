@@ -1,0 +1,14 @@
+uuid: b35d91b3-badb-4e18-a904-0734d3e6068d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.virksomhed
+  module:
+    - user
+id: user_remove_role_action.virksomhed
+label: 'Remove the Virksomhed role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: virksomhed

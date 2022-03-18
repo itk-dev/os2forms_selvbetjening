@@ -1,0 +1,190 @@
+{
+    "name": "itk-dev/selvbetjening",
+    "description": "selvbetjening.aarhuskommune.dk",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://github.com/itk-dev/os2forms_selvbetjening",
+    "repositories": [
+        {
+            "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9",
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_embed",
+                "//": "@see https://github.com/OS2Forms/os2forms/blob/master/composer.json#L27",
+                "version": "1.x-dev",
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupalcode.org/issue/webform_embed-3149360.git",
+                    "type": "git",
+                    "reference": "3149360-automated-drupal-9"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_permissions_by_term",
+                "version": "1.2.0",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://ftp.drupal.org/files/projects/webform_permissions_by_term-8.x-1.2.zip",
+                    "reference": "8.x-1.2",
+                    "shasum": "eabcfdbbbc850986fdd0d8b3a26cad8d6b5d675e"
+                },
+                "require": {
+                    "drupal/core": "~8.0 || ^9.0",
+                    "drupal/permissions_by_term": "*"
+                },
+                "type": "drupal-module"
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms_cpr_lookup"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms_cvr_lookup"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms_digital_post"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect"
+        }
+    ],
+    "require": {
+        "php": "~7.4.0 || ~8.0.0",
+        "composer/installers": "^1.9",
+        "drupal/bootstrap": "^3.23",
+        "drupal/config_ignore": "^2.3",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-project-message": "^9.1",
+        "drupal/core-recommended": "^9.1",
+        "drupal/maestro": "dev-3.x as 3.0.1-rc2",
+        "drupal/memcache": "^2.3",
+        "drupal/menu_link_attributes": "^1.2",
+        "drupal/openid_connect": "^2.0",
+        "drupal/system_status": "^2.9",
+        "drush/drush": "^10.6",
+        "itk-dev/os2forms_cpr_lookup": "^1.6.3",
+        "itk-dev/os2forms_cvr_lookup": "^1.1",
+        "itk-dev/os2forms_digital_post": "dev-develop",
+        "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
+        "itk-dev/os2forms_user_field_lookup": "dev-develop",
+        "itk-dev/web_accessibility_statement": "dev-master",
+        "os2forms/os2forms_forloeb_profile": "^1.8"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9.1"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "discard-changes": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "simplesamlphp/composer-module-installer": true,
+            "vaimo/composer-patches": true,
+            "cweagans/composer-patches": true,
+            "zaporylie/composer-drupal-optimizations": true,
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "enable-patching": true,
+        "patcher": {
+            "force-reset": true
+        },
+        "patches": {
+            "drupal/webform": {
+                "Add support for Set to state": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/add-set-to-state-3159806-2-modified-5.19.patch"
+            },
+            "drupal/webform_migrate": {
+                "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
+            },
+            "drupal/queue_mail": {
+                "Admin interface to see queued mail": "https://www.drupal.org/files/issues/2020-06-30/3096917-ui-queue-mail-moderate-5.patch"
+            },
+            "drupal/core": {
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2021-09-27/2982052-73.patch"
+            },
+            "drupal/openid_connect": {
+                "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/8/install",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://www.drupal.org/support",
+                "  * Get involved with the Drupal community:",
+                "      https://www.drupal.org/getting-involved",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "vendor/bin/drush webform:libraries:download"
+        ]
+    }
+}

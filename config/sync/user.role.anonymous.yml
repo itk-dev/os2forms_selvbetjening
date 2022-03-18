@@ -1,0 +1,14 @@
+uuid: d9527759-17b8-4712-8414-a3f15e124f9b
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonym bruger'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'display eu cookie compliance popup'
+  - 'use text format restricted_html'

@@ -1,0 +1,22 @@
+uuid: cb25260b-db7e-4c16-becf-e64563fafc3c
+langcode: da
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - gin
+_core:
+  default_config_hash: 27fdguefXVZustNMhBezlsHKKj6UK1ye7617GvgtD9c
+id: gin_help
+theme: gin
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,17 @@
+uuid: 0e5f78ce-5f86-4d09-aa18-4772d3feee87
+langcode: en
+status: true
+dependencies:
+  module:
+    - events_logging
+title: 'Default cron handler'
+id: events_logging_cron
+weight: 0
+module: events_logging
+callback: events_logging_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

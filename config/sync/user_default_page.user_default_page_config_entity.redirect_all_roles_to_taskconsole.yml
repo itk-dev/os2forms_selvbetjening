@@ -1,0 +1,17 @@
+uuid: 0b9be9e4-ee0d-49c9-8459-3d4947139bdd
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: V_7gkihTVX4kQAlCD6CS8347oknQms-DO6iAQZyYWWo
+id: redirect_all_roles_to_taskconsole
+label: 'Redirect all roles to Taskconsole'
+user_roles:
+  sagsbehandler: sagsbehandler
+  medarbejder: medarbejder
+  leder: leder
+users: null
+login_redirect: /taskconsole
+login_redirect_message: 'Velkommen tilbage, her kan du se dine aktive opgaver.'
+logout_redirect: ''
+logout_redirect_message: ''

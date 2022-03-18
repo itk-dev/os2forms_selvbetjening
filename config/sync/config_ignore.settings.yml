@@ -1,0 +1,8 @@
+ignored_config_entities:
+  - 'maestro.maestro_template.*'
+  - system.site
+  - 'webform.webform.*'
+  - 'webform.webform_options.*'
+_core:
+  default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
+langcode: da

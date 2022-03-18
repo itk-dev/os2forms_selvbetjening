@@ -1,0 +1,14 @@
+uuid: 54ed538e-1564-4d5c-9a81-411918548dad
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.leder
+  module:
+    - user
+id: user_remove_role_action.leder
+label: 'Remove the Leder role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: leder

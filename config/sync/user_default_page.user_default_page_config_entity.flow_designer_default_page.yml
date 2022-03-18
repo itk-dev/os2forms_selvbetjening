@@ -1,0 +1,18 @@
+uuid: a7ca08f0-cb87-4b1e-ae35-3a2709e98e6d
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - os2forms_forloeb
+_core:
+  default_config_hash: KnIa002ZjrYfd-22bycbrg8Q58uiwRC9eFfQK8cyWk0
+id: flow_designer_default_page
+label: 'Flow designer default page'
+user_roles:
+  flow_designer: flow_designer
+users: null
+login_redirect: /maestro/templates/list
+login_redirect_message: 'Velkommen tilbage, her kan du arbejde med flow skabeloner.'
+logout_redirect: ''
+logout_redirect_message: ''

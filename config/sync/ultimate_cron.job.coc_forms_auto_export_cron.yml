@@ -1,0 +1,17 @@
+uuid: 7d865425-8a5e-4c1d-9cf9-210b17ec4977
+langcode: en
+status: true
+dependencies:
+  module:
+    - coc_forms_auto_export
+title: 'Default cron handler'
+id: coc_forms_auto_export_cron
+weight: 0
+module: coc_forms_auto_export
+callback: coc_forms_auto_export_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

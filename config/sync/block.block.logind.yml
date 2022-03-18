@@ -1,0 +1,35 @@
+uuid: bccdce5d-aba2-4f03-9b2c-b19d171f28f2
+langcode: da
+status: true
+dependencies:
+  module:
+    - system
+    - user
+  theme:
+    - gin
+_core:
+  default_config_hash: VeLahVl8tM36QACh620l2oAerqz2xu50bANMkxylOco
+id: logind
+theme: gin
+region: content
+weight: 0
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'Log ind'
+  label_display: visible
+  provider: user
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '<front>'
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous

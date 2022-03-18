@@ -1,0 +1,40 @@
+uuid: 2eee9c91-83b4-4d37-9e31-32b2f3f06383
+langcode: da
+status: true
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+    - user
+  theme:
+    - gin
+_core:
+  default_config_hash: je_ks3WE41z2KC2GyWLFjIhB0izLjzjtxQeTJciZ2vQ
+id: vaerktojer
+theme: gin
+region: content
+weight: -3
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Værktøjer
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '<front>'
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      flow_designer: flow_designer

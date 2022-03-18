@@ -1,0 +1,14 @@
+uuid: fa0ee950-148b-4b9c-b60d-bebb65b9f1f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.medarbejder
+  module:
+    - user
+id: user_remove_role_action.medarbejder
+label: 'Remove the Medarbejder role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: medarbejder

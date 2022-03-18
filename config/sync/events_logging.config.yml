@@ -1,0 +1,5 @@
+_core:
+  default_config_hash: VqdXn-mwIXVYxBTGOSunM60VE2kNCERYQwG-YoCeErs
+langcode: da
+enabled_events_logging_plugins:
+  - database

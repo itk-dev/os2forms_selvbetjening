@@ -1,0 +1,40 @@
+spt_table:
+  1:
+    status: '1'
+    pages: "/user/*\r\n<front>\r\n/sagsbehandler-overblik/*\r\n/sagsbehandler-overblik\r\n/maestro-all-flows\r\n/outstanding-tasks\r\n/taskconsole\r\n/maestro/*\r\n/maestro-all-in-production-tasks"
+    theme: gin
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+      administrator: administrator
+      flow_designer: flow_designer
+      forloeb_designer: forloeb_designer
+      sagsbehandler: sagsbehandler
+      medarbejder: medarbejder
+      leder: leder
+    language:
+      da: da
+      en: en
+    weight: '-10'
+    remove: Remove
+  0:
+    status: '1'
+    pages: "/node/*\r\n*/submission/*/edit"
+    theme: custom_theme
+    roles:
+      anonymous: anonymous
+      authenticated: authenticated
+      administrator: administrator
+      flow_designer: flow_designer
+      forloeb_designer: forloeb_designer
+      sagsbehandler: sagsbehandler
+      medarbejder: medarbejder
+      leder: leder
+    language:
+      da: da
+      en: en
+    weight: '-9'
+    remove: Remove
+_core:
+  default_config_hash: 8Hrvho9ASZUd5rhSsIq1IqtzjWZYitv2MoyaWH-Hc18
+langcode: da

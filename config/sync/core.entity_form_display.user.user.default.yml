@@ -1,0 +1,86 @@
+uuid: c95a9460-e9c6-4e91-ac3a-a5e012b83b5b
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_az_ident
+    - field.field.user.user.field_department
+    - field.field.user.user.field_is_leader
+    - field.field.user.user.field_name
+  module:
+    - path
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: -10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  contact:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_az_ident:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_department:
+    type: string_textfield
+    weight: 33
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_is_leader:
+    type: boolean_checkbox
+    weight: 35
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_name:
+    type: string_textfield
+    weight: 31
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  language:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  os2web_simplesaml_uid:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simplesamlphp_auth_user_enable:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

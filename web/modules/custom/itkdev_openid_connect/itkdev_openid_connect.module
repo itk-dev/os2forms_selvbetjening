@@ -1,0 +1,104 @@
+<?php
+
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_honeypot_form_protections_alter().
+ *
+ * Disable honeypot on the OpenID Connect login form.
+ */
+function itkdev_openid_connect_honeypot_form_protections_alter(array &$options, array $form) {
+  if ('openid_connect_login_form' === ($form['form_id']['#value'] ?? NULL)) {
+    $options = [];
+  }
+}
+
+/**
+  * Implements hook_user_default_page_login_ignore_whitelist_alter().
+  *
+  * @todo Add to Helper service class.
+  */
+function itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter(array &$ignored_routes) {
+  // Check if we're in the OpenID Connect login flow.
+  $current_route = \Drupal::service('current_route_match')->getRouteName();
+  if ('openid_connect.redirect_controller_redirect' === $current_route) {
+    // Check if OpenID Connect has stored a redirect destination that's
+    // different from `'user'` (cf. OpenIDConnectSession::saveDestination()).
+    $destination = \Drupal::service('openid_connect.session')->retrieveDestination(FALSE);
+    if (isset($destination['destination']) && 'user' !== $destination['destination']) {
+      // OpenID Connect has a redirect. User default page should ignore the
+      // current route.
+      $ignored_routes[] = $current_route;
+    }
+  }
+}
+
+/**
+ * Implements hook_openid_connect_claims_alter().
+ *
+ * @todo Add to Helper service class.
+ */
+function itkdev_openid_connect_openid_connect_claims_alter(array &$claims) {
+  $claims['full_name'] = [
+    'scope' => 'profile',
+    'title' => 'Full name',
+    'type' => 'string',
+    'description' => 'Given name followed by family name',
+  ];
+  $claims['az_ident'] = [
+    'scope' => 'profile',
+    'title' => 'az-ident',
+    'type' => 'string',
+    'description' => 'az-ident',
+  ];
+  $claims['department'] = [
+    'scope' => 'profile',
+    'title' => 'Department',
+    'type' => 'string',
+    'description' => 'Department',
+  ];
+  $claims['is_leader'] = [
+    'scope' => 'profile',
+    'title' => 'Is leader?',
+    'type' => 'boolean',
+    'description' => 'Is leader?',
+  ];
+}
+
+/**
+ * Implements hook_openid_connect_userinfo_alter().
+ *
+ * @todo Add to Helper service class.
+ */
+function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, array $context) {
+  // Prefer email as Drupal user name.
+  $userinfo['preferred_username'] = $userinfo['email'];
+
+  // Full person name.
+  if (!isset($userinfo['full_name']) && isset($userinfo['given_name'], $userinfo['family_name'])) {
+    $userinfo['full_name'] = sprintf('%s %s',  $userinfo['given_name'], $userinfo['family_name']);
+  }
+
+  // Use meaningful names.
+  if (!isset($userinfo['az_ident']) && isset($userinfo['samaccountname'])) {
+    $userinfo['az_ident'] = $userinfo['samaccountname'];
+  }
+  if (!isset($userinfo['department']) && isset($userinfo['Office'])) {
+    $userinfo['department'] = $userinfo['Office'];
+  }
+
+  // @todo this information is not yet provided by the Idp.
+  $userinfo['is_leader'] = 0;
+}
+
+/**
+ * Implements hook_openid_connect_userinfo_save().
+ *
+ * @param UserInterface $account
+ *   The current user account.
+ * @param array $context
+ *   Context information from open id connect module.
+ */
+function itkdev_openid_connect_openid_connect_userinfo_save(UserInterface $account, array $context) {
+  \Drupal::service('itkdev_openid_connect.helper')->userInfoSave($account, $context);
+}

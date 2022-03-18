@@ -1,0 +1,22 @@
+_core:
+  default_config_hash: k8UIEOLDy09rsrzq2WEY7kC6gj1QZhfon-C7lVM9Fv0
+langcode: da
+protect_all_forms: true
+unprotected_forms:
+  - user_login_form
+  - search_form
+  - search_block_form
+  - views_exposed_form
+  - honeypot_settings_form
+log: true
+element_name: url
+time_limit: 5
+expire: 300
+form_settings:
+  user_register_form: false
+  user_pass: false
+  contact_message_personal_form: false
+  node_approval_form_form: false
+  node_article_form: false
+  node_page_form: false
+  node_webform_form: false

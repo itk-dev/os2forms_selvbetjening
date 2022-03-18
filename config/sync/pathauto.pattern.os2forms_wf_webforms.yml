@@ -1,0 +1,24 @@
+uuid: 6a4c779e-ed97-428d-a648-c214232e23cc
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: nLClPWPElXEamLO6M0lLi-d9GKVWjgS_CWCAggCpcOE
+id: os2forms_wf_webforms
+label: 'OS2Forms Webforms'
+type: 'canonical_entities:node'
+pattern: 'content/[node:field_os2forms_wff_application:entity:name]/[node:title]'
+selection_criteria:
+  c6e82172-e76f-406f-bdce-b4b4a8331591:
+    id: node_type
+    negate: false
+    uuid: c6e82172-e76f-406f-bdce-b4b4a8331591
+    context_mapping:
+      node: node
+    bundles:
+      webform: webform
+selection_logic: and
+weight: -5
+relationships: {  }

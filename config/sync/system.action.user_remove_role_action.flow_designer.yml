@@ -1,0 +1,14 @@
+uuid: 2ebb422d-a090-44aa-b0a9-9321f8feb3a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.flow_designer
+  module:
+    - user
+id: user_remove_role_action.flow_designer
+label: 'Remove the Flow designer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: flow_designer

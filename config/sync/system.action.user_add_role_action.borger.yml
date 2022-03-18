@@ -1,0 +1,14 @@
+uuid: f46512d0-a40a-4885-ad5c-1a24271f4841
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.borger
+  module:
+    - user
+id: user_add_role_action.borger
+label: 'Add the borger role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: borger

@@ -1,0 +1,19 @@
+uuid: 822b976a-e4a7-4d04-93ee-ad042f2788c0
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_claim
+    - taxonomy.vocabulary.user_affiliation
+id: taxonomy_term.user_affiliation.field_claim
+field_name: field_claim
+entity_type: taxonomy_term
+bundle: user_affiliation
+label: Claim
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
