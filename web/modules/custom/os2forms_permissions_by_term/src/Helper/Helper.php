@@ -6,6 +6,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Field\FieldFilteredMarkup;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
@@ -299,14 +300,10 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function fieldWidgetWebformEntityReferenceFormAlter(array &$elements) {
-    foreach ($elements[0]['target_id']['#options'] as $key => $option) {
-      $webform = $this->entityTypeManager->getStorage('webform')->load($key);
-      /** @var \Drupal\webform\WebformInterface $webform */
-      $accessResult = $this->webformAccess($webform, 'update', $this->account);
-      if ($accessResult instanceof AccessResultForbidden) {
-        unset($elements[0]['target_id']['#options'][$key]);
-      }
-    }
+    $options = $elements[0]['target_id']['#options'];
+    $result = [];
+    $this->filterWebformSelectOptions($options, $result);
+    $elements[0]['target_id']['#options'] = $result;
   }
 
   /**
@@ -331,6 +328,40 @@ class Helper {
         $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($termId);
         $label = $this->t('@term_label (Note: View permission only. This setting depends on the related webform.)', ['@term_label' => $term->label()]);
         $options = array($termId => $label) + $options;
+      }
+    }
+  }
+
+  /**
+   * Add to the private variable webformSelectOptions.
+   *
+   * @param array $options
+   *   The options to to pick from.
+   * @param array $result
+   * @param string|null $parent
+   *   A parent key if the option is a child.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function filterWebformSelectOptions(array $options, array &$result = [], string $parent = NULL) {
+    foreach ($options as $key => $option) {
+      if ($option instanceof FieldFilteredMarkup) {
+        $webform = $this->entityTypeManager->getStorage('webform')->load($key);
+        /** @var \Drupal\webform\WebformInterface $webform */
+        $accessResult = $this->webformAccess($webform, 'update', $this->account);
+        if (!$accessResult instanceof AccessResultForbidden) {
+          if ($parent) {
+            // Webform module only allows for one level of grouping, so we can safely assume only one level nesting.
+            $result[$parent][$key] = $option;
+          }
+          else {
+            $result[$key] = $option;
+          }
+        }
+      }
+      else {
+        $this->filterWebformSelectOptions($option, $result, $key);
       }
     }
   }
