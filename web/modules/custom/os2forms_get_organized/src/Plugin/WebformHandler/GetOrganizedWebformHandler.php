@@ -80,7 +80,8 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
 
     $form['case_id'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Case id (GetOrganized)'),
+      '#title' => $this->t('GetOrganized case ID'),
+      '#description' => $this->t('The GetOrganized case that responses should be uploaded to.'),
       '#required' => TRUE,
       '#default_value' => $this->configuration['case_id'],
     ];
@@ -92,6 +93,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Attachment element'),
       '#options' => $availableAttachmentElements,
       '#default_value' => $this->configuration['attachment_element'],
+      '#description' => $this->t('Choose the element responsible for creating response attachments.'),
       '#required' => TRUE,
       '#size' => 5,
     ];
@@ -214,15 +216,14 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
       throw new AttachmentElementNotFoundException();
     }
 
+    // Get attachment element file contents
     $attachmentElement = $this->configuration['attachment_element'];
     $element = $webform_submission->getWebform()->getElement($attachmentElement, $webform_submission);
     $elementInfo = $this->elementInfo->createInstance('webform_entity_print_attachment');
-
-    // Create temp file with attachment-element contents
     $fileContent = $elementInfo::getFileContent($element, $webform_submission);
-
+    
+    // Create temp file with attachment-element contents
     $webformLabel = $webform_submission->getWebform()->label();
-
     $tempFile = tempnam('/tmp', $webformLabel);
     file_put_contents($tempFile, $fileContent);
 

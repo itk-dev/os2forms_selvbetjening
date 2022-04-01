@@ -9,6 +9,9 @@ class WebformHelper
 {
   private ?Client $client = null;
 
+  /**
+   * Adds document to GetOrganized case.
+   */
   public function journalize(string $filePath, string $getOrganizedCaseId, string $getOrganizedFileName)
   {
     if (null === $this->client) {
@@ -21,6 +24,9 @@ class WebformHelper
 
   }
 
+  /**
+   * Sets up Client.
+   */
   private function setupClient()
   {
     $username = \Drupal::config('get_organized')->get('username');
