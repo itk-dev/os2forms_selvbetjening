@@ -2,12 +2,19 @@
 
 namespace Drupal\os2forms_get_organized\Helper;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use ItkDev\GetOrganized\Client;
 use ItkDev\GetOrganized\Service\Documents;
 
 class WebformHelper
 {
   private ?Client $client = null;
+  private ConfigFactoryInterface $config;
+
+  public function __construct(ConfigFactoryInterface $config)
+  {
+    $this->config = $config;
+  }
 
   /**
    * Adds document to GetOrganized case.
@@ -21,7 +28,6 @@ class WebformHelper
     /** @var Documents $documentService */
     $documentService = $this->client->api('documents');
     $documentService->AddToDocumentLibrary($filePath, $getOrganizedCaseId, $getOrganizedFileName);
-
   }
 
   /**
@@ -29,9 +35,10 @@ class WebformHelper
    */
   private function setupClient()
   {
-    $username = \Drupal::config('get_organized')->get('username');
-    $password = \Drupal::config('get_organized')->get('password');
-    $baseUrl = \Drupal::config('get_organized')->get('base_url');
+    $config = $this->config->get('os2forms_get_organized');
+    $username = $config->get('username');
+    $password = $config->get('password');
+    $baseUrl = $config->get('base_url');
 
     $this->client = new Client($username, $password, $baseUrl);
   }

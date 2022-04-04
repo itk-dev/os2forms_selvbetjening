@@ -117,7 +117,7 @@ To use the custom GetOrganized module the module must be
 configured in the `settings.local.php` file:
 ```php
 # settings.local.php
-$config['get_organized'] = [
+$config['os2forms_get_organized'] = [
   'username' => '…',
   'password' => '…',
   'base_url' => '…/_goapi',

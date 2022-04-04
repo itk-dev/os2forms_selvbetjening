@@ -1,3 +1,5 @@
 services:
   os2forms_get_organized.webform_helper:
     class: Drupal\os2forms_get_organized\Helper\WebformHelper
+    arguments:
+      - '@config.factory'

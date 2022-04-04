@@ -5,7 +5,6 @@ namespace Drupal\os2forms_get_organized\Plugin\WebformHandler;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\os2forms_get_organized\Exception\AttachmentElementNotFoundException;
 use Drupal\webform\Plugin\WebformHandlerBase;
-use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -13,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Get Organized Webform Handler.
  *
  * @WebformHandler(
- *   id = "get_organized",
+ *   id = "os2forms_get_organized",
  *   label = @Translation("GetOrganized"),
  *   category = @Translation("Web services"),
  *   description = @Translation("Journalizes response in GetOrganized."),
@@ -65,45 +64,24 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function defaultConfiguration() {
-    return [
-      'message' => 'This is a custom message.',
-      'debug' => FALSE,
-    ];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $this->getLogger()->debug('This was the form: ' . print_r($this->getWebform()->getElementsDecoded(), TRUE));
 
     $form['case_id'] = [
       '#type' => 'textfield',
       '#title' => $this->t('GetOrganized case ID'),
       '#description' => $this->t('The GetOrganized case that responses should be uploaded to.'),
       '#required' => TRUE,
-      '#default_value' => $this->configuration['case_id'],
+      '#default_value' => $this->configuration['case_id'] ?? '',
     ];
-
-    $availableAttachmentElements = $this->getAvailableAttachmentElements($this->getWebform()->getElementsDecodedAndFlattened());
 
     $form['attachment_element'] = [
       '#type' => 'select',
       '#title' => $this->t('Attachment element'),
-      '#options' => $availableAttachmentElements,
-      '#default_value' => $this->configuration['attachment_element'],
+      '#options' => $this->getAvailableAttachmentElements($this->getWebform()->getElementsDecodedAndFlattened()),
+      '#default_value' => $this->configuration['attachment_element'] ?? '',
       '#description' => $this->t('Choose the element responsible for creating response attachments.'),
       '#required' => TRUE,
       '#size' => 5,
-    ];
-
-    $form['development']['debug'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Enable debugging'),
-      '#description' => $this->t('If checked, every handler method invoked will be displayed onscreen to all users.'),
-      '#return_value' => TRUE,
-      '#default_value' => $this->configuration['debug'],
     ];
 
     return $this->setSettingsParents($form);
@@ -116,101 +94,12 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['case_id'] = $form_state->getValue('case_id');
     $this->configuration['attachment_element'] = $form_state->getValue('attachment_element');
-    $this->configuration['debug'] = (bool) $form_state->getValue('debug');
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function alterElements(array &$elements, WebformInterface $webform) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function overrideSettings(array &$settings, WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-    if ($value = $form_state->getValue('element')) {
-      $form_state->setErrorByName('element', $this->t('The element must be empty. You entered %value.', ['%value' => $value]));
-    }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function confirmForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function preCreate(array &$values) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function postCreate(WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function postLoad(WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function preDelete(WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function postDelete(WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function preSave(WebformSubmissionInterface $webform_submission) {
-    $this->debug(__FUNCTION__);
   }
 
   /**
    * {@inheritdoc}
    */
   public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE) {
-    $this->debug(__FUNCTION__, $update ? 'update' : 'insert');
 
     if (!$this->configuration['attachment_element']){
       throw new AttachmentElementNotFoundException();
@@ -221,7 +110,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     $element = $webform_submission->getWebform()->getElement($attachmentElement, $webform_submission);
     $elementInfo = $this->elementInfo->createInstance('webform_entity_print_attachment');
     $fileContent = $elementInfo::getFileContent($element, $webform_submission);
-    
+
     // Create temp file with attachment-element contents
     $webformLabel = $webform_submission->getWebform()->label();
     $tempFile = tempnam('/tmp', $webformLabel);
@@ -237,91 +126,17 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function preprocessConfirmation(array &$variables) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function createHandler() {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function updateHandler() {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function deleteHandler() {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function createElement($key, array $element) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function updateElement($key, array $element, array $original_element) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function deleteElement($key, array $element) {
-    $this->debug(__FUNCTION__);
-  }
-
-  /**
-   * Display the invoked plugin method to end user.
-   *
-   * @param string $method_name
-   *   The invoked method name.
-   * @param string $context1
-   *   Additional parameter passed to the invoked method name.
-   */
-  protected function debug($method_name, $context1 = NULL) {
-    if (!empty($this->configuration['debug'])) {
-      $t_args = [
-        '@id' => $this->getHandlerId(),
-        '@class_name' => get_class($this),
-        '@method_name' => $method_name,
-        '@context1' => $context1,
-      ];
-      $this->messenger()->addWarning($this->t('Invoked @id: @class_name:@method_name @context1', $t_args), TRUE);
-    }
-  }
-
-  /**
    * Get available attachment elements.
    */
   private function getAvailableAttachmentElements(array $elements): array
   {
-    $availableElements = [];
+    $attachmentElements = array_filter($elements, function ($element) {
+      return 'webform_entity_print_attachment:pdf' === $element['#type'];
+    });
 
-    foreach ($elements as $key => $element) {
-
-      if ('webform_entity_print_attachment:pdf' !== $element['#type']) {
-        continue;
-      }
-
-      $availableElements[$key] = $element['#title'];
-    }
-
-    return $availableElements;
+    return array_map(function ($element) {
+      return $element['#title'];
+    }, $attachmentElements);
   }
 
 }
