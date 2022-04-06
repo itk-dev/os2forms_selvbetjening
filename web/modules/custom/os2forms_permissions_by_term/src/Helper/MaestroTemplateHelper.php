@@ -10,6 +10,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\permissions_by_term\Service\AccessStorage;
 
@@ -17,9 +18,10 @@ use Drupal\permissions_by_term\Service\AccessStorage;
  * Helper class for maestro templates permissions by term.
  */
 class MaestroTemplateHelper {
+  use StringTranslationTrait;
 
   /**
-   * Permissions by term access storage
+   * Permissions by term access storage.
    *
    * @var \Drupal\permissions_by_term\Service\AccessStorage
    */
@@ -47,6 +49,8 @@ class MaestroTemplateHelper {
   protected ConfigFactory $configFactory;
 
   /**
+   * The helper.
+   *
    * @var \Drupal\os2forms_permissions_by_term\Helper\Helper
    */
   protected Helper $helper;
@@ -74,25 +78,24 @@ class MaestroTemplateHelper {
   }
 
   /**
-   * Implementation of hook_form_FORM_ID_alter().
+   * Implements hook_form_FORM_ID_alter().
    *
    * Add permission by term selection to webform "add" and "settings".
    *
    * @param array $form
    *   The form being altered.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
-   * @param $hook
+   * @param string $hook
    *   The type of webform hook calling this method.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   *
    */
   public function maestroTemplateFormAlter(array &$form, FormStateInterface $form_state, $hook) {
     $term_data = [];
     $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
-    if (1 === (int)$this->account->id()) {
+    if (1 === (int) $this->account->id()) {
       $userTerms = [];
       $permissionsByTermBundles = $this->configFactory->get('permissions_by_term.settings')->get('target_bundles');
       foreach ($permissionsByTermBundles as $bundle) {
@@ -101,7 +104,8 @@ class MaestroTemplateHelper {
           $userTerms[] = $term->tid;
         }
       }
-    } else {
+    }
+    else {
       $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
     }
     $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadMultiple($userTerms);
@@ -132,10 +136,10 @@ class MaestroTemplateHelper {
     $form['maestro_template_permissions_by_term']['os2forms_access'] = [
       '#type' => 'checkboxes',
       '#required' => TRUE,
-      '#title' => t('Access'),
+      '#title' => $this->t('Access'),
       '#default_value' => $defaultSettings ?? [],
       '#options' => $term_data,
-      '#description' => t('Limit access to this template.'),
+      '#description' => $this->t('Limit access to this template.'),
     ];
 
     // Set access value automatically if user only has one term option.
@@ -152,20 +156,21 @@ class MaestroTemplateHelper {
    *
    * Change access on maestro templates related operations.
    *
-   * @param ConfigEntityInterface $maestroTemplate
+   * @param \Drupal\Core\Config\Entity\ConfigEntityInterface $maestroTemplate
    *   The entity to set access for.
-   * @param $operation
+   * @param string $operation
    *   The operation being performed on the webform.
-   * @param AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user.
-   * @return mixed The resulting access permission.
+   *
+   * @return \Drupal\Core\Access\AccessResult
    *   The resulting access permission.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function maestroTemplateAccess(ConfigEntityInterface $maestroTemplate, $operation, AccountInterface $account) {
-    if (1 === (int)$account->id()) {
+    if (1 === (int) $account->id()) {
       return AccessResult::neutral();
     }
     $user = $this->entityTypeManager->getStorage('user')->load($account->id());
@@ -176,7 +181,8 @@ class MaestroTemplateHelper {
       case 'view':
       case 'update':
       case 'delete':
-        // Allow access if no term is set for the template or a maestro template term match the users term.
+        // Allow access if no term is set for the template or a maestro template
+        // term match the users term.
         return empty($maestroTemplatePermissionsByTerm) || !empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))
           ? AccessResult::neutral()
           : AccessResult::forbidden();
@@ -190,14 +196,21 @@ class MaestroTemplateHelper {
    *
    * @param array $form
    *   The maestro template add/edit form.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    */
-  public function maestroTemplateSubmit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  public function maestroTemplateSubmit(array $form, FormStateInterface $form_state) {
     // Get the settings from the maestro templates config entity.
     $maestroTemplateSettingsForm = $form_state->getFormObject();
     $maestroTemplate = $maestroTemplateSettingsForm->getEntity();
-    $maestroTemplate->setThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings', $form_state->getValue(['maestro_template_permissions_by_term', 'os2forms_access']));
+    $maestroTemplate->setThirdPartySetting(
+      'os2forms_permissions_by_term',
+      'maestro_template_permissions_by_term_settings',
+      $form_state->getValue([
+        'maestro_template_permissions_by_term',
+        'os2forms_access',
+      ])
+    );
     $maestroTemplate->save();
   }
 
@@ -205,11 +218,12 @@ class MaestroTemplateHelper {
    * Implements hook_field_widget_multivalue_WIDGET_TYPE_form_alter().
    *
    * Alter the field webform_entity_reference widget.
-   * Hide webform options from maestro templates if user is not allowed to update the webform.
+   * Hide webform options from maestro templates if user is not allowed to
+   * update the webform.
    *
    * @param array $form
    *   The form element.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    * @param string $form_id
    *   The id of the form.
@@ -233,4 +247,5 @@ class MaestroTemplateHelper {
       }
     }
   }
+
 }
