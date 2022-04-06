@@ -2,10 +2,16 @@
 
 namespace Drupal\os2forms_get_organized\Plugin\WebformHandler;
 
+use Drupal\advancedqueue\Entity\Queue;
+use Drupal\advancedqueue\Job;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\ElementInfoManager;
 use Drupal\os2forms_get_organized\Exception\AttachmentElementNotFoundException;
+use Drupal\os2forms_get_organized\Helper\ArchiveHelper;
+use Drupal\os2forms_get_organized\Plugin\AdvancedQueue\JobType\ArchiveDocument;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
+use Drupal\webform\WebformTokenManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -15,7 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   id = "os2forms_get_organized",
  *   label = @Translation("GetOrganized"),
  *   category = @Translation("Web services"),
- *   description = @Translation("Journalizes response in GetOrganized."),
+ *   description = @Translation("Archives response in GetOrganized."),
  *   cardinality = \Drupal\webform\Plugin\WebformHandlerInterface::CARDINALITY_UNLIMITED,
  *   results = \Drupal\webform\Plugin\WebformHandlerInterface::RESULTS_IGNORED,
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_REQUIRED,
@@ -25,19 +31,19 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * The token manager.
    *
-   * @var \Drupal\webform\WebformTokenManagerInterface
+   * @var WebformTokenManagerInterface
    */
   protected $tokenManager;
 
   /**
-   * @var \Drupal\os2forms_get_organized\Helper\WebformHelper
+   * @var ArchiveHelper
    */
-  protected $getOrganizedHelper;
+  protected $archiveHelper;
 
   /**
    * Element info.
    *
-   * @var \Drupal\Core\Render\ElementInfoManager
+   * @var ElementInfoManager
    */
   protected $elementInfo;
 
@@ -53,7 +59,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     $instance->entityTypeManager = $container->get('entity_type.manager');
     $instance->conditionsValidator = $container->get('webform_submission.conditions_validator');
     $instance->tokenManager = $container->get('webform.token_manager');
-    $instance->getOrganizedHelper = $container->get('os2forms_get_organized.webform_helper');
+    $instance->archiveHelper = $container->get('os2forms_get_organized.archive_helper');
     $instance->elementInfo = $container->get('plugin.manager.element_info');
 
     $instance->setConfiguration($configuration);
@@ -105,6 +111,10 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
       throw new AttachmentElementNotFoundException();
     }
 
+    $queue = Queue::load('get_organized_queue');
+
+    $payload = [];
+
     // Get attachment element file contents
     $attachmentElement = $this->configuration['attachment_element'];
     $element = $webform_submission->getWebform()->getElement($attachmentElement, $webform_submission);
@@ -116,13 +126,17 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     $tempFile = tempnam('/tmp', $webformLabel);
     file_put_contents($tempFile, $fileContent);
 
-    $getOrganizedFileName = $webformLabel.'-'.$webform_submission->id().'.pdf';
+    $payload['filePath'] = $tempFile;
+
+    $getOrganizedFileName = $webformLabel.'-'.$webform_submission->serial().'.pdf';
+    $payload['getOrganizedFileName'] = $getOrganizedFileName;
+
     $getOrganizedCaseId = $this->configuration['case_id'];
+    $payload['getOrganizedCaseId'] = $getOrganizedCaseId;
 
-    $this->getOrganizedHelper->journalize($tempFile, $getOrganizedCaseId, $getOrganizedFileName);
+    $job = Job::create(ArchiveDocument::class, $payload);
 
-    // Remove temp file
-    unlink($tempFile);
+    $queue->enqueueJob($job);
   }
 
   /**
