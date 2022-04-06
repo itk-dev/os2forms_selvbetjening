@@ -4,12 +4,14 @@ namespace Drupal\os2forms_get_organized\Plugin\WebformHandler;
 
 use Drupal\advancedqueue\Entity\Queue;
 use Drupal\advancedqueue\Job;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\ElementInfoManager;
-use Drupal\os2forms_get_organized\Exception\AttachmentElementNotFoundException;
-use Drupal\os2forms_get_organized\Helper\ArchiveHelper;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\os2forms_get_organized\Plugin\AdvancedQueue\JobType\ArchiveDocument;
 use Drupal\webform\Plugin\WebformHandlerBase;
+use Drupal\webform\WebformSubmissionConditionsValidatorInterface;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformTokenManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -28,49 +30,42 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class GetOrganizedWebformHandler extends WebformHandlerBase {
-  /**
-   * The token manager.
-   *
-   * @var WebformTokenManagerInterface
-   */
-  protected $tokenManager;
 
-  /**
-   * @var ArchiveHelper
-   */
-  protected $archiveHelper;
-
-  /**
-   * Element info.
-   *
-   * @var ElementInfoManager
-   */
-  protected $elementInfo;
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = new static($configuration, $plugin_id, $plugin_definition);
-
-    $instance->loggerFactory = $container->get('logger.factory');
-    $instance->configFactory = $container->get('config.factory');
-    $instance->renderer = $container->get('renderer');
-    $instance->entityTypeManager = $container->get('entity_type.manager');
-    $instance->conditionsValidator = $container->get('webform_submission.conditions_validator');
-    $instance->tokenManager = $container->get('webform.token_manager');
-    $instance->archiveHelper = $container->get('os2forms_get_organized.archive_helper');
-    $instance->elementInfo = $container->get('plugin.manager.element_info');
-
-    $instance->setConfiguration($configuration);
-
-    return $instance;
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $loggerFactory, ConfigFactoryInterface $configFactory,  RendererInterface $renderer, EntityTypeManagerInterface $entityTypeManager, WebformSubmissionConditionsValidatorInterface $conditionsValidator, WebformTokenManagerInterface $tokenManager)
+  {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->setConfiguration($configuration);
+    $this->loggerFactory = $loggerFactory;
+    $this->configFactory = $configFactory;
+    $this->renderer = $renderer;
+    $this->entityTypeManager = $entityTypeManager;
+    $this->conditionsValidator = $conditionsValidator;
+    $this->tokenManager = $tokenManager;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition)
+  {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('logger.factory'),
+      $container->get('config.factory'),
+      $container->get('renderer'),
+      $container->get('entity_type.manager'),
+      $container->get('webform_submission.conditions_validator'),
+      $container->get('webform.token_manager')
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state)
+  {
 
     $form['case_id'] = [
       '#type' => 'textfield',
@@ -96,7 +91,8 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
+  {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['case_id'] = $form_state->getValue('case_id');
     $this->configuration['attachment_element'] = $form_state->getValue('attachment_element');
@@ -105,37 +101,12 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE) {
-
-    if (!$this->configuration['attachment_element']){
-      throw new AttachmentElementNotFoundException();
-    }
-
-    $queue = Queue::load('get_organized_queue');
-
-    $payload = [];
-
-    // Get attachment element file contents
-    $attachmentElement = $this->configuration['attachment_element'];
-    $element = $webform_submission->getWebform()->getElement($attachmentElement, $webform_submission);
-    $elementInfo = $this->elementInfo->createInstance('webform_entity_print_attachment');
-    $fileContent = $elementInfo::getFileContent($element, $webform_submission);
-
-    // Create temp file with attachment-element contents
-    $webformLabel = $webform_submission->getWebform()->label();
-    $tempFile = tempnam('/tmp', $webformLabel);
-    file_put_contents($tempFile, $fileContent);
-
-    $payload['filePath'] = $tempFile;
-
-    $getOrganizedFileName = $webformLabel.'-'.$webform_submission->serial().'.pdf';
-    $payload['getOrganizedFileName'] = $getOrganizedFileName;
-
-    $getOrganizedCaseId = $this->configuration['case_id'];
-    $payload['getOrganizedCaseId'] = $getOrganizedCaseId;
-
-    $job = Job::create(ArchiveDocument::class, $payload);
-
+  public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE)
+  {
+    $queueStorage = $this->entityTypeManager->getStorage('advancedqueue_queue');
+    /** @var Queue $queue */
+    $queue = $queueStorage->load('get_organized_queue');
+    $job = Job::create(ArchiveDocument::class, ['submissionId' => $webform_submission->id(), 'handlerConfiguration' => $this->configuration]);
     $queue->enqueueJob($job);
   }
 

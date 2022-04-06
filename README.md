@@ -120,7 +120,7 @@ configured in the `settings.local.php` file:
 $config['os2forms_get_organized'] = [
   'username' => '…',
   'password' => '…',
-  'base_url' => '…/_goapi',
+  'base_url' => '…',
 ];
 ```
 

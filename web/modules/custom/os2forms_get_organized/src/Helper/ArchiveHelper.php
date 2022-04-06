@@ -2,61 +2,61 @@
 
 namespace Drupal\os2forms_get_organized\Helper;
 
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Component\Plugin\PluginManagerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\os2forms_get_organized\Exception\GetOrganizedQueueException;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\webform\Entity\WebformSubmission;
 use ItkDev\GetOrganized\Client;
-use ItkDev\GetOrganized\Exception\GetOrganizedClientException;
-use ItkDev\GetOrganized\Exception\InvalidFilePathException;
-use ItkDev\GetOrganized\Exception\InvalidServiceNameException;
 use ItkDev\GetOrganized\Service\Documents;
 
 class ArchiveHelper
 {
   private ?Client $client = null;
   private ConfigFactoryInterface $config;
+  private PluginManagerInterface $elementInfo;
+  private EntityTypeManagerInterface $entityTypeManager;
 
-  const FILE_PATH_OPTION = 'filePath';
-  const GET_ORGANIZED_CASE_ID = 'getOrganizedCaseId';
-  const GET_ORGANIZED_FILE_NAME = 'getOrganizedFileName';
-
-  const PAYLOAD_REQUIRED_OPTIONS = [
-    self::FILE_PATH_OPTION,
-    self::GET_ORGANIZED_CASE_ID,
-    self::GET_ORGANIZED_FILE_NAME,
-  ];
-
-  public function __construct(ConfigFactoryInterface $config)
+  public function __construct(ConfigFactoryInterface $config, EntityTypeManagerInterface $entityTypeManager, PluginManagerInterface $elementInfo)
   {
     $this->config = $config;
+    $this->entityTypeManager = $entityTypeManager;
+    $this->elementInfo = $elementInfo;
   }
 
   /**
    * Adds document to GetOrganized case.
-   * @throws GetOrganizedQueueException
    */
-  public function archive(array $payload)
+  public function archive(string $submissionId, array $handlerConfiguration)
   {
-    foreach (self::PAYLOAD_REQUIRED_OPTIONS as $option) {
-      if (!isset($payload[$option])) {
-        $message = sprintf('Required payload option %s missing.', $option);
-        throw new GetOrganizedQueueException($message);
-      }
-    }
+    /** @var WebformSubmission $submission */
+    $submission = $this->getSubmission($submissionId);
+
+    $getOrganizedCaseId = $handlerConfiguration['case_id'];
+    $webformAttachmentElementId = $handlerConfiguration['attachment_element'];
+
+    $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
+    $elementInfo = $this->elementInfo->createInstance('webform_entity_print_attachment');
+    $fileContent = $elementInfo::getFileContent($element, $submission);
+
+    // Create temp file with attachment-element contents
+    $webformLabel = $submission->getWebform()->label();
+    $tempFile = tempnam('/tmp', $webformLabel);
+    file_put_contents($tempFile, $fileContent);
+
+    $getOrganizedFileName = $webformLabel.'-'.$submission->serial().'.pdf';
 
     if (null === $this->client) {
       $this->setupClient();
     }
 
-    try {
-      /** @var Documents $documentService */
-      $documentService = $this->client->api('documents');
-      $documentService->AddToDocumentLibrary($payload[self::FILE_PATH_OPTION], $payload[self::GET_ORGANIZED_CASE_ID], $payload[self::GET_ORGANIZED_FILE_NAME]);
+    /** @var Documents $documentService */
+    $documentService = $this->client->api('documents');
+    $documentService->AddToDocumentLibrary($tempFile, $getOrganizedCaseId, $getOrganizedFileName);
 
-      // Remove temp file
-      unlink($payload[self::FILE_PATH_OPTION]);
-    } catch (InvalidServiceNameException|InvalidFilePathException|GetOrganizedClientException $e) {
-      throw new GetOrganizedQueueException($e->getMessage());
-    }
+    // Remove temp file
+    unlink($tempFile);
   }
 
   /**
@@ -70,5 +70,14 @@ class ArchiveHelper
     $baseUrl = $config->get('base_url');
 
     $this->client = new Client($username, $password, $baseUrl);
+  }
+
+  /**
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
+   */
+  private function getSubmission(string $submissionId) {
+    $storage = $this->entityTypeManager->getStorage('webform_submission');
+    return $storage->load($submissionId);
   }
 }

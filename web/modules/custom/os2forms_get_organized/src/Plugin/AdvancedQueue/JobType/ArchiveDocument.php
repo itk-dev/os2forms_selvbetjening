@@ -56,7 +56,7 @@ class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInter
     $payload = $job->getPayload();
 
     try {
-      $this->helper->archive($payload);
+      $this->helper->archive($payload['submissionId'], $payload['handlerConfiguration']);
 
       return JobResult::success();
     } catch (\Exception $e) {

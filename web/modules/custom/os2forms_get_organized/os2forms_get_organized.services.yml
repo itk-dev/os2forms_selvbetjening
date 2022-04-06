@@ -3,3 +3,5 @@ services:
     class: Drupal\os2forms_get_organized\Helper\ArchiveHelper
     arguments:
       - '@config.factory'
+      - '@entity_type.manager'
+      - '@plugin.manager.element_info'
