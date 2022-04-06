@@ -8,6 +8,7 @@ use Drupal\Component\Plugin\PluginManagerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform_entity_print_attachment\Element\WebformEntityPrintAttachment;
 use ItkDev\GetOrganized\Client;
 use ItkDev\GetOrganized\Service\Documents;
 
@@ -37,8 +38,7 @@ class ArchiveHelper
     $webformAttachmentElementId = $handlerConfiguration['attachment_element'];
 
     $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
-    $elementInfo = $this->elementInfo->createInstance('webform_entity_print_attachment');
-    $fileContent = $elementInfo::getFileContent($element, $submission);
+    $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
 
     // Create temp file with attachment-element contents
     $webformLabel = $submission->getWebform()->label();
