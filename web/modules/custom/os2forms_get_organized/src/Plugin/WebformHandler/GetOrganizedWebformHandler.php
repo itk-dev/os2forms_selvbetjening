@@ -2,7 +2,6 @@
 
 namespace Drupal\os2forms_get_organized\Plugin\WebformHandler;
 
-use Drupal\advancedqueue\Entity\Queue;
 use Drupal\advancedqueue\Job;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -31,8 +30,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class GetOrganizedWebformHandler extends WebformHandlerBase {
 
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $loggerFactory, ConfigFactoryInterface $configFactory,  RendererInterface $renderer, EntityTypeManagerInterface $entityTypeManager, WebformSubmissionConditionsValidatorInterface $conditionsValidator, WebformTokenManagerInterface $tokenManager)
-  {
+  /**
+   * Constructs a GetOrganizedWebformHandler object.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $loggerFactory, ConfigFactoryInterface $configFactory, RendererInterface $renderer, EntityTypeManagerInterface $entityTypeManager, WebformSubmissionConditionsValidatorInterface $conditionsValidator, WebformTokenManagerInterface $tokenManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->setConfiguration($configuration);
     $this->loggerFactory = $loggerFactory;
@@ -46,8 +47,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition)
-  {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
       $plugin_id,
@@ -64,8 +64,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state)
-  {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
 
     $form['case_id'] = [
       '#type' => 'textfield',
@@ -91,8 +90,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state)
-  {
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['case_id'] = $form_state->getValue('case_id');
     $this->configuration['attachment_element'] = $form_state->getValue('attachment_element');
@@ -101,20 +99,21 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE)
-  {
+  public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE) {
     $queueStorage = $this->entityTypeManager->getStorage('advancedqueue_queue');
-    /** @var Queue $queue */
+    /** @var \Drupal\advancedqueue\Entity\Queue $queue */
     $queue = $queueStorage->load('get_organized_queue');
-    $job = Job::create(ArchiveDocument::class, ['submissionId' => $webform_submission->id(), 'handlerConfiguration' => $this->configuration]);
+    $job = Job::create(ArchiveDocument::class, [
+      'submissionId' => $webform_submission->id(),
+      'handlerConfiguration' => $this->configuration,
+    ]);
     $queue->enqueueJob($job);
   }
 
   /**
    * Get available attachment elements.
    */
-  private function getAvailableAttachmentElements(array $elements): array
-  {
+  private function getAvailableAttachmentElements(array $elements): array {
     $attachmentElements = array_filter($elements, function ($element) {
       return 'webform_entity_print_attachment:pdf' === $element['#type'];
     });

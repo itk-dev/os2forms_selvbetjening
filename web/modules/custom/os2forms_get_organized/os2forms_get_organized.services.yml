@@ -4,4 +4,3 @@ services:
     arguments:
       - '@config.factory'
       - '@entity_type.manager'
-      - '@plugin.manager.element_info'

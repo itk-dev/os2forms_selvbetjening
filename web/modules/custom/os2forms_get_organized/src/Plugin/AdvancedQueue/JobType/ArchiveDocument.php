@@ -17,12 +17,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Archive document in GetOrganized"),
  * )
  */
-class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInterface
-{
+class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInterface {
   /**
    * The archiving helper.
    *
-   * @var ArchiveHelper
+   * @var \Drupal\os2forms_get_organized\Helper\ArchiveHelper
    */
   private ArchiveHelper $helper;
 
@@ -51,16 +50,20 @@ class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInter
     $this->helper = $helper;
   }
 
-  public function process(Job $job): JobResult
-  {
+  /**
+   * Processes the ArchiveDocument job.
+   */
+  public function process(Job $job): JobResult {
     $payload = $job->getPayload();
 
     try {
       $this->helper->archive($payload['submissionId'], $payload['handlerConfiguration']);
 
       return JobResult::success();
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       return JobResult::failure($e->getMessage());
     }
   }
+
 }
