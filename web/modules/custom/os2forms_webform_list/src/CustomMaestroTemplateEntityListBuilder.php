@@ -2,7 +2,6 @@
 
 namespace Drupal\os2forms_webform_list;
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\maestro\Controller\MaestroTemplateListBuilder;
 
 /**
@@ -28,4 +27,5 @@ class CustomMaestroTemplateEntityListBuilder extends MaestroTemplateListBuilder 
     }
     return $entities;
   }
+
 }
