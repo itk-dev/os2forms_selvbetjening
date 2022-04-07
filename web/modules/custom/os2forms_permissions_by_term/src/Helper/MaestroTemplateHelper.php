@@ -120,7 +120,9 @@ class MaestroTemplateHelper {
     }
 
     if ('settings' === $hook) {
+      /** @var \Drupal\Core\Entity\EntityForm $meastroSettingsForm */
       $meastroSettingsForm = $form_state->getFormObject();
+      /** @var \Drupal\Core\Config\Entity\ThirdPartySettingsInterface $mastroTemplate */
       $mastroTemplate = $meastroSettingsForm->getEntity();
       $defaultSettings = $mastroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
     }
@@ -187,6 +189,8 @@ class MaestroTemplateHelper {
           ? AccessResult::neutral()
           : AccessResult::forbidden();
     }
+
+    return AccessResult::neutral();
   }
 
   /**
@@ -201,7 +205,9 @@ class MaestroTemplateHelper {
    */
   public function maestroTemplateSubmit(array $form, FormStateInterface $form_state) {
     // Get the settings from the maestro templates config entity.
+    /** @var \Drupal\Core\Entity\EntityForm $maestroTemplateSettingsForm */
     $maestroTemplateSettingsForm = $form_state->getFormObject();
+    /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $maestroTemplate */
     $maestroTemplate = $maestroTemplateSettingsForm->getEntity();
     $maestroTemplate->setThirdPartySetting(
       'os2forms_permissions_by_term',

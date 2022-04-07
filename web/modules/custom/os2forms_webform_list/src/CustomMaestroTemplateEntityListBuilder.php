@@ -16,6 +16,7 @@ class CustomMaestroTemplateEntityListBuilder extends MaestroTemplateListBuilder 
    */
   public function load() {
     $entity_ids = $this->getEntityIds();
+    // @phpstan-ignore-next-line
     $entities = $this->storage->loadMultipleOverrideFree($entity_ids);
 
     uasort($entities, [$this->entityType->getClass(), 'sort']);

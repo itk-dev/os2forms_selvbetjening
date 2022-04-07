@@ -86,7 +86,9 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function webformAlter(array &$form, FormStateInterface $form_state, $hook) {
-    $node = $form_state->getFormObject()->getEntity();
+    /** @var \Drupal\Core\Entity\EntityForm $formObject */
+    $formObject = $form_state->getFormObject();
+    $node = $formObject->getEntity();
     if ('webform' === $node->bundle()) {
       $term_data = [];
       $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
@@ -121,7 +123,9 @@ class Helper {
 
       // Get default settings for webform.
       if ('settings' === $hook) {
+        /** @var \Drupal\Core\Entity\EntityForm $webform_settings_form */
         $webform_settings_form = $form_state->getFormObject();
+        /** @var \Drupal\webform\WebformInterface $webform */
         $webform = $webform_settings_form->getEntity();
         $defaultSettings = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
       }
@@ -200,6 +204,8 @@ class Helper {
           ? AccessResult::neutral()
           : AccessResult::forbidden();
     }
+
+    return AccessResult::neutral();
   }
 
   /**
@@ -242,7 +248,9 @@ class Helper {
    */
   public function webformSubmit(array $form, FormStateInterface $form_state) {
     // Get the settings from the webform config entity.
+    /** @var \Drupal\Core\Entity\EntityForm $webform_settings_form */
     $webform_settings_form = $form_state->getFormObject();
+    /** @var \Drupal\webform\WebformInterface $webform */
     $webform = $webform_settings_form->getEntity();
     $webform->setThirdPartySetting(
       'os2forms_permissions_by_term',

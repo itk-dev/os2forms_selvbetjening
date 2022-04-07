@@ -57,7 +57,7 @@ class Helper {
       $field_claim = $termsObj->field_claim->value;
       $values = (array) $context['user_data'][$claim];
       foreach ($values as $value) {
-        if (isset($field_claim) && $field_claim === $value) {
+        if (!empty($field_claim) && $field_claim === $value) {
           $this->accessStorage->addTermPermissionsByUserIds([$account->id()], $term->tid);
         }
       }
