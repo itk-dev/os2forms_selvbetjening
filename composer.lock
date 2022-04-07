@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e4124e977079079d8d4f5f9642b2165",
+    "content-hash": "51617752cb4b48f7f80e816b65eb3eb8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1549,6 +1549,99 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/admin_toolbar",
                 "issues": "https://www.drupal.org/project/issues/admin_toolbar"
+            }
+        },
+        {
+            "name": "drupal/advancedqueue",
+            "version": "1.0.0-rc3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/advancedqueue.git",
+                "reference": "8.x-1.0-rc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/advancedqueue-8.x-1.0-rc3.zip",
+                "reference": "8.x-1.0-rc3",
+                "shasum": "0cb4472faa142b565740350bbd34f09686b5b56d"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-rc3",
+                    "datestamp": "1638106300",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Damien Tournoud",
+                    "homepage": "https://www.drupal.org/user/22211"
+                },
+                {
+                    "name": "Kazanir",
+                    "homepage": "https://www.drupal.org/user/2279698"
+                },
+                {
+                    "name": "amitaibu",
+                    "homepage": "https://www.drupal.org/user/57511"
+                },
+                {
+                    "name": "bojanz",
+                    "homepage": "https://www.drupal.org/user/86106"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "jcnventura",
+                    "homepage": "https://www.drupal.org/user/122464"
+                },
+                {
+                    "name": "jsacksick",
+                    "homepage": "https://www.drupal.org/user/972218"
+                },
+                {
+                    "name": "laurentchardin",
+                    "homepage": "https://www.drupal.org/user/87775"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                },
+                {
+                    "name": "pjcdawkins",
+                    "homepage": "https://www.drupal.org/user/1025236"
+                },
+                {
+                    "name": "rszrama",
+                    "homepage": "https://www.drupal.org/user/49344"
+                },
+                {
+                    "name": "skipyT",
+                    "homepage": "https://www.drupal.org/user/350126"
+                }
+            ],
+            "description": "Provides a better Queue API.",
+            "homepage": "https://www.drupal.org/project/advancedqueue",
+            "support": {
+                "source": "https://git.drupalcode.org/project/advancedqueue"
             }
         },
         {
@@ -7534,6 +7627,80 @@
             "time": "2021-06-23T12:07:50+00:00"
         },
         {
+            "name": "itk-dev/getorganized-api-client-php",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/getorganized-api-client-php.git",
+                "reference": "c5c86e9b3bcc37f2e0ac0cf853d7b4baedf398d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/c5c86e9b3bcc37f2e0ac0cf853d7b4baedf398d3",
+                "reference": "c5c86e9b3bcc37f2e0ac0cf853d7b4baedf398d3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0",
+                "symfony/http-client": "^5.4 || ^6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.7",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "symfony/finder": "^5.4 || ^6.0",
+                "symfony/yaml": "^5.4 || ^6.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ItkDev\\GetOrganized\\": "src/"
+                }
+            },
+            "scripts": {
+                "coding-standards-check/php-cs-fixer": [
+                    "vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/php-cs-fixer"
+                ],
+                "coding-standards-apply/php-cs-fixer": [
+                    "vendor/bin/php-cs-fixer --allow-risky=yes fix"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/php-cs-fixer"
+                ],
+                "code-analysis/phpstan": [
+                    "phpstan analyse --level=5 src tests"
+                ],
+                "code-analysis": [
+                    "@code-analysis/phpstan"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jekuaitk",
+                    "email": "jekua@aarhus.dk"
+                },
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "PHP client for GetOrganized API",
+            "support": {
+                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/develop",
+                "issues": "https://github.com/itk-dev/getorganized-api-client-php/issues"
+            },
+            "time": "2022-03-31T08:05:07+00:00"
+        },
+        {
             "name": "itk-dev/openid-connect",
             "version": "2.3.0",
             "source": {
@@ -13387,6 +13554,93 @@
                 }
             ],
             "time": "2022-01-12T11:20:14+00:00"
+        },
+        {
+            "name": "symfony/http-client",
+            "version": "v5.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-client.git",
+                "reference": "fab84798694e45b4571d305125215699eb2b1f73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/fab84798694e45b4571d305125215699eb2b1f73",
+                "reference": "fab84798694e45b4571d305125215699eb2b1f73",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "psr/log": "^1|^2|^3",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/http-client-contracts": "^2.4",
+                "symfony/polyfill-php73": "^1.11",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/service-contracts": "^1.0|^2|^3"
+            },
+            "provide": {
+                "php-http/async-client-implementation": "*",
+                "php-http/client-implementation": "*",
+                "psr/http-client-implementation": "1.0",
+                "symfony/http-client-implementation": "2.4"
+            },
+            "require-dev": {
+                "amphp/amp": "^2.5",
+                "amphp/http-client": "^4.2.1",
+                "amphp/http-tunnel": "^1.0",
+                "amphp/socket": "^1.1",
+                "guzzlehttp/promises": "^1.4",
+                "nyholm/psr7": "^1.0",
+                "php-http/httplug": "^1.0|^2.0",
+                "psr/http-client": "^1.0",
+                "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+                "symfony/http-kernel": "^4.4.13|^5.1.5|^6.0",
+                "symfony/process": "^4.4|^5.0|^6.0",
+                "symfony/stopwatch": "^4.4|^5.0|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\HttpClient\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/http-client/tree/v5.4.5"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-02-27T08:46:18+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -20227,6 +20481,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/maestro": 20,
+        "itk-dev/getorganized-api-client-php": 20,
         "itk-dev/os2forms_digital_post": 20,
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20,

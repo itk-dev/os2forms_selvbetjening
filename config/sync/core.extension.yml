@@ -5,6 +5,7 @@ module:
   admin_audit_trail: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  advancedqueue: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -66,6 +67,7 @@ module:
   os2forms_dawa: 0
   os2forms_digital_post: 0
   os2forms_forloeb: 0
+  os2forms_get_organized: 0
   os2forms_nemid: 0
   os2forms_nemlogin_openid_connect: 0
   os2forms_permissions_by_term: 0
