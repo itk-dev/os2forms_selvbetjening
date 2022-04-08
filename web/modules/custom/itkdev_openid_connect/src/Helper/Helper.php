@@ -11,7 +11,7 @@ use Drupal\user\UserInterface;
  */
 class Helper {
   /**
-   * Permissions by term access storage
+   * Permissions by term access storage.
    *
    * @var \Drupal\permissions_by_term\Service\AccessStorage
    */
@@ -40,7 +40,7 @@ class Helper {
   /**
    * Add permission term when saving user info.
    *
-   * @param UserInterface $account
+   * @param \Drupal\user\UserInterface $account
    *   User account.
    * @param array $context
    *   Context information from open id connect module.
@@ -55,14 +55,13 @@ class Helper {
     foreach ($terms as $term) {
       $termsObj = $this->entityTypeManager->getStorage('taxonomy_term')->load($term->tid);
       $field_claim = $termsObj->field_claim->value;
-      $values = (array)$context['user_data'][$claim];
+      $values = (array) $context['user_data'][$claim];
       foreach ($values as $value) {
-        if (isset($field_claim) && $field_claim === $value) {
+        if (!empty($field_claim) && $field_claim === $value) {
           $this->accessStorage->addTermPermissionsByUserIds([$account->id()], $term->tid);
         }
       }
     }
   }
-
 
 }

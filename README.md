@@ -111,6 +111,19 @@ $settings['locale_custom_strings_da'][''] = [
 ];
 ```
 
+### GetOrganized
+
+To use the custom GetOrganized module the module must be
+configured in the `settings.local.php` file:
+```php
+# settings.local.php
+$config['os2forms_get_organized'] = [
+  'username' => '…',
+  'password' => '…',
+  'base_url' => '…',
+];
+```
+
 ## Production
 
 ```sh
@@ -130,6 +143,6 @@ Configure the [`memcache` module](https://www.drupal.org/project/memcache):
 
 
 ## Production Database
-The database of production must never be copied to a local development environment, as its data contains personal data. 
+The database of production must never be copied to a local development environment, as its data contains personal data.
 
-If developers need an actual database for local development, the stg-environment can be made ready for download by ensuring that you delete all submissions and other informations that can have personal character, before downloading. 
+If developers need an actual database for local development, the stg-environment can be made ready for download by ensuring that you delete all submissions and other informations that can have personal character, before downloading.

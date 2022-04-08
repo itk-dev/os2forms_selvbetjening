@@ -57,11 +57,16 @@
         {
             "type": "vcs",
             "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/getorganized-api-client-php"
         }
     ],
     "require": {
         "php": "~7.4.0 || ~8.0.0",
         "composer/installers": "^1.9",
+        "drupal/advancedqueue": "^1.0",
         "drupal/bootstrap": "^3.23",
         "drupal/config_ignore": "^2.3",
         "drupal/core-composer-scaffold": "^9.1",
@@ -73,6 +78,7 @@
         "drupal/openid_connect": "^2.0",
         "drupal/system_status": "^2.9",
         "drush/drush": "^10.6",
+        "itk-dev/getorganized-api-client-php": "dev-develop",
         "itk-dev/os2forms_cpr_lookup": "^1.6.3",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
         "itk-dev/os2forms_digital_post": "dev-develop",
@@ -82,7 +88,8 @@
         "os2forms/os2forms_forloeb_profile": "^1.8"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.1"
+        "drupal/core-dev": "^9.1",
+        "mglaman/drupal-check": "^1.3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -184,7 +191,30 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "vendor/bin/drush webform:libraries:download"
+            "vendor/bin/drush webform:libraries:download",
+            "@install-codestandards"
+        ],
+        "install-codestandards": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        ],
+        "code-analysis/drupal-check": [
+            "vendor/bin/drupal-check --deprecations --analysis web/modules/custom"
+        ],
+        "code-analysis": [
+            "@code-analysis/drupal-check"
+        ],
+        "coding-standards-check/phpcs": [
+            "vendor/bin/phpcs --standard=phpcs.xml.dist"
+        ],
+        "coding-standards-check": [
+            "@coding-standards-check/phpcs"
+        ],
+        "coding-standards-apply/phpcs": [
+            "vendor/bin/phpcbf --standard=phpcs.xml.dist"
+        ],
+        "coding-standards-apply": [
+            "@coding-standards-apply/phpcs"
         ]
+
     }
 }
