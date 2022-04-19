@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1483a7d8328b47cbbc3dd3c9433bc03f",
+    "content-hash": "8d43741ca6c5561b1e333c904e39a0e2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3702,6 +3702,62 @@
                 "source": "https://www.drupal.org/project/image_widget_crop",
                 "issues": "https://www.drupal.org/project/issues/image_widget_crop",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
+            "name": "drupal/key_auth",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/key_auth.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/key_auth-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "ea906de39a552bcdd9355907b4498f65603b38d3"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1642497672",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Rajeshreeputra",
+                    "homepage": "https://www.drupal.org/user/3418561"
+                },
+                {
+                    "name": "ganeshsurya11",
+                    "homepage": "https://www.drupal.org/user/3526791"
+                },
+                {
+                    "name": "mstef",
+                    "homepage": "https://www.drupal.org/user/107190"
+                },
+                {
+                    "name": "perfectcu.be",
+                    "homepage": "https://www.drupal.org/user/2442008"
+                }
+            ],
+            "description": "Provides an authentication provider based on per-user API keys.",
+            "homepage": "https://www.drupal.org/project/key_auth",
+            "support": {
+                "source": "https://git.drupalcode.org/project/key_auth"
             }
         },
         {
