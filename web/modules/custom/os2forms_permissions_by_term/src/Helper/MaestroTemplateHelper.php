@@ -12,6 +12,8 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\permissions_by_term\Service\AccessStorage;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Helper class for maestro templates permissions by term.
@@ -231,6 +233,62 @@ class MaestroTemplateHelper {
           }
         }
       }
+    }
+  }
+
+  /**
+   * Implement hook_views_query_alter().
+   *
+   * Change views queries to account for permissions_by_term.
+   *
+   * @param ViewExecutable $view
+   *   The view.
+   * @param QueryPluginBase $query
+   *   The query.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function viewsQueryAlter(ViewExecutable $view, QueryPluginBase $query) {
+    $viewId = $view->id();
+    $displayId = $view->getDisplay()->display['id'];
+    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+    $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->getQuery()->execute();
+    $allowedList = [];
+    foreach ($maestroTemplates as $template) {
+      $templateEntity = $this->entityTypeManager->getStorage('maestro_template')->load($template);
+      /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $templateEntity */
+      /** @var \Drupal\Core\Session\AccountInterface $user */
+      $accessResult = $this->maestroTemplateAccess($templateEntity, 'view', $user);
+      if (!$accessResult instanceof AccessResultForbidden) {
+        $allowedList[] = $template;
+      }
+    }
+    switch ($viewId) {
+      case 'maestro_outstanding_tasks':
+        switch ($displayId) {
+          case 'maestro_outstanding_tasks':
+          case 'taskconsole_display':
+            $query->where[1]['conditions'][] = [
+              'field' => 'maestro_process_maestro_queue.template_id',
+              'value' => $allowedList,
+              'operator' => 'in',
+            ];
+            break;
+        }
+        break;
+      case 'maestro_all_flows':
+        switch ($displayId) {
+          case 'all_flows_full':
+            $query->where[1]['conditions'][] = [
+              'field' => 'maestro_process.template_id',
+              'value' => $allowedList,
+              'operator' => 'in',
+            ];
+
+            break;
+        }
+      break;
     }
   }
 }
