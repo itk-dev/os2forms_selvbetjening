@@ -2,7 +2,8 @@
 
 ## Getting started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your
+local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -12,21 +13,25 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installation
 
 1. Clone the git repository
+
    ```sh
    git clone git@github.com:itk-dev/os2forms_selvbetjening selvbetjening
    ```
 
 2. Enter the newly created project directory
+
    ```sh
    cd selvbetjening
    ```
 
 3. Pull docker images and start docker containers
+
    ```sh
    docker-compose pull
    docker-compose up --detach
 
 4. Install composer packages
+
    ```sh
    # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
    docker-compose exec phpfpm composer install --no-interaction
@@ -58,18 +63,20 @@ These instructions will get you a copy of the project up and running on your loc
    ```
 
 5. Install profile
+
    ```sh
    docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
    ```
 
 6. Download and install external libraries
+
    ```sh
    docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
    ```
 
 You should now be able to browse to the application
 
-```shell
+```sh
 open http://$(docker-compose port nginx 80)
 ```
 
@@ -115,6 +122,7 @@ $settings['locale_custom_strings_da'][''] = [
 
 To use the custom GetOrganized module the module must be
 configured in the `settings.local.php` file:
+
 ```php
 # settings.local.php
 $config['os2forms_get_organized'] = [
@@ -195,8 +203,11 @@ vendor/bin/drush --yes deploy
 Configure the [`memcache` module](https://www.drupal.org/project/memcache):
 <https://git.drupalcode.org/project/memcache/blob/8.x-2.x/README.txt>
 
-
 ## Production Database
-The database of production must never be copied to a local development environment, as its data contains personal data.
 
-If developers need an actual database for local development, the stg-environment can be made ready for download by ensuring that you delete all submissions and other informations that can have personal character, before downloading.
+The database of production must never be copied to a local development
+environment, as its data contains personal data.
+
+If developers need an actual database for local development, the stg-environment
+can be made ready for download by ensuring that you delete all submissions and
+other informations that can have personal character, before downloading.
