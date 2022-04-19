@@ -1,0 +1,18 @@
+uuid: 38a900e0-69d2-4494-ab12-0f71c7f4365b
+langcode: da
+status: true
+dependencies:
+  module:
+    - key_auth
+    - serialization
+    - webform_rest
+id: webform_rest_submission
+plugin_id: webform_rest_submission
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - key_auth
