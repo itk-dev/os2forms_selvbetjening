@@ -14,7 +14,8 @@ class CustomWebformEntityListBuilder extends WebformEntityListBuilder {
   /**
    * Alter the webform entity list builder query method.
    *
-   * Force the list builder query to respect webform access and properly hide inaccessible webforms from the list.
+   * Force the list builder query to respect webform access and properly hide
+   * inaccessible webforms from the list.
    *
    * @param string $keys
    *   (optional) Search key.
@@ -26,17 +27,17 @@ class CustomWebformEntityListBuilder extends WebformEntityListBuilder {
    * @return \Drupal\Core\Entity\Query\QueryInterface
    *   An entity query.
    */
-
   protected function getQuery($keys = '', $category = '', $state = '') {
     $query = parent::getQuery($keys, $category, $state);
 
-    // Setup a required condition for the list builder to respect webform update access.
+    // Setup a required condition for the list builder to respect webform update
+    // access.
     $webform_ids_permissions_by_term = [];
-    /** @var \Drupal\webform\WebformInterface $webforms */
+    /** @var \Drupal\webform\WebformInterface[] $webforms */
     $webforms = $this->getStorage()->loadMultiple();
     foreach ($webforms as $webform) {
       $access = $webform->access('update');
-      if($access) {
+      if ($access) {
         $webform_ids_permissions_by_term[] = $webform->id();
       }
     }
@@ -45,4 +46,5 @@ class CustomWebformEntityListBuilder extends WebformEntityListBuilder {
 
     return $query;
   }
+
 }

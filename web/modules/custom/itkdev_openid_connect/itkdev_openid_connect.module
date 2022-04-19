@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Module file for the itkdev_openid_connect module.
+ */
+
 use Drupal\user\UserInterface;
 
 /**
@@ -14,10 +19,10 @@ function itkdev_openid_connect_honeypot_form_protections_alter(array &$options, 
 }
 
 /**
-  * Implements hook_user_default_page_login_ignore_whitelist_alter().
-  *
-  * @todo Add to Helper service class.
-  */
+ * Implements hook_user_default_page_login_ignore_whitelist_alter().
+ *
+ * @todo Add to Helper service class.
+ */
 function itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter(array &$ignored_routes) {
   // Check if we're in the OpenID Connect login flow.
   $current_route = \Drupal::service('current_route_match')->getRouteName();
@@ -76,7 +81,7 @@ function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, a
 
   // Full person name.
   if (!isset($userinfo['full_name']) && isset($userinfo['given_name'], $userinfo['family_name'])) {
-    $userinfo['full_name'] = sprintf('%s %s',  $userinfo['given_name'], $userinfo['family_name']);
+    $userinfo['full_name'] = sprintf('%s %s', $userinfo['given_name'], $userinfo['family_name']);
   }
 
   // Use meaningful names.
@@ -93,11 +98,6 @@ function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, a
 
 /**
  * Implements hook_openid_connect_userinfo_save().
- *
- * @param UserInterface $account
- *   The current user account.
- * @param array $context
- *   Context information from open id connect module.
  */
 function itkdev_openid_connect_openid_connect_userinfo_save(UserInterface $account, array $context) {
   \Drupal::service('itkdev_openid_connect.helper')->userInfoSave($account, $context);
