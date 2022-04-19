@@ -252,7 +252,7 @@ class MaestroTemplateHelper {
   public function viewsQueryAlter(ViewExecutable $view, QueryPluginBase $query) {
     $viewId = $view->id();
     $displayId = $view->getDisplay()->display['id'];
-    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+    $user = $this->entityTypeManager->getStorage('user')->load(10);
     $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->getQuery()->execute();
     $allowedList = [];
     foreach ($maestroTemplates as $template) {
@@ -289,6 +289,19 @@ class MaestroTemplateHelper {
             break;
         }
       break;
+      case 'maestro_all_in_production_tasks':
+        switch ($displayId) {
+          case 'maestro_all_active_tasks_full':
+          case 'maestro_all_active_tasks_lean':
+            $query->where[1]['conditions'][] = [
+              'field' => 'maestro_process_maestro_queue.template_id',
+              'value' => $allowedList,
+              'operator' => 'in',
+            ];
+
+            break;
+        }
+        break;
     }
   }
 }
