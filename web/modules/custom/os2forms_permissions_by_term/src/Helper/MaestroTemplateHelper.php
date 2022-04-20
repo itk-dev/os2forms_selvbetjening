@@ -237,6 +237,36 @@ class MaestroTemplateHelper {
   }
 
   /**
+   * Hide views exposed filter options if user is not allowed to see them.
+   *
+   * @param array $form
+   *   The form element.
+   * @param FormStateInterface $form_state
+   *   The state of the form.
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function maestroViewsExposedFormAlter(array &$form, FormStateInterface $form_state) {
+    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+    $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
+    switch ($form['#id']) {
+      case 'views-exposed-form-maestro-all-flows-all-flows-full':
+        $maestroTemplateIds = $form['template_id_filter']['#options'];
+        foreach ($maestroTemplateIds as $key => $id) {
+          $maestroTemplate = $this->entityTypeManager->getStorage('maestro_template')->load($key);
+          if ($maestroTemplate) {
+            $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
+            if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
+              unset($form['template_id_filter']['#options'][$key]);
+            }
+          }
+        }
+
+        break;
+    }
+  }
+
+  /**
    * Implement hook_views_query_alter().
    *
    * Change views queries to account for permissions_by_term.

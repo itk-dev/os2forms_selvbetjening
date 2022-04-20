@@ -184,6 +184,20 @@ function os2forms_permissions_by_term_form_alter(array &$form, \Drupal\Core\Form
 }
 
 /**
+ * Implements hook_form_alter().
+ *
+ * Alter maestro views exposed filters.
+ *
+ * @param array $form
+ *   The form to alter.
+ * @param FormStateInterface $form_state
+ *   The state of the form.
+ */
+function os2forms_permissions_by_term_form_views_exposed_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->maestroViewsExposedFormAlter($form, $form_state);
+}
+
+/**
  * Implements hook_options_list_alter().
  *
  * Change options list field for node.field_os2forms_permissions.
