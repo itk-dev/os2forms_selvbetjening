@@ -275,12 +275,11 @@ class MaestroTemplateHelper {
         $maestroTemplateIds = $form['template_id_filter']['#options'];
         foreach ($maestroTemplateIds as $key => $id) {
           $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->loadMultiple(array_keys($maestroTemplateIds));
+          /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $maestroTemplate */
           foreach ($maestroTemplates as $key => $maestroTemplate) {
-            if ($maestroTemplate) {
-              $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
-              if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
-                unset($form['template_id_filter']['#options'][$key]);
-              }
+            $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
+            if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
+              unset($form['template_id_filter']['#options'][$key]);
             }
           }
         }
@@ -321,6 +320,7 @@ class MaestroTemplateHelper {
         switch ($displayId) {
           case 'maestro_outstanding_tasks':
           case 'taskconsole_display':
+            // @phpstan-ignore-next-line
             $query->where[1]['conditions'][] = [
               'field' => 'maestro_process_maestro_queue.template_id',
               'value' => $allowedList,
@@ -333,6 +333,7 @@ class MaestroTemplateHelper {
       case 'maestro_all_flows':
         switch ($displayId) {
           case 'all_flows_full':
+            // @phpstan-ignore-next-line
             $query->where[1]['conditions'][] = [
               'field' => 'maestro_process.template_id',
               'value' => $allowedList,
@@ -347,6 +348,7 @@ class MaestroTemplateHelper {
         switch ($displayId) {
           case 'maestro_all_active_tasks_full':
           case 'maestro_all_active_tasks_lean':
+          // @phpstan-ignore-next-line
             $query->where[1]['conditions'][] = [
               'field' => 'maestro_process_maestro_queue.template_id',
               'value' => $allowedList,
