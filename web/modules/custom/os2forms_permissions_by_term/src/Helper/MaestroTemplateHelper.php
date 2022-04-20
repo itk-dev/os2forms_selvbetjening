@@ -273,15 +273,16 @@ class MaestroTemplateHelper {
       case 'views-exposed-form-maestro-all-flows-all-flows-full':
         $maestroTemplateIds = $form['template_id_filter']['#options'];
         foreach ($maestroTemplateIds as $key => $id) {
-          $maestroTemplate = $this->entityTypeManager->getStorage('maestro_template')->load($key);
-          if ($maestroTemplate) {
-            $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
-            if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
-              unset($form['template_id_filter']['#options'][$key]);
+          $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->loadMultiple(array_keys($maestroTemplateIds));
+          foreach ($maestroTemplates as $key => $maestroTemplate) {
+            if ($maestroTemplate) {
+              $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
+              if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
+                unset($form['template_id_filter']['#options'][$key]);
+              }
             }
           }
         }
-
         break;
     }
   }
@@ -302,13 +303,13 @@ class MaestroTemplateHelper {
   public function viewsQueryAlter(ViewExecutable $view, QueryPluginBase $query) {
     $viewId = $view->id();
     $displayId = $view->getDisplay()->display['id'];
+    /** @var \Drupal\Core\Session\AccountInterface $user */
     $user = $this->entityTypeManager->getStorage('user')->load(10);
     $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->getQuery()->execute();
     $allowedList = [];
     foreach ($maestroTemplates as $template) {
-      $templateEntity = $this->entityTypeManager->getStorage('maestro_template')->load($template);
       /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $templateEntity */
-      /** @var \Drupal\Core\Session\AccountInterface $user */
+      $templateEntity = $this->entityTypeManager->getStorage('maestro_template')->load($template);
       $accessResult = $this->maestroTemplateAccess($templateEntity, 'view', $user);
       if (!$accessResult instanceof AccessResultForbidden) {
         $allowedList[] = $template;
