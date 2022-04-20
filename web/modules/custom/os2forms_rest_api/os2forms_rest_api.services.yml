@@ -1,8 +1,12 @@
 services:
+  Drupal\os2forms_rest_api\WebformHelper:
+    arguments:
+      - '@entity_type.manager'
+
   Drupal\os2forms_rest_api\EventSubscriber\EventSubscriber:
     arguments:
       - '@current_route_match'
       - '@current_user'
-      - '@entity_type.manager'
+      - '@Drupal\os2forms_rest_api\WebformHelper'
     tags:
       - { name: 'event_subscriber' }

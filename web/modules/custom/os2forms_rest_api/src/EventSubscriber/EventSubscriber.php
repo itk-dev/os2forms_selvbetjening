@@ -2,14 +2,13 @@
 
 namespace Drupal\os2forms_rest_api\EventSubscriber;
 
-use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\webform\WebformSubmissionInterface;
+use Drupal\os2forms_rest_api\WebformHelper;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -31,57 +30,64 @@ class EventSubscriber implements EventSubscriberInterface {
   private AccountProxyInterface $currentUser;
 
   /**
-   * The webform submission storage.
+   * The webform helper.
    *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
+   * @var \Drupal\os2forms_rest_api\WebformHelper
    */
-  private EntityStorageInterface $submissionStorage;
+  private WebformHelper $webformHelper;
 
   /**
    * Constructor.
    */
-  public function __construct(RouteMatchInterface $routeMatch, AccountProxyInterface $currentUser, EntityTypeManagerInterface $entityTypeManager) {
+  public function __construct(RouteMatchInterface $routeMatch, AccountProxyInterface $currentUser, WebformHelper $webformHelper) {
     $this->routeMatch = $routeMatch;
     $this->currentUser = $currentUser;
-    $this->submissionStorage = $entityTypeManager->getStorage('webform_submission');
+    $this->webformHelper = $webformHelper;
   }
 
   /**
    * On request handler.
+   *
+   * Check for user access to webform API resource.
    */
   public function onRequest(KernelEvent $event) {
-    if ($this->currentUser->isAnonymous()
-      || 'rest.webform_rest_submission.GET' !== $this->routeMatch->getRouteName()) {
+    $routeName = $this->routeMatch->getRouteName();
+    $restRouteNames = [
+      'rest.webform_rest_elements.GET',
+      'rest.webform_rest_fields.GET',
+      'rest.webform_rest_submission.GET',
+      'rest.webform_rest_submission.PATCH',
+      'rest.webform_rest_submit.POST',
+    ];
+    if ($this->currentUser->isAnonymous() || !in_array($routeName, $restRouteNames, TRUE)) {
       return;
     }
 
     $webformId = $this->routeMatch->getParameter('webform_id');
-    $uuid = $this->routeMatch->getParameter('uuid');
-    if (!isset($webformId, $uuid)) {
+    $submissionUuid = $this->routeMatch->getParameter('uuid');
+
+    // Handle webform submission.
+    if ('rest.webform_rest_submit.POST' === $routeName) {
+      try {
+        $content = json_decode($event->getRequest()->getContent(), TRUE, 512, JSON_THROW_ON_ERROR);
+        $webformId = (string) $content['webform_id'];
+      }
+      catch (\JsonException $exception) {
+      }
+    }
+
+    if (!isset($webformId)) {
+      throw new BadRequestHttpException('Cannot get webform id');
+    }
+
+    $webform = $this->webformHelper->getWebform($webformId, $submissionUuid);
+
+    if (NULL === $webform) {
       return;
     }
 
-    $submissionIds = $this->submissionStorage
-      ->getQuery()
-      ->accessCheck(FALSE)
-      ->condition('uuid', $uuid)
-      ->execute();
-    $submission = $this->submissionStorage->load(array_key_first($submissionIds));
-
-    if (NULL === $submission) {
-      return;
-    }
-
-    assert($submission instanceof WebformSubmissionInterface);
-    $webform = $submission->getWebform();
-    if (NULL === $webform || $webformId !== $webform->id()) {
-      return;
-    }
-
-    // @todo Get this from the webform.
-    $allowedUsers = $webform->getThirdPartySetting('os2forms_rest_api', 'allowed_users', []);
-
-    if (!empty($allowedUsers) && !in_array($this->currentUser->id(), $allowedUsers, TRUE)) {
+    $allowedUsers = $this->webformHelper->getAllowedUsers($webform);
+    if (!empty($allowedUsers) && !isset($allowedUsers[$this->currentUser->id()])) {
       throw new AccessDeniedHttpException('Access denied');
     }
   }
