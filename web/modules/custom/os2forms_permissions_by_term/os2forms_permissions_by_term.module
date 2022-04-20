@@ -125,13 +125,8 @@ function os2forms_permissions_by_term_form_alter(array &$form, FormStateInterfac
  * Implements hook_form_FORMID_alter().
  *
  * Alter maestro views exposed filters.
- *
- * @param array $form
- *   The form to alter.
- * @param FormStateInterface $form_state
- *   The state of the form.
  */
-function os2forms_permissions_by_term_form_views_exposed_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+function os2forms_permissions_by_term_form_views_exposed_form_alter(array &$form, FormStateInterface $form_state) {
   \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->maestroViewsExposedFormAlter($form, $form_state);
 }
 
@@ -145,14 +140,9 @@ function os2forms_permissions_by_term_options_list_alter(array &$options, array 
 }
 
 /**
- * Implement hook_views_query_alter().
+ * Implements hook_views_query_alter().
  *
  * Change views queries to account for permissions_by_term.
- *
- * @param ViewExecutable $view
- *   The view.
- * @param QueryPluginBase $query
- *   The query.
  */
 function os2forms_permissions_by_term_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->viewsQueryAlter($view, $query);

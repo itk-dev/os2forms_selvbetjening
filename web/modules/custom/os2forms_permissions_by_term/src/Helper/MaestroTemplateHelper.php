@@ -261,8 +261,9 @@ class MaestroTemplateHelper {
    *
    * @param array $form
    *   The form element.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
+   *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
@@ -292,9 +293,9 @@ class MaestroTemplateHelper {
    *
    * Change views queries to account for permissions_by_term.
    *
-   * @param ViewExecutable $view
+   * @param \Drupal\views\ViewExecutable $view
    *   The view.
-   * @param QueryPluginBase $query
+   * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
    *   The query.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
@@ -328,6 +329,7 @@ class MaestroTemplateHelper {
             break;
         }
         break;
+
       case 'maestro_all_flows':
         switch ($displayId) {
           case 'all_flows_full':
@@ -339,7 +341,8 @@ class MaestroTemplateHelper {
 
             break;
         }
-      break;
+        break;
+
       case 'maestro_all_in_production_tasks':
         switch ($displayId) {
           case 'maestro_all_active_tasks_full':
@@ -355,4 +358,5 @@ class MaestroTemplateHelper {
         break;
     }
   }
+
 }
