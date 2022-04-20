@@ -13,6 +13,8 @@ use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\permissions_by_term\Service\AccessStorage;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Helper class for maestro templates permissions by term.
@@ -251,6 +253,111 @@ class MaestroTemplateHelper {
           }
         }
       }
+    }
+  }
+
+  /**
+   * Hide views exposed filter options if user is not allowed to see them.
+   *
+   * @param array $form
+   *   The form element.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function maestroViewsExposedFormAlter(array &$form, FormStateInterface $form_state) {
+    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+    $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
+    switch ($form['#id']) {
+      case 'views-exposed-form-maestro-all-flows-all-flows-full':
+        $maestroTemplateIds = $form['template_id_filter']['#options'];
+        foreach ($maestroTemplateIds as $key => $id) {
+          $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->loadMultiple(array_keys($maestroTemplateIds));
+          /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $maestroTemplate */
+          foreach ($maestroTemplates as $key => $maestroTemplate) {
+            $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
+            if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
+              unset($form['template_id_filter']['#options'][$key]);
+            }
+          }
+        }
+        break;
+    }
+  }
+
+  /**
+   * Implement hook_views_query_alter().
+   *
+   * Change views queries to account for permissions_by_term.
+   *
+   * @param \Drupal\views\ViewExecutable $view
+   *   The view.
+   * @param \Drupal\views\Plugin\views\query\QueryPluginBase $query
+   *   The query.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function viewsQueryAlter(ViewExecutable $view, QueryPluginBase $query) {
+    $viewId = $view->id();
+    $displayId = $view->getDisplay()->display['id'];
+    /** @var \Drupal\Core\Session\AccountInterface $user */
+    $user = $this->entityTypeManager->getStorage('user')->load(10);
+    $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->getQuery()->execute();
+    $allowedList = [];
+    foreach ($maestroTemplates as $template) {
+      /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $templateEntity */
+      $templateEntity = $this->entityTypeManager->getStorage('maestro_template')->load($template);
+      $accessResult = $this->maestroTemplateAccess($templateEntity, 'view', $user);
+      if (!$accessResult instanceof AccessResultForbidden) {
+        $allowedList[] = $template;
+      }
+    }
+    switch ($viewId) {
+      case 'maestro_outstanding_tasks':
+        switch ($displayId) {
+          case 'maestro_outstanding_tasks':
+          case 'taskconsole_display':
+            // @phpstan-ignore-next-line
+            $query->where[1]['conditions'][] = [
+              'field' => 'maestro_process_maestro_queue.template_id',
+              'value' => $allowedList,
+              'operator' => 'in',
+            ];
+            break;
+        }
+        break;
+
+      case 'maestro_all_flows':
+        switch ($displayId) {
+          case 'all_flows_full':
+            // @phpstan-ignore-next-line
+            $query->where[1]['conditions'][] = [
+              'field' => 'maestro_process.template_id',
+              'value' => $allowedList,
+              'operator' => 'in',
+            ];
+
+            break;
+        }
+        break;
+
+      case 'maestro_all_in_production_tasks':
+        switch ($displayId) {
+          case 'maestro_all_active_tasks_full':
+          case 'maestro_all_active_tasks_lean':
+            // @phpstan-ignore-next-line
+            $query->where[1]['conditions'][] = [
+              'field' => 'maestro_process_maestro_queue.template_id',
+              'value' => $allowedList,
+              'operator' => 'in',
+            ];
+
+            break;
+        }
+        break;
     }
   }
 
