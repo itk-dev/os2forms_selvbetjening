@@ -358,7 +358,7 @@ class Helper {
    */
   public function nodeWebformPermisisonsByTermSubmit(array $form, FormStateInterface $form_state) {
     $webformReference = $form_state->getValue('webform');
-    $webformTarget = $webformReference['0']['target_id'];
+    $webformTarget = $webformReference['0']['target_id'] ?? NULL;
     if ($webformTarget) {
       $existingValues = $form_state->getValue('field_os2forms_permissions');
       $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
