@@ -72,6 +72,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-project-message": "^9.1",
         "drupal/core-recommended": "^9.1",
+        "drupal/key_auth": "^2.0",
         "drupal/maestro": "dev-3.x as 3.0.1-rc2",
         "drupal/memcache": "^2.3",
         "drupal/menu_link_attributes": "^1.2",

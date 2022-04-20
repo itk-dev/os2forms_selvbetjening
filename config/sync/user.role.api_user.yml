@@ -1,0 +1,20 @@
+uuid: 97330e4f-3eae-4e35-8683-95c8ee79350d
+langcode: da
+status: true
+dependencies:
+  config:
+    - rest.resource.webform_rest_elements
+    - rest.resource.webform_rest_fields
+    - rest.resource.webform_rest_submission
+  module:
+    - key_auth
+    - rest
+id: api_user
+label: 'API user'
+weight: 11
+is_admin: null
+permissions:
+  - 'restful get webform_rest_elements'
+  - 'restful get webform_rest_fields'
+  - 'restful get webform_rest_submission'
+  - 'use key authentication'

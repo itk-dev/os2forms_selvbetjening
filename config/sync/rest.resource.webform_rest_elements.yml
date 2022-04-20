@@ -1,0 +1,18 @@
+uuid: 214c1da5-7fe6-46d9-883e-cd1f0f065e91
+langcode: da
+status: true
+dependencies:
+  module:
+    - key_auth
+    - serialization
+    - webform_rest
+id: webform_rest_elements
+plugin_id: webform_rest_elements
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - key_auth
