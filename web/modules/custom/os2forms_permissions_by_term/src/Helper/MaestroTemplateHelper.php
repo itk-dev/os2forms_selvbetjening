@@ -348,7 +348,7 @@ class MaestroTemplateHelper {
         switch ($displayId) {
           case 'maestro_all_active_tasks_full':
           case 'maestro_all_active_tasks_lean':
-          // @phpstan-ignore-next-line
+            // @phpstan-ignore-next-line
             $query->where[1]['conditions'][] = [
               'field' => 'maestro_process_maestro_queue.template_id',
               'value' => $allowedList,
