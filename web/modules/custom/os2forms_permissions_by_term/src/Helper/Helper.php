@@ -276,10 +276,15 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function nodeFormAlter(array &$form, FormStateInterface $form_state) {
-    $nodeBundle = $form_state->getFormObject()->getEntity()->bundle();
-    if (1 !== (int)$this->account->id() && 'webform' === $nodeBundle) {
+    /** @var \Drupal\Core\Entity\EntityForm $formObject */
+    $formObject = $form_state->getFormObject();
+    $nodeBundle = $formObject->getEntity()->bundle();
+    if (1 !== (int) $this->account->id() && 'webform' === $nodeBundle) {
       // Run custom submit handler before default node submission.
-      array_unshift($form['actions']['submit']['#submit'], [$this, 'nodeWebformPermisisonsByTermSubmit']);
+      array_unshift(
+        $form['actions']['submit']['#submit'],
+        [$this, 'nodeWebformPermisisonsByTermSubmit']
+      );
       $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
       $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
       $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
