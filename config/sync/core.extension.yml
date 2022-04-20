@@ -43,6 +43,7 @@ module:
   honeypot: 0
   image: 0
   itkdev_openid_connect: 0
+  key_auth: 0
   language: 0
   libraries: 0
   link: 0
@@ -71,6 +72,7 @@ module:
   os2forms_nemid: 0
   os2forms_nemlogin_openid_connect: 0
   os2forms_permissions_by_term: 0
+  os2forms_rest_api: 0
   os2forms_sbsys: 0
   os2forms_user_field_lookup: 0
   os2forms_webform_list: 0

@@ -6,7 +6,6 @@
   stored redirect destination (cf.
   [itkdev_openid_connect_user_default_page_login_ignore_whitelist_alter](itkdev_openid_connect.module)).
 
-
 ## Configuration
 
 Edit `settings.local.php` to define your OpenID Connect secret and endpoints:

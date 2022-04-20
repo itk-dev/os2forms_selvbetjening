@@ -72,6 +72,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-project-message": "^9.1",
         "drupal/core-recommended": "^9.1",
+        "drupal/key_auth": "^2.0",
         "drupal/maestro": "dev-3.x as 3.0.1-rc2",
         "drupal/memcache": "^2.3",
         "drupal/menu_link_attributes": "^1.2",
@@ -88,7 +89,8 @@
         "os2forms/os2forms_forloeb_profile": "^1.8"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.1"
+        "drupal/core-dev": "^9.1",
+        "mglaman/drupal-check": "^1.3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -190,7 +192,30 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "vendor/bin/drush webform:libraries:download"
+            "vendor/bin/drush webform:libraries:download",
+            "@install-codestandards"
+        ],
+        "install-codestandards": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        ],
+        "code-analysis/drupal-check": [
+            "vendor/bin/drupal-check --deprecations --analysis web/modules/custom"
+        ],
+        "code-analysis": [
+            "@code-analysis/drupal-check"
+        ],
+        "coding-standards-check/phpcs": [
+            "vendor/bin/phpcs --standard=phpcs.xml.dist"
+        ],
+        "coding-standards-check": [
+            "@coding-standards-check/phpcs"
+        ],
+        "coding-standards-apply/phpcs": [
+            "vendor/bin/phpcbf --standard=phpcs.xml.dist"
+        ],
+        "coding-standards-apply": [
+            "@coding-standards-apply/phpcs"
         ]
+
     }
 }

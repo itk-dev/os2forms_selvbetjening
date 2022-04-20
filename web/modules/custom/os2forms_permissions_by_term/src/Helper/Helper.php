@@ -21,10 +21,10 @@ use Drupal\webform\WebformInterface;
  * Helper class for os2forms permissions by term.
  */
 class Helper {
-
   use StringTranslationTrait;
+
   /**
-   * Permissions by term access storage
+   * Permissions by term access storage.
    *
    * @var \Drupal\permissions_by_term\Service\AccessStorage
    */
@@ -63,7 +63,7 @@ class Helper {
    * @param \Drupal\Core\Config\ConfigFactory $configFactory
    *   The config factory.
    */
-  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account,  ConfigFactory $configFactory) {
+  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory) {
     $this->accessStorage = $accessStorage;
     $this->entityTypeManager = $entity_type_manager;
     $this->account = $account;
@@ -77,21 +77,22 @@ class Helper {
    *
    * @param array $form
    *   The form being altered.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
-   * @param $hook
+   * @param string $hook
    *   The type of webform hook calling this method.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   *
    */
   public function webformAlter(array &$form, FormStateInterface $form_state, $hook) {
-    $node = $form_state->getFormObject()->getEntity();
-    if('webform' === $node->bundle()) {
+    /** @var \Drupal\Core\Entity\EntityForm $formObject */
+    $formObject = $form_state->getFormObject();
+    $node = $formObject->getEntity();
+    if ('webform' === $node->bundle()) {
       $term_data = [];
       $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
-      if (1 === (int)$this->account->id()) {
+      if (1 === (int) $this->account->id()) {
         $userTerms = [];
         $permissionsByTermBundles = $this->configFactory->get('permissions_by_term.settings')->get('target_bundles');
         foreach ($permissionsByTermBundles as $bundle) {
@@ -100,7 +101,8 @@ class Helper {
             $userTerms[] = $term->tid;
           }
         }
-      } else {
+      }
+      else {
         $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
       }
       $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadMultiple($userTerms);
@@ -121,7 +123,9 @@ class Helper {
 
       // Get default settings for webform.
       if ('settings' === $hook) {
+        /** @var \Drupal\Core\Entity\EntityForm $webform_settings_form */
         $webform_settings_form = $form_state->getFormObject();
+        /** @var \Drupal\webform\WebformInterface $webform */
         $webform = $webform_settings_form->getEntity();
         $defaultSettings = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
       }
@@ -137,10 +141,10 @@ class Helper {
       $form['os2forms_permissions_by_term']['os2forms_access'] = [
         '#type' => 'checkboxes',
         '#required' => TRUE,
-        '#title' => t('Access'),
+        '#title' => $this->t('Access'),
         '#default_value' => $defaultSettings ?? [],
         '#options' => $term_data,
-        '#description' => t('Limit access to this webform.'),
+        '#description' => $this->t('Limit access to this webform.'),
       ];
 
       // Set access value automatically if user only has one term option.
@@ -158,13 +162,14 @@ class Helper {
    *
    * Check access on webform related operations.
    *
-   * @param WebformInterface $webform
+   * @param \Drupal\webform\WebformInterface $webform
    *   The webform we check access for.
-   * @param $operation
+   * @param string $operation
    *   The operation being performed on the webform.
-   * @param AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user.
-   * @return mixed The resulting access permission.
+   *
+   * @return \Drupal\Core\Access\AccessResult
    *   The resulting access permission.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
@@ -179,8 +184,10 @@ class Helper {
     $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
     switch ($operation) {
       case 'view':
-        // We don't use permission by term to determine access to the actual webform.
-        // This could probably be removed, but is left in to show we are aware of this operation.
+        // We don't use permission by term to determine access to the actual
+        // webform.
+        // This could probably be removed, but is left in to show we are aware
+        // of this operation.
         return AccessResult::neutral();
 
       case 'update':
@@ -191,11 +198,14 @@ class Helper {
       case 'submission_view_any':
       case 'submission_view_own':
       case 'submission_purge_any':
-        // Allow access if no term is set for the form or a webform term match the users term.
-      return empty($webformPermissionsByTerm) || !empty(array_intersect($webformPermissionsByTerm, $userTerms))
+        // Allow access if no term is set for the form or a webform term match
+        // the users term.
+        return empty($webformPermissionsByTerm) || !empty(array_intersect($webformPermissionsByTerm, $userTerms))
           ? AccessResult::neutral()
           : AccessResult::forbidden();
     }
+
+    return AccessResult::neutral();
   }
 
   /**
@@ -203,14 +213,14 @@ class Helper {
    *
    * Check access on node related operations.
    *
-   * @param NodeInterface $node
+   * @param \Drupal\node\NodeInterface $node
    *   The node entity.
-   * @param $operation
+   * @param string $operation
    *   The operation being performed on the node.
-   * @param AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user.
    *
-   * @return mixed The resulting access permission.
+   * @return mixed
    *   The resulting access permission.
    */
   public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account) {
@@ -233,14 +243,22 @@ class Helper {
    *
    * @param array $form
    *   The webform add/edit form.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    */
-  public function webformSubmit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  public function webformSubmit(array $form, FormStateInterface $form_state) {
     // Get the settings from the webform config entity.
+    /** @var \Drupal\Core\Entity\EntityForm $webform_settings_form */
     $webform_settings_form = $form_state->getFormObject();
+    /** @var \Drupal\webform\WebformInterface $webform */
     $webform = $webform_settings_form->getEntity();
-    $webform->setThirdPartySetting('os2forms_permissions_by_term', 'settings', $form_state->getValue(['os2forms_permissions_by_term', 'os2forms_access']));
+    $webform->setThirdPartySetting(
+      'os2forms_permissions_by_term',
+      'settings',
+      $form_state->getValue([
+        'os2forms_permissions_by_term',
+        'os2forms_access',
+      ]));
     $webform->save();
   }
 
@@ -251,32 +269,35 @@ class Helper {
    *
    * @param array $form
    *   The form being altered.
-   * @param FormStateInterface $form_state
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The state of the form.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   *
    */
   public function nodeFormAlter(array &$form, FormStateInterface $form_state) {
-    if (1 !== (int)$this->account->id()) {
+    /** @var \Drupal\Core\Entity\EntityForm $formObject */
+    $formObject = $form_state->getFormObject();
+    $nodeBundle = $formObject->getEntity()->bundle();
+    if (1 !== (int) $this->account->id() && 'webform' === $nodeBundle) {
+      // Run custom submit handler before default node submission.
+      array_unshift(
+        $form['actions']['submit']['#submit'],
+        [$this, 'nodeWebformPermisisonsByTermSubmit']
+      );
       $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
       $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
       $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
       $webformReference = $form['webform']['widget'][0]['target_id']['#default_value'];
-      // If a webform is referenced from the node add message and default value.
+      // If a webform is referenced from the node add message.
       if ($webformReference) {
-        $referencedWebform = $this->entityTypeManager->getStorage('webform')->load($webformReference);
-        $anonymousUser = User::getAnonymousUser();
         $url = URL::fromRoute('entity.webform.settings_access', ['webform' => $webformReference])->toString();
         $form['field_os2forms_permissions']['widget'][0]['#prefix'] =
           '<div class="alert alert-warning">' . $this->t('Anonymous access to view this content is set on <a href="@url">the related webform access page</a> . (Create submissions permission)', ['@url' => $url]) . '</div>';
-        foreach ($anonymousTerms as $termId) {
-          $form['field_os2forms_permissions']['widget'][$termId]['#disabled'] = TRUE;
-          if($referencedWebform->access('submission_create', $anonymousUser)) {
-            $form['field_os2forms_permissions']['widget']['#default_value'][] = $termId;
-          }
-        }
+      }
+      // Disable anonymous terms. They should always be fetched from webform.
+      foreach ($anonymousTerms as $termId) {
+        $form['field_os2forms_permissions']['widget'][$termId]['#disabled'] = TRUE;
       }
 
       // Set access value automatically if user only has one term option.
@@ -327,8 +348,33 @@ class Helper {
       foreach ($anonymousTerms as $termId) {
         $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($termId);
         $label = $this->t('@term_label (Note: View permission only. This setting depends on the related webform.)', ['@term_label' => $term->label()]);
-        $options = array($termId => $label) + $options;
+        $options = [$termId => $label] + $options;
       }
+    }
+  }
+
+  /**
+   * Custom submit handler for setting permissions by term on node.
+   *
+   * @param array $form
+   *   The form that is being submitted.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The state of the form being submitted.
+   */
+  public function nodeWebformPermisisonsByTermSubmit(array $form, FormStateInterface $form_state) {
+    $webformReference = $form_state->getValue('webform');
+    $webformTarget = $webformReference['0']['target_id'] ?? NULL;
+    if ($webformTarget) {
+      $existingValues = $form_state->getValue('field_os2forms_permissions');
+      $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
+      $anonymousUser = User::getAnonymousUser();
+      $referencedWebform = $this->entityTypeManager->getStorage('webform')->load($webformTarget);
+      foreach ($anonymousTerms as $termId) {
+        if ($referencedWebform->access('submission_create', $anonymousUser)) {
+          $existingValues[] = ['target_id' => $termId];
+        }
+      }
+      $form_state->setValue('field_os2forms_permissions', $existingValues);
     }
   }
 
@@ -338,6 +384,7 @@ class Helper {
    * @param array $options
    *   The options to to pick from.
    * @param array $result
+   *   The result.
    * @param string|null $parent
    *   A parent key if the option is a child.
    *
@@ -352,7 +399,8 @@ class Helper {
         $accessResult = $this->webformAccess($webform, 'update', $this->account);
         if (!$accessResult instanceof AccessResultForbidden) {
           if ($parent) {
-            // Webform module only allows for one level of grouping, so we can safely assume only one level nesting.
+            // Webform module only allows for one level of grouping, so we can
+            // safely assume only one level nesting.
             $result[$parent][$key] = $option;
           }
           else {
@@ -365,4 +413,5 @@ class Helper {
       }
     }
   }
+
 }

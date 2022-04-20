@@ -2,7 +2,6 @@
 
 namespace Drupal\os2forms_webform_list;
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\maestro\Controller\MaestroTemplateListBuilder;
 
 /**
@@ -17,6 +16,7 @@ class CustomMaestroTemplateEntityListBuilder extends MaestroTemplateListBuilder 
    */
   public function load() {
     $entity_ids = $this->getEntityIds();
+    // @phpstan-ignore-next-line
     $entities = $this->storage->loadMultipleOverrideFree($entity_ids);
 
     uasort($entities, [$this->entityType->getClass(), 'sort']);
@@ -28,4 +28,5 @@ class CustomMaestroTemplateEntityListBuilder extends MaestroTemplateListBuilder 
     }
     return $entities;
   }
+
 }
