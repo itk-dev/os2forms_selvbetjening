@@ -184,7 +184,7 @@ function os2forms_permissions_by_term_form_alter(array &$form, \Drupal\Core\Form
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_FORMID_alter().
  *
  * Alter maestro views exposed filters.
  *
