@@ -1,12 +1,15 @@
 uuid: 05204520-d54d-41fb-a383-658b1f621c21
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - eu_cookie_compliance
+    - system
 _core:
   default_config_hash: SAKAhG41yLV5zfWMxfTe55qH7M7B1e1-odAO-DufcVc
 id: virksomhed
 label: Virksomhed
-weight: 9
+weight: -1
 is_admin: null
 permissions:
   - 'access content'

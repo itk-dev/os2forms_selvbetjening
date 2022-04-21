@@ -11,7 +11,7 @@ dependencies:
     - rest
 id: api_user
 label: 'API user'
-weight: 11
+weight: 1
 is_admin: null
 permissions:
   - 'restful get webform_rest_elements'

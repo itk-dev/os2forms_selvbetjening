@@ -1,12 +1,38 @@
 uuid: 48cf2c40-8d99-4357-9ce3-eba9bb66a3d5
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - node.type.webform
+  module:
+    - block_content
+    - content_moderation
+    - contextual
+    - entity_print
+    - field_ui
+    - file
+    - filter
+    - honeypot
+    - locale
+    - maestro
+    - maestro_taskconsole
+    - node
+    - search
+    - system
+    - taxonomy
+    - toolbar
+    - webform
+    - webform_node
+    - webform_revisions
+    - webform_submission_log
+    - webform_templates
+    - workflow_participants
 _core:
   default_config_hash: esovrj0jPqtd5eU-RuIjs0r7UCXiTM_XAYhtEE84cDw
 id: leder
 label: Leder
-weight: 8
+weight: -2
 is_admin: null
 permissions:
   - 'access administration pages'

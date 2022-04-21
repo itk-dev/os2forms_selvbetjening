@@ -1,12 +1,18 @@
 uuid: d9527759-17b8-4712-8414-a3f15e124f9b
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - eu_cookie_compliance
+    - filter
+    - system
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
 label: 'Anonym bruger'
-weight: 0
+weight: -10
 is_admin: false
 permissions:
   - 'access content'

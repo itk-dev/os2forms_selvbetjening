@@ -1,12 +1,37 @@
 uuid: 2b743cd5-556c-467c-b24a-453f3ca28ce4
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - node.type.webform
+    - workflows.workflow.udgivelse_af_forlob_og_webformularer
+  module:
+    - block_content
+    - content_moderation
+    - contextual
+    - entity_print
+    - field_ui
+    - file
+    - filter
+    - honeypot
+    - locale
+    - node
+    - search
+    - system
+    - taxonomy
+    - toolbar
+    - webform
+    - webform_node
+    - webform_revisions
+    - webform_submission_log
+    - webform_templates
+    - workflow_participants
 _core:
   default_config_hash: oPL1IfV9McRYjNAICLwje0l5khmTZ2HSwYl3EfunVKA
 id: forloeb_designer
 label: Selvbetjeningsdesigner
-weight: 5
+weight: -5
 is_admin: null
 permissions:
   - 'access administration pages'
@@ -25,8 +50,8 @@ permissions:
   - 'access webform submission user'
   - 'administer block_content display'
   - 'administer block_content form display'
-  - 'administer display modes'
   - 'administer content types'
+  - 'administer display modes'
   - 'administer node display'
   - 'administer node form display'
   - 'administer taxonomy_term display'
