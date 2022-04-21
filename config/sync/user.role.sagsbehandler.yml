@@ -1,12 +1,31 @@
 uuid: d86124d7-2ee5-42e5-942c-396f3c6d7e4d
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - block_content
+    - content_moderation
+    - entity_print
+    - field_ui
+    - file
+    - filter
+    - honeypot
+    - maestro
+    - maestro_taskconsole
+    - node
+    - search
+    - system
+    - toolbar
+    - webform
+    - webform_node
+    - webform_submission_log
 _core:
   default_config_hash: jA-vZTVeFBc5q5-_Ukuh9YfLnjw8y0jijXonKSZ1weQ
 id: sagsbehandler
 label: Sagsbehandler
-weight: 6
+weight: -4
 is_admin: null
 permissions:
   - 'access administration pages'

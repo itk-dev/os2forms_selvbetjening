@@ -8,7 +8,7 @@ dependencies:
     - rest
 id: api_user_write
 label: 'API user (write)'
-weight: 13
+weight: 2
 is_admin: null
 permissions:
   - 'restful post webform_rest_submit'

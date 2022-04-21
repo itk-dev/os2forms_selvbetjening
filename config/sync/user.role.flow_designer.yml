@@ -1,28 +1,49 @@
 uuid: e341c037-036b-4c26-81e3-5c1fcbd5524e
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - node.type.webform
+    - workflows.workflow.udgivelse_af_forlob_og_webformularer
+  module:
+    - block_content
+    - content_moderation
+    - contextual
+    - entity_print
+    - field_ui
+    - file
+    - filter
+    - honeypot
+    - locale
+    - maestro
+    - maestro_taskconsole
+    - node
+    - search
+    - system
+    - taxonomy
+    - toolbar
+    - webform
+    - webform_node
+    - webform_revisions
+    - webform_templates
 _core:
   default_config_hash: FuuYYl7dBxmUUArvRKKBSiWjGH8UJR6cxgF0OmOYHiQ
 id: flow_designer
 label: Flowdesigner
-weight: 4
+weight: -6
 is_admin: null
 permissions:
-  - 'access administration pages'
   - 'access content overview'
   - 'access contextual links'
-  - 'access files overview'
+  - 'access own webform configuration'
   - 'access site in maintenance mode'
   - 'access toolbar'
+  - 'access webform overview'
   - 'add maestro entity identifiers entities'
   - 'add maestro process entities'
   - 'add maestro production assignment entities'
   - 'add maestro queue entities'
-  - 'administer block_content display'
-  - 'administer block_content form display'
-  - 'administer content types'
-  - 'administer display modes'
   - 'administer maestro entity identifiers entities'
   - 'administer maestro production assignment entities'
   - 'administer maestro queue entities'
@@ -30,73 +51,29 @@ permissions:
   - 'administer maestro_process display'
   - 'administer maestro_process fields'
   - 'administer maestro_process form display'
-  - 'administer node display'
-  - 'administer node form display'
-  - 'administer site configuration'
-  - 'administer taxonomy_term display'
-  - 'administer taxonomy_term form display'
-  - 'administer user display'
-  - 'administer user form display'
-  - 'administer webform revisions'
-  - 'administer webform templates'
   - 'bypass entity print access'
   - 'bypass honeypot protection'
-  - 'create forloebsside content'
   - 'create webform'
   - 'create webform content'
-  - 'delete any forloebsside content'
   - 'delete any webform content'
-  - 'delete forloebsside revisions'
   - 'delete maestro entity identifiers entities'
   - 'delete maestro process entities'
   - 'delete maestro production assignment entities'
   - 'delete maestro queue entities'
-  - 'delete own forloebsside content'
+  - 'delete own webform'
   - 'delete own webform content'
   - 'delete webform revisions'
   - 'delete webform submissions any node'
   - 'delete webform submissions own node'
-  - 'edit any forloebsside content'
   - 'edit any webform content'
   - 'edit maestro entity identifiers entities'
   - 'edit maestro process entities'
   - 'edit maestro production assignment entities'
   - 'edit maestro queue entities'
-  - 'edit own forloebsside content'
+  - 'edit own webform'
   - 'edit own webform content'
   - 'edit webform submissions any node'
   - 'edit webform submissions own node'
-  - 'entity print access bundle contact'
-  - 'entity print access bundle forloebsside'
-  - 'entity print access bundle hk_grundskabelon'
-  - 'entity print access bundle template_contact'
-  - 'entity print access bundle template_employee_evaluation'
-  - 'entity print access bundle template_feedback'
-  - 'entity print access bundle template_issue'
-  - 'entity print access bundle template_job_application'
-  - 'entity print access bundle template_job_seeker_profile'
-  - 'entity print access bundle template_medical_appointment'
-  - 'entity print access bundle template_registration'
-  - 'entity print access bundle template_session_evaluation'
-  - 'entity print access bundle template_subscribe'
-  - 'entity print access bundle template_user_profile'
-  - 'entity print access bundle webform'
-  - 'entity print access type block_content'
-  - 'entity print access type content_moderation_state'
-  - 'entity print access type file'
-  - 'entity print access type maestro_entity_identifiers'
-  - 'entity print access type maestro_process'
-  - 'entity print access type maestro_process_status'
-  - 'entity print access type maestro_process_variables'
-  - 'entity print access type maestro_production_assignments'
-  - 'entity print access type maestro_queue'
-  - 'entity print access type menu_link_content'
-  - 'entity print access type node'
-  - 'entity print access type redirect'
-  - 'entity print access type taxonomy_term'
-  - 'entity print access type user'
-  - 'entity print access type webform_submission'
-  - 'revert forloebsside revisions'
   - 'revert webform revisions'
   - 'search content'
   - 'start maestro process'
@@ -104,14 +81,12 @@ permissions:
   - 'start template simple_parallel_to_serial'
   - 'start template test_flow'
   - 'start template tildeling_og_notifikationer'
-  - 'translate interface'
   - 'use advanced search'
   - 'use text format full_html'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
   - 'use udgivelse_af_forlob_og_webformularer transition publish'
   - 'use udgivelse_af_forlob_og_webformularer transition unpublish'
   - 'view any unpublished content'
-  - 'view forloebsside revisions'
   - 'view latest version'
   - 'view maestro entity identifiers entities'
   - 'view maestro process entities'
@@ -119,6 +94,7 @@ permissions:
   - 'view maestro queue entities'
   - 'view maestro task console'
   - 'view own unpublished content'
+  - 'view own webform submission'
   - 'view the administration theme'
   - 'view webform revisions'
   - 'view webform submissions any node'
