@@ -239,49 +239,38 @@ class MaestroTemplateHelper {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function fieldWidgetMaestroTaskEditFormAlter(array &$form, FormStateInterface $form_state, string $form_id) {
-    if ('template_edit_task' == $form_id) {
-      if (array_key_exists('webform_machine_name', $form)) {
-        foreach ($form['webform_machine_name']['#options'] as $key => $option) {
-          if (!$option instanceof TranslatableMarkup) {
-            $webform = $this->entityTypeManager->getStorage('webform')->load($key);
-            /** @var \Drupal\webform\WebformInterface $webform */
-            $accessResult = $this->helper->webformAccess($webform, 'update', $this->account);
-            if ($accessResult instanceof AccessResultForbidden) {
-              unset($form['webform_machine_name']['#options'][$key]);
+  public function maestroFormAlter(array &$form, FormStateInterface $form_state, string $form_id) {
+    switch ($form_id) {
+      // Alter maestro task edit form.
+      case 'template_edit_task':
+        // Limit webform options.
+        if (array_key_exists('webform_machine_name', $form)) {
+          foreach ($form['webform_machine_name']['#options'] as $key => $option) {
+            if (!$option instanceof TranslatableMarkup) {
+              $webform = $this->entityTypeManager->getStorage('webform')->load($key);
+              /** @var \Drupal\webform\WebformInterface $webform */
+              $accessResult = $this->helper->webformAccess($webform, 'update', $this->account);
+              if ($accessResult instanceof AccessResultForbidden) {
+                unset($form['webform_machine_name']['#options'][$key]);
+              }
             }
           }
         }
-      }
-    }
-  }
-
-  /**
-   * Hide views exposed filter options if user is not allowed to see them.
-   *
-   * @param array $form
-   *   The form element.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The state of the form.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   */
-  public function maestroViewsExposedFormAlter(array &$form, FormStateInterface $form_state) {
-    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
-    $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
-    switch ($form['#id']) {
-      case 'views-exposed-form-maestro-all-flows-all-flows-full':
-        $maestroTemplateIds = $form['template_id_filter']['#options'];
-        foreach ($maestroTemplateIds as $key => $id) {
-          $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->loadMultiple(array_keys($maestroTemplateIds));
-          /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $maestroTemplate */
-          foreach ($maestroTemplates as $key => $maestroTemplate) {
-            $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
-            if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
-              unset($form['template_id_filter']['#options'][$key]);
-            }
-          }
+        break;
+      case 'views_exposed_form':
+        // Alter maestro views exposed filters.
+        switch ($form['#id']) {
+          case 'views-exposed-form-maestro-all-flows-all-flows-full':
+            $form['template_id_filter']['#options'] = $this->limitOptions($this->getUserTerms($this->account), $form['template_id_filter']['#options']);
+            break;
+        }
+        break;
+      case 'webform_handler_form':
+        // Alter webform handler list select list.
+        switch ($form['#webform_handler_id']) {
+          case 'opret_forloeb_fra_flow':
+            $form['settings']['maestro_template']['#options'] = $this->limitOptions($this->getUserTerms($this->account), $form['settings']['maestro_template']['#options']);
+            break;
         }
         break;
     }
@@ -359,6 +348,48 @@ class MaestroTemplateHelper {
         }
         break;
     }
+  }
+
+  /**
+   * Limit select field options based on permissions by term.
+   *
+   * @param array $userTerms
+   *   THe users terms.
+   * @param array $options
+   *   The original options.
+   * @return array
+   *   THe modified options.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function limitOptions(array $userTerms, array $options) {
+    $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->loadMultiple(array_keys($options));
+    /** @var \Drupal\Core\Config\Entity\ConfigEntityInterface $maestroTemplate */
+    foreach ($maestroTemplates as $key => $maestroTemplate) {
+      $maestroTemplatePermissionsByTerm = $maestroTemplate->getThirdPartySetting('os2forms_permissions_by_term', 'maestro_template_permissions_by_term_settings');
+      if (isset($maestroTemplatePermissionsByTerm) && empty(array_intersect($maestroTemplatePermissionsByTerm, $userTerms))) {
+        unset($options[$key]);
+      }
+    }
+
+    return $options;
+  }
+
+  /**
+   * Given a user account provide the users permssions according to permissions by term.
+   *
+   * @param AccountProxyInterface $account
+   *   The user account.
+   *
+   * @return array
+   *   The users permissions.
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function getUserTerms(\Drupal\Core\Session\AccountProxyInterface $account) {
+    $user = $this->entityTypeManager->getStorage('user')->load($account->id());
+    return $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
   }
 
 }
