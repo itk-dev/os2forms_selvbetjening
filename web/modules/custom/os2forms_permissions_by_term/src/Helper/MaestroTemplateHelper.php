@@ -356,12 +356,12 @@ class MaestroTemplateHelper {
    * Limit select field options based on permissions by term.
    *
    * @param array $userTerms
-   *   THe users terms.
+   *   The users terms.
    * @param array $options
    *   The original options.
    *
    * @return array
-   *   THe modified options.
+   *   The modified options.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
