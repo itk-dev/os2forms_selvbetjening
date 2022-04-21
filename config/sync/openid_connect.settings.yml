@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: yb6wo2M1jLJ_sG3dDzfjXLSMUFIEDNh5j59LWsHzcV0
+langcode: da
 always_save_userinfo: true
 connect_existing_users: true
 override_registration_settings: true
@@ -11,9 +14,6 @@ userinfo_mappings:
   field_department: department
   field_is_leader: is_leader
   field_name: full_name
-_core:
-  default_config_hash: yb6wo2M1jLJ_sG3dDzfjXLSMUFIEDNh5j59LWsHzcV0
-langcode: da
 role_mappings:
   administrator: {  }
   flow_designer: {  }
