@@ -257,6 +257,7 @@ class MaestroTemplateHelper {
           }
         }
         break;
+
       case 'views_exposed_form':
         // Alter maestro views exposed filters.
         switch ($form['#id']) {
@@ -265,6 +266,7 @@ class MaestroTemplateHelper {
             break;
         }
         break;
+
       case 'webform_handler_form':
         // Alter webform handler list select list.
         switch ($form['#webform_handler_id']) {
@@ -357,6 +359,7 @@ class MaestroTemplateHelper {
    *   THe users terms.
    * @param array $options
    *   The original options.
+   *
    * @return array
    *   THe modified options.
    *
@@ -377,17 +380,21 @@ class MaestroTemplateHelper {
   }
 
   /**
-   * Given a user account provide the users permssions according to permissions by term.
+   * Get all user terms.
    *
-   * @param AccountProxyInterface $account
+   * Given a user account provide the users permssions according to
+   * permissions by term.
+   *
+   * @param \Drupal\Core\Session\AccountProxyInterface $account
    *   The user account.
    *
    * @return array
    *   The users permissions.
+   *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  private function getUserTerms(\Drupal\Core\Session\AccountProxyInterface $account) {
+  private function getUserTerms(AccountProxyInterface $account) {
     $user = $this->entityTypeManager->getStorage('user')->load($account->id());
     return $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
   }
