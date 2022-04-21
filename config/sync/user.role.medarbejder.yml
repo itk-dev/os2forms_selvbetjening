@@ -18,14 +18,18 @@ label: Medarbejder
 weight: -3
 is_admin: null
 permissions:
-  - 'access administration pages'
   - 'access site in maintenance mode'
+  - 'access content'
+  - 'access content overview'
   - 'access toolbar'
   - 'administer webform revisions'
+  - 'create webform content'
   - 'edit own webform submission'
+  - 'edit own webform content'
   - 'edit webform submissions any node'
   - 'edit webform submissions own node'
   - 'use advanced search'
+  - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
   - 'view maestro task console'
   - 'view own unpublished content'
   - 'view own webform submission'
