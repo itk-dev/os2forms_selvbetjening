@@ -219,7 +219,13 @@ export:
   composite_element_item_format: label
   excluded_exporters: {  }
 handler:
-  excluded_handlers: {  }
+  excluded_handlers:
+    action: action
+    remote_post: remote_post
+    save_to_file: save_to_file
+    scheduled_email: scheduled_email
+    settings: settings
+    soap_handler: soap_handler
 variant:
   excluded_variants: {  }
 batch:
