@@ -344,6 +344,14 @@ class Helper {
   public function optionsListAlter(array &$options, array $context) {
     // Alter the field_os2forms_permissions options list.
     if ('node.field_os2forms_permissions' == $context['fieldDefinition']->getFieldStorageDefinition()->id()) {
+      // Limit options to those available on user profile.
+      $options = [];
+      $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+      $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
+      foreach ($userTerms as $userTerm) {
+        $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($userTerm);
+        $options[$userTerm] = $term->label();
+      }
       $anonymousTerms = $this->accessStorage->getPermittedTids(0, ['anonymous']);
       foreach ($anonymousTerms as $termId) {
         $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($termId);
