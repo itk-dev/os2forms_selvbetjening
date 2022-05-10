@@ -5,13 +5,12 @@ namespace Drupal\os2forms_api_request_handler\Plugin\AdvancedQueue\JobType;
 use Drupal\advancedqueue\Job;
 use Drupal\advancedqueue\JobResult;
 use Drupal\advancedqueue\Plugin\AdvancedQueue\JobType\JobTypeBase;
-
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\os2forms_api_request_handler\PostHelper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Archive document job.
+ * Post submission job.
  *
  * @AdvancedQueueJobType(
  *   id = "Drupal\os2forms_api_request_handler\Plugin\AdvancedQueue\JobType\PostSubmission",
@@ -52,7 +51,7 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
   }
 
   /**
-   * Processes the ArchiveDocument job.
+   * {@inheritdoc}
    */
   public function process(Job $job): JobResult {
     try {

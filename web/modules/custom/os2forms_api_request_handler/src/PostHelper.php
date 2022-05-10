@@ -38,7 +38,7 @@ class PostHelper {
   private Client $client;
 
   /**
-   * Constructs an ArchiveHelper object.
+   * Constructor.
    */
   public function __construct(EntityTypeManagerInterface $entityTypeManager, LanguageManagerInterface $languageManager, Client $client) {
     $this->entityTypeManager = $entityTypeManager;
