@@ -48,10 +48,10 @@ The JSON data sent to the API endpoint looks like
     }
   },
   "links": {
-    // The sender url.
+    "//": "The sender url.",
     "sender": "https://example.com",
-    // API url for getting the actual submission data.
-    "get_submission_url" => "https://example.com/webform_rest/…/submission/…"
+    "//": "API url for getting the actual submission data.",
+    "get_submission_url": "https://example.com/webform_rest/…/submission/…"
   }
 }
 ```
