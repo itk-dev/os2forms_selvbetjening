@@ -63,6 +63,7 @@ module:
   openid_connect: 0
   options: 0
   os2forms: 0
+  os2forms_api_request_handler: 0
   os2forms_cpr_lookup: 0
   os2forms_cvr_lookup: 0
   os2forms_dawa: 0
