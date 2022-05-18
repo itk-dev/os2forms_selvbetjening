@@ -7,26 +7,20 @@ dependencies:
     - node.type.webform
     - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
-    - block_content
     - content_moderation
     - contextual
     - entity_print
     - field_ui
-    - file
     - filter
     - honeypot
-    - locale
     - maestro
     - maestro_taskconsole
     - node
     - search
     - system
-    - taxonomy
     - toolbar
     - webform
     - webform_node
-    - webform_revisions
-    - webform_templates
 _core:
   default_config_hash: FuuYYl7dBxmUUArvRKKBSiWjGH8UJR6cxgF0OmOYHiQ
 id: flow_designer

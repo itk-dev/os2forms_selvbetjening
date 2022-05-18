@@ -2,9 +2,11 @@ uuid: b61a5312-111c-4148-bf70-fb1e4e899fb5
 langcode: da
 status: true
 dependencies:
+  config:
+    - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
+    - content_moderation
     - maestro_taskconsole
-    - node
     - search
     - system
     - toolbar
@@ -18,20 +20,16 @@ label: Medarbejder
 weight: -3
 is_admin: null
 permissions:
-  - 'access site in maintenance mode'
   - 'access content'
-  - 'access content overview'
+  - 'access site in maintenance mode'
   - 'access toolbar'
   - 'administer webform revisions'
-  - 'create webform content'
   - 'edit own webform submission'
-  - 'edit own webform content'
   - 'edit webform submissions any node'
   - 'edit webform submissions own node'
   - 'use advanced search'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
   - 'view maestro task console'
-  - 'view own unpublished content'
   - 'view own webform submission'
   - 'view the administration theme'
   - 'view webform submissions any node'
