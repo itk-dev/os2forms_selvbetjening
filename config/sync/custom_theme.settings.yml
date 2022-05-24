@@ -1,12 +1,12 @@
 logo:
-  path: ''
+  path: 'public://aak_02_venstre_70_2.png'
   url: ''
   use_default: 0
 _core:
   default_config_hash: 9WVQ0q6j-_XKz2GuFBIVt-96VPm0vP6s5v0kyLYU0p0
 favicon:
   mimetype: image/vnd.microsoft.icon
-  path: 'public://Aarhus-byvaaben.ico'
+  path: ''
   url: 'https://selvbetjening.aarhuskommune.dk/themes/custom/custom_theme/favicon.ico'
   use_default: 0
 schemas:

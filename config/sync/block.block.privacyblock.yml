@@ -1,0 +1,21 @@
+uuid: e224ff42-af07-489b-8c0f-b4dd157815b7
+langcode: da
+status: true
+dependencies:
+  module:
+    - itkdev_footer
+  theme:
+    - custom_theme
+id: privacyblock
+theme: custom_theme
+region: footer_second
+weight: -5
+provider: null
+plugin: privacy_block
+settings:
+  id: privacy_block
+  label: 'Privacy block'
+  label_display: '0'
+  provider: itkdev_footer
+  privacy_url: 'http://dr.dk'
+visibility: {  }
