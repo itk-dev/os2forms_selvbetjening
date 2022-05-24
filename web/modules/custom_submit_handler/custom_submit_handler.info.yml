@@ -1,0 +1,6 @@
+name: Custom submit handler
+description: Provides a custom webform handler for the "submit an event" webform so it can create a new unpublished event type node
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: Custom
+type: module
