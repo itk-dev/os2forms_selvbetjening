@@ -17,6 +17,6 @@ settings:
   label: 'Contact block'
   label_display: '0'
   provider: itkdev_footer
-  contact_text_first: 'tlf: 12345678'
-  contact_text_second: 'email: yde001@gmail.com'
+  contact_text_first: ''
+  contact_text_second: ''
 visibility: {  }
