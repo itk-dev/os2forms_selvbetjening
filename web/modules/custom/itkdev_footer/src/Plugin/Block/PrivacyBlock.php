@@ -28,6 +28,7 @@ class PrivacyBlock extends BlockBase {
       '#type' => 'url',
       '#title' => $this->t('Privacy url'),
       '#description' => $this->t('A url to a page describing the sites privacy policy.'),
+      '#default_value' => $config['privacy_url'] ?? '',
     ];
 
     return $form;
@@ -47,11 +48,10 @@ class PrivacyBlock extends BlockBase {
    */
   public function build() {
     $config = $this->getConfiguration();
-    $link = !empty($config['privacy_url']) ? '<ul class="nav"><li><a href="' . $config['privacy_url'] . '">'. $this->t('Privacy policy') .'</a></li></ul>' : '';
+    $link = !empty($config['privacy_url']) ? '<ul class="nav"><li><a href="' . $config['privacy_url'] . '">' . $this->t('Privacy policy') . '</a></li></ul>' : '';
     return [
       '#markup' => $link,
     ];
   }
 
 }
-
