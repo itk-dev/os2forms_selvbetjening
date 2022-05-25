@@ -1,6 +1,6 @@
-uuid: 0622687b-08ff-4771-9188-8cf472ec11d8
+uuid: 43aaf7f4-4f67-4afd-91df-1f7bff342346
 langcode: da
-status: false
+status: true
 dependencies:
   config:
     - system.menu.footer
@@ -8,17 +8,15 @@ dependencies:
     - system
   theme:
     - custom_theme
-_core:
-  default_config_hash: K2c_13XPN6VIcKRNFzuVwC9QSFErMehdlvdLxr3EWKs
-id: custom_theme_footer
+id: sidefod
 theme: custom_theme
-region: navigation
-weight: -5
+region: footer_third
+weight: 0
 provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: Footer-menu
+  label: Sidefod
   label_display: '0'
   provider: system
   level: 1

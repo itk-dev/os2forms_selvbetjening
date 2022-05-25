@@ -1,1 +1,9 @@
 <?php
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Add logopath variable to page template.
+ */
+function custom_theme_preprocess_page(&$variables) {
+  $variables['logopath'] = theme_get_setting('logo.path');
+}

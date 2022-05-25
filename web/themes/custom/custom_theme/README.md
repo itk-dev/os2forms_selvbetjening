@@ -5,10 +5,14 @@ Before being able to run this package you need to have node installed on your ma
 
 After node is installed you need a global package manager, as well. We use Yarn instead of NPM as it is way faster due to the way it utilizes local caching.
 
-To install Yarn, follow the guide on: https://yarnpkg.com/en/docs/install#mac-stable 
+To install Yarn, follow the guide on: https://yarnpkg.com/en/docs/install#mac-stable
+
+### Requirements
+
+Node version: 12.0.0
 
 ### First time use
-When you initialize this project, you need to install all required node dependencies (listed inside package.json). 
+When you initialize this project, you need to install all required node dependencies (listed inside package.json).
 
 To install all node dependencies run:
 
