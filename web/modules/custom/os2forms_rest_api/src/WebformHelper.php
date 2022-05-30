@@ -4,9 +4,9 @@ namespace Drupal\os2forms_rest_api;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
-use Drupal\user\Entity\User;
 use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 
@@ -24,10 +24,18 @@ class WebformHelper {
   private EntityTypeManagerInterface $entityTypeManager;
 
   /**
+   * The current user manager.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  private AccountProxyInterface $currentUser;
+
+  /**
    * Constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, AccountProxyInterface $currentUser) {
     $this->entityTypeManager = $entityTypeManager;
+    $this->currentUser = $currentUser;
   }
 
   /**
@@ -110,46 +118,47 @@ class WebformHelper {
       ];
     }
 
-    $user = User::load(\Drupal::currentUser()->id());
-    $apiKey = $user->isAuthenticated() ? ($user->api_key->value ?? NULL) : NULL;
-    if (NULL !== $apiKey) {
-      $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test'] = [
-        '#type' => 'fieldset',
-        '#title' => $this->t('Test API endpoints'),
+    if ($this->currentUser->isAuthenticated()) {
+      $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
+      $apiKey = $user->api_key->value;
+      if (!empty($apiKey)) {
+        $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test'] = [
+          '#type' => 'fieldset',
+          '#title' => $this->t('Test API endpoints'),
 
-        'links' => [],
+          'links' => [],
 
-        'message' => [
-          '#markup' => $this->t('These are only for checking the API responses. <strong>Do not</strong> share these endpoints!'),
-        ],
-      ];
-
-      $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test']['links']['#prefix'] = '<ol>';
-      $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test']['links']['#suffix'] = '</ol>';
-
-      foreach ($routes as $route) {
-        $parameters = [];
-
-        if ('rest.webform_rest_submit.POST' !== $route) {
-          $parameters['webform_id'] = $webform->id();
-        }
-        $uuidPlaceholder = '{uuid}';
-        if ($requireUuid($route)) {
-          $parameters['uuid'] = $uuidPlaceholder;
-        }
-        $parameters['api-key'] = $apiKey;
-
-        $url = Url::fromRoute($route, $parameters, ['absolute' => TRUE]);
-        $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test']['links'][$route] = [
-          '#type' => 'link',
-          '#title' => str_replace(urlencode($uuidPlaceholder), $uuidPlaceholder, $url->toString()),
-          '#url' => $url,
-          '#prefix' => '<li>',
-          '#suffix' => '</li>',
+          'message' => [
+            '#markup' => $this->t('These are only for checking the API responses. <strong>Do not</strong> share these endpoints!'),
+          ],
         ];
+
+        $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test']['links']['#prefix'] = '<ol>';
+        $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test']['links']['#suffix'] = '</ol>';
+
+        foreach ($routes as $route) {
+          $parameters = [];
+
+          if ('rest.webform_rest_submit.POST' !== $route) {
+            $parameters['webform_id'] = $webform->id();
+          }
+          $uuidPlaceholder = '{uuid}';
+          if ($requireUuid($route)) {
+            $parameters['uuid'] = $uuidPlaceholder;
+          }
+          $parameters['api-key'] = $apiKey;
+
+          $url = Url::fromRoute($route, $parameters, ['absolute' => TRUE]);
+          $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test']['links'][$route] = [
+            '#type' => 'link',
+            '#title' => str_replace(urlencode($uuidPlaceholder), $uuidPlaceholder, $url->toString()),
+            '#url' => $url,
+            '#prefix' => '<li>',
+            '#suffix' => '</li>',
+          ];
+        }
       }
     }
-
   }
 
   /**
