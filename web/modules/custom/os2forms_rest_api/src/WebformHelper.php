@@ -119,8 +119,14 @@ class WebformHelper {
     }
 
     if ($this->currentUser->isAuthenticated()) {
-      $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
-      $apiKey = $user->api_key->value;
+      /** @var \Drupal\user\Entity\User $apiUser */
+      $apiUser = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
+      // Don't show API data links if current user is not included in
+      // (non-empty) list of allowed users.
+      if (!empty($allowedUsers) && !isset($allowedUsers[$apiUser->id()])) {
+        $apiUser = NULL;
+      }
+      $apiKey = $apiUser ? $apiUser->api_key->value : NULL;
       if (!empty($apiKey)) {
         $form['third_party_settings']['os2forms']['os2forms_rest_api']['api_info']['endpoints_test'] = [
           '#type' => 'fieldset',
@@ -129,7 +135,7 @@ class WebformHelper {
           'links' => [],
 
           'message' => [
-            '#markup' => $this->t('These are only for checking the API responses. <strong>Do not</strong> share these endpoints!'),
+            '#markup' => $this->t('These are only for checking the API responses for user %user. <strong>Do not</strong> share these urls!', ['%user' => $apiUser->getAccountName()]),
           ],
         ];
 
