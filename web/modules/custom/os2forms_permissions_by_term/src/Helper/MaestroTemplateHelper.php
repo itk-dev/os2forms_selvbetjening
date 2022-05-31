@@ -295,7 +295,7 @@ class MaestroTemplateHelper {
     $viewId = $view->id();
     $displayId = $view->getDisplay()->display['id'];
     /** @var \Drupal\Core\Session\AccountInterface $user */
-    $user = $this->entityTypeManager->getStorage('user')->load(10);
+    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
     $maestroTemplates = $this->entityTypeManager->getStorage('maestro_template')->getQuery()->execute();
     $allowedList = [];
     foreach ($maestroTemplates as $template) {
