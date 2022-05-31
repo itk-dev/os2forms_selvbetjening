@@ -1,12 +1,15 @@
 uuid: 19574fe2-bef4-465a-82dd-d2e50b48950b
 langcode: da
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - eu_cookie_compliance
+    - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
 label: 'Godkendt bruger'
-weight: 1
+weight: -9
 is_admin: false
 permissions:
   - 'access content'

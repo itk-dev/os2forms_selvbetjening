@@ -20,7 +20,7 @@ function swallowError(error) {
 // Load plugins
 const gulp = require('gulp');
 const babel = require('gulp-babel');
-const styles = require('gulp-sass');
+const styles = require('gulp-sass')(require('sass'));
 const del = require('del');
 const modernizr = require('gulp-modernizr');
 const autoprefixer = require('gulp-autoprefixer');

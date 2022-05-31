@@ -58,6 +58,22 @@ jobs:
         run: |
           composer coding-standards-check
 
+  coding-standards-markdown:
+    name: Yarn - Check Coding Standards (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '16' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: |
+          yarn install
+          yarn coding-standards-check
+
   code-analysis:
     name: PHP - Code analysis
     runs-on: ubuntu-latest

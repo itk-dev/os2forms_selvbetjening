@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: zCEGhLVXu2XnolDD4D7fIQqry_eMgwoaUBcsE5C7uho
+langcode: da
 enable_notifications: true
 participant_message:
   subject: 'You have been added as workflow participant to [node:title]'
@@ -9,6 +12,3 @@ participant_message:
 
       [node:url:absolute]
     format: plain_text
-_core:
-  default_config_hash: zCEGhLVXu2XnolDD4D7fIQqry_eMgwoaUBcsE5C7uho
-langcode: da
