@@ -241,10 +241,7 @@ class WebformHelper {
   public function fileDownload(string $uri) {
     $request = \Drupal::request();
 
-    /** @var \Drupal\user\Entity\User $user */
-    $user = $this->keyAuth->authenticate($request);
-
-    if ($user) {
+    if ($user = $this->keyAuth->authenticate($request)) {
       // Find webform id from uri, see example uri.
       // @Example: private://webform/some_webform_id/119/some_file_name.png
       $pattern = '/private:\/\/webform\/(?<webform>[^\/]*)/';

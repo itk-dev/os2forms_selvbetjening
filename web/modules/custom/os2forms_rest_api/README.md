@@ -56,8 +56,8 @@ Response:
 
 ### Get document from webform id and submission uuid
 
-Example uses `some_webform_id` as webform id, `some_submission_id` as submission id
-and `dokumenter` as the webform document element key.
+Example uses `some_webform_id` as webform id, `some_submission_id` as
+submission id and `dokumenter` as the webform document element key.
 
 Request:
 
@@ -81,7 +81,9 @@ Response:
 }
 ```
 
-Use the file endpoint from above to get information on a file, substituting `{file_id}` with the actual file id (`some_document_id`) from the previous request.
+Use the file endpoint from above to get information on a file,
+substituting `{file_id}` with the actual file id (`some_document_id`)
+from the previous request.
 
 Request:
 
@@ -104,7 +106,8 @@ Response:
 }
 ```
 
-Finally, you can get the actual file by combining the base url with the url from above response:
+Finally, you can get the actual file by combining the base url
+with the url from above response:
 
 ```sh
 > curl --silent --header 'api-key: …' http://127.0.0.1:8000/system/files/webform/some_webform_id/…
@@ -121,7 +124,6 @@ allowed to access a webform's data via the API.
 Go to Settings > General > Third party settings > OS2Forms > REST API to specify
 which users can access a webform's data. **If no users are specified, all API
 users can access the data.**
-
 
 ### Technical details
 
