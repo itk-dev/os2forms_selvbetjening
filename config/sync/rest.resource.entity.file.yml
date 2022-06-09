@@ -1,0 +1,18 @@
+uuid: 68ff09f3-e9d3-4722-b547-3d51556a489e
+langcode: da
+status: true
+dependencies:
+  module:
+    - file
+    - os2forms_rest_api
+    - serialization
+id: entity.file
+plugin_id: 'entity:file'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - key_auth

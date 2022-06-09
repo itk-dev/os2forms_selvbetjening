@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Drupal\key_auth\Authentication\Provider\KeyAuth;
 use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
 
@@ -31,11 +32,19 @@ class WebformHelper {
   private AccountProxyInterface $currentUser;
 
   /**
+   * The key authentication service.
+   *
+   * @var \Drupal\key_auth\Authentication\Provider\KeyAuth
+   */
+  private KeyAuth $keyAuth;
+
+  /**
    * Constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, AccountProxyInterface $currentUser) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, AccountProxyInterface $currentUser, KeyAuth $keyAuth) {
     $this->entityTypeManager = $entityTypeManager;
     $this->currentUser = $currentUser;
+    $this->keyAuth = $keyAuth;
   }
 
   /**
@@ -224,6 +233,38 @@ class WebformHelper {
     return $this->entityTypeManager
       ->getStorage('user')
       ->loadMultiple(array_column($spec, 'target_id'));
+  }
+
+  /**
+   * Implements hook_file_download().
+   */
+  public function fileDownload(string $uri) {
+    $request = \Drupal::request();
+
+    /** @var \Drupal\user\Entity\User $user */
+    $user = $this->keyAuth->authenticate($request);
+
+    if ($user) {
+      // Find webform id from uri, see example uri.
+      // @Example: private://webform/some_webform_id/119/some_file_name.png
+      $pattern = '/private:\/\/webform\/(?<webform>[^\/]*)/';
+      if (!preg_match($pattern, $uri, $matches)) {
+        // Something is not right, deny access.
+        return -1;
+      }
+
+      // User has API access.
+      $webform = \Drupal::entityTypeManager()->getStorage('webform')->load($matches['webform']);
+      $settings = $webform->getThirdPartySetting('os2forms', 'os2forms_rest_api');
+
+      $allowedUsers = $this->loadUsers($settings['allowed_users'] ?? []);
+
+      // If allowed users is non-empty and user is not in there deny access.
+      if (!empty($allowedUsers) && !isset($allowedUsers[$user->id()])) {
+        return -1;
+      }
+    }
+    return NULL;
   }
 
 }
