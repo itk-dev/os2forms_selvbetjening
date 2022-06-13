@@ -8009,12 +8009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "ce9fa901bb99fa3d9de5ef805aed4830f772317d"
+                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/ce9fa901bb99fa3d9de5ef805aed4830f772317d",
-                "reference": "ce9fa901bb99fa3d9de5ef805aed4830f772317d",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/a023e6a0311560dbbeefe55aceaea27a2abb38e4",
+                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4",
                 "shasum": ""
             },
             "require": {
@@ -8066,7 +8066,7 @@
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-05-18T08:15:50+00:00"
+            "time": "2022-06-13T10:36:59+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
