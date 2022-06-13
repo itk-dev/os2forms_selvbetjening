@@ -16,3 +16,10 @@ use Drupal\os2forms_rest_api\WebformHelper;
 function os2forms_rest_api_webform_third_party_settings_form_alter(array &$form, FormStateInterface $form_state) {
   \Drupal::service(WebformHelper::class)->webformThirdPartySettingsFormAlter($form, $form_state);
 }
+
+/**
+ * Implements hook_file_download().
+ */
+function os2forms_rest_api_file_download(string $uri) {
+  return \Drupal::service(WebformHelper::class)->fileDownload($uri);
+}

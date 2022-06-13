@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acc85b2e2332ead475472dd20e6c6c5b",
+    "content-hash": "061b9fabffe256c19ad744629aa4a6c9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6001,6 +6001,75 @@
             }
         },
         {
+            "name": "drupal/webform_remote_select",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webform_remote_select.git",
+                "reference": "1.0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_remote_select-1.0.6.zip",
+                "reference": "1.0.6",
+                "shasum": "3addd231f388a550732efedaf861291ae44c0528"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/webform": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.6",
+                    "datestamp": "1652647777",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Miguelpamferreira",
+                    "homepage": "https://www.drupal.org/user/3548054"
+                },
+                {
+                    "name": "Nelson Alves",
+                    "homepage": "https://www.drupal.org/user/3557178"
+                },
+                {
+                    "name": "dgaspara",
+                    "homepage": "https://www.drupal.org/user/3557179"
+                },
+                {
+                    "name": "joao.figueira",
+                    "homepage": "https://www.drupal.org/user/3605197"
+                },
+                {
+                    "name": "joaomarques736",
+                    "homepage": "https://www.drupal.org/user/3557181"
+                },
+                {
+                    "name": "ricardotenreiro",
+                    "homepage": "https://www.drupal.org/user/213132"
+                },
+                {
+                    "name": "tmiguelv",
+                    "homepage": "https://www.drupal.org/user/3612421"
+                }
+            ],
+            "description": "Provides a Webform Select Element whose options are populated from an endpoint through REST services.",
+            "homepage": "https://www.drupal.org/project/webform_remote_select",
+            "support": {
+                "source": "https://git.drupalcode.org/project/webform_remote_select"
+            }
+        },
+        {
             "name": "drupal/webform_rest",
             "version": "4.0.1",
             "source": {
@@ -7940,12 +8009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "ce9fa901bb99fa3d9de5ef805aed4830f772317d"
+                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/ce9fa901bb99fa3d9de5ef805aed4830f772317d",
-                "reference": "ce9fa901bb99fa3d9de5ef805aed4830f772317d",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/a023e6a0311560dbbeefe55aceaea27a2abb38e4",
+                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4",
                 "shasum": ""
             },
             "require": {
@@ -7997,7 +8066,7 @@
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-05-18T08:15:50+00:00"
+            "time": "2022-06-13T10:36:59+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
