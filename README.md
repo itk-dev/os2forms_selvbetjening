@@ -141,7 +141,8 @@ To avoid having to run the
 manually, a token must be set in
 `/admin/config/workflow/maestro`. The Orchestrator can then be run by visiting
 `https://[site]/orchestrator/{token}`.
-Adding the following cronjob to your crontab will run the Orchestrator every five minutes.
+Adding the following cronjob to your crontab will run
+the Orchestrator every five minutes.
 
 ```cron
 */5 * * * * /usr/bin/curl --location https://[site]/orchestrator/{token} > /dev/null 2>&1; /usr/local/bin/cron-exit-status -c 'Some exit message probably containing [site]' -v $?
