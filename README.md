@@ -132,6 +132,26 @@ $config['os2forms_get_organized'] = [
 ];
 ```
 
+### Maestro
+
+We use the [Maestro module](https://www.drupal.org/project/maestro) to make workflows.
+
+To avoid having to run the
+[Orchestrator](https://www.drupal.org/docs/contributed-modules/maestro/installation#s-maestro-engine-also-know-as-the-orchestrator)
+manually, a token must be set in
+`/admin/config/workflow/maestro`. The Orchestrator can then be run by visiting
+`https://[site]/orchestrator/{token}`.
+Adding the following cronjob to your crontab will run
+the Orchestrator every five minutes.
+
+```cron
+*/5 * * * * /usr/bin/curl --location https://[site]/orchestrator/{token} > /dev/null 2>&1; /usr/local/bin/cron-exit-status -c 'Some exit message probably containing [site]' -v $?
+```
+
+In `/admin/config/workflow/maestro` you can also configure
+whether a refresh of the Maestro Task Console should run the Orchestrator,
+which certainly could be an advantage during tests.
+
 ### REST API
 
 We use [Webform REST](https://www.drupal.org/project/webform_rest) to expose a
