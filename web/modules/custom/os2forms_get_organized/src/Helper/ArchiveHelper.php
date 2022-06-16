@@ -75,7 +75,7 @@ class ArchiveHelper {
     $shouldBeFinalized = $handlerConfiguration['should_be_finalized'];
 
     if ($shouldBeFinalized) {
-      if (isset($result['DocId']) && is_string($result['DocId'])) {
+      if (isset($result['DocId'])) {
         $documentService->Finalize($result['DocId']);
       }
     }
