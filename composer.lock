@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "061b9fabffe256c19ad744629aa4a6c9",
+    "content-hash": "2a445a33df1e1dc4517fc6c64519803a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7761,16 +7761,16 @@
         },
         {
             "name": "itk-dev/getorganized-api-client-php",
-            "version": "dev-develop",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/getorganized-api-client-php.git",
-                "reference": "c5c86e9b3bcc37f2e0ac0cf853d7b4baedf398d3"
+                "reference": "8865ac519cf9ff7f6be7633d9f59af4a92e9b22a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/c5c86e9b3bcc37f2e0ac0cf853d7b4baedf398d3",
-                "reference": "c5c86e9b3bcc37f2e0ac0cf853d7b4baedf398d3",
+                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/8865ac519cf9ff7f6be7633d9f59af4a92e9b22a",
+                "reference": "8865ac519cf9ff7f6be7633d9f59af4a92e9b22a",
                 "shasum": ""
             },
             "require": {
@@ -7786,7 +7786,6 @@
                 "symfony/finder": "^5.4 || ^6.0",
                 "symfony/yaml": "^5.4 || ^6.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -7828,10 +7827,10 @@
             ],
             "description": "PHP client for GetOrganized API",
             "support": {
-                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/develop",
+                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.0.1",
                 "issues": "https://github.com/itk-dev/getorganized-api-client-php/issues"
             },
-            "time": "2022-03-31T08:05:07+00:00"
+            "time": "2022-06-13T10:27:55+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
@@ -21030,7 +21029,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/maestro": 20,
-        "itk-dev/getorganized-api-client-php": 20,
         "itk-dev/os2forms_digital_post": 20,
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20,
@@ -21042,5 +21040,5 @@
         "php": "~7.4.0 || ~8.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
