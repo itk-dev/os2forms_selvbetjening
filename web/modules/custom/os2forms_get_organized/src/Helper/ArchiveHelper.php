@@ -66,10 +66,19 @@ class ArchiveHelper {
 
     /** @var \ItkDev\GetOrganized\Service\Documents $documentService */
     $documentService = $this->client->api('documents');
-    $documentService->AddToDocumentLibrary($tempFile, $getOrganizedCaseId, $getOrganizedFileName);
+    $result = $documentService->AddToDocumentLibrary($tempFile, $getOrganizedCaseId, $getOrganizedFileName);
 
     // Remove temp file.
     unlink($tempFile);
+
+    // Handle finalization ("journalisering").
+    $shouldBeFinalized = $handlerConfiguration['should_be_finalized'] ?? FALSE;
+
+    if ($shouldBeFinalized) {
+      if (isset($result['DocId'])) {
+        $documentService->Finalize($result['DocId']);
+      }
+    }
   }
 
   /**
