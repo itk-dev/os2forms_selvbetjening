@@ -72,7 +72,7 @@ class ArchiveHelper {
     unlink($tempFile);
 
     // Handle finalization ("journalisering").
-    $shouldBeFinalized = $handlerConfiguration['should_be_finalized'];
+    $shouldBeFinalized = $handlerConfiguration['should_be_finalized'] ?? FALSE;
 
     if ($shouldBeFinalized) {
       if (isset($result['DocId'])) {

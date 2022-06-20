@@ -78,7 +78,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Should document be finalized?'),
       '#type' => 'checkbox',
       '#default_value' => $this->configuration['should_be_finalized'] ?? FALSE,
-      '#description' => $this->t("If enabled, documents will be finalized (journaliseret) in GetOrganized."),
+      '#description' => $this->t('If enabled, documents will be finalized (journaliseret) in GetOrganized.'),
       '#required' => FALSE,
     ];
 
