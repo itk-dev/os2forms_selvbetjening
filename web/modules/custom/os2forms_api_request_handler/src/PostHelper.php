@@ -94,10 +94,10 @@ class PostHelper {
       }
 
       $apiUrl = $handlerConfiguration['api_url'] ?? NULL;
-      $apiToken = $handlerConfiguration['api_token'] ?? NULL;
+      $apiAuthorizationHeader = $handlerConfiguration['api_authorization_header'] ?? NULL;
       $this->client->request('POST', $apiUrl, [
         'headers' => [
-          'Authorization' => sprintf('Token %s', $apiToken),
+          'Authorization' => $apiAuthorizationHeader,
         ],
         RequestOptions::JSON => $data,
       ]);

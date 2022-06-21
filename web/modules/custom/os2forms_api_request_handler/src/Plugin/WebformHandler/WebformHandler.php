@@ -89,12 +89,12 @@ class WebformHandler extends WebformHandlerBase {
       '#default_value' => $this->configuration['api_url'] ?? '',
     ];
 
-    $form['api_token'] = [
+    $form['api_authorization_header'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('API token'),
-      '#description' => $this->t('The API token. Will be sent in an authorization header: <code>Authorization: Token «API token»</code>.'),
+      '#title' => $this->t('API authorization header'),
+      '#description' => $this->t('The API authorization header value. Will be sent in an authorization header: <code>Authorization: «value»</code>.'),
       '#required' => TRUE,
-      '#default_value' => $this->configuration['api_token'] ?? '',
+      '#default_value' => $this->configuration['api_authorization_header'] ?? '',
     ];
 
     return $this->setSettingsParents($form);
@@ -106,7 +106,7 @@ class WebformHandler extends WebformHandlerBase {
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['api_url'] = $form_state->getValue('api_url');
-    $this->configuration['api_token'] = $form_state->getValue('api_token');
+    $this->configuration['api_authorization_header'] = $form_state->getValue('api_authorization_header');
   }
 
   /**
