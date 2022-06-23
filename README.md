@@ -29,6 +29,7 @@ local machine for development and testing purposes.
    ```sh
    docker-compose pull
    docker-compose up --detach
+   ```
 
 4. Install composer packages
 
@@ -65,11 +66,28 @@ local machine for development and testing purposes.
 5. Install profile
 
    ```sh
-   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
+   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config 
+   ```
+   
+   Should you encounter the following error:
+   ```sh
+   In EntityStorageBase.php line 557:
+   "config_entity_revisions_type" entity with ID 'webform_revisions' already exists.
+   ```
+   Proceed to remove this entry from the db via the sql cli:
+   ```sh
+   itkdev-docker-compose vendor/bin/drush sql:cli
+   ```
+   In the sql cli, execute the following query:
+   ```sh
+   DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";
+   ```
+   Afterwards, run config-import to import config from files:
+   ```sh
+   docker-compose exec phpfpm vendor/bin/drush config-import
    ```
 
 6. Download and install external libraries
-
    ```sh
    docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
    ```
