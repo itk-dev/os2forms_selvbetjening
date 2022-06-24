@@ -79,19 +79,13 @@ local machine for development and testing purposes.
    Proceed to remove this entry from the db via the sql cli:
 
    ```sh
-   itkdev-docker-compose vendor/bin/drush sql:cli
-   ```
-
-   In the sql cli, execute the following query:
-
-   ```sh
-   DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";
+   itkdev-docker-compose vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
    ```
 
    Afterwards, run config-import to import config from files:
 
    ```sh
-   docker-compose exec phpfpm vendor/bin/drush config-import
+   docker-compose exec phpfpm vendor/bin/drush config:import
    ```
 
 6. Download and install external libraries
