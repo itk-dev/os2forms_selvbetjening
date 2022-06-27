@@ -74,6 +74,14 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
       '#default_value' => $this->configuration['case_id'] ?? '',
     ];
 
+    $form['should_be_finalized'] = [
+      '#title' => $this->t('Should document be finalized?'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->configuration['should_be_finalized'] ?? FALSE,
+      '#description' => $this->t('If enabled, documents will be finalized (journaliseret) in GetOrganized.'),
+      '#required' => FALSE,
+    ];
+
     $form['attachment_element'] = [
       '#type' => 'select',
       '#title' => $this->t('Attachment element'),
@@ -94,6 +102,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['case_id'] = $form_state->getValue('case_id');
     $this->configuration['attachment_element'] = $form_state->getValue('attachment_element');
+    $this->configuration['should_be_finalized'] = $form_state->getValue('should_be_finalized');
   }
 
   /**

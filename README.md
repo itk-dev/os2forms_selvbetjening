@@ -29,6 +29,7 @@ local machine for development and testing purposes.
    ```sh
    docker-compose pull
    docker-compose up --detach
+   ```
 
 4. Install composer packages
 
@@ -65,7 +66,26 @@ local machine for development and testing purposes.
 5. Install profile
 
    ```sh
-   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
+   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config 
+   ```
+
+   Should you encounter the following error:
+
+   ```sh
+   In EntityStorageBase.php line 557:
+   "config_entity_revisions_type" entity with ID 'webform_revisions' already exists.
+   ```
+
+   Proceed to remove this entry from the db via the sql cli:
+
+   ```sh
+   itkdev-docker-compose vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
+   ```
+
+   Afterwards, run config-import to import config from files:
+
+   ```sh
+   docker-compose exec phpfpm vendor/bin/drush config:import
    ```
 
 6. Download and install external libraries
@@ -131,6 +151,26 @@ $config['os2forms_get_organized'] = [
   'base_url' => '…',
 ];
 ```
+
+### Maestro
+
+We use the [Maestro module](https://www.drupal.org/project/maestro) to make workflows.
+
+To avoid having to run the
+[Orchestrator](https://www.drupal.org/docs/contributed-modules/maestro/installation#s-maestro-engine-also-know-as-the-orchestrator)
+manually, a token must be set in
+`/admin/config/workflow/maestro`. The Orchestrator can then be run by visiting
+`https://[site]/orchestrator/{token}`.
+Adding the following cronjob to your crontab will run
+the Orchestrator every five minutes.
+
+```cron
+*/5 * * * * /usr/bin/curl --location https://[site]/orchestrator/{token} > /dev/null 2>&1; /usr/local/bin/cron-exit-status -c 'Some exit message probably containing [site]' -v $?
+```
+
+In `/admin/config/workflow/maestro` you can also configure
+whether a refresh of the Maestro Task Console should run the Orchestrator,
+which certainly could be an advantage during tests.
 
 ### REST API
 
