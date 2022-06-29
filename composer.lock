@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45b505b766a1ebf1f7699cf19f2544ad",
+    "content-hash": "a61deae95412c0a973b3fbcbccb84bb9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8007,16 +8007,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4"
+                "reference": "d340703f412e2f33a946af1140ae866660f20491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/a023e6a0311560dbbeefe55aceaea27a2abb38e4",
-                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/d340703f412e2f33a946af1140ae866660f20491",
+                "reference": "d340703f412e2f33a946af1140ae866660f20491",
                 "shasum": ""
             },
             "require": {
@@ -8035,7 +8035,6 @@
                 "drupal/coder": "^8.3",
                 "wsdltophp/packagegenerator": "^4.0"
             },
-            "default-branch": true,
             "type": "drupal-module",
             "autoload": {
                 "Drupal\\os2forms_digital_post\\": "src/"
@@ -8065,10 +8064,10 @@
             ],
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.0",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-06-13T10:36:59+00:00"
+            "time": "2022-06-29T18:31:41+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -21035,7 +21034,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/os2forms_digital_post": 20,
         "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20
     },
