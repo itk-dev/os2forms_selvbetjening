@@ -86,7 +86,7 @@
         "itk-dev/os2forms_digital_post": "dev-develop",
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-develop",
         "itk-dev/os2forms_user_field_lookup": "dev-develop",
-        "itk-dev/web_accessibility_statement": "dev-master",
+        "itk-dev/web_accessibility_statement": "^1.0",
         "os2forms/os2forms_forloeb_profile": "^1.8"
     },
     "require-dev": {
