@@ -8834,16 +8834,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.2.3",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "f76037a0a58e2992234d9bc52777b17b5c5bb0b7"
+                "reference": "96cc03245ce35ee885cc54f530aec494a7fce62c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/f76037a0a58e2992234d9bc52777b17b5c5bb0b7",
-                "reference": "f76037a0a58e2992234d9bc52777b17b5c5bb0b7",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/96cc03245ce35ee885cc54f530aec494a7fce62c",
+                "reference": "96cc03245ce35ee885cc54f530aec494a7fce62c",
                 "shasum": ""
             },
             "require": {
@@ -8866,6 +8866,10 @@
                 "phpoffice/phpword": "^0.18.2",
                 "tecnickcom/tcpdf": "~6",
                 "vaimo/composer-patches": "^4.20"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
             },
             "type": "drupal-module",
             "extra": {
@@ -8890,22 +8894,22 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.2.3"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.2.7"
             },
-            "time": "2022-02-03T13:37:29+00:00"
+            "time": "2022-06-29T10:37:55+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb.git",
-                "reference": "59c6bc586f01477dd574d5c23b271e96f398b601"
+                "reference": "05fedb45429b06b8218bd9477b7496e86e22a434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/59c6bc586f01477dd574d5c23b271e96f398b601",
-                "reference": "59c6bc586f01477dd574d5c23b271e96f398b601",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/05fedb45429b06b8218bd9477b7496e86e22a434",
+                "reference": "05fedb45429b06b8218bd9477b7496e86e22a434",
                 "shasum": ""
             },
             "require": {
@@ -8947,6 +8951,10 @@
                 "webmozart/path-util": "^2.3",
                 "zaporylie/composer-drupal-optimizations": "^1.2"
             },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
+            },
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": true,
@@ -8982,22 +8990,22 @@
             "description": "This module adds Maestro workflow engine and functionality to produce advanced workflows",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/2.3.1"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/2.4.0"
             },
-            "time": "2022-02-08T16:01:38+00:00"
+            "time": "2022-06-27T09:00:22+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb_profile.git",
-                "reference": "6d84f6f4769d52ce9aa6a5a3b452906c9c76436b"
+                "reference": "32e80e3491b6d04eb3be7957c8e0a1fd06b44df9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/6d84f6f4769d52ce9aa6a5a3b452906c9c76436b",
-                "reference": "6d84f6f4769d52ce9aa6a5a3b452906c9c76436b",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/32e80e3491b6d04eb3be7957c8e0a1fd06b44df9",
+                "reference": "32e80e3491b6d04eb3be7957c8e0a1fd06b44df9",
                 "shasum": ""
             },
             "require": {
@@ -9006,6 +9014,10 @@
                 "os2forms/os2forms": "^3.1",
                 "os2forms/os2forms_forloeb": "^2.0.0-rc",
                 "os2web/os2web_simplesaml": "8.x-dev"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
             },
             "type": "drupal-profile",
             "extra": {
@@ -9030,9 +9042,9 @@
             "description": "This profile adds the configuration and initial install of OS2forms 2.1 med Forløb.",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb_profile/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.8.0"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.9.0"
             },
-            "time": "2022-01-25T12:52:20+00:00"
+            "time": "2022-06-29T12:33:38+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -21040,5 +21052,5 @@
         "php": "~7.4.0 || ~8.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
