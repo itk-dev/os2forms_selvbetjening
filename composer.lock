@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a61deae95412c0a973b3fbcbccb84bb9",
+    "content-hash": "bb5c06d2965438ba67394b91c11fc0aa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8071,16 +8071,16 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9"
+                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/b223de1adb5653c08e26bccad516c4c548ae12f9",
-                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/ea9896d8f088f1902be19397bc18b358e3de9991",
+                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991",
                 "shasum": ""
             },
             "require": {
@@ -8109,10 +8109,10 @@
             "description": "os2forms_nemlogin_openid_connect",
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/develop",
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.0.0",
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
             },
-            "time": "2022-01-11T10:53:44+00:00"
+            "time": "2022-06-29T18:39:02+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -21034,7 +21034,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/os2forms_user_field_lookup": 20
     },
     "prefer-stable": true,
