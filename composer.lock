@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ee0315646917393a415716cc94540f1",
+    "content-hash": "676054b95d7e05d8e6c05c3a0dde13ba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8007,16 +8007,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4"
+                "reference": "d340703f412e2f33a946af1140ae866660f20491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/a023e6a0311560dbbeefe55aceaea27a2abb38e4",
-                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/d340703f412e2f33a946af1140ae866660f20491",
+                "reference": "d340703f412e2f33a946af1140ae866660f20491",
                 "shasum": ""
             },
             "require": {
@@ -8035,7 +8035,6 @@
                 "drupal/coder": "^8.3",
                 "wsdltophp/packagegenerator": "^4.0"
             },
-            "default-branch": true,
             "type": "drupal-module",
             "autoload": {
                 "Drupal\\os2forms_digital_post\\": "src/"
@@ -8065,23 +8064,23 @@
             ],
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.0",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-06-13T10:36:59+00:00"
+            "time": "2022-06-29T18:31:41+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9"
+                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/b223de1adb5653c08e26bccad516c4c548ae12f9",
-                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/ea9896d8f088f1902be19397bc18b358e3de9991",
+                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991",
                 "shasum": ""
             },
             "require": {
@@ -8110,23 +8109,23 @@
             "description": "os2forms_nemlogin_openid_connect",
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/develop",
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.0.0",
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
             },
-            "time": "2022-01-11T10:53:44+00:00"
+            "time": "2022-06-29T18:39:02+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_user_field_lookup.git",
-                "reference": "685e5b06d68c22f3aa772eaeb15b4d501689f555"
+                "reference": "2ccbcea20a0a762796d0ce16d9631a8558e344a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_user_field_lookup/zipball/685e5b06d68c22f3aa772eaeb15b4d501689f555",
-                "reference": "685e5b06d68c22f3aa772eaeb15b4d501689f555",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_user_field_lookup/zipball/2ccbcea20a0a762796d0ce16d9631a8558e344a6",
+                "reference": "2ccbcea20a0a762796d0ce16d9631a8558e344a6",
                 "shasum": ""
             },
             "require-dev": {
@@ -8147,9 +8146,9 @@
             "description": "Use user field data in webforms.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_user_field_lookup/issues",
-                "source": "https://github.com/itk-dev/os2forms_user_field_lookup/tree/develop"
+                "source": "https://github.com/itk-dev/os2forms_user_field_lookup/tree/1.0.0"
             },
-            "time": "2021-11-05T08:53:51+00:00"
+            "time": "2022-06-29T18:36:01+00:00"
         },
         {
             "name": "itk-dev/serviceplatformen",
@@ -8201,7 +8200,7 @@
         },
         {
             "name": "itk-dev/web_accessibility_statement",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/web_accessibility_statement.git",
@@ -8213,7 +8212,6 @@
                 "reference": "b27f2ea237f0712896f7440727c17c47a543e3ea",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Provides path for accessibility statement",
@@ -21035,12 +21033,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "itk-dev/os2forms_digital_post": 20,
-        "itk-dev/os2forms_nemlogin_openid_connect": 20,
-        "itk-dev/os2forms_user_field_lookup": 20,
-        "itk-dev/web_accessibility_statement": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
