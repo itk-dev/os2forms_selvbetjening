@@ -90,7 +90,7 @@ class WebformHandler extends WebformHandlerBase {
     ];
 
     $form['api_authorization_header'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('API authorization header'),
       '#description' => $this->t('The API authorization header value. Will be sent in an authorization header: <code>Authorization: «value»</code>.'),
       '#required' => TRUE,
