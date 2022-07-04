@@ -146,6 +146,7 @@
 /web/sites/*/private
 /web/sites/*/files-public
 /web/sites/*/files-private
+/private
 
 # Ignore paths that may contain temporary files
 /web/sites/*/translations
@@ -213,3 +214,4 @@ yarn-error.log
 config/sync/**/maestro.maestro_template.*
 config/sync/**/webform.webform_options.*
 config/sync/**/webform.webform.*
+
