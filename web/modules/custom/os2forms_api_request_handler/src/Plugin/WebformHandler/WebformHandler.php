@@ -82,7 +82,7 @@ class WebformHandler extends WebformHandlerBase {
     }
 
     $form['api_url'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('API url'),
       '#description' => $this->t('The API url. For testing, an api url can be obtained from <a href="https://webhook.site">Webhook.site</a>.'),
       '#required' => TRUE,
