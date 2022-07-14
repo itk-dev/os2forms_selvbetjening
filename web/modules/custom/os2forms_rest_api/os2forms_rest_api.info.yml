@@ -1,7 +1,0 @@
-name: 'OS2Form REST API'
-type: module
-description: 'OS2Form REST API'
-package: Web services
-core_version_requirement: ^9
-dependencies:
-  - drupal:key_auth
