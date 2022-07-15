@@ -3,9 +3,14 @@ langcode: da
 status: true
 dependencies:
   module:
-    - key_auth
+    - os2forms_rest_api
     - serialization
     - webform_rest
+  enforced:
+    module:
+      - os2forms_rest_api
+_core:
+  default_config_hash: 1XszAzOpeGlSbP1Bx7LfZnwX7eX7QRbmZhISdPhsJzw
 id: webform_rest_submission
 plugin_id: webform_rest_submission
 granularity: resource
