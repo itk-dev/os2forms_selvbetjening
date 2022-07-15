@@ -1,0 +1,19 @@
+uuid: f32022bf-69e0-4090-bcd0-7b9c71c65990
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.os2forms_rest_api_user_write
+  module:
+    - user
+  enforced:
+    module:
+      - os2forms_rest_api
+_core:
+  default_config_hash: SziW3nCnyd3IvBd1RDC7JV2eWfVdzJRAwqIK0QD1D74
+id: user_add_role_action.os2forms_rest_api_user_write
+label: 'Add the OS2Form REST API user (write) role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: os2forms_rest_api_user_write

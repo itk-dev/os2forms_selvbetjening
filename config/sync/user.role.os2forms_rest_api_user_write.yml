@@ -1,0 +1,19 @@
+uuid: 91b545f5-0454-485c-8812-c8ab145531b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - rest.resource.webform_rest_submit
+  module:
+    - rest
+  enforced:
+    module:
+      - os2forms_rest_api
+_core:
+  default_config_hash: jKxszE6mzVZHqapc2PUTL4JG8AYW41MKSx6YvyqdsxU
+id: os2forms_rest_api_user_write
+label: 'OS2Form REST API (write)'
+weight: 2
+is_admin: null
+permissions:
+  - 'restful post webform_rest_submit'
