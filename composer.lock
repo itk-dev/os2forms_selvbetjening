@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "676054b95d7e05d8e6c05c3a0dde13ba",
+    "content-hash": "4970cdc406aeff51349f407a758544b4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9046,6 +9046,49 @@
                 "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.9.0"
             },
             "time": "2022-06-29T12:33:38+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_rest_api",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_rest_api.git",
+                "reference": "27421c583d86b9f185c71f6e986653a3027e1f8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_rest_api/zipball/27421c583d86b9f185c71f6e986653a3027e1f8a",
+                "reference": "27421c583d86b9f185c71f6e986653a3027e1f8a",
+                "shasum": ""
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
+            },
+            "type": "drupal-module",
+            "scripts": {
+                "coding-standards-check": [
+                    "phpcs --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-apply": [
+                    "phpcbf --standard=phpcs.xml.dist"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "OS2Forms REST API",
+            "support": {
+                "source": "https://github.com/itk-dev/os2forms_rest_api/tree/develop",
+                "issues": "https://github.com/itk-dev/os2forms_rest_api/issues"
+            },
+            "time": "2022-07-14T14:49:14+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -21033,7 +21076,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "os2forms/os2forms_rest_api": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
