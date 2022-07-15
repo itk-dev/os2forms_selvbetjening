@@ -82,7 +82,7 @@ class WebformHandler extends WebformHandlerBase {
     }
 
     $form['api_url'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('API url'),
       '#description' => $this->t('The API url. For testing, an api url can be obtained from <a href="https://webhook.site">Webhook.site</a>.'),
       '#required' => TRUE,
@@ -90,7 +90,7 @@ class WebformHandler extends WebformHandlerBase {
     ];
 
     $form['api_authorization_header'] = [
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#title' => $this->t('API authorization header'),
       '#description' => $this->t('The API authorization header value. Will be sent in an authorization header: <code>Authorization: «value»</code>.'),
       '#required' => TRUE,

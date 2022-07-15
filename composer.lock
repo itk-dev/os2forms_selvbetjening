@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a445a33df1e1dc4517fc6c64519803a",
+    "content-hash": "676054b95d7e05d8e6c05c3a0dde13ba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4128,11 +4128,17 @@
         },
         {
             "name": "drupal/maestro",
-            "version": "dev-3.x",
+            "version": "3.0.1-rc4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/maestro.git",
-                "reference": "ee70d0ec009b7ab57104c79944d35e3a7bfc0690"
+                "reference": "3.0.1-rc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/maestro-3.0.1-rc4.zip",
+                "reference": "3.0.1-rc4",
+                "shasum": "79068c7b47cbce5a473031940ad551e6df7530c6"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -4143,15 +4149,12 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-3.x": "3.x-dev"
-                },
                 "drupal": {
-                    "version": "3.x-dev",
-                    "datestamp": "1643124375",
+                    "version": "3.0.1-rc4",
+                    "datestamp": "1657119073",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -4835,26 +4838,26 @@
         },
         {
             "name": "drupal/r4032login",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/r4032login.git",
-                "reference": "2.1.0"
+                "reference": "2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/r4032login-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "2004f3ea4a4d4e0f08cdcd75f6f89c3f58d903fa"
+                "url": "https://ftp.drupal.org/files/projects/r4032login-2.2.0.zip",
+                "reference": "2.2.0",
+                "shasum": "fc0e611d005d1040d19a3448a21875de65afb591"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^9.3 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1615710471",
+                    "version": "2.2.0",
+                    "datestamp": "1649051152",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8004,16 +8007,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4"
+                "reference": "d340703f412e2f33a946af1140ae866660f20491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/a023e6a0311560dbbeefe55aceaea27a2abb38e4",
-                "reference": "a023e6a0311560dbbeefe55aceaea27a2abb38e4",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/d340703f412e2f33a946af1140ae866660f20491",
+                "reference": "d340703f412e2f33a946af1140ae866660f20491",
                 "shasum": ""
             },
             "require": {
@@ -8032,7 +8035,6 @@
                 "drupal/coder": "^8.3",
                 "wsdltophp/packagegenerator": "^4.0"
             },
-            "default-branch": true,
             "type": "drupal-module",
             "autoload": {
                 "Drupal\\os2forms_digital_post\\": "src/"
@@ -8062,23 +8064,23 @@
             ],
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/develop",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.0",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-06-13T10:36:59+00:00"
+            "time": "2022-06-29T18:31:41+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9"
+                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/b223de1adb5653c08e26bccad516c4c548ae12f9",
-                "reference": "b223de1adb5653c08e26bccad516c4c548ae12f9",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/ea9896d8f088f1902be19397bc18b358e3de9991",
+                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991",
                 "shasum": ""
             },
             "require": {
@@ -8107,23 +8109,23 @@
             "description": "os2forms_nemlogin_openid_connect",
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/develop",
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.0.0",
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
             },
-            "time": "2022-01-11T10:53:44+00:00"
+            "time": "2022-06-29T18:39:02+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_user_field_lookup.git",
-                "reference": "685e5b06d68c22f3aa772eaeb15b4d501689f555"
+                "reference": "2ccbcea20a0a762796d0ce16d9631a8558e344a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_user_field_lookup/zipball/685e5b06d68c22f3aa772eaeb15b4d501689f555",
-                "reference": "685e5b06d68c22f3aa772eaeb15b4d501689f555",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_user_field_lookup/zipball/2ccbcea20a0a762796d0ce16d9631a8558e344a6",
+                "reference": "2ccbcea20a0a762796d0ce16d9631a8558e344a6",
                 "shasum": ""
             },
             "require-dev": {
@@ -8144,9 +8146,9 @@
             "description": "Use user field data in webforms.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_user_field_lookup/issues",
-                "source": "https://github.com/itk-dev/os2forms_user_field_lookup/tree/develop"
+                "source": "https://github.com/itk-dev/os2forms_user_field_lookup/tree/1.0.0"
             },
-            "time": "2021-11-05T08:53:51+00:00"
+            "time": "2022-06-29T18:36:01+00:00"
         },
         {
             "name": "itk-dev/serviceplatformen",
@@ -8198,7 +8200,7 @@
         },
         {
             "name": "itk-dev/web_accessibility_statement",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/web_accessibility_statement.git",
@@ -8210,7 +8212,6 @@
                 "reference": "b27f2ea237f0712896f7440727c17c47a543e3ea",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Provides path for accessibility statement",
@@ -8834,16 +8835,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.2.3",
+            "version": "3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "f76037a0a58e2992234d9bc52777b17b5c5bb0b7"
+                "reference": "96cc03245ce35ee885cc54f530aec494a7fce62c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/f76037a0a58e2992234d9bc52777b17b5c5bb0b7",
-                "reference": "f76037a0a58e2992234d9bc52777b17b5c5bb0b7",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/96cc03245ce35ee885cc54f530aec494a7fce62c",
+                "reference": "96cc03245ce35ee885cc54f530aec494a7fce62c",
                 "shasum": ""
             },
             "require": {
@@ -8866,6 +8867,10 @@
                 "phpoffice/phpword": "^0.18.2",
                 "tecnickcom/tcpdf": "~6",
                 "vaimo/composer-patches": "^4.20"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
             },
             "type": "drupal-module",
             "extra": {
@@ -8890,22 +8895,22 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.2.3"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.2.7"
             },
-            "time": "2022-02-03T13:37:29+00:00"
+            "time": "2022-06-29T10:37:55+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb.git",
-                "reference": "59c6bc586f01477dd574d5c23b271e96f398b601"
+                "reference": "05fedb45429b06b8218bd9477b7496e86e22a434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/59c6bc586f01477dd574d5c23b271e96f398b601",
-                "reference": "59c6bc586f01477dd574d5c23b271e96f398b601",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/05fedb45429b06b8218bd9477b7496e86e22a434",
+                "reference": "05fedb45429b06b8218bd9477b7496e86e22a434",
                 "shasum": ""
             },
             "require": {
@@ -8947,6 +8952,10 @@
                 "webmozart/path-util": "^2.3",
                 "zaporylie/composer-drupal-optimizations": "^1.2"
             },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
+            },
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": true,
@@ -8982,22 +8991,22 @@
             "description": "This module adds Maestro workflow engine and functionality to produce advanced workflows",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/2.3.1"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/2.4.0"
             },
-            "time": "2022-02-08T16:01:38+00:00"
+            "time": "2022-06-27T09:00:22+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb_profile.git",
-                "reference": "6d84f6f4769d52ce9aa6a5a3b452906c9c76436b"
+                "reference": "32e80e3491b6d04eb3be7957c8e0a1fd06b44df9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/6d84f6f4769d52ce9aa6a5a3b452906c9c76436b",
-                "reference": "6d84f6f4769d52ce9aa6a5a3b452906c9c76436b",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/32e80e3491b6d04eb3be7957c8e0a1fd06b44df9",
+                "reference": "32e80e3491b6d04eb3be7957c8e0a1fd06b44df9",
                 "shasum": ""
             },
             "require": {
@@ -9006,6 +9015,10 @@
                 "os2forms/os2forms": "^3.1",
                 "os2forms/os2forms_forloeb": "^2.0.0-rc",
                 "os2web/os2web_simplesaml": "8.x-dev"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3"
             },
             "type": "drupal-profile",
             "extra": {
@@ -9030,9 +9043,9 @@
             "description": "This profile adds the configuration and initial install of OS2forms 2.1 med Forløb.",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb_profile/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.8.0"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.9.0"
             },
-            "time": "2022-01-25T12:52:20+00:00"
+            "time": "2022-06-29T12:33:38+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -21018,27 +21031,14 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "drupal/maestro",
-            "version": "dev-3.x",
-            "alias": "3.0.1-rc2",
-            "alias_normalized": "3.0.1.0-RC2"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "drupal/maestro": 20,
-        "itk-dev/os2forms_digital_post": 20,
-        "itk-dev/os2forms_nemlogin_openid_connect": 20,
-        "itk-dev/os2forms_user_field_lookup": 20,
-        "itk-dev/web_accessibility_statement": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "~7.4.0 || ~8.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }

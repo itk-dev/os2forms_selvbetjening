@@ -1,4 +1,4 @@
-# itk-version: 1.0.0
+# itk-version: 2.1.0
 version: "3"
 
 networks:
@@ -14,15 +14,16 @@ services:
     restart: unless-stopped
     networks:
       - app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_MEMORY_LIMIT=128M
-      - COMPOSER_VERSION=1
+      - COMPOSER_VERSION=2
     depends_on:
       - memcached
     volumes:
       - .:/app:delegated
-      - drush-cache:/root/.drush
 
   nginx:
     image: nginx:stable-alpine
@@ -45,8 +46,7 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_SERVER_DOMAIN}`)"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"     
-       #- "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=ITKBasicAuth@file"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
 
   memcached:
     image: 'memcached:latest'
@@ -55,17 +55,3 @@ services:
       - app
     environment:
       - MEMCACHED_CACHE_SIZE=64
-
-  drush:
-    image: itkdev/drush6:latest
-    networks:
-      - app
-    entrypoint:
-      - drush
-    volumes:
-      - drush-cache:/root/.drush
-      - ./:/app
-
-# Drush cache volume to persist cache between runs.
-volumes:
-  drush-cache:

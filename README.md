@@ -38,35 +38,10 @@ local machine for development and testing purposes.
    docker-compose exec phpfpm composer install --no-interaction
    ```
 
-   **Note**: Due to <https://github.com/vaimo/composer-patches/issues/85> we use
-   a composer [`post-install-cmd`
-   script](https://getcomposer.org/doc/articles/scripts.md#command-events) to
-   apply a patch to the OpenID Connect module (see
-   [`composer.json`](composer.json) for details).
-
-   When <https://github.com/vaimo/composer-patches/issues/85> is resolved, this
-   must be added to `extra.patches` in [`composer.json`](composer.json):
-
-   ```json
-   {
-       …
-       "extra": {
-           …
-           "patches": {
-               …
-               "drupal/openid_connect": {
-                   "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
-               }
-               …
-           }
-       }
-   }
-   ```
-
 5. Install profile
 
    ```sh
-   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config 
+   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
    ```
 
    Should you encounter the following error:
@@ -79,7 +54,7 @@ local machine for development and testing purposes.
    Proceed to remove this entry from the db via the sql cli:
 
    ```sh
-   itkdev-docker-compose vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
+   docker-compose exec phpfpm vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
    ```
 
    Afterwards, run config-import to import config from files:
