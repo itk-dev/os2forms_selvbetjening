@@ -1,0 +1,19 @@
+uuid: ea3ce30d-8cdd-4e1f-8051-3305a8c7ba75
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.os2forms_rest_api_user
+  module:
+    - user
+  enforced:
+    module:
+      - os2forms_rest_api
+_core:
+  default_config_hash: Yhiduw4iz_SirhTpmcJuilZVxfZfgww00eFfrJJ2_xg
+id: user_add_role_action.os2forms_rest_api_user
+label: 'Add the OS2Form REST API user role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: os2forms_rest_api_user

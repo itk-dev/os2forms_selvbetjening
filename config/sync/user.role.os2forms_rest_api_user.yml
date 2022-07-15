@@ -1,5 +1,5 @@
-uuid: 97330e4f-3eae-4e35-8683-95c8ee79350d
-langcode: da
+uuid: 09730a35-2bb3-4056-be2a-0ab802e22478
+langcode: en
 status: true
 dependencies:
   config:
@@ -9,8 +9,13 @@ dependencies:
   module:
     - key_auth
     - rest
-id: api_user
-label: 'API user'
+  enforced:
+    module:
+      - os2forms_rest_api
+_core:
+  default_config_hash: 7i0OD47qkgfmI0M9wUiQZFbwlWkI0qIui6ygOICR454
+id: os2forms_rest_api_user
+label: 'OS2Form REST API user'
 weight: 1
 is_admin: null
 permissions:
