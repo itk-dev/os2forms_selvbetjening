@@ -7896,16 +7896,16 @@
         },
         {
             "name": "itk-dev/os2forms_cpr_lookup",
-            "version": "1.6.5",
+            "version": "1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_cpr_lookup.git",
-                "reference": "6cd4b0a02e75d165a11285b106819fe437f50dcd"
+                "reference": "462169b10e15579349c994270a7808ea4c203a24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/6cd4b0a02e75d165a11285b106819fe437f50dcd",
-                "reference": "6cd4b0a02e75d165a11285b106819fe437f50dcd",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/462169b10e15579349c994270a7808ea4c203a24",
+                "reference": "462169b10e15579349c994270a7808ea4c203a24",
                 "shasum": ""
             },
             "require": {
@@ -7948,10 +7948,10 @@
             ],
             "description": "Provides integration to CPR service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.5",
+                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.6",
                 "issues": "https://github.com/itk-dev/os2forms_cpr_lookup/issues"
             },
-            "time": "2022-08-09T12:22:56+00:00"
+            "time": "2022-08-23T13:55:46+00:00"
         },
         {
             "name": "itk-dev/os2forms_cvr_lookup",
@@ -8005,16 +8005,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "d340703f412e2f33a946af1140ae866660f20491"
+                "reference": "3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/d340703f412e2f33a946af1140ae866660f20491",
-                "reference": "d340703f412e2f33a946af1140ae866660f20491",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07",
+                "reference": "3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07",
                 "shasum": ""
             },
             "require": {
@@ -8062,10 +8062,10 @@
             ],
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.0",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.1",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-06-29T18:31:41+00:00"
+            "time": "2022-08-23T10:33:22+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -21038,5 +21038,5 @@
         "php": "~7.4.0 || ~8.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
