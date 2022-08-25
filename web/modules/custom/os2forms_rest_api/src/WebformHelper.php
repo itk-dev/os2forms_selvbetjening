@@ -2,11 +2,15 @@
 
 namespace Drupal\os2forms_rest_api;
 
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 use Drupal\key_auth\Authentication\Provider\KeyAuth;
 use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
@@ -262,6 +266,53 @@ class WebformHelper {
       }
     }
     return NULL;
+  }
+
+  /**
+   * Implements hook_entity_access().
+   *
+   * Handles voting on user entity access to files for API users.
+   */
+  public function entityAccess(EntityInterface $entity, $operation, AccountInterface $account) {
+
+    if ($entity instanceof File) {
+
+      // If user is administrator let other entity_access hooks decide.
+      if (in_array('administrator', $account->getRoles())) {
+        return AccessResult::neutral();
+      }
+
+      try {
+        // Find webform id from uri, see example uri.
+        // @Example: private://webform/tvist1_test/5683/attachment1.pdf
+        // @Example: private://webform/{webform_id}/{entity_id}/{file_name}.{extension}
+        $fileUri = $entity->toArray()['uri'][0]['value'];
+
+        $pattern = '/private:\/\/webform\/(?<webform>[^\/]*)/';
+        if (!preg_match($pattern, $fileUri, $matches)) {
+          // Something is not right, deny access.
+          return AccessResult::forbidden();
+        }
+
+        // User has API access.
+        $webform = \Drupal::entityTypeManager()->getStorage('webform')->load($matches['webform']);
+        $settings = $webform->getThirdPartySetting('os2forms', 'os2forms_rest_api');
+
+        $allowedUsers = $this->loadUsers($settings['allowed_users'] ?? []);
+
+        // If allowed users is non-empty and user is not in there deny access.
+        if (!empty($allowedUsers) && !isset($allowedUsers[$account->id()])) {
+          return AccessResult::forbidden();
+        }
+      }
+      catch (\Exception $exception) {
+        return AccessResult::forbidden();
+      }
+
+      return AccessResult::allowed();
+    }
+
+    return AccessResult::neutral();
   }
 
 }

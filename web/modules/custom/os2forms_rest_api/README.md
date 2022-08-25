@@ -88,7 +88,7 @@ from the previous request.
 Request:
 
 ```sh
-> curl --silent --header 'api-key: …' https://127.0.0.1:8000/webform_rest/entity/file/some_document_id
+> curl --silent --header 'api-key: …' https://127.0.0.1:8000/entity/file/some_document_id
 ```
 
 Response:
