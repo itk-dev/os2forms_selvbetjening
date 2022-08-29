@@ -13,6 +13,12 @@ services:
     tags:
       - { name: 'event_subscriber' }
 
+  Drupal\os2forms_rest_api\EventSubscriber\WebformSubmissionEventSubscriber:
+    arguments:
+      - '@request_stack'
+    tags:
+      - { name: 'event_subscriber' }
+
   # Overwrite, adding global tag
   # @see https://www.drupal.org/docs/drupal-apis/services-and-dependency-injection/altering-existing-services-providing-dynamic-services
   key_auth.authentication.key_auth:
