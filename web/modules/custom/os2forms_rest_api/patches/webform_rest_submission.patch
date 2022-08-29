@@ -1,8 +1,8 @@
-diff --git a/src/Event/WebformSubmissionDataEvent.php b/src/Event/WebformSubmissionDataEvent.php
+diff --git src/Event/WebformSubmissionDataEvent.php src/Event/WebformSubmissionDataEvent.php
 new file mode 100644
 index 0000000..d4768dc
 --- /dev/null
-+++ b/src/Event/WebformSubmissionDataEvent.php
++++ src/Event/WebformSubmissionDataEvent.php
 @@ -0,0 +1,53 @@
 +<?php
 +
@@ -57,10 +57,10 @@ index 0000000..d4768dc
 +  }
 +}
 +
-diff --git a/src/Plugin/rest/resource/WebformSubmissionResource.php b/src/Plugin/rest/resource/WebformSubmissionResource.php
+diff --git src/Plugin/rest/resource/WebformSubmissionResource.php src/Plugin/rest/resource/WebformSubmissionResource.php
 index d2e08c5..7f667c7 100644
---- a/src/Plugin/rest/resource/WebformSubmissionResource.php
-+++ b/src/Plugin/rest/resource/WebformSubmissionResource.php
+--- src/Plugin/rest/resource/WebformSubmissionResource.php
++++ src/Plugin/rest/resource/WebformSubmissionResource.php
 @@ -2,9 +2,13 @@
 
  namespace Drupal\webform_rest\Plugin\rest\resource;

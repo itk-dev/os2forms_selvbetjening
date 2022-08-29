@@ -15,7 +15,9 @@ services:
 
   Drupal\os2forms_rest_api\EventSubscriber\WebformSubmissionEventSubscriber:
     arguments:
+      - '@entity_type.manager'
       - '@request_stack'
+      - '@logger.factory'
     tags:
       - { name: 'event_subscriber' }
 
