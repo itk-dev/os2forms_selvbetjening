@@ -2,15 +2,11 @@
 
 namespace Drupal\os2forms_rest_api;
 
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
-use Drupal\file\Entity\File;
 use Drupal\key_auth\Authentication\Provider\KeyAuth;
 use Drupal\webform\WebformInterface;
 use Drupal\webform\WebformSubmissionInterface;
@@ -267,4 +263,5 @@ class WebformHelper {
     }
     return NULL;
   }
+
 }
