@@ -1,9 +1,9 @@
 diff --git src/Event/WebformSubmissionDataEvent.php src/Event/WebformSubmissionDataEvent.php
 new file mode 100644
-index 0000000..d4768dc
+index 0000000..f0561c7
 --- /dev/null
 +++ src/Event/WebformSubmissionDataEvent.php
-@@ -0,0 +1,53 @@
+@@ -0,0 +1,52 @@
 +<?php
 +
 +namespace Drupal\webform_rest\Event;
@@ -17,14 +17,14 @@ index 0000000..d4768dc
 +class WebformSubmissionDataEvent extends Event
 +{
 +  /**
-+   * @var array
-+   */
-+  private array $data;
-+
-+  /**
 +   * @var WebformSubmissionInterface
 +   */
 +  private WebformSubmissionInterface $webformSubmission;
++
++  /**
++   * @var array
++   */
++  private array $data;
 +
 +  /**
 +   * Construct for injection dependency.
@@ -32,55 +32,48 @@ index 0000000..d4768dc
 +   * @param array $data
 +   * @param WebformSubmissionInterface $webformSubmission
 +   */
-+  public function __construct(array $data, WebformSubmissionInterface $webformSubmission) {
-+      $this->setData($data);
-+      $this->webformSubmission = $webformSubmission;
-+    }
++  public function __construct(WebformSubmissionInterface $webformSubmission, array $data) {
++    $this->webformSubmission = $webformSubmission;
++    $this->setData($data);
++  }
 +
 +  /**
 +   * @return WebformSubmissionInterface
 +   */
 +  public function getWebformSubmission(): WebformSubmissionInterface
 +  {
-+    return $this->webformSubmission;
++        return $this->webformSubmission;
 +  }
 +
 +  public function getData(): array
 +  {
-+      return $this->data;
++          return $this->data;
 +  }
 +
 +  public function setData(array $data)
 +  {
-+    $this->data = $data;
-+    return $this;
++        $this->data = $data;
++        return $this;
 +  }
 +}
-+
 diff --git src/Plugin/rest/resource/WebformSubmissionResource.php src/Plugin/rest/resource/WebformSubmissionResource.php
-index d2e08c5..7f667c7 100644
+index d2e08c5..a9cacf7 100644
 --- src/Plugin/rest/resource/WebformSubmissionResource.php
 +++ src/Plugin/rest/resource/WebformSubmissionResource.php
-@@ -2,9 +2,13 @@
-
- namespace Drupal\webform_rest\Plugin\rest\resource;
-
-+use Drupal\Core\Entity\EntityInterface;
-+use Drupal\file\Entity\File;
+@@ -5,6 +5,7 @@ namespace Drupal\webform_rest\Plugin\rest\resource;
  use Drupal\webform\WebformSubmissionForm;
-+use Drupal\webform_rest\Event\WebformSubmissionDataEvent;
  use Drupal\rest\Plugin\ResourceBase;
  use Drupal\rest\ModifiedResourceResponse;
-+use Drupal\webform_revisions\Entity\WebformRevisionsSubmission;
++use Drupal\webform_rest\Event\WebformSubmissionDataEvent;
  use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  use Symfony\Component\DependencyInjection\ContainerInterface;
 
-@@ -35,6 +39,13 @@ class WebformSubmissionResource extends ResourceBase {
+@@ -35,6 +36,13 @@ class WebformSubmissionResource extends ResourceBase {
     */
    protected $request;
 
 +  /**
-+   * An event dispatcher instance to use for configuration events.
++   * An event dispatcher instance to use for dispatching events.
 +   *
 +   * @var \Symfony\Contracts\EventDispatcher\EventDispatcherInterface
 +   */
@@ -89,7 +82,7 @@ index d2e08c5..7f667c7 100644
    /**
     * {@inheritdoc}
     */
-@@ -42,6 +53,7 @@ class WebformSubmissionResource extends ResourceBase {
+@@ -42,6 +50,7 @@ class WebformSubmissionResource extends ResourceBase {
      $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
      $instance->entityTypeManager = $container->get('entity_type.manager');
      $instance->request = $container->get('request_stack');
@@ -97,19 +90,12 @@ index d2e08c5..7f667c7 100644
      return $instance;
    }
 
-@@ -79,6 +91,7 @@ class WebformSubmissionResource extends ResourceBase {
-       ];
-       return new ModifiedResourceResponse($errors, 400);
-     }
-+
-     $webform_submission = reset($webform_submission);
-
-     // Check for a submission.
-@@ -91,9 +104,12 @@ class WebformSubmissionResource extends ResourceBase {
+@@ -91,9 +100,13 @@ class WebformSubmissionResource extends ResourceBase {
          // Grab submission data.
          $data = $webform_submission->getData();
 
-+        $event = new WebformSubmissionDataEvent($data, $webform_submission);
++        // Dispatch WebformSubmissionDataEvent to allow modification of data.
++        $event = new WebformSubmissionDataEvent($webform_submission, $data);
 +        $this->eventDispatcher->dispatch($event);
 +
          $response = [
@@ -119,9 +105,3 @@ index d2e08c5..7f667c7 100644
          ];
 
          // Return the submission.
-@@ -182,5 +198,4 @@ class WebformSubmissionResource extends ResourceBase {
-
-     throw new NotFoundHttpException(t("Can't load webform submission."));
-   }
--
- }
