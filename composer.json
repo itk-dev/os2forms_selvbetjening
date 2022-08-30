@@ -151,7 +151,7 @@
             },
             "drupal/webform_rest": {
                 "Add ability to modify data received the Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
-            },
+            }
         },
         "installer-paths": {
             "web/core": [
