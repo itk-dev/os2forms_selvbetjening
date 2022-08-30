@@ -67,6 +67,7 @@ This allows us to modify the response data by simply adding a
 #### Example file modifications
 
 Default response:
+
 ```json
 {
   …,
@@ -82,6 +83,7 @@ Default response:
 ```
 
 Modified response with linked entities:
+
 ```json
 {
   …,
