@@ -55,7 +55,7 @@ Response:
 
 ### Modifying data response from Webform Submission GET
 
-To allow updating data received from calling Webform Submission GET,
+To allow modifying response data sent from Webform Submission GET,
 we have [patched](patches/webform_rest_submission.patch) `drupal/webform_rest`.
 
 The patch adds the `WebformSubmissionDataEvent` event and ensures

@@ -99,6 +99,9 @@ class WebformSubmissionEventSubscriber implements EventSubscriberInterface {
       }
 
       if (NULL !== $linkedEntityType) {
+        // $data[$name] is either a string id i.e. '127',
+        // or an array of string ids i.e. ['127', '128'].
+        // Casting to array allow us to handle both cases the same way.
         $values = (array) $data[$name];
         $entities = $this->entityTypeManager->getStorage($linkedEntityType)->loadMultiple($values);
 

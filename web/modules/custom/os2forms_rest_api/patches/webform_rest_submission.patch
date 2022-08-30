@@ -12,7 +12,7 @@ index 0000000..f0561c7
 +use Drupal\webform\WebformSubmissionInterface;
 +
 +/**
-+ * Class WebformSubmissionGetResponseEvent, an event to change the response from calling GET webform submission.
++ * Class WebformSubmissionDataEvent, an event to modify the data part of the response sent from calling GET webform submission.
 + */
 +class WebformSubmissionDataEvent extends Event
 +{

@@ -150,7 +150,7 @@
                 "Added support for inheriting values without creating a submission (https://github.com/OS2Forms/os2forms_forloeb/pull/135)": "https://patch-diff.githubusercontent.com/raw/OS2Forms/os2forms_forloeb/pull/135.patch"
             },
             "drupal/webform_rest": {
-                "Add ability to modify data received the Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
+                "Added ability to modify response data sent from Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
             }
         },
         "installer-paths": {
