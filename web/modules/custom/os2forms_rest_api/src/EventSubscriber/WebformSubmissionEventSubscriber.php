@@ -3,10 +3,10 @@
 namespace Drupal\os2forms_rest_api\EventSubscriber;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\file\FileInterface;
 use Drupal\webform\WebformInterface;
 use Drupal\webform_rest\Event\WebformSubmissionDataEvent;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -30,11 +30,11 @@ class WebformSubmissionEventSubscriber implements EventSubscriberInterface {
   private EntityTypeManagerInterface $entityTypeManager;
 
   /**
-   * Logger factory.
+   * Logger.
    *
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   * @var \Psr\Log\LoggerInterface
    */
-  private LoggerChannelFactoryInterface $loggerFactory;
+  private LoggerInterface $logger;
 
   /**
    * Map from entity type to webform element types.
@@ -52,10 +52,10 @@ class WebformSubmissionEventSubscriber implements EventSubscriberInterface {
   /**
    * Constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, RequestStack $requestStack, LoggerChannelFactoryInterface $loggerFactory) {
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, RequestStack $requestStack, LoggerInterface $logger) {
     $this->entityTypeManager = $entityTypeManager;
     $this->requestStack = $requestStack;
-    $this->loggerFactory = $loggerFactory;
+    $this->logger = $logger;
   }
 
   /**
@@ -113,7 +113,7 @@ class WebformSubmissionEventSubscriber implements EventSubscriberInterface {
             ];
           }
           else {
-            $this->loggerFactory->get('os2forms_rest_api')->warning(sprintf('Unhandled linked entity type %s', $linkedEntityType));
+            $this->logger->warning(sprintf('Unhandled linked entity type %s', $linkedEntityType));
           }
           if (!empty($link)) {
             $linked[$name][$value] = $link;

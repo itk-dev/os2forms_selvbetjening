@@ -17,7 +17,7 @@ services:
     arguments:
       - '@entity_type.manager'
       - '@request_stack'
-      - '@logger.factory'
+      - '@logger.channel.os2forms_rest_api'
     tags:
       - { name: 'event_subscriber' }
 
@@ -28,3 +28,7 @@ services:
     arguments: [ '@key_auth' ]
     tags:
       - { name: authentication_provider, provider_id: 'key_auth', priority: 200, global: true }
+
+  logger.channel.os2forms_rest_api:
+    parent: logger.channel_base
+    arguments: ['os2forms_rest_api']
