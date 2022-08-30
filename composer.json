@@ -66,6 +66,7 @@
     "require": {
         "php": "~7.4.0 || ~8.0.0",
         "composer/installers": "^1.9",
+        "dompdf/dompdf": "0.8.5",
         "drupal/advancedqueue": "^1.0",
         "drupal/bootstrap": "^3.23",
         "drupal/config_ignore": "^2.3",
@@ -81,7 +82,7 @@
         "drupal/webform_remote_select": "^1.0",
         "drush/drush": "^10.6",
         "itk-dev/getorganized-api-client-php": "^1.0",
-        "itk-dev/os2forms_cpr_lookup": "^1.6.3",
+        "itk-dev/os2forms_cpr_lookup": "^1.6.5",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
         "itk-dev/os2forms_digital_post": "^1.0",
         "itk-dev/os2forms_nemlogin_openid_connect": "^1.0",
@@ -145,9 +146,12 @@
             "drupal/config_entity_revisions":  {
                 "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch"
             },
+            "os2forms/os2forms_forloeb": {
+                "Added support for inheriting values without creating a submission (https://github.com/OS2Forms/os2forms_forloeb/pull/135)": "https://patch-diff.githubusercontent.com/raw/OS2Forms/os2forms_forloeb/pull/135.patch"
+            },
             "drupal/webform_rest": {
                 "Add ability to modify data received the Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
-            }
+            },
         },
         "installer-paths": {
             "web/core": [

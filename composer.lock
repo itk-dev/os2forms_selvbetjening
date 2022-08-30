@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "676054b95d7e05d8e6c05c3a0dde13ba",
+    "content-hash": "61bea791f78aadf462e1085d0413576a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1347,35 +1347,33 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v0.8.6",
+            "version": "v0.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5"
+                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/db91d81866c69a42dad1d2926f61515a1e3f42c5",
-                "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/6782abfc090b132134cd6cea0ec6d76f0fce2c56",
+                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "phenx/php-font-lib": "^0.5.2",
+                "phenx/php-font-lib": "^0.5.1",
                 "phenx/php-svg-lib": "^0.3.3",
                 "php": "^7.1"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3",
                 "phpunit/phpunit": "^7.5",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "ext-gd": "Needed to process images",
                 "ext-gmagick": "Improves image processing performance",
-                "ext-imagick": "Improves image processing performance",
-                "ext-zlib": "Needed for pdf stream compression"
+                "ext-imagick": "Improves image processing performance"
             },
             "type": "library",
             "extra": {
@@ -1413,9 +1411,9 @@
             "homepage": "https://github.com/dompdf/dompdf",
             "support": {
                 "issues": "https://github.com/dompdf/dompdf/issues",
-                "source": "https://github.com/dompdf/dompdf/tree/master"
+                "source": "https://github.com/dompdf/dompdf/tree/v0.8.5"
             },
-            "time": "2020-08-30T22:54:22+00:00"
+            "time": "2020-02-20T03:52:51+00:00"
         },
         {
             "name": "drupal/admin_audit_trail",
@@ -4838,26 +4836,26 @@
         },
         {
             "name": "drupal/r4032login",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/r4032login.git",
-                "reference": "2.1.0"
+                "reference": "2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/r4032login-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "2004f3ea4a4d4e0f08cdcd75f6f89c3f58d903fa"
+                "url": "https://ftp.drupal.org/files/projects/r4032login-2.2.0.zip",
+                "reference": "2.2.0",
+                "shasum": "fc0e611d005d1040d19a3448a21875de65afb591"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^9.3 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1615710471",
+                    "version": "2.2.0",
+                    "datestamp": "1649051152",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7898,16 +7896,16 @@
         },
         {
             "name": "itk-dev/os2forms_cpr_lookup",
-            "version": "1.6.3",
+            "version": "1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_cpr_lookup.git",
-                "reference": "2af48f6329170defc4f9e690dba73cd3da0b54e5"
+                "reference": "462169b10e15579349c994270a7808ea4c203a24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/2af48f6329170defc4f9e690dba73cd3da0b54e5",
-                "reference": "2af48f6329170defc4f9e690dba73cd3da0b54e5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/462169b10e15579349c994270a7808ea4c203a24",
+                "reference": "462169b10e15579349c994270a7808ea4c203a24",
                 "shasum": ""
             },
             "require": {
@@ -7950,10 +7948,10 @@
             ],
             "description": "Provides integration to CPR service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.3",
+                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.6",
                 "issues": "https://github.com/itk-dev/os2forms_cpr_lookup/issues"
             },
-            "time": "2022-01-18T11:41:26+00:00"
+            "time": "2022-08-23T13:55:46+00:00"
         },
         {
             "name": "itk-dev/os2forms_cvr_lookup",
@@ -8007,16 +8005,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "d340703f412e2f33a946af1140ae866660f20491"
+                "reference": "3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/d340703f412e2f33a946af1140ae866660f20491",
-                "reference": "d340703f412e2f33a946af1140ae866660f20491",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07",
+                "reference": "3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07",
                 "shasum": ""
             },
             "require": {
@@ -8064,10 +8062,10 @@
             ],
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.0",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.1",
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
             },
-            "time": "2022-06-29T18:31:41+00:00"
+            "time": "2022-08-23T10:33:22+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -21040,5 +21038,5 @@
         "php": "~7.4.0 || ~8.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
