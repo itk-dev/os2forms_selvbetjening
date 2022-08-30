@@ -25,7 +25,6 @@ user must also have the “API user (write)” (`api_user_write`) role.
 | Webform Fields     | `/webform_rest/{webform_id}/fields`            | GET     |
 | Webform Submission | `/webform_rest/{webform_id}/submission/{uuid}` | GET     |
 | Webform Submit     | `/webform_rest/submit`                         | POST    |
-| File               | `/entity/file/{file_id}`                       | GET     |
 
 ## Examples
 
@@ -54,18 +53,20 @@ Response:
 
 (the `sid`value is a webform submission uuid).
 
-### Get document from webform id and submission uuid
+### Modifying data response from Webform Submission GET
 
-Example uses `some_webform_id` as webform id, `some_submission_id` as
-submission id and `dokumenter` as the webform document element key.
+To allow modifying response data sent from Webform Submission GET,
+we have [patched](patches/webform_rest_submission.patch) `drupal/webform_rest`.
 
-Request:
+The patch adds the `WebformSubmissionDataEvent` event and ensures
+dispatching of such an event during a Webform Submission GET request.
 
-```sh
-> curl --silent --header 'api-key: …' https://127.0.0.1:8000/webform_rest/some_webform_id/submission/some_submission_uuid
-```
+This allows us to modify the response data by simply adding a
+[WebformSubmissionEventSubscriber](src/EventSubscriber/WebformSubmissionEventSubscriber.php).
 
-Response:
+#### Example file modifications
+
+Default response:
 
 ```json
 {
@@ -74,47 +75,50 @@ Response:
     "navn": "Jeppe",
     "telefon": "87654321"
     "dokumenter": {
-      "some_document_id",
-      "some_other_docuent_id"
+      "12",
+      "13"
     }
   }
 }
 ```
 
-Use the file endpoint from above to get information on a file,
-substituting `{file_id}` with the actual file id (`some_document_id`)
-from the previous request.
-
-Request:
-
-```sh
-> curl --silent --header 'api-key: …' https://127.0.0.1:8000/webform_rest/entity/file/some_document_id
-```
-
-Response:
+Modified response with linked entities:
 
 ```json
 {
   …,
-  "uri": [
-    {
-      "value": "private:…",
-      "url": "/system/files/webform/some_webform_id/…"
+  "data": {
+    "navn": "Jeppe",
+    "telefon": "87654321"
+    "dokumenter": [
+      "12",
+      "13"
+    ],
+    "linked": {
+      "dokumenter": {
+        "12": {
+          "id": "12",
+          "url": "https://127.0.0.1:8000/system/files/webform/some_webform/67/attachment1.pdf",
+          "mime_type": "application/pdf",
+          "size": "14072"
+        },
+        "13": {
+          "id": "13",
+          "url": "https://127.0.0.1:8000/system/files/webform/some_webform/68/attachment2.pdf",
+          "mime_type": "application/pdf",
+          "size": "14072"
+        }
+      }
     }
-  ],
-  …
+  }
 }
 ```
 
-Finally, you can get the actual file by combining the base url
-with the url from above response:
+Such that, you can get the actual file by just calling the linked document url.
 
 ```sh
-> curl --silent --header 'api-key: …' http://127.0.0.1:8000/system/files/webform/some_webform_id/…
+> curl --silent --header 'api-key: …' https://127.0.0.1:8000/system/files/webform/some_webform/67/attachment1.pdf
 ```
-
-Response:
-The actual document.
 
 ## Custom access control
 

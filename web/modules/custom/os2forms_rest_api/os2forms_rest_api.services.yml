@@ -13,6 +13,14 @@ services:
     tags:
       - { name: 'event_subscriber' }
 
+  Drupal\os2forms_rest_api\EventSubscriber\WebformSubmissionEventSubscriber:
+    arguments:
+      - '@entity_type.manager'
+      - '@request_stack'
+      - '@logger.channel.os2forms_rest_api'
+    tags:
+      - { name: 'event_subscriber' }
+
   # Overwrite, adding global tag
   # @see https://www.drupal.org/docs/drupal-apis/services-and-dependency-injection/altering-existing-services-providing-dynamic-services
   key_auth.authentication.key_auth:
@@ -20,3 +28,7 @@ services:
     arguments: [ '@key_auth' ]
     tags:
       - { name: authentication_provider, provider_id: 'key_auth', priority: 200, global: true }
+
+  logger.channel.os2forms_rest_api:
+    parent: logger.channel_base
+    arguments: ['os2forms_rest_api']
