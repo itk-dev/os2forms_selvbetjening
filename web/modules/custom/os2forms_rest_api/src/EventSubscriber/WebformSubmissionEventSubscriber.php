@@ -45,7 +45,7 @@ class WebformSubmissionEventSubscriber implements EventSubscriberInterface {
       'webform_document_file',
       'webform_video_file',
       'webform_audio_file',
-      'webform_managed_file',
+      'managed_file',
     ],
   ];
 
