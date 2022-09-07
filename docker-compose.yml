@@ -87,6 +87,13 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}Mailhog.rule=Host(`mailhog-${COMPOSE_DOMAIN}`)"
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}Mailhog.loadbalancer.server.port=8025"
 
+  node:
+    image: node:16
+    networks:
+      - app
+    volumes:
+      - .:/app:delegated
+
 volumes:
   # Named volume requires that you have NFS shares enabled (performance boost on Macs).
   # Use `itkdev-docker-compose nfs:enable` to enable NFS shares. If you don't want to use it remove it from here and

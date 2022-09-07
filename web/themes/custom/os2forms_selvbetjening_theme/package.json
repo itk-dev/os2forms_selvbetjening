@@ -3,20 +3,27 @@
   "license": "ISC",
   "devDependencies": {
     "@symfony/webpack-encore": "^3.1.0",
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
     "sass": "^1.54.8",
-    "sass-loader": "^13.0.0"
+    "sass-loader": "^13.0.0",
+    "stylelint": "^14.11.0",
+    "stylelint-config-recommended-scss": "^7.0.0"
   },
-   "scripts": {
+  "scripts": {
     "check-coding-standards-stylelint": "stylelint --config=.stylelintrc.js 'assets/**/*.scss'",
-    "check-coding-standards-scss": "npm run check-coding-standards-stylelint",
+    "check-coding-standards-scss": "yarn check-coding-standards-stylelint",
     "check-coding-standards-eslint": "eslint --config .eslintrc.js 'assets/**/*.js'",
-    "check-coding-standards-js": "npm run check-coding-standards-eslint",
-    "check-coding-standards": "npm run check-coding-standards-scss; npm run check-coding-standards-js",
+    "check-coding-standards-js": "yarn check-coding-standards-eslint",
+    "check-coding-standards": "yarn check-coding-standards-scss; yarn check-coding-standards-js",
     "apply-coding-standards-stylelint": "stylelint --config=.stylelintrc.js 'assets/**/*.scss' --fix",
-    "apply-coding-standards-scss": "npm run apply-coding-standards-stylelint",
+    "apply-coding-standards-scss": "yarn apply-coding-standards-stylelint",
     "apply-coding-standards-eslint": "eslint --config .eslintrc.js 'assets/**/*.js' --fix",
-    "apply-coding-standards-js": "npm run apply-coding-standards-eslint",
-    "apply-coding-standards": "npm run apply-coding-standards-scss; npm run apply-coding-standards-js",
+    "apply-coding-standards-js": "yarn apply-coding-standards-eslint",
+    "apply-coding-standards": "yarn apply-coding-standards-scss; yarn apply-coding-standards-js",
     "build": "encore production --progress",
     "dev": "encore dev",
     "watch": "encore dev --watch"
