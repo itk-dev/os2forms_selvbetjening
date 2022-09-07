@@ -1,0 +1,21 @@
+uuid: 32a487e7-f07e-4f4a-b9b1-ebe5fecc7701
+langcode: en
+status: true
+dependencies:
+  module:
+    - itkdev_footer
+  theme:
+    - os2forms_selvbetjening_theme
+id: privacyblock_2
+theme: os2forms_selvbetjening_theme
+region: footer_second
+weight: 0
+provider: null
+plugin: privacy_block
+settings:
+  id: privacy_block
+  label: 'Privacy block'
+  label_display: '0'
+  provider: itkdev_footer
+  privacy_url: ''
+visibility: {  }

@@ -1,0 +1,59 @@
+{#
+  /**
+  * @file
+  * Overwrites Claro's page.html.twig to change header element and add footer element.
+  */
+  #}
+<header class="content-header clearfix">
+  <div class="layout-container">
+    {# {{ page.breadcrumb }} #}
+    {{ page.header }}
+  </div>
+</header>
+
+<div class="layout-container">
+  {{ page.pre_content }}
+  <main class="page-content clearfix" role="main">
+    <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
+    {{ page.highlighted }}
+    {% if page.help %}
+      <div class="help">
+        {{ page.help }}
+      </div>
+    {% endif %}
+    {{ page.content }}
+  </main>
+
+</div>
+<footer class="footer {{ container }}" role="contentinfo">
+  <div class="layout-container">
+    <div class="col-md-3">
+      {% if site_logo %}
+        <a class="logo navbar-btn pull-left" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
+          <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+        </a>
+      {% endif %}
+    </div>
+    {% if page.footer_first %}
+      {% block footer_first %}
+        <div class="col-md-3">
+          {{ page.footer_first }}
+        </div>
+      {% endblock %}
+    {% endif %}
+    {% if page.footer_second %}
+      {% block footer_second %}
+        <div class="col-md-3">
+          {{ page.footer_second }}
+        </div>
+      {% endblock %}
+    {% endif %}
+    {% if page.footer_third %}
+      {% block footer_third %}
+        <div class="col-md-3">
+          {{ page.footer_third }}
+        </div>
+      {% endblock %}
+    {% endif %}
+  </div>
+</footer>

@@ -1,0 +1,20 @@
+uuid: 6df2c5c1-d4f6-4f19-b7af-4ec21e93c855
+langcode: da
+status: true
+dependencies:
+  theme:
+    - os2forms_selvbetjening_theme
+_core:
+  default_config_hash: osZQ9lL2jTdH5am4LJiZ29RaivhzOf6vCpoRy6FZwIE
+id: os2forms_selvbetjening_theme_local_actions
+theme: os2forms_selvbetjening_theme
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

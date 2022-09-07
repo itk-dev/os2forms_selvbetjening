@@ -1,0 +1,22 @@
+uuid: 2b0e4c7c-2775-4d4f-8019-482e29bceeba
+langcode: da
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - os2forms_selvbetjening_theme
+_core:
+  default_config_hash: b6mUaCq5YPapRUABXRHfNTT6fxWIj5lgf0Mg4HaRJ_I
+id: os2forms_selvbetjening_theme_breadcrumbs
+theme: os2forms_selvbetjening_theme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }
