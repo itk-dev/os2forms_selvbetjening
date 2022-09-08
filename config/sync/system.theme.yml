@@ -2,4 +2,4 @@ _core:
   default_config_hash: e5N3CRBCnfrOmGhbstALBauq7itI1qU1jTpGjAD7F0g
 langcode: da
 admin: gin
-default: custom_theme
+default: os2forms_selvbetjening_theme

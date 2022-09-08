@@ -18,7 +18,7 @@ spt_table:
     weight: '-10'
     remove: Remove
   0:
-    status: '1'
+    status: '0'
     pages: "/node/*\r\n*/submission/*/edit"
     theme: custom_theme
     roles:

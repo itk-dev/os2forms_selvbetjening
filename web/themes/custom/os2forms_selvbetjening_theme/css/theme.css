@@ -1,0 +1,37 @@
+.logo img {
+  max-height: 90px;
+}
+
+.footer {
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  padding: 1.5rem 0 0;
+}
+
+.footer .layout-container {
+  display: flex;
+}
+
+.footer .layout-container > div {
+  flex: 25%;
+}
+
+.footer .logo img {
+  max-height: 60px;
+}
+
+.footer .menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer .menu li {
+  list-style: none;
+}
+
+.footer .menu li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}

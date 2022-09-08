@@ -1,0 +1,45 @@
+.content-header {
+  background-color: transparent;
+}
+
+.logo img {
+  max-height: 90px;
+}
+
+.footer {
+  overflow: hidden;
+  margin-bottom: .75rem;
+  padding: 1.5rem 0 0;
+
+  .layout-container {
+    display: flex;
+    align-items: center;
+
+    & > div {
+      flex: 25%;
+    }
+  }
+
+  .logo img {
+    max-height: 60px;
+  }
+
+  .menu,
+  .nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      & > a {
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+      }
+    }
+  }
+}

@@ -103,3 +103,35 @@ jobs:
       - name: drupal-check
         run: |
           composer code-analysis/drupal-check
+
+  coding-standards-custom-themes:
+    name: Yarn - Check Coding Standards in custom themes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup docker network
+        run: docker network create frontend
+
+      - name: Install build dependencies
+        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+
+      - name: Check coding standards
+        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme check-coding-standards
+
+  check-custom-theme-assets:
+    name: Check custom theme assets are up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup docker network
+        run: docker network create frontend
+
+      - name: Install build dependencies
+        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+
+      - name: Build theme assets
+        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
+
+      - name: Check for changes in built css
+        run: git diff --diff-filter=ACMRT --exit-code web/themes/custom/os2forms_selvbetjening_theme/build

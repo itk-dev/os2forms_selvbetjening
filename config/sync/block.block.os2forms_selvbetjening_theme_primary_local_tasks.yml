@@ -1,0 +1,22 @@
+uuid: 5a449ee7-9cbd-48a9-b0c6-ef75181c19f8
+langcode: da
+status: true
+dependencies:
+  theme:
+    - os2forms_selvbetjening_theme
+_core:
+  default_config_hash: 7cvXIzw8NabmQCWMPqBz0mvIQZzXUZB3OeOTa5eqbCo
+id: os2forms_selvbetjening_theme_primary_local_tasks
+theme: os2forms_selvbetjening_theme
+region: header
+weight: -3
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }
