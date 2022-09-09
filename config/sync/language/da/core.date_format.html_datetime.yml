@@ -1,1 +1,2 @@
 label: 'HTML Datetime'
+pattern: 'd-m-Y\TH:i:sO'
