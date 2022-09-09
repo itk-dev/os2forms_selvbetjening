@@ -134,10 +134,10 @@ by adding a description to the message body section. The
 description should be configured in the `settings.local.php` file:
 
 ```php
-$config['os2forms_selvbetjening']['email_body_description'] = "Brug enten standardsvaret eller definer dit eget svar. Se <a href=\"https://os2forms.os2.eu/mail-tekster\">OS2Forms Loop</a> for andre standarder og eksempler.";
+$config['os2forms_selvbetjening']['email_body_description'] = 'Brug enten standardsvaret eller definer dit eget svar. Se <a href="https://os2forms.os2.eu/mail-tekster">OS2Forms Loop</a> for andre standarder og eksempler.';
 ```
 
-If it is not, no description is added.
+If it is not set, no description is added.
 
 ### Maestro
 
