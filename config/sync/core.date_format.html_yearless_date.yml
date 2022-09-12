@@ -7,4 +7,4 @@ _core:
 id: html_yearless_date
 label: 'HTML Yearless date'
 locked: true
-pattern: m-d
+pattern: d-m
