@@ -193,8 +193,8 @@ mail:
   default_sender_mail: ''
   default_sender_name: ''
   default_subject: '[webform_submission:source-title] (fra [site:name])'
-  default_body_text: "Kære [webform_submission:values:navn]\r\n\r\nDu har udfyldt formularen [webform_submission:webform], [webform_submission:created].\r\n\r\nDu har angivet følgende informationer:\r\n[webform_submission:values]"
-  default_body_html: "<p>Kære [webform_submission:values:navn]</p>\r\n\r\n<p>Du har udfyldt formularen [webform_submission:webform], [webform_submission:created].</p>\r\n\r\n<p>Du har angivet følgende informationer:</p>\r\n[webform_submission:values]"
+  default_body_text: "Kære borger\r\n\r\nDu har udfyldt formularen [webform_submission:webform], [webform_submission:created].\r\n\r\nDu har angivet følgende informationer:\r\n[webform_submission:values]"
+  default_body_html: "Kære borger\r\n\r\nDu har udfyldt formularen [webform_submission:webform], [webform_submission:created].\r\n\r\nDu har angivet følgende informationer:\r\n[webform_submission:values]"
   roles: {  }
 export:
   temp_directory: ''
