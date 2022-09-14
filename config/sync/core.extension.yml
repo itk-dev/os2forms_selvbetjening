@@ -136,6 +136,8 @@ module:
   views: 10
   os2forms_forloeb_profile: 1000
   eu_cookie_compliance: 1001
+  jquery_ui_datepicker: 0
+  jquery_ui: 0
 theme:
   bootstrap: 0
   stable: 0

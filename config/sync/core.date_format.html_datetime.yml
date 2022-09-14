@@ -7,4 +7,4 @@ _core:
 id: html_datetime
 label: 'HTML Datetime'
 locked: true
-pattern: 'd-m-Y\TH:i:sO'
+pattern: 'Y-m-d\TH:i:sO'

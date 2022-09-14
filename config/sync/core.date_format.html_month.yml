@@ -7,4 +7,4 @@ _core:
 id: html_month
 label: 'HTML Month'
 locked: true
-pattern: m-Y
+pattern: Y-m
