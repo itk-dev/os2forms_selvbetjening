@@ -44,6 +44,8 @@ module:
   image: 0
   itkdev_footer: 0
   itkdev_openid_connect: 0
+  jquery_ui: 0
+  jquery_ui_datepicker: 0
   key_auth: 0
   language: 0
   libraries: 0
