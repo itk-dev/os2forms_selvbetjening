@@ -38,27 +38,6 @@ class FormHelper {
         $form['settings']['message']['body']['#description'] = $email_body_description;
       }
     }
-
-    if ('webform_ui_element_form' === $form_id) {
-
-      try {
-        $element = $form_state->get('element');
-        if ($element) {
-          $type = $element['#type'];
-
-          if ('datelist' === $type) {
-
-            if (empty($form['properties']['custom']['properties']['#default_value'])) {
-
-              $form['properties']['custom']['properties']['#default_value']['date_date_format'] = 'd-m-Y H:i:s';
-            }
-
-          }
-        }
-      } finally {
-        // Do nothing.
-      }
-    }
   }
 
 }
