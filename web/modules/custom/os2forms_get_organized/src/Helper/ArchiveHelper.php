@@ -9,7 +9,8 @@ use Drupal\os2forms_get_organized\Exception\GetOrganizedCaseIdException;
 use Drupal\webform\Entity\WebformSubmission;
 use Drupal\webform_entity_print_attachment\Element\WebformEntityPrintAttachment;
 use ItkDev\GetOrganized\Client;
-use ItkDev\GetOrganized\Service;
+use ItkDev\GetOrganized\Service\Cases;
+use ItkDev\GetOrganized\Service\Documents;
 
 /**
  * Helper for archiving documents in GetOrganized.
@@ -26,18 +27,18 @@ class ArchiveHelper {
   private ?Client $client = NULL;
 
   /**
-   * The GetOrganized Document Service.
+   * The GetOrganized Documents Service.
    *
-   * @var \ItkDev\GetOrganized\Service|null
+   * @var \ItkDev\GetOrganized\Service\Documents|null
    */
-  private ?Service $documentService = NULL;
+  private ?Documents $documentService = NULL;
 
   /**
    * The GetOrganized Cases Service.
    *
-   * @var \ItkDev\GetOrganized\Service|null
+   * @var \ItkDev\GetOrganized\Service\Cases|null
    */
-  private ?Service $caseService = NULL;
+  private ?Cases $caseService = NULL;
 
   /**
    * The ConfigFactoryInterface.
@@ -65,6 +66,23 @@ class ArchiveHelper {
    * Adds document to GetOrganized case.
    */
   public function archive(string $submissionId, array $handlerConfiguration) {
+    // Setup Client and services.
+    if (NULL === $this->client) {
+      $this->setupClient();
+    }
+
+    if (NULL === $this->caseService) {
+      /** @var \ItkDev\GetOrganized\Service\Cases $caseService */
+      $caseService = $this->client->api('cases');
+      $this->caseService = $caseService;
+    }
+
+    if (NULL === $this->documentService) {
+      /** @var \ItkDev\GetOrganized\Service\Documents $docService */
+      $docService = $this->client->api('documents');
+      $this->documentService = $docService;
+    }
+
     // Detect which archiving method is required.
     $archivingMethod = $handlerConfiguration['choose_archiving_method']['archiving_method'];
 
@@ -105,20 +123,12 @@ class ArchiveHelper {
    */
   private function archiveToCaseId(string $submissionId, array $handlerConfiguration) {
 
-    if (NULL === $this->client) {
-      $this->setupClient();
-    }
-
     /** @var \Drupal\webform\Entity\WebformSubmission $submission */
     $submission = $this->getSubmission($submissionId);
 
     $getOrganizedCaseId = $handlerConfiguration['choose_archiving_method']['case_id'];
     $webformAttachmentElementId = $handlerConfiguration['general']['attachment_element'];
     $shouldBeFinalized = $handlerConfiguration['general']['should_be_finalized'] ?? FALSE;
-
-    if (NULL === $this->caseService) {
-      $this->caseService = $this->client->api('cases');
-    }
 
     // Ensure case id exists.
     $case = $this->caseService->getByCaseId($getOrganizedCaseId);
@@ -142,10 +152,6 @@ class ArchiveHelper {
       $this->setupClient();
     }
 
-    if (NULL === $this->caseService) {
-      $this->caseService = $this->client->api('cases');
-    }
-
     /** @var \Drupal\webform\Entity\WebformSubmission $submission */
     $submission = $this->getSubmission($submissionId);
 
@@ -155,10 +161,8 @@ class ArchiveHelper {
     $cprNameElementId = $handlerConfiguration['choose_archiving_method']['cpr_name_element'];
     $cprNameElementValue = $submission->getData()[$cprNameElementId];
 
-    // Step 1: Find/create parent case
-    // Subcases do not contain the 'ows_CCMContactData_CPR' property
-    // i.e. we only get parent cases from the below query.
-    $parentCaseQuery = [
+    // Step 1: Find/create parent case.
+    $caseQuery = [
       'FieldProperties' => [
            [
              'InternalName' => 'ows_CCMContactData_CPR',
@@ -173,12 +177,22 @@ class ArchiveHelper {
       'ReturnCasesNumber' => 25,
     ];
 
-    $parentCaseResult = $this->caseService->FindByCaseProperties(
-      $parentCaseQuery
+    $caseResult = $this->caseService->FindByCaseProperties(
+      $caseQuery
     );
 
-    // Result always contains the 'CasesInfo' key.
-    $parentCaseCount = count($parentCaseResult['CasesInfo']);
+    // Subcases may also contain contain the 'ows_CCMContactData_CPR' property,
+    // i.e. we need to check result cases are not subcases.
+    // $caseResult will always contain the 'CasesInfo' key,
+    // and its value will always be an array.
+    $caseInfo = array_filter($caseResult['CasesInfo'], function ($caseInfo) {
+      // Parent cases are always on the form AAA-XXXX-XXXXXX,
+      // Subcases are always on the form AAA-XXXX-XXXXXX-XXX,
+      // I.e. we can filter out subcases by checking number of dashes in id.
+      return 2 === substr_count($caseInfo['CaseID'], '-');
+    });
+
+    $parentCaseCount = count($caseInfo);
 
     if (0 === $parentCaseCount) {
       $parentCaseId = $this->createCitizenCase($cprElementValue, $cprNameElementValue);
@@ -188,7 +202,7 @@ class ArchiveHelper {
       throw new CitizenArchivingException($message);
     }
     else {
-      $parentCaseId = $parentCaseResult['CasesInfo'][0]['CaseID'];
+      $parentCaseId = $caseResult['CasesInfo'][0]['CaseID'];
     }
 
     // Step 2: Find/create subcase.
@@ -282,9 +296,6 @@ class ArchiveHelper {
    * Uploads attachment document to GetOrganized case.
    */
   private function uploadDocumentToCase($caseId, $webformAttachmentElementId, WebformSubmission $submission, $shouldBeFinalized) {
-    if (NULL === $this->documentService) {
-      $this->documentService = $this->client->api('documents');
-    }
 
     $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
     $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
