@@ -261,8 +261,10 @@ class ArchiveHelper {
 
     $metadataArray = [
       'ows_Title' => $cprElementValue . ' - ' . $cprNameElementValue,
+      // CCMContactData format: 'name;#ID;#CRP;#CVR;#PNumber',
+      // We don't create GetOrganized parties (parter) so we leave that empty
+      // We also don't use cvr- or p-number so we leave those empty.
       'ows_CCMContactData' => $cprNameElementValue . ';#;#' . $cprElementValue . ';#;#',
-      'ows_CCMContactData_CPR' => $cprElementValue,
       'ows_CaseStatus' => 'Åben',
     ];
 
@@ -281,6 +283,8 @@ class ArchiveHelper {
     $metadataArray = [
       'ows_Title' => $caseName,
       'ows_CCMParentCase' => $caseId,
+      // For creating subcases the 'ows_ContentTypeId' must be set explicitly to
+      // '0x0100512AABDB08FA4fadB4A10948B5A56C7C01'.
       'ows_ContentTypeId' => '0x0100512AABDB08FA4fadB4A10948B5A56C7C01',
       'ows_CaseStatus' => 'Åben',
     ];
@@ -303,20 +307,23 @@ class ArchiveHelper {
     // Create temp file with attachment-element contents.
     $webformLabel = $submission->getWebform()->label();
     $tempFile = tempnam('/tmp', $webformLabel);
-    file_put_contents($tempFile, $fileContent);
 
-    $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
+    try {
+      file_put_contents($tempFile, $fileContent);
 
-    $result = $this->documentService->AddToDocumentLibrary($tempFile, $caseId, $getOrganizedFileName);
+      $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
 
-    // Remove temp file.
-    unlink($tempFile);
+      $result = $this->documentService->AddToDocumentLibrary($tempFile, $caseId, $getOrganizedFileName);
 
-    // Handle finalization ("journalisering").
-    if ($shouldBeFinalized) {
-      if (isset($result['DocId'])) {
-        $this->documentService->Finalize($result['DocId']);
+      // Handle finalization ("journalisering").
+      if ($shouldBeFinalized) {
+        if (isset($result['DocId'])) {
+          $this->documentService->Finalize($result['DocId']);
+        }
       }
+    } finally {
+      // Remove temp file.
+      unlink($tempFile);
     }
   }
 
