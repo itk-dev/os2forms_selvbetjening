@@ -318,7 +318,7 @@ ui:
   promotions_disabled: false
   support_disabled: false
   details_save: true
-  description_help: true
+  description_help: false
   toolbar_item: false
 libraries:
   excluded_libraries:
