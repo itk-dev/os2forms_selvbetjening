@@ -66,30 +66,118 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
 
-    $form['case_id'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('GetOrganized case ID'),
-      '#description' => $this->t('The GetOrganized case that responses should be uploaded to.'),
-      '#required' => TRUE,
-      '#default_value' => $this->configuration['case_id'] ?? '',
+    $elements = $this->getWebform()->getElementsDecodedAndFlattened();
+
+    $form['general'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Choose general settings'),
     ];
 
-    $form['should_be_finalized'] = [
+    $form['general']['should_be_finalized'] = [
       '#title' => $this->t('Should document be finalized?'),
       '#type' => 'checkbox',
-      '#default_value' => $this->configuration['should_be_finalized'] ?? FALSE,
+      '#default_value' => $this->configuration['general']['should_be_finalized'] ?? FALSE,
       '#description' => $this->t('If enabled, documents will be finalized (journaliseret) in GetOrganized.'),
       '#required' => FALSE,
     ];
 
-    $form['attachment_element'] = [
+    $form['general']['attachment_element'] = [
       '#type' => 'select',
       '#title' => $this->t('Attachment element'),
-      '#options' => $this->getAvailableAttachmentElements($this->getWebform()->getElementsDecodedAndFlattened()),
-      '#default_value' => $this->configuration['attachment_element'] ?? '',
+      '#options' => $this->getAvailableElementsByType('webform_entity_print_attachment:pdf', $elements),
+      '#default_value' => $this->configuration['general']['attachment_element'] ?? '',
       '#description' => $this->t('Choose the element responsible for creating response attachments.'),
       '#required' => TRUE,
       '#size' => 5,
+    ];
+
+    $form['choose_archiving_method'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Choose archiving method'),
+    ];
+
+    $form['choose_archiving_method']['archiving_method'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Choose method for archiving attachment'),
+      '#options' => [
+        'archive_to_case_id' => $this->t('GetOrganized case ID'),
+        'archive_to_citizen' => $this->t('Citizen CPR number'),
+      ],
+      '#default_value' => $this->configuration['choose_archiving_method']['archiving_method'] ?? 'archive_to_case_id',
+      '#required' => TRUE,
+      '#size' => 3,
+    ];
+
+    $form['choose_archiving_method']['case_id'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('GetOrganized case ID'),
+      '#description' => $this->t('The GetOrganized case that responses should be uploaded to.'),
+      '#default_value' => $this->configuration['choose_archiving_method']['case_id'] ?? '',
+      '#states' => [
+        'visible' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_case_id']],
+        ],
+        // The only effect this has is showing the required asterisk (*).
+        // Actual validation happens in validateConfigurationForm.
+        'required' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_case_id']],
+        ],
+      ],
+    ];
+
+    $form['choose_archiving_method']['sub_case_title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('GetOrganized case title'),
+      '#description' => $this->t('The GetOrganized case that responses should be uploaded to. If no case with provided title exists one will be created. If multiple exists nothing will be uploaded.'),
+      '#default_value' => $this->configuration['choose_archiving_method']['sub_case_title'] ?? '',
+      '#states' => [
+        'visible' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_citizen']],
+        ],
+        // The only effect this has is showing the required asterisk (*).
+        // Actual validation happens in validateConfigurationForm.
+        'required' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_citizen']],
+        ],
+      ],
+    ];
+
+    $form['choose_archiving_method']['cpr_value_element'] = [
+      '#type' => 'select',
+      '#title' => $this->t('CPR element'),
+      '#options' => $this->getAvailableElementsByType('cpr_value_element', $elements),
+      '#default_value' => $this->configuration['choose_archiving_method']['cpr_value_element'] ?? '',
+      '#description' => $this->t('Choose the element containing CPR number'),
+      '#size' => 5,
+      '#states' => [
+        'visible' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_citizen']],
+        ],
+        // The only effect this has is showing the required asterisk (*).
+        // Actual validation happens in validateConfigurationForm.
+        'required' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_citizen']],
+        ],
+      ],
+    ];
+
+    $form['choose_archiving_method']['cpr_name_element'] = [
+      '#type' => 'select',
+      '#title' => $this->t('CPR element'),
+      '#options' => $this->getAvailableElementsByType('cpr_name_element', $elements),
+      '#default_value' => $this->configuration['choose_archiving_method']['cpr_name_element'] ?? '',
+      '#description' => $this->t('Choose the element containing CPR name'),
+      '#size' => 5,
+      '#states' => [
+        'visible' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_citizen']],
+        ],
+        // The only effect this has is showing the required asterisk (*).
+        // Actual validation happens in validateConfigurationForm.
+        'required' => [
+          [':input[name="settings[choose_archiving_method][archiving_method]"]' => ['value' => 'archive_to_citizen']],
+        ],
+      ],
     ];
 
     return $this->setSettingsParents($form);
@@ -100,9 +188,40 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
-    $this->configuration['case_id'] = $form_state->getValue('case_id');
-    $this->configuration['attachment_element'] = $form_state->getValue('attachment_element');
-    $this->configuration['should_be_finalized'] = $form_state->getValue('should_be_finalized');
+    $this->configuration['general']['should_be_finalized'] = $form_state->getValue('general')['should_be_finalized'];
+    $this->configuration['general']['attachment_element'] = $form_state->getValue('general')['attachment_element'];
+    $this->configuration['choose_archiving_method']['archiving_method'] = $form_state->getValue('choose_archiving_method')['archiving_method'];
+    $this->configuration['choose_archiving_method']['case_id'] = $form_state->getValue('choose_archiving_method')['case_id'];
+    $this->configuration['choose_archiving_method']['cpr_value_element'] = $form_state->getValue('choose_archiving_method')['cpr_value_element'];
+    $this->configuration['choose_archiving_method']['cpr_name_element'] = $form_state->getValue('choose_archiving_method')['cpr_name_element'];
+    $this->configuration['choose_archiving_method']['sub_case_title'] = $form_state->getValue('choose_archiving_method')['sub_case_title'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::validateConfigurationForm($form, $form_state);
+
+    $configuration = $form_state->getValues();
+    if ($configuration['choose_archiving_method']['archiving_method'] === 'archive_to_case_id') {
+      if (empty($configuration['choose_archiving_method']['case_id'])) {
+        $form_state->setErrorByName('no_case_id_provided', $this->t('No GetOrganized case ID provided.'));
+      }
+    }
+
+    if ($configuration['choose_archiving_method']['archiving_method'] === 'archive_to_citizen') {
+      if (empty($configuration['choose_archiving_method']['cpr_value_element'])) {
+        $form_state->setErrorByName('no_cpr_value_element_selected', $this->t('No CPR value element selected.'));
+      }
+      if (empty($configuration['choose_archiving_method']['cpr_name_element'])) {
+        $form_state->setErrorByName('no_cpr_name_element_selected', $this->t('No CPR name element selected.'));
+      }
+      if (empty($configuration['choose_archiving_method']['sub_case_title'])) {
+        $form_state->setErrorByName('no_sub_case_title', $this->t('No GetOrganized case title provided.'));
+      }
+    }
+
   }
 
   /**
@@ -120,11 +239,11 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
   }
 
   /**
-   * Get available attachment elements.
+   * Get available elements by type.
    */
-  private function getAvailableAttachmentElements(array $elements): array {
-    $attachmentElements = array_filter($elements, function ($element) {
-      return 'webform_entity_print_attachment:pdf' === $element['#type'];
+  private function getAvailableElementsByType(string $type, array $elements): array {
+    $attachmentElements = array_filter($elements, function ($element) use ($type) {
+      return $type === $element['#type'];
     });
 
     return array_map(function ($element) {
