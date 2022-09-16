@@ -4,19 +4,40 @@ namespace Drupal\os2forms_get_organized\Helper;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\os2forms_get_organized\Exception\CitizenArchivingException;
+use Drupal\os2forms_get_organized\Exception\GetOrganizedCaseIdException;
+use Drupal\webform\Entity\WebformSubmission;
 use Drupal\webform_entity_print_attachment\Element\WebformEntityPrintAttachment;
 use ItkDev\GetOrganized\Client;
+use ItkDev\GetOrganized\Service;
 
 /**
  * Helper for archiving documents in GetOrganized.
  */
 class ArchiveHelper {
+
+  const CITIZEN_CASE_TYPE_PREFIX = 'BOR';
+
   /**
    * The GetOrganized Client.
    *
    * @var \ItkDev\GetOrganized\Client|null
    */
   private ?Client $client = NULL;
+
+  /**
+   * The GetOrganized Document Service.
+   *
+   * @var \ItkDev\GetOrganized\Service|null
+   */
+  private ?Service $documentService = NULL;
+
+  /**
+   * The GetOrganized Cases Service.
+   *
+   * @var \ItkDev\GetOrganized\Service|null
+   */
+  private ?Service $caseService = NULL;
 
   /**
    * The ConfigFactoryInterface.
@@ -44,41 +65,16 @@ class ArchiveHelper {
    * Adds document to GetOrganized case.
    */
   public function archive(string $submissionId, array $handlerConfiguration) {
-    /** @var \Drupal\webform\Entity\WebformSubmission $submission */
-    $submission = $this->getSubmission($submissionId);
+    // Detect which archiving method is required.
+    $archivingMethod = $handlerConfiguration['choose_archiving_method']['archiving_method'];
 
-    $getOrganizedCaseId = $handlerConfiguration['case_id'];
-    $webformAttachmentElementId = $handlerConfiguration['attachment_element'];
-
-    $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
-    $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
-
-    // Create temp file with attachment-element contents.
-    $webformLabel = $submission->getWebform()->label();
-    $tempFile = tempnam('/tmp', $webformLabel);
-    file_put_contents($tempFile, $fileContent);
-
-    $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
-
-    if (NULL === $this->client) {
-      $this->setupClient();
+    if ('archive_to_case_id' === $archivingMethod) {
+      $this->archiveToCaseId($submissionId, $handlerConfiguration);
+    }
+    elseif ('archive_to_citizen' === $archivingMethod) {
+      $this->archiveToCitizen($submissionId, $handlerConfiguration);
     }
 
-    /** @var \ItkDev\GetOrganized\Service\Documents $documentService */
-    $documentService = $this->client->api('documents');
-    $result = $documentService->AddToDocumentLibrary($tempFile, $getOrganizedCaseId, $getOrganizedFileName);
-
-    // Remove temp file.
-    unlink($tempFile);
-
-    // Handle finalization ("journalisering").
-    $shouldBeFinalized = $handlerConfiguration['should_be_finalized'] ?? FALSE;
-
-    if ($shouldBeFinalized) {
-      if (isset($result['DocId'])) {
-        $documentService->Finalize($result['DocId']);
-      }
-    }
   }
 
   /**
@@ -102,6 +98,215 @@ class ArchiveHelper {
   private function getSubmission(string $submissionId) {
     $storage = $this->entityTypeManager->getStorage('webform_submission');
     return $storage->load($submissionId);
+  }
+
+  /**
+   * Archives document to GetOrganized case id.
+   */
+  private function archiveToCaseId(string $submissionId, array $handlerConfiguration) {
+
+    if (NULL === $this->client) {
+      $this->setupClient();
+    }
+
+    /** @var \Drupal\webform\Entity\WebformSubmission $submission */
+    $submission = $this->getSubmission($submissionId);
+
+    $getOrganizedCaseId = $handlerConfiguration['choose_archiving_method']['case_id'];
+    $webformAttachmentElementId = $handlerConfiguration['general']['attachment_element'];
+    $shouldBeFinalized = $handlerConfiguration['general']['should_be_finalized'] ?? FALSE;
+
+    if (NULL === $this->caseService) {
+      $this->caseService = $this->client->api('cases');
+    }
+
+    // Ensure case id exists.
+    $case = $this->caseService->getByCaseId($getOrganizedCaseId);
+
+    if (!$case) {
+      $message = sprintf('Could not find a case with id %s.', $getOrganizedCaseId);
+      throw new GetOrganizedCaseIdException($message);
+    }
+
+    $this->uploadDocumentToCase($getOrganizedCaseId, $webformAttachmentElementId, $submission, $shouldBeFinalized);
+  }
+
+  /**
+   * Archives document to GetOrganized citizen subcase.
+   */
+  private function archiveToCitizen(string $submissionId, array $handlerConfiguration) {
+    // Step 1: Find/create parent case
+    // Step 2: Find/create subcase
+    // Step 3: Upload to subcase.
+    if (NULL === $this->client) {
+      $this->setupClient();
+    }
+
+    if (NULL === $this->caseService) {
+      $this->caseService = $this->client->api('cases');
+    }
+
+    /** @var \Drupal\webform\Entity\WebformSubmission $submission */
+    $submission = $this->getSubmission($submissionId);
+
+    $cprValueElementId = $handlerConfiguration['choose_archiving_method']['cpr_value_element'];
+    $cprElementValue = $submission->getData()[$cprValueElementId];
+
+    $cprNameElementId = $handlerConfiguration['choose_archiving_method']['cpr_name_element'];
+    $cprNameElementValue = $submission->getData()[$cprNameElementId];
+
+    // Step 1: Find/create parent case
+    // Subcases do not contain the 'ows_CCMContactData_CPR' property
+    // i.e. we only get parent cases from the below query.
+    $parentCaseQuery = [
+      'FieldProperties' => [
+           [
+             'InternalName' => 'ows_CCMContactData_CPR',
+             'Value' => $cprElementValue,
+           ],
+      ],
+      'CaseTypePrefixes' => [
+        self::CITIZEN_CASE_TYPE_PREFIX,
+      ],
+      'LogicalOperator' => 'AND',
+      'ExcludeDeletedCases' => TRUE,
+      'ReturnCasesNumber' => 25,
+    ];
+
+    $parentCaseResult = $this->caseService->FindByCaseProperties(
+      $parentCaseQuery
+    );
+
+    // Result always contains the 'CasesInfo' key.
+    $parentCaseCount = count($parentCaseResult['CasesInfo']);
+
+    if (0 === $parentCaseCount) {
+      $parentCaseId = $this->createCitizenCase($cprElementValue, $cprNameElementValue);
+    }
+    elseif (1 < $parentCaseCount) {
+      $message = sprintf('Too many (%d) parent cases.', $parentCaseCount);
+      throw new CitizenArchivingException($message);
+    }
+    else {
+      $parentCaseId = $parentCaseResult['CasesInfo'][0]['CaseID'];
+    }
+
+    // Step 2: Find/create subcase.
+    $subcaseName = $handlerConfiguration['choose_archiving_method']['sub_case_title'];
+
+    $subCasesQuery = [
+      'FieldProperties' => [
+        [
+          'InternalName' => 'ows_CaseId',
+          'Value' => $parentCaseId . '-',
+          'ComparisonType' => 'Contains',
+        ],
+        [
+          'InternalName' => 'ows_Title',
+          'Value' => $subcaseName,
+          'ComparisonType' => 'Equal',
+        ],
+      ],
+      'CaseTypePrefixes' => [
+        self::CITIZEN_CASE_TYPE_PREFIX,
+      ],
+      'LogicalOperator' => 'AND',
+      'ExcludeDeletedCases' => TRUE,
+      // Unsure how many subcases may exist, but fetching 25 should be enough.
+      'ReturnCasesNumber' => 25,
+    ];
+
+    $subCases = $this->caseService->FindByCaseProperties(
+      $subCasesQuery
+    );
+
+    $subCaseCount = count($subCases['CasesInfo']);
+
+    if (0 === $subCaseCount) {
+      $subCaseId = $this->createSubCase($parentCaseId, $subcaseName);
+    }
+    elseif (1 === $subCaseCount) {
+      $subCaseId = $subCases['CasesInfo'][0]['CaseID'];
+    }
+    else {
+      $message = sprintf('Too many (%d) subcases with the name %s', $subCaseCount, $subcaseName);
+      throw new CitizenArchivingException($message);
+    }
+
+    // Step 3: Upload to subcase.
+    $webformAttachmentElementId = $handlerConfiguration['general']['attachment_element'];
+    $shouldBeFinalized = $handlerConfiguration['general']['should_be_finalized'] ?? FALSE;
+
+    $this->uploadDocumentToCase($subCaseId, $webformAttachmentElementId, $submission, $shouldBeFinalized);
+  }
+
+  /**
+   * Creates citizen parent case in GetOrganized.
+   */
+  private function createCitizenCase($cprElementValue, $cprNameElementValue) {
+
+    $metadataArray = [
+      'ows_Title' => $cprElementValue . ' - ' . $cprNameElementValue,
+      'ows_CCMContactData' => $cprNameElementValue . ';#;#' . $cprElementValue . ';#;#',
+      'ows_CCMContactData_CPR' => $cprElementValue,
+      'ows_CaseStatus' => 'Åben',
+    ];
+
+    $response = $this->caseService->createCase(self::CITIZEN_CASE_TYPE_PREFIX, $metadataArray);
+
+    // Example response.
+    // {"CaseID":"BOR-2022-000046","CaseRelativeUrl":"\/cases\/BOR12\/BOR-2022-000046",...}.
+    return $response['CaseID'];
+  }
+
+  /**
+   * Creates citizen subcase in GetOrganized.
+   */
+  private function createSubCase($caseId, string $caseName) {
+
+    $metadataArray = [
+      'ows_Title' => $caseName,
+      'ows_CCMParentCase' => $caseId,
+      'ows_ContentTypeId' => '0x0100512AABDB08FA4fadB4A10948B5A56C7C01',
+      'ows_CaseStatus' => 'Åben',
+    ];
+
+    $response = $this->caseService->createCase(self::CITIZEN_CASE_TYPE_PREFIX, $metadataArray);
+
+    // Example response.
+    // {"CaseID":"BOR-2022-000046-001","CaseRelativeUrl":"\/cases\/BOR12\/BOR-2022-000046",...}.
+    return $response['CaseID'];
+  }
+
+  /**
+   * Uploads attachment document to GetOrganized case.
+   */
+  private function uploadDocumentToCase($caseId, $webformAttachmentElementId, WebformSubmission $submission, $shouldBeFinalized) {
+    if (NULL === $this->documentService) {
+      $this->documentService = $this->client->api('documents');
+    }
+
+    $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
+    $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
+
+    // Create temp file with attachment-element contents.
+    $webformLabel = $submission->getWebform()->label();
+    $tempFile = tempnam('/tmp', $webformLabel);
+    file_put_contents($tempFile, $fileContent);
+
+    $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
+
+    $result = $this->documentService->AddToDocumentLibrary($tempFile, $caseId, $getOrganizedFileName);
+
+    // Remove temp file.
+    unlink($tempFile);
+
+    // Handle finalization ("journalisering").
+    if ($shouldBeFinalized) {
+      if (isset($result['DocId'])) {
+        $this->documentService->Finalize($result['DocId']);
+      }
+    }
   }
 
 }
