@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ebb844a4bfbb99cf27e6ea851a8582d",
+    "content-hash": "3778b8d22220e357501295e2a350e85e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1588,20 +1588,16 @@
             ],
             "authors": [
                 {
-                    "name": "Damien Tournoud",
-                    "homepage": "https://www.drupal.org/user/22211"
-                },
-                {
-                    "name": "Kazanir",
-                    "homepage": "https://www.drupal.org/user/2279698"
-                },
-                {
                     "name": "amitaibu",
                     "homepage": "https://www.drupal.org/user/57511"
                 },
                 {
                     "name": "bojanz",
                     "homepage": "https://www.drupal.org/user/86106"
+                },
+                {
+                    "name": "Damien Tournoud",
+                    "homepage": "https://www.drupal.org/user/22211"
                 },
                 {
                     "name": "dawehner",
@@ -1614,6 +1610,10 @@
                 {
                     "name": "jsacksick",
                     "homepage": "https://www.drupal.org/user/972218"
+                },
+                {
+                    "name": "Kazanir",
+                    "homepage": "https://www.drupal.org/user/2279698"
                 },
                 {
                     "name": "laurentchardin",
@@ -1927,6 +1927,7 @@
                 "shasum": "5e6d3b654a456aa11483cf67685e75900401d734"
             },
             "require": {
+                "drupal/ckeditor": "*",
                 "drupal/ckeditor_balloonpanel": "*",
                 "drupal/core": "^8 || ^9"
             },
@@ -1991,6 +1992,7 @@
                 "shasum": "8cca10a4b15fc059c6d2315f1544103b784628f6"
             },
             "require": {
+                "drupal/ckeditor": "*",
                 "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
@@ -3164,6 +3166,10 @@
                 {
                     "name": "Ben Dougherty",
                     "homepage": "https://www.drupal.org/u/benjy"
+                },
+                {
+                    "name": "benjy",
+                    "homepage": "https://www.drupal.org/user/1852732"
                 },
                 {
                     "name": "larowlan",
@@ -4826,16 +4832,16 @@
             "authors": [
                 {
                     "name": "Peter Majmesku",
-                    "homepage": "https://www.drupal.org/user/786132",
+                    "homepage": "https://www.drupal.org/user/1529744",
                     "email": "majmesku@publicplan.de"
                 },
                 {
-                    "name": "SaschaHannes",
-                    "homepage": "https://www.drupal.org/user/3536189"
+                    "name": "Peter Majmesku",
+                    "homepage": "https://www.drupal.org/user/786132"
                 },
                 {
-                    "name": "marcoliver",
-                    "homepage": "https://www.drupal.org/user/1529744"
+                    "name": "Wassilissa Elrich",
+                    "homepage": "https://www.drupal.org/user/3729479"
                 }
             ],
             "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
@@ -6408,8 +6414,8 @@
                     "dev-2.0.x": "2.0.x-dev"
                 },
                 "drupal": {
-                    "version": "2.0.0-alpha1+3-dev",
-                    "datestamp": "1660265879",
+                    "version": "2.0.0-alpha1+4-dev",
+                    "datestamp": "1662420384",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
