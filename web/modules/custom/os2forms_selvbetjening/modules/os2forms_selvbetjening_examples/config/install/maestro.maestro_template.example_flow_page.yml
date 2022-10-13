@@ -9,23 +9,7 @@ dependencies:
       - os2forms_selvbetjening_examples
 third_party_settings:
   os2forms_permissions_by_term:
-    maestro_template_permissions_by_term_settings:
-      21: '21'
-      30: 0
-      32: 0
-      29: 0
-      39: 0
-      28: 0
-      22: 0
-      26: 0
-      36: 0
-      23: 0
-      24: 0
-      37: 0
-      31: 0
-      25: 0
-      33: 0
-      38: 0
+    maestro_template_permissions_by_term_settings: []
 id: example_flow_page
 label: 'example flow page'
 app_group: 0
@@ -98,8 +82,8 @@ tasks:
       unique_id: example_flow_step_2
       webform_machine_name: example_flow_step_2
       modal: notmodal
-      skip_webform_handlers: 0
-      webform_nodes_attached_to: none
+      skip_webform_handlers: 1
+      webform_nodes_attached_to: node/0
       use_nodes_attached: 1
       webform_nodes_attached_variable: none
       redirect_to: taskconsole
