@@ -150,7 +150,6 @@ element:
     webform_attachment_url: webform_attachment_url
     webform_codemirror: webform_codemirror
     webform_computed_token: webform_computed_token
-    webform_computed_twig: webform_computed_twig
     webform_email_confirm: webform_email_confirm
     webform_email_multiple: webform_email_multiple
     webform_entity_checkboxes: webform_entity_checkboxes
