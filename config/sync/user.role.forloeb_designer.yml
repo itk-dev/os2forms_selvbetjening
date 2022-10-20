@@ -65,6 +65,7 @@ permissions:
   - 'edit own webform content'
   - 'edit own webform submission'
   - 'edit webform assets'
+  - 'edit webform source'
   - 'edit webform submissions any node'
   - 'edit webform submissions own node'
   - 'edit webform twig'
