@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "908e7f49f6388ffffa85df3f82a7084e",
+    "content-hash": "4d75563be91ed9fba6206bbd24056f5f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3909,6 +3909,58 @@
             "homepage": "https://www.drupal.org/project/key_auth",
             "support": {
                 "source": "https://git.drupalcode.org/project/key_auth"
+            }
+        },
+        {
+            "name": "drupal/keyboard_shortcuts",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/keyboard_shortcuts.git",
+                "reference": "1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/keyboard_shortcuts-1.1.0.zip",
+                "reference": "1.1.0",
+                "shasum": "3f07db6a157a71a625bca37dba63717904768cee"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10",
+                "drupal/libraries": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.0",
+                    "datestamp": "1655803113",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Booghmans",
+                    "homepage": "http://www.calibrate.be",
+                    "email": "kris@calibrate.be"
+                }
+            ],
+            "description": "Keyboard shortcuts for administrators.",
+            "homepage": "https://www.drupal.org/project/keyboard_shortcuts",
+            "keywords": [
+                "Calibr8",
+                "Calibrate",
+                "Drupal 9",
+                "UX"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/keyboard_shortcuts"
             }
         },
         {
