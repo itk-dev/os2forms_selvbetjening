@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "908e7f49f6388ffffa85df3f82a7084e",
+    "content-hash": "76baf3eb13cfec36e6518747bdf91594",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2190,7 +2190,7 @@
             ],
             "authors": [
                 {
-                    "name": "NigelCunningham",
+                    "name": "Nigel Cunningham",
                     "homepage": "https://www.drupal.org/user/250105"
                 }
             ],
@@ -4128,16 +4128,16 @@
             ],
             "authors": [
                 {
-                    "name": "Pol",
-                    "homepage": "https://www.drupal.org/user/47194"
-                },
-                {
                     "name": "joseph.olstad",
                     "homepage": "https://www.drupal.org/user/1321830"
                 },
                 {
                     "name": "podarok",
                     "homepage": "https://www.drupal.org/user/116002"
+                },
+                {
+                    "name": "Pol",
+                    "homepage": "https://www.drupal.org/user/47194"
                 },
                 {
                     "name": "rjacobs",
@@ -4354,8 +4354,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1+3-dev",
-                    "datestamp": "1665228366",
+                    "version": "8.x-1.0+1-dev",
+                    "datestamp": "1665746377",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
