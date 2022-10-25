@@ -23,7 +23,7 @@ docker-compose exec phpfpm composer install --no-interaction
 docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
 ```
 
-Thank to [the database dump](#database-dump) you're now ready to start:
+Thanks to [the database dump](#database-dump) you're now ready to start:
 
 ```sh
 open $(docker-compose exec phpfpm vendor/bin/drush --uri=http://$(docker-compose port nginx 80) user:login)
