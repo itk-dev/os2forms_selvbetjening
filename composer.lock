@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d75563be91ed9fba6206bbd24056f5f",
+    "content-hash": "9e430e31bc9082583af8444cc3c394bb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -17961,6 +17961,60 @@
                 "source": "https://github.com/drupal/core-dev/tree/9.3.6"
             },
             "time": "2021-11-30T05:41:29+00:00"
+        },
+        {
+            "name": "drupal/mail_debugger",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mail_debugger.git",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mail_debugger-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "06fd62c83ed530b0e760d9782ba7d4c3cfcb1aca"
+            },
+            "require": {
+                "drupal/core": "^8.0 || ^9.0 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1663738137",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Erlend ter Maat",
+                    "homepage": "https://www.drupal.org/u/erlendoos",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "sadashiv",
+                    "homepage": "https://www.drupal.org/user/1773304"
+                }
+            ],
+            "description": "Provides sending basic custom emails for debugging purposes.",
+            "homepage": "http://drupal.org/project/mail_debugger",
+            "keywords": [
+                "Development",
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/mail_debugger",
+                "issues": "https://www.drupal.org/project/issues/mail_debugger"
+            }
         },
         {
             "name": "easyrdf/easyrdf",

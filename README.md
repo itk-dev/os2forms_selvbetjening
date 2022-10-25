@@ -12,67 +12,53 @@ local machine for development and testing purposes.
 
 ### Installation
 
-1. Clone the git repository
+```sh
+docker-compose pull
+docker-compose up --detach
 
-   ```sh
-   git clone git@github.com:itk-dev/os2forms_selvbetjening selvbetjening
-   ```
+# Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
+docker-compose exec phpfpm composer install --no-interaction
 
-2. Enter the newly created project directory
+# Download and install external libraries
+docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
+```
 
-   ```sh
-   cd selvbetjening
-   ```
-
-3. Pull docker images and start docker containers
-
-   ```sh
-   docker-compose pull
-   docker-compose up --detach
-   ```
-
-4. Install composer packages
-
-   ```sh
-   # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
-   docker-compose exec phpfpm composer install --no-interaction
-   ```
-
-5. Install profile
-
-   ```sh
-   docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
-   ```
-
-   Should you encounter the following error:
-
-   ```sh
-   In EntityStorageBase.php line 557:
-   "config_entity_revisions_type" entity with ID 'webform_revisions' already exists.
-   ```
-
-   Proceed to remove this entry from the db via the sql cli:
-
-   ```sh
-   docker-compose exec phpfpm vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
-   ```
-
-   Afterwards, run config-import to import config from files:
-
-   ```sh
-   docker-compose exec phpfpm vendor/bin/drush config:import
-   ```
-
-6. Download and install external libraries
-
-   ```sh
-   docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
-   ```
-
-You should now be able to browse to the application
+Thanks to [the database dump](#database-dump) you're now ready to start:
 
 ```sh
-open http://$(docker-compose port nginx 80)
+open $(docker-compose exec phpfpm vendor/bin/drush --uri=http://$(docker-compose port nginx 80) user:login)
+```
+
+To start from scratch, e.g. to update the database dump, you can install the
+profile:
+
+```sh
+docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
+```
+
+If you encounter the error
+
+```sh
+In EntityStorageBase.php line 557:
+"config_entity_revisions_type" entity with ID 'webform_revisions' already exists.
+```
+
+proceed to remove this entry from the db via the sql cli:
+
+```sh
+docker-compose exec phpfpm vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
+```
+
+and run `drush config-import` to import config from files:
+
+```sh
+docker-compose exec phpfpm vendor/bin/drush config:import
+```
+
+You should now be able to browse to the application:
+
+```sh
+open $(docker-compose exec phpfpm vendor/bin/drush --uri=http://$(docker-compose port nginx 80) user:login)
 ```
 
 ### Configuration
@@ -190,3 +176,55 @@ environment, as its data contains personal data.
 If developers need an actual database for local development, the stg-environment
 can be made ready for download by ensuring that you delete all submissions and
 other informations that can have personal character, before downloading.
+
+## Database dump
+
+The `docker-compose` setup contains a database dump to make it easy to get
+started. When adding new functionality you may need to update the database dump.
+
+```sh
+# Make sure that everything is up to date
+docker-compose exec phpfpm vendor/bin/drush --yes deploy
+
+# Set some default values
+docker-compose exec phpfpm vendor/bin/drush --yes config:set system.site name 'selvbetjening'
+docker-compose exec phpfpm vendor/bin/drush --yes config:set system.site mail 'selvbetjening@example.com'
+
+# Dump the database
+docker-compose exec phpfpm vendor/bin/drush sql:dump --extra-dump='--skip-column-statistics' --structure-tables-list="cache,cache_*,advancedqueue,history,search_*,sessions,watchdog" --gzip --result-file=/app/.docker/drupal/dumps/drupal.sql
+```
+
+## Coding standards
+
+```sh
+docker-compose exec phpfpm composer coding-standards-check
+```
+
+```sh
+docker-compose run node yarn --cwd /app install
+docker-compose run node yarn --cwd /app coding-standards-check
+```
+
+## Testing
+
+### Emails
+
+For development, the [Mail
+Debugger](https://www.drupal.org/project/mail_debugger) module is available:
+
+```sh
+docker-compose exec phpfpm vendor/bin/drush pm:enable mail_debugger
+open "http://$(docker-compose port nginx 80)/admin/config/development/mail_debugger"
+# Open MailHog
+open "http://$(docker-compose port mailhog 8025)"
+```
+
+**Note**: Make sure to not add `mail_debugger` to the `modules` list in
+[`config/sync/core.extension.yml`](config/sync/core.extension.yml) – it’s only
+for development.
+
+Check your SMTP-settings with
+
+```sh
+docker-compose exec phpfpm vendor/bin/drush config:get --include-overridden smtp.settings
+```
