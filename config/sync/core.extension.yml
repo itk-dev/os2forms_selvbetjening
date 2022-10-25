@@ -47,6 +47,7 @@ module:
   jquery_ui: 0
   jquery_ui_datepicker: 0
   key_auth: 0
+  keyboard_shortcuts: 0
   language: 0
   libraries: 0
   link: 0
