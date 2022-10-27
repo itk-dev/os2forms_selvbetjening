@@ -1,0 +1,18 @@
+uuid: aff6c5d1-9733-44ab-8b12-4f6f65cc7a23
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: mII4acOv33s-j8PINywrCag4OITbeJGxdPO373dnHHw
+id: education
+label: Uddannelse
+category: Demografisk
+likert: false
+options: |-
+  'Grundskole og 10. klasse': 'Grundskole og 10. klasse'
+  'Gymnasiale uddannelser': 'Gymnasiale uddannelser'
+  'Kort videregående uddannelse': 'Kort videregående uddannelse'
+  'Lang videregående uddannelse': 'Lang videregående uddannelse'
