@@ -1,0 +1,18 @@
+uuid: 0a962c7f-3d3e-40c0-bab0-6b50d74e5a72
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: 8MCmsz_csdJkVItxI8g_s4zp2PM285YqCy_gWTzOLPw
+id: employment_status
+label: 'Employment status'
+category: Demografisk
+likert: false
+options: |-
+  Fuldtid: Fuldtid
+  Deltid: Deltid
+  Arbejdssøgende: Arbejdssøgende
+  Pensionneret: Pensionneret

@@ -1,0 +1,18 @@
+uuid: 0e812301-3e61-4843-9d0b-e1bc6496efce
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: PEUoedWrfYEX7oZ8CcOukfBTVxar1cPSROX8534esuU
+id: titles
+label: Titler
+category: Demografisk
+likert: false
+options: |-
+  Fru: Fru
+  Frøken: Frøken
+  Hr: Hr
+  Dr: Dr
