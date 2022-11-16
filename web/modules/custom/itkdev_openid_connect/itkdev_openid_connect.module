@@ -68,6 +68,13 @@ function itkdev_openid_connect_openid_connect_claims_alter(array &$claims) {
     'type' => 'boolean',
     'description' => 'Is leader?',
   ];
+
+  $claims['organisation_user_id'] = [
+    'scope' => 'profile',
+    'title' => 'Organisations user ID',
+    'type' => 'string',
+    'description' => 'SF1500 user ID',
+  ];
 }
 
 /**
@@ -94,6 +101,12 @@ function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, a
 
   // @todo this information is not yet provided by the Idp.
   $userinfo['is_leader'] = 0;
+
+  // SF1500 Organisation bruger ID.
+  // @see https://digitaliseringskataloget.dk/integration/sf1500
+  if (!isset($userinfo['organisation_user_id']) && isset($userinfo['nameidentifier'])) {
+    $userinfo['organisation_user_id'] = $userinfo['nameidentifier'];
+  }
 }
 
 /**

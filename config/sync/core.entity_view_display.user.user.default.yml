@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_department
     - field.field.user.user.field_is_leader
     - field.field.user.user.field_name
+    - field.field.user.user.field_organisation_user_id
   module:
     - user
 id: user.user.default
@@ -47,6 +48,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 51
+    region: content
+  field_organisation_user_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 56
     region: content
   masquerade:
     settings: {  }
