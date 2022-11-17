@@ -22,7 +22,7 @@ class SecurityTokenService {
   public function getRequestSecurityTokenXML($endpointSts, $appliesTo, $cvr, $issuer, $certKey, $action = 'Issue', $keyType = self::KEYTYPE_PUBLIC, $tokenType = self::TOKENTYPE_SAML20) {
 
     $certKey = str_replace(["\r", "\n"], '', $certKey);
-    $bodyId = self::generateUuid();
+    $bodyId = $this->generateUuid();
 
     $body = <<<XML
 <soap:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_$bodyId">
@@ -47,7 +47,7 @@ class SecurityTokenService {
 </soap:Body>
 XML;
 
-    $header = self::getRequestSecurityTokenHeader($endpointSts, $certKey);
+    $header = $this->getRequestSecurityTokenHeader($endpointSts, $certKey);
 
     return <<<XML
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
@@ -62,12 +62,12 @@ XML;
    */
   public function getRequestSecurityTokenHeader($to, $certKey, $action = 'http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue') {
 
-    $token = self::getCertificateToken($certKey, self::generateUuid());
-    $timestamp = self::getTimestampHeader(self::generateUuid());
-    $action = '<Action xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . self::generateUuid() . '">' . $action . '</Action>';
-    $message = '<MessageID xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . self::generateUuid() . '">urn:uuid:' . self::generateUuid() . '</MessageID>';
-    $reply = '<ReplyTo xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . self::generateUuid() . '"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo>';
-    $to = '<To xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . self::generateUuid() . '">' . $to . '</To>';
+    $token = $this->getCertificateToken($certKey, $this->generateUuid());
+    $timestamp = $this->getTimestampHeader($this->generateUuid());
+    $action = '<Action xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . $this->generateUuid() . '">' . $action . '</Action>';
+    $message = '<MessageID xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . $this->generateUuid() . '">urn:uuid:' . $this->generateUuid() . '</MessageID>';
+    $reply = '<ReplyTo xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . $this->generateUuid() . '"><Address>http://www.w3.org/2005/08/addressing/anonymous</Address></ReplyTo>';
+    $to = '<To xmlns="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_' . $this->generateUuid() . '">' . $to . '</To>';
 
     return <<<XML
 <soap:Header>
@@ -92,18 +92,18 @@ XML;
     $documentRequest->formatOutput = TRUE;
     $documentRequest->loadXML($request);
 
-    $tokenUuid = self::getDocEleId($documentRequest->getElementsByTagName('BinarySecurityToken')[0]);
-    $signatureUuid = self::generateUuid();
-    $keyInfoUuid = self::generateUuid();
-    $tokRefUuid = self::generateUuid();
+    $tokenUuid = $this->getDocEleId($documentRequest->getElementsByTagName('BinarySecurityToken')[0]);
+    $signatureUuid = $this->generateUuid();
+    $keyInfoUuid = $this->generateUuid();
+    $tokRefUuid = $this->generateUuid();
 
-    $references = self::getReferenceByTag('Timestamp', $request);
-    $references .= self::getReferenceByTag('Body', $request);
-    $references .= self::getReferenceByTag('To', $request);
-    $references .= self::getReferenceByTag('ReplyTo', $request);
-    $references .= self::getReferenceByTag('MessageID', $request);
-    $references .= self::getReferenceByTag('Action', $request);
-    $references .= self::getReferenceByTag('BinarySecurityToken', $request);
+    $references = $this->getReferenceByTag('Timestamp', $request);
+    $references .= $this->getReferenceByTag('Body', $request);
+    $references .= $this->getReferenceByTag('To', $request);
+    $references .= $this->getReferenceByTag('ReplyTo', $request);
+    $references .= $this->getReferenceByTag('MessageID', $request);
+    $references .= $this->getReferenceByTag('Action', $request);
+    $references .= $this->getReferenceByTag('BinarySecurityToken', $request);
 
     $signedInfo = <<<XML
 <ds:SignedInfo>
@@ -170,7 +170,7 @@ XML;
     $digestValue = base64_encode(openssl_digest($canonicalXml, 'SHA256', TRUE));
 
     // Extract "Id" attribute from xml data.
-    $refURI = self::getDocEleId($tag);
+    $refURI = $this->getDocEleId($tag);
 
     return <<<XML
 <ds:Reference URI="#$refURI">
@@ -202,8 +202,8 @@ XML;
    * Computes XML timestamp header.
    */
   public function getTimestampHeader($timestampID = "_0") {
-    $created = self::getTimestamp();
-    $expires = self::getTimestamp(300);
+    $created = $this->getTimestamp();
+    $expires = $this->getTimestamp(300);
     return <<<XML
 <wsu:Timestamp wsu:Id="TS-$timestampID">
     <wsu:Created>$created</wsu:Created>

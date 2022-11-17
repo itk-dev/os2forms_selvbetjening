@@ -23,7 +23,7 @@ We also need the public certificate to be on a single line:
 openssl x509 -in certificate.crt -trustout | sed '1,1d;$d' | tr -d '\n'
 ```
 
-**Make sure to never commit these**
+Make sure to **never** commit these
 
 ## Configuration
 
@@ -39,4 +39,3 @@ $config['os2forms_organisation'] = [
 
 here the location is relative to the
 `modules/custom/os2forms_organisation` module folder.
-
