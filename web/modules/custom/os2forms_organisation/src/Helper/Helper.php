@@ -65,158 +65,67 @@ class Helper {
     $token = $this->fetchSAMLToken();
 
     if ($token === NULL) {
-      return 'Something went wrong collecting token';
+      return '';
     }
 
     // Mit org bruger id.
     $brugerId = $this->getCurrentUserOrganisationId();
 
     if ($brugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
+      return '';
     }
 
     $responseArray = $this->brugerLaes($brugerId, $token);
 
-    try {
-      $personId = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2TilknyttedePersoner']['ns2ReferenceID']['ns2UUIDIdentifikator'];
+    $personIdKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2TilknyttedePersoner',
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
 
-      $responseArray = $this->personLaes($personId, $token);
+    $personId = $this->checkKeyOrderExistsInArray($personIdKeys, $responseArray, TRUE);
 
-      $name = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns3NavnTekst'];
-
-      return $name ?? 'woopsie';
-
+    if (!$personId) {
+      return '';
     }
-    catch (\Exception $exception) {
-      // Something went wrong.
-      return 'Something went wrong';
-    }
+
+    $responseArray = $this->personLaes($personId, $token);
+
+    $navnTekstKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns3NavnTekst',
+    ];
+
+    return $this->checkKeyOrderExistsInArray($navnTekstKeys, $responseArray, TRUE) ?: '';
   }
 
   /**
    * Fetches person phone from SF1500.
    */
   public function getPersonPhone(): string {
-    $token = $this->fetchSAMLToken();
-
-    if ($token === NULL) {
-      return 'Something went wrong collecting token';
-    }
-
-    // Mit org bruger id.
-    $brugerId = $this->getCurrentUserOrganisationId();
-
-    if ($brugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
-    }
-
-    $responseArray = $this->brugerLaes($brugerId, $token);
-
-    try {
-      $adresser = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2Adresser'];
-
-      foreach ($adresser as $adresse) {
-        if ($adresse['ns2Rolle']['ns2Label'] === 'Mobiltelefon_bruger') {
-
-          $responseArray = $this->adresseLaes($adresse['ns2ReferenceID']['ns2UUIDIdentifikator'], $token);
-
-          $phone = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns4AdresseTekst'];
-
-          return $phone ?? 'woopsie';
-        }
-      }
-
-      return 'Phone not configured';
-
-    }
-    catch (\Exception $exception) {
-      // Something went wrong.
-      return 'Something went wrong';
-    }
+    return $this->getBrugerAdresseAttribut('Mobiltelefon_bruger');
   }
 
   /**
    * Fetches person location from SF1500.
    */
   public function getPersonLocation() {
-    $token = $this->fetchSAMLToken();
-
-    if ($token === NULL) {
-      return 'Something went wrong collecting token';
-    }
-
-    // Mit org bruger id.
-    $brugerId = $this->getCurrentUserOrganisationId();
-
-    if ($brugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
-    }
-
-    $responseArray = $this->brugerLaes($brugerId, $token);
-
-    try {
-      $adresser = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2Adresser'];
-
-      foreach ($adresser as $adresse) {
-        if ($adresse['ns2Rolle']['ns2Label'] === 'Lokation_bruger') {
-
-          $responseArray = $this->adresseLaes($adresse['ns2ReferenceID']['ns2UUIDIdentifikator'], $token);
-
-          $email = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns4AdresseTekst'];
-
-          return $email ?? 'woopsie';
-        }
-      }
-
-    }
-    catch (\Exception $exception) {
-      // Something went wrong.
-      return 'Something went wrong';
-    }
-
-    return 'something went wrong';
+    return $this->getBrugerAdresseAttribut('Lokation_bruger');
   }
 
   /**
    * Fetches person email from SF1500.
    */
   public function getPersonEmail(): string {
-    $token = $this->fetchSAMLToken();
-
-    if ($token === NULL) {
-      return 'Something went wrong collecting token';
-    }
-
-    // Mit org bruger id.
-    $brugerId = $this->getCurrentUserOrganisationId();
-
-    if ($brugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
-    }
-
-    $responseArray = $this->brugerLaes($brugerId, $token);
-
-    try {
-      $adresser = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2Adresser'];
-
-      foreach ($adresser as $adresse) {
-        if ($adresse['ns2Rolle']['ns2Label'] === 'Email_bruger') {
-
-          $responseArray = $this->adresseLaes($adresse['ns2ReferenceID']['ns2UUIDIdentifikator'], $token);
-
-          $email = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns4AdresseTekst'];
-
-          return $email ?? 'woopsie';
-        }
-      }
-
-    }
-    catch (\Exception $exception) {
-      // Something went wrong.
-      return 'Something went wrong';
-    }
-
-    return 'something went wrong';
+    return $this->getBrugerAdresseAttribut('Email_bruger');
   }
 
   /**
@@ -226,19 +135,25 @@ class Helper {
     $token = $this->fetchSAMLToken();
 
     if ($token === NULL) {
-      return 'Something went wrong collecting token';
+      return '';
     }
 
     // Mit org bruger id.
     $orgBrugerId = $this->getCurrentUserOrganisationId();
 
     if ($orgBrugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
+      return '';
     }
 
     $responseArray = $this->organisationFunktionSoeg($orgBrugerId, NULL, $token);
 
-    $id = $responseArray['ns3SoegOutput']['ns2IdListe']['ns2UUIDIdentifikator'];
+    $idListeKeys = [
+      'ns3SoegOutput',
+      'ns2IdListe',
+      'ns2UUIDIdentifikator',
+    ];
+
+    $id = $this->checkKeyOrderExistsInArray($idListeKeys, $responseArray, TRUE);
 
     if (is_array($id)) {
       // @todo HANDLE PEOPLE WITH MORE THAN ONE FUKNTION?
@@ -246,20 +161,89 @@ class Helper {
     }
 
     if ($id === NULL) {
-      return 'Something went wrong';
+      return '';
     }
 
     $responseArray = $this->organisationFunktionLaes($id, $token);
 
-    $orgEnhedId = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2TilknyttedeEnheder']['ns2ReferenceID']['ns2UUIDIdentifikator'];
+    $tilknyttedeEnhederKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2TilknyttedeEnheder',
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
+
+    $orgEnhedId = $this->checkKeyOrderExistsInArray($tilknyttedeEnhederKeys, $responseArray, TRUE);
 
     if ($returnOrganisationID) {
-      return $orgEnhedId;
+      return $orgEnhedId ?: '';
     }
 
     $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
 
-    return $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns2EnhedNavn'];
+    $enhedsNavnKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns2EnhedNavn',
+    ];
+
+    return $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE) ?: '';
+  }
+
+  /**
+   * Fetches organisation enhed level 2 from SF1500.
+   */
+  public function getOrganisationEnhedNiveauTo() {
+    $orgEnhedId = $this->getOrganisationEnhed(TRUE);
+
+    if (!$orgEnhedId) {
+      return '';
+    }
+
+    $token = $this->fetchSAMLToken();
+
+    if ($token === NULL) {
+      return '';
+    }
+
+    // Level 1.
+    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+
+    $overordnetKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2Overordnet',
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
+
+    // Level 2.
+    $orgEnhedId = $this->checkKeyOrderExistsInArray($overordnetKeys, $responseArray, TRUE);
+
+    if (!$orgEnhedId) {
+      return '';
+    }
+
+    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+
+    $enhedsNavnKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns2EnhedNavn',
+    ];
+
+    return $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE) ?: '';
   }
 
   /**
@@ -270,104 +254,111 @@ class Helper {
     $token = $this->fetchSAMLToken();
 
     if ($token === NULL) {
-      return 'Something went wrong collecting token';
+      return '';
     }
 
     // Mit org bruger id.
     $brugerId = $this->getCurrentUserOrganisationId();
 
     if ($brugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
+      return '';
     }
 
     $responseArray = $this->brugerLaes($brugerId, $token);
 
-    return $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns2BrugerNavn'];
+    $brugerNavnKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns2BrugerNavn',
+    ];
+
+    return $this->checkKeyOrderExistsInArray($brugerNavnKeys, $responseArray, TRUE);
   }
 
   /**
    * Fetches organisation address from SF1500.
    */
   public function getOrganisationAddress() {
-    $orgID = $this->getOrganisationEnhed(TRUE);
+    $orgEnhedId = $this->getOrganisationEnhed(TRUE);
+
+    if (!$orgEnhedId) {
+      return '';
+    }
 
     $token = $this->fetchSAMLToken();
 
     if ($token === NULL) {
-      return 'Something went wrong collecting token';
+      return '';
     }
 
-    $responseArray = $this->organisationEnhedLaes($orgID, $token);
+    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
 
-    $adresser = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2Adresser'];
+    $adresseKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2Adresser',
+    ];
 
-    $adresseID = NULL;
+    $adresser = $this->checkKeyOrderExistsInArray($adresseKeys, $responseArray, TRUE);
+
+    if (!is_array($adresser)) {
+      return '';
+    }
+
+    $adresseTekstKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns4AdresseTekst',
+    ];
+
+    $adresseRolleLabelKeys = [
+      'ns2Rolle',
+      'ns2Label',
+    ];
+
+    $adresseReferenceUuidKeys = [
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
+
     foreach ($adresser as $adresse) {
-      if ($adresse['ns2Rolle']['ns2Label'] === 'Postadresse') {
-        $adresseID = $adresse['ns2ReferenceID']['ns2UUIDIdentifikator'];
+      if ($this->checkKeyOrderExistsInArray($adresseRolleLabelKeys, $adresse, TRUE) === 'Postadresse') {
+
+        $adresseId = $this->checkKeyOrderExistsInArray($adresseReferenceUuidKeys, $adresse, TRUE);
+
+        if (!$adresseId) {
+          continue;
+        }
+
+        $responseArray = $this->adresseLaes($adresseId, $token);
+        return $this->checkKeyOrderExistsInArray($adresseTekstKeys, $responseArray, TRUE) ?: '';
       }
     }
 
-    if (NULL === $adresseID) {
-      return 'something went wrong';
-    }
-
-    $responseArray = $this->adresseLaes($adresseID, $token);
-
-    return $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns4AdresseTekst'];
+    return '';
   }
 
   /**
    * Fetches person magistrat from SF1500.
    */
   public function getPersonMagistrat() {
-    $token = $this->fetchSAMLToken();
+    $orgEnhedId = $this->getOrganisationEnhed(TRUE);
 
-    if ($token === NULL) {
-      return 'Something went wrong collecting token';
-    }
-
-    // Mit org bruger id.
-    $orgBrugerId = $this->getCurrentUserOrganisationId();
-
-    if ($orgBrugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
-    }
-
-    $responseArray = $this->organisationFunktionSoeg($orgBrugerId, NULL, $token);
-
-    $keys = [
-      'ns3SoegOutput',
-      'ns2IdListe',
-      'ns2UUIDIdentifikator',
-    ];
-
-    $id = $this->checkKeyOrderExistsInArray($keys, $responseArray, TRUE);
-
-    if (is_array($id)) {
-      // @todo HANDLE PEOPLE WITH MORE THAN ONE FUNKTION?
-      $id = $id[0];
-    }
-
-    if (!is_string($id)) {
+    if (!$orgEnhedId) {
       return '';
     }
 
-    $responseArray = $this->organisationFunktionLaes($id, $token);
+    $token = $this->fetchSAMLToken();
 
-    // Get user organisation.
-    $keys = [
-      'ns3LaesOutput',
-      'ns3FiltreretOejebliksbillede',
-      'ns3Registrering',
-      'ns3RelationListe',
-      'ns2TilknyttedeEnheder',
-      'ns2ReferenceID',
-      'ns2UUIDIdentifikator',
-    ];
-    $orgEnhedId = $this->checkKeyOrderExistsInArray($keys, $responseArray, TRUE);
-
-    if (!$orgEnhedId) {
+    if ($token === NULL) {
       return '';
     }
 
@@ -463,49 +454,6 @@ class Helper {
     $xml = simplexml_load_string($response);
     $body = $xml->xpath('//soapBody')[0];
     return json_decode(json_encode((array) $body), TRUE);
-  }
-
-  /**
-   * Fetches organisation enhed level 2 from SF1500.
-   */
-  public function getOrganisationEnhedNiveauTo() {
-    $token = $this->fetchSAMLToken();
-
-    if ($token === NULL) {
-      return 'Something went wrong collecting token';
-    }
-
-    // Mit org bruger id.
-    $orgBrugerId = $this->getCurrentUserOrganisationId();
-
-    if ($orgBrugerId === NULL) {
-      return 'Something went wrong collecting organisation user id';
-    }
-
-    $responseArray = $this->organisationFunktionSoeg($orgBrugerId, NULL, $token);
-
-    $id = $responseArray['ns3SoegOutput']['ns2IdListe']['ns2UUIDIdentifikator'];
-
-    if (is_array($id)) {
-      // @todo HANDLE PEOPLE WITH MORE THAN ONE FUNKTION?
-      $id = $id[0];
-    }
-
-    if ($id === NULL) {
-      return 'Something went wrong';
-    }
-
-    $responseArray = $this->organisationFunktionLaes($id, $token);
-
-    // Level 1.
-    $orgEnhedId = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2TilknyttedeEnheder']['ns2ReferenceID']['ns2UUIDIdentifikator'];
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
-
-    // Level 2.
-    $orgEnhedId = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2Overordnet']['ns2ReferenceID']['ns2UUIDIdentifikator'];
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
-
-    return $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns2EnhedNavn'];
   }
 
   /**
@@ -631,6 +579,75 @@ class Helper {
   }
 
   /**
+   * Fetches bruger adresse attribut.
+   */
+  private function getBrugerAdresseAttribut(string $attribute) {
+    $token = $this->fetchSAMLToken();
+
+    if ($token === NULL) {
+      return '';
+    }
+
+    // Mit org bruger id.
+    $brugerId = $this->getCurrentUserOrganisationId();
+
+    if ($brugerId === NULL) {
+      return '';
+    }
+
+    $responseArray = $this->brugerLaes($brugerId, $token);
+
+    $adresseKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2Adresser',
+    ];
+
+    $adresser = $this->checkKeyOrderExistsInArray($adresseKeys, $responseArray, TRUE);
+
+    if (!is_array($adresser)) {
+      return '';
+    }
+
+    $adresseTekstKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns4AdresseTekst',
+    ];
+
+    $adresseRolleLabelKeys = [
+      'ns2Rolle',
+      'ns2Label',
+    ];
+
+    $adresseReferenceUuidKeys = [
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
+
+    foreach ($adresser as $adresse) {
+      if ($this->checkKeyOrderExistsInArray($adresseRolleLabelKeys, $adresse, TRUE) === $attribute) {
+
+        $adresseId = $this->checkKeyOrderExistsInArray($adresseReferenceUuidKeys, $adresse, TRUE);
+
+        if (!$adresseId) {
+          continue;
+        }
+
+        $responseArray = $this->adresseLaes($adresseId, $token);
+        return $this->checkKeyOrderExistsInArray($adresseTekstKeys, $responseArray, TRUE) ?: '';
+      }
+    }
+
+    return '';
+  }
+
+  /**
    * Checks if specific order of keys exists in nested array.
    *
    * @example
@@ -650,7 +667,7 @@ class Helper {
    * checkKeyOrderExistsInArray(['a','b1'], $haystack) = false
    * checkKeyOrderExistsInArray(['a','a1', 'a11'], $haystack) = false
    */
-  private function checkKeyOrderExistsInArray(array $keys, array $haystack, bool $returnValue = FALSE) {
+  private function checkKeyOrderExistsInArray(array $keys, array $haystack, bool $getValue = FALSE) {
     foreach ($keys as $key) {
       if (!array_key_exists($key, $haystack)) {
         return FALSE;
@@ -658,7 +675,7 @@ class Helper {
       $haystack = $haystack[$key];
     }
 
-    return $returnValue ? $haystack : TRUE;
+    return $getValue ? $haystack : TRUE;
   }
 
 }
