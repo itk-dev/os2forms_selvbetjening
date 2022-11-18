@@ -136,6 +136,48 @@ class Helper {
   }
 
   /**
+   * Fetches person location from SF1500.
+   */
+  public function getPersonLocation() {
+    $token = $this->fetchSAMLToken();
+
+    if ($token === NULL) {
+      return 'Something went wrong collecting token';
+    }
+
+    // Mit org bruger id.
+    $brugerId = $this->getCurrentUserOrganisationId();
+
+    if ($brugerId === NULL) {
+      return 'Something went wrong collecting organisation user id';
+    }
+
+    $responseArray = $this->brugerLaes($brugerId, $token);
+
+    try {
+      $adresser = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3RelationListe']['ns2Adresser'];
+
+      foreach ($adresser as $adresse) {
+        if ($adresse['ns2Rolle']['ns2Label'] === 'Lokation_bruger') {
+
+          $responseArray = $this->adresseLaes($adresse['ns2ReferenceID']['ns2UUIDIdentifikator'], $token);
+
+          $email = $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns4AdresseTekst'];
+
+          return $email ?? 'woopsie';
+        }
+      }
+
+    }
+    catch (\Exception $exception) {
+      // Something went wrong.
+      return 'Something went wrong';
+    }
+
+    return 'something went wrong';
+  }
+
+  /**
    * Fetches person email from SF1500.
    */
   public function getPersonEmail(): string {
@@ -273,6 +315,91 @@ class Helper {
     $responseArray = $this->adresseLaes($adresseID, $token);
 
     return $responseArray['ns3LaesOutput']['ns3FiltreretOejebliksbillede']['ns3Registrering']['ns3AttributListe']['ns3Egenskab']['ns4AdresseTekst'];
+  }
+
+  /**
+   * Fetches person magistrat from SF1500.
+   */
+  public function getPersonMagistrat() {
+    $token = $this->fetchSAMLToken();
+
+    if ($token === NULL) {
+      return 'Something went wrong collecting token';
+    }
+
+    // Mit org bruger id.
+    $orgBrugerId = $this->getCurrentUserOrganisationId();
+
+    if ($orgBrugerId === NULL) {
+      return 'Something went wrong collecting organisation user id';
+    }
+
+    $responseArray = $this->organisationFunktionSoeg($orgBrugerId, NULL, $token);
+
+    $keys = [
+      'ns3SoegOutput',
+      'ns2IdListe',
+      'ns2UUIDIdentifikator',
+    ];
+
+    $id = $this->checkKeyOrderExistsInArray($keys, $responseArray, TRUE);
+
+    if (is_array($id)) {
+      // @todo HANDLE PEOPLE WITH MORE THAN ONE FUNKTION?
+      $id = $id[0];
+    }
+
+    if (!is_string($id)) {
+      return '';
+    }
+
+    $responseArray = $this->organisationFunktionLaes($id, $token);
+
+    // Get user organisation.
+    $keys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2TilknyttedeEnheder',
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
+    $orgEnhedId = $this->checkKeyOrderExistsInArray($keys, $responseArray, TRUE);
+
+    if (!$orgEnhedId) {
+      return '';
+    }
+
+    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+
+    $enhedsNavnKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns2EnhedNavn',
+    ];
+    $enhedsNavn = $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE);
+
+    // Follow organisation until parent does not exist, updating $enhedsNavn.
+    $overordnetKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3RelationListe',
+      'ns2Overordnet',
+      'ns2ReferenceID',
+      'ns2UUIDIdentifikator',
+    ];
+
+    while ($orgEnhedId = $this->checkKeyOrderExistsInArray($overordnetKeys, $responseArray, TRUE)) {
+      $enhedsNavn = $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE);
+      $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    }
+
+    return $enhedsNavn;
   }
 
   /**
@@ -501,6 +628,37 @@ class Helper {
     $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
 
     return $this->responseXMLToArray($response);
+  }
+
+  /**
+   * Checks if specific order of keys exists in nested array.
+   *
+   * @example
+   * $haystack = [
+   *   'a' => [
+   *     'a1' => ['a11', 'a12'],
+   *     'a2' => ['a21', 'a22'],
+   *   ],
+   *   'b' => [
+   *     'b1' => ['b11', 'b12'],
+   *     'b2' => ['b21', 'b22'],
+   *   ],
+   * ];
+   *
+   * checkKeyOrderExistsInArray(['a','a1'], $haystack) = true
+   * checkKeyOrderExistsInArray(['a1','a'], $haystack) = false
+   * checkKeyOrderExistsInArray(['a','b1'], $haystack) = false
+   * checkKeyOrderExistsInArray(['a','a1', 'a11'], $haystack) = false
+   */
+  private function checkKeyOrderExistsInArray(array $keys, array $haystack, bool $returnValue = FALSE) {
+    foreach ($keys as $key) {
+      if (!array_key_exists($key, $haystack)) {
+        return FALSE;
+      }
+      $haystack = $haystack[$key];
+    }
+
+    return $returnValue ? $haystack : TRUE;
   }
 
 }
