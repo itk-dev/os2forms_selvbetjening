@@ -74,6 +74,7 @@ module:
   os2forms_digital_post: 0
   os2forms_forloeb: 0
   os2forms_get_organized: 0
+  os2forms_kl_forms: 0
   os2forms_nemid: 0
   os2forms_nemlogin_openid_connect: 0
   os2forms_permissions_by_term: 0

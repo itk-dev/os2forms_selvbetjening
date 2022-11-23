@@ -61,6 +61,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/itk-dev/getorganized-api-client-php"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms_kl_forms"
         }
     ],
     "require": {
@@ -90,7 +94,8 @@
         "itk-dev/os2forms_nemlogin_openid_connect": "^1.0",
         "itk-dev/os2forms_user_field_lookup": "^1.0",
         "itk-dev/web_accessibility_statement": "^1.0",
-        "os2forms/os2forms_forloeb_profile": "^1.8"
+        "os2forms/os2forms_forloeb_profile": "^1.8",
+        "os2forms/os2forms_kl_forms": "dev-feature/os2forms_kl_forms"
     },
     "require-dev": {
         "drupal/core-dev": "^9.1",
