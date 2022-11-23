@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e430e31bc9082583af8444cc3c394bb",
+    "content-hash": "fafb1a4f1d8326b26ab93b0ef5ba0721",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7347,6 +7347,80 @@
             "time": "2021-11-04T19:12:22+00:00"
         },
         {
+            "name": "goetas-webservices/xsd-reader",
+            "version": "0.3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/goetas-webservices/xsd-reader.git",
+                "reference": "4082089352567e4f00aa150379f8dc9bc4a07dd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/goetas-webservices/xsd-reader/zipball/4082089352567e4f00aa150379f8dc9bc4a07dd9",
+                "reference": "4082089352567e4f00aa150379f8dc9bc4a07dd9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "sebastian/phpcpd": "^4.0|^5.0|^6.0",
+                "vimeo/psalm": "^3.14"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GoetasWebservices\\CS\\": "./php-cs-fixer/",
+                    "GoetasWebservices\\XML\\XSDReader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Asmir Mustafic",
+                    "email": "goetas@lignano.it"
+                }
+            ],
+            "description": "Read any XML Schema (XSD) programmatically with PHP",
+            "keywords": [
+                "parser",
+                "php",
+                "xml",
+                "xmlschema",
+                "xsd"
+            ],
+            "support": {
+                "issues": "https://github.com/goetas-webservices/xsd-reader/issues",
+                "source": "https://github.com/goetas-webservices/xsd-reader/tree/0.3.10"
+            },
+            "funding": [
+                {
+                    "url": "https://www.goetas.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/goetas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/goetas",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-09-29T09:00:01+00:00"
+        },
+        {
             "name": "grahl/ldap",
             "version": "v5.2.0.1",
             "source": {
@@ -9258,6 +9332,77 @@
                 "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.9.0"
             },
             "time": "2022-06-29T12:33:38+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_kl_forms",
+            "version": "dev-feature/os2forms_kl_forms",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_kl_forms.git",
+                "reference": "7e9f96ac14611332b81d0f422263723cdaec2a84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_kl_forms/zipball/7e9f96ac14611332b81d0f422263723cdaec2a84",
+                "reference": "7e9f96ac14611332b81d0f422263723cdaec2a84",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/webform": "^6",
+                "drush/drush": "^10",
+                "goetas-webservices/xsd-reader": "^0.3.10"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "drupal-module",
+            "autoload-dev": {
+                "//": "Make sure that our PHPUnit test classes can load our Drupal module classes",
+                "psr-4": {
+                    "Drupal\\os2forms_kl_forms\\": "src/"
+                }
+            },
+            "scripts": {
+                "code-analysis/drupal-check": [
+                    "drupal-check --deprecations --analysis --exclude-dir=vendor *.* src"
+                ],
+                "code-analysis": [
+                    "@code-analysis/drupal-check"
+                ],
+                "coding-standards-check/phpcs": [
+                    "phpcs --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/phpcs"
+                ],
+                "coding-standards-apply/phpcbf": [
+                    "phpcbf --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/phpcbf"
+                ],
+                "test": [
+                    "phpunit tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "OS2Forms KL forms",
+            "support": {
+                "source": "https://github.com/itk-dev/os2forms_kl_forms/tree/feature/os2forms_kl_forms",
+                "issues": "https://github.com/itk-dev/os2forms_kl_forms/issues"
+            },
+            "time": "2022-11-23T09:02:15+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -21300,7 +21445,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "os2forms/os2forms_kl_forms": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
