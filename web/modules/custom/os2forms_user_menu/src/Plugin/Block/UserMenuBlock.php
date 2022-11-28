@@ -9,6 +9,8 @@ use Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface;
 use Drupal\os2forms_cpr_lookup\Service\CprServiceInterface;
 use Drupal\os2web_nemlogin\Service\AuthProviderService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Provides an user menu block.
@@ -43,18 +45,46 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
   protected CprServiceInterface $cprService;
 
   /**
-   * @param array $configuration
-   * @param string $plugin_id
-   * @param mixed $plugin_definition
-   * @param \Drupal\os2web_nemlogin\Service\AuthProviderService $authProvider
-   * @param \Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface $cvrService
-   * @param \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface $cprService
+   * The route match service.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, AuthProviderService $authProvider, CvrServiceInterface $cvrService, CprServiceInterface $cprService) {
+  protected RouteMatchInterface $routeMatch;
+
+  /**
+   * The route match service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected EntityTypeManagerInterface $entityTypeManager;
+
+  /**
+   * Block constructor.
+   *
+   * @param array $configuration
+   *   Block configuration.
+   * @param string $plugin_id
+   *   Block plugin id.
+   * @param mixed $plugin_definition
+   *   Block plugin definition.
+   * @param \Drupal\os2web_nemlogin\Service\AuthProviderService $authProvider
+   *   The OS2Web Nemlogin authorization provider.
+   * @param \Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface $cvrService
+   *   The OS2forms CVR service.
+   * @param \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface $cprService
+   *   The OS2forms CPR service.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
+   *   The route match service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, AuthProviderService $authProvider, CvrServiceInterface $cvrService, CprServiceInterface $cprService, RouteMatchInterface $routeMatch, EntityTypeManagerInterface $entityTypeManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->authProvider = $authProvider;
     $this->cvrService = $cvrService;
     $this->cprService = $cprService;
+    $this->routeMatch = $routeMatch;
+    $this->entityTypeManager = $entityTypeManager;
   }
 
   /**
@@ -67,7 +97,9 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
       $plugin_definition,
       $container->get('os2web_nemlogin.auth_provider'),
       $container->get('os2forms_cvr_lookup.service'),
-      $container->get('os2forms_cpr_lookup.service')
+      $container->get('os2forms_cpr_lookup.service'),
+      $container->get('current_route_match'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -87,7 +119,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     }
 
     // Determine if we have an entity to work with.
-    $pageEntity = $this->get_page_entity();
+    $pageEntity = $this->getPageEntity();
 
     // Get webform from node if a reference exists.
     if ('node' === $pageEntity->getEntityTypeId()) {
@@ -162,14 +194,15 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
    * Determine if an entity exists on the page.
    *
    * @return array|\Drupal\Core\Entity\EntityInterface|mixed|null
+   *   An entity found on the page.
    */
-  private function get_page_entity() {
+  private function getPageEntity() {
     $page_entity = &drupal_static(__FUNCTION__, NULL);
     if (isset($page_entity)) {
       return $page_entity ?: NULL;
     }
-    $current_route = \Drupal::routeMatch();
-    foreach ($current_route->getParameters() as $param) {
+
+    foreach ($this->routeMatch->getParameters() as $param) {
       if ($param instanceof EntityInterface) {
         $page_entity = $param;
         break;
@@ -178,16 +211,15 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     if (!isset($page_entity)) {
       // Some routes don't properly define entity parameters.
       // Thus, try to load them by its raw Id, if given.
-      $entity_type_manager = \Drupal::entityTypeManager();
-      $types = $entity_type_manager->getDefinitions();
-      foreach ($current_route->getParameters()->keys() as $param_key) {
+      $types = $this->entityTypeManager->getDefinitions();
+      foreach ($this->routeMatch->getParameters()->keys() as $param_key) {
         if (!isset($types[$param_key])) {
           continue;
         }
-        if ($param = $current_route->getParameter($param_key)) {
+        if ($param = $this->routeMatch->getParameter($param_key)) {
           if (is_string($param) || is_numeric($param)) {
             try {
-              $page_entity = $entity_type_manager->getStorage($param_key)->load($param);
+              $page_entity = $this->entityTypeManager->getStorage($param_key)->load($param);
             }
             catch (\Exception $e) {
             }
