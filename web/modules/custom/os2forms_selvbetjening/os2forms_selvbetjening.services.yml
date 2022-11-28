@@ -2,3 +2,9 @@ services:
   Drupal\os2forms_selvbetjening\Helper\FormHelper:
     arguments:
       - '@config.factory'
+
+  Drupal\os2forms_selvbetjening\EventSubscriber\ResponseSubscriber:
+    arguments:
+      - '@router.admin_context'
+    tags:
+      - { name: 'event_subscriber' }

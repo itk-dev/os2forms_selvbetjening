@@ -228,3 +228,13 @@ Check your SMTP-settings with
 ```sh
 docker-compose exec phpfpm vendor/bin/drush config:get --include-overridden smtp.settings
 ```
+
+## Admin message
+
+An admin message (shown only on admin pages) can be defined in
+`settings.local.php`, e.g.:
+
+```php
+$settings['os2forms_selvbetjening']['admin_message'] = 'This is a <strong>test system</strong>';
+$settings['os2forms_selvbetjening']['admin_message_style'] = 'padding: 1em; background-color: red; color: yellow;';
+```
