@@ -1,0 +1,28 @@
+uuid: af512ed4-7222-4d64-8a1a-eda5255021e6
+langcode: da
+status: true
+dependencies:
+  module:
+    - node
+    - os2forms_user_menu
+  theme:
+    - os2forms_selvbetjening_theme
+id: usermenu
+theme: os2forms_selvbetjening_theme
+region: header
+weight: -4
+provider: null
+plugin: os2forms_user_menu_user_menu
+settings:
+  id: os2forms_user_menu_user_menu
+  label: 'User menu'
+  label_display: '0'
+  provider: os2forms_user_menu
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      webform: webform
