@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function os2forms_user_menu_theme($existing, $type, $theme, $path) {
+  return [
+    'user_menu' => [
+      'variables' => [
+        'url' => NULL,
+        'name' => NULL
+      ],
+    ],
+  ];
+}

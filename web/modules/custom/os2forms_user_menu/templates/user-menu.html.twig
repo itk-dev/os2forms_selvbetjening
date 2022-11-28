@@ -1,0 +1,28 @@
+{#
+  User menu template
+    - Available variables:
+      - url: A URL for either loggin in or loggin out.
+      - name: The name to display when logged in.
+#}
+<nav class="item-list os2forms-user-menu">
+  <ul>
+    {% if name %}
+      <li class="menu-item">
+        {{ name }}
+      </li>
+    {% endif %}
+    {% if name %}
+      <li class="menu-item">
+        <strong>
+          <a href="{{ url }}">{{ 'Logout'|t }}</a>
+        </strong>
+      </li>
+    {% else %}
+      <li class="menu-item">
+        <strong>
+          <a href="{{ url }}">{{ 'Login'|t }}</a>
+        </strong>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
