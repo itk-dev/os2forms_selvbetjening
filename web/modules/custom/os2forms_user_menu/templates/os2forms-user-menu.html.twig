@@ -1,7 +1,8 @@
 {#
   User menu template
     - Available variables:
-      - url: A URL for either loggin in or loggin out.
+      - logout_url: A URL logging out.
+      - login_url: A URL logging in.
       - name: The name to display when logged in.
 #}
 <nav class="item-list os2forms-user-menu">
@@ -11,16 +12,17 @@
         {{ name }}
       </li>
     {% endif %}
-    {% if name %}
+    {% if logout_url %}
       <li class="menu-item">
         <strong>
-          <a href="{{ url }}">{{ 'Logout'|t }}</a>
+          <a href="{{ logout_url }}">{{ 'Logout'|t }}</a>
         </strong>
       </li>
-    {% else %}
+    {% endif %}
+    {% if login_url %}
       <li class="menu-item">
         <strong>
-          <a href="{{ url }}">{{ 'Login'|t }}</a>
+          <a href="{{ login_url }}">{{ 'Login'|t }}</a>
         </strong>
       </li>
     {% endif %}

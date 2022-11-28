@@ -121,9 +121,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     if ('node' === $pageEntity->getEntityTypeId()) {
       if ('webform' === $pageEntity->bundle()) {
         $webformList = $pageEntity->get('webform')->referencedEntities();
-        if ($webformList) {
-          $webform = $webformList['0'];
-        }
+        $webform = reset($webformList) ?: NULL;
       }
     }
 
@@ -144,12 +142,14 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     }
 
     $name = NULL;
+    $loginUrl = NULL;
+    $logoutUrl = NULL;
 
     if (!$plugin->isAuthenticated()) {
-      $url = $this->authProvider->getLoginUrl();
+      $loginUrl = $this->authProvider->getLoginUrl();
     }
     else {
-      $url = $this->authProvider->getLogoutUrl();
+      $logoutUrl = $this->authProvider->getLogoutUrl();
       // Use cvr name if one exists.
       if ($cvr = $plugin->fetchValue('cvr')) {
         try {
@@ -175,9 +175,10 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
 
     // Show user information.
     $build['content'] = [
-      '#theme' => 'user_menu',
+      '#theme' => 'os2forms_user_menu',
       '#name' => $name,
-      '#url' => $url,
+      '#login_url' => $loginUrl,
+      '#logout_url' => $logoutUrl,
       '#attached' => [
         'library' => ['os2forms_user_menu/user_menu'],
       ],
