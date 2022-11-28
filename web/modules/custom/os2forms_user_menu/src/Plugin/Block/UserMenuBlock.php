@@ -113,7 +113,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
       return [];
     }
     $plugin = $this->authProvider->getActivePlugin();
-    
+
     // Determine if we have an entity to work with.
     $pageEntity = $this->getPageEntity();
 
