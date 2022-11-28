@@ -29,14 +29,14 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
   protected AuthProviderService $authProvider;
 
   /**
-   * The OS2Web Nemlogin authorization provider.
+   * The OS2forms CVR service.
    *
    * @var \Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface
    */
   protected CvrServiceInterface $cvrService;
 
   /**
-   * The OS2Web Nemlogin authorization provider.
+   * The OS2forms CPR service.
    *
    * @var \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface
    */
@@ -48,7 +48,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
    * @param mixed $plugin_definition
    * @param \Drupal\os2web_nemlogin\Service\AuthProviderService $authProvider
    * @param \Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface $cvrService
-   * @param \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface $pvrService
+   * @param \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface $cprService
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, AuthProviderService $authProvider, CvrServiceInterface $cvrService, CprServiceInterface $cprService) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
