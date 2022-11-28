@@ -1,15 +1,15 @@
 .item-list.os2forms-user-menu {
-    float: right;
+  float: right;
 }
 
 .item-list.os2forms-user-menu ul {
-    display: inline-block;
-    list-style-type: none;
-    margin-left: 0;
+  display: inline-block;
+  list-style-type: none;
+  margin-left: 0;
 }
 
 .item-list.os2forms-user-menu li {
-    display: inline-block;
-    list-style-type: none;
-    margin-left: 1em;
+  display: inline-block;
+  list-style-type: none;
+  margin-left: 1em;
 }

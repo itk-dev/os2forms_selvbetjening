@@ -128,7 +128,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
           $cvrResponse = $this->cvrService->search($cvr);
           $name = $cvrResponse->getName();
         }
-        catch(\Exception $e) {
+        catch (\Exception $e) {
           // If we could not get cvr information show nothing.
           return [];
         }
@@ -138,7 +138,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
           $cprResponse = $this->cprService->search($plugin->fetchValue('cpr'));
           $name = $cprResponse->getName();
         }
-        catch(\Exception $e) {
+        catch (\Exception $e) {
           // If we could not get cpr information show nothing.
           return [];
         }
@@ -151,7 +151,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
       '#name' => $name,
       '#url' => $url,
       '#attached' => [
-        'library' => array('os2forms_user_menu/user_menu'),
+        'library' => ['os2forms_user_menu/user_menu'],
       ],
     ];
 
@@ -202,4 +202,5 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     }
     return $page_entity;
   }
+
 }

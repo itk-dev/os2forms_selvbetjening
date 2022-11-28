@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * @file
+ */
+
+/**
  * Implements hook_theme().
  */
 function os2forms_user_menu_theme($existing, $type, $theme, $path) {
@@ -8,7 +12,7 @@ function os2forms_user_menu_theme($existing, $type, $theme, $path) {
     'user_menu' => [
       'variables' => [
         'url' => NULL,
-        'name' => NULL
+        'name' => NULL,
       ],
     ],
   ];
