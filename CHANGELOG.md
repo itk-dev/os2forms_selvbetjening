@@ -19,7 +19,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * CPR børn bugfix for sektioner
 
-
 ## 27.10.2022 
 
 ### Tilføjet
@@ -27,7 +26,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Genvejsknapper aktiveret 
 * Synlig linje om testmiljø eller lignende introduceret
 * Selvbetjeningsdesigner fået adgang til redigering af formular-kilde (yml)
-
 
 ## 14.10.2022 
 
