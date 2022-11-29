@@ -1,0 +1,15 @@
+uuid: 927bf4bb-2ebb-4de6-80c5-8a6d0718e7d8
+langcode: da
+status: true
+dependencies: {  }
+id: magistratsafdeling
+label: Magistratsafdeling
+category: Demografisk
+likert: false
+options: |-
+  BA: 'Borgmesterens afdeling (BA)'
+  MBU: 'Børn og Unge (MBU)'
+  MKB: 'Kultur og Morgerservice (MKB)'
+  MSO: 'Sundhed og Omsorg (MSO)'
+  MSB: 'Sociale Forhold og bekræftigelse (MSB)'
+  MTM: 'Teknik og Miljø (MTM)'
