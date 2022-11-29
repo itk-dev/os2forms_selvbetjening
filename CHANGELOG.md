@@ -1,4 +1,5 @@
 # Changelog for selvbetjening.aarhuskommune.dk
+Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## 29.11.2022 Mindre ændringer
 * Valg med magistratsafdelinger
@@ -17,7 +18,9 @@
 
 ## 14.10.2022 Mindre ændringer
 * Computed twig aktiveret
+* Book Aarhus modul tilføjet
 
 ## 16.09.2022
 * GO borgersager tilføjet
+
 
