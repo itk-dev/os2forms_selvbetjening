@@ -5,6 +5,7 @@ namespace Drupal\os2forms_user_menu\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface;
 use Drupal\os2forms_cpr_lookup\Service\CprServiceInterface;
 use Drupal\os2web_nemlogin\Service\AuthProviderService;
@@ -22,6 +23,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
  * )
  */
 class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface {
+  use StringTranslationTrait;
 
   /**
    * The OS2Web Nemlogin authorization provider.
@@ -158,7 +160,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
         }
         catch (\Exception $e) {
           // If we could not get cvr information show nothing.
-          return [];
+          $name = $this->t('Logged in');
         }
       }
       else {
@@ -168,7 +170,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
         }
         catch (\Exception $e) {
           // If we could not get cpr information show nothing.
-          return [];
+          $name = $this->t('Logged in');
         }
       }
     }
