@@ -107,7 +107,7 @@ form:
   filter_state: ''
 element:
   machine_name_pattern: a-z0-9_
-  empty_message: '{Empty}'
+  empty_message: '{Tom}'
   allowed_tags: admin
   wrapper_classes: "container-inline clearfix\r\nform--inline clearfix\r\nmessages messages--error\r\nmessages messages--warning\r\nmessages messages--status\r\n"
   classes: "container-inline clearfix\r\nform--inline clearfix\r\nmessages messages--error\r\nmessages messages--warning\r\nmessages messages--status\r\n"
@@ -198,9 +198,9 @@ mail:
 export:
   temp_directory: ''
   exporter: delimited
-  delimiter: ','
+  delimiter: ;
   multiple_delimiter: ;
-  excel: false
+  excel: true
   archive_type: tar
   header_format: label
   header_prefix: true
@@ -214,7 +214,6 @@ export:
   options_multiple_format: compact
   options_item_format: label
   likert_answers_format: label
-  signature_format: status
   composite_element_item_format: label
   excluded_exporters: {  }
 handler:
