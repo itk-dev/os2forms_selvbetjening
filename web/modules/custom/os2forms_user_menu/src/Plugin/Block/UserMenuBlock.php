@@ -106,7 +106,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
   }
 
   /**
-   * @return int
+   * {@inheritdoc}
    */
   public function getCacheMaxAge() {
     // Disable block caching.
