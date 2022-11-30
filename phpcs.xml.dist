@@ -3,6 +3,7 @@
   <description>The coding standard.</description>
 
   <file>web/modules/custom/</file>
+
   <!-- Show progress of the run -->
   <arg value="p"/>
 
