@@ -47,7 +47,7 @@ settings:
   default_limit_total_message: 'No more submissions are permitted.'
   default_limit_user_message: 'No more submissions are permitted.'
   default_submission_label: '[webform_submission:submitted-to]: Submission #[webform_submission:serial]'
-  default_submission_log: false
+  default_submission_log: true
   default_submission_views: {  }
   default_submission_views_replace:
     global_routes:
