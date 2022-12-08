@@ -2,6 +2,12 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## 8.12.2022
+
+### Tilføjet
+* Logs på submissions
+* Valg-liste: Likert: mindre til mere
+
 ## 29.11.2022 
 
 ### Tilføjet
