@@ -108,6 +108,14 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
+  public function getCacheMaxAge() {
+    // Disable block caching.
+    return 0;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function build() {
     $webform = NULL;
     // If there is no auth plugin show nothing.
@@ -139,7 +147,7 @@ class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface
     $webformNemIdSettings = $webform->getThirdPartySetting('os2forms', 'os2forms_nemid');
 
     // If nemlogin is not enabled show nothing.
-    if (FALSE === $webformNemIdSettings['nemlogin_auto_redirect']) {
+    if ($webformNemIdSettings && FALSE === $webformNemIdSettings['nemlogin_auto_redirect']) {
       return [];
     }
 
