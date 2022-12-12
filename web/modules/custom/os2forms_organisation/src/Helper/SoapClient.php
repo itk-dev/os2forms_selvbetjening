@@ -34,9 +34,12 @@ class SoapClient {
 
     if ($request != NULL) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       // Workaround curl version peculiarity.
 >>>>>>> 2552f8f (DW-454: Organisationsdata)
+=======
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
       curl_setopt($ch, CURLOPT_POST, TRUE);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
     }

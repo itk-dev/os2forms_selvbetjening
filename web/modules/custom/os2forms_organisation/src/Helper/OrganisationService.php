@@ -9,6 +9,7 @@ class OrganisationService {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Builds XML body for bruger laes.
    */
   // phpcs:ignore
@@ -18,6 +19,11 @@ class OrganisationService {
    */
   public function getBodyBrugerLaes($uuid) {
 >>>>>>> 2552f8f (DW-454: Organisationsdata)
+=======
+   * Builds XML body for bruger laes.
+   */
+  public function buildBodyBrugerLaesXML($uuid) {
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <LaesInput xmlns="http://stoettesystemerne.dk/organisation/bruger/6/">
@@ -28,6 +34,7 @@ XML;
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Builds XML body for bruger soeg.
    */
@@ -288,6 +295,11 @@ XML;
    * Computes XML body for bruger soeg.
    */
   public function getBodyBrugerSoeg(string $name) {
+=======
+   * Builds XML body for bruger soeg.
+   */
+  public function buildBodyBrugerSoegXML(string $name) {
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <SoegInput xmlns="http://stoettesystemerne.dk/organisation/bruger/6/">
@@ -305,6 +317,7 @@ XML;
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Builds XML body for fremsoeg hieraki.
    */
@@ -331,6 +344,155 @@ XML;
    */
   public function getBodyOrganisationEnhedLaes(string $string) {
 >>>>>>> 2552f8f (DW-454: Organisationsdata)
+=======
+   * Builds XML body for bruger list.
+   */
+  public function buildBodyBrugerListXML(array $uuids) {
+
+    $uuidsXML = '';
+
+    foreach ($uuids as $uuid) {
+      $uuidsXML .= '<UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">'.$uuid.'</UUIDIdentifikator>';
+    }
+
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <ListInput xmlns="http://stoettesystemerne.dk/organisation/bruger/6/">
+        $uuidsXML
+    </ListInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for person laes.
+   */
+  public function buildBodyPersonLaesXML($uuid) {
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <LaesInput xmlns="http://stoettesystemerne.dk/organisation/person/6/">
+        <UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">$uuid</UUIDIdentifikator>
+    </LaesInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for person soeg.
+   */
+  public function buildBodyPersonSoegXML(string $name) {
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <SoegInput xmlns="http://stoettesystemerne.dk/organisation/person/6/">
+      <AttributListe>
+        <Egenskab>
+          <NavnTekst xmlns="http://stoettesystemerne.dk/organisation/person/6/">$name</NavnTekst>
+        </Egenskab>
+      </AttributListe>
+      <TilstandListe/>
+      <RelationListe/>
+    </SoegInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for adresse laes.
+   */
+  public function buildBodyAdresseLaesXML($uuid) {
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <LaesInput xmlns="http://stoettesystemerne.dk/organisation/adresse/6/">
+        <UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">$uuid</UUIDIdentifikator>
+    </LaesInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for organisation funktion laes.
+   */
+  public function buildBodyOrganisationFunktionLaesXML(string $uuid) {
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <LaesInput xmlns="http://stoettesystemerne.dk/organisation/organisationfunktion/6/">
+        <UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">$uuid</UUIDIdentifikator>
+    </LaesInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for organisation funktion soeg.
+   */
+  public function buildBodyOrganisationFunktionSoegXML(?string $brugerUuid, ?string $funktionNavn, ?string $organisationUuid) {
+    $funktionNavnXML = '';
+    $brugerXML = '';
+    $orgXML = '';
+
+    if ($funktionNavn !== NULL) {
+      $funktionNavnXML = <<<XML
+        <FunktionNavn xmlns="urn:oio:sagdok:3.0.0">$funktionNavn</FunktionNavn>
+XML;
+    }
+
+    if ($brugerUuid !== NULL) {
+      $brugerXML = <<<XML
+      <TilknyttedeBrugere xmlns="urn:oio:sagdok:3.0.0">
+        <ReferenceID>
+          <UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">$brugerUuid</UUIDIdentifikator>
+        </ReferenceID>
+      </TilknyttedeBrugere>
+XML;
+    }
+    if ($organisationUuid !== NULL) {
+      $orgXML = <<<XML
+      <TilknyttedeEnheder xmlns="urn:oio:sagdok:3.0.0">
+          <ReferenceID>
+            <UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">$organisationUuid</UUIDIdentifikator>
+          </ReferenceID>
+      </TilknyttedeEnheder>
+XML;
+    }
+
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <SoegInput xmlns="http://stoettesystemerne.dk/organisation/organisationfunktion/6/">
+      <AttributListe>
+        <Egenskab>
+          $funktionNavnXML
+        </Egenskab>
+      </AttributListe>
+      <TilstandListe/>
+      <RelationListe>
+        $brugerXML
+        $orgXML
+      </RelationListe>
+    </SoegInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for fremsoeg hieraki.
+   */
+  public function buildBodyFremsoegHierakiXML(string $name) {
+    return <<<XML
+<s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <FremsoegObjekthierarkiInput xmlns="http://stoettesystemerne.dk/organisation/organisationsystem/6/">
+        <OrganisationEnhedSoegEgenskab>
+            <EnhedNavn xmlns="urn:oio:sagdok:3.0.0">$name</EnhedNavn>
+        </OrganisationEnhedSoegEgenskab>
+    </FremsoegObjekthierarkiInput>
+</s:Body>
+XML;
+  }
+
+  /**
+   * Builds XML body for organisation enhed laes.
+   */
+  public function buildBodyOrganisationEnhedLaesXML(string $string) {
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <LaesInput xmlns="http://stoettesystemerne.dk/organisation/organisationenhed/6/">
@@ -342,9 +504,14 @@ XML;
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Builds XML header.
    */
   // phpcs:ignore
+=======
+   * Builds XML header.
+   */
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
   public function buildHeaderXML($to, $action, $tokenRaw) {
 
     $timestampXML = $this->buildTimestampHeaderXML($this->generateUuid());
@@ -441,6 +608,9 @@ XML;
    * Signs request.
    */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
   public function buildSignedRequest($requestSimple, $privKey) {
 
     $documentRequest = new \DOMDocument('1.0', 'utf-8');
@@ -582,9 +752,14 @@ XML;
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Builds XML timestamp header.
    */
   // phpcs:ignore
+=======
+   * Builds XML timestamp header.
+   */
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
   public function buildTimestampHeaderXML($timestampID = "_0") {
     $created = $this->getTimestamp();
     $expires = $this->getTimestamp(300);
@@ -631,5 +806,4 @@ XML;
       mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
     );
   }
-
 }

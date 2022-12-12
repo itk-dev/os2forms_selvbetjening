@@ -3,8 +3,12 @@ type: module
 description: OS2Forms Organisation module
 package: OS2Forms
 <<<<<<< HEAD
+<<<<<<< HEAD
 core_version_requirement: ^9
 =======
 core: 8.x
 core_version_requirement: ^8 || ^9
 >>>>>>> 2552f8f (DW-454: Organisationsdata)
+=======
+core_version_requirement: ^9
+>>>>>>> 39a70a9 (DW-545: Refactoring and clean up)

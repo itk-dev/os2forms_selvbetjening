@@ -8,16 +8,16 @@ use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Person name element.
+ * Person location element.
  *
  * @WebformElement(
- *   id = "person_name_element",
- *   label = @Translation("Person Name Element"),
- *   description = @Translation("Person Name Element description"),
+ *   id = "person_location_element",
+ *   label = @Translation("Person Location Element"),
+ *   description = @Translation("Person Location Element description"),
  *   category = @Translation("Organisation")
  * )
  */
-class PersonNameElement extends TextField {
+class PersonLocationElement extends TextField {
 
   /**
    * Organisation Helper.
@@ -41,7 +41,7 @@ class PersonNameElement extends TextField {
    * {@inheritdoc}
    */
   public function finalize(array &$element, WebformSubmissionInterface $webform_submission = NULL) {
-    $element['#value'] = $this->helper->getPersonName();
+    $element['#value'] = $this->helper->getPersonLocation();
     parent::finalize($element, $webform_submission);
   }
 
