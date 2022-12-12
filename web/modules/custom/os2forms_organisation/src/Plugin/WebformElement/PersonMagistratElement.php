@@ -32,7 +32,7 @@ class PersonMagistratElement extends TextField {
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
-    $instance->helper = $container->get('organisation.helper');
+    $instance->helper = \Drupal::getContainer()->get(Helper::class);
 
     return $instance;
   }

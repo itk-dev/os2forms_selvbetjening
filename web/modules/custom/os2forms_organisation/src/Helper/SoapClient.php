@@ -33,7 +33,6 @@ class SoapClient {
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
     if ($request != NULL) {
-      // Workaround curl version peculiarity.
       curl_setopt($ch, CURLOPT_POST, TRUE);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
     }

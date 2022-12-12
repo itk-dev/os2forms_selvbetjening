@@ -29,13 +29,15 @@ Make sure to **never** commit these
 
 The following must be configured in `settings.local.php`,
 
-```phpt
+```php
 // Organisation sf1500 certificates
 $config['os2forms_organisation'] = [
   'public_cert_location' => 'path/to/certificate.crt',
   'priv_key_location' => 'path/to/certificate.priv.key',
+  'cvr' => 'xxxxxxxx',
+  'security_token_service_applies_to' => 'http://stoettesystemerne.dk/service/organisation/3',
+  'security_token_service_endpoint' => 'https://adgangsstyring.eksterntest-stoettesystemerne.dk/runtime/services/kombittrust/14/certificatemixed'
 ];
 ```
 
-here the location is relative to the
-`modules/custom/os2forms_organisation` module folder.
+here the location is relative to the `DRUPAL_ROOT`.

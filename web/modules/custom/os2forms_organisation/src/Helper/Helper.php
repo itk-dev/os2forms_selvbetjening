@@ -5,6 +5,7 @@ namespace Drupal\os2forms_organisation\Helper;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
  * Helper for integrating to SF1500 Organisation.
@@ -48,14 +49,22 @@ class Helper {
   private EntityTypeManagerInterface $entityTypeManager;
 
   /**
+   * Property accessor.
+   *
+   * @var \Symfony\Component\PropertyAccess\PropertyAccessor
+   */
+  private PropertyAccessor $propertyAccessor;
+
+  /**
    * Constructor.
    */
-  public function __construct(SecurityTokenService $securityTokenService, OrganisationService $organisationService, ConfigFactoryInterface $configFactory, AccountProxyInterface $account, EntityTypeManagerInterface $entityTypeManager) {
+  public function __construct(SecurityTokenService $securityTokenService, OrganisationService $organisationService, ConfigFactoryInterface $configFactory, AccountProxyInterface $account, EntityTypeManagerInterface $entityTypeManager, PropertyAccessor $propertyAccessor) {
     $this->securityTokenService = $securityTokenService;
     $this->organisationService = $organisationService;
     $this->config = $configFactory;
     $this->account = $account;
     $this->entityTypeManager = $entityTypeManager;
+    $this->propertyAccessor = $propertyAccessor;
   }
 
   /**
@@ -64,18 +73,18 @@ class Helper {
   public function getPersonName(): string {
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
     // Mit org bruger id.
     $brugerId = $this->getCurrentUserOrganisationId();
 
-    if ($brugerId === NULL) {
+    if (NULL === $brugerId) {
       return '';
     }
 
-    $responseArray = $this->brugerLaes($brugerId, $token);
+    $data = $this->brugerLaes($brugerId, $token);
 
     $personIdKeys = [
       'ns3LaesOutput',
@@ -87,13 +96,13 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    $personId = $this->checkKeyOrderExistsInArray($personIdKeys, $responseArray, TRUE);
+    $personId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($personIdKeys));
 
-    if (!$personId) {
+    if (NULL === $personId) {
       return '';
     }
 
-    $responseArray = $this->personLaes($personId, $token);
+    $data = $this->personLaes($personId, $token);
 
     $navnTekstKeys = [
       'ns3LaesOutput',
@@ -104,7 +113,7 @@ class Helper {
       'ns3NavnTekst',
     ];
 
-    return $this->checkKeyOrderExistsInArray($navnTekstKeys, $responseArray, TRUE) ?: '';
+    return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($navnTekstKeys)) ?: '';
   }
 
   /**
@@ -131,21 +140,21 @@ class Helper {
   /**
    * Fetches organisation enhed level 1 name from SF1500.
    */
-  public function getOrganisationEnhed(bool $returnOrganisationID = FALSE): string {
+  public function getOrganisationEnhed(bool $returnOrganisationID = FALSE): ?string {
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
     // Mit org bruger id.
     $orgBrugerId = $this->getCurrentUserOrganisationId();
 
-    if ($orgBrugerId === NULL) {
+    if (NULL === $orgBrugerId) {
       return '';
     }
 
-    $responseArray = $this->organisationFunktionSoeg($orgBrugerId, NULL, $token);
+    $data = $this->organisationFunktionSoeg($orgBrugerId, NULL, $token);
 
     $idListeKeys = [
       'ns3SoegOutput',
@@ -153,18 +162,18 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    $id = $this->checkKeyOrderExistsInArray($idListeKeys, $responseArray, TRUE);
+    $id = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($idListeKeys));
 
     if (is_array($id)) {
-      // @todo HANDLE PEOPLE WITH MORE THAN ONE FUKNTION?
-      $id = $id[0];
+      // @todo HANDLE PEOPLE WITH MORE THAN ONE FUNKTION?
+      $id = reset($id);
     }
 
-    if ($id === NULL) {
+    if (empty($id)) {
       return '';
     }
 
-    $responseArray = $this->organisationFunktionLaes($id, $token);
+    $data = $this->organisationFunktionLaes($id, $token);
 
     $tilknyttedeEnhederKeys = [
       'ns3LaesOutput',
@@ -176,13 +185,13 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    $orgEnhedId = $this->checkKeyOrderExistsInArray($tilknyttedeEnhederKeys, $responseArray, TRUE);
+    $orgEnhedId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($tilknyttedeEnhederKeys));
 
     if ($returnOrganisationID) {
       return $orgEnhedId ?: '';
     }
 
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    $data = $this->organisationEnhedLaes($orgEnhedId, $token);
 
     $enhedsNavnKeys = [
       'ns3LaesOutput',
@@ -193,7 +202,7 @@ class Helper {
       'ns2EnhedNavn',
     ];
 
-    return $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE) ?: '';
+    return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys)) ?: '';
   }
 
   /**
@@ -202,18 +211,18 @@ class Helper {
   public function getOrganisationEnhedNiveauTo() {
     $orgEnhedId = $this->getOrganisationEnhed(TRUE);
 
-    if (!$orgEnhedId) {
+    if (empty($orgEnhedId)) {
       return '';
     }
 
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
     // Level 1.
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    $data = $this->organisationEnhedLaes($orgEnhedId, $token);
 
     $overordnetKeys = [
       'ns3LaesOutput',
@@ -226,13 +235,13 @@ class Helper {
     ];
 
     // Level 2.
-    $orgEnhedId = $this->checkKeyOrderExistsInArray($overordnetKeys, $responseArray, TRUE);
+    $orgEnhedId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($overordnetKeys));
 
-    if (!$orgEnhedId) {
+    if (NULL === $orgEnhedId) {
       return '';
     }
 
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    $data = $this->organisationEnhedLaes($orgEnhedId, $token);
 
     $enhedsNavnKeys = [
       'ns3LaesOutput',
@@ -243,7 +252,7 @@ class Helper {
       'ns2EnhedNavn',
     ];
 
-    return $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE) ?: '';
+    return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys)) ?: '';
   }
 
   /**
@@ -253,18 +262,18 @@ class Helper {
   public function getPersonAZIdent() {
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
     // Mit org bruger id.
     $brugerId = $this->getCurrentUserOrganisationId();
 
-    if ($brugerId === NULL) {
+    if (NULL === $brugerId) {
       return '';
     }
 
-    $responseArray = $this->brugerLaes($brugerId, $token);
+    $response = $this->brugerLaes($brugerId, $token);
 
     $brugerNavnKeys = [
       'ns3LaesOutput',
@@ -275,7 +284,7 @@ class Helper {
       'ns2BrugerNavn',
     ];
 
-    return $this->checkKeyOrderExistsInArray($brugerNavnKeys, $responseArray, TRUE);
+    return $this->propertyAccessor->getValue($response, $this->convertKeysToPropertyAccessorFormat($brugerNavnKeys)) ?: '';
   }
 
   /**
@@ -284,17 +293,17 @@ class Helper {
   public function getOrganisationAddress() {
     $orgEnhedId = $this->getOrganisationEnhed(TRUE);
 
-    if (!$orgEnhedId) {
+    if (empty($orgEnhedId)) {
       return '';
     }
 
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    $data = $this->organisationEnhedLaes($orgEnhedId, $token);
 
     $adresseKeys = [
       'ns3LaesOutput',
@@ -304,7 +313,7 @@ class Helper {
       'ns2Adresser',
     ];
 
-    $adresser = $this->checkKeyOrderExistsInArray($adresseKeys, $responseArray, TRUE);
+    $adresser = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseKeys));
 
     if (!is_array($adresser)) {
       return '';
@@ -330,16 +339,16 @@ class Helper {
     ];
 
     foreach ($adresser as $adresse) {
-      if ($this->checkKeyOrderExistsInArray($adresseRolleLabelKeys, $adresse, TRUE) === 'Postadresse') {
+      if ('Postadresse' === $this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseRolleLabelKeys))) {
 
-        $adresseId = $this->checkKeyOrderExistsInArray($adresseReferenceUuidKeys, $adresse, TRUE);
+        $adresseId = $this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseReferenceUuidKeys));
 
-        if (!$adresseId) {
+        if (NULL === $adresseId) {
           continue;
         }
 
-        $responseArray = $this->adresseLaes($adresseId, $token);
-        return $this->checkKeyOrderExistsInArray($adresseTekstKeys, $responseArray, TRUE) ?: '';
+        $data = $this->adresseLaes($adresseId, $token);
+        return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseTekstKeys)) ?: '';
       }
     }
 
@@ -352,17 +361,17 @@ class Helper {
   public function getPersonMagistrat() {
     $orgEnhedId = $this->getOrganisationEnhed(TRUE);
 
-    if (!$orgEnhedId) {
+    if (empty($orgEnhedId)) {
       return '';
     }
 
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
-    $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    $data = $this->organisationEnhedLaes($orgEnhedId, $token);
 
     $enhedsNavnKeys = [
       'ns3LaesOutput',
@@ -372,7 +381,8 @@ class Helper {
       'ns3Egenskab',
       'ns2EnhedNavn',
     ];
-    $enhedsNavn = $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE);
+
+    $enhedsNavn = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys));
 
     // Follow organisation until parent does not exist, updating $enhedsNavn.
     $overordnetKeys = [
@@ -385,9 +395,9 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    while ($orgEnhedId = $this->checkKeyOrderExistsInArray($overordnetKeys, $responseArray, TRUE)) {
-      $enhedsNavn = $this->checkKeyOrderExistsInArray($enhedsNavnKeys, $responseArray, TRUE);
-      $responseArray = $this->organisationEnhedLaes($orgEnhedId, $token);
+    while ($orgEnhedId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($overordnetKeys))) {
+      $enhedsNavn = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys));
+      $data = $this->organisationEnhedLaes($orgEnhedId, $token);
     }
 
     return $enhedsNavn;
@@ -398,31 +408,24 @@ class Helper {
    */
   // phpcs:ignore
   private function fetchSAMLToken(): ?string {
-    $appliesTo = 'http://stoettesystemerne.dk/service/organisation/3';
-    // Aarhus kommune cvr.
-    $cvr = '55133018';
-
-    // Endpoint.
-    $endpointSecurityTokenService = 'https://adgangsstyring.eksterntest-stoettesystemerne.dk/runtime/services/kombittrust/14/certificatemixed';
-
+    // Organisation config
     $orgConfig = $this->config->get('os2forms_organisation');
 
-    $public_cert = file_get_contents(__DIR__ . '/../../' . $orgConfig->get('public_cert_location'));
+    $endpointSecurityTokenService = $orgConfig->get('security_token_service_endpoint');
+    $appliesTo = $orgConfig->get('security_token_service_applies_to');
+    $cvr = $orgConfig->get('cvr');
+    $public_cert = file_get_contents(DRUPAL_ROOT . $orgConfig->get('public_cert_location'));
 
-    $requestSecurityTokenService = $this->securityTokenService->getRequestSecurityTokenXML($endpointSecurityTokenService, $appliesTo, $cvr, self::ISSUER, $public_cert);
-    $requestSecurityTokenServiceSigned = $this->securityTokenService->signRequestSecurityToken($requestSecurityTokenService, $this->getPrivateKey());
-    $responseSecurityTokenService = SoapClient::doSOAP($endpointSecurityTokenService, $requestSecurityTokenServiceSigned);
+    $xml = $this->securityTokenService->buildSAMLTokenRequestXML($public_cert, $this->getPrivateKey(), $cvr, $appliesTo);
+
+    $responseSecurityTokenService = SoapClient::doSOAP($endpointSecurityTokenService, $xml);
 
     // Parse the RSTR that is returned.
     [$domSecurityTokenService, $xpath, $token] = $this->securityTokenService->parseRequestSecurityTokenResponse($responseSecurityTokenService);
 
     [$domSecurityTokenService, $token] = $this->securityTokenService->getDecrypted($domSecurityTokenService, $xpath, $token, $this->getPrivateKey());
 
-    if ($token != NULL) {
-      return $domSecurityTokenService->saveXML($token);
-    }
-
-    return NULL;
+    return $token != NULL ? $domSecurityTokenService->saveXML($token) : NULL;
   }
 
   /**
@@ -431,7 +434,7 @@ class Helper {
   private function getPrivateKey() {
     $orgConfig = $this->config->get('os2forms_organisation');
 
-    return file_get_contents(__DIR__ . '/../../' . $orgConfig->get('priv_key_location'));
+    return file_get_contents(DRUPAL_ROOT . $orgConfig->get('priv_key_location'));
   }
 
   /**
@@ -462,29 +465,25 @@ class Helper {
   private function getCurrentUserOrganisationId() {
     $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
 
-    if ($user->hasField('field_organisation_user_id')) {
-      return $user->get('field_organisation_user_id')->value;
-    }
-    else {
-      return NULL;
-    }
+    return $user->hasField('field_organisation_user_id') ? $user->get('field_organisation_user_id')->value : NULL;
   }
 
   /**
    * Performs bruger laes action.
    */
-  private function brugerLaes($brugerId, $token) {
-    $body = $this->organisationService->getBodyBrugerLaes($brugerId);
+  private function brugerLaes($brugerId, $token)
+  {
+    $body = $this->organisationService->buildBodyBrugerLaesXML($brugerId);
 
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/bruger/6/';
     $action = 'http://kombit.dk/sts/organisation/bruger/laes';
 
-    $header = $this->organisationService->getHeader($endpoint, $action, $token);
+    $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
 
     $request = $this->createXMLRequest($header, $body);
-    $requestSigned = $this->organisationService->getRequestSigned($request, $this->getPrivateKey());
+    $request = $this->organisationService->buildSignedRequest($request, $this->getPrivateKey());
 
-    $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
+    $response = SoapClient::doSOAP($endpoint, $request, $action);
 
     return $this->responseXMLToArray($response);
   }
@@ -496,11 +495,11 @@ class Helper {
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/adresse/6/';
     $action = 'http://kombit.dk/sts/organisation/adresse/laes';
 
-    $header = $this->organisationService->getHeader($endpoint, $action, $token);
-    $body = $this->organisationService->getBodyAdresseLaes($adresseID);
+    $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
+    $body = $this->organisationService->buildBodyAdresseLaesXML($adresseID);
     $request = $this->createXMLRequest($header, $body);
 
-    $requestSigned = $this->organisationService->getRequestSigned($request, $this->getPrivateKey());
+    $requestSigned = $this->organisationService->buildSignedRequest($request, $this->getPrivateKey());
     $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
 
     return $this->responseXMLToArray($response);
@@ -513,12 +512,12 @@ class Helper {
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/organisationenhed/6/';
     $action = 'http://kombit.dk/sts/organisation/organisationenhed/laes';
 
-    $body = $this->organisationService->getBodyOrganisationEnhedLaes($orgEnhedId);
-    $header = $this->organisationService->getHeader($endpoint, $action, $token);
+    $body = $this->organisationService->buildBodyOrganisationEnhedLaesXML($orgEnhedId);
+    $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
 
     $request = $this->createXMLRequest($header, $body);
 
-    $requestSigned = $this->organisationService->getRequestSigned($request, $this->getPrivateKey());
+    $requestSigned = $this->organisationService->buildSignedRequest($request, $this->getPrivateKey());
     $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
 
     return $this->responseXMLToArray($response);
@@ -531,12 +530,12 @@ class Helper {
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/organisationfunktion/6/';
     $action = 'http://kombit.dk/sts/organisation/organisationfunktion/laes';
 
-    $body = $this->organisationService->getBodyOrganisationFunktionLaes($orgFunktionId);
-    $header = $this->organisationService->getHeader($endpoint, $action, $token);
+    $body = $this->organisationService->buildBodyOrganisationFunktionLaesXML($orgFunktionId);
+    $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
 
     $request = $this->createXMLRequest($header, $body);
 
-    $requestSigned = $this->organisationService->getRequestSigned($request, $this->getPrivateKey());
+    $requestSigned = $this->organisationService->buildSignedRequest($request, $this->getPrivateKey());
     $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
 
     return $this->responseXMLToArray($response);
@@ -549,12 +548,12 @@ class Helper {
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/organisationfunktion/6/';
     $action = 'http://kombit.dk/sts/organisation/organisationfunktion/soeg';
 
-    $body = $this->organisationService->getBodyOrganisationFunktionSoeg($orgBrugerId, $funktionsNavn);
-    $header = $this->organisationService->getHeader($endpoint, $action, $token);
+    $body = $this->organisationService->buildBodyOrganisationFunktionSoegXML($orgBrugerId, $funktionsNavn, null);
+    $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
 
     $request = $this->createXMLRequest($header, $body);
 
-    $requestSigned = $this->organisationService->getRequestSigned($request, $this->getPrivateKey());
+    $requestSigned = $this->organisationService->buildSignedRequest($request, $this->getPrivateKey());
     $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
 
     return $this->responseXMLToArray($response);
@@ -567,12 +566,12 @@ class Helper {
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/person/6/';
     $action = 'http://kombit.dk/sts/organisation/person/laes';
 
-    $header = $this->organisationService->getHeader($endpoint, $action, $token);
-    $body = $this->organisationService->getBodyPersonLaes($personId);
+    $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
+    $body = $this->organisationService->buildBodyPersonLaesXML($personId);
 
     $request = $this->createXMLRequest($header, $body);
 
-    $requestSigned = $this->organisationService->getRequestSigned($request, $this->getPrivateKey());
+    $requestSigned = $this->organisationService->buildSignedRequest($request, $this->getPrivateKey());
     $response = SoapClient::doSOAP($endpoint, $requestSigned, $action);
 
     return $this->responseXMLToArray($response);
@@ -584,18 +583,18 @@ class Helper {
   private function getBrugerAdresseAttribut(string $attribute) {
     $token = $this->fetchSAMLToken();
 
-    if ($token === NULL) {
+    if (NULL === $token) {
       return '';
     }
 
     // Mit org bruger id.
     $brugerId = $this->getCurrentUserOrganisationId();
 
-    if ($brugerId === NULL) {
+    if (NULL === $brugerId) {
       return '';
     }
 
-    $responseArray = $this->brugerLaes($brugerId, $token);
+    $data = $this->brugerLaes($brugerId, $token);
 
     $adresseKeys = [
       'ns3LaesOutput',
@@ -605,7 +604,7 @@ class Helper {
       'ns2Adresser',
     ];
 
-    $adresser = $this->checkKeyOrderExistsInArray($adresseKeys, $responseArray, TRUE);
+    $adresser = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseKeys));
 
     if (!is_array($adresser)) {
       return '';
@@ -631,16 +630,16 @@ class Helper {
     ];
 
     foreach ($adresser as $adresse) {
-      if ($this->checkKeyOrderExistsInArray($adresseRolleLabelKeys, $adresse, TRUE) === $attribute) {
+      if ($this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseRolleLabelKeys)) === $attribute) {
 
-        $adresseId = $this->checkKeyOrderExistsInArray($adresseReferenceUuidKeys, $adresse, TRUE);
+        $adresseId = $this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseReferenceUuidKeys));
 
-        if (!$adresseId) {
+        if (NULL === $adresseId) {
           continue;
         }
 
-        $responseArray = $this->adresseLaes($adresseId, $token);
-        return $this->checkKeyOrderExistsInArray($adresseTekstKeys, $responseArray, TRUE) ?: '';
+        $data = $this->adresseLaes($adresseId, $token);
+        return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseTekstKeys)) ?: '';
       }
     }
 
@@ -648,34 +647,25 @@ class Helper {
   }
 
   /**
-   * Checks if specific order of keys exists in nested array.
+   * Converts an array of keys into Symfony PropertyAccessor property path format.
+   * @see https://symfony.com/doc/current/components/property_access.html#reading-from-arrays
    *
    * @example
-   * $haystack = [
-   *   'a' => [
-   *     'a1' => ['a11', 'a12'],
-   *     'a2' => ['a21', 'a22'],
-   *   ],
-   *   'b' => [
-   *     'b1' => ['b11', 'b12'],
-   *     'b2' => ['b21', 'b22'],
-   *   ],
+   * $keys = [
+   *   'some_special_key',
+   *   'some_other_special_key'
    * ];
    *
-   * checkKeyOrderExistsInArray(['a','a1'], $haystack) = true
-   * checkKeyOrderExistsInArray(['a1','a'], $haystack) = false
-   * checkKeyOrderExistsInArray(['a','b1'], $haystack) = false
-   * checkKeyOrderExistsInArray(['a','a1', 'a11'], $haystack) = false
+   * convertKeysToPropertyAccessorFormat($keys) = '[some_special_key][some_other_special_key'
    */
-  private function checkKeyOrderExistsInArray(array $keys, array $haystack, bool $getValue = FALSE) {
+  private function convertKeysToPropertyAccessorFormat(array $keys): string {
+    $value = '';
+
     foreach ($keys as $key) {
-      if (!array_key_exists($key, $haystack)) {
-        return FALSE;
-      }
-      $haystack = $haystack[$key];
+      $value .= '[' . $key . ']';
     }
 
-    return $getValue ? $haystack : TRUE;
+    return $value;
   }
 
 }

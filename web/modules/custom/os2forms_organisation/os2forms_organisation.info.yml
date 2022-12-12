@@ -2,5 +2,4 @@ name: OS2Forms Organisation
 type: module
 description: OS2Forms Organisation module
 package: OS2Forms
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9
