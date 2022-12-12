@@ -2,6 +2,15 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## Unreleased
+
+### Tilføjet
+* Patch så sektionsoverskrifter kan fjernes fra submissions
+
+### Fix
+* CPR børn bugfix for sektioner
+* Log ud af Nemlogin for sektioner
+
 ## 8.12.2022
 
 ### Tilføjet
@@ -21,9 +30,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Nemlogin-logud meddelelse deaktiveret
 
-### Fix
 
-* CPR børn bugfix for sektioner
 
 ## 27.10.2022 
 
