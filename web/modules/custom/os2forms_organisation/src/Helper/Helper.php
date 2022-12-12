@@ -408,7 +408,7 @@ class Helper {
    */
   // phpcs:ignore
   private function fetchSAMLToken(): ?string {
-    // Organisation config
+    // Organisation config.
     $orgConfig = $this->config->get('os2forms_organisation');
 
     $endpointSecurityTokenService = $orgConfig->get('security_token_service_endpoint');
@@ -471,8 +471,7 @@ class Helper {
   /**
    * Performs bruger laes action.
    */
-  private function brugerLaes($brugerId, $token)
-  {
+  private function brugerLaes($brugerId, $token) {
     $body = $this->organisationService->buildBodyBrugerLaesXML($brugerId);
 
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/bruger/6/';
@@ -548,7 +547,7 @@ class Helper {
     $endpoint = 'https://organisation.eksterntest-stoettesystemerne.dk/organisation/organisationfunktion/6/';
     $action = 'http://kombit.dk/sts/organisation/organisationfunktion/soeg';
 
-    $body = $this->organisationService->buildBodyOrganisationFunktionSoegXML($orgBrugerId, $funktionsNavn, null);
+    $body = $this->organisationService->buildBodyOrganisationFunktionSoegXML($orgBrugerId, $funktionsNavn, NULL);
     $header = $this->organisationService->buildHeaderXML($endpoint, $action, $token);
 
     $request = $this->createXMLRequest($header, $body);
@@ -647,7 +646,8 @@ class Helper {
   }
 
   /**
-   * Converts an array of keys into Symfony PropertyAccessor property path format.
+   * Converts keys into Symfony PropertyAccessor property path format.
+   *
    * @see https://symfony.com/doc/current/components/property_access.html#reading-from-arrays
    *
    * @example
@@ -656,7 +656,8 @@ class Helper {
    *   'some_other_special_key'
    * ];
    *
-   * convertKeysToPropertyAccessorFormat($keys) = '[some_special_key][some_other_special_key'
+   * convertKeysToPropertyAccessorFormat($keys) =
+   *  '[some_special_key][some_other_special_key]'.
    */
   private function convertKeysToPropertyAccessorFormat(array $keys): string {
     $value = '';

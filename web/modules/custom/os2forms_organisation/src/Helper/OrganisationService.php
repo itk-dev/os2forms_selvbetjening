@@ -10,6 +10,7 @@ class OrganisationService {
   /**
    * Builds XML body for bruger laes.
    */
+  // phpcs:ignore
   public function buildBodyBrugerLaesXML($uuid) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -23,6 +24,7 @@ XML;
   /**
    * Builds XML body for bruger soeg.
    */
+  // phpcs:ignore
   public function buildBodyBrugerSoegXML(string $name) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -42,12 +44,13 @@ XML;
   /**
    * Builds XML body for bruger list.
    */
+  // phpcs:ignore
   public function buildBodyBrugerListXML(array $uuids) {
 
     $uuidsXML = '';
 
     foreach ($uuids as $uuid) {
-      $uuidsXML .= '<UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">'.$uuid.'</UUIDIdentifikator>';
+      $uuidsXML .= '<UUIDIdentifikator xmlns="urn:oio:sagdok:3.0.0">' . $uuid . '</UUIDIdentifikator>';
     }
 
     return <<<XML
@@ -62,6 +65,7 @@ XML;
   /**
    * Builds XML body for person laes.
    */
+  // phpcs:ignore
   public function buildBodyPersonLaesXML($uuid) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -75,6 +79,7 @@ XML;
   /**
    * Builds XML body for person soeg.
    */
+  // phpcs:ignore
   public function buildBodyPersonSoegXML(string $name) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -94,6 +99,7 @@ XML;
   /**
    * Builds XML body for adresse laes.
    */
+  // phpcs:ignore
   public function buildBodyAdresseLaesXML($uuid) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -107,6 +113,7 @@ XML;
   /**
    * Builds XML body for organisation funktion laes.
    */
+  // phpcs:ignore
   public function buildBodyOrganisationFunktionLaesXML(string $uuid) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -120,6 +127,7 @@ XML;
   /**
    * Builds XML body for organisation funktion soeg.
    */
+  // phpcs:ignore
   public function buildBodyOrganisationFunktionSoegXML(?string $brugerUuid, ?string $funktionNavn, ?string $organisationUuid) {
     $funktionNavnXML = '';
     $brugerXML = '';
@@ -171,6 +179,7 @@ XML;
   /**
    * Builds XML body for fremsoeg hieraki.
    */
+  // phpcs:ignore
   public function buildBodyFremsoegHierakiXML(string $name) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -186,6 +195,7 @@ XML;
   /**
    * Builds XML body for organisation enhed laes.
    */
+  // phpcs:ignore
   public function buildBodyOrganisationEnhedLaesXML(string $string) {
     return <<<XML
 <s:Body u:Id="_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -199,6 +209,7 @@ XML;
   /**
    * Builds XML header.
    */
+  // phpcs:ignore
   public function buildHeaderXML($to, $action, $tokenRaw) {
 
     $timestampXML = $this->buildTimestampHeaderXML($this->generateUuid());
@@ -344,6 +355,7 @@ XML;
   /**
    * Builds XML timestamp header.
    */
+  // phpcs:ignore
   public function buildTimestampHeaderXML($timestampID = "_0") {
     $created = $this->getTimestamp();
     $expires = $this->getTimestamp(300);
@@ -379,4 +391,5 @@ XML;
       mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
     );
   }
+
 }

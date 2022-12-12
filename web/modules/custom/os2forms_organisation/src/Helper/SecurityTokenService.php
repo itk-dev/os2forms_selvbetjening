@@ -18,9 +18,10 @@ class SecurityTokenService {
   /**
    * Builds SAML token request XML.
    */
+  // phpcs:ignore
   public function buildSAMLTokenRequestXML($cert, $privKey, $cvr, $appliesTo) {
     $dom = new \DOMDocument();
-    $dom->load(__DIR__.'/SAMLTokenSoapTemplate.xml');
+    $dom->load(__DIR__ . '/SAMLTokenSoapTemplate.xml');
     $xpath = new DOMXPath($dom);
 
     $xpath->registerNamespace('wsu', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd');
@@ -32,43 +33,43 @@ class SecurityTokenService {
     $xpath->registerNamespace('wsauth', 'http://docs.oasis-open.org/wsfed/authorization/200706');
     $xpath->registerNamespace('wsse', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd');
 
-    // Signature
-    $signatureId = 'SIG-'.$this->generateUuid();
+    // Signature.
+    $signatureId = 'SIG-' . $this->generateUuid();
     $signature = $this->getElement($xpath, '//ds:Signature');
     $signature->setAttribute('Id', $signatureId);
 
-    //Action
-    $actionId = '_'.$this->generateUuid();
+    // Action.
+    $actionId = '_' . $this->generateUuid();
     $actionElement = $this->getElement($xpath, '//wsa:Action');
     $actionElement->setAttribute('wsu:Id', $actionId);
 
-    $this->handleReference($xpath, $actionElement, $actionId,'action_id');
+    $this->handleReference($xpath, $actionElement, $actionId, 'action_id');
 
-    // MessageID
-    $messageId = '_'.$this->generateUuid();
+    // MessageID.
+    $messageId = '_' . $this->generateUuid();
     $messageIdElement = $this->getElement($xpath, '//wsa:MessageID');
     $messageIdElement->setAttribute('wsu:Id', $messageId);
     $messageIdElement->nodeValue = 'urn:uuid:' . $this->generateUuid();
 
-    $this->handleReference($xpath, $messageIdElement, $messageId,'message_id_id');
+    $this->handleReference($xpath, $messageIdElement, $messageId, 'message_id_id');
 
-    // To
-    $toId = '_'.$this->generateUuid();
+    // To.
+    $toId = '_' . $this->generateUuid();
     $toElement = $this->getElement($xpath, '//wsa:To');
     $toElement->nodeValue = $appliesTo;
     $toElement->setAttribute('wsu:Id', $toId);
 
-    $this->handleReference($xpath, $toElement, $toId,'to_id');
+    $this->handleReference($xpath, $toElement, $toId, 'to_id');
 
-    // ReplyTo
-    $replyToId = '_'.$this->generateUuid();
+    // ReplyTo.
+    $replyToId = '_' . $this->generateUuid();
     $replyToElement = $this->getElement($xpath, '//wsa:ReplyTo');
     $replyToElement->setAttribute('wsu:Id', $replyToId);
 
-    $this->handleReference($xpath, $replyToElement, $replyToId,'reply_id');
+    $this->handleReference($xpath, $replyToElement, $replyToId, 'reply_id');
 
-    // Timestamp
-    $timestampId = 'TS-'.$this->generateUuid();
+    // Timestamp.
+    $timestampId = 'TS-' . $this->generateUuid();
     $timestampElement = $this->getElement($xpath, '//wsu:Timestamp');
     $timestampElement->setAttribute('wsu:Id', $timestampId);
 
@@ -77,18 +78,18 @@ class SecurityTokenService {
 
     $this->handleReference($xpath, $timestampElement, $timestampId, 'timestamp_id');
 
-    // BinarySecurityToken
+    // BinarySecurityToken.
     $certificateKeyContent = str_replace(["\r", "\n"], '', $cert);
 
-    $binarySecurityTokenId = 'X509-'.$this->generateUuid();
+    $binarySecurityTokenId = 'X509-' . $this->generateUuid();
     $binarySecurityTokenElement = $this->getElement($xpath, '//wsse:BinarySecurityToken');
     $binarySecurityTokenElement->setAttribute('wsu:Id', $binarySecurityTokenId);
     $binarySecurityTokenElement->nodeValue = $certificateKeyContent;
 
     $this->handleReference($xpath, $binarySecurityTokenElement, $binarySecurityTokenId, 'security_token_id');
 
-    // Body
-    $bodyId = '_'.$this->generateUuid();
+    // Body.
+    $bodyId = '_' . $this->generateUuid();
     $bodyElement = $this->getElement($xpath, '//soap:Body');
     $bodyElement->setAttribute('wsu:Id', $bodyId);
 
@@ -97,16 +98,16 @@ class SecurityTokenService {
 
     $this->handleReference($xpath, $bodyElement, $bodyId, 'body_id');
 
-    // KeyInfo
-    $keyInfoId = 'KI-'.$this->generateUuid();
+    // KeyInfo.
+    $keyInfoId = 'KI-' . $this->generateUuid();
     $keyInfoElement = $this->getElement($xpath, '//ds:KeyInfo');
     $keyInfoElement->setAttribute('Id', $keyInfoId);
 
-    // Set final ids
-    $this->getElement($xpath, '//wsse:Reference')->setAttribute('URI', '#'.$binarySecurityTokenId);
-    $this->getElement($xpath, '//wsse:SecurityTokenReference')->setAttribute('wsu:Id', 'STR-'.$this->generateUuid());
+    // Set final ids.
+    $this->getElement($xpath, '//wsse:Reference')->setAttribute('URI', '#' . $binarySecurityTokenId);
+    $this->getElement($xpath, '//wsse:SecurityTokenReference')->setAttribute('wsu:Id', 'STR-' . $this->generateUuid());
 
-    // Sign the request
+    // Sign the request.
     $signedInfoElement = $this->getElement($xpath, '//ds:SignedInfo');
 
     $signedIntoElementCanonical = $signedInfoElement->C14N(TRUE, FALSE);
@@ -118,18 +119,23 @@ class SecurityTokenService {
     return $dom->saveXML();
   }
 
+  /**
+   * Handles reference by signing element.
+   */
   private function handleReference(DOMXPath $xpath, \DOMElement $element, string $elementId, $baseId) {
     $referenceElement = $this->getElement($xpath, "//ds:Reference[contains(@URI, '$baseId')]");
-    $referenceElement->setAttribute('URI', '#'.$elementId);
+    $referenceElement->setAttribute('URI', '#' . $elementId);
 
     $digestValue = base64_encode(openssl_digest($element->C14N(TRUE, FALSE), 'SHA256', TRUE));
     $this->getElement($xpath, 'ds:DigestValue', $referenceElement)->nodeValue = $digestValue;
   }
 
-  private function getElement(DOMXPath $xpath, string $expression, \DOMElement $context = null): \DOMElement {
+  /**
+   * Queries for element.
+   */
+  private function getElement(DOMXPath $xpath, string $expression, \DOMElement $context = NULL): \DOMElement {
     return $xpath->query($expression, $context)[0];
   }
-
 
   /**
    * Computes timestamp.
