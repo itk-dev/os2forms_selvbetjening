@@ -1,0 +1,10 @@
+name: OS2Forms User Menu
+type: module
+description: User menu for os2forms
+package: OS2Forms
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - 'drupal:os2web_nemlogin'
+  - 'drupal:os2forms_cvr_lookup'
+  - 'drupal:os2forms_cpr_lookup'

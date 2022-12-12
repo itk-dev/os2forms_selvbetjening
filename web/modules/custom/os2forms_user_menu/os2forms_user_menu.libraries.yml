@@ -1,0 +1,5 @@
+user_menu:
+  version: 1.x
+  css:
+    theme:
+      css/user_menu.css: {}
