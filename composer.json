@@ -132,7 +132,8 @@
         },
         "patches": {
             "drupal/webform": {
-                "Add support for Set to state": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/add-set-to-state-3159806-2-modified-5.19.patch"
+                "Add support for Set to state": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/add-set-to-state-3159806-2-modified-5.19.patch",
+                "Add support for hiding section titles in emails (https://www.drupal.org/project/webform/issues/3307580)": "https://www.drupal.org/files/issues/2022-09-17/3307580-5.patch"
             },
             "drupal/webform_migrate": {
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
