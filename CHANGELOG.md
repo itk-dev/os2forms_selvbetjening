@@ -2,14 +2,15 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
-## Unreleased
+## 14.12.2022
 
 ### Tilføjet
+
 * Patch så sektionsoverskrifter kan fjernes fra submissions
 
 ### Fix
+
 * CPR børn bugfix for sektioner
-* Log ud af Nemlogin for sektioner
 
 ## 8.12.2022
 
@@ -17,7 +18,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Logs på submissions
 * Valg-liste: Likert: mindre til mere
 
-## 29.11.2022 
+## 29.11.2022
 
 ### Tilføjet
 
@@ -32,25 +33,23 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 
 
-## 27.10.2022 
+## 27.10.2022
 
 ### Tilføjet
 
-* Genvejsknapper aktiveret 
+* Genvejsknapper aktiveret
 * Synlig linje om testmiljø eller lignende introduceret
 * Selvbetjeningsdesigner fået adgang til redigering af formular-kilde (yml)
 
-## 14.10.2022 
+## 14.10.2022
 
 ### Tilføjet
 
 * Computed twig aktiveret
-* Book Aarhus modul 
+* Book Aarhus modul
 
 ## 16.09.2022
 
 ### Tilføjet
 
-* GO borgersager 
-
-
+* GO borgersager

@@ -8110,16 +8110,16 @@
         },
         {
             "name": "itk-dev/os2forms_cpr_lookup",
-            "version": "1.6.8",
+            "version": "1.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_cpr_lookup.git",
-                "reference": "783b0bfc82c8c2b1c562cb4e7193bb034b637012"
+                "reference": "e398a68252655eb9a184805c34223cc7023e7d9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/783b0bfc82c8c2b1c562cb4e7193bb034b637012",
-                "reference": "783b0bfc82c8c2b1c562cb4e7193bb034b637012",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/e398a68252655eb9a184805c34223cc7023e7d9c",
+                "reference": "e398a68252655eb9a184805c34223cc7023e7d9c",
                 "shasum": ""
             },
             "require": {
@@ -8162,10 +8162,10 @@
             ],
             "description": "Provides integration to CPR service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.8",
+                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.6.9",
                 "issues": "https://github.com/itk-dev/os2forms_cpr_lookup/issues"
             },
-            "time": "2022-11-28T12:57:17+00:00"
+            "time": "2022-12-14T13:45:40+00:00"
         },
         {
             "name": "itk-dev/os2forms_cvr_lookup",
