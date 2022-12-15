@@ -8283,48 +8283,65 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "1.0.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991"
+                "reference": "0f29a2c0e9929aeaedf4c1e769e5df67e141bf8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/ea9896d8f088f1902be19397bc18b358e3de9991",
-                "reference": "ea9896d8f088f1902be19397bc18b358e3de9991",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/0f29a2c0e9929aeaedf4c1e769e5df67e141bf8c",
+                "reference": "0f29a2c0e9929aeaedf4c1e769e5df67e141bf8c",
                 "shasum": ""
             },
             "require": {
+                "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
-                "itk-dev/openid-connect": "^2.1.0"
+                "itk-dev/openid-connect": "^2.1.0",
+                "os2web/os2web_nemlogin": "^1.1"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3"
+                "drupal/coder": "^8.3",
+                "friendsoftwig/twigcs": "^6.0",
+                "mglaman/drupal-check": "^1.4"
             },
             "type": "drupal-module",
             "scripts": {
+                "code-analysis/drupal-check": [
+                    "drupal-check --deprecations --analysis --exclude-dir=vendor *.* src"
+                ],
+                "code-analysis": [
+                    "@code-analysis/drupal-check"
+                ],
                 "coding-standards-check/phpcs": [
-                    "vendor/bin/phpcs --standard=phpcs.xml.dist"
+                    "phpcs --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check/twigcs": [
+                    "twigcs templates"
                 ],
                 "coding-standards-check": [
-                    "@coding-standards-check/phpcs"
+                    "@coding-standards-check/phpcs",
+                    "@coding-standards-check/twigcs"
                 ],
-                "coding-standards-apply/phpcs": [
-                    "vendor/bin/phpcbf --standard=phpcs.xml.dist"
+                "coding-standards-apply/phpcbf": [
+                    "phpcbf --standard=phpcs.xml.dist"
                 ],
                 "coding-standards-apply": [
-                    "@coding-standards-apply/phpcs"
+                    "@coding-standards-apply/phpcbf"
                 ]
             },
+            "license": [
+                "MIT"
+            ],
             "description": "os2forms_nemlogin_openid_connect",
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.0.0",
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.1.1",
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
             },
-            "time": "2022-06-29T18:39:02+00:00"
+            "time": "2022-12-15T13:50:19+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
