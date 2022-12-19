@@ -10,6 +10,7 @@ use Drupal\webform\Element\WebformCompositeBase;
  * @FormElement("mine_organisations_data_element")
  */
 class MineOrganisationsData extends WebformCompositeBase {
+
   /**
    * {@inheritdoc}
    */
