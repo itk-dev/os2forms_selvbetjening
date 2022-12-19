@@ -32,7 +32,7 @@ class PersonPhoneElement extends TextField {
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
-    $instance->helper = \Drupal::getContainer()->get(Helper::class);
+    $instance->helper = $container->get(Helper::class);
 
     return $instance;
   }

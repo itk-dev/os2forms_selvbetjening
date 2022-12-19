@@ -96,7 +96,7 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    $personId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($personIdKeys));
+    $personId = $this->getValue($data, $personIdKeys, '');
 
     if (NULL === $personId) {
       return '';
@@ -113,7 +113,7 @@ class Helper {
       'ns3NavnTekst',
     ];
 
-    return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($navnTekstKeys)) ?: '';
+    return $this->getValue($data, $navnTekstKeys, '');
   }
 
   /**
@@ -138,9 +138,9 @@ class Helper {
   }
 
   /**
-   * Fetches organisation enhed level 1 name from SF1500.
+   * Fetches organisations funktioner from SF1500.
    */
-  public function getOrganisationEnhed(bool $returnOrganisationID = FALSE): ?string {
+  public function getOrganisationFunktioner() {
     $token = $this->fetchSAMLToken();
 
     if (NULL === $token) {
@@ -162,18 +162,18 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    $id = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($idListeKeys));
+    $id = $this->getValue($data, $idListeKeys);
 
-    if (is_array($id)) {
-      // @todo HANDLE PEOPLE WITH MORE THAN ONE FUNKTION?
-      $id = reset($id);
-    }
+    return $id;
+  }
 
-    if (empty($id)) {
-      return '';
-    }
+  /**
+   * Fetches organisation enhed level 1 name from SF1500.
+   */
+  public function getOrganisationEnhed(string $funktionsId, bool $returnOrganisationID = FALSE): ?string {
+    $token = $this->fetchSAMLToken();
 
-    $data = $this->organisationFunktionLaes($id, $token);
+    $data = $this->organisationFunktionLaes($funktionsId, $token);
 
     $tilknyttedeEnhederKeys = [
       'ns3LaesOutput',
@@ -185,7 +185,7 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    $orgEnhedId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($tilknyttedeEnhederKeys));
+    $orgEnhedId = $this->getValue($data, $tilknyttedeEnhederKeys);
 
     if ($returnOrganisationID) {
       return $orgEnhedId ?: '';
@@ -202,14 +202,34 @@ class Helper {
       'ns2EnhedNavn',
     ];
 
-    return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys)) ?: '';
+    return $this->getValue($data, $enhedsNavnKeys, '');
+  }
+
+  /**
+   * Fetches funktions navn from SF1500.
+   */
+  public function getFunktionsNavn(string $funktionsId) {
+    $token = $this->fetchSAMLToken();
+
+    $data = $this->organisationFunktionLaes($funktionsId, $token);
+
+    $funktionsNavnKeys = [
+      'ns3LaesOutput',
+      'ns3FiltreretOejebliksbillede',
+      'ns3Registrering',
+      'ns3AttributListe',
+      'ns3Egenskab',
+      'ns2FunktionNavn',
+    ];
+
+    return $this->getValue($data, $funktionsNavnKeys, '');
   }
 
   /**
    * Fetches organisation enhed level 2 from SF1500.
    */
-  public function getOrganisationEnhedNiveauTo() {
-    $orgEnhedId = $this->getOrganisationEnhed(TRUE);
+  public function getOrganisationEnhedNiveauTo(string $id) {
+    $orgEnhedId = $this->getOrganisationEnhed($id, TRUE);
 
     if (empty($orgEnhedId)) {
       return '';
@@ -235,7 +255,7 @@ class Helper {
     ];
 
     // Level 2.
-    $orgEnhedId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($overordnetKeys));
+    $orgEnhedId = $this->getValue($data, $overordnetKeys);
 
     if (NULL === $orgEnhedId) {
       return '';
@@ -252,7 +272,7 @@ class Helper {
       'ns2EnhedNavn',
     ];
 
-    return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys)) ?: '';
+    return $this->getValue($data, $enhedsNavnKeys, '');
   }
 
   /**
@@ -273,7 +293,7 @@ class Helper {
       return '';
     }
 
-    $response = $this->brugerLaes($brugerId, $token);
+    $data = $this->brugerLaes($brugerId, $token);
 
     $brugerNavnKeys = [
       'ns3LaesOutput',
@@ -284,14 +304,14 @@ class Helper {
       'ns2BrugerNavn',
     ];
 
-    return $this->propertyAccessor->getValue($response, $this->convertKeysToPropertyAccessorFormat($brugerNavnKeys)) ?: '';
+    return $this->getValue($data, $brugerNavnKeys, '');
   }
 
   /**
    * Fetches organisation address from SF1500.
    */
-  public function getOrganisationAddress() {
-    $orgEnhedId = $this->getOrganisationEnhed(TRUE);
+  public function getOrganisationAddress(string $id) {
+    $orgEnhedId = $this->getOrganisationEnhed($id, TRUE);
 
     if (empty($orgEnhedId)) {
       return '';
@@ -313,7 +333,7 @@ class Helper {
       'ns2Adresser',
     ];
 
-    $adresser = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseKeys));
+    $adresser = $this->getValue($data, $adresseKeys);
 
     if (!is_array($adresser)) {
       return '';
@@ -339,16 +359,17 @@ class Helper {
     ];
 
     foreach ($adresser as $adresse) {
-      if ('Postadresse' === $this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseRolleLabelKeys))) {
+      if ('Postadresse' === $this->getValue($adresse, $adresseRolleLabelKeys)) {
 
-        $adresseId = $this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseReferenceUuidKeys));
+        $adresseId = $this->getValue($adresse, $adresseReferenceUuidKeys);
 
         if (NULL === $adresseId) {
           continue;
         }
 
         $data = $this->adresseLaes($adresseId, $token);
-        return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseTekstKeys)) ?: '';
+
+        return $this->getValue($data, $adresseTekstKeys, '');
       }
     }
 
@@ -358,8 +379,8 @@ class Helper {
   /**
    * Fetches person magistrat from SF1500.
    */
-  public function getPersonMagistrat() {
-    $orgEnhedId = $this->getOrganisationEnhed(TRUE);
+  public function getPersonMagistrat(string $id) {
+    $orgEnhedId = $this->getOrganisationEnhed($id, TRUE);
 
     if (empty($orgEnhedId)) {
       return '';
@@ -382,7 +403,7 @@ class Helper {
       'ns2EnhedNavn',
     ];
 
-    $enhedsNavn = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys));
+    $enhedsNavn = $this->getValue($data, $enhedsNavnKeys);
 
     // Follow organisation until parent does not exist, updating $enhedsNavn.
     $overordnetKeys = [
@@ -395,8 +416,8 @@ class Helper {
       'ns2UUIDIdentifikator',
     ];
 
-    while ($orgEnhedId = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($overordnetKeys))) {
-      $enhedsNavn = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($enhedsNavnKeys));
+    while ($orgEnhedId = $this->getValue($data, $overordnetKeys)) {
+      $enhedsNavn = $this->getValue($data, $enhedsNavnKeys);
       $data = $this->organisationEnhedLaes($orgEnhedId, $token);
     }
 
@@ -603,7 +624,7 @@ class Helper {
       'ns2Adresser',
     ];
 
-    $adresser = $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseKeys));
+    $adresser = $this->getValue($data, $adresseKeys);
 
     if (!is_array($adresser)) {
       return '';
@@ -629,16 +650,17 @@ class Helper {
     ];
 
     foreach ($adresser as $adresse) {
-      if ($this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseRolleLabelKeys)) === $attribute) {
+      if ($this->getValue($adresse, $adresseRolleLabelKeys) === $attribute) {
 
-        $adresseId = $this->propertyAccessor->getValue($adresse, $this->convertKeysToPropertyAccessorFormat($adresseReferenceUuidKeys));
+        $adresseId = $this->getValue($adresse, $adresseReferenceUuidKeys);
 
         if (NULL === $adresseId) {
           continue;
         }
 
         $data = $this->adresseLaes($adresseId, $token);
-        return $this->propertyAccessor->getValue($data, $this->convertKeysToPropertyAccessorFormat($adresseTekstKeys)) ?: '';
+
+        return $this->getValue($data, $adresseTekstKeys, '');
       }
     }
 
@@ -659,14 +681,15 @@ class Helper {
    * convertKeysToPropertyAccessorFormat($keys) =
    *  '[some_special_key][some_other_special_key]'.
    */
-  private function convertKeysToPropertyAccessorFormat(array $keys): string {
-    $value = '';
+  private function arrayToPropertyPath(array $keys): string {
+    return '[' . implode('][', $keys) . ']';
+  }
 
-    foreach ($keys as $key) {
-      $value .= '[' . $key . ']';
-    }
-
-    return $value;
+  /**
+   * Gets value from data according to keys.
+   */
+  private function getValue($data, array $keys, $defaultValue = NULL) {
+    return $this->propertyAccessor->getValue($data, $this->arrayToPropertyPath($keys)) ?: $defaultValue;
   }
 
 }

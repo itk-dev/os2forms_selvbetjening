@@ -8,6 +8,9 @@ services:
       - '@entity_type.manager'
       - '@property_accessor'
 
+  organisation.helper:
+    alias: Drupal\os2forms_organisation\Helper\Helper
+
   organisation.security_token_service:
     class: Drupal\os2forms_organisation\Helper\SecurityTokenService
 
@@ -16,3 +19,7 @@ services:
 
   property_accessor:
     class: Symfony\Component\PropertyAccess\PropertyAccessor
+
+  Drupal\os2forms_organisation\Helper\FormHelper:
+    arguments:
+      - '@organisation.helper'
