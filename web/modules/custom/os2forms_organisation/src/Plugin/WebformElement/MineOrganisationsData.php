@@ -133,7 +133,7 @@ class MineOrganisationsData extends WebformCompositeBase {
 
       // If there is only one organisation funktion (ansættelse),
       // preselect it and fill out the elements that require it.
-      // @TODO: Handle multiple ansættelser with js
+      // @todo Handle multiple ansættelser with js
       if (count($options) === 1) {
         $key = array_key_first($options);
         $compositeElement['#organisations_funktion__value'] = $key;
