@@ -99,21 +99,21 @@ class MineOrganisationsData extends WebformCompositeBase {
       $values['name'] = $this->helper->getPersonName();
     }
 
-    if (FALSE !== $this->propertyAccessor->getValue($element, '[#email__access]')) {
-      $values['email'] = $this->helper->getPersonEmail();
-    }
-
-    if (FALSE !== $this->propertyAccessor->getValue($element, '[#az__access]')) {
-      $values['az'] = $this->helper->getPersonAZIdent();
-    }
-
-    if (FALSE !== $this->propertyAccessor->getValue($element, '[#phone__access]')) {
-      $values['phone'] = $this->helper->getPersonPhone();
-    }
-
-    if (FALSE !== $this->propertyAccessor->getValue($element, '[#location__access]')) {
-      $values['location'] = $this->helper->getPersonLocation();
-    }
+//    if (FALSE !== $this->propertyAccessor->getValue($element, '[#email__access]')) {
+//      $values['email'] = $this->helper->getPersonEmail();
+//    }
+//
+//    if (FALSE !== $this->propertyAccessor->getValue($element, '[#az__access]')) {
+//      $values['az'] = $this->helper->getPersonAZIdent();
+//    }
+//
+//    if (FALSE !== $this->propertyAccessor->getValue($element, '[#phone__access]')) {
+//      $values['phone'] = $this->helper->getPersonPhone();
+//    }
+//
+//    if (FALSE !== $this->propertyAccessor->getValue($element, '[#location__access]')) {
+//      $values['location'] = $this->helper->getPersonLocation();
+//    }
 
     $element['#value'] = $values;
 
@@ -175,21 +175,21 @@ class MineOrganisationsData extends WebformCompositeBase {
   private function updateSubElements(&$element, $id) {
     $compositeElements = $this->propertyAccessor->getValue($element, '[#webform_composite_elements]');
 
-    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_enhed][#access]')) {
-      $element['#organisation_enhed__value'] = $this->helper->getOrganisationEnhed($id);
-    }
-
-    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_adresse][#access]')) {
-      $element['#organisation_adresse__value'] = $this->helper->getOrganisationAddress($id);
-    }
-
-    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_niveau_2][#access]')) {
-      $element['#organisation_niveau_2__value'] = $this->helper->getOrganisationEnhedNiveauTo($id);
-    }
-
-    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[magistrat][#access]')) {
-      $element['#magistrat__value'] = $this->helper->getPersonMagistrat($id);
-    }
+//    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_enhed][#access]')) {
+//      $element['#organisation_enhed__value'] = $this->helper->getOrganisationEnhed($id);
+//    }
+//
+//    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_adresse][#access]')) {
+//      $element['#organisation_adresse__value'] = $this->helper->getOrganisationAddress($id);
+//    }
+//
+//    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_niveau_2][#access]')) {
+//      $element['#organisation_niveau_2__value'] = $this->helper->getOrganisationEnhedNiveauTo($id);
+//    }
+//
+//    if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[magistrat][#access]')) {
+//      $element['#magistrat__value'] = $this->helper->getPersonMagistrat($id);
+//    }
   }
 
 }

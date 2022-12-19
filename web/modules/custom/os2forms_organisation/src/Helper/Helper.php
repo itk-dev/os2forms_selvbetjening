@@ -668,28 +668,18 @@ class Helper {
   }
 
   /**
-   * Converts keys into Symfony PropertyAccessor property path format.
-   *
-   * @see https://symfony.com/doc/current/components/property_access.html#reading-from-arrays
-   *
-   * @example
-   * $keys = [
-   *   'some_special_key',
-   *   'some_other_special_key'
-   * ];
-   *
-   * convertKeysToPropertyAccessorFormat($keys) =
-   *  '[some_special_key][some_other_special_key]'.
-   */
-  private function arrayToPropertyPath(array $keys): string {
-    return '[' . implode('][', $keys) . ']';
-  }
-
-  /**
    * Gets value from data according to keys.
    */
   private function getValue($data, array $keys, $defaultValue = NULL) {
-    return $this->propertyAccessor->getValue($data, $this->arrayToPropertyPath($keys)) ?: $defaultValue;
+
+    // @see https://symfony.com/doc/current/components/property_access.html#reading-from-arrays
+    $propertyPath = '[' . implode('][', $keys) . ']';
+
+    if ($this->propertyAccessor->isReadable($data, $propertyPath)) {
+      return $this->propertyAccessor->getValue($data, $propertyPath) ?: $defaultValue;
+    }
+
+    return $defaultValue;
   }
 
 }
