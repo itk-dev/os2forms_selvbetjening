@@ -14,6 +14,8 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\permissions_by_term\Service\AccessStorage;
+use Drupal\permissions_by_term\Service\AccessCheck;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 use Drupal\webform\WebformInterface;
 
@@ -51,6 +53,14 @@ class Helper {
    */
   protected ConfigFactory $configFactory;
 
+
+  /**
+   * Configuration Factory.
+   *
+   * @var \Drupal\permissions_by_term\Service\AccessCheck
+   */
+  protected AccessCheck $accessCheck;
+
   /**
    * Helper constructor.
    *
@@ -62,9 +72,12 @@ class Helper {
    *   The Account proxy interface.
    * @param \Drupal\Core\Config\ConfigFactory $configFactory
    *   The config factory.
+   * @param \Drupal\permissions_by_term\Service\AccessCheck $accessCheck
+   *   The permissions by term access check service.
    */
-  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory) {
+  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory, AccessCheck $accessCheck) {
     $this->accessStorage = $accessStorage;
+    $this->accessCheck = $accessCheck;
     $this->entityTypeManager = $entity_type_manager;
     $this->account = $account;
     $this->configFactory = $configFactory;
@@ -227,13 +240,22 @@ class Helper {
     if ('webform' === $node->bundle()) {
       switch ($operation) {
         case 'view':
+        case 'view all revisions':
           // Deny access to node view if no permission by term is set.
           $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
-          return empty($nodePermissionsByTerm)
-            ? AccessResult::forbidden()
-            : AccessResult::neutral();
+          if (empty($nodePermissionsByTerm)) {
+            return AccessResult::forbidden();
+          }
+
+          // Always allow node view access if node i tagged with anonymous users.
+          foreach ($nodePermissionsByTerm as $termId) {
+            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', 'da')) {
+              return AccessResult::Allowed();
+            }
+          }
       }
     }
+    return AccessResult::neutral();
   }
 
   /**
