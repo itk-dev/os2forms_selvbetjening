@@ -79,6 +79,7 @@ permissions:
   - 'use text format full_html'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
   - 'use udgivelse_af_forlob_og_webformularer transition publish'
+  - 'use udgivelse_af_forlob_og_webformularer transition republish'
   - 'use udgivelse_af_forlob_og_webformularer transition unpublish'
   - 'view any unpublished content'
   - 'view latest version'
