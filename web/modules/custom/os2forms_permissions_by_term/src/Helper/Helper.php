@@ -236,27 +236,27 @@ class Helper {
    * @return mixed
    *   The resulting access permission.
    */
-  public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account) {
-    if ('webform' === $node->bundle()) {
-      switch ($operation) {
-        case 'view':
-        case 'view all revisions':
-          // Deny access to node view if no permission by term is set.
-          $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
-          if (empty($nodePermissionsByTerm)) {
-            return AccessResult::forbidden();
-          }
-
-          // Always allow node view access if node i tagged with anonymous users.
-          foreach ($nodePermissionsByTerm as $termId) {
-            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', 'da')) {
-              return AccessResult::Allowed();
+    public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account) {
+      if ('webform' === $node->bundle()) {
+        switch ($operation) {
+          case 'view':
+          case 'view all revisions':
+            // Deny access to node view if no permission by term is set.
+            $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
+            if (empty($nodePermissionsByTerm)) {
+              return AccessResult::forbidden();
             }
-          }
+
+            // Always allow node view access if node i tagged with anonymous users.
+            foreach ($nodePermissionsByTerm as $termId) {
+              if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', 'da')) {
+                return AccessResult::Allowed();
+              }
+            }
+        }
       }
+      return AccessResult::neutral();
     }
-    return AccessResult::neutral();
-  }
 
   /**
    * Custom submit handler for webform add/edit form.
