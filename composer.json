@@ -60,10 +60,6 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/OS2Forms/os2forms_rest_api"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/itk-dev/getorganized-api-client-php"
         }
     ],
@@ -95,7 +91,7 @@
         "itk-dev/os2forms_user_field_lookup": "^1.0",
         "itk-dev/web_accessibility_statement": "^1.0",
         "os2forms/os2forms_forloeb_profile": "^1.8",
-        "os2forms/os2forms_rest_api": "dev-develop"
+        "os2forms/os2forms_rest_api": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^9.1",
