@@ -15,7 +15,6 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\permissions_by_term\Service\AccessCheck;
-use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 use Drupal\webform\WebformInterface;
 
@@ -236,27 +235,28 @@ class Helper {
    * @return mixed
    *   The resulting access permission.
    */
-    public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account) {
-      if ('webform' === $node->bundle()) {
-        switch ($operation) {
-          case 'view':
-          case 'view all revisions':
-            // Deny access to node view if no permission by term is set.
-            $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
-            if (empty($nodePermissionsByTerm)) {
-              return AccessResult::forbidden();
-            }
+  public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account) {
+    if ('webform' === $node->bundle()) {
+      switch ($operation) {
+        case 'view':
+        case 'view all revisions':
+          // Deny access to node view if no permission by term is set.
+          $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
+          if (empty($nodePermissionsByTerm)) {
+            return AccessResult::forbidden();
+          }
 
-            // Always allow node view access if node i tagged with anonymous users.
-            foreach ($nodePermissionsByTerm as $termId) {
-              if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', 'da')) {
-                return AccessResult::Allowed();
-              }
+          // Always allow node view access if node if tagged with anonymous
+          // users.
+          foreach ($nodePermissionsByTerm as $termId) {
+            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', 'da')) {
+              return AccessResult::Allowed();
             }
-        }
+          }
       }
-      return AccessResult::neutral();
     }
+    return AccessResult::neutral();
+  }
 
   /**
    * Custom submit handler for webform add/edit form.
