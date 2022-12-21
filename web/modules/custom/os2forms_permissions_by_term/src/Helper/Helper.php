@@ -17,6 +17,7 @@ use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\permissions_by_term\Service\AccessCheck;
 use Drupal\user\Entity\User;
 use Drupal\webform\WebformInterface;
+use Drupal\Core\Language\LanguageManager;
 
 /**
  * Helper class for os2forms permissions by term.
@@ -61,6 +62,11 @@ class Helper {
   protected AccessCheck $accessCheck;
 
   /**
+   * @var \Drupal\Core\Language\LanguageManager
+   */
+  protected LanguageManager $languageManager;
+
+  /**
    * Helper constructor.
    *
    * @param \Drupal\permissions_by_term\Service\AccessStorage $accessStorage
@@ -73,13 +79,16 @@ class Helper {
    *   The config factory.
    * @param \Drupal\permissions_by_term\Service\AccessCheck $accessCheck
    *   The permissions by term access check service.
+   * @param \Drupal\Core\Language\LanguageManager $languageManager
+   *   The language manager.
    */
-  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory, AccessCheck $accessCheck) {
+  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory, AccessCheck $accessCheck, LanguageManager $languageManager) {
     $this->accessStorage = $accessStorage;
     $this->accessCheck = $accessCheck;
     $this->entityTypeManager = $entity_type_manager;
     $this->account = $account;
     $this->configFactory = $configFactory;
+    $this->languageManager = $languageManager;
   }
 
   /**
@@ -256,7 +265,7 @@ class Helper {
 
           // Allow node view access if node is tagged with anonymous users.
           foreach ($nodePermissionsByTerm as $termId) {
-            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', \Drupal::languageManager()->getCurrentLanguage()->getId())) {
+            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', $this->languageManager->getCurrentLanguage()->getId())) {
               return AccessResult::Allowed();
             }
           }
