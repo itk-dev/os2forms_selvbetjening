@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a34d5da20b72189fc801550bfeded32",
+    "content-hash": "433e773e82b7b99544017fe8ec94b4fd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9275,6 +9275,47 @@
                 "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.9.0"
             },
             "time": "2022-06-29T12:33:38+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_rest_api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
+                "reference": "932335e43907634c4b4cb261e33f6c05c855d0cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/932335e43907634c4b4cb261e33f6c05c855d0cf",
+                "reference": "932335e43907634c4b4cb261e33f6c05c855d0cf",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/key_auth": "^2.0",
+                "drupal/webform_rest": "^4.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "OS2Forms REST API",
+            "support": {
+                "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/1.0.0"
+            },
+            "time": "2022-12-21T13:05:51+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
