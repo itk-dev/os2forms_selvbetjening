@@ -62,6 +62,8 @@ class Helper {
   protected AccessCheck $accessCheck;
 
   /**
+   * The language manager.
+   *
    * @var \Drupal\Core\Language\LanguageManager
    */
   protected LanguageManager $languageManager;
