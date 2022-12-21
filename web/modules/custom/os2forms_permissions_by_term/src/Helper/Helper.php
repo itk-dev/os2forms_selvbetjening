@@ -246,10 +246,17 @@ class Helper {
             return AccessResult::forbidden();
           }
 
-          // Always allow node view access if node if tagged with anonymous
-          // users.
+          // Disallow access to node if related webform is closed and user
+          // doesn't have edit rights.
+          if ('closed' === $node->webform['0']->status) {
+            if (!$node->access('update', $account)) {
+              return AccessResult::forbidden();
+            }
+          }
+
+          // Allow node view access if node is tagged with anonymous users.
           foreach ($nodePermissionsByTerm as $termId) {
-            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', 'da')) {
+            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', \Drupal::languageManager()->getCurrentLanguage()->getId())) {
               return AccessResult::Allowed();
             }
           }
