@@ -42,6 +42,7 @@ module:
   history: 0
   honeypot: 0
   image: 0
+  itkdev_booking: 0
   itkdev_footer: 0
   itkdev_openid_connect: 0
   jquery_ui: 0
