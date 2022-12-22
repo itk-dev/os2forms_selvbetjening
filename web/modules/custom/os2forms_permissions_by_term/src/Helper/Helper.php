@@ -14,8 +14,10 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\permissions_by_term\Service\AccessStorage;
+use Drupal\permissions_by_term\Service\AccessCheck;
 use Drupal\user\Entity\User;
 use Drupal\webform\WebformInterface;
+use Drupal\Core\Language\LanguageManager;
 
 /**
  * Helper class for os2forms permissions by term.
@@ -51,6 +53,21 @@ class Helper {
    */
   protected ConfigFactory $configFactory;
 
+
+  /**
+   * Configuration Factory.
+   *
+   * @var \Drupal\permissions_by_term\Service\AccessCheck
+   */
+  protected AccessCheck $accessCheck;
+
+  /**
+   * The language manager.
+   *
+   * @var \Drupal\Core\Language\LanguageManager
+   */
+  protected LanguageManager $languageManager;
+
   /**
    * Helper constructor.
    *
@@ -62,12 +79,18 @@ class Helper {
    *   The Account proxy interface.
    * @param \Drupal\Core\Config\ConfigFactory $configFactory
    *   The config factory.
+   * @param \Drupal\permissions_by_term\Service\AccessCheck $accessCheck
+   *   The permissions by term access check service.
+   * @param \Drupal\Core\Language\LanguageManager $languageManager
+   *   The language manager.
    */
-  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory) {
+  public function __construct(AccessStorage $accessStorage, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $account, ConfigFactory $configFactory, AccessCheck $accessCheck, LanguageManager $languageManager) {
     $this->accessStorage = $accessStorage;
+    $this->accessCheck = $accessCheck;
     $this->entityTypeManager = $entity_type_manager;
     $this->account = $account;
     $this->configFactory = $configFactory;
+    $this->languageManager = $languageManager;
   }
 
   /**
@@ -227,13 +250,30 @@ class Helper {
     if ('webform' === $node->bundle()) {
       switch ($operation) {
         case 'view':
+        case 'view all revisions':
           // Deny access to node view if no permission by term is set.
           $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
-          return empty($nodePermissionsByTerm)
-            ? AccessResult::forbidden()
-            : AccessResult::neutral();
+          if (empty($nodePermissionsByTerm)) {
+            return AccessResult::forbidden();
+          }
+
+          // Disallow access to node if related webform is closed and user
+          // doesn't have edit rights.
+          if ('closed' === ($node->webform[0]->status ?? NULL)) {
+            if (!$node->access('update', $account)) {
+              return AccessResult::forbidden();
+            }
+          }
+
+          // Allow node view access if node is tagged with anonymous users.
+          foreach ($nodePermissionsByTerm as $termId) {
+            if ($this->accessCheck->isTermAllowedByUserRole($termId['target_id'], 'anonymous', $this->languageManager->getCurrentLanguage()->getId())) {
+              return AccessResult::Allowed();
+            }
+          }
       }
     }
+    return AccessResult::neutral();
   }
 
   /**
