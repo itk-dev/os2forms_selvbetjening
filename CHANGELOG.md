@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD024 -->
 # Changelog for selvbetjening.aarhuskommune.dk
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
@@ -8,13 +9,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GitHub Action-tjek for at `CHANGELOG.md` er opdateret.
 * Tilføjet at PR's skal have tilføjelse af changelog i sig
-* Tilføjet at sider(node) med adgang anonym kan besøges for alle annonyme brugere og drupal-brugere selvom de ikke har rettigheder til siden(node).
+* Tilføjet at sider (node) med adgang anonym kan besøges for alle annonyme
+  brugere og drupal-brugere selvom de ikke har rettigheder til siden(node).
 * Tilføjet Book aarhus
 
 ### Fix
 
-* Begrænse workflow dropdown til bruger https://github.com/itk-dev/os2forms_selvbetjening/pull/113
-* Unpublished indhold kan publiceres igen. https://github.com/itk-dev/os2forms_selvbetjening/pull/112
+* Begrænse workflow dropdown til bruger <https://github.com/itk-dev/os2forms_selvbetjening/pull/113>
+* Unpublished indhold kan publiceres igen. <https://github.com/itk-dev/os2forms_selvbetjening/pull/112>
 
 ### Fjernet
 
@@ -33,6 +35,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## 8.12.2022
 
 ### Tilføjet
+
 * Logs på submissions
 * Valg-liste: Likert: mindre til mere
 
@@ -48,8 +51,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ### Fjernet
 
 * Nemlogin-logud meddelelse deaktiveret
-
-
 
 ## 27.10.2022
 
