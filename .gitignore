@@ -60,6 +60,7 @@
 !/web/modules/custom/os2forms_rest_api
 !/web/modules/custom/os2forms_api_request_handler
 !/web/modules/custom/itkdev_footer
+!/web/modules/custom/itkdev_booking
 !/web/modules/custom/os2forms_selvbetjening
 !/web/modules/custom/os2forms_organisation
 !/web/modules/custom/os2forms_user_menu
