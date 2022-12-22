@@ -2,6 +2,17 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## Unreleased
+
+### Tilføjet
+* PR's skal have tilføjelse af changelog i sig
+* Sider(node) med adgang anonym har, kan besøges for alle annonyme brugere og drupal-brugere selvom de ikke har rettigheder til siden(node). 
+* Fjerne handlers som ikke bruges (API handler og send as file)
+
+### Fix
+* Begrænse workflow dropdown til bruger https://github.com/itk-dev/os2forms_selvbetjening/pull/113
+* Unpublished indhold kan publiceres igen. https://github.com/itk-dev/os2forms_selvbetjening/pull/112
+
 ## 14.12.2022
 
 ### Tilføjet
