@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acf84f32e34de9829be6f719e9197995",
+    "content-hash": "5bb24e100c2b89fe1f3b324cda161f66",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8245,16 +8245,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07"
+                "reference": "57ba442e10704a08d1982b1c8e9dc6fe0f8430e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07",
-                "reference": "3cc0bd8fe1bbd9d2d35d116087db9c47ccb8ff07",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/57ba442e10704a08d1982b1c8e9dc6fe0f8430e6",
+                "reference": "57ba442e10704a08d1982b1c8e9dc6fe0f8430e6",
                 "shasum": ""
             },
             "require": {
@@ -8275,22 +8275,11 @@
             },
             "type": "drupal-module",
             "autoload": {
-                "Drupal\\os2forms_digital_post\\": "src/"
+                "psr-4": {
+                    "Drupal\\os2forms_digital_post\\": "src/"
+                }
             },
-            "scripts": {
-                "coding-standards-check/phpcs": [
-                    "phpcs --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-check": [
-                    "@coding-standards-check/phpcs"
-                ],
-                "coding-standards-apply/phpcs": [
-                    "phpcbf --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-apply": [
-                    "@coding-standards-apply/phpcs"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -8302,10 +8291,10 @@
             ],
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.1",
-                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues"
+                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.2"
             },
-            "time": "2022-08-23T10:33:22+00:00"
+            "time": "2022-12-22T20:04:32+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",

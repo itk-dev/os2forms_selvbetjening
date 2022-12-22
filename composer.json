@@ -41,26 +41,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/os2forms_cpr_lookup"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/os2forms_cvr_lookup"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/os2forms_digital_post"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/itk-dev/getorganized-api-client-php"
         }
     ],
     "require": {
