@@ -217,7 +217,7 @@ export:
   composite_element_item_format: label
   excluded_exporters: {  }
 handler:
-  excluded_handlers: 
+  excluded_handlers:
     rest_handler: rest_handler
     save_to_file: save_to_file
 variant:
