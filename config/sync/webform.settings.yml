@@ -218,7 +218,7 @@ export:
   excluded_exporters: {  }
 handler:
   excluded_handlers: 
-    rest_handlers: rest_handler
+    rest_handler: rest_handler
     save_to_file: save_to_file
 variant:
   excluded_variants: {  }
