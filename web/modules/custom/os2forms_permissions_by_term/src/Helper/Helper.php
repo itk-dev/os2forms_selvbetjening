@@ -259,7 +259,7 @@ class Helper {
 
           // Disallow access to node if related webform is closed and user
           // doesn't have edit rights.
-          if ('closed' === ($node->webform['0']->status ?? NULL)) {
+          if ('closed' === ($node->webform[0]->status ?? NULL)) {
             if (!$node->access('update', $account)) {
               return AccessResult::forbidden();
             }
