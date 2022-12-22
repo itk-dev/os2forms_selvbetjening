@@ -271,6 +271,7 @@ class MaestroTemplateHelper {
         // Alter webform handler list select list.
         switch ($form['#webform_handler_id']) {
           case 'opret_forloeb_fra_flow':
+          case 'spawn_maestro_workflow':
             $form['settings']['maestro_template']['#options'] = $this->limitOptions($this->getUserTerms($this->account), $form['settings']['maestro_template']['#options']);
             break;
         }
