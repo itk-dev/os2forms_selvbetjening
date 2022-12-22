@@ -11,7 +11,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjet at PR's skal have tilføjelse af changelog i sig
 * Tilføjet at sider (node) med adgang anonym kan besøges for alle annonyme
   brugere og drupal-brugere selvom de ikke har rettigheder til siden(node).
-* Tilføjet Book aarhus
+* Tilføjet Book aarhus.
 
 ### Fix
 
