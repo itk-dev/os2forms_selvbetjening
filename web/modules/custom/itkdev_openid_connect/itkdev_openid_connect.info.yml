@@ -6,3 +6,4 @@ package: 'User authentication'
 
 dependencies:
   - drupal:openid_connect
+  - drupal:permission_by_term
