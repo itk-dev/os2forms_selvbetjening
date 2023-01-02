@@ -16,3 +16,14 @@ use Drupal\os2forms_selvbetjening\Helper\FormHelper;
 function os2forms_selvbetjening_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   Drupal::service(FormHelper::class)->formAlter($form, $form_state, $form_id);
 }
+
+/**
+ * Implements hook_webform_element_alter().
+ */
+function os2forms_selvbetjening_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
+  // Add js-form-item class to webform_more element to expose them to form
+  // states (element conditions).
+  if ('webform_more' === $element['#type']) {
+    $element['#attributes']['class'][] = 'js-form-item';
+  }
+}
