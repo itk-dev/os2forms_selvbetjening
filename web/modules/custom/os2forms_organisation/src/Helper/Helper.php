@@ -191,6 +191,10 @@ class Helper {
       return $orgEnhedId ?: '';
     }
 
+    if (empty($orgEnhedId)) {
+      return '';
+    }
+
     $data = $this->organisationEnhedLaes($orgEnhedId, $token);
 
     $enhedsNavnKeys = [
