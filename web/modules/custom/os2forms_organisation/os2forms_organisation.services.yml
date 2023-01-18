@@ -1,39 +1,21 @@
 services:
-<<<<<<< HEAD
-<<<<<<< HEAD
   Drupal\os2forms_organisation\Helper\Helper:
-=======
-  organisation.helper:
-    class: Drupal\os2forms_organisation\Helper\Helper
->>>>>>> 2552f8f (DW-454: Organisationsdata)
-=======
-  Drupal\os2forms_organisation\Helper\Helper:
->>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
     arguments:
       - '@organisation.security_token_service'
       - '@organisation.organisation_service'
       - '@config.factory'
       - '@current_user'
       - '@entity_type.manager'
-<<<<<<< HEAD
-<<<<<<< HEAD
       - '@property_accessor'
 
   organisation.helper:
     alias: Drupal\os2forms_organisation\Helper\Helper
-=======
->>>>>>> 2552f8f (DW-454: Organisationsdata)
-=======
-      - '@property_accessor'
->>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
 
   organisation.security_token_service:
     class: Drupal\os2forms_organisation\Helper\SecurityTokenService
 
   organisation.organisation_service:
     class: Drupal\os2forms_organisation\Helper\OrganisationService
-<<<<<<< HEAD
-<<<<<<< HEAD
 
   property_accessor:
     class: Symfony\Component\PropertyAccess\PropertyAccessor
@@ -41,10 +23,3 @@ services:
   Drupal\os2forms_organisation\Helper\FormHelper:
     arguments:
       - '@organisation.helper'
-=======
->>>>>>> 2552f8f (DW-454: Organisationsdata)
-=======
-
-  property_accessor:
-    class: Symfony\Component\PropertyAccess\PropertyAccessor
->>>>>>> 39a70a9 (DW-545: Refactoring and clean up)

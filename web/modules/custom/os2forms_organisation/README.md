@@ -23,31 +23,17 @@ We also need the public certificate to be on a single line:
 openssl x509 -in certificate.crt -trustout | sed '1,1d;$d' | tr -d '\n'
 ```
 
-<<<<<<< HEAD
 Make sure to **never** commit these
-=======
-**Make sure to never commit these**
->>>>>>> 2552f8f (DW-454: Organisationsdata)
 
 ## Configuration
 
 The following must be configured in `settings.local.php`,
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ```php
-=======
-```phpt
->>>>>>> 2552f8f (DW-454: Organisationsdata)
-=======
-```php
->>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
 // Organisation sf1500 certificates
 $config['os2forms_organisation'] = [
   'public_cert_location' => 'path/to/certificate.crt',
   'priv_key_location' => 'path/to/certificate.priv.key',
-<<<<<<< HEAD
-<<<<<<< HEAD
   'cvr' => 'xxxxxxxx',
   'security_token_service_applies_to' => 'http://stoettesystemerne.dk/service/organisation/3',
   'security_token_service_endpoint' => 'https://adgangsstyring.eksterntest-stoettesystemerne.dk/runtime/services/kombittrust/14/certificatemixed'
@@ -55,20 +41,3 @@ $config['os2forms_organisation'] = [
 ```
 
 here the location is relative to the `DRUPAL_ROOT`.
-=======
-];
-```
-
-here the location is relative to the
-`modules/custom/os2forms_organisation` module folder.
-
->>>>>>> 2552f8f (DW-454: Organisationsdata)
-=======
-  'cvr' => 'xxxxxxxx',
-  'security_token_service_applies_to' => 'http://stoettesystemerne.dk/service/organisation/3',
-  'security_token_service_endpoint' => 'https://adgangsstyring.eksterntest-stoettesystemerne.dk/runtime/services/kombittrust/14/certificatemixed'
-];
-```
-
-here the location is relative to the `DRUPAL_ROOT`.
->>>>>>> 39a70a9 (DW-545: Refactoring and clean up)
