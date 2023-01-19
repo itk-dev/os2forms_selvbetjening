@@ -67,23 +67,30 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function process(Job $job): JobResult {
-    $payload = $job->getPayload();
-    /** @var \Drupal\webform\WebformSubmissionInterface $webformSubmission */
-    $webformSubmission = WebformSubmission::load($payload['submission']['id']);
-    $logger_context = [
-      'channel' => 'webform_submission',
-      'webform_submission' => $webformSubmission,
-      'operation' => 'response from queue (api request handler)',
-    ];
+    try {
+      $payload = $job->getPayload();
+      /** @var \Drupal\webform\WebformSubmissionInterface $webformSubmission */
+      $webformSubmission = WebformSubmission::load($payload['submission']['id']);
+      $logger_context = [
+        'channel' => 'webform_submission',
+        'webform_submission' => $webformSubmission,
+        'operation' => 'response from queue (api request handler)',
+      ];
+    } catch (\Exception $e) {
+      $logger_context = [];
+    }
 
     try {
       $this->helper->post($job->getPayload());
-      $this->submissionLogger->log('info', sprintf('The submission #%s was successfully delivered', $webformSubmission->serial()), $logger_context);
+      $this->submissionLogger->notice(t('The submission #@serial was successfully delivered', ['@serial' => $webformSubmission->serial()]), $logger_context);
 
       return JobResult::success();
     }
     catch (\Exception $e) {
-      $this->submissionLogger->log('error', sprintf('The submission #%s failed (%s)', $webformSubmission->serial(), $e->getMessage()), $logger_context);
+      $this->submissionLogger->error(t('The submission #@serial failed (@message)', [
+        '@serial' => $webformSubmission->serial(),
+        '@message' => $e->getMessage()
+      ]), $logger_context);
 
       return JobResult::failure($e->getMessage());
     }
