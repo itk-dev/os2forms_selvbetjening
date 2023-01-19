@@ -12,6 +12,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   og drupal-brugere selvom de ikke har rettigheder til siden (node).
 * Tilføjet Book aarhus.
 * Tilføj conditions til "Mere"-element
+* Tilføjet Api request handler logging.
 
 ### Fix
 
