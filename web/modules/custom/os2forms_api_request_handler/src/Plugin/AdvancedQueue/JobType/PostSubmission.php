@@ -73,7 +73,7 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
     $logger_context = [
       'channel' => 'webform_submission',
       'webform_submission' => $webformSubmission,
-      'operation' => 'response from queue (api request handler)'
+      'operation' => 'response from queue (api request handler)',
     ];
 
     try {
