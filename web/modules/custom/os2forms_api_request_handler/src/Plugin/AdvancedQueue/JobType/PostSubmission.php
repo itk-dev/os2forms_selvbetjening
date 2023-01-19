@@ -82,12 +82,12 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
 
     try {
       $this->helper->post($job->getPayload());
-      $this->submissionLogger->notice(t('The submission #@serial was successfully delivered', ['@serial' => $webformSubmission->serial()]), $logger_context);
+      $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $webformSubmission->serial()]), $logger_context);
 
       return JobResult::success();
     }
     catch (\Exception $e) {
-      $this->submissionLogger->error(t('The submission #@serial failed (@message)', [
+      $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
         '@serial' => $webformSubmission->serial(),
         '@message' => $e->getMessage()
       ]), $logger_context);

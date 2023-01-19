@@ -144,7 +144,7 @@ class WebformHandler extends WebformHandlerBase {
       'operation' => 'submission queued',
     ];
 
-    $this->submissionLogger->notice(t('Added submission #@serial to queue for processing', ['@serial' => $submission->serial()]), $logger_context);
+    $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $submission->serial()]), $logger_context);
   }
 
   /**
