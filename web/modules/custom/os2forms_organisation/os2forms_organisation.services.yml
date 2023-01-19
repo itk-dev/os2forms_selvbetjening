@@ -19,9 +19,3 @@ services:
 
   property_accessor:
     class: Symfony\Component\PropertyAccess\PropertyAccessor
-
-  Drupal\os2forms_organisation\Helper\FormHelper:
-    arguments:
-      - '@organisation.helper'
-      - '@property_accessor'
-      - '@current_route_match'
