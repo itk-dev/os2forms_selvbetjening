@@ -23,3 +23,5 @@ services:
   Drupal\os2forms_organisation\Helper\FormHelper:
     arguments:
       - '@organisation.helper'
+      - '@property_accessor'
+      - '@current_route_match'
