@@ -76,7 +76,8 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
         'webform_submission' => $webformSubmission,
         'operation' => 'response from queue (api request handler)',
       ];
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       $logger_context = [];
     }
 
@@ -89,7 +90,7 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
     catch (\Exception $e) {
       $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
         '@serial' => $webformSubmission->serial(),
-        '@message' => $e->getMessage()
+        '@message' => $e->getMessage(),
       ]), $logger_context);
 
       return JobResult::failure($e->getMessage());
