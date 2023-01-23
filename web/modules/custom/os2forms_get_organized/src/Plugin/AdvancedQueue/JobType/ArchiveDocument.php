@@ -71,7 +71,7 @@ class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInter
       $payload = $job->getPayload();
 
       /** @var \Drupal\webform\WebformSubmissionInterface $webformSubmission */
-      $webformSubmission = WebformSubmission::load($payload['submission']['id']);
+      $webformSubmission = WebformSubmission::load($payload['submissionId']);
       $logger_context = [
         'channel' => 'webform_submission',
         'webform_submission' => $webformSubmission,
