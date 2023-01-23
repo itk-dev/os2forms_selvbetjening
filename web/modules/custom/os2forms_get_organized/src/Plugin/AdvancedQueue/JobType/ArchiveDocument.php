@@ -97,4 +97,5 @@ class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInter
       return JobResult::failure($e->getMessage());
     }
   }
+  
 }
