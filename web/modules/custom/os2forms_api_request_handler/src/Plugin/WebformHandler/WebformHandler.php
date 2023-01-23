@@ -128,6 +128,14 @@ class WebformHandler extends WebformHandlerBase {
       ],
     ]);
     $queue->enqueueJob($job);
+
+    $logger_context = [
+      'channel' => 'webform_submission',
+      'webform_submission' => $submission,
+      'operation' => 'submission queued (api request handler)',
+    ];
+
+    $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $submission->serial()]), $logger_context);
   }
 
   /**

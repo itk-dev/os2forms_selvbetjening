@@ -7,6 +7,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\os2forms_get_organized\Plugin\AdvancedQueue\JobType\ArchiveDocument;
 use Drupal\webform\Plugin\WebformHandlerBase;
@@ -29,6 +30,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class GetOrganizedWebformHandler extends WebformHandlerBase {
+  /**
+   * The submission logger.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected LoggerChannelInterface $submissionLogger;
 
   /**
    * Constructs a GetOrganizedWebformHandler object.
@@ -42,6 +49,7 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     $this->entityTypeManager = $entityTypeManager;
     $this->conditionsValidator = $conditionsValidator;
     $this->tokenManager = $tokenManager;
+    $this->submissionLogger = $loggerFactory->get('webform_submission');
   }
 
   /**
@@ -236,6 +244,14 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
       'handlerConfiguration' => $this->configuration,
     ]);
     $queue->enqueueJob($job);
+
+    $logger_context = [
+      'channel' => 'webform_submission',
+      'webform_submission' => $webform_submission,
+      'operation' => 'submission queued (get organized handler)',
+    ];
+
+    $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $webform_submission->serial()]), $logger_context);
   }
 
   /**
