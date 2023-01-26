@@ -5,7 +5,8 @@ namespace Drupal\os2forms_organisation\Plugin\WebformElement;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\os2forms_organisation\Helper\Helper;
+use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\os2forms_organisation\Helper\OrganisationHelper;
 use Drupal\webform\Plugin\WebformElement\WebformCompositeBase;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -29,9 +30,9 @@ class MineOrganisationsData extends WebformCompositeBase {
   /**
    * Organisation Helper.
    *
-   * @var \Drupal\os2forms_organisation\Helper\Helper
+   * @var \Drupal\os2forms_organisation\Helper\OrganisationHelper
    */
-  protected Helper $helper;
+  protected OrganisationHelper $organisationHelper;
 
   /**
    * Property accessor.
@@ -48,15 +49,22 @@ class MineOrganisationsData extends WebformCompositeBase {
   private RouteMatchInterface $routeMatch;
 
   /**
+   * Current user.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  private AccountProxyInterface $account;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
-    $instance->helper = $container->get(Helper::class);
+    $instance->organisationHelper = $container->get(OrganisationHelper::class);
     $instance->propertyAccessor = $container->get('property_accessor');
     $instance->routeMatch = $container->get('current_route_match');
-
+    $instance->account = $container->get('current_user');
 
     return $instance;
   }
@@ -127,6 +135,10 @@ class MineOrganisationsData extends WebformCompositeBase {
 
       $options = $this->buildOrganisationFunktionOptions();
 
+      if (empty($options)) {
+        return;
+      }
+
       $this->updateBasicSubElements($compositeElement);
 
       // If there is only one organisation funktion (ansættelse),
@@ -150,7 +162,13 @@ class MineOrganisationsData extends WebformCompositeBase {
    */
   private function buildOrganisationFunktionOptions(): array {
 
-    $ids = $this->helper->getOrganisationFunktioner();
+    $brugerId = $this->getCurrentUserOrganisationId();
+
+    if (NULL === $brugerId) {
+      return [];
+    }
+
+    $ids = $this->organisationHelper->getOrganisationFunktioner($brugerId);
 
     if (!is_array($ids)) {
       $ids = [$ids];
@@ -159,8 +177,8 @@ class MineOrganisationsData extends WebformCompositeBase {
     // Make them human-readable.
     $options = [];
     foreach ($ids as $id) {
-      $organisationEnhed = $this->helper->getOrganisationEnhed($id);
-      $funktionsNavn = $this->helper->getFunktionsNavn($id);
+      $organisationEnhed = $this->organisationHelper->getOrganisationEnhed($id);
+      $funktionsNavn = $this->organisationHelper->getFunktionsNavn($id);
 
       $options[$id] = $organisationEnhed . ', ' . $funktionsNavn;
     }
@@ -171,48 +189,66 @@ class MineOrganisationsData extends WebformCompositeBase {
   /**
    * Updates Funktion dependant sub elements.
    */
-  private function updateFunktionSubElements(&$element, $id) {
+  private function updateFunktionSubElements(&$element, $funktionsId) {
     $compositeElements = $this->propertyAccessor->getValue($element, '[#webform_composite_elements]');
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_enhed][#access]')) {
-      $element['#organisation_enhed__value'] = $this->helper->getOrganisationEnhed($id);
+      $element['#organisation_enhed__value'] = $this->organisationHelper->getOrganisationEnhed($funktionsId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_adresse][#access]')) {
-      $element['#organisation_adresse__value'] = $this->helper->getOrganisationAddress($id);
+      $element['#organisation_adresse__value'] = $this->organisationHelper->getOrganisationAddress($funktionsId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[organisation_niveau_2][#access]')) {
-      $element['#organisation_niveau_2__value'] = $this->helper->getOrganisationEnhedNiveauTo($id);
+      $element['#organisation_niveau_2__value'] = $this->organisationHelper->getOrganisationEnhedNiveauTo($funktionsId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[magistrat][#access]')) {
-      $element['#magistrat__value'] = $this->helper->getPersonMagistrat($id);
+      $element['#magistrat__value'] = $this->organisationHelper->getPersonMagistrat($funktionsId);
     }
   }
 
-  private function updateBasicSubElements(&$element)
-  {
+  /**
+   * Updates basic sub elements.
+   */
+  private function updateBasicSubElements(&$element) {
+    $brugerId = $this->getCurrentUserOrganisationId();
+
+    if (NULL === $brugerId) {
+      return;
+    }
+
     $compositeElements = $this->propertyAccessor->getValue($element, '[#webform_composite_elements]');
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[name][#access]')) {
-      $element['#name__value'] = $this->helper->getPersonName();
+      $element['#name__value'] = $this->organisationHelper->getPersonName($brugerId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[email][#access]')) {
-      $element['#email__value'] = $this->helper->getPersonEmail();
+      $element['#email__value'] = $this->organisationHelper->getPersonEmail($brugerId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[az][#access]')) {
-      $element['#az__value'] = $this->helper->getPersonAZIdent();
+      $element['#az__value'] = $this->organisationHelper->getPersonAZIdent($brugerId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[phone][#access]')) {
-      $element['#phone__value'] = $this->helper->getPersonPhone();
+      $element['#phone__value'] = $this->organisationHelper->getPersonPhone($brugerId);
     }
 
     if (FALSE !== $this->propertyAccessor->getValue($compositeElements, '[location][#access]')) {
-      $element['#location__value'] = $this->helper->getPersonLocation();
+      $element['#location__value'] = $this->organisationHelper->getPersonLocation($brugerId);
     }
   }
+
+  /**
+   * Fetches current user organisation user id.
+   */
+  private function getCurrentUserOrganisationId() {
+    $user = $this->entityTypeManager->getStorage('user')->load($this->account->id());
+
+    return $user->hasField('field_organisation_user_id') ? $user->get('field_organisation_user_id')->value : NULL;
+  }
+
 }

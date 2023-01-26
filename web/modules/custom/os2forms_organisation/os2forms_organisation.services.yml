@@ -1,21 +1,17 @@
 services:
-  Drupal\os2forms_organisation\Helper\Helper:
-    arguments:
-      - '@organisation.security_token_service'
-      - '@organisation.organisation_service'
-      - '@config.factory'
-      - '@current_user'
-      - '@entity_type.manager'
-      - '@property_accessor'
-
-  organisation.helper:
-    alias: Drupal\os2forms_organisation\Helper\Helper
-
-  organisation.security_token_service:
-    class: Drupal\os2forms_organisation\Helper\SecurityTokenService
-
-  organisation.organisation_service:
-    class: Drupal\os2forms_organisation\Helper\OrganisationService
-
   property_accessor:
     class: Symfony\Component\PropertyAccess\PropertyAccessor
+
+  Drupal\os2forms_organisation\Helper\Settings:
+    arguments:
+      - "@state"
+
+  Drupal\os2forms_organisation\Helper\CertificateLocatorHelper:
+    arguments:
+      - "@Drupal\\os2forms_organisation\\Helper\\Settings"
+
+  Drupal\os2forms_organisation\Helper\OrganisationHelper:
+    arguments:
+      - "@property_accessor"
+      - "@Drupal\\os2forms_organisation\\Helper\\CertificateLocatorHelper"
+      - "@Drupal\\os2forms_organisation\\Helper\\Settings"

@@ -1,0 +1,7 @@
+os2forms_organisation.admin.settings:
+  path: '/admin/os2forms_organisation/settings'
+  defaults:
+    _form: '\Drupal\os2forms_organisation\Form\SettingsForm'
+    _title: 'Organisation settings'
+  requirements:
+    _permission: 'administer site configuration'

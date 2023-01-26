@@ -3,3 +3,4 @@ type: module
 description: OS2Forms Organisation module
 package: OS2Forms
 core_version_requirement: ^9
+configure: os2forms_organisation.admin.settings
