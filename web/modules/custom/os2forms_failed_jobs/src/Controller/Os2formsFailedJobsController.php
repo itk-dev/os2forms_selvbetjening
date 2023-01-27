@@ -9,6 +9,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\views\Views;
 use Drupal\Core\Entity\EntityTypeManager;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Drupal\Core\Render\RendererInterface;
 
 /**
  * Class ContestantsController.
@@ -30,12 +31,20 @@ class Os2formsFailedJobsController extends ControllerBase {
   protected RequestStack $requestStack;
 
   /**
+   * Request stack.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected RendererInterface $renderer;
+
+  /**
    * Failed jobs constructor.
    */
-  public function __construct(EntityTypeManager $entityTypeManager, Os2formsFailedJobsHelper $failedJobsHelper, RequestStack $requestStack) {
+  public function __construct(EntityTypeManager $entityTypeManager, Os2formsFailedJobsHelper $failedJobsHelper, RequestStack $requestStack, RendererInterface $renderer) {
     $this->entityTypeManager = $entityTypeManager;
     $this->failedJobsHelper = $failedJobsHelper;
     $this->requestStack = $requestStack;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -57,6 +66,7 @@ class Os2formsFailedJobsController extends ControllerBase {
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \Exception
    */
   public function render(): array {
     $view = Views::getView('os2forms_failed_jobs');
@@ -66,10 +76,10 @@ class Os2formsFailedJobsController extends ControllerBase {
     $view->setArguments($this->getQueueJobIds($formId));
     $view->execute();
     $rendered = $view->render();
-    $output = \Drupal::service('renderer')->render($rendered);
+    $output = $this->renderer->render($rendered);
 
     return [
-      ['#markup' => $output]
+      ['#markup' => $output],
     ];
   }
 
@@ -77,6 +87,7 @@ class Os2formsFailedJobsController extends ControllerBase {
    * Add title.
    *
    * @return \Drupal\Core\StringTranslation\TranslatableMarkup
+   *   A translatable string.
    */
   public function title(): TranslatableMarkup {
     return $this->t('Failed jobs');
@@ -87,7 +98,7 @@ class Os2formsFailedJobsController extends ControllerBase {
    *
    * @todo Find a better way to get all jobids related to form, this is quite a load.
    *
-   * @param $formId
+   * @param string $formId
    *   The form to match.
    *
    * @return array
@@ -96,7 +107,7 @@ class Os2formsFailedJobsController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  private function getQueueJobIds($formId): array {
+  private function getQueueJobIds(string $formId): array {
     $submissionIdsFromForm = $this->getSubmissionIdsFromForm($formId);
     $formJobs = [];
     $results = $this->failedJobsHelper->getAllJobs();
@@ -115,19 +126,20 @@ class Os2formsFailedJobsController extends ControllerBase {
   /**
    * Get Submission ids from form id.
    *
-   * @param $formId
+   * @param string $formId
    *   The form id.
    *
-   * @return array|int
+   * @return array
    *   List of submissions.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  private function getSubmissionIdsFromForm($formId) {
-    $query = $this->entityTypeManager->getStorage('webform_submission')->getQuery();
+  private function getSubmissionIdsFromForm(string $formId): array {
+    $query = $this->entityTypeManager->getStorage('webform_submission')->getQuery()->accessCheck(TRUE);
     $query->condition('webform_id', $formId);
 
     return $query->execute();
   }
+
 }

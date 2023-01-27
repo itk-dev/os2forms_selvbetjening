@@ -29,14 +29,22 @@ class Os2formsFailedJobsHelper {
   /**
    * Get job from job id.
    *
-   * @param $jobId
+   * @param int $jobId
    *   The job id.
    *
    * @return array|bool
+   *   A list of attributes related to a job.
    */
-  public function getJobFromId($jobId) {
+  public function getJobFromId(int $jobId) {
     $query = $this->connection->select('advancedqueue', 'a');
-    $query->fields('a', ['payload', 'job_id', 'queue_id', 'type', 'state', 'message']);
+    $query->fields('a', [
+      'payload',
+      'job_id',
+      'queue_id',
+      'type',
+      'state',
+      'message',
+    ]);
     $query->condition('job_id', $jobId, '=');
     return $query->execute()->fetchAssoc();
   }
@@ -44,20 +52,21 @@ class Os2formsFailedJobsHelper {
   /**
    * Get submission id from job.
    *
-   * @param $jobId
+   * @param int $jobId
    *   The job id.
    *
-   * @return void
+   * @return int|mixed
+   *   The id of a form submission from a job.
    */
-  public function getSubmissionIdFromJob($jobId) {
+  public function getSubmissionIdFromJob(int $jobId) {
     $job = $this->getJobFromId($jobId);
-    $payload = json_decode($job['payload'], true);
+    $payload = json_decode($job['payload'], TRUE);
     $submissionId = 0;
 
-    if(array_key_exists('submissionId', $payload)) {
+    if (array_key_exists('submissionId', $payload)) {
       $submissionId = $payload['submissionId'];
     }
-    if(array_key_exists('submission', $payload)) {
+    if (array_key_exists('submission', $payload)) {
       $submissionId = $payload['submission']['id'];
     }
 
@@ -75,4 +84,5 @@ class Os2formsFailedJobsHelper {
     $query->fields('a', ['payload', 'job_id']);
     return $query->execute()->fetchAll();
   }
+
 }

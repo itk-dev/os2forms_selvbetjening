@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Hooks related to os2forms failed jobs module.
+ */
+
+/**
  * Implements hook_views_data().
  */
 function os2forms_failed_jobs_views_data() {

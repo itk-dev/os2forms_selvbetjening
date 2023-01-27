@@ -49,7 +49,7 @@ class RetryJob extends ConfirmFormBase {
   protected EntityTypeManager $entityTypeManager;
 
   /**
-   * Failed jobs helper
+   * Failed jobs helper.
    *
    * @var \Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper
    */
@@ -124,7 +124,7 @@ class RetryJob extends ConfirmFormBase {
       if ($jobFetched['state'] != Job::STATE_FAILURE) {
         throw new \InvalidArgumentException('Only failed jobs can be retried.');
       }
-      $payloadArray = json_decode($jobFetched['payload'], true);
+      $payloadArray = json_decode($jobFetched['payload'], TRUE);
 
       $job = Job::create($jobFetched['type'], $payloadArray);
       $queue = Queue::load($jobFetched['queue_id']);
