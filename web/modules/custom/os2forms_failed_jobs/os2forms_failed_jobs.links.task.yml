@@ -1,0 +1,5 @@
+entity.webform.failed_jobs:
+  title: 'Error log'
+  route_name: entity.webform.error_log
+  parent_id: entity.webform.results
+  weight: 30

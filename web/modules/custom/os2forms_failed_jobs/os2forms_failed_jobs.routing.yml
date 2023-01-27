@@ -1,0 +1,21 @@
+entity.webform.error_log:
+  path: '/admin/structure/webform/manage/{webform}/results/error-log'
+  defaults:
+    _controller: '\Drupal\os2forms_failed_jobs\Controller\Os2formsFailedJobsController::render'
+    _title_callback: '\Drupal\os2forms_failed_jobs\Controller\Os2formsFailedJobsController::title'
+  options:
+    parameters:
+      webform:
+        type: 'entity:webform'
+  requirements:
+    _permission: 'access webform submission log'
+    _entity_access: 'webform.submission_view_any'
+    _custom_access: '\Drupal\webform\Access\WebformEntityAccess:checkLogAccess'
+
+advancedqueue.job.retry:
+  path: /admin/config/system/queues/{advancedqueue_queue}/jobs/{job_id}/retry
+  defaults:
+    _form: \Drupal\os2forms_failed_jobs\Form\RetryJob
+    _title: Retry job
+  requirements:
+    _permission: 'administer advancedqueue'
