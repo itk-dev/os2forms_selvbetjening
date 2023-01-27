@@ -73,6 +73,7 @@ module:
   os2forms_cvr_lookup: 0
   os2forms_dawa: 0
   os2forms_digital_post: 0
+  os2forms_failed_jobs: 0
   os2forms_forloeb: 0
   os2forms_get_organized: 0
   os2forms_nemid: 0
@@ -84,6 +85,7 @@ module:
   os2forms_user_field_lookup: 0
   os2forms_user_menu: 0
   os2forms_webform_list: 0
+  os2forms_webform_submission_log: 0
   os2web_datalookup: 0
   os2web_nemlogin: 0
   os2web_simplesaml: 0
