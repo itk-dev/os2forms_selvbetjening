@@ -46,6 +46,7 @@ class Os2formsFailedJobsHelper {
       'message',
     ]);
     $query->condition('job_id', $jobId, '=');
+
     return $query->execute()->fetchAssoc();
   }
 
@@ -55,22 +56,14 @@ class Os2formsFailedJobsHelper {
    * @param int $jobId
    *   The job id.
    *
-   * @return int|mixed
+   * @return int|null
    *   The id of a form submission from a job.
    */
-  public function getSubmissionIdFromJob(int $jobId) {
+  public function getSubmissionIdFromJob(int $jobId): ?int {
     $job = $this->getJobFromId($jobId);
     $payload = json_decode($job['payload'], TRUE);
-    $submissionId = 0;
 
-    if (array_key_exists('submissionId', $payload)) {
-      $submissionId = $payload['submissionId'];
-    }
-    if (array_key_exists('submission', $payload)) {
-      $submissionId = $payload['submission']['id'];
-    }
-
-    return $submissionId;
+    return $payload['submissionId'] ?? $payload['submission']['id'] ?? NULL;
   }
 
   /**
@@ -82,6 +75,7 @@ class Os2formsFailedJobsHelper {
   public function getAllJobs():array {
     $query = $this->connection->select('advancedqueue', 'a');
     $query->fields('a', ['payload', 'job_id']);
+
     return $query->execute()->fetchAll();
   }
 

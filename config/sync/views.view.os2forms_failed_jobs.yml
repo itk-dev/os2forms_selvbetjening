@@ -10,7 +10,7 @@ _core:
 id: os2forms_failed_jobs
 label: 'OS2forms failed jobs'
 module: views
-description: 'Failed jobs displayed under a forms reulsts tab'
+description: 'Failed jobs displayed under a forms results tab'
 tag: ''
 base_table: advancedqueue
 base_field: job_id

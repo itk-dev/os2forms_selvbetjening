@@ -74,14 +74,10 @@ class Os2formsFailedJobsController extends ControllerBase {
     $view->setDisplay('block_1');
     // Add custom argument that the views_ui cannot provide.
     $formId = $this->requestStack->getCurrentRequest()->get('webform')->id();
-    $view->setArguments($this->getQueueJobIds($formId));
+    $view->setArguments([implode(',', $this->getQueueJobIds($formId))]);
     $view->execute();
-    $rendered = $view->render();
-    $output = $this->renderer->render($rendered);
 
-    return [
-      ['#markup' => $output],
-    ];
+    return $view->render();
   }
 
   /**
@@ -109,7 +105,7 @@ class Os2formsFailedJobsController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   private function getQueueJobIds(string $formId): array {
-    $submissionIdsFromForm = $this->getSubmissionIdsFromForm($formId);
+    $submissionIdsFromForm = $this->getSubmissionsFromForm($formId);
     $formJobs = [];
     $results = $this->failedJobsHelper->getAllJobs();
 
@@ -121,11 +117,11 @@ class Os2formsFailedJobsController extends ControllerBase {
       }
     }
 
-    return [implode(',', $formJobs)];
+    return $formJobs;
   }
 
   /**
-   * Get Submission ids from form id.
+   * Get Submissions from form id.
    *
    * @param string $formId
    *   The form id.
@@ -136,11 +132,13 @@ class Os2formsFailedJobsController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  private function getSubmissionIdsFromForm(string $formId): array {
-    $query = $this->entityTypeManager->getStorage('webform_submission')->getQuery()->accessCheck(TRUE);
-    $query->condition('webform_id', $formId);
-
-    return $query->execute();
+  private function getSubmissionsFromForm(string $formId): array {
+    return $this->entityTypeManager
+      ->getStorage('webform_submission')
+      ->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('webform_id', $formId)
+      ->execute();
   }
 
 }

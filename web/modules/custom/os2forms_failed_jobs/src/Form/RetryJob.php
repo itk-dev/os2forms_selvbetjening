@@ -97,10 +97,11 @@ class RetryJob extends ConfirmFormBase {
    */
   public function getCancelUrl(): Url {
     $submissionId = $this->failedJobsHelper->getSubmissionIdFromJob($this->jobId);
+    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     $submission = $this->entityTypeManager->getStorage('webform_submission')->load($submissionId);
-    $webform = $submission->webform_id->target_id;
+    $webform = $submission->getWebform();
 
-    return Url::fromRoute('entity.webform.error_log', ['webform' => $webform]);
+    return Url::fromRoute('entity.webform.error_log', ['webform' => $webform->id()]);
   }
 
   /**
