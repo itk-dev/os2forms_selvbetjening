@@ -47,6 +47,7 @@ class RetryOperation extends FieldPluginBase {
 
   /**
    * {@inheritdoc}
+   * 
    * @throws \Exception
    */
   public function render(ResultRow $values) {
