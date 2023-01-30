@@ -47,6 +47,7 @@ class RetryOperation extends FieldPluginBase {
 
   /**
    * {@inheritdoc}
+   * @throws \Exception
    */
   public function render(ResultRow $values) {
     $operations = [];
@@ -66,10 +67,13 @@ class RetryOperation extends FieldPluginBase {
       ];
     }
 
-    return [
+    $renderer = $this->getRenderer();
+    $renderArray = [
       '#type' => 'operations',
       '#links' => $operations,
     ];
+
+    return $renderer->render($renderArray);
   }
 
 }

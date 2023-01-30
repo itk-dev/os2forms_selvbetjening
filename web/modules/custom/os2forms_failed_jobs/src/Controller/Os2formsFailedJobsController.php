@@ -55,6 +55,7 @@ class Os2formsFailedJobsController extends ControllerBase {
       $container->get('entity_type.manager'),
       $container->get('Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper'),
       $container->get('request_stack'),
+      $container->get('renderer')
     );
   }
 
