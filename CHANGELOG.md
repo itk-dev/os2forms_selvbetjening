@@ -19,6 +19,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms CVR Lookup
   1.3.0](https://github.com/itk-dev/os2forms_cvr_lookup/releases/tag/1.3.0).
 * Tilføjet os2forms failed jobs
+* Installerede [OS2Forms sync
+  1.0.0](https://github.com/itk-dev/os2forms_sync/releases/tag/1.0.0).
 
 ### Fix
 

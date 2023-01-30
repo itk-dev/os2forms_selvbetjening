@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bb24e100c2b89fe1f3b324cda161f66",
+    "content-hash": "896f804785158691e1bf913f368f2d23",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9311,6 +9311,49 @@
                 "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/1.0.0"
             },
             "time": "2022-12-21T13:05:51+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_sync",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_sync.git",
+                "reference": "c2d627f669c5430353dd32626b6ea0fceebe737c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/c2d627f669c5430353dd32626b6ea0fceebe737c",
+                "reference": "c2d627f669c5430353dd32626b6ea0fceebe737c",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/webform": "^6",
+                "drush/drush": "^10 || ^11",
+                "symfony/options-resolver": "^5.4 || ^6.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "OS2Forms sync",
+            "support": {
+                "issues": "https://github.com/itk-dev/os2forms_sync/issues",
+                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.0.0"
+            },
+            "time": "2023-01-30T09:02:22+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
