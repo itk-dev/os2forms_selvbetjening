@@ -2,6 +2,7 @@
 
 namespace Drupal\os2forms_failed_jobs\Helper;
 
+use Drupal\Core\Database\StatementInterface;
 use Drupal\Core\Database\Connection;
 
 /**
@@ -35,7 +36,7 @@ class Os2formsFailedJobsHelper {
    * @return \Drupal\Core\Database\StatementInterface|null
    *   A list of attributes related to a job.
    */
-  public function getJobFromId(int $jobId): ?\Drupal\Core\Database\StatementInterface {
+  public function getJobFromId(int $jobId): ?StatementInterface {
     $query = $this->connection->select('advancedqueue', 'a');
     $query->fields('a', [
       'payload',
