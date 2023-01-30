@@ -120,7 +120,7 @@ class RetryJob extends ConfirmFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $queue_backend = $this->queue->getBackend();
     if ($queue_backend instanceof Database) {
-      $jobFetched = $this->failedJobsHelper->getJobFromId($this->jobId);
+      $jobFetched = $this->failedJobsHelper->getJobFromId($this->jobId)->fetchAssoc();
 
       if ($jobFetched['state'] != Job::STATE_FAILURE) {
         throw new \InvalidArgumentException('Only failed jobs can be retried.');
