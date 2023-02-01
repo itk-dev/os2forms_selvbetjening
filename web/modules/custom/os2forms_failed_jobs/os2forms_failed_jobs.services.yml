@@ -1,4 +1,4 @@
 services:
-  Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper:
+  Drupal\os2forms_failed_jobs\Helper\Helper:
     arguments:
       - '@database'

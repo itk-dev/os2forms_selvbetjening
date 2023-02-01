@@ -2,7 +2,9 @@ status: true
 dependencies:
   module:
     - advancedqueue
-    - os2forms_failed_jobs
+  enforced:
+    module:
+      - os2forms_failed_jobs
 id: os2forms_failed_jobs
 label: 'OS2forms failed jobs'
 module: views

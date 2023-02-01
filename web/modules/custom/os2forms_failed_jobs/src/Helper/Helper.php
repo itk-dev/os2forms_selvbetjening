@@ -8,7 +8,7 @@ use Drupal\Core\Database\Connection;
 /**
  * Helper for managing failed jobs..
  */
-class Os2formsFailedJobsHelper {
+class Helper {
 
   /**
    * The database connection.

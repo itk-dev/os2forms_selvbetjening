@@ -4,7 +4,9 @@ status: true
 dependencies:
   module:
     - advancedqueue
-    - os2forms_failed_jobs
+  enforced:
+    module:
+      - os2forms_failed_jobs
 _core:
   default_config_hash: Mql_vdg8NZyE1hQjSQZYqrpHIkuAoVMI9_Pmu-EhAeA
 id: os2forms_failed_jobs

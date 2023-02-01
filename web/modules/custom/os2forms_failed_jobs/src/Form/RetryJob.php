@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper;
+use Drupal\os2forms_failed_jobs\Helper\Helper;
 
 /**
  * Provides a confirmation form for retrying a job.
@@ -51,14 +51,14 @@ class RetryJob extends ConfirmFormBase {
   /**
    * Failed jobs helper.
    *
-   * @var \Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper
+   * @var \Drupal\os2forms_failed_jobs\Helper\Helper
    */
-  protected Os2formsFailedJobsHelper $failedJobsHelper;
+  protected Helper $failedJobsHelper;
 
   /**
    * Retry job constructor.
    */
-  public function __construct(Connection $database, EntityTypeManager $entityTypeManager, Os2formsFailedJobsHelper $failedJobsHelper) {
+  public function __construct(Connection $database, EntityTypeManager $entityTypeManager, Helper $failedJobsHelper) {
     $this->database = $database;
     $this->entityTypeManager = $entityTypeManager;
     $this->failedJobsHelper = $failedJobsHelper;
@@ -71,7 +71,7 @@ class RetryJob extends ConfirmFormBase {
     return new static(
       $container->get('database'),
       $container->get('entity_type.manager'),
-      $container->get('Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper'),
+      $container->get(Helper::class),
     );
   }
 

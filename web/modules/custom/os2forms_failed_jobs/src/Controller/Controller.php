@@ -3,7 +3,7 @@
 namespace Drupal\os2forms_failed_jobs\Controller;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper;
+use Drupal\os2forms_failed_jobs\Helper\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\views\Views;
@@ -14,14 +14,14 @@ use Drupal\Core\Render\RendererInterface;
 /**
  * Class ContestantsController.
  */
-class Os2formsFailedJobsController extends ControllerBase {
+class Controller extends ControllerBase {
 
   /**
    * Failed jobs helper.
    *
-   * @var \Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper
+   * @var \Drupal\os2forms_failed_jobs\Helper\Helper
    */
-  protected Os2formsFailedJobsHelper $failedJobsHelper;
+  protected Helper $failedJobsHelper;
 
   /**
    * Request stack.
@@ -40,7 +40,7 @@ class Os2formsFailedJobsController extends ControllerBase {
   /**
    * Failed jobs constructor.
    */
-  public function __construct(EntityTypeManager $entityTypeManager, Os2formsFailedJobsHelper $failedJobsHelper, RequestStack $requestStack, RendererInterface $renderer) {
+  public function __construct(EntityTypeManager $entityTypeManager, Helper $failedJobsHelper, RequestStack $requestStack, RendererInterface $renderer) {
     $this->entityTypeManager = $entityTypeManager;
     $this->failedJobsHelper = $failedJobsHelper;
     $this->requestStack = $requestStack;
@@ -50,10 +50,10 @@ class Os2formsFailedJobsController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): Os2formsFailedJobsController {
+  public static function create(ContainerInterface $container): Controller {
     return new static(
       $container->get('entity_type.manager'),
-      $container->get('Drupal\os2forms_failed_jobs\Helper\Os2formsFailedJobsHelper'),
+      $container->get(Helper::class),
       $container->get('request_stack'),
       $container->get('renderer')
     );
