@@ -2,7 +2,6 @@
 
 namespace Drupal\os2forms_failed_jobs\Form;
 
-use Drupal\advancedqueue\Entity\Queue;
 use Drupal\advancedqueue\Entity\QueueInterface;
 use Drupal\advancedqueue\Job;
 use Drupal\advancedqueue\Plugin\AdvancedQueue\Backend\Database;
@@ -120,23 +119,17 @@ class RetryJob extends ConfirmFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $queue_backend = $this->queue->getBackend();
     if ($queue_backend instanceof Database) {
-      $jobFetched = $this->failedJobsHelper->getJobFromId($this->jobId)->fetchAssoc();
+      $job = $this->failedJobsHelper->getJobFromId($this->jobId);
 
-      if ($jobFetched['state'] != Job::STATE_FAILURE) {
+      if ($job->getState() != Job::STATE_FAILURE) {
         throw new \InvalidArgumentException('Only failed jobs can be retried.');
       }
-      $payloadArray = json_decode($jobFetched['payload'], TRUE);
 
-      $job = Job::create($jobFetched['type'], $payloadArray);
-      $queue = Queue::load($jobFetched['queue_id']);
-      $queue->enqueueJob($job);
+      // Turn job payload into array. It is encoded by advanced queue module.
+      $job->setPayload(json_decode($job->getPayload(), TRUE));
 
-      $this->messenger()->addStatus($this->t('A new job has been added to queue.', [
-        '@job_id' => $this->jobId,
-      ]));
+      $queue_backend->retryJob($job);
       $form_state->setRedirectUrl($this->getCancelUrl());
-
-      $queue_backend->deleteJob($this->jobId);
     }
   }
 

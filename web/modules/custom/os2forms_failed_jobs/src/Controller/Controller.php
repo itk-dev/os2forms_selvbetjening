@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Render\RendererInterface;
 
 /**
- * Class ContestantsController.
+ * Controller for handling failed jobs.
  */
 class Controller extends ControllerBase {
 

@@ -2,7 +2,7 @@
 
 namespace Drupal\os2forms_failed_jobs\Helper;
 
-use Drupal\Core\Database\StatementInterface;
+use Drupal\advancedqueue\Job;
 use Drupal\Core\Database\Connection;
 
 /**
@@ -33,22 +33,19 @@ class Helper {
    * @param int $jobId
    *   The job id.
    *
-   * @return \Drupal\Core\Database\StatementInterface|null
+   * @return \Drupal\advancedqueue\Job
    *   A list of attributes related to a job.
    */
-  public function getJobFromId(int $jobId): ?StatementInterface {
+  public function getJobFromId(int $jobId): Job {
     $query = $this->connection->select('advancedqueue', 'a');
-    $query->fields('a', [
-      'payload',
-      'job_id',
-      'queue_id',
-      'type',
-      'state',
-      'message',
-    ]);
+    $query->fields('a');
     $query->condition('job_id', $jobId, '=');
+    $jobArr = $query->execute()->fetchAssoc();
 
-    return $query->execute();
+    // Match Job constructor id.
+    $jobArr['id'] = $jobArr['job_id'];
+
+    return new Job($jobArr);
   }
 
   /**
@@ -61,8 +58,8 @@ class Helper {
    *   The id of a form submission from a job.
    */
   public function getSubmissionIdFromJob(int $jobId): ?int {
-    $job = $this->getJobFromId($jobId)->fetchAssoc();
-    $payload = json_decode($job['payload'], TRUE);
+    $job = $this->getJobFromId($jobId);
+    $payload = json_decode($job->getPayload(), TRUE);
 
     return $payload['submissionId'] ?? $payload['submission']['id'] ?? NULL;
   }
