@@ -77,7 +77,7 @@ class Controller extends ControllerBase {
     $view->setArguments([implode(',', $this->getQueueJobIds($formId))]);
     $view->execute();
 
-    return $view->render();
+    return $view->render() ?? ['#markup' => $this->t('No failed jobs')];
   }
 
   /**
