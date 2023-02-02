@@ -125,9 +125,6 @@ class RetryJob extends ConfirmFormBase {
         throw new \InvalidArgumentException('Only failed jobs can be retried.');
       }
 
-      // Turn job payload into array. It is encoded by advanced queue module.
-      $job->setPayload(json_decode($job->getPayload(), TRUE));
-
       $queue_backend->retryJob($job);
       $form_state->setRedirectUrl($this->getCancelUrl());
     }

@@ -40,12 +40,15 @@ class Helper {
     $query = $this->connection->select('advancedqueue', 'a');
     $query->fields('a');
     $query->condition('job_id', $jobId, '=');
-    $jobArr = $query->execute()->fetchAssoc();
+    $definition = $query->execute()->fetchAssoc();
 
     // Match Job constructor id.
-    $jobArr['id'] = $jobArr['job_id'];
+    $definition['id'] = $definition['job_id'];
 
-    return new Job($jobArr);
+    // Turn payload into array.
+    $definition['payload'] = json_decode($definition['payload'], TRUE);
+
+    return new Job($definition);
   }
 
   /**
@@ -59,7 +62,7 @@ class Helper {
    */
   public function getSubmissionIdFromJob(int $jobId): ?int {
     $job = $this->getJobFromId($jobId);
-    $payload = json_decode($job->getPayload(), TRUE);
+    $payload = $job->getPayload();
 
     return $payload['submissionId'] ?? $payload['submission']['id'] ?? NULL;
   }
