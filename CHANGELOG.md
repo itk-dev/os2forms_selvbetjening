@@ -20,6 +20,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   1.3.0](https://github.com/itk-dev/os2forms_cvr_lookup/releases/tag/1.3.0).
 * Installerede [OS2Forms sync
   1.0.0](https://github.com/itk-dev/os2forms_sync/releases/tag/1.0.0).
+* Tilføjede danske oversættelser.
 
 ### Fix
 
