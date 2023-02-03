@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "896f804785158691e1bf913f368f2d23",
+    "content-hash": "36ab806f25213a9a10775815612f52a4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8275,6 +8275,47 @@
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.0.2"
             },
             "time": "2022-12-22T20:04:32+00:00"
+        },
+        {
+            "name": "itk-dev/os2forms_failed_jobs",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
+                "reference": "bb92e0b76c27853752f4400947442b6c94f87855"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/bb92e0b76c27853752f4400947442b6c94f87855",
+                "reference": "bb92e0b76c27853752f4400947442b6c94f87855",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/advancedqueue": "^1.0",
+                "drupal/webform": "^6.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4"
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Yde Granath",
+                    "email": "my@aarhus.dk"
+                }
+            ],
+            "description": "Provides list of failed jobs to each form.",
+            "support": {
+                "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.0.0"
+            },
+            "time": "2023-02-03T12:23:34+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
