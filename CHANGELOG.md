@@ -28,6 +28,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Begrænse workflow dropdown til bruger <https://github.com/itk-dev/os2forms_selvbetjening/pull/113>
 * Unpublished indhold kan publiceres igen. <https://github.com/itk-dev/os2forms_selvbetjening/pull/112>
+* Changed spacing in header and footer. <https://github.com/itk-dev/os2forms_selvbetjening/pull/121>
 
 ### Fjernet
 
