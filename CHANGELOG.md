@@ -23,6 +23,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   1.0.0](https://github.com/itk-dev/os2forms_sync/releases/tag/1.0.0).
 * Installerede [Os2forms Failed jobs
   1.0.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.0.0).
+* Tilføjede danske oversættelser.
 
 ### Fix
 
