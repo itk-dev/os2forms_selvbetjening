@@ -246,9 +246,10 @@ class GetOrganizedWebformHandler extends WebformHandlerBase {
     $queue->enqueueJob($job);
 
     $logger_context = [
+      'handler_id' => 'os2forms_get_organized',
       'channel' => 'webform_submission',
       'webform_submission' => $webform_submission,
-      'operation' => 'submission queued (get organized handler)',
+      'operation' => 'submission queued',
     ];
 
     $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $webform_submission->serial()]), $logger_context);
