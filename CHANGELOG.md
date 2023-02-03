@@ -7,6 +7,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ### Tilføjet
 
+* Understøttelse af Næste generation Digital Post (NgDP)
+  ([SF1601](https://digitaliseringskataloget.dk/integration/sf1601)) i
+  webformularhandler.
 * GitHub Action-tjek for at `CHANGELOG.md` er opdateret.
 * Tilføjet at sider (node) med adgang anonym kan besøges af alle anonyme brugere
   og drupal-brugere selvom de ikke har rettigheder til siden (node).

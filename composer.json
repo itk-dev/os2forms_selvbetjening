@@ -67,7 +67,7 @@
         "itk-dev/itkdev-booking": "^1.0",
         "itk-dev/os2forms_cpr_lookup": "^1.6.5",
         "itk-dev/os2forms_cvr_lookup": "^1.1",
-        "itk-dev/os2forms_digital_post": "^1.0",
+        "itk-dev/os2forms_digital_post": "^1.1",
         "itk-dev/os2forms_failed_jobs": "^1.0",
         "itk-dev/os2forms_nemlogin_openid_connect": "^1.0",
         "itk-dev/os2forms_user_field_lookup": "^1.0",
