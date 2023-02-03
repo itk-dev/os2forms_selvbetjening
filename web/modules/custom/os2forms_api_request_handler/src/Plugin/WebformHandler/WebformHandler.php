@@ -139,9 +139,10 @@ class WebformHandler extends WebformHandlerBase {
     $queue->enqueueJob($job);
 
     $logger_context = [
+      'handler_id' => 'os2forms_api_request',
       'channel' => 'webform_submission',
       'webform_submission' => $submission,
-      'operation' => 'submission queued (api request handler)',
+      'operation' => 'submission queued',
     ];
 
     $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $submission->serial()]), $logger_context);

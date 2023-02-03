@@ -14,12 +14,15 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføj conditions til "Mere"-element
 * Tilføjet Api request handler logging.
 * Tilføjet get organized handler logging.
+* Add handler id to errors.
 * Opdaterede til [OS2Forms CPR Lookup
   1.7.0](https://github.com/itk-dev/os2forms_cpr_lookup/releases/tag/1.7.0).
 * Opdaterede til [OS2Forms CVR Lookup
   1.3.0](https://github.com/itk-dev/os2forms_cvr_lookup/releases/tag/1.3.0).
 * Installerede [OS2Forms sync
   1.0.0](https://github.com/itk-dev/os2forms_sync/releases/tag/1.0.0).
+* Installerede [Os2forms Failed jobs
+  1.0.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.0.0).
 * Tilføjede danske oversættelser.
 
 ### Fix
