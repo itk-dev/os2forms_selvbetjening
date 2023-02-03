@@ -58,7 +58,7 @@ class OrganisationHelper {
     if (NULL === $this->sf1500) {
 
       $soapClient = new SoapClient([
-        'cache_expiration_time' => $this->settings->get(SettingsForm::CACHE_EXPIRATION),
+        'cache_expiration_time' => explode(',', $this->settings->get(SettingsForm::CACHE_EXPIRATION)),
       ]);
 
       $options = [
@@ -71,6 +71,8 @@ class OrganisationHelper {
       $sf1514 = new SF1514($soapClient, $options);
 
       $sf1500XMLBuilder = new SF1500XMLBuilder();
+
+      unset($options['sts_applies_to']);
 
       $this->sf1500 = new SF1500($soapClient, $sf1514, $sf1500XMLBuilder, $this->propertyAccessor, $options);
     }
@@ -118,7 +120,7 @@ class OrganisationHelper {
    * Gets Organisation Funktioner from bruger id.
    */
   public function getOrganisationFunktioner(string $brugerId) {
-    return $this->getSF1500()->getOrganisationFunktioner($brugerId);
+    return $this->getSF1500()->getOrganisationFunktionerFromUserId($brugerId);
   }
 
   /**
@@ -150,10 +152,23 @@ class OrganisationHelper {
   }
 
   /**
-   * Gets Person Magistrat from funktions id..
+   * Gets Person Magistrat from funktions id.
    */
   public function getPersonMagistrat($funktionsId) {
     return $this->getSF1500()->getPersonMagistrat($funktionsId);
+  }
+
+  /**
+   * Gets manager info for user id.
+   */
+  public function getManagerInfo($userId) {
+
+    $managerFunktionsTypeId =
+      $this->settings->get(SettingsForm::TEST_MODE)
+        ? $this->settings->get(SettingsForm::ORGANISATION_TEST_LEDER_ROLLE_UUID)
+        : $this->settings->get(SettingsForm::ORGANISATION_PROD_LEDER_ROLLE_UUID);
+
+    return $this->getSF1500()->getManagerBrugerAndFunktionsIdFromUserId($userId, $managerFunktionsTypeId);
   }
 
 }

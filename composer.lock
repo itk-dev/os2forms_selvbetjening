@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad98a5b7f33e9bd6d1e576298ed594d6",
+    "content-hash": "fe0dd6ce2a41b39847ff130cf6384446",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8525,16 +8525,16 @@
         },
         {
             "name": "itk-dev/serviceplatformen",
-            "version": "dev-feature/DW-545-SF1500",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/serviceplatformen.git",
-                "reference": "cb385eab53f22530ed8d50a2a2800157dcd8fc05"
+                "reference": "6e1ea07b2e27cfd1602e9f8fbcf0088d927c1cf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/cb385eab53f22530ed8d50a2a2800157dcd8fc05",
-                "reference": "cb385eab53f22530ed8d50a2a2800157dcd8fc05",
+                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/6e1ea07b2e27cfd1602e9f8fbcf0088d927c1cf9",
+                "reference": "6e1ea07b2e27cfd1602e9f8fbcf0088d927c1cf9",
                 "shasum": ""
             },
             "require": {
@@ -8572,7 +8572,6 @@
             },
             "bin": [
                 "bin/serviceplatformen-sf1500-data-lookup",
-                "bin/serviceplatformen-sf1514-saml-token",
                 "bin/serviceplatformen-sf1601-kombipostafsend"
             ],
             "type": "library",
@@ -8607,9 +8606,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/serviceplatformen/issues",
-                "source": "https://github.com/itk-dev/serviceplatformen/tree/feature/DW-545-SF1500"
+                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.3.0"
             },
-            "time": "2023-01-26T07:56:44+00:00"
+            "time": "2023-02-03T08:18:27+00:00"
         },
         {
             "name": "itk-dev/web_accessibility_statement",
@@ -21787,18 +21786,9 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "itk-dev/serviceplatformen",
-            "version": "dev-feature/DW-545-SF1500",
-            "alias": "1.3.0",
-            "alias_normalized": "1.3.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "itk-dev/serviceplatformen": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -4,6 +4,7 @@ namespace Drupal\os2forms_organisation\Helper;
 
 use Drupal\Core\State\StateInterface;
 use Drupal\os2forms_organisation\Exception\InvalidSettingException;
+use Drupal\os2forms_organisation\Form\SettingsForm;
 
 /**
  * General settings for os2forms_organisation.
@@ -29,11 +30,13 @@ final class Settings implements SettingsInterface {
    * @var array|string[]
    */
   private array $keys = [
-    'test_mode',
-    'authority_cvr',
-    'certificate',
-    'cache_expiration',
-    'organisation_service_endpoint_reference',
+    SettingsForm::TEST_MODE,
+    SettingsForm::AUTHORITY_CVR,
+    SettingsForm::CERTIFICATE,
+    SettingsForm::CACHE_EXPIRATION,
+    SettingsForm::ORGANISATION_SERVICE_ENDPOINT_REFERENCE,
+    SettingsForm::ORGANISATION_TEST_LEDER_ROLLE_UUID,
+    SettingsForm::ORGANISATION_PROD_LEDER_ROLLE_UUID,
   ];
 
   /**

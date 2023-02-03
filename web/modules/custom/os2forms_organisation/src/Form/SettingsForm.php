@@ -16,9 +16,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 final class SettingsForm extends FormBase {
   use StringTranslationTrait;
 
-  public const TEST_MODE = 'test_mode';
   public const AUTHORITY_CVR = 'authority_cvr';
   public const CACHE_EXPIRATION = 'cache_expiration';
+  public const CERTIFICATE = 'certificate';
+  public const TEST_MODE = 'test_mode';
+  public const ORGANISATION_TEST_LEDER_ROLLE_UUID = 'organisation_test_leder_rolle_uuid';
+  public const ORGANISATION_PROD_LEDER_ROLLE_UUID = 'organisation_prod_leder_rolle_uuid';
   public const ORGANISATION_SERVICE_ENDPOINT_REFERENCE = 'organisation_service_endpoint_reference';
 
   /**
@@ -69,17 +72,17 @@ final class SettingsForm extends FormBase {
     $form[self::TEST_MODE] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Test mode'),
-      '#default_value' => $defaultValues['test_mode'] ?? TRUE,
+      '#default_value' => $defaultValues[self::TEST_MODE] ?? TRUE,
     ];
 
     $form[self::AUTHORITY_CVR] = [
       '#type' => 'textfield',
       '#title' => $this->t('Authority CVR'),
       '#required' => TRUE,
-      '#default_value' => $defaultValues['authority_cvr'] ?? NULL,
+      '#default_value' => $defaultValues[self::AUTHORITY_CVR] ?? NULL,
     ];
 
-    $form['certificate'] = [
+    $form[self::CERTIFICATE] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Certificate'),
       '#tree' => TRUE,
@@ -88,15 +91,14 @@ final class SettingsForm extends FormBase {
         '#type' => 'select',
         '#title' => $this->t('Certificate locator type'),
         '#options' => [
-          // @todo Readd this when SF1500 is updated to use Azure key vault for locating certificates.
-    //   'azure_key_vault' => $this->t('Azure key vault'),
+          'azure_key_vault' => $this->t('Azure key vault'),
           'file_system' => $this->t('File system'),
         ],
-        '#default_value' => $defaultValues['certificate']['locator_type'] ?? NULL,
+        '#default_value' => $defaultValues[self::CERTIFICATE]['locator_type'] ?? NULL,
       ],
     ];
 
-    $form['certificate'][CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT] = [
+    $form[self::CERTIFICATE][CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Azure key vault'),
       '#states' => [
@@ -114,18 +116,18 @@ final class SettingsForm extends FormBase {
     ];
 
     foreach ($settings as $key => $info) {
-      $form['certificate'][CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT][$key] = [
+      $form[self::CERTIFICATE][CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT][$key] = [
         '#type' => 'textfield',
         '#title' => $info['title'],
         '#description' => $info['description'] ?? NULL,
-        '#default_value' => $defaultValues['certificate'][CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT][$key] ?? NULL,
+        '#default_value' => $defaultValues[self::CERTIFICATE][CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT][$key] ?? NULL,
         '#states' => [
           'required' => [':input[name="certificate[locator_type]"]' => ['value' => CertificateLocatorHelper::LOCATOR_TYPE_AZURE_KEY_VAULT]],
         ],
       ];
     }
 
-    $form['certificate'][CertificateLocatorHelper::LOCATOR_TYPE_FILE_SYSTEM] = [
+    $form[self::CERTIFICATE][CertificateLocatorHelper::LOCATOR_TYPE_FILE_SYSTEM] = [
       '#type' => 'fieldset',
       '#title' => $this->t('File system'),
       '#states' => [
@@ -135,17 +137,17 @@ final class SettingsForm extends FormBase {
       'path' => [
         '#type' => 'textfield',
         '#title' => $this->t('Path'),
-        '#default_value' => $defaultValues['certificate'][CertificateLocatorHelper::LOCATOR_TYPE_FILE_SYSTEM]['path'] ?? NULL,
+        '#default_value' => $defaultValues[self::CERTIFICATE][CertificateLocatorHelper::LOCATOR_TYPE_FILE_SYSTEM]['path'] ?? NULL,
         '#states' => [
           'required' => [':input[name="certificate[locator_type]"]' => ['value' => CertificateLocatorHelper::LOCATOR_TYPE_FILE_SYSTEM]],
         ],
       ],
     ];
 
-    $form['certificate']['passphrase'] = [
+    $form[self::CERTIFICATE]['passphrase'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Passphrase'),
-      '#default_value' => $defaultValues['certificate']['passphrase'] ?? NULL,
+      '#default_value' => $defaultValues[self::CERTIFICATE]['passphrase'] ?? NULL,
     ];
 
     $form[self::CACHE_EXPIRATION] = [
@@ -153,7 +155,7 @@ final class SettingsForm extends FormBase {
       '#title' => $this->t('Cache expiration modifier'),
       '#required' => TRUE,
       '#default_value' => $defaultValues[self::CACHE_EXPIRATION] ?? NULL,
-      '#description' => $this->t('Should be in GNU date input format, e.g. "tomorrow 7am"'),
+      '#description' => $this->t('Should be in GNU date input format, e.g. "7am, tomorrow 7am". If multiple are provided, they should be separated by comma, and the first upcoming one is used.'),
     ];
 
     $form[self::ORGANISATION_SERVICE_ENDPOINT_REFERENCE] = [
@@ -162,6 +164,20 @@ final class SettingsForm extends FormBase {
       '#required' => TRUE,
       '#default_value' => $defaultValues[self::ORGANISATION_SERVICE_ENDPOINT_REFERENCE] ?? NULL,
       '#description' => $this->t('Probably "http://stoettesystemerne.dk/service/organisation/3", but it may very well change in the future.'),
+    ];
+
+    $form[self::ORGANISATION_TEST_LEDER_ROLLE_UUID] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Leder rolle uuid test'),
+      '#required' => TRUE,
+      '#default_value' => $defaultValues[self::ORGANISATION_TEST_LEDER_ROLLE_UUID] ?? NULL,
+    ];
+
+    $form[self::ORGANISATION_PROD_LEDER_ROLLE_UUID] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Leder rolle uuid produktion'),
+      '#required' => TRUE,
+      '#default_value' => $defaultValues[self::ORGANISATION_PROD_LEDER_ROLLE_UUID] ?? NULL,
     ];
 
     $form['actions']['#type'] = 'actions';
@@ -193,7 +209,10 @@ final class SettingsForm extends FormBase {
 
     // Validate cache expiration.
     try {
-      new \DateTime($values[self::CACHE_EXPIRATION]);
+      $cacheExpirationOptions = explode(',', $values[self::CACHE_EXPIRATION]);
+      foreach ($cacheExpirationOptions as $cacheExpirationOption) {
+        new \DateTime($cacheExpirationOption);
+      }
     }
     catch (\Exception $exception) {
       $formState->setErrorByName(self::CACHE_EXPIRATION, $this->t('Invalid cache expiration: %cache_expiration', ['%cache_expiration' => $values[self::CACHE_EXPIRATION]]));
