@@ -127,7 +127,7 @@
                 "Admin interface to see queued mail": "https://www.drupal.org/files/issues/2020-06-30/3096917-ui-queue-mail-moderate-5.patch"
             },
             "drupal/core": {
-                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2021-09-27/2982052-73.patch"
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch"
             },
             "drupal/openid_connect": {
                 "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
