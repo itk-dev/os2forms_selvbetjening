@@ -88,6 +88,7 @@ module:
   os2forms_user_field_lookup: 0
   os2forms_user_menu: 0
   os2forms_webform_list: 0
+  os2forms_webform_submission_log: 0
   os2web_datalookup: 0
   os2web_nemlogin: 0
   os2web_simplesaml: 0
