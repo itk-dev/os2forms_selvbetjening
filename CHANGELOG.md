@@ -29,6 +29,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Installerede [Os2forms Failed jobs
   1.0.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.0.0).
 * Tilføjede danske oversættelser.
+* Tilføjede patch
+  <https://www.drupal.org/files/issues/2022-03-15/content_entity_revisions-3260602-07.patch>.
 
 ### Fix
 
