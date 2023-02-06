@@ -117,15 +117,8 @@
             "force-reset": true
         },
         "patches": {
-            "drupal/webform": {
-                "Add support for Set to state": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/add-set-to-state-3159806-2-modified-5.19.patch",
-                "Add support for hiding section titles in emails (https://www.drupal.org/project/webform/issues/3307580)": "https://www.drupal.org/files/issues/2022-09-17/3307580-5.patch"
-            },
             "drupal/webform_migrate": {
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
-            },
-            "drupal/queue_mail": {
-                "Admin interface to see queued mail": "https://www.drupal.org/files/issues/2020-06-30/3096917-ui-queue-mail-moderate-5.patch"
             },
             "drupal/core": {
                 "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch"
@@ -135,10 +128,6 @@
             },
             "drupal/config_entity_revisions":  {
                 "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch"
-            },
-            "os2forms/os2forms_forloeb": {
-                "Added support for inheriting values without creating a submission (https://github.com/OS2Forms/os2forms_forloeb/pull/135)": "https://patch-diff.githubusercontent.com/raw/OS2Forms/os2forms_forloeb/pull/135.diff",
-                "Added retry task controller action (https://github.com/OS2Forms/os2forms_forloeb/pull/136)": "https://patch-diff.githubusercontent.com/raw/OS2Forms/os2forms_forloeb/pull/136.diff"
             },
             "drupal/webform_rest": {
                 "Added ability to modify response data sent from Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
