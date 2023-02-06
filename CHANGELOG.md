@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## Under udvikling
 
+## 06.02.2023
+
 ### Tilføjet
 
 * Understøttelse af Næste generation Digital Post (NgDP)
