@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49432ce04ed1cf6e1bceeef82618853c",
+    "content-hash": "3956ecd82168f5379c824a0f5ebfd1fc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9731,16 +9731,16 @@
         },
         {
             "name": "os2forms/os2forms_sync",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_sync.git",
-                "reference": "c2d627f669c5430353dd32626b6ea0fceebe737c"
+                "reference": "0948458a44bfa29f513f819c14d34359751e152a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/c2d627f669c5430353dd32626b6ea0fceebe737c",
-                "reference": "c2d627f669c5430353dd32626b6ea0fceebe737c",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/0948458a44bfa29f513f819c14d34359751e152a",
+                "reference": "0948458a44bfa29f513f819c14d34359751e152a",
                 "shasum": ""
             },
             "require": {
@@ -9768,9 +9768,9 @@
             "description": "OS2Forms sync",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_sync/issues",
-                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.0.0"
+                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.1.0"
             },
-            "time": "2023-01-30T09:02:22+00:00"
+            "time": "2023-02-03T12:12:37+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -21900,7 +21900,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "os2forms/os2forms_organisation": 5
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

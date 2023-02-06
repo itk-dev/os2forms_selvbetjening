@@ -75,7 +75,7 @@
         "os2forms/os2forms_forloeb_profile": "^1.8",
         "os2forms/os2forms_organisation": "^1.0@RC",
         "os2forms/os2forms_rest_api": "^1.0",
-        "os2forms/os2forms_sync": "^1.0"
+        "os2forms/os2forms_sync": "^1.1"
     },
     "require-dev": {
         "drupal/core-dev": "^9.1",
