@@ -9904,16 +9904,16 @@
         },
         {
             "name": "os2forms/os2forms_webform_submission_log",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0-rc.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_webform_submission_log.git",
-                "reference": "86df00f0c4c405f65806157ddd14468ac283b321"
+                "reference": "5c230b63e76b531224d65cb1165bb0c1f5d35391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_webform_submission_log/zipball/86df00f0c4c405f65806157ddd14468ac283b321",
-                "reference": "86df00f0c4c405f65806157ddd14468ac283b321",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_webform_submission_log/zipball/5c230b63e76b531224d65cb1165bb0c1f5d35391",
+                "reference": "5c230b63e76b531224d65cb1165bb0c1f5d35391",
                 "shasum": ""
             },
             "require": {
@@ -9939,9 +9939,9 @@
             "description": "OS2Forms webform submission log",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_webform_submission_log/issues",
-                "source": "https://github.com/itk-dev/os2forms_webform_submission_log/tree/1.0.0-rc1"
+                "source": "https://github.com/itk-dev/os2forms_webform_submission_log/tree/1.0.0-rc.2"
             },
-            "time": "2023-02-06T09:39:48+00:00"
+            "time": "2023-02-06T14:06:50+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
