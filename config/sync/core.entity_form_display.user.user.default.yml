@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_department
     - field.field.user.user.field_is_leader
     - field.field.user.user.field_name
+    - field.field.user.user.field_organisation_user_id
   module:
     - path
     - user
@@ -83,4 +84,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_organisation_user_id: true
   langcode: true

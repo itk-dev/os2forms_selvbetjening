@@ -1,0 +1,26 @@
+uuid: b3d729c9-4b49-4aee-85c9-4e9d9de4f87d
+langcode: da
+status: true
+dependencies:
+  module:
+    - user
+  enforced:
+    module:
+      - os2forms_organisation
+_core:
+  default_config_hash: h2yEFbN0R7JJW26-rbO_Jef08vgnYtJb9hgY6Ruo0zs
+id: user.field_organisation_user_id
+field_name: field_organisation_user_id
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

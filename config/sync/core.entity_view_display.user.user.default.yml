@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_department
     - field.field.user.user.field_is_leader
     - field.field.user.user.field_name
+    - field.field.user.user.field_organisation_user_id
   module:
     - user
 id: user.user.default
@@ -62,4 +63,5 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_organisation_user_id: true
   langcode: true
