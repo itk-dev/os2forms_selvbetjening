@@ -5,6 +5,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## Under udvikling
 
+### Tilføjet
+
+* Installerede [OS2Forms organisation
+  1.0.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.0.0).
+
 ## 06.02.2023
 
 ### Tilføjet

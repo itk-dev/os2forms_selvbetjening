@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63b65e92e3cd32d5ace74b67a95a54eb",
+    "content-hash": "a53ec5d72c701507d70e51859f296f97",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9776,16 +9776,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "1.0.0-rc.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "d054b623b80f558173fec9e695d1e6daeeea3b08"
+                "reference": "481e853a1a3bffc76b187ec19053f3349e424ded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/d054b623b80f558173fec9e695d1e6daeeea3b08",
-                "reference": "d054b623b80f558173fec9e695d1e6daeeea3b08",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/481e853a1a3bffc76b187ec19053f3349e424ded",
+                "reference": "481e853a1a3bffc76b187ec19053f3349e424ded",
                 "shasum": ""
             },
             "require": {
@@ -9814,9 +9814,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.0.0-rc.1"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.0.0"
             },
-            "time": "2023-02-06T09:19:01+00:00"
+            "time": "2023-02-08T08:55:04+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
@@ -22282,7 +22282,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "os2forms/os2forms_organisation": 5,
         "os2forms/os2forms_webform_submission_log": 5
     },
     "prefer-stable": true,
