@@ -80,6 +80,7 @@ module:
   os2forms_nemid: 0
   os2forms_nemlogin_openid_connect: 0
   os2forms_organisation: 0
+  os2forms_organisation_openid_connect: 0
   os2forms_permissions_by_term: 0
   os2forms_rest_api: 0
   os2forms_sbsys: 0
