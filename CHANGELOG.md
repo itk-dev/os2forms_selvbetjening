@@ -14,7 +14,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * os2forms_failed_jobs (1.0.1)
 * os2forms_webform_submission_log (1.0.0)
-* os2forms_digital_post (1.1.1)
+* os2forms_digital_post (1.1.2)
+* Danske oversættelser
 
 ## 06.02.2023
 
