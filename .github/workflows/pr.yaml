@@ -113,13 +113,9 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-      - name: Install Dependencies
-        run: |
-          # Using `--no-scripts` breaks something with mglaman/drupal-check.
-          composer install --no-interaction --no-progress --no-scripts
       - name: drupal-check
         run: |
-          composer code-analysis/drupal-check
+          composer code-analysis
 
   coding-standards-custom-themes:
     name: Yarn - Check Coding Standards in custom themes
