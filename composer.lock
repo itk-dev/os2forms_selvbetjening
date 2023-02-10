@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a53ec5d72c701507d70e51859f296f97",
+    "content-hash": "d2cbf73037da1f9115874f2de24e20ad",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9904,16 +9904,16 @@
         },
         {
             "name": "os2forms/os2forms_webform_submission_log",
-            "version": "1.0.0-rc.2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_webform_submission_log.git",
-                "reference": "5c230b63e76b531224d65cb1165bb0c1f5d35391"
+                "reference": "1610f9403de9f042cef2920a01fa548bc333b612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_webform_submission_log/zipball/5c230b63e76b531224d65cb1165bb0c1f5d35391",
-                "reference": "5c230b63e76b531224d65cb1165bb0c1f5d35391",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_webform_submission_log/zipball/1610f9403de9f042cef2920a01fa548bc333b612",
+                "reference": "1610f9403de9f042cef2920a01fa548bc333b612",
                 "shasum": ""
             },
             "require": {
@@ -9939,9 +9939,9 @@
             "description": "OS2Forms webform submission log",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_webform_submission_log/issues",
-                "source": "https://github.com/itk-dev/os2forms_webform_submission_log/tree/1.0.0-rc.2"
+                "source": "https://github.com/itk-dev/os2forms_webform_submission_log/tree/1.0.0"
             },
-            "time": "2023-02-06T14:06:50+00:00"
+            "time": "2023-02-10T11:06:23+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -22281,9 +22281,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "os2forms/os2forms_webform_submission_log": 5
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
