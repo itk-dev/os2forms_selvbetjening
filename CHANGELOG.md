@@ -10,6 +10,13 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Installerede [OS2Forms organisation
   1.0.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.0.0).
 
+### Opdateret
+
+* os2forms_failed_jobs (1.0.1)
+* os2forms_webform_submission_log (1.0.0)
+* os2forms_digital_post (1.1.2)
+* Danske oversættelser
+
 ## 06.02.2023
 
 ### Tilføjet

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "254632f7dcddf79c41aa42279f2db10d",
+    "content-hash": "e6d29182617fc175c89d74b26f3a66a4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8509,16 +8509,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "b0a9bc8bbea00cd51adb1738aa7b93bd5c537a74"
+                "reference": "f960e9f6637fc10d6293e71ae675f489de3b7440"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/b0a9bc8bbea00cd51adb1738aa7b93bd5c537a74",
-                "reference": "b0a9bc8bbea00cd51adb1738aa7b93bd5c537a74",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/f960e9f6637fc10d6293e71ae675f489de3b7440",
+                "reference": "f960e9f6637fc10d6293e71ae675f489de3b7440",
                 "shasum": ""
             },
             "require": {
@@ -8560,22 +8560,22 @@
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.1.0"
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.1.2"
             },
-            "time": "2023-02-03T13:33:22+00:00"
+            "time": "2023-02-10T12:58:04+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "bb92e0b76c27853752f4400947442b6c94f87855"
+                "reference": "dcb32293635f6b04145d02030884d72bf385d04b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/bb92e0b76c27853752f4400947442b6c94f87855",
-                "reference": "bb92e0b76c27853752f4400947442b6c94f87855",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/dcb32293635f6b04145d02030884d72bf385d04b",
+                "reference": "dcb32293635f6b04145d02030884d72bf385d04b",
                 "shasum": ""
             },
             "require": {
@@ -8601,9 +8601,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.0.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.0.1"
             },
-            "time": "2023-02-03T12:23:34+00:00"
+            "time": "2023-02-09T13:30:52+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -9904,16 +9904,16 @@
         },
         {
             "name": "os2forms/os2forms_webform_submission_log",
-            "version": "1.0.0-rc.2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_webform_submission_log.git",
-                "reference": "5c230b63e76b531224d65cb1165bb0c1f5d35391"
+                "reference": "1610f9403de9f042cef2920a01fa548bc333b612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_webform_submission_log/zipball/5c230b63e76b531224d65cb1165bb0c1f5d35391",
-                "reference": "5c230b63e76b531224d65cb1165bb0c1f5d35391",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_webform_submission_log/zipball/1610f9403de9f042cef2920a01fa548bc333b612",
+                "reference": "1610f9403de9f042cef2920a01fa548bc333b612",
                 "shasum": ""
             },
             "require": {
@@ -9939,9 +9939,9 @@
             "description": "OS2Forms webform submission log",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_webform_submission_log/issues",
-                "source": "https://github.com/itk-dev/os2forms_webform_submission_log/tree/1.0.0-rc.2"
+                "source": "https://github.com/itk-dev/os2forms_webform_submission_log/tree/1.0.0"
             },
-            "time": "2023-02-06T14:06:50+00:00"
+            "time": "2023-02-10T11:06:23+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
@@ -22031,9 +22031,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "os2forms/os2forms_webform_submission_log": 5
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
