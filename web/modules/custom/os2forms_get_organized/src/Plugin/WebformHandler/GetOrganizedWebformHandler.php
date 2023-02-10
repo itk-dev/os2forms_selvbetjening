@@ -29,7 +29,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_REQUIRED,
  * )
  */
-class GetOrganizedWebformHandler extends WebformHandlerBase {
+final class GetOrganizedWebformHandler extends WebformHandlerBase {
   /**
    * The submission logger.
    *

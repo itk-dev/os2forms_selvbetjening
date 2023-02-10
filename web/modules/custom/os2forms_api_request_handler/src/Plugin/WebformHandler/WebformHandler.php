@@ -30,7 +30,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_REQUIRED,
  * )
  */
-class WebformHandler extends WebformHandlerBase {
+final class WebformHandler extends WebformHandlerBase {
   /**
    * The queue id.
    *

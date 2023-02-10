@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Post form submission to API endpoint"),
  * )
  */
-class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterface {
+final class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterface {
   /**
    * The post helper.
    *

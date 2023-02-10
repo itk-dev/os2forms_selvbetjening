@@ -81,7 +81,10 @@
     "require-dev": {
         "drupal/core-dev": "^9.1",
         "drupal/mail_debugger": "^1.4",
-        "mglaman/phpstan-drupal": "^1.1"
+        "mglaman/phpstan-drupal": "^1.1",
+        "phpstan/extension-installer": "^1.2",
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-deprecation-rules": "^1.1"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -191,11 +194,8 @@
         "install-codestandards": [
             "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
         ],
-        "code-analysis/drupal-check": [
-            "vendor/bin/drupal-check --deprecations --analysis web/modules/custom"
-        ],
         "code-analysis": [
-            "@code-analysis/drupal-check"
+	    "vendor/bin/phpstan analyse"
         ],
         "coding-standards-check/phpcs": [
             "vendor/bin/phpcs --standard=phpcs.xml.dist"
@@ -208,9 +208,6 @@
         ],
         "coding-standards-apply": [
             "@coding-standards-apply/phpcs"
-        ],
-        "code-analysis/phpstan": [
-            "vendor/bin/phpstan analyse"
         ]
     }
 }

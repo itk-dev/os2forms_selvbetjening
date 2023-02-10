@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Archive document in GetOrganized"),
  * )
  */
-class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInterface {
+final class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInterface {
   /**
    * The archiving helper.
    *
