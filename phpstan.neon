@@ -1,0 +1,18 @@
+parameters:
+  drupal:
+    drupal_root: /app/web
+  level: 6
+  paths:
+    - web/modules/custom
+  ignoreErrors:
+    -
+      # Ignore some weird errors reported by PHPStan
+      # @todo Investigate further
+      messages:
+        - '#no value type specified in iterable type array.#'
+        - '#has no return type specified.#'
+        - '#with no type specified.#'
+includes:
+    - vendor/mglaman/phpstan-drupal/extension.neon
+    - vendor/mglaman/phpstan-drupal/rules.neon
+
