@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## Under udvikling
 
+## [1.7.0] 13.02.2023
+
 ### Tilføjet
 
 * Installerede [OS2Forms organisation
@@ -104,3 +106,5 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ### Tilføjet
 
 * GO borgersager
+
+[1.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/releases/tag/1.7.0
