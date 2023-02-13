@@ -1,0 +1,25 @@
+uuid: 9a1d0f5f-9b03-478d-940b-97c9c8fb830b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - os2forms_selvbetjening_theme
+id: footer
+theme: os2forms_selvbetjening_theme
+region: footer_third
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

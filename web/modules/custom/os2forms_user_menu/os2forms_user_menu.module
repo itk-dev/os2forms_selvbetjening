@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Hooks for os2forms user menu module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function os2forms_user_menu_theme($existing, $type, $theme, $path) {
+  return [
+    'os2forms_user_menu' => [
+      'variables' => [
+        'login_url' => NULL,
+        'logout_url' => NULL,
+        'name' => NULL,
+      ],
+    ],
+  ];
+}

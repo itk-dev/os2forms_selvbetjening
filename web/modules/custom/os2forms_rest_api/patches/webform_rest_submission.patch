@@ -1,0 +1,107 @@
+diff --git src/Event/WebformSubmissionDataEvent.php src/Event/WebformSubmissionDataEvent.php
+new file mode 100644
+index 0000000..f0561c7
+--- /dev/null
++++ src/Event/WebformSubmissionDataEvent.php
+@@ -0,0 +1,52 @@
++<?php
++
++namespace Drupal\webform_rest\Event;
++
++use Drupal\Component\EventDispatcher\Event;
++use Drupal\webform\WebformSubmissionInterface;
++
++/**
++ * Class WebformSubmissionDataEvent, an event to modify the data part of the response sent from calling GET webform submission.
++ */
++class WebformSubmissionDataEvent extends Event
++{
++  /**
++   * @var WebformSubmissionInterface
++   */
++  private WebformSubmissionInterface $webformSubmission;
++
++  /**
++   * @var array
++   */
++  private array $data;
++
++  /**
++   * Construct for injection dependency.
++   *
++   * @param array $data
++   * @param WebformSubmissionInterface $webformSubmission
++   */
++  public function __construct(WebformSubmissionInterface $webformSubmission, array $data) {
++    $this->webformSubmission = $webformSubmission;
++    $this->setData($data);
++  }
++
++  /**
++   * @return WebformSubmissionInterface
++   */
++  public function getWebformSubmission(): WebformSubmissionInterface
++  {
++        return $this->webformSubmission;
++  }
++
++  public function getData(): array
++  {
++          return $this->data;
++  }
++
++  public function setData(array $data)
++  {
++        $this->data = $data;
++        return $this;
++  }
++}
+diff --git src/Plugin/rest/resource/WebformSubmissionResource.php src/Plugin/rest/resource/WebformSubmissionResource.php
+index d2e08c5..a9cacf7 100644
+--- src/Plugin/rest/resource/WebformSubmissionResource.php
++++ src/Plugin/rest/resource/WebformSubmissionResource.php
+@@ -5,6 +5,7 @@ namespace Drupal\webform_rest\Plugin\rest\resource;
+ use Drupal\webform\WebformSubmissionForm;
+ use Drupal\rest\Plugin\ResourceBase;
+ use Drupal\rest\ModifiedResourceResponse;
++use Drupal\webform_rest\Event\WebformSubmissionDataEvent;
+ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+
+@@ -35,6 +36,13 @@ class WebformSubmissionResource extends ResourceBase {
+    */
+   protected $request;
+
++  /**
++   * An event dispatcher instance to use for dispatching events.
++   *
++   * @var \Symfony\Contracts\EventDispatcher\EventDispatcherInterface
++   */
++  protected $eventDispatcher;
++
+   /**
+    * {@inheritdoc}
+    */
+@@ -42,6 +50,7 @@ class WebformSubmissionResource extends ResourceBase {
+     $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+     $instance->entityTypeManager = $container->get('entity_type.manager');
+     $instance->request = $container->get('request_stack');
++    $instance->eventDispatcher = $container->get('event_dispatcher');
+     return $instance;
+   }
+
+@@ -91,9 +100,13 @@ class WebformSubmissionResource extends ResourceBase {
+         // Grab submission data.
+         $data = $webform_submission->getData();
+
++        // Dispatch WebformSubmissionDataEvent to allow modification of data.
++        $event = new WebformSubmissionDataEvent($webform_submission, $data);
++        $this->eventDispatcher->dispatch($event);
++
+         $response = [
+           'entity' => $webform_submission,
+-          'data' => $data,
++          'data' => $event->getData(),
+         ];
+
+         // Return the submission.

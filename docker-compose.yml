@@ -15,6 +15,8 @@ services:
       - app
     ports:
       - '3306'
+    volumes:
+      - .docker/drupal/dumps:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_USER=db
@@ -29,6 +31,7 @@ services:
     image: itkdev/php7.4-fpm:latest
     networks:
       - app
+      - frontend
     environment:
       - XDEBUG_MODE=${XDEBUG_MODE:-off}
       - XDEBUG_SESSION=${XDEBUG_SESSION:-0}
@@ -86,6 +89,13 @@ services:
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}Mailhog.rule=Host(`mailhog-${COMPOSE_DOMAIN}`)"
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}Mailhog.loadbalancer.server.port=8025"
+
+  node:
+    image: node:16
+    networks:
+      - app
+    volumes:
+      - .:/app:delegated
 
 volumes:
   # Named volume requires that you have NFS shares enabled (performance boost on Macs).

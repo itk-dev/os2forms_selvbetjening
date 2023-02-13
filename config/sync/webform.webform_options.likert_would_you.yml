@@ -1,0 +1,19 @@
+uuid: 177054b2-5d63-4f4f-9804-97a130b1b2ee
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: qBS2TmfAJB37Qn3TnrNM8x4AWimmDapcizzRllgo0fo
+id: likert_would_you
+label: 'Likert: Anbefale'
+category: Likert
+likert: true
+options: |-
+  1: 'Slet ikke'
+  2: 'Måske ikke'
+  3: Usikker
+  4: Måske
+  5: Klart

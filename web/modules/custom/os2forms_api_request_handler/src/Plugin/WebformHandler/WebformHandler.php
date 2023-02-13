@@ -8,6 +8,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\os2forms_api_request_handler\Plugin\AdvancedQueue\JobType\PostSubmission;
 use Drupal\webform\Plugin\WebformHandlerBase;
@@ -38,6 +39,13 @@ class WebformHandler extends WebformHandlerBase {
   private string $queueId = 'os2forms_api_request_handler';
 
   /**
+   * The submission logger.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected LoggerChannelInterface $submissionLogger;
+
+  /**
    * Constructor.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $loggerFactory, ConfigFactoryInterface $configFactory, RendererInterface $renderer, EntityTypeManagerInterface $entityTypeManager, WebformSubmissionConditionsValidatorInterface $conditionsValidator, WebformTokenManagerInterface $tokenManager) {
@@ -49,6 +57,7 @@ class WebformHandler extends WebformHandlerBase {
     $this->entityTypeManager = $entityTypeManager;
     $this->conditionsValidator = $conditionsValidator;
     $this->tokenManager = $tokenManager;
+    $this->submissionLogger = $loggerFactory->get('webform_submission');
   }
 
   /**
@@ -128,6 +137,15 @@ class WebformHandler extends WebformHandlerBase {
       ],
     ]);
     $queue->enqueueJob($job);
+
+    $logger_context = [
+      'handler_id' => 'os2forms_api_request',
+      'channel' => 'webform_submission',
+      'webform_submission' => $submission,
+      'operation' => 'submission queued',
+    ];
+
+    $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $submission->serial()]), $logger_context);
   }
 
   /**

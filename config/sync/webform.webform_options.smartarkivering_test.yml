@@ -1,0 +1,34 @@
+uuid: fc5238f8-9187-4358-9c2c-5f79b62fc62b
+langcode: da
+status: true
+dependencies:
+  module:
+    - os2forms
+    - webform_entity_print
+    - webform_revisions
+third_party_settings:
+  os2forms:
+    os2forms_nemid:
+      webform_type: ''
+      nemlogin_auto_redirect: 1
+  webform_entity_print:
+    template:
+      header: ''
+      footer: ''
+      css: ''
+    export_types:
+      pdf:
+        enabled: true
+        link_text: ''
+        link_attributes: {  }
+      word_docx:
+        enabled: false
+        link_text: ''
+        link_attributes: {  }
+  webform_revisions:
+    contentEntity_id: '27'
+id: smartarkivering_test
+label: null
+category: MKB
+likert: false
+options: ''

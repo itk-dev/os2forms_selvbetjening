@@ -1,0 +1,22 @@
+uuid: e6590f0e-e809-4e14-8c8c-6dd3cc0cf021
+langcode: da
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - os2forms_selvbetjening_theme
+_core:
+  default_config_hash: QTwkfDaGeBUk6aerktJBDXso4fCsqLTQOuWKXE1xMPU
+id: os2forms_selvbetjening_theme_content
+theme: os2forms_selvbetjening_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

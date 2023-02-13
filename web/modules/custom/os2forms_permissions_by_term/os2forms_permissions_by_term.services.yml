@@ -6,6 +6,8 @@ services:
       - '@entity_type.manager'
       - '@current_user'
       - '@config.factory'
+      - '@permissions_by_term.access_check'
+      - '@language_manager'
 
   os2forms_permissions_by_term.maestro_template_helper:
     class: Drupal\os2forms_permissions_by_term\Helper\MaestroTemplateHelper

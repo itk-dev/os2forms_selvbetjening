@@ -5,9 +5,9 @@ dependencies:
   module:
     - itkdev_footer
   theme:
-    - custom_theme
+    - os2forms_selvbetjening_theme
 id: privacyblock
-theme: custom_theme
+theme: os2forms_selvbetjening_theme
 region: footer_second
 weight: -5
 provider: null
