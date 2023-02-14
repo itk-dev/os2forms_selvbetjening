@@ -195,7 +195,7 @@
             "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
         ],
         "code-analysis": [
-	    "vendor/bin/phpstan analyse"
+	        "vendor/bin/phpstan analyse"
         ],
         "coding-standards-check/phpcs": [
             "vendor/bin/phpcs --standard=phpcs.xml.dist"

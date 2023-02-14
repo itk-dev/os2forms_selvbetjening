@@ -1,6 +1,6 @@
 parameters:
   drupal:
-    drupal_root: /app/web
+    drupal_root: %currentWorkingDirectory%
   level: 6
   paths:
     - web/modules/custom
