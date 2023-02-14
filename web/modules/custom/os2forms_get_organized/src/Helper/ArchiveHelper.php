@@ -300,8 +300,7 @@ class ArchiveHelper {
    * Uploads attachment document to GetOrganized case.
    */
   private function uploadDocumentToCase($caseId, $webformAttachmentElementId, WebformSubmission $submission, $shouldBeFinalized) {
-
-    $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
+    $element = $submission->getWebform()->getElement($webformAttachmentElementId);
     $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
 
     // Create temp file with attachment-element contents.
