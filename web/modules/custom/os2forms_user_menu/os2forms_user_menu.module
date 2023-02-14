@@ -8,7 +8,7 @@
 /**
  * Implements hook_theme().
  */
-function os2forms_user_menu_theme($existing, $type, $theme, $path) {
+function os2forms_user_menu_theme(array $existing, string $type, string $theme, string $path): array {
   return [
     'os2forms_user_menu' => [
       'variables' => [

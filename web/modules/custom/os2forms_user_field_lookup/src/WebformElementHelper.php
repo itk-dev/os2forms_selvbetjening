@@ -50,7 +50,7 @@ class WebformElementHelper {
   /**
    * Implements hook_webform_element_configuration_form_alter().
    */
-  public function alterConfigurationForm(&$form, FormStateInterface $form_state) {
+  public function alterConfigurationForm(array &$form, FormStateInterface $form_state) {
     /** @var \Drupal\webform_ui\Form\WebformUiElementFormBase $formObject */
     $formObject = $form_state->getFormObject();
     $elementPlugin = $formObject->getWebformElementPlugin();

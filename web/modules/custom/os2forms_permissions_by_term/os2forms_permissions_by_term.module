@@ -19,7 +19,7 @@ use Drupal\Core\Session\AccountInterface;
  * We need the hook_options_list_alter() in this module to trigger after the one
  * in permissions_by_term module.
  */
-function os2forms_permissions_by_term_module_implements_alter(&$implementations, $hook) {
+function os2forms_permissions_by_term_module_implements_alter(array &$implementations, string $hook) {
   switch ($hook) {
     // Move our hook_options_list_alter() implementation to the end of the list
     // so it is handled after permissions_by_term module.
@@ -63,7 +63,7 @@ function os2forms_permissions_by_term_form_node_form_alter(array &$form, FormSta
  *
  * Deny access to webforms based on permissions_by_term.
  */
-function os2forms_permissions_by_term_webform_access(WebformInterface $webform, $operation, AccountInterface $account) {
+function os2forms_permissions_by_term_webform_access(WebformInterface $webform, string $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.helper')->webformAccess($webform, $operation, $account);
 }
 
@@ -72,7 +72,7 @@ function os2forms_permissions_by_term_webform_access(WebformInterface $webform, 
  *
  * Allow/deny access to node.
  */
-function os2forms_permissions_by_term_node_access(NodeInterface $node, $operation, AccountInterface $account) {
+function os2forms_permissions_by_term_node_access(NodeInterface $node, string $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.helper')->nodeAccess($node, $operation, $account);
 }
 
@@ -99,7 +99,7 @@ function os2forms_permissions_by_term_form_maestro_template_edit_form_alter(arra
  *
  * Deny access to Maestro templates based on permissions_by_term.
  */
-function os2forms_permissions_by_term_maestro_template_access(ConfigEntityInterface $maestroTemplate, $operation, AccountInterface $account) {
+function os2forms_permissions_by_term_maestro_template_access(ConfigEntityInterface $maestroTemplate, string $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.maestro_template_helper')->maestroTemplateAccess($maestroTemplate, $operation, $account);
 }
 
