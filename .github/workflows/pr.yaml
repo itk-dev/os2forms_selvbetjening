@@ -116,7 +116,7 @@ jobs:
       - name: Install Dependencies
         run: |
           # Using `--no-scripts` breaks something with mglaman/drupal-check.
-          composer install --no-interaction --no-progress --no-scripts
+          composer install --no-interaction --no-progress --no-scripts -vvv
       - name: code-analysis
         run: |
           composer code-analysis
