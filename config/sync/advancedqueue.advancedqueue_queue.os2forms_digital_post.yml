@@ -1,0 +1,17 @@
+uuid: f26da4dc-9963-4685-a6de-a3ef138fc741
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - os2forms_digital_post
+_core:
+  default_config_hash: EOhF5Li9zR3Dq-vO3EcPPeiHKUh8ukFHwVwsoDABId8
+id: os2forms_digital_post
+label: 'OSForms digital post'
+backend: database
+backend_configuration:
+  lease_time: 300
+processor: cron
+processing_time: 90
+locked: false

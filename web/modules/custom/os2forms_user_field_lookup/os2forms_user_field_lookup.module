@@ -31,6 +31,6 @@ function os2forms_user_field_lookup_webform_element_translatable_properties_alte
  *
  * @see WebformElementHelper::alterConfigurationForm()
  */
-function os2forms_user_field_lookup_webform_element_configuration_form_alter(&$form, FormStateInterface $form_state) {
+function os2forms_user_field_lookup_webform_element_configuration_form_alter(array &$form, FormStateInterface $form_state) {
   Drupal::service(WebformElementHelper::class)->alterConfigurationForm($form, $form_state);
 }

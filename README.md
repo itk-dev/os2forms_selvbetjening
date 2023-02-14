@@ -238,3 +238,24 @@ An admin message (shown only on admin pages) can be defined in
 $settings['os2forms_selvbetjening']['admin_message'] = 'This is a <strong>test system</strong>';
 $settings['os2forms_selvbetjening']['admin_message_style'] = 'padding: 1em; background-color: red; color: yellow;';
 ```
+
+## Translations
+
+Import translations by running
+
+```sh
+docker-compose exec --workdir /app/web phpfpm ../vendor/bin/drush locale:import --type=customized --override=none da ../translations/translations.da.po
+```
+
+Export translations by running
+
+```sh
+docker-compose exec --workdir /app/web phpfpm ../vendor/bin/drush locale:export da --types=customized > ./translations/translations.da.po
+```
+
+Open `translations/translations.da.po` with the latest version of
+[Poedit](https://poedit.net/) to clean up and then save the file.
+
+See
+<https://medium.com/limoengroen/how-to-deploy-drupal-interface-translations-5653294c4af6>
+for further details.

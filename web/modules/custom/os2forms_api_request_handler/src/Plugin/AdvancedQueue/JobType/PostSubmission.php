@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Post form submission to API endpoint"),
  * )
  */
-class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterface {
+final class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterface {
   /**
    * The post helper.
    *
@@ -72,9 +72,10 @@ class PostSubmission extends JobTypeBase implements ContainerFactoryPluginInterf
       /** @var \Drupal\webform\WebformSubmissionInterface $webformSubmission */
       $webformSubmission = WebformSubmission::load($payload['submission']['id']);
       $logger_context = [
+        'handler_id' => 'os2forms_api_request',
         'channel' => 'webform_submission',
         'webform_submission' => $webformSubmission,
-        'operation' => 'response from queue (api request handler)',
+        'operation' => 'response from queue',
       ];
 
       try {

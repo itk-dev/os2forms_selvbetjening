@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Archive document in GetOrganized"),
  * )
  */
-class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInterface {
+final class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInterface {
   /**
    * The archiving helper.
    *
@@ -73,9 +73,10 @@ class ArchiveDocument extends JobTypeBase implements ContainerFactoryPluginInter
       /** @var \Drupal\webform\WebformSubmissionInterface $webformSubmission */
       $webformSubmission = WebformSubmission::load($payload['submissionId']);
       $logger_context = [
+        'handler_id' => 'os2forms_get_organized',
         'channel' => 'webform_submission',
         'webform_submission' => $webformSubmission,
-        'operation' => 'response from queue (get organized handler)',
+        'operation' => 'response from queue',
       ];
 
       try {

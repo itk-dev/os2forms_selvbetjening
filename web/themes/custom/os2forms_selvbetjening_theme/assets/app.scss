@@ -3,7 +3,8 @@
 }
 
 .logo img {
-  max-height: 90px;
+  max-height: 60px;
+  margin-bottom: 1em;
 }
 
 .footer {
@@ -12,11 +13,33 @@
   padding: 1.5rem 0 0;
 
   .layout-container {
-    display: flex;
-    align-items: center;
+    display: block;
+    width: 100%;
 
     & > div {
-      flex: 25%;
+      display: block;
+      width: 25%;
+      float: left;
+      box-sizing: border-box;
+      padding: 0 1em;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+        padding: 0;
+
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
     }
   }
 
@@ -39,6 +62,10 @@
         position: relative;
         display: block;
         padding: 10px 15px;
+
+        @media only screen and (max-width: 600px) {
+          padding: 0;
+        }
       }
     }
   }

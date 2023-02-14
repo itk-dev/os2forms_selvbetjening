@@ -27,8 +27,7 @@ class FormHelper {
   /**
    * Allows altering of forms.
    */
-  public function formAlter(&$form, FormStateInterface $form_state, $form_id) {
-
+  public function formAlter(array &$form, FormStateInterface $form_state, string $form_id) {
     // Add description to the message body section of the email handler.
     if ('webform_handler_form' === $form_id && 'email' === ($form['#webform_handler_plugin_id'] ?? NULL)) {
 

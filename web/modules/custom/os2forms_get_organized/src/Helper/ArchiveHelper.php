@@ -257,7 +257,7 @@ class ArchiveHelper {
   /**
    * Creates citizen parent case in GetOrganized.
    */
-  private function createCitizenCase($cprElementValue, $cprNameElementValue) {
+  private function createCitizenCase(string $cprElementValue, string $cprNameElementValue) {
 
     $metadataArray = [
       'ows_Title' => $cprElementValue . ' - ' . $cprNameElementValue,
@@ -278,8 +278,7 @@ class ArchiveHelper {
   /**
    * Creates citizen subcase in GetOrganized.
    */
-  private function createSubCase($caseId, string $caseName) {
-
+  private function createSubCase(string $caseId, string $caseName) {
     $metadataArray = [
       'ows_Title' => $caseName,
       'ows_CCMParentCase' => $caseId,
@@ -299,9 +298,8 @@ class ArchiveHelper {
   /**
    * Uploads attachment document to GetOrganized case.
    */
-  private function uploadDocumentToCase($caseId, $webformAttachmentElementId, WebformSubmission $submission, $shouldBeFinalized) {
-
-    $element = $submission->getWebform()->getElement($webformAttachmentElementId, $submission);
+  private function uploadDocumentToCase(string $caseId, string $webformAttachmentElementId, WebformSubmission $submission, bool $shouldBeFinalized) {
+    $element = $submission->getWebform()->getElement($webformAttachmentElementId);
     $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
 
     // Create temp file with attachment-element contents.

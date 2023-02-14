@@ -1,0 +1,25 @@
+uuid: 7a098f08-44b7-415c-9646-78f3b143710f
+langcode: da
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_organisation_user_id
+  module:
+    - user
+  enforced:
+    module:
+      - os2forms_organisation
+_core:
+  default_config_hash: ffdT8VEjHdVsnIEpixBWJ6VRBuhSvzS0ihQMWgodKmw
+id: user.user.field_organisation_user_id
+field_name: field_organisation_user_id
+entity_type: user
+bundle: user
+label: 'Organisation user ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

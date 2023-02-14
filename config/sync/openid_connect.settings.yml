@@ -14,6 +14,7 @@ userinfo_mappings:
   field_department: department
   field_is_leader: is_leader
   field_name: full_name
+  field_organisation_user_id: organisation_user_id
 role_mappings:
   administrator: {  }
   flow_designer: {  }
