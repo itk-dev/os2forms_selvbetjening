@@ -22,7 +22,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
  *   category = @Translation("OS2Forms")
  * )
  */
-class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface {
+final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInterface {
   use StringTranslationTrait;
 
   /**

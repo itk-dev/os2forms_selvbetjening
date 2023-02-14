@@ -1,0 +1,13 @@
+parameters:
+  drupal:
+    drupal_root: %currentWorkingDirectory%
+  level: 6
+  paths:
+    - web/modules/custom
+  ignoreErrors:
+    -
+      # Ignore some weird errors reported by PHPStan
+      messages:
+        - '#no value type specified in iterable type array.#'
+        - '#has no return type specified.#'
+

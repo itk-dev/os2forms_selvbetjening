@@ -11,6 +11,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Installerede [OS2Forms organisation
   1.0.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.0.0).
+* Phpstan config
 
 ### Opdateret
 

@@ -38,7 +38,6 @@ class UserFieldElement extends TextField {
         if ($user->hasField($fieldName)) {
           $value = $user->get($fieldName)->value;
           if (!empty($value)) {
-            // @phpstan-ignore-next-line
             $element['#value'] = is_scalar($value) ? $value : json_encode($value);
             NestedArray::setValue($form['elements'], $element['#webform_parents'], $element);
           }
