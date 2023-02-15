@@ -1,19 +1,17 @@
-# itk-version: 2.1.0
+# itk-version: 3.0.0
 version: "3"
 
 services:
   phpfpm:
     environment:
-      - PHP_MAILHOG_ENABLE=true
-      - PHP_MAILHOG_SERVER=mailhog
-      - PHP_MAILHOG_PORT=1025
+      - PHP_SENDMAIL_PATH='/usr/local/bin/mhsendmail --smtp-addr="mailhog:1025"'
 
   nginx:
     labels:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=ITKBasicAuth@file"
 
   mailhog:
-    image: mailhog/mailhog
+    image: itkdev/mailhog
     networks:
       - app
       - frontend
