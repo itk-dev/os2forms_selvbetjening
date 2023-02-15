@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e291fda39782b2df56dcc2d9482be89",
+    "content-hash": "d6d230b1aa2d75ec25b9822629b4ee53",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1411,28 +1411,30 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v0.8.6",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5"
+                "reference": "5031045d9640b38cfc14aac9667470df09c9e090"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/db91d81866c69a42dad1d2926f61515a1e3f42c5",
-                "reference": "db91d81866c69a42dad1d2926f61515a1e3f42c5",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/5031045d9640b38cfc14aac9667470df09c9e090",
+                "reference": "5031045d9640b38cfc14aac9667470df09c9e090",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "phenx/php-font-lib": "^0.5.2",
-                "phenx/php-svg-lib": "^0.3.3",
-                "php": "^7.1"
+                "phenx/php-font-lib": "^0.5.4",
+                "phenx/php-svg-lib": "^0.3.3 || ^0.4.0",
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
+                "ext-json": "*",
+                "ext-zip": "*",
                 "mockery/mockery": "^1.3",
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^7.5 || ^8 || ^9",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
@@ -1442,11 +1444,6 @@
                 "ext-zlib": "Needed for pdf stream compression"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "0.7-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Dompdf\\": "src/"
@@ -1477,9 +1474,9 @@
             "homepage": "https://github.com/dompdf/dompdf",
             "support": {
                 "issues": "https://github.com/dompdf/dompdf/issues",
-                "source": "https://github.com/dompdf/dompdf/tree/master"
+                "source": "https://github.com/dompdf/dompdf/tree/v1.2.2"
             },
-            "time": "2020-08-30T22:54:22+00:00"
+            "time": "2022-04-27T13:50:54+00:00"
         },
         {
             "name": "drupal/admin_audit_trail",
@@ -6471,10 +6468,6 @@
             ],
             "authors": [
                 {
-                    "name": "Nelson Alves",
-                    "homepage": "https://www.drupal.org/user/3557178"
-                },
-                {
                     "name": "dgaspara",
                     "homepage": "https://www.drupal.org/user/3557179"
                 },
@@ -6485,6 +6478,14 @@
                 {
                     "name": "joaomarques736",
                     "homepage": "https://www.drupal.org/user/3557181"
+                },
+                {
+                    "name": "Miguelpamferreira",
+                    "homepage": "https://www.drupal.org/user/3548054"
+                },
+                {
+                    "name": "nsalves",
+                    "homepage": "https://www.drupal.org/user/3557178"
                 }
             ],
             "description": "Allows retrieving webform elements and submitting webforms via REST",
@@ -8242,6 +8243,53 @@
             "time": "2021-02-08T11:39:53+00:00"
         },
         {
+            "name": "itk-dev/beskedfordeler-drupal",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/beskedfordeler-drupal.git",
+                "reference": "1e7763d1e70184d33b8b46f2435b5cac9b5f551b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/1e7763d1e70184d33b8b46f2435b5cac9b5f551b",
+                "reference": "1e7763d1e70184d33b8b46f2435b5cac9b5f551b",
+                "shasum": ""
+            },
+            "require": {
+                "drush/drush": "^10 || ^11"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "wsdltophp/packagegenerator": "^4.0"
+            },
+            "type": "drupal-module",
+            "autoload": {
+                "psr-4": {
+                    "ItkDev\\Beskedfordeler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "Beskedfordeler for Drupal",
+            "support": {
+                "issues": "https://github.com/itk-dev/beskedfordeler-drupal/issues",
+                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.1.0"
+            },
+            "time": "2023-02-14T08:19:13+00:00"
+        },
+        {
             "name": "itk-dev/drupal_psr6_cache",
             "version": "1.0.0",
             "source": {
@@ -8511,23 +8559,24 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "f960e9f6637fc10d6293e71ae675f489de3b7440"
+                "reference": "3a3b29e34874941272d47be664958d35e540309c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/f960e9f6637fc10d6293e71ae675f489de3b7440",
-                "reference": "f960e9f6637fc10d6293e71ae675f489de3b7440",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/3a3b29e34874941272d47be664958d35e540309c",
+                "reference": "3a3b29e34874941272d47be664958d35e540309c",
                 "shasum": ""
             },
             "require": {
-                "dompdf/dompdf": "~0.8.0",
+                "dompdf/dompdf": "~0.8.0 || ^1.0",
                 "drupal/webform": "^6.0",
                 "ext-soap": "*",
                 "http-interop/http-factory-guzzle": "^1.0.0",
+                "itk-dev/beskedfordeler-drupal": "^1.0",
                 "itk-dev/os2forms_cpr_lookup": "^1.6",
                 "itk-dev/serviceplatformen": "^1.2",
                 "os2forms/os2forms": "^3.0",
@@ -8562,9 +8611,9 @@
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.1.2"
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.2.0"
             },
-            "time": "2023-02-10T12:58:04+00:00"
+            "time": "2023-02-15T08:49:44+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
@@ -22129,7 +22178,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.4.0 || ~8.0.0"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
