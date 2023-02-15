@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## Under udvikling
 
+* Remove dompdf
+
 ## [1.7.0] 13.02.2023
 
 ### Tilføjet
