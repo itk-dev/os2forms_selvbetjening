@@ -5,7 +5,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## Under udvikling
 
+### Opdateret
+
 * Remove dompdf
+* Opdaterede docker compose-setup.
 
 ## [1.7.0] 13.02.2023
 
