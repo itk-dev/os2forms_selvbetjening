@@ -7,6 +7,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ### Opdateret
 
+* os2forms_digital_post (1.2.0)
 * Remove dompdf
 * Opdaterede docker compose-setup.
 
