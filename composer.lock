@@ -8443,16 +8443,16 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "468dca8b9339a1860e40133d7cfb5ec9b87c92c3"
+                "reference": "995dee04629b5f431d648a07e5b60c757fb62c6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/468dca8b9339a1860e40133d7cfb5ec9b87c92c3",
-                "reference": "468dca8b9339a1860e40133d7cfb5ec9b87c92c3",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/995dee04629b5f431d648a07e5b60c757fb62c6d",
+                "reference": "995dee04629b5f431d648a07e5b60c757fb62c6d",
                 "shasum": ""
             },
             "require": {
@@ -8495,9 +8495,9 @@
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.2.1"
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.2.2"
             },
-            "time": "2023-02-16T08:59:24+00:00"
+            "time": "2023-02-16T10:40:37+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
