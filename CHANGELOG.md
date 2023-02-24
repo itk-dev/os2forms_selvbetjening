@@ -10,6 +10,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * os2forms_digital_post (1.2.0)
 * Remove dompdf
 * Opdaterede docker compose-setup.
+* Behandl digital post-køer via rigtig [`cron`](https://en.wikipedia.org/wiki/Cron).
 
 ## [1.7.0] 13.02.2023
 
