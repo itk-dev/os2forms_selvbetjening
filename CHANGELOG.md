@@ -3,7 +3,9 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
-## Under udvikling
+## [Under udvikling]
+
+## [1.7.1] 24.02.2023
 
 * Behandl digital post-køer via rigtig [`cron`](https://en.wikipedia.org/wiki/Cron).
 
@@ -109,4 +111,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...HEAD
+[1.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/releases/tag/1.7.0
