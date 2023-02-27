@@ -1,8 +1,8 @@
-diff --git src/Event/WebformSubmissionDataEvent.php src/Event/WebformSubmissionDataEvent.php
+diff --git a/src/Event/WebformSubmissionDataEvent.php b/src/Event/WebformSubmissionDataEvent.php
 new file mode 100644
-index 0000000..f0561c7
+index 0000000..c378f45
 --- /dev/null
-+++ src/Event/WebformSubmissionDataEvent.php
++++ b/src/Event/WebformSubmissionDataEvent.php
 @@ -0,0 +1,52 @@
 +<?php
 +
@@ -56,10 +56,10 @@ index 0000000..f0561c7
 +        return $this;
 +  }
 +}
-diff --git src/Plugin/rest/resource/WebformSubmissionResource.php src/Plugin/rest/resource/WebformSubmissionResource.php
+diff --git a/src/Plugin/rest/resource/WebformSubmissionResource.php b/src/Plugin/rest/resource/WebformSubmissionResource.php
 index d2e08c5..a9cacf7 100644
---- src/Plugin/rest/resource/WebformSubmissionResource.php
-+++ src/Plugin/rest/resource/WebformSubmissionResource.php
+--- a/src/Plugin/rest/resource/WebformSubmissionResource.php
++++ b/src/Plugin/rest/resource/WebformSubmissionResource.php
 @@ -5,6 +5,7 @@ namespace Drupal\webform_rest\Plugin\rest\resource;
  use Drupal\webform\WebformSubmissionForm;
  use Drupal\rest\Plugin\ResourceBase;
@@ -67,11 +67,11 @@ index d2e08c5..a9cacf7 100644
 +use Drupal\webform_rest\Event\WebformSubmissionDataEvent;
  use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  use Symfony\Component\DependencyInjection\ContainerInterface;
-
+ 
 @@ -35,6 +36,13 @@ class WebformSubmissionResource extends ResourceBase {
     */
    protected $request;
-
+ 
 +  /**
 +   * An event dispatcher instance to use for dispatching events.
 +   *
@@ -89,11 +89,11 @@ index d2e08c5..a9cacf7 100644
 +    $instance->eventDispatcher = $container->get('event_dispatcher');
      return $instance;
    }
-
+ 
 @@ -91,9 +100,13 @@ class WebformSubmissionResource extends ResourceBase {
          // Grab submission data.
          $data = $webform_submission->getData();
-
+ 
 +        // Dispatch WebformSubmissionDataEvent to allow modification of data.
 +        $event = new WebformSubmissionDataEvent($webform_submission, $data);
 +        $this->eventDispatcher->dispatch($event);
@@ -103,5 +103,5 @@ index d2e08c5..a9cacf7 100644
 -          'data' => $data,
 +          'data' => $event->getData(),
          ];
-
+ 
          // Return the submission.

@@ -134,7 +134,7 @@
                 "https://www.drupal.org/project/config_entity_revisions/issues/3260602": "https://www.drupal.org/files/issues/2022-03-15/content_entity_revisions-3260602-07.patch"
             },
             "drupal/webform_rest": {
-                "Added ability to modify response data sent from Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
+                "Added ability to modify response data sent from Webform Submission endpoint": "patches/webform_rest_submission.patch"
             }
         },
         "installer-paths": {

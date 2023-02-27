@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6d230b1aa2d75ec25b9822629b4ee53",
+    "content-hash": "ee683fc749ddd1fb2461f80c1cf9d88d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3043,6 +3043,10 @@
                     "name": "Brian Gilbert (realityloop).",
                     "homepage": "https://www.drupal.org/u/realityloop",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "lhangea",
+                    "homepage": "https://www.drupal.org/user/2743803"
                 },
                 {
                     "name": "miro_dietiker",
