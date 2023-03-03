@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6d230b1aa2d75ec25b9822629b4ee53",
+    "content-hash": "a941525fd19c14f46574aeb3f36a29e8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3043,6 +3043,10 @@
                     "name": "Brian Gilbert (realityloop).",
                     "homepage": "https://www.drupal.org/u/realityloop",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "lhangea",
+                    "homepage": "https://www.drupal.org/user/2743803"
                 },
                 {
                     "name": "miro_dietiker",
@@ -9751,19 +9755,20 @@
         },
         {
             "name": "os2forms/os2forms_rest_api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
-                "reference": "932335e43907634c4b4cb261e33f6c05c855d0cf"
+                "reference": "f84e10fcc990a3961925a9f9de5886213a3f43a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/932335e43907634c4b4cb261e33f6c05c855d0cf",
-                "reference": "932335e43907634c4b4cb261e33f6c05c855d0cf",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/f84e10fcc990a3961925a9f9de5886213a3f43a8",
+                "reference": "f84e10fcc990a3961925a9f9de5886213a3f43a8",
                 "shasum": ""
             },
             "require": {
+                "cweagans/composer-patches": "^1.7",
                 "drupal/key_auth": "^2.0",
                 "drupal/webform_rest": "^4.0"
             },
@@ -9773,6 +9778,14 @@
                 "mglaman/drupal-check": "^1.4"
             },
             "type": "drupal-module",
+            "extra": {
+                "enable-patching": true,
+                "patches": {
+                    "drupal/webform_rest": {
+                        "Added ability to modify response data sent from Webform Submission endpoint": "https://raw.githubusercontent.com/OS2Forms/os2forms_rest_api/1.1.0/patches/webform_rest_submission.patch"
+                    }
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -9786,9 +9799,9 @@
             "description": "OS2Forms REST API",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
-                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/1.0.0"
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/1.1.0"
             },
-            "time": "2022-12-21T13:05:51+00:00"
+            "time": "2023-03-03T14:37:31+00:00"
         },
         {
             "name": "os2forms/os2forms_sync",

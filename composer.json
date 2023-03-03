@@ -73,7 +73,7 @@
         "itk-dev/web_accessibility_statement": "^1.0",
         "os2forms/os2forms_forloeb_profile": "^1.8",
         "os2forms/os2forms_organisation": "^1.0",
-        "os2forms/os2forms_rest_api": "^1.0",
+        "os2forms/os2forms_rest_api": "^1.1",
         "os2forms/os2forms_sync": "^1.1",
         "os2forms/os2forms_webform_submission_log": "^1.0"
     },
@@ -132,9 +132,6 @@
             "drupal/config_entity_revisions":  {
                 "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch",
                 "https://www.drupal.org/project/config_entity_revisions/issues/3260602": "https://www.drupal.org/files/issues/2022-03-15/content_entity_revisions-3260602-07.patch"
-            },
-            "drupal/webform_rest": {
-                "Added ability to modify response data sent from Webform Submission endpoint": "web/modules/custom/os2forms_rest_api/patches/webform_rest_submission.patch"
             }
         },
         "installer-paths": {
