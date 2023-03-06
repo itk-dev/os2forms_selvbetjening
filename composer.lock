@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a941525fd19c14f46574aeb3f36a29e8",
+    "content-hash": "cefa677d496b4d45161a1ff3a10ee5f5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6490,6 +6490,58 @@
             "homepage": "https://www.drupal.org/project/webform_scheduled_tasks",
             "support": {
                 "source": "https://git.drupalcode.org/project/webform_scheduled_tasks"
+            }
+        },
+        {
+            "name": "drupal/webform_translation_permissions",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webform_translation_permissions.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_translation_permissions-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "352835651c558cf28bf5ddd268444861fe9e1b22"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10",
+                "drupal/webform": "^5.15 || ^6.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1674507816",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Holmes",
+                    "homepage": "https://www.drupal.org/u/rob-holmes",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Stefanos Petrakis",
+                    "homepage": "https://www.drupal.org/u/stefanospetrakis",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "(More) granular permissions to translate webforms.",
+            "homepage": "https://drupal.org/project/webform_translation_permissions",
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform_translation_permissions",
+                "issues": "https://www.drupal.org/project/issues/webform_translation_permissions?version=8.x"
             }
         },
         {

@@ -61,6 +61,7 @@
         "drupal/openid_connect": "^2.0",
         "drupal/system_status": "^2.9",
         "drupal/webform_remote_select": "^1.0",
+        "drupal/webform_translation_permissions": "^2.0",
         "drush/drush": "^10.6",
         "itk-dev/getorganized-api-client-php": "^1.0",
         "itk-dev/itkdev-booking": "^1.0",
