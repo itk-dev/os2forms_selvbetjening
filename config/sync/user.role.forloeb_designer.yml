@@ -73,6 +73,7 @@ permissions:
   - 'revert webform revisions'
   - 'search content'
   - 'translate own webform'
+  - 'translate any webform'
   - 'use advanced search'
   - 'use text format full_html'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
