@@ -72,7 +72,6 @@ permissions:
   - 'edit webform twig'
   - 'revert webform revisions'
   - 'search content'
-  - 'translate any webform'
   - 'translate own webform'
   - 'use advanced search'
   - 'use text format full_html'

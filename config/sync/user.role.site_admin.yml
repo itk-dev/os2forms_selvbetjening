@@ -121,7 +121,6 @@ permissions:
   - 'revert forloebsside revisions'
   - 'revert webform revisions'
   - 'search content'
-  - 'translate any webform'
   - 'translate interface'
   - 'translate own webform'
   - 'use advanced search'
