@@ -26,6 +26,7 @@ dependencies:
     - webform_revisions
     - webform_submission_log
     - webform_templates
+    - webform_translation_permissions
     - workflow_participants
 id: site_admin
 label: 'Site admin'
@@ -120,7 +121,9 @@ permissions:
   - 'revert forloebsside revisions'
   - 'revert webform revisions'
   - 'search content'
+  - 'translate any webform'
   - 'translate interface'
+  - 'translate own webform'
   - 'use advanced search'
   - 'use text format full_html'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'

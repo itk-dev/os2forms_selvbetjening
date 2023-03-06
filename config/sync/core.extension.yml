@@ -139,6 +139,7 @@ module:
   webform_submission_export_import: 0
   webform_submission_log: 0
   webform_templates: 0
+  webform_translation_permissions: 0
   webform_ui: 0
   workflow_participants: 0
   workflows: 0
