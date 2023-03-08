@@ -185,7 +185,6 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "vendor/bin/drush webform:libraries:download",
             "@install-codestandards"
         ],
         "install-codestandards": [
