@@ -162,7 +162,7 @@ class Helper {
   /**
    * Get webform id from submission.
    *
-   * @param string $submissionId
+   * @param int $submissionId
    *   Id of a submission.
    *
    * @return \Drupal\webform\WebformSubmissionInterface
@@ -171,7 +171,7 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  private function getWebformSubmission(string $submissionId): WebformSubmissionInterface {
+  private function getWebformSubmission(int $submissionId): WebformSubmissionInterface {
     return $this->entityTypeManager->getStorage('webform_submission')->load($submissionId);
   }
 
