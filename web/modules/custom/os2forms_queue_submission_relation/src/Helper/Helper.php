@@ -2,9 +2,13 @@
 
 namespace Drupal\os2forms_queue_submission_relation\Helper;
 
+use Drupal\advancedqueue\Event\JobEvent;
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Logger\LoggerChannelFactory;
+use Drupal\webform\WebformSubmissionInterface;
 
 /**
  * The helper class for os2forms_queue_submission_relation module.
@@ -49,24 +53,66 @@ class Helper {
   }
 
   /**
+   * Handle a job from the AdvancedQueueProcessSubscriber.
+   *
+   * @param \Drupal\advancedqueue\Event\JobEvent $event
+   *   The job about to be processed.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function handleJob(JobEvent $event): void {
+    $data = $this->getDataFromPayload($event->getJob()->getPayload());
+    if ($data) {
+      $data['job_id'] = (int) $event->getJob()->getId();
+      $this->updateRelation($data);
+    }
+  }
+
+  /**
+   * Handle importing advanced queue jobs through a command.
+   *
+   * @return void
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function handleImport(): void {
+    $jobs = $this->getAllQueueJobs();
+    foreach ($jobs as $job) {
+      $payload = json_decode($job->payload, TRUE);
+      $data = $this->getDataFromPayload($payload);
+      if ($data) {
+        $data['job_id'] = (int) $job->job_id;
+        $this->updateRelation($data);
+      }
+    }
+  }
+
+  /**
    * Retrieve data from advanced queue job.
    *
    * @param array $payload
    *   The payload from an advanced queue job.
    *
-   * @return array
-   *   An array containing submission id and webform id.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @return array|null An array containing submission id and webform id.
    */
-  public function getDataFromPayload(array $payload): array {
+  private function getDataFromPayload(array $payload): ?array {
     $submissionId = $this->getSubmissionId($payload);
+    if (empty($submissionId)) {
+      return NULL;
+    }
 
-    return [
-      'submission_id' => (int) $submissionId,
-      'webform_id' => $this->getWebformId($submissionId),
-    ];
+    try {
+      return [
+        'submission_id' => $submissionId,
+        'webform_id' => $this->getWebformSubmission($submissionId)
+          ?->getWebform()
+          ?->id(),
+      ];
+    }
+    catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
+      return NULL;
+    }
   }
 
   /**
@@ -75,7 +121,7 @@ class Helper {
    * @param array $data
    *   An array of data to put into os2forms_queue_submission_relation table.
    */
-  public function addUpdateRelation(array $data) {
+  private function updateRelation(array $data): void {
     if (empty($data['job_id']) || empty($data['submission_id'])) {
       return;
     }
@@ -87,7 +133,9 @@ class Helper {
         ->execute();
     }
     catch (\Exception $e) {
-      $this->loggerFactory->get('os2forms_queue_submission_relation')->error($e);
+      $this->loggerFactory->get('os2forms_queue_submission_relation')
+        ->error(
+          'Error adding releation: %message', ['%message' => $e->getMessage()]);
     }
   }
 
@@ -97,7 +145,7 @@ class Helper {
    * @return array
    *   A list of all entries from the advanced queue table.
    */
-  public function getAllQueueJobs(): array {
+  private function getAllQueueJobs(): array {
     $query = $this->database->select('advancedqueue', 'q');
     $query->fields('q');
 
@@ -110,12 +158,12 @@ class Helper {
    * @param array $payload
    *   The payload of an advanced queue job.
    *
-   * @return string
-   *   A webform submission id.
+   * @return int|null A webform submission id.
    */
-  private function getSubmissionId(array $payload): string {
-    return $payload['submissionId'] ?? $payload['submission']['id'];
+  private function getSubmissionId(array $payload): ?int {
+    return $payload['submissionId'] ?? $payload['submission']['id'] ?? NULL;
   }
+
 
   /**
    * Get webform id from submission.
@@ -123,20 +171,14 @@ class Helper {
    * @param string $submissionId
    *   Id of a submission.
    *
-   * @return string|null
+   * @return WebformSubmissionInterface
    *   A webform id.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  private function getWebformId(string $submissionId): ?string {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    $submission = $this->entityTypeManager->getStorage('webform_submission')->load($submissionId);
-
-    // For some reason phpstan insists that submission cannot be NULL but that
-    // doesnt match the load method documentation.
-    /* @phpstan-ignore-next-line */
-    return !empty($submission) ? $submission->getWebform()->id() : NULL;
+  private function getWebformSubmission(string $submissionId): WebformSubmissionInterface {
+    return $this->entityTypeManager->getStorage('webform_submission')->load($submissionId);
   }
 
 }

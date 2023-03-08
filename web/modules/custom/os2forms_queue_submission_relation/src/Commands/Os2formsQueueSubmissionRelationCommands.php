@@ -32,28 +32,10 @@ class Os2formsQueueSubmissionRelationCommands extends DrushCommands {
   /**
    * Import all entries from advanced queue table.
    *
-   * @param array $options
-   *   An associative array of options whose values come from cli, aliases,
-   *   config, etc.
-   *
    * @command os2forms_queue_submission_relation:import
-   *
-   * @filter-default-field name
    */
-  public function import(array $options = ['format' => 'table']) {
-    $jobs = $this->helper->getAllQueueJobs();
-    foreach ($jobs as $job) {
-      $payload = json_decode($job->payload, TRUE);
-
-      try {
-        $data = $this->helper->getDataFromPayload($payload);
-        $data['job_id'] = (int) $job->job_id;
-        $this->helper->addUpdateRelation($data);
-      }
-      catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
-
-      }
-    }
+  public function import() {
+    $this->helper->handleImport();
   }
 
 }

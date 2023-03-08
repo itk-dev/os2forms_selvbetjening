@@ -50,9 +50,7 @@ class AdvancedQueueProcessSubscriber implements EventSubscriberInterface {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function onQueuePreProcess(JobEvent $event) {
-    $data = $this->helper->getDataFromPayload($event->getJob()->getPayload());
-    $data['job_id'] = (int) $event->getJob()->getId();
-    $this->helper->addUpdateRelation($data);
+    $this->helper->handleJob($event);
   }
 
 }
