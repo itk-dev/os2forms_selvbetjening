@@ -1,0 +1,8 @@
+name: 'OS2Forms queue submission relation'
+type: module
+description: 'Provides a table to relate advanced queue jobs to webform submissions.'
+package: 'OS2Forms'
+core_version_requirement: ^9
+dependencies:
+  - 'webform:webform'
+  - 'advancedqueue:advancedqueue'

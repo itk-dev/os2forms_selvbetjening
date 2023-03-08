@@ -1,0 +1,40 @@
+<?php
+/**
+ * Implements hook_schema().
+ */
+function os2forms_queue_submission_relation_schema() {
+  $schema['os2forms_queue_submission_relation'] = array(
+    'description' => 'A table to relate advanced queue job ids to webform submission ids',
+    'fields' => array(
+      'job_id' => array(
+        'description' => 'Submission id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'submission_id' => array(
+        'description' => 'Submission id',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'webform_id' => array(
+        'description' => 'The webform id',
+        'type' => 'varchar_ascii',
+        'length' => '128',
+      ),
+    ),
+    'indexes' => [
+      'job_id' => [
+        'job_id',
+      ],
+      'webform_id' => [
+        'webform_id',
+      ],
+    ],
+  );
+
+  return $schema;
+}
