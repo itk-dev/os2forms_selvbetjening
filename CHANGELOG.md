@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+### Tilføjet
+* Add module for handling relationship between advanced queue and webform submissions
+
 ### Opdateret
 
 * Opdaterede os2forms/os2forms_rest_api

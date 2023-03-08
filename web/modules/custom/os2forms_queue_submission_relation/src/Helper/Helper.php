@@ -6,6 +6,9 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Logger\LoggerChannelFactory;
 
+/**
+ * The helper class for os2forms_queue_submission_relation module.
+ */
 class Helper {
 
   /**
@@ -27,12 +30,17 @@ class Helper {
    *
    * @var \Drupal\Core\Logger\LoggerChannelFactory
    */
-   protected LoggerChannelFactory $loggerFactory;
+  protected LoggerChannelFactory $loggerFactory;
 
   /**
-   * @param EntityTypeManager $entityTypeManager
-   * @param Connection $database
+   * The helper service constructor.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManager $entityTypeManager
+   *   The entity manager.
+   * @param \Drupal\Core\Database\Connection $database
+   *   The database connection.
    * @param \Drupal\Core\Logger\LoggerChannelFactory $logger_factory
+   *   The logger factory.
    */
   public function __construct(EntityTypeManager $entityTypeManager, Connection $database, LoggerChannelFactory $logger_factory) {
     $this->entityTypeManager = $entityTypeManager;
@@ -44,7 +52,7 @@ class Helper {
    * Retrieve data from advanced queue job.
    *
    * @param array $payload
-   *   The payload from an advanced queue job
+   *   The payload from an advanced queue job.
    *
    * @return array
    *   An array containing submission id and webform id.
@@ -56,8 +64,8 @@ class Helper {
     $submissionId = $this->getSubmissionId($payload);
 
     return [
-      'submission_id' => (int)$submissionId,
-      'webform_id' => $this->getWebformId($submissionId)
+      'submission_id' => (int) $submissionId,
+      'webform_id' => $this->getWebformId($submissionId),
     ];
   }
 
@@ -66,8 +74,6 @@ class Helper {
    *
    * @param array $data
    *   An array of data to put into os2forms_queue_submission_relation table.
-   *
-   * @return void
    */
   public function addUpdateRelation(array $data) {
     if (empty($data['job_id']) || empty($data['submission_id'])) {
@@ -75,7 +81,7 @@ class Helper {
     }
 
     try {
-      $result = $this->database->upsert('os2forms_queue_submission_relation')
+      $this->database->upsert('os2forms_queue_submission_relation')
         ->key('job_id')
         ->fields($data)
         ->execute();
@@ -89,6 +95,7 @@ class Helper {
    * Get all entries from the advancedqueue table.
    *
    * @return array
+   *   A list of all entries from the advanced queue table.
    */
   public function getAllQueueJobs(): array {
     $query = $this->database->select('advancedqueue', 'q');
@@ -128,7 +135,8 @@ class Helper {
 
     // For some reason phpstan insists that submission cannot be NULL but that
     // doesnt match the load method documentation.
-    /** @phpstan-ignore-next-line */
+    /* @phpstan-ignore-next-line */
     return !empty($submission) ? $submission->getWebform()->id() : NULL;
   }
+
 }

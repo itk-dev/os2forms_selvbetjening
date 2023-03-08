@@ -24,7 +24,8 @@ class AdvancedQueueProcessSubscriber implements EventSubscriberInterface {
   /**
    * The AdvancedQueueProcessSubscriber constructor.
    *
-   * @param Helper $helper
+   * @param \Drupal\os2forms_queue_submission_relation\Helper\Helper $helper
+   *   The helper service for os2forms_queue_submission_relation module.
    */
   public function __construct(Helper $helper) {
     $this->helper = $helper;
@@ -45,14 +46,12 @@ class AdvancedQueueProcessSubscriber implements EventSubscriberInterface {
    * @param \Drupal\advancedqueue\Event\JobEvent $event
    *   The job that is about to be processed.
    *
-   * @return void
-   *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function onQueuePreProcess(JobEvent $event) {
     $data = $this->helper->getDataFromPayload($event->getJob()->getPayload());
-    $data['job_id'] = (int)$event->getJob()->getId();
+    $data['job_id'] = (int) $event->getJob()->getId();
     $this->helper->addUpdateRelation($data);
   }
 
