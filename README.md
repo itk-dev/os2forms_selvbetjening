@@ -13,27 +13,27 @@ local machine for development and testing purposes.
 ### Installation
 
 ```sh
-docker-compose pull
-docker-compose up --detach
+docker compose pull
+docker compose up --detach
 
 # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
-docker-compose exec phpfpm composer install --no-interaction
+docker compose exec phpfpm composer install --no-interaction
 
 # Download and install external libraries
-docker-compose exec phpfpm vendor/bin/drush webform:libraries:download
+docker compose exec phpfpm vendor/bin/drush webform:libraries:download
 ```
 
 Thanks to [the database dump](#database-dump) you're now ready to start:
 
 ```sh
-open $(docker-compose exec phpfpm vendor/bin/drush --uri=http://$(docker-compose port nginx 80) user:login)
+open $(docker compose exec phpfpm vendor/bin/drush --uri=http://$(docker compose port nginx 80) user:login)
 ```
 
 To start from scratch, e.g. to update the database dump, you can install the
 profile:
 
 ```sh
-docker-compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
+docker compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config
 ```
 
 If you encounter the error
@@ -46,19 +46,19 @@ In EntityStorageBase.php line 557:
 proceed to remove this entry from the db via the sql cli:
 
 ```sh
-docker-compose exec phpfpm vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
+docker compose exec phpfpm vendor/bin/drush sql:query 'DELETE FROM config WHERE name="config_entity_revisions.config_entity_revisions_type.webform_revisions";'
 ```
 
 and run `drush config-import` to import config from files:
 
 ```sh
-docker-compose exec phpfpm vendor/bin/drush config:import
+docker compose exec phpfpm vendor/bin/drush config:import
 ```
 
 You should now be able to browse to the application:
 
 ```sh
-open $(docker-compose exec phpfpm vendor/bin/drush --uri=http://$(docker-compose port nginx 80) user:login)
+open $(docker compose exec phpfpm vendor/bin/drush --uri=http://$(docker compose port nginx 80) user:login)
 ```
 
 ### Configuration
@@ -179,30 +179,30 @@ other informations that can have personal character, before downloading.
 
 ## Database dump
 
-The `docker-compose` setup contains a database dump to make it easy to get
+The `docker compose` setup contains a database dump to make it easy to get
 started. When adding new functionality you may need to update the database dump.
 
 ```sh
 # Make sure that everything is up to date
-docker-compose exec phpfpm vendor/bin/drush --yes deploy
+docker compose exec phpfpm vendor/bin/drush --yes deploy
 
 # Set some default values
-docker-compose exec phpfpm vendor/bin/drush --yes config:set system.site name 'selvbetjening'
-docker-compose exec phpfpm vendor/bin/drush --yes config:set system.site mail 'selvbetjening@example.com'
+docker compose exec phpfpm vendor/bin/drush --yes config:set system.site name 'selvbetjening'
+docker compose exec phpfpm vendor/bin/drush --yes config:set system.site mail 'selvbetjening@example.com'
 
 # Dump the database
-docker-compose exec phpfpm vendor/bin/drush sql:dump --extra-dump='--skip-column-statistics' --structure-tables-list="cache,cache_*,advancedqueue,history,search_*,sessions,watchdog" --gzip --result-file=/app/.docker/drupal/dumps/drupal.sql
+docker compose exec phpfpm vendor/bin/drush sql:dump --extra-dump='--skip-column-statistics' --structure-tables-list="cache,cache_*,advancedqueue,history,search_*,sessions,watchdog" --gzip --result-file=/app/.docker/drupal/dumps/drupal.sql
 ```
 
 ## Coding standards
 
 ```sh
-docker-compose exec phpfpm composer coding-standards-check
+docker compose exec phpfpm composer coding-standards-check
 ```
 
 ```sh
-docker-compose run node yarn --cwd /app install
-docker-compose run node yarn --cwd /app coding-standards-check
+docker compose run node yarn --cwd /app install
+docker compose run node yarn --cwd /app coding-standards-check
 ```
 
 ## Testing
@@ -213,10 +213,10 @@ For development, the [Mail
 Debugger](https://www.drupal.org/project/mail_debugger) module is available:
 
 ```sh
-docker-compose exec phpfpm vendor/bin/drush pm:enable mail_debugger
-open "http://$(docker-compose port nginx 80)/admin/config/development/mail_debugger"
+docker compose exec phpfpm vendor/bin/drush pm:enable mail_debugger
+open "http://$(docker compose port nginx 80)/admin/config/development/mail_debugger"
 # Open MailHog
-open "http://$(docker-compose port mailhog 8025)"
+open "http://$(docker compose port mailhog 8025)"
 ```
 
 **Note**: Make sure to not add `mail_debugger` to the `modules` list in
@@ -226,7 +226,7 @@ for development.
 Check your SMTP-settings with
 
 ```sh
-docker-compose exec phpfpm vendor/bin/drush config:get --include-overridden smtp.settings
+docker compose exec phpfpm vendor/bin/drush config:get --include-overridden smtp.settings
 ```
 
 ## Admin message
@@ -244,13 +244,13 @@ $settings['os2forms_selvbetjening']['admin_message_style'] = 'padding: 1em; back
 Import translations by running
 
 ```sh
-docker-compose exec --workdir /app/web phpfpm ../vendor/bin/drush locale:import --type=customized --override=none da ../translations/translations.da.po
+docker compose exec --workdir /app/web phpfpm ../vendor/bin/drush locale:import --type=customized --override=none da ../translations/translations.da.po
 ```
 
 Export translations by running
 
 ```sh
-docker-compose exec --workdir /app/web phpfpm ../vendor/bin/drush locale:export da --types=customized > ./translations/translations.da.po
+docker compose exec --workdir /app/web phpfpm ../vendor/bin/drush locale:export da --types=customized > ./translations/translations.da.po
 ```
 
 Open `translations/translations.da.po` with the latest version of
