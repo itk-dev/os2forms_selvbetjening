@@ -2,8 +2,6 @@
 
 namespace Drupal\os2forms_queue_submission_relation\Commands;
 
-use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
-use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\os2forms_queue_submission_relation\Helper\Helper;
 use Drush\Commands\DrushCommands;
 

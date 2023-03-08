@@ -57,9 +57,6 @@ class Helper {
    *
    * @param \Drupal\advancedqueue\Event\JobEvent $event
    *   The job about to be processed.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function handleJob(JobEvent $event): void {
     $data = $this->getDataFromPayload($event->getJob()->getPayload());
@@ -71,10 +68,6 @@ class Helper {
 
   /**
    * Handle importing advanced queue jobs through a command.
-   *
-   * @return void
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function handleImport(): void {
     $jobs = $this->getAllQueueJobs();
@@ -94,7 +87,8 @@ class Helper {
    * @param array $payload
    *   The payload from an advanced queue job.
    *
-   * @return array|null An array containing submission id and webform id.
+   * @return array|null
+   *   An array containing submission id and webform id.
    */
   private function getDataFromPayload(array $payload): ?array {
     $submissionId = $this->getSubmissionId($payload);
@@ -106,8 +100,8 @@ class Helper {
       return [
         'submission_id' => $submissionId,
         'webform_id' => $this->getWebformSubmission($submissionId)
-          ?->getWebform()
-          ?->id(),
+        ?->getWebform()
+        ?->id(),
       ];
     }
     catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
@@ -158,12 +152,12 @@ class Helper {
    * @param array $payload
    *   The payload of an advanced queue job.
    *
-   * @return int|null A webform submission id.
+   * @return int|null
+   *   A webform submission id.
    */
   private function getSubmissionId(array $payload): ?int {
     return $payload['submissionId'] ?? $payload['submission']['id'] ?? NULL;
   }
-
 
   /**
    * Get webform id from submission.
@@ -171,7 +165,7 @@ class Helper {
    * @param string $submissionId
    *   Id of a submission.
    *
-   * @return WebformSubmissionInterface
+   * @return \Drupal\webform\WebformSubmissionInterface
    *   A webform id.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
