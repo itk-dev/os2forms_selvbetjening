@@ -82,17 +82,7 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
 
       try {
         // Do the stuff.
-        // /external/v1/{agencyid}/authentication/login
-        // /external/{agencyid}/patrons/interests/v1
-        $username = '';
-        $password = '';
-        // Jira requires base64_encode auth.
-        $encoded_auth = base64_encode($username . ':' . $password);
-
-        $headers = [
-          'Content-Type' => 'application/json; charset=utf-8',
-          'Authorization' => 'Basic '. $encoded_auth
-        ];
+        $headers = [];
         $apiUrl = 'https://cicero-fbs.com/rest/external/v1/{agencyid}/authentication/login';
         $this->client->request('POST', $apiUrl, [
           'headers' => $headers,
