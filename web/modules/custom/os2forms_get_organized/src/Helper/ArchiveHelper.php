@@ -334,9 +334,11 @@ class ArchiveHelper {
 
       $childDocumentIds = [];
 
+      $fileStorage = $this->entityTypeManager->getStorage('file');
+
       foreach ($fileIds as $fileId) {
         /** @var \Drupal\file\Entity\File $file */
-        $file = $this->entityTypeManager->getStorage('file')->load($fileId);
+        $file = $fileStorage->load($fileId);
 
         $fileContent = file_get_contents($file->getFileUri());
         $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '-' . $file->getFilename();
@@ -402,8 +404,11 @@ class ArchiveHelper {
     $fileElements = [];
 
     foreach (self::FILE_ELEMENT_TYPES as $fileElementType) {
-      $fileElements = array_merge($fileElements, $this->getAvailableElementsByType($fileElementType, $elements));
+      $fileElements[] = $this->getAvailableElementsByType($fileElementType, $elements);
     }
+
+    // https://dev.to/klnjmm/never-use-arraymerge-in-a-for-loop-in-php-5go1
+    $fileElements = array_merge([], ...$fileElements);
 
     $elementKeys = array_keys($fileElements);
 
@@ -417,10 +422,10 @@ class ArchiveHelper {
       // Convert occurrences of singular file into array.
       $elementFileIds = (array) $submission->getData()[$elementKey];
 
-      $fileIds = array_merge($fileIds, $elementFileIds);
+      $fileIds[] = $elementFileIds;
     }
 
-    return $fileIds;
+    return array_merge([], ...$fileIds);
   }
 
 }
