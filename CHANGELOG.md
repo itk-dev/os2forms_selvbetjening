@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Gjorde det muligt at installere sitet forfra og opdaterede
+  installationsvejledning.
+
 ### Opdateret
 
 * Hide scrollbar on sidebar navigation
