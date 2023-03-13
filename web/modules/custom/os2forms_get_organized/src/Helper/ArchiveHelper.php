@@ -408,7 +408,7 @@ class ArchiveHelper {
     }
 
     // https://dev.to/klnjmm/never-use-arraymerge-in-a-for-loop-in-php-5go1
-    $fileElements = array_merge([], ...$fileElements);
+    $fileElements = array_merge(...$fileElements);
 
     $elementKeys = array_keys($fileElements);
 
@@ -425,7 +425,7 @@ class ArchiveHelper {
       $fileIds[] = $elementFileIds;
     }
 
-    return array_merge([], ...$fileIds);
+    return array_merge(...$fileIds);
   }
 
 }
