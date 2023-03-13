@@ -4,7 +4,6 @@ namespace Drupal\os2forms_get_organized\Helper;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\file\Entity\File;
 use Drupal\os2forms_get_organized\Exception\ArchivingMethodException;
 use Drupal\os2forms_get_organized\Exception\CitizenArchivingException;
 use Drupal\os2forms_get_organized\Exception\GetOrganizedCaseIdException;
@@ -57,9 +56,9 @@ class ArchiveHelper {
   private EntityTypeManagerInterface $entityTypeManager;
 
   /**
-   * Webform file element types.
+   * File element types.
    */
-  private const WEBFORM_ELEMENT_TYPES = [
+  private const FILE_ELEMENT_TYPES = [
     'webform_image_file',
     'webform_document_file',
     'webform_video_file',
@@ -313,37 +312,36 @@ class ArchiveHelper {
   /**
    * Uploads attachment document and attached files to GetOrganized case.
    */
-  private function uploadDocumentToCase(string $caseId, string $webformAttachmentElementId, WebformSubmission $submission, bool $shouldArchiveFiles, bool $shouldBeFinalized)
-  {
+  private function uploadDocumentToCase(string $caseId, string $webformAttachmentElementId, WebformSubmission $submission, bool $shouldArchiveFiles, bool $shouldBeFinalized) {
     // Handle main document (the attachment).
     $element = $submission->getWebform()->getElement($webformAttachmentElementId);
     $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
 
-    // array containing ids that should possibly be finalized (jornaliseret) later.
+    // Ids that should possibly be finalized (jornaliseret) later.
     $documentIdsForFinalizing = [];
 
     // Create temp file with attachment-element contents.
     $webformLabel = $submission->getWebform()->label();
     $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
 
-    $parentDocumentId = $this->journalizeDocumentToGetOrganizedCase($caseId, $getOrganizedFileName, $fileContent);
+    $parentDocumentId = $this->archiveDocumentToGetOrganizedCase($caseId, $getOrganizedFileName, $fileContent);
 
     $documentIdsForFinalizing[] = $parentDocumentId;
 
-    // Handle attached files
+    // Handle attached files.
     if ($shouldArchiveFiles) {
       $fileIds = $this->getFileElementKeysFromSubmission($submission);
 
       $childDocumentIds = [];
 
       foreach ($fileIds as $fileId) {
-        /** @var File $file */
+        /** @var \Drupal\file\Entity\File $file */
         $file = $this->entityTypeManager->getStorage('file')->load($fileId);
 
         $fileContent = file_get_contents($file->getFileUri());
         $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '-' . $file->getFilename();
 
-        $childDocumentId = $this->journalizeDocumentToGetOrganizedCase($caseId, $getOrganizedFileName, $fileContent);
+        $childDocumentId = $this->archiveDocumentToGetOrganizedCase($caseId, $getOrganizedFileName, $fileContent);
 
         $childDocumentIds[] = $childDocumentId;
       }
@@ -371,8 +369,10 @@ class ArchiveHelper {
     }, $attachmentElements);
   }
 
-  private function journalizeDocumentToGetOrganizedCase(string $caseId, string $getOrganizedFileName, string $fileContent): int
-  {
+  /**
+   * Archives file content to GetOrganized case.
+   */
+  private function archiveDocumentToGetOrganizedCase(string $caseId, string $getOrganizedFileName, string $fileContent): int {
     $tempFile = tempnam('/tmp', $caseId . '-' . uniqid());
 
     try {
@@ -396,13 +396,12 @@ class ArchiveHelper {
   /**
    * Returns array of file elements keys in submission.
    */
-  private function getFileElementKeysFromSubmission(WebformSubmission $submission): array
-  {
+  private function getFileElementKeysFromSubmission(WebformSubmission $submission): array {
     $elements = $submission->getWebform()->getElementsDecodedAndFlattened();
 
     $fileElements = [];
 
-    foreach (self::WEBFORM_ELEMENT_TYPES as $fileElementType) {
+    foreach (self::FILE_ELEMENT_TYPES as $fileElementType) {
       $fileElements = array_merge($fileElements, $this->getAvailableElementsByType($fileElementType, $elements));
     }
 
@@ -415,7 +414,7 @@ class ArchiveHelper {
         continue;
       }
 
-      // Convert occurrences of singular file into array such that we can handle them the same way.
+      // Convert occurrences of singular file into array.
       $elementFileIds = (array) $submission->getData()[$elementKey];
 
       $fileIds = array_merge($fileIds, $elementFileIds);
