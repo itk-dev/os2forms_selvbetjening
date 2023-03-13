@@ -5,14 +5,19 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Gjorde det muligt at installere sitet forfra og opdaterede
+  installationsvejledning.
+
 ### Opdateret
 
+* Hide scrollbar on sidebar navigation
 * Opdaterede os2forms/os2forms_rest_api
 * os2forms_digital_post (1.2.0)
 * Remove dompdf
 * Opdaterede docker compose-setup.
 * Disable IP tracking
 * Allow access to config translations for user role forloeb_designer
+* Håndtering af os2web/os2web_nemlogin konfiguration.
 * Disable caching on failed jobs list.
 
 ## [1.7.1] 24.02.2023
