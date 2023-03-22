@@ -541,7 +541,22 @@ display:
         type: tag
         options: {  }
       empty: {  }
-      sorts: {  }
+      sorts:
+        process_id:
+          id: process_id
+          table: maestro_process
+          field: process_id
+          relationship: none
+          group_type: group
+          admin_label: Sorteringskriterier
+          entity_type: maestro_process
+          entity_field: process_id
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: 'Proces id'
+            field_identifier: process_id
+          exposed: false
       arguments: {  }
       filters:
         process_name:
@@ -653,7 +668,7 @@ display:
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -671,7 +686,7 @@ display:
       display_extenders: {  }
       path: maestro-all-flows
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
