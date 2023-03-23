@@ -1,9 +1,7 @@
-uuid: 4ed57737-bba6-407f-9ee8-8ec4a16a9188
+uuid: 51742614-4854-4e73-b6c3-7446cd47e470
 langcode: da
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: Hx9J_hTsoH1EoFJiAhy9EwMfk1Txmsp5M71RrUZnodo
 id: get_organized_queue
 label: 'Get Organized Queue'
 backend: database
