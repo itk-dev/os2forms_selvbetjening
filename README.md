@@ -88,12 +88,26 @@ $config['os2forms_get_organized'] = [
 
 ### Selvbetjening Module
 
-The `OS2Forms Selvbetjening` module updates the Webform Email Handler
-by adding a description to the message body section. The
+The `OS2Forms Selvbetjening` module updates the following:
+
+#### Webform Email Handler
+
+Adds a description to the message body section. The
 description should be configured in the `settings.local.php` file:
 
 ```php
 $config['os2forms_selvbetjening']['email_body_description'] = 'Brug enten standardsvaret eller definer dit eget svar. Se <a href="https://os2forms.os2.eu/mail-tekster">OS2Forms Loop</a> for andre standarder og eksempler.';
+```
+
+If it is not set, no description is added.
+
+#### Webform category
+
+Adds a description to the webform category selects. The
+description should be configured in the `settings.local.php` file:
+
+```php
+$config['os2forms_selvbetjening']['webform_category_description'] = 'Ekstern: borgervendt. Internt: medarbejdere.';
 ```
 
 If it is not set, no description is added.
