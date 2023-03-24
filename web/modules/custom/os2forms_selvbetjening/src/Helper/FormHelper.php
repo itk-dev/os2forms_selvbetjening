@@ -40,7 +40,7 @@ class FormHelper {
     // Add description to category choice in Webform Settings.
     if ('webform_settings_form' === $form_id) {
       if ($webform_category_description = $config->get('webform_category_description')) {
-        $form['category']['#description'] = $webform_category_description;
+        $form['general_settings']['category']['#description'] = $webform_category_description;
       }
     }
 
