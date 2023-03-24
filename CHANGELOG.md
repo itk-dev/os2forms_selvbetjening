@@ -21,6 +21,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * itk-dev/getorganized-api-client-php (1.2.0)
 * Udvidet GetOrganized handler med funktionalitet
   til at arkivere vedhæftede filer som bilag i GO.
+* Tilføjede mulighed for konfigration af webform category
 
 ## [1.7.1] 24.02.2023
 
