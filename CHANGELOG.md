@@ -25,6 +25,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   * Aktiverede `Signature` og `Email confirm` webform elementer.
   * Brug af `daemon` til GetOrganized og REST API queues.
   * Sortede maestro flows efter `id` på `/maestro-all-flows`.
+* Tilføjede mulighed for konfigration af webform category
 
 ## [1.7.1] 24.02.2023
 
