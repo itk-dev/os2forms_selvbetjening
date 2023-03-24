@@ -28,7 +28,7 @@ class FormHelper {
     }
 
     // Add description to category choice when adding new Webform.
-    if ('webform_add_form' == $form_id) {
+    if ('webform_add_form' === $form_id) {
       $form['category']['#description'] = $webform_category_description;
     }
   }
