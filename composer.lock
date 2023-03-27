@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cefa677d496b4d45161a1ff3a10ee5f5",
+    "content-hash": "129fb4c63779832dec913554591e71a4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4119,10 +4119,6 @@
                     "homepage": "https://www.drupal.org/user/25027"
                 },
                 {
-                    "name": "grahl",
-                    "homepage": "https://www.drupal.org/user/146040"
-                },
-                {
                     "name": "johnbarclay",
                     "homepage": "https://www.drupal.org/user/225037"
                 },
@@ -4224,10 +4220,6 @@
                 {
                     "name": "dgtlmoon",
                     "homepage": "https://www.drupal.org/user/25027"
-                },
-                {
-                    "name": "grahl",
-                    "homepage": "https://www.drupal.org/user/146040"
                 },
                 {
                     "name": "johnbarclay",
@@ -4363,6 +4355,10 @@
                 {
                     "name": "johnwebdev",
                     "homepage": "https://www.drupal.org/user/3331569"
+                },
+                {
+                    "name": "mark_fullmer",
+                    "homepage": "https://www.drupal.org/user/2612816"
                 }
             ],
             "description": "Linkit - Enriched linking experience",
@@ -5577,7 +5573,7 @@
                     "datestamp": "1675940843",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 },
                 "drush": {
@@ -8268,16 +8264,16 @@
         },
         {
             "name": "itk-dev/getorganized-api-client-php",
-            "version": "1.1.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/getorganized-api-client-php.git",
-                "reference": "040d0f2cfa9a98f49948aa8fd8d624f13c217d8d"
+                "reference": "755927fd87d0718a7f69be8bd46eb94a9215fef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/040d0f2cfa9a98f49948aa8fd8d624f13c217d8d",
-                "reference": "040d0f2cfa9a98f49948aa8fd8d624f13c217d8d",
+                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/755927fd87d0718a7f69be8bd46eb94a9215fef9",
+                "reference": "755927fd87d0718a7f69be8bd46eb94a9215fef9",
                 "shasum": ""
             },
             "require": {
@@ -8317,9 +8313,9 @@
             "description": "PHP client for GetOrganized API",
             "support": {
                 "issues": "https://github.com/itk-dev/getorganized-api-client-php/issues",
-                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.1.3"
+                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.2.0"
             },
-            "time": "2022-09-15T14:21:08+00:00"
+            "time": "2023-03-10T14:13:42+00:00"
         },
         {
             "name": "itk-dev/itkdev-booking",
@@ -18730,8 +18726,14 @@
             "version": "8.3.16",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/coder.git",
+                "url": "https://github.com/pfrenssen/coder.git",
                 "reference": "d6f6112e5e84ff4f6baaada223c93dadbd6d3887"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pfrenssen/coder/zipball/d6f6112e5e84ff4f6baaada223c93dadbd6d3887",
+                "reference": "d6f6112e5e84ff4f6baaada223c93dadbd6d3887",
+                "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",

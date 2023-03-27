@@ -81,8 +81,16 @@ final class GetOrganizedWebformHandler extends WebformHandlerBase {
       '#title' => $this->t('Choose general settings'),
     ];
 
+    $form['general']['should_archive_files'] = [
+      '#title' => $this->t('Should files be archived?'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->configuration['general']['should_archive_files'] ?? FALSE,
+      '#description' => $this->t('If enabled, files will be archived in GetOrganized.'),
+      '#required' => FALSE,
+    ];
+
     $form['general']['should_be_finalized'] = [
-      '#title' => $this->t('Should document be finalized?'),
+      '#title' => $this->t('Should documents be finalized?'),
       '#type' => 'checkbox',
       '#default_value' => $this->configuration['general']['should_be_finalized'] ?? FALSE,
       '#description' => $this->t('If enabled, documents will be finalized (journaliseret) in GetOrganized.'),
@@ -197,6 +205,7 @@ final class GetOrganizedWebformHandler extends WebformHandlerBase {
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
     $this->configuration['general']['should_be_finalized'] = $form_state->getValue('general')['should_be_finalized'];
+    $this->configuration['general']['should_archive_files'] = $form_state->getValue('general')['should_archive_files'];
     $this->configuration['general']['attachment_element'] = $form_state->getValue('general')['attachment_element'];
     $this->configuration['choose_archiving_method']['archiving_method'] = $form_state->getValue('choose_archiving_method')['archiving_method'];
     $this->configuration['choose_archiving_method']['case_id'] = $form_state->getValue('choose_archiving_method')['case_id'];

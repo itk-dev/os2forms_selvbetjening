@@ -5,8 +5,12 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Gjorde det muligt at installere sitet forfra og opdaterede
+  installationsvejledning.
+
 ### Opdateret
 
+* Hide scrollbar on sidebar navigation
 * Opdaterede os2forms/os2forms_rest_api
 * os2forms_digital_post (1.2.0)
 * Remove dompdf
@@ -14,6 +18,15 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Disable IP tracking
 * Allow access to config translations for user role forloeb_designer
 * Remove revisions tab
+* Håndtering af os2web/os2web_nemlogin konfiguration.
+* itk-dev/getorganized-api-client-php (1.2.0)
+* Udvidet GetOrganized handler med funktionalitet
+  til at arkivere vedhæftede filer som bilag i GO.
+* Konfiguration ændringer
+  * Aktiverede `Signature` og `Email confirm` webform elementer.
+  * Brug af `daemon` til GetOrganized og REST API queues.
+  * Sortede maestro flows efter `id` på `/maestro-all-flows`.
+* Tilføjede mulighed for konfigration af webform category
 
 ## [1.7.1] 24.02.2023
 
