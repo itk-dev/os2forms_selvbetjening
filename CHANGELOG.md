@@ -13,6 +13,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede docker compose-setup.
 * Disable IP tracking
 * Allow access to config translations for user role forloeb_designer
+* Remove revisions tab
 
 ## [1.7.1] 24.02.2023
 
