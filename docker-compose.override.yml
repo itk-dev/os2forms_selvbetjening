@@ -41,7 +41,7 @@ services:
             - some-app-scope-2
           UserClaims:
             - some-app-user-custom-claim
-            - roles
+            - groups
       USERS_CONFIGURATION_INLINE: |
         [
           {
@@ -60,7 +60,7 @@ services:
                 "ValueType": "string"
               },
               {
-                "Type": "roles",
+                "Type": "groups",
                 "Value": "[\"value1\", \"value2\", \"AD-administrator\"]",
                 "ValueType": "json"
               },
@@ -78,6 +78,28 @@ services:
                 "Type": "some-identity-resource-claim",
                 "Value": "Sam's Identity Resource Custom Claim",
                 "ValueType": "string"
+              }
+            ]
+          },
+          {
+            "SubjectId":"2",
+            "Username":"User2",
+            "Password":"pwd",
+            "Claims": [
+              {
+                "Type": "name",
+                "Value": "No. 2",
+                "ValueType": "string"
+              },
+              {
+                "Type": "email",
+                "Value": "2@example.com",
+                "ValueType": "string"
+              },
+              {
+                "Type": "groups",
+                "Value": "[\"AD-administrator\"]",
+                "ValueType": "json"
               }
             ]
           }
@@ -102,7 +124,7 @@ services:
           ClientClaimsPrefix: ''
           RedirectUris:
             - https://selvbetjening.local.itkdev.dk/openid-connect/generic
-            - '*'
+            # - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
           RequirePkce: false
           Claims:
@@ -112,9 +134,26 @@ services:
             - Type: json_claim
               Value: '["value1", "value2"]'
               ValueType: json
-            - Type: roles
+            - Type: groups
               Value: '["value1", "value2"]'
               ValueType: json
+
+      # Needed to set custom claim types in "profile"
+      # https://github.com/Soluto/oidc-server-mock/issues/123#issuecomment-1427129278
+      OVERRIDE_STANDARD_IDENTITY_RESOURCES: true
+      IDENTITY_RESOURCES_INLINE: |
+        # https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes#standard-claims
+        - Name: openid
+          ClaimTypes:
+            - sub
+        - Name: profile
+          ClaimTypes:
+            - name
+            - groups
+        - Name: email
+          ClaimTypes:
+            - email
+
     volumes:
       - .:/tmp/config:ro
     labels:
