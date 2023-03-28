@@ -250,7 +250,6 @@ class Helper {
     if ('webform' === $node->bundle()) {
       switch ($operation) {
         case 'view':
-        case 'view all revisions':
           // Deny access to node view if no permission by term is set.
           $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
           if (empty($nodePermissionsByTerm)) {
