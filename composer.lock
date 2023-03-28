@@ -5767,26 +5767,26 @@
         },
         {
             "name": "drupal/ultimate_cron",
-            "version": "2.0.0-alpha5",
+            "version": "2.0.0-alpha6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ultimate_cron.git",
-                "reference": "8.x-2.0-alpha5"
+                "reference": "8.x-2.0-alpha6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ultimate_cron-8.x-2.0-alpha5.zip",
-                "reference": "8.x-2.0-alpha5",
-                "shasum": "0f10464fff29eca89024e7afa5b6d8d07bd52f75"
+                "url": "https://ftp.drupal.org/files/projects/ultimate_cron-8.x-2.0-alpha6.zip",
+                "reference": "8.x-2.0-alpha6",
+                "shasum": "42ab6df8e94a9b3772876a378062534552a32826"
             },
             "require": {
-                "drupal/core": "^8.7.7 || ^9"
+                "drupal/core": "^9 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.0-alpha5",
-                    "datestamp": "1600928948",
+                    "version": "8.x-2.0-alpha6",
+                    "datestamp": "1666471448",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -5794,7 +5794,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9 || ^10"
+                        "drush.services.yml": "^9 || ^10 || ^11"
                     }
                 }
             },
@@ -9614,16 +9614,16 @@
         },
         {
             "name": "os2forms/os2forms_forloeb",
-            "version": "2.5.0",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb.git",
-                "reference": "b5a2804b4c6ab02bf4437c3622fa5b676458fffb"
+                "reference": "3e12a34e3381bf6be97dac95379812f3efef56a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/b5a2804b4c6ab02bf4437c3622fa5b676458fffb",
-                "reference": "b5a2804b4c6ab02bf4437c3622fa5b676458fffb",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb/zipball/3e12a34e3381bf6be97dac95379812f3efef56a7",
+                "reference": "3e12a34e3381bf6be97dac95379812f3efef56a7",
                 "shasum": ""
             },
             "require": {
@@ -9653,7 +9653,7 @@
                 "drupal/simplesamlphp_auth": "^3.2",
                 "drupal/switch_page_theme": "1.x-dev#ac38137f43cc72a8efba04bc127b87fbf2c28e06",
                 "drupal/telephone_validation": "^2.2",
-                "drupal/ultimate_cron": "2.0.0-alpha5",
+                "drupal/ultimate_cron": "^2.0.0",
                 "drupal/user_default_page": "^2.1",
                 "drupal/webform_composite": "1.0-rc2",
                 "drupal/webform_node_element": "^1.2",
@@ -9662,6 +9662,7 @@
                 "drupal/webform_scheduled_tasks": "^2.0",
                 "drupal/webform_views": "^5.0@alpha",
                 "drupal/workflow_participants": "^2.4",
+                "os2forms/os2forms": "^3.3",
                 "webmozart/path-util": "^2.3",
                 "zaporylie/composer-drupal-optimizations": "^1.2"
             },
@@ -9672,25 +9673,17 @@
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": true,
-                "patchLevel": {
-                    "test": "-p2"
-                },
                 "enable-patching": true,
-                "patcher": {
-                    "force-reset": true
-                },
                 "patches": {
-                    "drupal/entity_print": {
-                        "2733781 - Add Export to Word Support": "https://www.drupal.org/files/issues/2019-11-22/2733781-47.patch"
-                    },
-                    "drupal/webform": {
-                        "Unlock possibility of using Entity print module export to Word": "https://www.drupal.org/files/issues/2020-02-29/3096552-6.patch"
-                    },
                     "drupal/user_default_page": {
                         "Warning: in_array() expects parameter 2 to be array, null given in user_default_page_user_logout() (https://www.drupal.org/node/3246986)": "https://www.drupal.org/files/issues/2021-11-01/user_default_page-3246986-2.patch"
                     },
                     "drupal/coc_forms_auto_export": {
                         "3240592 - Problem with phpseclib requirement in 2.x (https://www.drupal.org/project/coc_forms_auto_export/issues/3240592)": "https://www.drupal.org/files/issues/2021-10-04/requirement-namespace-3240592-1.patch"
+                    },
+                    "//": "Note: drupal/dynamic_entity_reference is required by drupal/workflow_participants",
+                    "drupal/dynamic_entity_reference": {
+                        "entityQuery reference JOINs should specify target_type (https://www.drupal.org/project/dynamic_entity_reference/issues/3120952#comment-14141038)": "https://www.drupal.org/files/issues/2021-06-22/entityquery-reference-joins-should-specify-target_type-3120952-24.patch"
                     }
                 }
             },
@@ -9701,9 +9694,9 @@
             "description": "This module adds Maestro workflow engine and functionality to produce advanced workflows",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/2.5.0"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb/tree/2.5.2"
             },
-            "time": "2022-11-18T10:18:20+00:00"
+            "time": "2023-03-27T10:37:22+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
