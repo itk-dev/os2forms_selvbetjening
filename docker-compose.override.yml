@@ -123,7 +123,10 @@ services:
             - email
           ClientClaimsPrefix: ''
           RedirectUris:
+            - http://selvbetjening.local.itkdev.dk/openid-connect/generic
+            - http://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate
             - https://selvbetjening.local.itkdev.dk/openid-connect/generic
+            - https://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate
             # - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
           RequirePkce: false
