@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+
+## [2.0.0] 29.03.2023
+
 * Gjorde det muligt at installere sitet forfra og opdaterede
   installationsvejledning.
 
@@ -139,6 +142,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...2.0.0
 [1.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/releases/tag/1.7.0
