@@ -5,6 +5,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Fiksede GitHub Action til at installere site.
 
 ## [2.0.0] 29.03.2023
 
