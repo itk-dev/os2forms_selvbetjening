@@ -5,6 +5,35 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+
+## [2.0.0] 29.03.2023
+
+* Gjorde det muligt at installere sitet forfra og opdaterede
+  installationsvejledning.
+
+### Opdateret
+
+* Hide scrollbar on sidebar navigation
+* Opdaterede os2forms/os2forms_rest_api
+* os2forms_digital_post (1.2.0)
+* Remove dompdf
+* Opdaterede docker compose-setup.
+* Disable IP tracking
+* Allow access to config translations for user role forloeb_designer
+* Remove revisions tab
+* Håndtering af os2web/os2web_nemlogin konfiguration.
+* itk-dev/getorganized-api-client-php (1.2.0)
+* Udvidet GetOrganized handler med funktionalitet
+  til at arkivere vedhæftede filer som bilag i GO.
+* Konfiguration ændringer
+  * Aktiverede `Signature` og `Email confirm` webform elementer.
+  * Brug af `daemon` til GetOrganized og REST API queues.
+  * Sortede maestro flows efter `id` på `/maestro-all-flows`.
+* Tilføjede mulighed for konfigration af webform category
+* Opdaterede os2forms/os2forms_forloeb og drupal/ultimate_cron
+* Fjernede `user_default_page`
+* Tilføjede `os2forms_attachment`
+
 ## [1.7.1] 24.02.2023
 
 * Behandl digital post-køer via rigtig [`cron`](https://en.wikipedia.org/wiki/Cron).
@@ -15,6 +44,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Installerede [OS2Forms organisation
   1.0.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.0.0).
+* Phpstan config
 
 ### Opdateret
 
@@ -44,6 +74,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   1.3.0](https://github.com/itk-dev/os2forms_cvr_lookup/releases/tag/1.3.0).
 * Installerede [OS2Forms sync
   1.0.0](https://github.com/itk-dev/os2forms_sync/releases/tag/1.0.0).
+* Opgraderede til [PHP 8.1](https://www.php.net/releases/8.1/en.php).
 * Installerede [Os2forms Failed jobs
   1.0.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.0.0).
 * Tilføjede danske oversættelser.
@@ -111,6 +142,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...2.0.0
 [1.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/releases/tag/1.7.0

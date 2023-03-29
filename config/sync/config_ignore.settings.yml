@@ -5,3 +5,4 @@ ignored_config_entities:
   - 'maestro.maestro_template.*'
   - system.site
   - 'webform.webform.*'
+  - os2web_nemlogin.settings

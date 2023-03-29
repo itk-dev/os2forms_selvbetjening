@@ -7,6 +7,7 @@ module:
   admin_toolbar_tools: 0
   advancedqueue: 0
   automated_cron: 0
+  beskedfordeler: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -70,6 +71,7 @@ module:
   options: 0
   os2forms: 0
   os2forms_api_request_handler: 0
+  os2forms_attachment: 0
   os2forms_cpr_lookup: 0
   os2forms_cvr_lookup: 0
   os2forms_dawa: 0
@@ -116,7 +118,6 @@ module:
   toolbar: 0
   ultimate_cron: 0
   user: 0
-  user_default_page: 0
   views_ui: 0
   web_accessibility_statement: 0
   webform: 0
@@ -138,6 +139,7 @@ module:
   webform_submission_export_import: 0
   webform_submission_log: 0
   webform_templates: 0
+  webform_translation_permissions: 0
   webform_ui: 0
   workflow_participants: 0
   workflows: 0

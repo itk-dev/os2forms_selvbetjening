@@ -26,7 +26,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -52,7 +52,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -99,7 +99,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.1
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -117,9 +117,9 @@ jobs:
         run: |
           # Using `--no-scripts` breaks something with mglaman/drupal-check.
           composer install --no-interaction --no-progress --no-scripts
-      - name: drupal-check
+      - name: code-analysis
         run: |
-          composer code-analysis/drupal-check
+          composer code-analysis
 
   coding-standards-custom-themes:
     name: Yarn - Check Coding Standards in custom themes
@@ -130,10 +130,10 @@ jobs:
         run: docker network create frontend
 
       - name: Install build dependencies
-        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
 
       - name: Check coding standards
-        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme check-coding-standards
+        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme check-coding-standards
 
   check-custom-theme-assets:
     name: Check custom theme assets are up to date
@@ -145,10 +145,38 @@ jobs:
         run: docker network create frontend
 
       - name: Install build dependencies
-        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
 
       - name: Build theme assets
-        run: docker-compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
+        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
 
       - name: Check for changes in built css
         run: git diff --diff-filter=ACMRT --exit-code web/themes/custom/os2forms_selvbetjening_theme/build
+
+  install-site:
+    name: Check that site can be installed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install site
+        run: |
+          docker network create frontend
+          docker compose pull
+          docker compose up --detach
+
+          # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
+          docker compose exec phpfpm composer install --no-interaction
+
+          # Install the site
+          docker compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config --yes
+
+          # Download and install external libraries
+          docker compose exec phpfpm vendor/bin/drush webform:libraries:download
+
+          # Build theme assets
+          docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+          docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
+
+          # Open the site
+          echo $(docker compose exec phpfpm vendor/bin/drush --uri=http://$(docker compose port nginx 8080) user:login)

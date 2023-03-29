@@ -219,3 +219,6 @@ yarn-error.log
 config/sync/**/maestro.maestro_template.*
 config/sync/**/webform.webform.*
 
+# Ignore nemlogin settings
+config/sync/os2web_nemlogin.settings.yml
+
