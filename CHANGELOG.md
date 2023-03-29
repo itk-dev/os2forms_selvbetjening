@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Fiksede GitHub Action til at installere site.
+* Fjernede “custom” `os2forms_user_field_lookup`-modul.
 
 ## [2.0.0] 29.03.2023
 
