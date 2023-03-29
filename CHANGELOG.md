@@ -29,7 +29,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede mulighed for konfigration af webform category
 * Opdaterede os2forms/os2forms_forloeb og drupal/ultimate_cron
 * Fjernede `user_default_page`
-* Tilføjede `os2forms_attachment_`
+* Tilføjede `os2forms_attachment`
 
 ## [1.7.1] 24.02.2023
 
