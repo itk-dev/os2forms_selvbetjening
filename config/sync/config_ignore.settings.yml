@@ -6,3 +6,6 @@ ignored_config_entities:
   - system.site
   - 'webform.webform.*'
   - os2web_nemlogin.settings
+  - '# Ignore global header, colophon and footer settings'
+  - 'webform.settings:third_party_settings.webform_entity_print.template'
+  - 'os2forms_attachment.os2forms_attachment_component.*'
