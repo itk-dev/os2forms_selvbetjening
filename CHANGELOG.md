@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede [OpenId Connect Server
   Mock](https://github.com/Soluto/oidc-server-mock) til test af OIDC-login under
   udvikling.
+* Opgraderede `drupal/maestro` til
+  `https://git.drupalcode.org/project/maestro/-/tree/maestro_token`.
 
 ## [2.4.2]
 
