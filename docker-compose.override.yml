@@ -82,13 +82,13 @@ services:
             ]
           },
           {
-            "SubjectId":"2",
-            "Username":"User2",
-            "Password":"pwd",
+            "SubjectId":"1705880000",
+            "Username":"1705880000",
+            "Password":"1705880000",
             "Claims": [
               {
                 "Type": "name",
-                "Value": "No. 2",
+                "Value": "Test Testersen",
                 "ValueType": "string"
               },
               {
@@ -97,9 +97,9 @@ services:
                 "ValueType": "string"
               },
               {
-                "Type": "groups",
-                "Value": "[\"AD-administrator\"]",
-                "ValueType": "json"
+                "Type": "cpr",
+                "Value": "1705880000",
+                "ValueType": "string"
               }
             ]
           }
@@ -123,11 +123,14 @@ services:
             - email
           ClientClaimsPrefix: ''
           RedirectUris:
-            - http://selvbetjening.local.itkdev.dk/openid-connect/generic
-            - http://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate
             - https://selvbetjening.local.itkdev.dk/openid-connect/generic
             - https://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate
-            # - '*'
+            - '*'
+          # https://github.com/Soluto/oidc-server-mock/issues/60
+          PostLogoutRedirectUris:
+            - https://selvbetjening.local.itkdev.dk/da/content/du-er-nu-logget-ud
+            - https://selvbetjening.local.itkdev.dk/node/126
+            - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
           RequirePkce: false
           Claims:
@@ -153,6 +156,7 @@ services:
           ClaimTypes:
             - name
             - groups
+            - cpr
         - Name: email
           ClaimTypes:
             - email
