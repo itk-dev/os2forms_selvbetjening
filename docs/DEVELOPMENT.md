@@ -12,13 +12,13 @@ module](https://www.drupal.org/project/openid_connect) to use
 discovery
 document](http://idp.selvbetjening.local.itkdev.dk/.well-known/openid-configuration)):
 
-```sh
+```php
 # web/sites/default/settings.local.php
 …
 
 // http://idp.selvbetjening.local.itkdev.dk/.well-known/openid-configuration
-$config['openid_connect.client.generic']['settings']['client_id'] = 'client-credentials-mock-client';
-$config['openid_connect.client.generic']['settings']['client_secret'] = 'client-credentials-mock-client-secret';
+$config['openid_connect.client.generic']['settings']['client_id'] = 'mock-idp-admin;
+$config['openid_connect.client.generic']['settings']['client_secret'] = 'mock-idp-admin-secret';
 $config['openid_connect.client.generic']['settings']['authorization_endpoint'] = 'http://idp.selvbetjening.local.itkdev.dk/connect/authorize';
 $config['openid_connect.client.generic']['settings']['token_endpoint'] = 'http://idp.selvbetjening.local.itkdev.dk/connect/token';
 ```
@@ -35,7 +35,24 @@ Go to `/user/login` and click “Medarbejderlogin”:
 open "http://$(docker compose port nginx 8080)/user/login"
 ```
 
-Sign in as `User1` with password `pwd` (cf. `docker-compose.override.yml`).
+Sign in as `administrator` with password `administrator` (cf.
+`docker-compose.override.yml`).
+
+```php
+# web/sites/default/settings.local.php
+…
+$config['os2web_nemlogin.settings']['OpenIDConnect'] = serialize([
+  'plugin_id' => 'OpenIDConnect',
+  'nemlogin_openid_connect_discovery_url' => 'http://idp.selvbetjening.local.itkdev.dk/.well-known/openid-configuration',
+  'nemlogin_openid_connect_client_id' => 'mock-idp-citizen',
+  'nemlogin_openid_connect_client_secret' => 'mock-idp-citizen-secret',
+  'nemlogin_openid_connect_fetch_once' => 0,
+  'nemlogin_openid_connect_post_logout_redirect_uri' => '/node/126',
+  'nemlogin_openid_connect_user_claims' => 'cpr: CPR-nummer
+email: E-mailadresse',
+]);
+$config['os2web_nemlogin.settings']['active_plugin_id'] = 'OpenIDConnect';
+```
 
 ## Reloading the OIDC configuration
 
