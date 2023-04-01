@@ -5,6 +5,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede [OpenId Connect Server
+  Mock](https://github.com/Soluto/oidc-server-mock) til test af OIDC-login under
+  udvikling.
+
 ## [2.4.2]
 
 * Opdaterede til [OS2Forms GetOrganized
