@@ -23,6 +23,12 @@ $config['openid_connect.client.generic']['settings']['authorization_endpoint'] =
 $config['openid_connect.client.generic']['settings']['token_endpoint'] = 'http://idp.selvbetjening.local.itkdev.dk/connect/token';
 ```
 
+Apply a patch to allow http discovery document url:
+
+```sh
+patch --directory=vendor/itk-dev/openid-connect/ --strip=1 < patches/itk-dev/openid-connect/allow-http-discovery-document-url.patch
+```
+
 Go to `/user/login` and click “Medarbejderlogin”:
 
 ```sh
