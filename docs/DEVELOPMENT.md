@@ -54,6 +54,11 @@ email: E-mailadresse',
 $config['os2web_nemlogin.settings']['active_plugin_id'] = 'OpenIDConnect';
 ```
 
+```sh
+open "https://idp.selvbetjening.local.itkdev.dk/api/v1/user/administrator"
+open "https://idp.selvbetjening.local.itkdev.dk/api/v1/user/1705880000"
+```
+
 ## Reloading the OIDC configuration
 
 Run

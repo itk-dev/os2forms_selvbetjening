@@ -4,14 +4,14 @@ namespace Drupal\os2forms_user_menu\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface;
 use Drupal\os2forms_cpr_lookup\Service\CprServiceInterface;
+use Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface;
 use Drupal\os2web_nemlogin\Service\AuthProviderService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Provides an user menu block.
@@ -172,9 +172,9 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
           $name = $this->t('Logged in');
         }
       }
-      else {
+      elseif ($cpr = $plugin->fetchValue('cpr')) {
         try {
-          $cprResponse = $this->cprService->search($plugin->fetchValue('cpr'));
+          $cprResponse = $this->cprService->search($cpr);
           $name = $cprResponse->getName();
         }
         catch (\Exception $e) {
