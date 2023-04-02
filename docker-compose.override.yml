@@ -57,6 +57,7 @@ services:
           - Type: groups
             Value: '["AD-administrator"]'
             ValueType: json
+
         - SubjectId: '1705880000'
           Username: '1705880000'
           Password: '1705880000'
@@ -64,11 +65,19 @@ services:
           - Type: name
             Value: Test Testersen
             ValueType: string
-          - Type: email
-            Value: 1705880000@cpr.example.com
-            ValueType: string
           - Type: cpr
             Value: '1705880000'
+            ValueType: string
+
+        - SubjectId: '43486829'
+          Username: '43486829'
+          Password: '43486829'
+          Claims:
+          - Type: name
+            Value: grillkylling.nu
+            ValueType: string
+          - Type: cvr
+            Value: '43486829'
             ValueType: string
 
       CLIENTS_CONFIGURATION_INLINE: |
@@ -151,6 +160,7 @@ services:
             - name
             - groups
             - cpr
+            - cvr
         - Name: email
           ClaimTypes:
             - email
