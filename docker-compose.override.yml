@@ -13,27 +13,27 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       SERVER_OPTIONS_INLINE: |
-        {
-          "AccessTokenJwtType": "JWT",
-          "Discovery": {
-            "ShowKeySet": true
-          },
-          "Authentication": {
-            "CookieSameSiteMode": "Lax",
-            "CheckSessionCookieSameSiteMode": "Lax"
-          }
-        }
+        AccessTokenJwtType: JWT
+        Discovery:
+          ShowKeySet: true
+        Authentication:
+          CookieSameSiteMode: Lax
+          CheckSessionCookieSameSiteMode: Lax
+
       LOGIN_OPTIONS_INLINE: |
         {
           "AllowRememberLogin": false
         }
+
       LOGOUT_OPTIONS_INLINE: |
         {
           "AutomaticRedirectAfterSignOut": true
         }
+
       API_SCOPES_INLINE: |
         - Name: some-app-scope-1
         - Name: some-app-scope-2
+
       API_RESOURCES_INLINE: |
         - Name: some-app
           Scopes:
@@ -42,53 +42,35 @@ services:
           UserClaims:
             - some-app-user-custom-claim
             - groups
+
       USERS_CONFIGURATION_INLINE: |
-        [
-          {
-            "SubjectId": "administrator",
-            "Username": "administrator",
-            "Password": "administrator",
-            "Claims": [
-              {
-                "Type": "name",
-                "Value": "Admin Jensen",
-                "ValueType": "string"
-              },
-              {
-                "Type": "email",
-                "Value": "administrator@example.com",
-                "ValueType": "string"
-              },
-              {
-                "Type": "groups",
-                "Value": "[\"AD-administrator\"]",
-                "ValueType": "json"
-              }
-            ]
-          },
-          {
-            "SubjectId":"1705880000",
-            "Username":"1705880000",
-            "Password":"1705880000",
-            "Claims": [
-              {
-                "Type": "name",
-                "Value": "Test Testersen",
-                "ValueType": "string"
-              },
-              {
-                "Type": "email",
-                "Value": "1705880000@cpr.example.com",
-                "ValueType": "string"
-              },
-              {
-                "Type": "cpr",
-                "Value": "1705880000",
-                "ValueType": "string"
-              }
-            ]
-          }
-        ]
+        - SubjectId: administrator
+          Username: administrator
+          Password: administrator
+          Claims:
+          - Type: name
+            Value: Admin Jensen
+            ValueType: string
+          - Type: email
+            Value: administrator@example.com
+            ValueType: string
+          - Type: groups
+            Value: '["AD-administrator"]'
+            ValueType: json
+        - SubjectId: '1705880000'
+          Username: '1705880000'
+          Password: '1705880000'
+          Claims:
+          - Type: name
+            Value: Test Testersen
+            ValueType: string
+          - Type: email
+            Value: 1705880000@cpr.example.com
+            ValueType: string
+          - Type: cpr
+            Value: '1705880000'
+            ValueType: string
+
       CLIENTS_CONFIGURATION_INLINE: |
         - ClientId: mock-idp-admin
           ClientSecrets: [mock-idp-admin-secret]
