@@ -80,7 +80,7 @@ final class FbsWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state): array {
     if (is_null($this->getQueue())) {
       $form['queue_message'] = [
         '#theme' => 'status_messages',
@@ -95,7 +95,7 @@ final class FbsWebformHandler extends WebformHandlerBase {
     $form['wrapper'] = [
       '#type' => 'fieldset',
       '#title' => t('FBS configuration', [], $translation_options),
-      '#tree' => FALSE,
+      '#tree' => TRUE,
     ];
 
     $form['wrapper']['agency_id'] = [
@@ -136,18 +136,18 @@ final class FbsWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state): void {
     parent::submitConfigurationForm($form, $form_state);
-    $this->configuration['agency_id'] = $form_state->getValue('agency_id');
-    $this->configuration['endpoint_url'] = $form_state->getValue('endpoint_url');
-    $this->configuration['username'] = $form_state->getValue('username');
-    $this->configuration['password'] = $form_state->getValue('password');
+    $this->configuration['agency_id'] = $form_state->getValue(['wrapper', 'agency_id']);
+    $this->configuration['endpoint_url'] = $form_state->getValue(['wrapper', 'endpoint_url']);
+    $this->configuration['username'] = $form_state->getValue(['wrapper', 'username']);
+    $this->configuration['password'] = $form_state->getValue(['wrapper', 'password']);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE) {
+  public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE): void {
     /** @var \Drupal\advancedqueue\Entity\Queue $queue */
     $queue = $this->getQueue();
     $job = Job::create(FbsCreateUser::class, [

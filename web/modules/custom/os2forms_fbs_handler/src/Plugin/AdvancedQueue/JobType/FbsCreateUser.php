@@ -65,7 +65,7 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
   }
 
   /**
-   * Processes the ArchiveDocument job.
+   * {@inheritdoc}
    */
   public function process(Job $job): JobResult {
     try {
