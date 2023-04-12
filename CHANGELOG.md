@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Updaterede os2web/os2web_datalookup
+  (<https://github.com/OS2web/os2web_datalookup/compare/1.5.1...1.5.2>).
 * Fiksede Xdebug-opsætning.
 * Fiksede GitHub Action til at installere site.
 * Opdaterede “config ignore”-regler
