@@ -2,9 +2,11 @@
 
 namespace Drupal\os2forms_fbs_handler\Plugin\WebformHandler;
 
+use Drupal\advancedqueue\Entity\Queue;
 use Drupal\advancedqueue\Job;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Render\RendererInterface;
@@ -35,6 +37,13 @@ final class FbsWebformHandler extends WebformHandlerBase {
    * @var \Drupal\Core\Logger\LoggerChannelInterface
    */
   protected LoggerChannelInterface $submissionLogger;
+
+  /**
+   * The queue id.
+   *
+   * @var string
+   */
+  private string $queueId = 'os2forms_fbs_handler';
 
   /**
    * Constructs an FbsWebformHandler object.
@@ -71,10 +80,76 @@ final class FbsWebformHandler extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+    if (is_null($this->getQueue())) {
+      $form['queue_message'] = [
+        '#theme' => 'status_messages',
+        '#message_list' => [
+          'warning' => [$this->t('Cannot get queue @queue_id', ['@queue_id' => $this->queueId])],
+        ],
+      ];
+    }
+
+    $translation_options = ['context' => 'FBS configuration'];
+
+    $form['wrapper'] = [
+      '#type' => 'fieldset',
+      '#title' => t('FBS configuration', [], $translation_options),
+      '#tree' => FALSE,
+    ];
+
+    $form['wrapper']['agency_id'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('ISIL', [], $translation_options),
+      '#description' => $this->t('The library\'s ISIL number (e.g. "DK-775100" for Aarhus libraries', [], $translation_options),
+      '#required' => TRUE,
+      '#default_value' => $this->configuration['agency_id'] ?? '',
+    ];
+
+    $form['wrapper']['endpoint_url'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('FBS endpoint URL', [], $translation_options),
+      '#description' => $this->t('The URL for the FBS REST service, usually something like https://et.cicero-fbs.com/rest'),
+      '#required' => TRUE,
+      '#default_value' => $this->configuration['endpoint_url'] ?? 'https://cicero-fbs.com/rest/',
+    ];
+
+    $form['wrapper']['username'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Username', [], $translation_options),
+      '#description' => $this->t('FBS username to allow connection to FBS'),
+      '#required' => TRUE,
+      '#default_value' => $this->configuration['username'] ?? '',
+    ];
+
+    $form['wrapper']['password'] = [
+      '#type' => 'password',
+      '#title' => $this->t('Password', [], $translation_options),
+      '#description' => $this->t('Password to access the API'),
+      '#required' => TRUE,
+      '#default_value' => $this->configuration['password'] ?? '',
+    ];
+
+    return $this->setSettingsParents($form);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['agency_id'] = $form_state->getValue('agency_id');
+    $this->configuration['endpoint_url'] = $form_state->getValue('endpoint_url');
+    $this->configuration['username'] = $form_state->getValue('username');
+    $this->configuration['password'] = $form_state->getValue('password');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE) {
-    $queueStorage = $this->entityTypeManager->getStorage('advancedqueue_queue');
     /** @var \Drupal\advancedqueue\Entity\Queue $queue */
-    $queue = $queueStorage->load('os2forms_fbs_handler');
+    $queue = $this->getQueue();
     $job = Job::create(FbsCreateUser::class, [
       'submissionId' => $webform_submission->id(),
       'handlerConfiguration' => $this->configuration,
@@ -89,5 +164,16 @@ final class FbsWebformHandler extends WebformHandlerBase {
     ];
 
     $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $webform_submission->serial()]), $logger_context);
+  }
+
+  /**
+   * Get queue.
+   */
+  private function getQueue(): ?Queue {
+    $queueStorage = $this->entityTypeManager->getStorage('advancedqueue_queue');
+    /** @var ?\Drupal\advancedqueue\Entity\Queue $queue */
+    $queue = $queueStorage->load($this->queueId);
+
+    return $queue;
   }
 }
