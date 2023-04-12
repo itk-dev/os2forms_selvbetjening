@@ -5,6 +5,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Fiksede Xdebug-opsætning.
 * Fiksede GitHub Action til at installere site.
 * Opdaterede “config ignore”-regler
 
