@@ -48,7 +48,17 @@ final class FbsWebformHandler extends WebformHandlerBase {
   /**
    * Constructs an FbsWebformHandler object.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $loggerFactory, ConfigFactoryInterface $configFactory, RendererInterface $renderer, EntityTypeManagerInterface $entityTypeManager, WebformSubmissionConditionsValidatorInterface $conditionsValidator, WebformTokenManagerInterface $tokenManager) {
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    LoggerChannelFactoryInterface $loggerFactory,
+    ConfigFactoryInterface $configFactory,
+    RendererInterface $renderer,
+    EntityTypeManagerInterface $entityTypeManager,
+    WebformSubmissionConditionsValidatorInterface $conditionsValidator,
+    WebformTokenManagerInterface $tokenManager,
+  ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->setConfiguration($configuration);
     $this->loggerFactory = $loggerFactory;
@@ -152,7 +162,7 @@ final class FbsWebformHandler extends WebformHandlerBase {
     $queue = $this->getQueue();
     $job = Job::create(FbsCreateUser::class, [
       'submissionId' => $webform_submission->id(),
-      'handlerConfiguration' => $this->configuration,
+      'configuration' => $this->configuration,
     ]);
     $queue->enqueueJob($job);
 

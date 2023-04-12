@@ -63,6 +63,7 @@
         "drupal/webform_remote_select": "^1.0",
         "drupal/webform_translation_permissions": "^2.0",
         "drush/drush": "^10.6",
+        "fig/http-message-util": "^1.1",
         "itk-dev/getorganized-api-client-php": "^1.0",
         "itk-dev/itkdev-booking": "^1.0",
         "itk-dev/os2forms_cpr_lookup": "^1.6.5",

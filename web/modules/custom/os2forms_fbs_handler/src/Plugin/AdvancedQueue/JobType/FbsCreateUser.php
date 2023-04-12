@@ -8,9 +8,10 @@ use Drupal\advancedqueue\Plugin\AdvancedQueue\JobType\JobTypeBase;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\os2forms_fbs_handler\Client\FBS;
 use Drupal\webform\Entity\WebformSubmission;
 use GuzzleHttp\Client;
-use GuzzleHttp\RequestOptions;
+use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -30,11 +31,18 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
   protected LoggerChannelInterface $submissionLogger;
 
   /**
-   * The client.
-   *
-   * @var \GuzzleHttp\Client
+   * {@inheritdoc}
    */
-  protected Client $client;
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    LoggerChannelFactoryInterface $loggerFactory,
+    protected readonly Client $client,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->submissionLogger = $loggerFactory->get('webform_submission');
+  }
 
   /**
    * {@inheritdoc}
@@ -52,21 +60,6 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function __construct(
-    array $configuration,
-    $plugin_id,
-    $plugin_definition,
-    LoggerChannelFactoryInterface $loggerFactory,
-    Client $client
-  ) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->submissionLogger = $loggerFactory->get('webform_submission');
-    $this->client = $client;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function process(Job $job): JobResult {
     try {
       $payload = $job->getPayload();
@@ -79,20 +72,21 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
         'webform_submission' => $webformSubmission,
         'operation' => 'response from queue',
       ];
+      $config = $payload['configuration'];
 
       try {
-        // Do the stuff.
-        $headers = [];
-        $apiUrl = 'https://cicero-fbs.com/rest/external/v1/{agencyid}/authentication/login';
-        $this->client->request('POST', $apiUrl, [
-          'headers' => $headers,
-        ]);
+        $fbs = new FBS($this->client, $config['endpoint_url'], $config['agency_id'], $config['username'], $config['password']);
+
+        // Log into FBS and obtain session.
+        $fbs->login();
+
+        // ........... do more stuff at FBS .........
 
         $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $webformSubmission->serial()]), $logger_context);
 
         return JobResult::success();
       }
-      catch (\Exception $e) {
+      catch (\Exception|GuzzleException $e) {
         $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
           '@serial' => $webformSubmission->serial(),
           '@message' => $e->getMessage(),
