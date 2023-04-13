@@ -80,7 +80,22 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
         // Log into FBS and obtain session.
         $fbs->login();
 
-        // ........... do more stuff at FBS .........
+        // Checker child patron exists.
+        $patronId = $fbs->doUserExists('');
+
+        // If "yes" update the child patron and create the guardian (the
+        // guardian is not another patron user).
+        if (!is_null($patronId)) {
+          $fbs->updatePatron();
+          // /external/{agencyid}/patrons/{patronid}/v7|v6
+        }
+        else {
+          // If "no" create child patron and guardian.
+          $fbs->createPatron();
+        }
+
+        // /external/{agencyid}/patrons/withGuardian/v1
+        $fbs->createGuardian();
 
         $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $webformSubmission->serial()]), $logger_context);
 

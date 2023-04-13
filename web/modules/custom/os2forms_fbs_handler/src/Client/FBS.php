@@ -31,7 +31,7 @@ final class FBS {
     $uri = '/external/v1/{agency_id}/authentication/login';
     $payload = [
       'username' => $this->username,
-      'password' => $this->password
+      'password' => $this->password,
     ];
 
     $json = $this->request($uri, $payload);
@@ -45,11 +45,51 @@ final class FBS {
     return FALSE;
   }
 
-  public function doUserExists() {
+  public function isLoggedIn(): bool {
+    return isset($this->sessionKey);
+  }
+
+  /**
+   * Check if user exists.
+   *
+   * @param $cpr
+   *   The users personal security number.
+   *
+   * @return int|null
+   *   NULL if not else the patron's id.
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   * @throws \JsonException
+   */
+  public function doUserExists($cpr): ?int {
+    // Check if session have been created with FBS and if not create it.
+    if (!$this->isLoggedIn()) {
+      $this->login();
+    }
+
+    // Try pre-authenticate the user/parent
+    $uri = '/external/{agency_id}/patrons/preauthenticated/v9';
+    $payload = [
+      'patronIdentifier' => $cpr,
+    ];
+
+    $json = $this->request($uri, $cpr);
+    if ($json->authenticateStatus === 'VALID') {
+      return $json->patron->patronId;
+    }
+
+    return NULL;
+  }
+
+  public function createPatron() {
 
   }
 
-  public function createUser() {
+  public function updatePatron() {
+
+  }
+
+  public function createGuardian() {
 
   }
 
@@ -58,8 +98,8 @@ final class FBS {
    *
    * @param string $uri
    *   The uri/poth to send request to.
-   * @param array $json
-   *   The json to send to FBS.
+   * @param array|string $data
+   *   The json or string to send to FBS.
    * @param string $method
    *   The type of request to send (Default: POST).
    *
@@ -69,7 +109,7 @@ final class FBS {
    * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \JsonException
    */
-  private function request(string $uri, array $json, string $method = RequestMethodInterface::METHOD_POST) {
+  private function request(string $uri, array|string $data, string $method = RequestMethodInterface::METHOD_POST): mixed {
     $url = rtrim($this->endpoint, '/\\');
     $url = $url . str_replace('{agency_id}', $this->agencyId, $uri);
 
@@ -77,8 +117,22 @@ final class FBS {
       'headers' => [
         'Content-type' => 'application/json; charset=utf-8',
       ],
-      'json' => $json
     ];
+
+    // The API designer at FBS don't always use JSON. So in some cases only a
+    // string should be sent.
+    if (is_array($data)) {
+      $options['json'] = $data;
+    }
+    else {
+      $options['body'] = $data;
+    }
+
+    // If already logged in lets add the session key to the request headers.
+    if ($this->isLoggedIn()) {
+      $options['headers']['X-Session'] = $this->sessionKey;
+    }
+
     $response = $this->client->request($method, $url, $options);
 
     return json_decode($response->getBody(), false, 512, JSON_THROW_ON_ERROR);
