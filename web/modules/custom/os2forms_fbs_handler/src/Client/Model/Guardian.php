@@ -3,11 +3,13 @@
 namespace Drupal\os2forms_fbs_handler\Client\Model;
 
 /**
- * @class
  * Wrapper class to represent and guardian.
  */
 final class Guardian {
 
+  /**
+   * Default constructor.
+   */
   public function __construct(
     protected readonly string $cpr,
     protected readonly string $name,
@@ -15,6 +17,12 @@ final class Guardian {
   ) {
   }
 
+  /**
+   * Convert object to array with fields required in FBS.
+   *
+   * @return array
+   *   Array with field required by FBS calls.
+   */
   public function toArray(): array {
     return [
       'cprNumber' => $this->cpr,
@@ -24,4 +32,3 @@ final class Guardian {
   }
 
 }
-

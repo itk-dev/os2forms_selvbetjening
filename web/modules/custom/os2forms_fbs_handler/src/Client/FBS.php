@@ -7,10 +7,21 @@ use Drupal\os2forms_fbs_handler\Client\Model\Patron;
 use Fig\Http\Message\RequestMethodInterface;
 use GuzzleHttp\Client;
 
+/**
+ * Minimalistic client to create user with guardians at FBS.
+ */
 final class FBS {
 
+  /**
+   * FBS session key.
+   *
+   * @var string
+   */
   private string $sessionKey;
 
+  /**
+   * Default constructor.
+   */
   public function __construct(
     private readonly Client $client,
     private readonly string $endpoint,
@@ -46,6 +57,12 @@ final class FBS {
     return FALSE;
   }
 
+  /**
+   * Check is user is logged in.
+   *
+   * @return bool
+   *   TRUE if logged in else FALSE.
+   */
   public function isLoggedIn(): bool {
     return isset($this->sessionKey);
   }
@@ -53,10 +70,10 @@ final class FBS {
   /**
    * Check if user exists.
    *
-   * @param $cpr
+   * @param string $cpr
    *   The users personal security number.
    *
-   * @return Patron|null
+   * @return \Drupal\os2forms_fbs_handler\Client\Model\Patron|null
    *   NULL if not else the Patron.
    *
    * @throws \GuzzleHttp\Exception\GuzzleException
@@ -68,7 +85,7 @@ final class FBS {
       $this->login();
     }
 
-    // Try pre-authenticate the user/parent
+    // Try pre-authenticate the user/parent.
     $json = $this->request('/external/{agency_id}/patrons/preauthenticated/v9', $cpr);
     if ($json->authenticateStatus === 'VALID') {
       return new Patron(
@@ -89,6 +106,20 @@ final class FBS {
     return NULL;
   }
 
+  /**
+   * Create new patron with guardian attached.
+   *
+   * @param \Drupal\os2forms_fbs_handler\Client\Model\Patron $patron
+   *   The patron to create.
+   * @param \Drupal\os2forms_fbs_handler\Client\Model\Guardian $guardian
+   *   The guardian to attach to the parton.
+   *
+   * @return mixed
+   *   JSON response from FBS.
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   * @throws \JsonException
+   */
   public function createPatronWithGuardian(Patron $patron, Guardian $guardian) {
     $uri = '/external/{agency_id}/patrons/withGuardian/v1';
     $payload = [
@@ -100,13 +131,13 @@ final class FBS {
       'guardian' => $guardian->toArray(),
     ];
 
-    return $this->request($uri, $payload, );
+    return $this->request($uri, $payload,);
   }
 
   /**
    * Update patron information.
    *
-   * @param Patron $patron
+   * @param \Drupal\os2forms_fbs_handler\Client\Model\Patron $patron
    *   The patron to update.
    *
    * @return bool
@@ -116,7 +147,7 @@ final class FBS {
    * @throws \JsonException
    */
   public function updatePatron(Patron $patron): bool {
-    $uri = '/external/{agency_id}/patrons/'.$patron->patronId.'/v6';
+    $uri = '/external/{agency_id}/patrons/' . $patron->patronId . '/v6';
     $payload = [
       'patronid' => $patron->patronId,
       'patron' => $patron->toArray(),
@@ -134,9 +165,9 @@ final class FBS {
   /**
    * Create guardian for patron.
    *
-   * @param Patron $patron
+   * @param \Drupal\os2forms_fbs_handler\Client\Model\Patron $patron
    *   Patron to create guardian for.
-   * @param Guardian $guardian
+   * @param \Drupal\os2forms_fbs_handler\Client\Model\Guardian $guardian
    *   The guardian to create.
    *
    * @return int
@@ -197,7 +228,7 @@ final class FBS {
 
     $response = $this->client->request($method, $url, $options);
 
-    return json_decode($response->getBody(), false, 512, JSON_THROW_ON_ERROR);
+    return json_decode($response->getBody(), FALSE, 512, JSON_THROW_ON_ERROR);
   }
-}
 
+}

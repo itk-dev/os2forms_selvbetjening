@@ -100,7 +100,7 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
           // Create Patron object with updated values.
           $patron->preferredPickupBranch = $data['afhentningssted'];
           $patron->emailAddress = $data['barn_mail'];
-          $patron->receiveEmail = true;
+          $patron->receiveEmail = TRUE;
           $patron->cpr = $data['barn_cpr'];
           $patron->pincode = $data['pinkode'];
 
@@ -110,9 +110,9 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
         else {
           // If "no" create child patron and guardian.
           $patron = new Patron();
-          $patron->preferredPickupBranch = $data['afhentningssted'];;
+          $patron->preferredPickupBranch = $data['afhentningssted'];
           $patron->emailAddress = $data['barn_mail'];
-          $patron->receiveEmail = true;
+          $patron->receiveEmail = TRUE;
           $patron->cpr = $data['barn_cpr'];
           $patron->pincode = $data['pinkode'];
 
@@ -123,7 +123,7 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
 
         return JobResult::success();
       }
-      catch (\Exception|GuzzleException $e) {
+      catch (\Exception | GuzzleException $e) {
         $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
           '@serial' => $webformSubmission->serial(),
           '@message' => $e->getMessage(),

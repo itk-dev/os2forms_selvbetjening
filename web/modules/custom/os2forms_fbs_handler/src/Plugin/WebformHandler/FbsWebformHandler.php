@@ -104,7 +104,7 @@ final class FbsWebformHandler extends WebformHandlerBase {
 
     $form['wrapper'] = [
       '#type' => 'fieldset',
-      '#title' => t('FBS configuration', [], $translation_options),
+      '#title' => $this->t('FBS configuration', [], $translation_options),
       '#tree' => TRUE,
     ];
 
@@ -148,10 +148,14 @@ final class FbsWebformHandler extends WebformHandlerBase {
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state): void {
     parent::submitConfigurationForm($form, $form_state);
-    $this->configuration['agency_id'] = $form_state->getValue(['wrapper', 'agency_id']);
-    $this->configuration['endpoint_url'] = $form_state->getValue(['wrapper', 'endpoint_url']);
-    $this->configuration['username'] = $form_state->getValue(['wrapper', 'username']);
-    $this->configuration['password'] = $form_state->getValue(['wrapper', 'password']);
+    $this->configuration['agency_id'] = $form_state
+      ->getValue(['wrapper', 'agency_id']);
+    $this->configuration['endpoint_url'] = $form_state
+      ->getValue(['wrapper', 'endpoint_url']);
+    $this->configuration['username'] = $form_state
+      ->getValue(['wrapper', 'username']);
+    $this->configuration['password'] = $form_state
+      ->getValue(['wrapper', 'password']);
   }
 
   /**
@@ -167,7 +171,15 @@ final class FbsWebformHandler extends WebformHandlerBase {
 
     // Validate fields required in the job and FBS client.
     $data = $webform_submission->getData();
-    $fields = ['afhentningssted', 'barn_cpr', 'barn_mail', 'cpr', 'email', 'navn', 'pinkode'];
+    $fields = [
+      'afhentningssted',
+      'barn_cpr',
+      'barn_mail',
+      'cpr',
+      'email',
+      'navn',
+      'pinkode',
+    ];
     foreach ($fields as $field) {
       if (!isset($data[$field])) {
         $this->submissionLogger->error($this->t('Missing field in submission @field to queue for processing', ['@field' => $field]), $logger_context);
@@ -196,4 +208,5 @@ final class FbsWebformHandler extends WebformHandlerBase {
 
     return $queue;
   }
+
 }

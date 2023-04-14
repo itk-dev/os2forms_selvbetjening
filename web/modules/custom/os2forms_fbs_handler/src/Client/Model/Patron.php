@@ -3,11 +3,13 @@
 namespace Drupal\os2forms_fbs_handler\Client\Model;
 
 /**
- * @class
  * Wrapper class to represent and patron.
  */
 final class Patron {
 
+  /**
+   * Default constructor.
+   */
   public function __construct(
     public readonly ?string $patronId = NULL,
     public readonly ?bool $receiveSms = FALSE,
@@ -26,6 +28,12 @@ final class Patron {
   ) {
   }
 
+  /**
+   * Convert object to array with fields required in FBS.
+   *
+   * @return array
+   *   Array with field required by FBS calls.
+   */
   public function toArray(): array {
     return [
       'receiveEmail' => $this->receiveEmail,
@@ -42,4 +50,3 @@ final class Patron {
   }
 
 }
-
