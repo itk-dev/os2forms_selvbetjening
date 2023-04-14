@@ -5,8 +5,12 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Updaterede os2web/os2web_datalookup
+  (<https://github.com/OS2web/os2web_datalookup/compare/1.5.1...1.5.2>).
+* Fiksede Xdebug-opsætning.
 * Fiksede GitHub Action til at installere site.
 * Fjernede “custom” `os2forms_user_field_lookup`-modul.
+* Opdaterede “config ignore”-regler
 
 ## [2.0.0] 29.03.2023
 
@@ -21,9 +25,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Remove dompdf
 * Opdaterede docker compose-setup.
 * Disable IP tracking
+* Deny anonymous access to webform node revisions
 * Allow access to config translations for user role forloeb_designer
 * Remove revisions tab
 * Håndtering af os2web/os2web_nemlogin konfiguration.
+* Disable caching on failed jobs list.
 * itk-dev/getorganized-api-client-php (1.2.0)
 * Udvidet GetOrganized handler med funktionalitet
   til at arkivere vedhæftede filer som bilag i GO.
