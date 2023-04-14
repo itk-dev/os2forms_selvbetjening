@@ -24,6 +24,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Remove dompdf
 * Opdaterede docker compose-setup.
 * Disable IP tracking
+* Deny anonymous access to webform node revisions
 * Allow access to config translations for user role forloeb_designer
 * Remove revisions tab
 * Håndtering af os2web/os2web_nemlogin konfiguration.
