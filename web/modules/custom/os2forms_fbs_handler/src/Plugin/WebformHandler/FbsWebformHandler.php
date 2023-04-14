@@ -158,6 +158,23 @@ final class FbsWebformHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE): void {
+    $logger_context = [
+      'handler_id' => 'os2forms_fbs',
+      'channel' => 'webform_submission',
+      'webform_submission' => $webform_submission,
+      'operation' => 'submission queued',
+    ];
+
+    // Validate fields required in the job and FBS client.
+    $data = $webform_submission->getData();
+    $fields = ['afhentningssted', 'barn_cpr', 'barn_mail', 'cpr', 'email', 'navn', 'pinkode'];
+    foreach ($fields as $field) {
+      if (!isset($data[$field])) {
+        $this->submissionLogger->error($this->t('Missing field in submission @field to queue for processing', ['@field' => $field]), $logger_context);
+        return;
+      }
+    }
+
     /** @var \Drupal\advancedqueue\Entity\Queue $queue */
     $queue = $this->getQueue();
     $job = Job::create(FbsCreateUser::class, [
@@ -165,13 +182,6 @@ final class FbsWebformHandler extends WebformHandlerBase {
       'configuration' => $this->configuration,
     ]);
     $queue->enqueueJob($job);
-
-    $logger_context = [
-      'handler_id' => 'os2forms_fbs',
-      'channel' => 'webform_submission',
-      'webform_submission' => $webform_submission,
-      'operation' => 'submission queued',
-    ];
 
     $this->submissionLogger->notice($this->t('Added submission #@serial to queue for processing', ['@serial' => $webform_submission->serial()]), $logger_context);
   }

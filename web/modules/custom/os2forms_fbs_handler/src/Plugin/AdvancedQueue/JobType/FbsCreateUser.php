@@ -9,6 +9,8 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\os2forms_fbs_handler\Client\FBS;
+use Drupal\os2forms_fbs_handler\Client\Model\Guardian;
+use Drupal\os2forms_fbs_handler\Client\Model\Patron;
 use Drupal\webform\Entity\WebformSubmission;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -80,22 +82,42 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
         // Log into FBS and obtain session.
         $fbs->login();
 
+        $data = $webformSubmission->getData();
+
         // Checker child patron exists.
-        $patronId = $fbs->doUserExists('');
+        $patron = $fbs->doUserExists($data['barn_cpr']);
+
+        // Create Guardian.
+        $guardian = new Guardian(
+          $data['cpr'],
+          $data['navn'],
+          $data['email']
+        );
 
         // If "yes" update the child patron and create the guardian (the
         // guardian is not another patron user).
-        if (!is_null($patronId)) {
-          $fbs->updatePatron();
-          // /external/{agencyid}/patrons/{patronid}/v7|v6
+        if (!is_null($patron)) {
+          // Create Patron object with updated values.
+          $patron->preferredPickupBranch = $data['afhentningssted'];
+          $patron->emailAddress = $data['barn_mail'];
+          $patron->receiveEmail = true;
+          $patron->cpr = $data['barn_cpr'];
+          $patron->pincode = $data['pinkode'];
+
+          $fbs->updatePatron($patron);
+          $fbs->createGuardian($patron, $guardian);
         }
         else {
           // If "no" create child patron and guardian.
-          $fbs->createPatron();
-        }
+          $patron = new Patron();
+          $patron->preferredPickupBranch = $data['afhentningssted'];;
+          $patron->emailAddress = $data['barn_mail'];
+          $patron->receiveEmail = true;
+          $patron->cpr = $data['barn_cpr'];
+          $patron->pincode = $data['pinkode'];
 
-        // /external/{agencyid}/patrons/withGuardian/v1
-        $fbs->createGuardian();
+          $fbs->createPatronWithGuardian($patron, $guardian);
+        }
 
         $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $webformSubmission->serial()]), $logger_context);
 
