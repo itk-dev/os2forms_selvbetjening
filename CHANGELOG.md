@@ -9,6 +9,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   (<https://github.com/OS2web/os2web_datalookup/compare/1.5.1...1.5.2>).
 * Fiksede Xdebug-opsætning.
 * Fiksede GitHub Action til at installere site.
+* Fjernede “custom” `os2forms_user_field_lookup`-modul.
 * Opdaterede “config ignore”-regler
 
 ## [2.0.0] 29.03.2023
