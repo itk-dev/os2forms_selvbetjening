@@ -5,6 +5,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Updaterede os2web/os2web_datalookup
+  (<https://github.com/OS2web/os2web_datalookup/compare/1.5.1...1.5.2>).
+* Fiksede Xdebug-opsætning.
+* Fiksede GitHub Action til at installere site.
+* Opdaterede “config ignore”-regler
+
+## [2.0.0] 29.03.2023
+
 * Gjorde det muligt at installere sitet forfra og opdaterede
   installationsvejledning.
 
@@ -17,8 +25,20 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede docker compose-setup.
 * Disable IP tracking
 * Allow access to config translations for user role forloeb_designer
+* Remove revisions tab
 * Håndtering af os2web/os2web_nemlogin konfiguration.
 * Disable caching on failed jobs list.
+* itk-dev/getorganized-api-client-php (1.2.0)
+* Udvidet GetOrganized handler med funktionalitet
+  til at arkivere vedhæftede filer som bilag i GO.
+* Konfiguration ændringer
+  * Aktiverede `Signature` og `Email confirm` webform elementer.
+  * Brug af `daemon` til GetOrganized og REST API queues.
+  * Sortede maestro flows efter `id` på `/maestro-all-flows`.
+* Tilføjede mulighed for konfigration af webform category
+* Opdaterede os2forms/os2forms_forloeb og drupal/ultimate_cron
+* Fjernede `user_default_page`
+* Tilføjede `os2forms_attachment`
 
 ## [1.7.1] 24.02.2023
 
@@ -128,6 +148,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...2.0.0
 [1.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/releases/tag/1.7.0

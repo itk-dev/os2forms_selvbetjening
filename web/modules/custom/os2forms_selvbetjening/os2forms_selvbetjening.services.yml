@@ -1,7 +1,5 @@
 services:
   Drupal\os2forms_selvbetjening\Helper\FormHelper:
-    arguments:
-      - '@config.factory'
 
   Drupal\os2forms_selvbetjening\EventSubscriber\ResponseSubscriber:
     arguments:

@@ -4,6 +4,7 @@ namespace Drupal\os2forms_get_organized\Helper;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\os2forms_get_organized\Exception\ArchivingMethodException;
 use Drupal\os2forms_get_organized\Exception\CitizenArchivingException;
 use Drupal\os2forms_get_organized\Exception\GetOrganizedCaseIdException;
 use Drupal\webform\Entity\WebformSubmission;
@@ -53,6 +54,17 @@ class ArchiveHelper {
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   private EntityTypeManagerInterface $entityTypeManager;
+
+  /**
+   * File element types.
+   */
+  private const FILE_ELEMENT_TYPES = [
+    'webform_image_file',
+    'webform_document_file',
+    'webform_video_file',
+    'webform_audio_file',
+    'managed_file',
+  ];
 
   /**
    * Constructs an ArchiveHelper object.
@@ -129,6 +141,7 @@ class ArchiveHelper {
     $getOrganizedCaseId = $handlerConfiguration['choose_archiving_method']['case_id'];
     $webformAttachmentElementId = $handlerConfiguration['general']['attachment_element'];
     $shouldBeFinalized = $handlerConfiguration['general']['should_be_finalized'] ?? FALSE;
+    $shouldArchiveFiles = $handlerConfiguration['general']['should_archive_files'] ?? FALSE;
 
     // Ensure case id exists.
     $case = $this->caseService->getByCaseId($getOrganizedCaseId);
@@ -138,7 +151,7 @@ class ArchiveHelper {
       throw new GetOrganizedCaseIdException($message);
     }
 
-    $this->uploadDocumentToCase($getOrganizedCaseId, $webformAttachmentElementId, $submission, $shouldBeFinalized);
+    $this->uploadDocumentToCase($getOrganizedCaseId, $webformAttachmentElementId, $submission, $shouldArchiveFiles, $shouldBeFinalized);
   }
 
   /**
@@ -250,8 +263,9 @@ class ArchiveHelper {
     // Step 3: Upload to subcase.
     $webformAttachmentElementId = $handlerConfiguration['general']['attachment_element'];
     $shouldBeFinalized = $handlerConfiguration['general']['should_be_finalized'] ?? FALSE;
+    $shouldArchiveFiles = $handlerConfiguration['general']['should_archive_files'] ?? FALSE;
 
-    $this->uploadDocumentToCase($subCaseId, $webformAttachmentElementId, $submission, $shouldBeFinalized);
+    $this->uploadDocumentToCase($subCaseId, $webformAttachmentElementId, $submission, $shouldArchiveFiles, $shouldBeFinalized);
   }
 
   /**
@@ -296,33 +310,122 @@ class ArchiveHelper {
   }
 
   /**
-   * Uploads attachment document to GetOrganized case.
+   * Uploads attachment document and attached files to GetOrganized case.
    */
-  private function uploadDocumentToCase(string $caseId, string $webformAttachmentElementId, WebformSubmission $submission, bool $shouldBeFinalized) {
+  private function uploadDocumentToCase(string $caseId, string $webformAttachmentElementId, WebformSubmission $submission, bool $shouldArchiveFiles, bool $shouldBeFinalized) {
+    // Handle main document (the attachment).
     $element = $submission->getWebform()->getElement($webformAttachmentElementId);
     $fileContent = WebformEntityPrintAttachment::getFileContent($element, $submission);
 
+    // Ids that should possibly be finalized (jornaliseret) later.
+    $documentIdsForFinalizing = [];
+
     // Create temp file with attachment-element contents.
     $webformLabel = $submission->getWebform()->label();
-    $tempFile = tempnam('/tmp', $webformLabel);
+    $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
+
+    $parentDocumentId = $this->archiveDocumentToGetOrganizedCase($caseId, $getOrganizedFileName, $fileContent);
+
+    $documentIdsForFinalizing[] = $parentDocumentId;
+
+    // Handle attached files.
+    if ($shouldArchiveFiles) {
+      $fileIds = $this->getFileElementKeysFromSubmission($submission);
+
+      $childDocumentIds = [];
+
+      $fileStorage = $this->entityTypeManager->getStorage('file');
+
+      foreach ($fileIds as $fileId) {
+        /** @var \Drupal\file\Entity\File $file */
+        $file = $fileStorage->load($fileId);
+
+        $fileContent = file_get_contents($file->getFileUri());
+        $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '-' . $file->getFilename();
+
+        $childDocumentId = $this->archiveDocumentToGetOrganizedCase($caseId, $getOrganizedFileName, $fileContent);
+
+        $childDocumentIds[] = $childDocumentId;
+      }
+
+      $documentIdsForFinalizing = array_merge($documentIdsForFinalizing, $childDocumentIds);
+
+      $this->documentService->RelateDocuments($parentDocumentId, $childDocumentIds, 1);
+    }
+
+    if ($shouldBeFinalized) {
+      $this->documentService->FinalizeMultiple($documentIdsForFinalizing);
+    }
+  }
+
+  /**
+   * Get available elements by type.
+   */
+  private function getAvailableElementsByType(string $type, array $elements): array {
+    $attachmentElements = array_filter($elements, function ($element) use ($type) {
+      return $type === $element['#type'];
+    });
+
+    return array_map(function ($element) {
+      return $element['#title'];
+    }, $attachmentElements);
+  }
+
+  /**
+   * Archives file content to GetOrganized case.
+   */
+  private function archiveDocumentToGetOrganizedCase(string $caseId, string $getOrganizedFileName, string $fileContent): int {
+    $tempFile = tempnam('/tmp', $caseId . '-' . uniqid());
 
     try {
       file_put_contents($tempFile, $fileContent);
 
-      $getOrganizedFileName = $webformLabel . '-' . $submission->serial() . '.pdf';
-
       $result = $this->documentService->AddToDocumentLibrary($tempFile, $caseId, $getOrganizedFileName);
 
-      // Handle finalization ("journalisering").
-      if ($shouldBeFinalized) {
-        if (isset($result['DocId'])) {
-          $this->documentService->Finalize($result['DocId']);
-        }
+      if (!isset($result['DocId'])) {
+        throw new ArchivingMethodException('Could not get document id from response.');
       }
+
+      $documentId = $result['DocId'];
     } finally {
       // Remove temp file.
       unlink($tempFile);
     }
+
+    return (int) $documentId;
+  }
+
+  /**
+   * Returns array of file elements keys in submission.
+   */
+  private function getFileElementKeysFromSubmission(WebformSubmission $submission): array {
+    $elements = $submission->getWebform()->getElementsDecodedAndFlattened();
+
+    $fileElements = [];
+
+    foreach (self::FILE_ELEMENT_TYPES as $fileElementType) {
+      $fileElements[] = $this->getAvailableElementsByType($fileElementType, $elements);
+    }
+
+    // https://dev.to/klnjmm/never-use-arraymerge-in-a-for-loop-in-php-5go1
+    $fileElements = array_merge(...$fileElements);
+
+    $elementKeys = array_keys($fileElements);
+
+    $fileIds = [];
+
+    foreach ($elementKeys as $elementKey) {
+      if (empty($submission->getData()[$elementKey])) {
+        continue;
+      }
+
+      // Convert occurrences of singular file into array.
+      $elementFileIds = (array) $submission->getData()[$elementKey];
+
+      $fileIds[] = $elementFileIds;
+    }
+
+    return array_merge(...$fileIds);
   }
 
 }

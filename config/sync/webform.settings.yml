@@ -177,7 +177,6 @@ element:
     webform_attachment_url: webform_attachment_url
     webform_codemirror: webform_codemirror
     webform_computed_token: webform_computed_token
-    webform_email_confirm: webform_email_confirm
     webform_email_multiple: webform_email_multiple
     webform_entity_checkboxes: webform_entity_checkboxes
     webform_entity_radios: webform_entity_radios
@@ -188,7 +187,6 @@ element:
     webform_message: webform_message
     webform_name: webform_name
     webform_same: webform_same
-    webform_signature: webform_signature
     webform_tableselect_sort: webform_tableselect_sort
     webform_telephone: webform_telephone
 html_editor:
