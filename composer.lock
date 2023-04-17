@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bf32a213f520a98ccaec60524c92b00",
+    "content-hash": "ad003355141fb6501d0bc095e3552235",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8664,28 +8664,30 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "2.0.0",
+            "version": "dev-feature/FORMS-821-data-lookup",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "f6fb684c6fcf8d54d914d4e434ec01990a692805"
+                "reference": "b8461ea8c16d9e1b39bfbbbb6ae62c166d5875f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/f6fb684c6fcf8d54d914d4e434ec01990a692805",
-                "reference": "f6fb684c6fcf8d54d914d4e434ec01990a692805",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/b8461ea8c16d9e1b39bfbbbb6ae62c166d5875f6",
+                "reference": "b8461ea8c16d9e1b39bfbbbb6ae62c166d5875f6",
                 "shasum": ""
             },
             "require": {
                 "dompdf/dompdf": "^2.0",
                 "drupal/webform": "^6.0",
+                "drush/drush": "^10 || ^11",
                 "ext-soap": "*",
                 "http-interop/http-factory-guzzle": "^1.0.0",
                 "itk-dev/beskedfordeler-drupal": "^1.0",
-                "itk-dev/os2forms_cpr_lookup": "^1.6",
-                "itk-dev/serviceplatformen": "^1.2",
+                "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
                 "os2forms/os2forms": "^3.0",
-                "php-http/guzzle6-adapter": "^2.0.1",
+                "os2web/os2web_datalookup": "^1.5",
+                "php": "^8.1",
+                "php-http/guzzle6-adapter": "^2.0",
                 "symfony/options-resolver": "^5.4 || ^6.0",
                 "symfony/property-access": "^4.4",
                 "wsdltophp/packagebase": "^5.0"
@@ -8693,7 +8695,9 @@
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "^1.1",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
                 "phpunit/phpunit": "^9.5",
                 "wsdltophp/packagegenerator": "^4.0"
             },
@@ -8716,9 +8720,9 @@
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.0"
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/feature/FORMS-821-data-lookup"
             },
-            "time": "2023-06-23T06:51:15+00:00"
+            "time": "2023-05-09T21:53:27+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
@@ -8840,16 +8844,16 @@
         },
         {
             "name": "itk-dev/serviceplatformen",
-            "version": "1.4.0",
+            "version": "dev-feature/guzzle6-adapter",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/serviceplatformen.git",
-                "reference": "2899873584bd7e28ca306b276c4224c4f876758f"
+                "reference": "db5033b5fe8e563224a20f90e5a789aeabddf38d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/2899873584bd7e28ca306b276c4224c4f876758f",
-                "reference": "2899873584bd7e28ca306b276c4224c4f876758f",
+                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/db5033b5fe8e563224a20f90e5a789aeabddf38d",
+                "reference": "db5033b5fe8e563224a20f90e5a789aeabddf38d",
                 "shasum": ""
             },
             "require": {
@@ -8892,6 +8896,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
+                    "Oio\\": "lib/Oio/",
                     "KleOnlineDk\\": "lib/KleOnlineDk/",
                     "WwwFormOnlineDk\\": "lib/WwwFormOnlineDk/",
                     "DigitalPost\\MeMo\\": "lib/DigitalPost/MeMo/",
@@ -8923,9 +8928,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/serviceplatformen/issues",
-                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.4.0"
+                "source": "https://github.com/itk-dev/serviceplatformen/tree/feature/guzzle6-adapter"
             },
-            "time": "2023-05-02T13:15:30+00:00"
+            "time": "2023-05-09T08:39:29+00:00"
         },
         {
             "name": "itk-dev/web_accessibility_statement",
@@ -22117,9 +22122,19 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "itk-dev/serviceplatformen",
+            "version": "dev-feature/guzzle6-adapter",
+            "alias": "1.5",
+            "alias_normalized": "1.5.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "itk-dev/os2forms_digital_post": 20,
+        "itk-dev/serviceplatformen": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
