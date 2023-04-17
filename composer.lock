@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "129fb4c63779832dec913554591e71a4",
+    "content-hash": "5c782948566b47410ac4418ea0f05f05",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9551,16 +9551,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.4.0",
+            "version": "dev-f/os-46-session-dynamic-value-el",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "5558639aff63a5d48118b94c9707f9785b6d4942"
+                "reference": "a1989fe231a14342d933054f67582d0bdd080dd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/5558639aff63a5d48118b94c9707f9785b6d4942",
-                "reference": "5558639aff63a5d48118b94c9707f9785b6d4942",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/a1989fe231a14342d933054f67582d0bdd080dd9",
+                "reference": "a1989fe231a14342d933054f67582d0bdd080dd9",
                 "shasum": ""
             },
             "require": {
@@ -9608,9 +9608,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.4.0"
+                "source": "https://github.com/OS2Forms/os2forms/tree/f/os-46-session-dynamic-value-el"
             },
-            "time": "2023-02-15T08:32:44+00:00"
+            "time": "2023-04-17T13:20:24+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb",
@@ -9959,16 +9959,16 @@
         },
         {
             "name": "os2web/os2web_nemlogin",
-            "version": "1.2.1",
+            "version": "dev-f/os-46-session-dynamic-value-el",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_nemlogin.git",
-                "reference": "6b98169bfde2e62510d8ad0e16b259cc1e0f021b"
+                "reference": "8d5f6a0337303892ba877ef3fcab674fd9b52681"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_nemlogin/zipball/6b98169bfde2e62510d8ad0e16b259cc1e0f021b",
-                "reference": "6b98169bfde2e62510d8ad0e16b259cc1e0f021b",
+                "url": "https://api.github.com/repos/OS2web/os2web_nemlogin/zipball/8d5f6a0337303892ba877ef3fcab674fd9b52681",
+                "reference": "8d5f6a0337303892ba877ef3fcab674fd9b52681",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -9979,9 +9979,9 @@
             "description": "Provide authentication via Nemlogin",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_nemlogin/issues",
-                "source": "https://github.com/OS2web/os2web_nemlogin/tree/1.2.1"
+                "source": "https://github.com/OS2web/os2web_nemlogin/tree/f/os-46-session-dynamic-value-el"
             },
-            "time": "2022-08-11T08:55:16+00:00"
+            "time": "2023-04-07T06:15:46+00:00"
         },
         {
             "name": "os2web/os2web_simplesaml",
@@ -21957,9 +21957,25 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "os2forms/os2forms",
+            "version": "dev-f/os-46-session-dynamic-value-el",
+            "alias": "3.5.0",
+            "alias_normalized": "3.5.0.0"
+        },
+        {
+            "package": "os2web/os2web_nemlogin",
+            "version": "dev-f/os-46-session-dynamic-value-el",
+            "alias": "1.3.0",
+            "alias_normalized": "1.3.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "os2forms/os2forms": 20,
+        "os2web/os2web_nemlogin": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
