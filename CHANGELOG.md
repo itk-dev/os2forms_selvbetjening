@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Fiksede tjek for webformulargrupper
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/166>).
 * Updaterede os2web/os2web_datalookup
   (<https://github.com/OS2web/os2web_datalookup/compare/1.5.1...1.5.2>).
 * Fiksede Xdebug-opsætning.

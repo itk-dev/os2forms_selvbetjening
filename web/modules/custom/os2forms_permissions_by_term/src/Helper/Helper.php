@@ -6,7 +6,6 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Field\FieldFilteredMarkup;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Session\AccountProxyInterface;
@@ -440,7 +439,11 @@ class Helper {
    */
   private function filterWebformSelectOptions(array $options, array &$result = [], string $parent = NULL) {
     foreach ($options as $key => $option) {
-      if ($option instanceof FieldFilteredMarkup) {
+      // Check if we're looking at a group of webforms.
+      if (is_array($option)) {
+        $this->filterWebformSelectOptions($option, $result, $key);
+      }
+      else {
         $webform = $this->entityTypeManager->getStorage('webform')->load($key);
         /** @var \Drupal\webform\WebformInterface $webform */
         $accessResult = $this->webformAccess($webform, 'update', $this->account);
@@ -454,9 +457,6 @@ class Helper {
             $result[$key] = $option;
           }
         }
-      }
-      else {
-        $this->filterWebformSelectOptions($option, $result, $key);
       }
     }
   }
