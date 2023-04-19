@@ -1,5 +1,8 @@
 status: true
-dependencies: {  }
+dependencies:
+  enforced:
+    module:
+      - os2forms_fbs_handler
 id: os2forms_fbs_handler
 label: os2forms_fbs_handler
 backend: database
