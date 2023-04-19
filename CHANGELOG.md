@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Installerede FBS-modulet
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/171>).
 * Fiksede tjek for webformulargrupper
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/166>).
 * Updaterede os2web/os2web_datalookup
