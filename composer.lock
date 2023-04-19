@@ -8633,21 +8633,23 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "dcb32293635f6b04145d02030884d72bf385d04b"
+                "reference": "79ca402259e21b5162f49451b9914648491209e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/dcb32293635f6b04145d02030884d72bf385d04b",
-                "reference": "dcb32293635f6b04145d02030884d72bf385d04b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/79ca402259e21b5162f49451b9914648491209e0",
+                "reference": "79ca402259e21b5162f49451b9914648491209e0",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
-                "drupal/webform": "^6.0"
+                "drupal/webform": "^6.0",
+                "drush/drush": "^10.6",
+                "php": "^8.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
@@ -8668,9 +8670,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.0.1"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.1.0"
             },
-            "time": "2023-02-09T13:30:52+00:00"
+            "time": "2023-04-18T10:27:00+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
