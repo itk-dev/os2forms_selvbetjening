@@ -1,0 +1,4 @@
+cpr_lookup:
+  default_plugin: serviceplatformen_cpr_extended
+cvr_lookup:
+  default_plugin: datafordeler_cvr
