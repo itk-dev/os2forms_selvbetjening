@@ -1,3 +1,3 @@
 webserviceurl_live: 'https://s5-certservices.datafordeler.dk/CVR/HentCVRData/1/rest/'
-cert_path_live: 'settings.local.php/$config[''os2web_datalookup.datafordeler_cvr''][''cert_path_live'']'
-cert_passphrase_live: 'settings.local.php/$config[''os2web_datalookup.datafordeler_cvr''][''cert_passphrase_live'']'
+cert_path_live: ''
+cert_passphrase_live: ''
