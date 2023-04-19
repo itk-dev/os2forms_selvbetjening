@@ -1,8 +1,12 @@
+uuid: 5ae3f2c0-4587-42e9-9cbb-f7cf664c43b7
+langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - os2forms_fbs_handler
+_core:
+  default_config_hash: j_JPOEZoIT0TTlfIw_xPC4jRdQdGZvQAr7or4rJmwFc
 id: os2forms_fbs_handler
 label: os2forms_fbs_handler
 backend: database
@@ -10,4 +14,5 @@ backend_configuration:
   lease_time: 300
 processor: cron
 processing_time: 90
+threshold: {  }
 locked: false
