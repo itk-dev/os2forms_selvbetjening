@@ -21,6 +21,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede “config ignore”-regler
 * Tilføjet handler til oprettelse af bruger i FBS med guardian.
 * os2forms_failed_jobs (1.1.0)
+* itk-dev/itkdev-booking (1.0.1)
 
 ## [2.0.0] 29.03.2023
 
