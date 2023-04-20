@@ -44,6 +44,11 @@ Take a look at the following modules on how to configure them:
 * [OS2Forms Digital Post](https://github.com/itk-dev/os2forms_digital_post)
 * [OS2Forms NemLogin OpenID Connect](https://github.com/itk-dev/os2forms_nemlogin_openid_connect)
 
+#### CPR and CVR lookups
+
+See `/admin/config/system/os2web-datalookup/cpr-lookup` and
+`/admin/config/system/os2web-datalookup/cvr-lookup` for configuration.
+
 ### OpenID Connect login
 
 The [OpenID Connect module](https://www.drupal.org/project/openid_connect) is

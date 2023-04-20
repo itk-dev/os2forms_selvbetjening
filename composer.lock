@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "129fb4c63779832dec913554591e71a4",
+    "content-hash": "d95ffcbe86c02d86d9f3433b32a6cd7a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1750,6 +1750,10 @@
                 {
                     "name": "queenvictoria",
                     "homepage": "https://www.drupal.org/user/856454"
+                },
+                {
+                    "name": "realityloop",
+                    "homepage": "https://www.drupal.org/user/139189"
                 },
                 {
                     "name": "webflo",
@@ -4131,6 +4135,10 @@
                     "homepage": "https://www.drupal.org/user/856454"
                 },
                 {
+                    "name": "sergiogsanchez",
+                    "homepage": "https://www.drupal.org/user/2823707"
+                },
+                {
                     "name": "welly",
                     "homepage": "https://www.drupal.org/user/354705"
                 }
@@ -4232,6 +4240,10 @@
                 {
                     "name": "queenvictoria",
                     "homepage": "https://www.drupal.org/user/856454"
+                },
+                {
+                    "name": "sergiogsanchez",
+                    "homepage": "https://www.drupal.org/user/2823707"
                 },
                 {
                     "name": "welly",
@@ -4925,16 +4937,20 @@
             "authors": [
                 {
                     "name": "Peter Majmesku",
-                    "homepage": "https://www.drupal.org/user/1529744",
+                    "homepage": "https://www.drupal.org/user/3622664",
                     "email": "majmesku@publicplan.de"
+                },
+                {
+                    "name": "niko-",
+                    "homepage": "https://www.drupal.org/user/1409266"
                 },
                 {
                     "name": "Peter Majmesku",
                     "homepage": "https://www.drupal.org/user/786132"
                 },
                 {
-                    "name": "Wassilissa Elrich",
-                    "homepage": "https://www.drupal.org/user/3729479"
+                    "name": "sudesh.solaskar",
+                    "homepage": "https://www.drupal.org/user/3403952"
                 }
             ],
             "description": "Restricts access to nodes by taxonomy terms in relation to users and their roles.",
@@ -5114,48 +5130,52 @@
             ],
             "authors": [
                 {
-                    "name": "Bevan",
-                    "homepage": "https://www.drupal.org/user/49989"
-                },
-                {
-                    "name": "Grayle",
-                    "homepage": "https://www.drupal.org/user/3145497"
-                },
-                {
-                    "name": "Nixou",
-                    "homepage": "https://www.drupal.org/user/2304734"
-                },
-                {
-                    "name": "RobLoach",
-                    "homepage": "https://www.drupal.org/user/61114"
-                },
-                {
-                    "name": "Sk8erPeter",
-                    "homepage": "https://www.drupal.org/user/1441344"
-                },
-                {
                     "name": "bdone",
                     "homepage": "https://www.drupal.org/user/687670"
+                },
+                {
+                    "name": "Bevan",
+                    "homepage": "https://www.drupal.org/user/49989"
                 },
                 {
                     "name": "deekayen",
                     "homepage": "https://www.drupal.org/user/972"
                 },
                 {
+                    "name": "Grayle",
+                    "homepage": "https://www.drupal.org/user/3145497"
+                },
+                {
                     "name": "lotyrin",
                     "homepage": "https://www.drupal.org/user/216580"
+                },
+                {
+                    "name": "markdorison",
+                    "homepage": "https://www.drupal.org/user/346106"
                 },
                 {
                     "name": "ms2011",
                     "homepage": "https://www.drupal.org/user/108440"
                 },
                 {
+                    "name": "Nixou",
+                    "homepage": "https://www.drupal.org/user/2304734"
+                },
+                {
                     "name": "pwolanin",
                     "homepage": "https://www.drupal.org/user/49851"
                 },
                 {
+                    "name": "RobLoach",
+                    "homepage": "https://www.drupal.org/user/61114"
+                },
+                {
                     "name": "shrop",
                     "homepage": "https://www.drupal.org/user/14767"
+                },
+                {
+                    "name": "Sk8erPeter",
+                    "homepage": "https://www.drupal.org/user/1441344"
                 }
             ],
             "description": "Redirect anonymous users from 403 Access Denied pages to the /user/login page.",
@@ -6266,18 +6286,6 @@
                     "homepage": "https://www.drupal.org/user/3522063"
                 },
                 {
-                    "name": "Miguelpamferreira",
-                    "homepage": "https://www.drupal.org/user/3548054"
-                },
-                {
-                    "name": "Nelson Alves",
-                    "homepage": "https://www.drupal.org/user/3557178"
-                },
-                {
-                    "name": "Rosa Pascoal Garcia",
-                    "homepage": "https://www.drupal.org/user/3500109"
-                },
-                {
                     "name": "dgaspara",
                     "homepage": "https://www.drupal.org/user/3557179"
                 },
@@ -6286,8 +6294,20 @@
                     "homepage": "https://www.drupal.org/user/3557181"
                 },
                 {
+                    "name": "Miguelpamferreira",
+                    "homepage": "https://www.drupal.org/user/3548054"
+                },
+                {
+                    "name": "nsalves",
+                    "homepage": "https://www.drupal.org/user/3557178"
+                },
+                {
                     "name": "ricardotenreiro",
                     "homepage": "https://www.drupal.org/user/213132"
+                },
+                {
+                    "name": "sara_asb",
+                    "homepage": "https://www.drupal.org/user/3673657"
                 },
                 {
                     "name": "tmiguelv",
@@ -6335,14 +6355,6 @@
             ],
             "authors": [
                 {
-                    "name": "Miguelpamferreira",
-                    "homepage": "https://www.drupal.org/user/3548054"
-                },
-                {
-                    "name": "Nelson Alves",
-                    "homepage": "https://www.drupal.org/user/3557178"
-                },
-                {
                     "name": "dgaspara",
                     "homepage": "https://www.drupal.org/user/3557179"
                 },
@@ -6355,8 +6367,20 @@
                     "homepage": "https://www.drupal.org/user/3557181"
                 },
                 {
+                    "name": "Miguelpamferreira",
+                    "homepage": "https://www.drupal.org/user/3548054"
+                },
+                {
+                    "name": "nsalves",
+                    "homepage": "https://www.drupal.org/user/3557178"
+                },
+                {
                     "name": "ricardotenreiro",
                     "homepage": "https://www.drupal.org/user/213132"
+                },
+                {
+                    "name": "sara_asb",
+                    "homepage": "https://www.drupal.org/user/3673657"
                 },
                 {
                     "name": "tmiguelv",
@@ -7104,6 +7128,62 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.16.0"
             },
             "time": "2022-09-18T07:06:19+00:00"
+        },
+        {
+            "name": "fig/http-message-util",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message-util.git",
+                "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message-util/zipball/9d94dc0154230ac39e5bf89398b324a86f63f765",
+                "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0 || ^8.0"
+            },
+            "suggest": {
+                "psr/http-message": "The package containing the PSR-7 interfaces"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fig\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Utility classes and constants for use with PSR-7 (psr/http-message)",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/http-message-util/issues",
+                "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
+            },
+            "time": "2020-11-24T22:02:12+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -9932,16 +10012,16 @@
         },
         {
             "name": "os2web/os2web_datalookup",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_datalookup.git",
-                "reference": "84c97e0b07b7c1a609806d64bfcb2418d613dad8"
+                "reference": "bbe14aecb303b5b8d3196eb20730e72b7151956b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/84c97e0b07b7c1a609806d64bfcb2418d613dad8",
-                "reference": "84c97e0b07b7c1a609806d64bfcb2418d613dad8",
+                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/bbe14aecb303b5b8d3196eb20730e72b7151956b",
+                "reference": "bbe14aecb303b5b8d3196eb20730e72b7151956b",
                 "shasum": ""
             },
             "require": {
@@ -9955,9 +10035,9 @@
             "description": "Provides integration with Danish data lookup services such as Service platformen or Datafordeler.",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_datalookup/issues",
-                "source": "https://github.com/OS2web/os2web_datalookup/tree/1.5.1"
+                "source": "https://github.com/OS2web/os2web_datalookup/tree/1.5.2"
             },
-            "time": "2023-02-01T12:14:07+00:00"
+            "time": "2023-03-28T08:44:13+00:00"
         },
         {
             "name": "os2web/os2web_nemlogin",

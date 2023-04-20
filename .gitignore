@@ -63,6 +63,7 @@
 !/web/modules/custom/itkdev_booking
 !/web/modules/custom/os2forms_selvbetjening
 !/web/modules/custom/os2forms_user_menu
+!/web/modules/custom/os2forms_fbs_handler
 
 # Ignore site specific modules.
 /web/sites/*/modules
@@ -221,4 +222,5 @@ config/sync/**/webform.webform.*
 
 # Ignore nemlogin settings
 config/sync/os2web_nemlogin.settings.yml
-
+# Ignore attachment components
+config/sync/os2forms_attachment.os2forms_attachment_component.*.yml
