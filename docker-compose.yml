@@ -32,8 +32,11 @@ services:
     networks:
       - app
       - frontend
+<<<<<<< Updated upstream
     extra_hosts:
       - "host.docker.internal:host-gateway"
+=======
+>>>>>>> Stashed changes
     environment:
       - PHP_XDEBUG_MODE=${PHP_XDEBUG_MODE:-off}
       - PHP_MAX_EXECUTION_TIME=30
