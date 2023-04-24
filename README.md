@@ -43,6 +43,7 @@ Take a look at the following modules on how to configure them:
 * [OS2Forms CVR Lookup](https://github.com/itk-dev/os2forms_cvr_lookup)
 * [OS2Forms Digital Post](https://github.com/itk-dev/os2forms_digital_post)
 * [OS2Forms NemLogin OpenID Connect](https://github.com/itk-dev/os2forms_nemlogin_openid_connect)
+* [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized)
 
 #### CPR and CVR lookups
 

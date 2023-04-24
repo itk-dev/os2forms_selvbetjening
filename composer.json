@@ -74,6 +74,7 @@
         "itk-dev/os2forms_user_field_lookup": "^1.0",
         "itk-dev/web_accessibility_statement": "^1.0",
         "os2forms/os2forms_forloeb_profile": "^1.8",
+        "os2forms/os2forms_get_organized": "^1.0",
         "os2forms/os2forms_organisation": "^1.0",
         "os2forms/os2forms_rest_api": "^1.1",
         "os2forms/os2forms_sync": "^1.1",
