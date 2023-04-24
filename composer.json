@@ -139,6 +139,9 @@
             },
             "os2forms/os2forms": {
                 "https://github.com/OS2Forms/os2forms/pull/40": "https://patch-diff.githubusercontent.com/raw/OS2Forms/os2forms/pull/40.diff"
+            },
+            "drupal/permissions_by_term": {
+                "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"
             }
         },
         "installer-paths": {
