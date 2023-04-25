@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* os2forms/os2forms_get_organized (1.1.0)
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/177>).
 * Installerede `os2forms/os2forms_get_organized`
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/174>).
 * Opdaterede CVR-elementer og konfiguration af CVR-opslagservice
