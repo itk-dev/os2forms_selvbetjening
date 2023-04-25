@@ -78,20 +78,6 @@ $settings['locale_custom_strings_da'][''] = [
 ];
 ```
 
-### GetOrganized
-
-To use the custom GetOrganized module the module must be
-configured in the `settings.local.php` file:
-
-```php
-# settings.local.php
-$config['os2forms_get_organized'] = [
-  'username' => '…',
-  'password' => '…',
-  'base_url' => '…',
-];
-```
-
 ### Selvbetjening Module
 
 The `OS2Forms Selvbetjening` module updates the following:
