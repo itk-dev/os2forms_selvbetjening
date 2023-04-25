@@ -9,9 +9,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * os2forms/os2forms_get_organized (1.1.0)
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/177>).
-* Opdaterede `itk-dev/os2forms_nemlogin_openid_connect`
+* Opdaterede `itk-dev/os2forms_nemlogin_openid_connect` og `os2forms/os2forms`
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/176>).
->>>>>>> 68fdb03 (Updated itk-dev/os2forms_nemlogin_openid_connect)
 * Installerede `os2forms/os2forms_get_organized`
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/174>).
 * Opdaterede CVR-elementer og konfiguration af CVR-opslagservice
