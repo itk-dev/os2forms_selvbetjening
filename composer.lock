@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "210311aa921b34e1bef2bef20d3f8f29",
+    "content-hash": "5c447670837e32b0564041836fd0b0ed",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8736,23 +8736,23 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "0f29a2c0e9929aeaedf4c1e769e5df67e141bf8c"
+                "reference": "845b71f28fa837533e69cca7c6845ae439b46577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/0f29a2c0e9929aeaedf4c1e769e5df67e141bf8c",
-                "reference": "0f29a2c0e9929aeaedf4c1e769e5df67e141bf8c",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/845b71f28fa837533e69cca7c6845ae439b46577",
+                "reference": "845b71f28fa837533e69cca7c6845ae439b46577",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
                 "itk-dev/openid-connect": "^2.1.0",
-                "os2web/os2web_nemlogin": "^1.1"
+                "os2web/os2web_nemlogin": "^1.2"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
@@ -8769,9 +8769,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.1.1"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.2.0"
             },
-            "time": "2022-12-15T13:50:19+00:00"
+            "time": "2023-04-25T08:03:25+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -10144,16 +10144,16 @@
         },
         {
             "name": "os2web/os2web_nemlogin",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_nemlogin.git",
-                "reference": "6b98169bfde2e62510d8ad0e16b259cc1e0f021b"
+                "reference": "8b0da25017facab46ff64db328536c3ec4ae72e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_nemlogin/zipball/6b98169bfde2e62510d8ad0e16b259cc1e0f021b",
-                "reference": "6b98169bfde2e62510d8ad0e16b259cc1e0f021b",
+                "url": "https://api.github.com/repos/OS2web/os2web_nemlogin/zipball/8b0da25017facab46ff64db328536c3ec4ae72e2",
+                "reference": "8b0da25017facab46ff64db328536c3ec4ae72e2",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -10164,9 +10164,9 @@
             "description": "Provide authentication via Nemlogin",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_nemlogin/issues",
-                "source": "https://github.com/OS2web/os2web_nemlogin/tree/1.2.1"
+                "source": "https://github.com/OS2web/os2web_nemlogin/tree/1.2.2"
             },
-            "time": "2022-08-11T08:55:16+00:00"
+            "time": "2023-04-21T11:27:56+00:00"
         },
         {
             "name": "os2web/os2web_simplesaml",
