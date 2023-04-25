@@ -17,5 +17,5 @@ settings:
   label: 'Privacy block'
   label_display: '0'
   provider: itkdev_footer
-  privacy_url: ''
+  privacy_url: 'https://www.aarhus.dk/om-kommunen/databeskyttelse/databeskyttelse/'
 visibility: {  }

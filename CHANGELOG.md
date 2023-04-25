@@ -24,6 +24,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjet handler til oprettelse af bruger i FBS med guardian.
 * os2forms_failed_jobs (1.1.0)
 * itk-dev/itkdev-booking (1.0.1)
+* Tilføjet language switcher block
+* Updated composite element styling
 
 ## [2.0.0] 29.03.2023
 

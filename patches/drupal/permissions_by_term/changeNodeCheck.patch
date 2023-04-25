@@ -1,0 +1,40 @@
+diff --git a/permissions_by_term.module b/permissions_by_term.module
+--- a/permissions_by_term.module
++++ b/permissions_by_term.module
+@@ -6,6 +6,7 @@
+  */
+ 
+ use Drupal\Core\Access\AccessResultForbidden;
++use Drupal\Core\Entity\EntityForm;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Form\FormState;
+ use Drupal\Core\Form\FormStateInterface;
+@@ -315,7 +316,7 @@
+  */
+ function permissions_by_term_form_alter(&$form, FormStateInterface $formState, $form_id) {
+   $form['#validate'][] = 'permissions_by_term_validate';
+-  if (_permissions_by_term_is_node_edit_form()) {
++  if (_permissions_by_term_is_node_edit_form($formState)) {
+     $form['permissions_by_term_info'] = [
+       '#type' => 'details',
+       '#group' => 'advanced',
+@@ -356,10 +357,16 @@
+   }
+ }
+ 
+-function _permissions_by_term_is_node_edit_form(): bool {
+-  $route_name = \Drupal::routeMatch()->getRouteName();
++function _permissions_by_term_is_node_edit_form($formState): bool {
++  $formObject = $formState->getFormObject();
++  if ($formObject instanceof EntityForm) {
++    $entity = $formState->getFormObject()->getEntity();
++    if ($entity instanceof Node) {
++      return true;
++    }
++  }
+ 
+-  return (in_array($route_name, ['node.add', 'entity.node.edit_form']));
++  return false;
+ }
+ 
+ /**

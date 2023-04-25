@@ -9,7 +9,7 @@ _core:
 id: os2forms_selvbetjening_theme_local_actions
 theme: os2forms_selvbetjening_theme
 region: content
-weight: -10
+weight: -6
 provider: null
 plugin: local_actions_block
 settings:
