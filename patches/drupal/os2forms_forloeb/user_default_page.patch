@@ -1,0 +1,12 @@
+diff --git a/os2forms_forloeb.info.yml b/os2forms_forloeb.info.yml
+index 13214e2..db91e13 100644
+--- a/os2forms_forloeb.info.yml
++++ b/os2forms_forloeb.info.yml
+@@ -32,7 +32,6 @@ dependencies:
+   - switch_page_theme
+   - token
+   - ultimate_cron
+-  - user_default_page
+   - webform
+   - webform_ui
+   - webform_access

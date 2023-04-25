@@ -139,6 +139,9 @@
             },
             "drupal/permissions_by_term": {
                 "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"
+            },
+            "os2forms/os2forms_forloeb": {
+                "We don't use the user_default_page module": "patches/drupal/os2forms_forloeb/user_default_page.patch"
             }
         },
         "patches-ignore": {
