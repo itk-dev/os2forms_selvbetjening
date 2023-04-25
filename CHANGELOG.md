@@ -7,7 +7,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.1.0]
 
-* Opdaterede `itk-dev/os2forms_nemlogin_openid_connect` og `os2forms/os2forms`
+* Opdaterede `itk-dev/os2forms_nemlogin_openid_connect`, `os2forms/os2forms` og
+  `os2forms/os2forms_get_organized`
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/176>).
 * Installerede `os2forms/os2forms_get_organized`
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/174>).
