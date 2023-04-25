@@ -72,10 +72,11 @@
 }
 
 .block-lang-dropdown {
-  clear: both;
+  display: flex;
+  justify-content: flex-end;
 
-  .form-wrapper {
-    float: right;
+  @media only screen and (max-width: 600px) {
+    justify-content: flex-start;
   }
 
   .form-item {

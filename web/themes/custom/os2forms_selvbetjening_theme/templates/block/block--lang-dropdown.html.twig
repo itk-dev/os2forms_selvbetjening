@@ -34,10 +34,10 @@
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  <p>
+  <div>
     <label>{{ 'Page language'|t }}</label>
     {% block content %}
       {{ content }}
     {% endblock %}
-  </p>
+  </div>
 </div>
