@@ -33,6 +33,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * itk-dev/itkdev-booking (1.0.1)
 * Tilføjet language switcher block
 * Updated composite element styling
+* Added translation block in top
 
 ## [2.0.0] 29.03.2023
 
