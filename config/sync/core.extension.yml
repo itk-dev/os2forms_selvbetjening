@@ -50,6 +50,7 @@ module:
   jquery_ui_datepicker: 0
   key_auth: 0
   keyboard_shortcuts: 0
+  lang_dropdown: 0
   language: 0
   libraries: 0
   link: 0
@@ -77,6 +78,7 @@ module:
   os2forms_dawa: 0
   os2forms_digital_post: 0
   os2forms_failed_jobs: 0
+  os2forms_fbs_handler: 0
   os2forms_forloeb: 0
   os2forms_get_organized: 0
   os2forms_nemid: 0

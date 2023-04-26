@@ -5,7 +5,35 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.1.0]
+
+* os2forms/os2forms_get_organized (1.1.0)
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/177>).
+* Opdaterede `itk-dev/os2forms_nemlogin_openid_connect`, `os2forms/os2forms` og
+  `os2forms/os2forms_get_organized`
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/176>).
+* Installerede `os2forms/os2forms_get_organized`
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/174>).
+* Opdaterede CVR-elementer og konfiguration af CVR-opslagservice
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/172>).
+* Opdaterede CPR- og CVR-opslagservicer og konfiguration af samme
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/168>).
+* Installerede FBS-modulet
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/171>).
+* Fiksede tjek for webformulargrupper
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/166>).
+* Updaterede os2web/os2web_datalookup
+  (<https://github.com/OS2web/os2web_datalookup/compare/1.5.1...1.5.2>).
+* Fiksede Xdebug-opsætning.
+* Fiksede GitHub Action til at installere site.
+* Fjernede “custom” `os2forms_user_field_lookup`-modul.
+* Opdaterede “config ignore”-regler
+* Tilføjet handler til oprettelse af bruger i FBS med guardian.
 * os2forms_failed_jobs (1.1.0)
+* itk-dev/itkdev-booking (1.0.1)
+* Tilføjet language switcher block
+* Updated composite element styling
+* Added translation block in top
 
 ## [2.0.0] 29.03.2023
 
@@ -20,9 +48,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Remove dompdf
 * Opdaterede docker compose-setup.
 * Disable IP tracking
+* Deny anonymous access to webform node revisions
 * Allow access to config translations for user role forloeb_designer
 * Remove revisions tab
 * Håndtering af os2web/os2web_nemlogin konfiguration.
+* Disable caching on failed jobs list.
 * itk-dev/getorganized-api-client-php (1.2.0)
 * Udvidet GetOrganized handler med funktionalitet
   til at arkivere vedhæftede filer som bilag i GO.

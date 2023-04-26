@@ -70,3 +70,26 @@
     }
   }
 }
+
+.block-lang-dropdown {
+  display: flex;
+  justify-content: flex-end;
+
+  @media only screen and (max-width: 600px) {
+    justify-content: flex-start;
+  }
+
+  .form-item {
+    margin-top: 0;
+  }
+}
+
+/* Fix Radio header in custom composite responsive */
+@media (max-width: 768px) {
+  .webform-multiple-table-responsive table td legend > span.visually-hidden {
+    position: relative !important;
+    height: auto;
+    width: auto;
+    color: #232429;
+  }
+}

@@ -6,3 +6,9 @@ ignored_config_entities:
   - system.site
   - 'webform.webform.*'
   - os2web_nemlogin.settings
+  - '# Ignore global header, colophon and footer settings'
+  - 'webform.settings:third_party_settings.webform_entity_print.template'
+  - 'os2forms_attachment.os2forms_attachment_component.*'
+  - '# Ignore most settings on /admin/config/system/os2web-datalookup/datafordeler-cvr'
+  - 'os2web_datalookup.datafordeler_cvr:cert_path_live'
+  - 'os2web_datalookup.datafordeler_cvr:cert_passphrase_live'
