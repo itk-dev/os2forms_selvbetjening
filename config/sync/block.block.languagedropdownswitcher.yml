@@ -8,8 +8,8 @@ dependencies:
     - os2forms_selvbetjening_theme
 id: languagedropdownswitcher
 theme: os2forms_selvbetjening_theme
-region: footer_third
-weight: -6
+region: header
+weight: -4
 provider: null
 plugin: 'language_dropdown_block:language_interface'
 settings:
