@@ -150,6 +150,16 @@ element:
   excluded_elements:
     color: color
     container: container
+    cvr_address_element: cvr_address_element
+    cvr_city_element: cvr_city_element
+    cvr_element: cvr_element
+    cvr_floor_element: cvr_floor_element
+    cvr_house_number_element: cvr_house_number_element
+    cvr_name_element: cvr_name_element
+    cvr_postal_code_element: cvr_postal_code_element
+    cvr_side_element: cvr_side_element
+    cvr_street_name_element: cvr_street_name_element
+    cvr_value_element: cvr_value_element
     entity_autocomplete: entity_autocomplete
     item: item
     label: label
