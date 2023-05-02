@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Deaktiverede CVR-elementer
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/180>)
+
 ## [2.1.0]
 
 * os2forms/os2forms_get_organized (1.1.0)
