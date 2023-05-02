@@ -9881,16 +9881,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "1.1.0-rc.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "3b141f04da73c83c94644051f4a687d1de6e7fd0"
+                "reference": "0dd2ebb70b609f93f14e29eb23d5724e1577e871"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/3b141f04da73c83c94644051f4a687d1de6e7fd0",
-                "reference": "3b141f04da73c83c94644051f4a687d1de6e7fd0",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/0dd2ebb70b609f93f14e29eb23d5724e1577e871",
+                "reference": "0dd2ebb70b609f93f14e29eb23d5724e1577e871",
                 "shasum": ""
             },
             "require": {
@@ -9920,9 +9920,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.1.0-rc.1"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.1.0"
             },
-            "time": "2023-05-02T12:25:01+00:00"
+            "time": "2023-05-02T13:18:35+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
