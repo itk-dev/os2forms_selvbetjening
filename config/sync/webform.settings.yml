@@ -150,6 +150,20 @@ element:
   excluded_elements:
     color: color
     container: container
+    cpr_address_element: cpr_address_element
+    cpr_children_radios_element: cpr_children_radios_element
+    cpr_children_select_element: cpr_children_select_element
+    cpr_city_element: cpr_city_element
+    cpr_element: cpr_element
+    cpr_floor_element: cpr_floor_element
+    cpr_house_number_element: cpr_house_number_element
+    cpr_name_element: cpr_name_element
+    cpr_pid_element: cpr_pid_element
+    cpr_postal_code_element: cpr_postal_code_element
+    cpr_side_element: cpr_side_element
+    cpr_street_element: cpr_street_element
+    cpr_uuid_element: cpr_uuid_element
+    cpr_value_element: cpr_value_element
     entity_autocomplete: entity_autocomplete
     item: item
     label: label
