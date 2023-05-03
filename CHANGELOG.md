@@ -7,11 +7,15 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.2.0]
 
+* Opdaterede til [OS2Forms GetOrganized
+  1.1.1](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.1)
 * Opdaterede `Content Translation` modulets konfiguration for at give
   `Selvbetjeningsdesigner` rollen adgang til oversættelse.
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/184>)
 * Opdaterede CPR-opslagskonfiguration
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/182>)
+* Opdaterede til [OS2Forms Digital post
+  1.2.3](https://github.com/itk-dev/os2forms_digital_post/releases/tag/1.2.3).
 * Opdaterede til [OS2Forms organisation
   1.1.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.1.0)
   med søgning.
