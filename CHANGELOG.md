@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede CPR-opslagskonfiguration
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/182>)
 * Opdaterede til [OS2Forms organisation
   1.1.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.1.0)
   med søgning.
