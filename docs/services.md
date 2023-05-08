@@ -19,3 +19,8 @@ Konfiguration:
 
 Konfiguration:
 <https://selvbetjening.aarhuskommune.dk/da/admin/os2forms_get_organized/settings>
+
+## Digital post
+
+Konfiguration:
+<https://selvbetjening.aarhuskommune.dk/da/admin/os2forms_digital_post/settings>
