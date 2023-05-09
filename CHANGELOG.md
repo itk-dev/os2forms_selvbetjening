@@ -5,6 +5,13 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.2.1]
+
+* Opdaterede til [OS2Forms CPR Lookup
+  1.8.0](https://github.com/itk-dev/os2forms_cpr_lookup/releases/tag/1.8.0).
+* Opdaterede til [OS2Forms CVR Lookup
+  1.4.0](https://github.com/itk-dev/os2forms_cvr_lookup/releases/tag/1.4.0).
+
 ## [2.2.0]
 
 * Opdaterede til [OS2Forms GetOrganized
@@ -188,7 +195,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.1...HEAD
+[2.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...2.0.0
