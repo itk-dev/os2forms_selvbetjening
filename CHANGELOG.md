@@ -15,12 +15,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede CPR-opslagskonfiguration
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/182>)
 * Opdaterede til [OS2Forms Organisation
-  1.1.1](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.1)
+  1.1.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.1.1)
+  med søgning.
 * Opdaterede til [OS2Forms Digital post
   1.2.3](https://github.com/itk-dev/os2forms_digital_post/releases/tag/1.2.3).
-* Opdaterede til [OS2Forms organisation
-  1.1.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.1.0)
-  med søgning.
 
 ## [2.1.0]
 
