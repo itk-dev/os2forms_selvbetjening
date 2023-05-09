@@ -5,14 +5,20 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.2.0]
+
+* Opdaterede til [OS2Forms GetOrganized
+  1.1.1](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.1)
 * Opdaterede `Content Translation` modulets konfiguration for at give
   `Selvbetjeningsdesigner` rollen adgang til oversættelse.
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/184>)
 * Opdaterede CPR-opslagskonfiguration
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/182>)
-* Opdaterede til [OS2Forms organisation
-  1.1.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.1.0)
+* Opdaterede til [OS2Forms Organisation
+  1.1.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.1.1)
   med søgning.
+* Opdaterede til [OS2Forms Digital post
+  1.2.3](https://github.com/itk-dev/os2forms_digital_post/releases/tag/1.2.3).
 
 ## [2.1.0]
 
@@ -182,7 +188,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.0...HEAD
+[2.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.1.0...2.2.0
+[2.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.1...2.0.0
 [1.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/releases/tag/1.7.0
