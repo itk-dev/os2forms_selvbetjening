@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede `Content Translation` modulets konfiguration for at give
+  `Selvbetjeningsdesigner` rollen adgang til oversættelse.
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/184>)
 * Opdaterede CPR-opslagskonfiguration
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/182>)
 * Opdaterede til [OS2Forms organisation

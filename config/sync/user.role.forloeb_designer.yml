@@ -8,6 +8,7 @@ dependencies:
     - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
     - content_moderation
+    - content_translation
     - contextual
     - entity_print
     - filter
@@ -47,11 +48,13 @@ permissions:
   - 'bypass entity print access'
   - 'bypass honeypot protection'
   - 'can be workflow participant'
+  - 'create content translations'
   - 'create webform'
   - 'create webform content'
   - 'delete any webform'
   - 'delete any webform content'
   - 'delete any webform submission'
+  - 'delete content translations'
   - 'delete own webform'
   - 'delete own webform content'
   - 'delete own webform submission'
@@ -72,8 +75,10 @@ permissions:
   - 'edit webform twig'
   - 'revert webform revisions'
   - 'search content'
-  - 'translate own webform'
   - 'translate any webform'
+  - 'translate editable entities'
+  - 'translate own webform'
+  - 'update content translations'
   - 'use advanced search'
   - 'use text format full_html'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
