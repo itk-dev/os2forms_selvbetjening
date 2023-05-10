@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede digital post-modul
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/183>)
+
 ## [2.2.1]
 
 * Opdaterede til [OS2Forms CPR Lookup
