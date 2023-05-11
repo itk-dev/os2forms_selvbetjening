@@ -30,19 +30,6 @@ services:
           "AutomaticRedirectAfterSignOut": true
         }
 
-      API_SCOPES_INLINE: |
-        - Name: some-app-scope-1
-        - Name: some-app-scope-2
-
-      API_RESOURCES_INLINE: |
-        - Name: some-app
-          Scopes:
-            - some-app-scope-1
-            - some-app-scope-2
-          UserClaims:
-            - some-app-user-custom-claim
-            - groups
-
       USERS_CONFIGURATION_INLINE: |
         - SubjectId: administrator
           Username: administrator
@@ -108,16 +95,6 @@ services:
             - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
           RequirePkce: false
-          Claims:
-            - Type: string_claim
-              Value: string_claim_value
-              ValueType: string
-            - Type: json_claim
-              Value: '["value1", "value2"]'
-              ValueType: json
-            - Type: groups
-              Value: '["value1", "value2"]'
-              ValueType: json
 
         - ClientId: mock-idp-citizen
           ClientSecrets: [mock-idp-citizen-secret]

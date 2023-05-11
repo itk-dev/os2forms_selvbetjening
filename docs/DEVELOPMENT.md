@@ -65,12 +65,60 @@ username `43486829' and password `43486829' (for CVR user) (cf.
 * <https://idp.selvbetjening.local.itkdev.dk/api/v1/user/1705880000>
 * <https://idp.selvbetjening.local.itkdev.dk/api/v1/user/43486829>
 
+## Adding a claim
+
+You can add a claim by modifying `USERS_CONFIGURATION_INLINE` in the
+`oidc-server-mock` container configuration
+
+```yaml
+USERS_CONFIGURATION_INLINE: |
+  - SubjectId: administrator
+    Username: administrator
+    Password: administrator
+    Claims:
+    - Type: name
+      Value: Admin Jensen
+      ValueType: string
+    - Type: email
+      Value: administrator@example.com
+      ValueType: string
+    - Type: groups
+      Value: '["AD-administrator"]'
+      ValueType: json
+    # Beneath is added
+    - Type: some_new_claim
+      Value: integer
+      ValueType: 1234
+```
+
+and updating `IDENTITY_RESOURCES_INLINE`
+
+```yaml
+IDENTITY_RESOURCES_INLINE: |
+  # https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes#standard-claims
+  - Name: openid
+    ClaimTypes:
+      - sub
+  - Name: profile
+    ClaimTypes:
+      - name
+      - groups
+      - some_new_claim # Added
+  - Name: email
+    ClaimTypes:
+      - email
+```
+
+Changes will take effect after reloading the OIDC configuration as explained
+beneath.
+
 ## Reloading the OIDC configuration
 
 Run
 
 ```sh
-docker compose restart oidc-server-mock
+docker compose stop
+docker compose up -d
 ```
 
 to reload the OIDC configuration.
