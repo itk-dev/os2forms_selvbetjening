@@ -48,6 +48,9 @@ $config['os2web_nemlogin.settings']['OpenIDConnect'] = serialize([
 email: E-mailadresse',
 ]);
 $config['os2web_nemlogin.settings']['active_plugin_id'] = 'OpenIDConnect';
+
+// Allow HTTP scheme in OIDC urls.
+$settings['os2forms_nemlogin_openid_connect']['allow_http'] = TRUE;
 ```
 
 Create a public form with "Webform type" set to "Personal" and a `webform` page
