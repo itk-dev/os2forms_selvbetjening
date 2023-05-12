@@ -1,15 +1,22 @@
 # https://github.com/Soluto/oidc-server-mock
 
 services:
-  oidc-server-mock:
+  idp-admin:
     image: ghcr.io/soluto/oidc-server-mock:latest
     # Let this container be accessible both internally and externally on the same domain.
-    container_name: idp.${COMPOSE_DOMAIN}
+    container_name: idp-admin.${COMPOSE_DOMAIN}
     networks:
       - app
       - frontend
     ports:
-      - '4011:80'
+      - '80'
+    volumes:
+      - .:/tmp/config:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-admin.rule=Host(`idp-admin.${COMPOSE_DOMAIN}`)"
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp-admin.loadbalancer.server.port=80"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       SERVER_OPTIONS_INLINE: |
@@ -30,47 +37,10 @@ services:
           "AutomaticRedirectAfterSignOut": true
         }
 
-      USERS_CONFIGURATION_INLINE: |
-        - SubjectId: administrator
-          Username: administrator
-          Password: administrator
-          Claims:
-          - Type: name
-            Value: Admin Jensen
-            ValueType: string
-          - Type: email
-            Value: administrator@example.com
-            ValueType: string
-          - Type: groups
-            Value: '["AD-administrator"]'
-            ValueType: json
-
-        - SubjectId: '1705880000'
-          Username: '1705880000'
-          Password: '1705880000'
-          Claims:
-          - Type: name
-            Value: Test Testersen
-            ValueType: string
-          - Type: cpr
-            Value: '1705880000'
-            ValueType: string
-
-        - SubjectId: '43486829'
-          Username: '43486829'
-          Password: '43486829'
-          Claims:
-          - Type: name
-            Value: grillkylling.nu
-            ValueType: string
-          - Type: cvr
-            Value: '43486829'
-            ValueType: string
-
       CLIENTS_CONFIGURATION_INLINE: |
-        - ClientId: mock-idp-admin
-          ClientSecrets: [mock-idp-admin-secret]
-          Description: Mock admin IdP
+        - ClientId: client-id
+          ClientSecrets: [client-secret]
+          Description: Mock IdP
           AllowedGrantTypes:
             # - client_credentials
             # - implicit
@@ -86,18 +56,85 @@ services:
             - email
           ClientClaimsPrefix: ''
           RedirectUris:
-            - https://selvbetjening.local.itkdev.dk/openid-connect/generic
-            - https://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate
             - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/60
           PostLogoutRedirectUris:
-            - https://selvbetjening.local.itkdev.dk/node/126
             - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
           RequirePkce: false
 
-        - ClientId: mock-idp-citizen
-          ClientSecrets: [mock-idp-citizen-secret]
+      # Needed to set custom claim types in "profile"
+      # https://github.com/Soluto/oidc-server-mock/issues/123#issuecomment-1427129278
+      OVERRIDE_STANDARD_IDENTITY_RESOURCES: true
+      IDENTITY_RESOURCES_INLINE: |
+        # https://auth0.com/docs/get-started/apis/scopes/openid-connect-scopes#standard-claims
+        - Name: openid
+          ClaimTypes:
+            - sub
+        - Name: email
+          ClaimTypes:
+            - email
+        - Name: profile
+          ClaimTypes:
+            # Add your custom claims here
+            - name
+            - groups
+
+      USERS_CONFIGURATION_INLINE: |
+        - SubjectId: administrator
+          Username: administrator
+          Password: administrator
+          Claims:
+            # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
+          - Type: name
+            Value: Admin Jensen
+            ValueType: string
+          - Type: email
+            Value: administrator@example.com
+            ValueType: string
+          - Type: groups
+            Value: '["AD-administrator"]'
+            ValueType: json
+
+  idp-citizen:
+    image: ghcr.io/soluto/oidc-server-mock:latest
+    # Let this container be accessible both internally and externally on the same domain.
+    container_name: idp-citizen.${COMPOSE_DOMAIN}
+    networks:
+      - app
+      - frontend
+    ports:
+      - '80'
+    volumes:
+      - .:/tmp/config:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp-citizen.rule=Host(`idp-citizen.${COMPOSE_DOMAIN}`)"
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp-citizen.loadbalancer.server.port=80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      SERVER_OPTIONS_INLINE: |
+        AccessTokenJwtType: JWT
+        Discovery:
+          ShowKeySet: true
+        Authentication:
+          CookieSameSiteMode: Lax
+          CheckSessionCookieSameSiteMode: Lax
+
+      LOGIN_OPTIONS_INLINE: |
+        {
+          "AllowRememberLogin": false
+        }
+
+      LOGOUT_OPTIONS_INLINE: |
+        {
+          "AutomaticRedirectAfterSignOut": true
+        }
+
+      CLIENTS_CONFIGURATION_INLINE: |
+        - ClientId: client-id
+          ClientSecrets: [client-secret]
           Description: Mock citizen IdP
           AllowedGrantTypes:
             # - client_credentials
@@ -114,12 +151,9 @@ services:
             - email
           ClientClaimsPrefix: ''
           RedirectUris:
-            - https://selvbetjening.local.itkdev.dk/openid-connect/generic
-            - https://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate
             - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/60
           PostLogoutRedirectUris:
-            - https://selvbetjening.local.itkdev.dk/node/126
             - '*'
           # https://github.com/Soluto/oidc-server-mock/issues/46#issuecomment-704845375
           RequirePkce: false
@@ -132,20 +166,37 @@ services:
         - Name: openid
           ClaimTypes:
             - sub
-        - Name: profile
-          ClaimTypes:
-            - name
-            - groups
-            - cpr
-            - cvr
         - Name: email
           ClaimTypes:
             - email
+        - Name: profile
+          ClaimTypes:
+            # Add your custom claims here
+            - name
+            - cpr
+            - cvr
 
-    volumes:
-      - .:/tmp/config:ro
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}_idp.rule=Host(`idp.${COMPOSE_DOMAIN}`)"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}_idp.loadbalancer.server.port=80"
+      USERS_CONFIGURATION_INLINE: |
+        - SubjectId: '1705880000'
+          Username: '1705880000'
+          Password: '1705880000'
+          Claims:
+            # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
+          - Type: name
+            Value: Test Testersen
+            ValueType: string
+          - Type: cpr
+            Value: '1705880000'
+            ValueType: string
+
+        - SubjectId: '43486829'
+          Username: '43486829'
+          Password: '43486829'
+          Claims:
+            # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
+          - Type: name
+            Value: grillkylling.nu
+            ValueType: string
+          - Type: cvr
+            Value: '43486829'
+            ValueType: string
