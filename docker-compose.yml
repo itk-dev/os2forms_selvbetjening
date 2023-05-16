@@ -1,4 +1,4 @@
-# itk-version: 3.0.0
+# itk-version: 3.0.1
 version: "3"
 
 networks:
@@ -15,8 +15,6 @@ services:
       - app
     ports:
       - '3306'
-    volumes:
-      - .docker/drupal/dumps:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_USER=db
@@ -31,17 +29,15 @@ services:
     image: itkdev/php8.1-fpm:latest
     networks:
       - app
-      - frontend
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     environment:
       - PHP_XDEBUG_MODE=${PHP_XDEBUG_MODE:-off}
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_MEMORY_LIMIT=256M
-      # - PHP_MAIL=1 # Uncomment to enable mailhog.
+      - PHP_MAIL=1
       - DOCKER_HOST_DOMAIN=${COMPOSE_DOMAIN}
       - COMPOSER_VERSION=2
       - PHP_IDE_CONFIG=serverName=localhost
+      - PHP_SENDMAIL_PATH=/usr/local/bin/mhsendmail --smtp-addr="mailhog:1025"
     depends_on:
       - mariadb
       - memcached
