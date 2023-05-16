@@ -1,0 +1,14 @@
+known_anonymous_roles:
+  anonymous: anonymous
+  virksomhed: virksomhed
+  citizen: citizen
+  authenticated: 0
+  administrator: 0
+  site_admin: 0
+  flow_designer: 0
+  forloeb_designer: 0
+  sagsbehandler: 0
+  medarbejder: 0
+  leder: 0
+  os2forms_rest_api_user: 0
+  os2forms_rest_api_user_write: 0

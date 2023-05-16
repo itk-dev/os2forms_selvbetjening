@@ -1,0 +1,7 @@
+os2forms_maestro_webform.settings:
+  path: '/admin/config/system/os2forms_maestro_webform'
+  defaults:
+    _form: '\Drupal\os2forms_maestro_webform\Form\SettingsForm'
+    _title: 'OS2Forms maestro webform'
+  requirements:
+    _permission: 'administer site configuration'
