@@ -1,0 +1,6 @@
+services:
+  Drupal\os2forms_maestro_webform\MaestroHelper:
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@webform.token_manager'
