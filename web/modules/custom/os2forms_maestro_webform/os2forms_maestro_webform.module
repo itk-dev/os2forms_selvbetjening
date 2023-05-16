@@ -1,147 +1,148 @@
 <?php
 
+/**
+ * @file
+ * Module file for os2forms_maestro_webform.
+ */
+
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\maestro\Engine\MaestroEngine;
-
-/*
- * Stub-code for OS2Forms to use for anonymous form detection and processing.
- * This module includes a direct copy of the Webform Inherit Task Type. Do not copy that over!
- */
 
 /**
  * Implements hook_maestro_zero_user_notification().
  */
 function os2forms_maestro_webform_maestro_zero_user_notification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
-  // This only fires with a ZERO user-count on notifications.  Use this as you see fit.
-
-  if($notificationType == 'assignment') {
+  // This only fires with a ZERO user-count on notifications. Use this as you
+  // see fit.
+  if ($notificationType == 'assignment') {
     $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
-    if($templateTask && $templateTask['tasktype'] == 'MaestroWebformInherit') {
-      //This is very rigid in only detecting the Maestro Webform Inherit task.
-      //You will do an API call here.
 
-      //see os2forms_maestro_webform_mail_alter() for example on detecting role assignment for citizen, 
-      //and the ability to read the webform for submission results (to get email addresses etc.)
+    if ($templateTask && $templateTask['tasktype'] == 'MaestroWebformInherit') {
+      // This is very rigid in only detecting the Maestro Webform Inherit task.
+      // You will do an API call here.
+      // See os2forms_maestro_webform_mail_alter() for example on detecting role
+      // assignment for citizen, and the ability to read the webform for
+      // submission results (to get email addresses etc.)
     }
   }
-
 }
 
-
- /**
-  * Implements hook_mail_alter().
-  */
- function os2forms_maestro_webform_mail_alter(&$message) {
+/**
+ * Implements hook_mail_alter().
+ */
+function os2forms_maestro_webform_mail_alter(&$message) {
   if ($message['id'] == 'maestro_assignment_notification') {
-    if(array_key_exists('queueID', $message['params'])) {
+    if (array_key_exists('queueID', $message['params'])) {
       $queueID = intval($message['params']['queueID']);
       $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
 
-      //This is very rigid.  This only looks for your Webform Inherit task type right now.
-      //This should probably be offloaded to some kind of mechanism to detect that
-      //an outgoing email needs to be sent via your API.  Perhaps an additional
-      //field/checkbox on the tasks that allows you to signify this is an anonymous task?
-      if($templateTask && $templateTask['tasktype'] == 'MaestroWebformInherit') {
-        //We should check if this task has an assignment that is sent to the anonymous Citizen role
+      // This is very rigid.  This only looks for your Webform Inherit task type
+      // right now.
+      // This should probably be offloaded to some kind of mechanism to detect
+      // that an outgoing email needs to be sent via your API. Perhaps an
+      // additional field/checkbox on the tasks that allows you to signify this
+      // is an anonymous task?
+      if ($templateTask && $templateTask['tasktype'] == 'MaestroWebformInherit') {
+        // We should check if this task has an assignment that is sent to the
+        // anonymous Citizen role.
         $assignments = explode(',', $templateTask['assigned']);
-        if(is_array($assignments)) {
-          foreach($assignments as $assignment) {
-            if($assignment == 'role:fixed:citizen') {  //Very rigid for this example.
+        if (is_array($assignments)) {
+          foreach ($assignments as $assignment) {
+            // Very rigid for this example.
+            if ($assignment == 'role:fixed:citizen') {
               $processID = MaestroEngine::getProcessIdFromQueueId($queueID);
 
-              //This is our use case.  We found the Citizen role
-              //You will fill in the blanks here to send out a proper 
-              //email notification through your government-based mailer
-
-              //TODO:  Create outgoing email notification via API
-              //TODO:  Think of a way to get the generic information of WHO to send this to from the webform.
+              // This is our use case.  We found the Citizen role
+              // You will fill in the blanks here to send out a proper
+              // email notification through your government-based mailer.
+              // @todo Create outgoing email notification via API
+              // @todo Think of a way to get the generic information of WHO to send this to from the webform.
               $entityIdentifiers = MaestroEngine::getAllEntityIdentifiersForProcess($processID);
-              //$entityIdentifiers will be an array of arrays, keyed with the entity's unique identifier
+              // $entityIdentifiers will be an array of arrays, keyed with the
+              // entity's unique identifier
+              // For example:  $entityIdentifiers['submission'] looks like this:
+              /*
+              submission:
+              unique_id: "submission"
+              entity_type: "webform_submission"
+              bundle: "internship_1_student"
+              entity_id: "11"
+               */
 
-              //For example:  $entityIdentifiers['submission'] looks like this:
-                /*
-                  submission:
-                    unique_id: "submission"
-                    entity_type: "webform_submission"
-                    bundle: "internship_1_student"
-                    entity_id: "11"
-                    */
-              //
-
-              //You will probably want to use $templateTask to detect the configuraton of THIS task.
-              //That is:  you will use something like $templateTask['data']['inherit_webform_unique_id'] to 
-              //use the configured unique ID against the entityIdentifiers from above to fetch off
-              //any of the pertinent information.
-
-
-              //TODO:  Again, need a way to validate, verify and make this generic.
-
-
+              // You will probably want to use $templateTask to detect the
+              // configuraton of THIS task.
+              // That is: you will use something like
+              // $templateTask['data']['inherit_webform_unique_id'] to use the
+              // configured unique ID against the entityIdentifiers from above
+              // to fetch off any of the pertinent information.
+              // @todo Again, need a way to validate, verify and make this
+              // generic.
+              if ($entityIdentifiers) {
+                // …
+              }
             }
           }
         }
       }
     }
   }
- }
+}
 
-
- /**
+/**
  * Implements hook_form_alter().
+ *
+ * Your implementation is a direct copy from Maestro Webform's form alter. So is
+ * this one. Your implementation has no special save handler and offloads to
+ * Maestro's. Maestro's now has a special handling mechanism to try to correlate
+ * the token to the queue and the form submission values. Maestro also detects
+ * if the webform being altered is a maestro webform task type (inherited too)
+ *
+ * @todo architecture question
+ * should you not be validating the company somehow? Same email address on both
+ * forms?
  */
-
- //Your implementation is a direct copy from Maestro Webform's form alter.
- //So is this one.  Your implementation has no special save handler and offloads
- //to Maestro's.  Maestro's now has a special handling mechanism to try to correlate the 
- //token to the queue and the form submission values.
- //Maestro also detects if the webform being altered is a maestro webform task type (inherited too)
-
- //TODO: architecture question
- //should you not be validating the company somehow?  Same email address on both forms?
-
 function os2forms_maestro_webform_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   maestro_webform_form_alter($form, $form_state, $form_id);
 
-  //add your own submit handler for validation here?
-
+  // Add your own submit handler for validation here?
 }
 
-
-/*
+/**
  * Implements hook_maestro_can_user_execute_task_alter().
- * For OS2Forms, you may have a consistent assignment to an "anonymous" user via a role.
- * Use the QueueID and userID to drill into the task and alter the returnValue to TRUE
- * if this is a user that should be looking at this task.
- * You can make this as complex as you'd like it to be, checking things like sessions, 
- * login tokens, email addresses etc.
+ *
+ * For OS2Forms, you may have a consistent assignment to an "anonymous" user via
+ * a role. Use the QueueID and userID to drill into the task and alter the
+ * returnValue to TRUE if this is a user that should be looking at this task.
+ *
+ * You can make this as complex as you'd like it to be, checking things like
+ * sessions, login tokens, email addresses etc.
  */
 function os2forms_maestro_webform_maestro_can_user_execute_task_alter(&$returnValue, $queueID, $userID) {
 
-  // Check if this is an anonymous user and we've been barred access already
-  if($userID == 0 && $returnValue === FALSE) {
-    // Load the template task and we'll determine if this has our "special" assignment
-    // to a known "anonymous" role.
+  // Check if this is an anonymous user and we've been barred access already.
+  if ($userID == 0 && $returnValue === FALSE) {
+    // Load the template task and we'll determine if this has our "special"
+    // assignment to a known "anonymous" role.
     $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
     $assignments = explode(',', $templateTask['assigned']);
 
-    // DEV NOTE!!!!  We do NOTHING to ensure that this is a specific task type or even that this
-    // is in our desired workflows.  This routine will run for each and every task execution test
-    // and only if we're anonymous.  This should be streamlined and tightened up to check for 
-    // more specific task types or process types... perhaps...
-
-    // In our very specific use case, we are assigning to a fixed role of Citizen.
-    // This could be a task config option to denote that regardless of what's in the assignment, 
-    // we validate this task as executable one way or another.
-
-    //TODO:  Add in your own validation routines
-
-    foreach($assignments as $assignment) {
-      if($assignment == 'role:fixed:citizen') {
-        //This is our use case.  Very rigid for now for prototyping/demo purposes.
+    // DEV NOTE!!!! We do NOTHING to ensure that this is a specific task type or
+    // even that this is in our desired workflows. This routine will run for
+    // each and every task execution test and only if we're anonymous. This
+    // should be streamlined and tightened up to check for more specific task
+    // types or process types... perhaps...
+    // In our very specific use case, we are assigning to a fixed role of
+    // Citizen.
+    // This could be a task config option to denote that regardless of what's in
+    // the assignment, we validate this task as executable one way or another.
+    // @todo Add in your own validation routines
+    foreach ($assignments as $assignment) {
+      if ($assignment == 'role:fixed:citizen') {
+        // This is our use case. Very rigid for now for prototyping/demo
+        // purposes.
         $returnValue = TRUE;
       }
     }
   }
-  
-  
+
 }
