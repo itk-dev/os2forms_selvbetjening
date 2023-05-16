@@ -1,0 +1,14 @@
+uuid: cec4dd8e-b94f-40ea-bd35-4ac38ac0315d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.citizen
+  module:
+    - user
+id: user_remove_role_action.citizen
+label: 'Remove the citizen role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: citizen

@@ -3,4 +3,5 @@ description: Stubbed-out code for OS2Forms
 core_version_requirement: ^9.4 || ^10
 package: OS2Forms
 type: module
-scripts:
+
+configure: os2forms_maestro_webform.settings
