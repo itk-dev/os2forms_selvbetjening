@@ -8,6 +8,7 @@ use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\maestro\Engine\MaestroEngine;
+use Drupal\os2forms_attachment\Element\AttachmentElement;
 use Drupal\os2forms_maestro_webform\Form\SettingsForm;
 use Drupal\os2forms_maestro_webform\Plugin\WebformHandler\NotificationHandler;
 use Drupal\webform\WebformSubmissionInterface;
@@ -18,6 +19,8 @@ use Drupal\webform\WebformTokenManagerInterface;
  * Maestro helper.
  */
 class MaestroHelper {
+  private const OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION = 'os2forms_maestro_webform_is_notification';
+  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT = 'os2forms_maestro_webform_notification_content';
   /**
    * The config.
    *
@@ -83,7 +86,7 @@ class MaestroHelper {
       $assignments = explode(',', $templateTask['assigned']);
 
       $knownAnonymousAssignments = array_map(
-        static fn (string $role) => 'role:fixed:' . $role,
+        static fn(string $role) => 'role:fixed:' . $role,
         array_filter($this->config->get('known_anonymous_roles') ?: [])
       );
 
@@ -111,7 +114,11 @@ class MaestroHelper {
   /**
    * Handle submission notification.
    */
-  private function handleSubmissionNotification(WebformSubmissionInterface $submission, array $templateTask, int $queueID): void {
+  private function handleSubmissionNotification(
+    WebformSubmissionInterface $submission,
+    array $templateTask,
+    int $queueID
+  ): void {
     $data = $submission->getData();
     $webform = $submission->getWebform();
     $handlers = $webform->getHandlers('os2forms_maestro_webform_notification');
@@ -151,10 +158,10 @@ class MaestroHelper {
         }
 
         if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-          $this->sendNotificationEmail($recipient, $subject, $content);
+          $this->sendNotificationEmail($recipient, $subject, $content, $submission);
         }
         else {
-          $this->sendNotificationDigitalPost($recipient, $subject, $content);
+          $this->sendNotificationDigitalPost($recipient, $subject, $content, $submission);
         }
       }
     }
@@ -163,7 +170,12 @@ class MaestroHelper {
   /**
    * Send notification email.
    */
-  private function sendNotificationEmail(string $recipient, string $subject, string $content): void {
+  private function sendNotificationEmail(
+    string $recipient,
+    string $subject,
+    string $content,
+    WebformSubmissionInterface $submission
+  ): void {
     $result = $this->mailManager->mail(
       'os2forms_maestro_webform',
       'notification',
@@ -174,25 +186,112 @@ class MaestroHelper {
         'body' => $content,
       ]
     );
+
+    if (!$result['result']) {
+      // @todo Log this error.
+    }
   }
 
   /**
    * Send notification digital post.
    */
-  private function sendNotificationDigitalPost(string $recipient, string $subject, string $content): void {
-    $this->sendNotificationEmail(
-      $recipient . '@digital-post.example.com',
-      '(this should have been a digital post)' . $subject,
-      $content);
+  private function sendNotificationDigitalPost(
+    string $recipient,
+    string $subject,
+    string $content,
+    WebformSubmissionInterface $submission
+  ): void {
+    $element = [
+      // Cf. AttachmentElement::getFileContent().
+      '#view_mode' => 'html',
+      '#export_type' => 'pdf',
+    ];
+
+    $submission->setData($submission->getData() + [
+      self::OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION => TRUE,
+      self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT => $content,
+    ]);
+
+    $content = AttachmentElement::getFileContent($element, $submission);
+
+    // @todo Send real digital post
+    $recipient .= '@digital-post.example.com';
+    $subject .= ' (digital post)';
+
+    $result = $this->mailManager->mail(
+      'os2forms_maestro_webform',
+      'notification',
+      $recipient,
+      '',
+      [
+        'subject' => $subject,
+        'body' => $content,
+        'attachments' => [
+          [
+            'filecontent' => $content,
+            'filename' => 'stuff.pdf',
+            'filemime' => 'application/pdf',
+          ],
+        ],
+      ]
+    );
+
+    if (!$result['result']) {
+      // @todo Log this error.
+    }
   }
 
-  public function mail(string $key, array &$message, array $params)
-  {
+  /**
+   * Implements hook_mail().
+   */
+  public function mail(string $key, array &$message, array $params) {
     switch ($key) {
       case 'notification':
         $message['subject'] = $params['subject'];
         $message['body'][] = Html::escape($params['body']);
+        if (isset($params['attachments'])) {
+          foreach ($params['attachments'] as $attachment) {
+            $message['params']['attachments'][] = $attachment;
+          }
+        }
         break;
     }
   }
+
+  /**
+   * Implements hook_preprocess_entity_print().
+   */
+  public function preprocessEntityPrint(array &$variables) {
+    $submission = $this->getWebformSubmission($variables);
+    if (NULL === $submission) {
+      return;
+    }
+    $data = $submission->getData();
+    if (TRUE !== ($data[self::OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION] ?? FALSE)) {
+      return;
+    }
+
+    $variables['content'] = [
+      '#markup' => $data[self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT] ?? '',
+    ];
+  }
+
+  /**
+   * Dig for webform submission in variables.
+   */
+  private function getWebformSubmission(array $variables): ?WebformSubmissionInterface {
+    $iterator  = new \RecursiveArrayIterator($variables);
+    $recursive = new \RecursiveIteratorIterator(
+      $iterator,
+      \RecursiveIteratorIterator::SELF_FIRST
+    );
+    foreach ($recursive as $key => $value) {
+      if ('#webform_submission' === $key && $value instanceof WebformSubmissionInterface) {
+        return $value;
+      }
+    }
+
+    return NULL;
+  }
+
 }
