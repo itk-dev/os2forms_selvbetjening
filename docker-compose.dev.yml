@@ -12,6 +12,7 @@ services:
 
   mailhog:
     image: itkdev/mailhog
+    restart: unless-stopped
     networks:
       - app
       - frontend
