@@ -13,14 +13,25 @@ use Drupal\webform\WebformSubmissionStorageInterface;
 use Drupal\webform\WebformTokenManagerInterface;
 
 /**
- *
+ * Maestro helper.
  */
 class MaestroHelper {
+  /**
+   * The config.
+   *
+   * @var \Drupal\Core\Config\ImmutableConfig
+   */
   readonly private ImmutableConfig $config;
+
+  /**
+   * The webform submission storage.
+   *
+   * @var \Drupal\webform\WebformSubmissionStorageInterface|\Drupal\Core\Entity\EntityStorageInterface
+   */
   readonly private WebformSubmissionStorageInterface $webformSubmissionStorage;
 
   /**
-   *
+   * Constructor.
    */
   public function __construct(
     EntityTypeManagerInterface $entityTypeManager,
@@ -32,7 +43,7 @@ class MaestroHelper {
   }
 
   /**
-   *
+   * Implements hook_maestro_zero_user_notification().
    */
   public function maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
     // This only fires with a ZERO user-count on notifications. Use this as you
@@ -57,7 +68,7 @@ class MaestroHelper {
   }
 
   /**
-   *
+   * Implements hook_maestro_can_user_execute_task_alter().
    */
   public function maestroCanUserExecuteTaskAlter(bool &$returnValue, int $queueID, int $userID): void {
 
@@ -80,8 +91,9 @@ class MaestroHelper {
       // task types or process types... perhaps...
       // In our very specific use case, we are assigning to a fixed role of
       // Citizen.
-      // This could be a task config option to denote that regardless of what's in
-      // the assignment, we validate this task as executable one way or another.
+      // This could be a task config option to denote that regardless of what's
+      // in the assignment, we validate this task as executable one way or
+      // another.
       // @todo Add in your own validation routines
       foreach ($assignments as $assignment) {
         if (in_array($assignment, $knownAnonymousAssignments, TRUE)) {
@@ -94,20 +106,23 @@ class MaestroHelper {
   }
 
   /**
-   *
+   * Handle submission notification.
    */
   private function handleSubmissionNotification(WebformSubmissionInterface $submission, array $templateTask, int $queueID): void {
     $data = $submission->getData();
     $webform = $submission->getWebform();
     $handlers = $webform->getHandlers('os2forms_maestro_webform_notification');
     foreach ($handlers as $handler) {
+      if ($handler->isDisabled() || $handler->isExcluded()) {
+        continue;
+      }
       $settings = $handler->getSettings();
       $notificationSetting = $settings[NotificationHandler::NOTIFICATION];
       $recipientElement = $notificationSetting[NotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
       $recipient = $data[$recipientElement] ?? NULL;
       if (NULL !== $recipient) {
         // Lifted from MaestroEngine.
-        $data = [
+        $maestroTokenData = [
           'maestro' => [
             'task' => $templateTask,
             'queueID' => $queueID,
@@ -117,12 +132,12 @@ class MaestroHelper {
         $subject = $this->tokenManager->replace(
           $notificationSetting[NotificationHandler::NOTIFICATION_SUBJECT],
           $submission,
-          $data
+          $maestroTokenData
         );
         $content = $this->tokenManager->replace(
           $notificationSetting[NotificationHandler::NOTIFICATION_CONTENT],
           $submission,
-          $data
+          $maestroTokenData
         );
 
         if (isset($templateTask['data']['webform_nodes_attached_to'])) {
@@ -152,11 +167,11 @@ class MaestroHelper {
   /**
    * Send notification digital post.
    */
-  private function sendNotificationDigitalPost(string $recipient): void {
-    header('content-type: text/plain');
-    echo var_export(NULL, TRUE);
-    die(__FILE__ . ':' . __LINE__ . ':' . __METHOD__);
-    $hest;
+  private function sendNotificationDigitalPost(string $recipient, string $subject, string $content): void {
+    $this->sendNotificationEmail(
+      $recipient . '@digital-post.example.com',
+      '(this should have been a digital post)' . $subject,
+      $content);
   }
 
 }

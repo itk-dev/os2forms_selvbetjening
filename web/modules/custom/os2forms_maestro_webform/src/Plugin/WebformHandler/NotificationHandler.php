@@ -108,11 +108,11 @@ final class NotificationHandler extends WebformHandlerBase {
    * {@inheritdoc}
    */
   public function getSummary() {
-    $settings = $this->getSettings();
-
     return [
-      '#settings' => $settings,
-    ] + parent::getSummary();
+      '#markup' => $this->t('<strong>Note</strong> This a not a real webform handler run when a submission is created, but run when Maestro sends out a notification. The notification will be sent to the person identified by the value of the %element element.', [
+        '%element' => $this->configuration[self::NOTIFICATION][self::RECIPIENT_ELEMENT] ?? NULL,
+      ]),
+    ];
   }
 
   /**
@@ -183,13 +183,6 @@ final class NotificationHandler extends WebformHandlerBase {
     return array_map(static function (array $element) {
       return $element['#title'];
     }, $elements);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateConfigurationForm(array &$form, FormStateInterface $formState) {
-    parent::validateConfigurationForm($form, $formState);
   }
 
   /**
