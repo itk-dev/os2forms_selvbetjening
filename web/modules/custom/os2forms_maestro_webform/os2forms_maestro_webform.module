@@ -13,7 +13,7 @@ use Drupal\os2forms_maestro_webform\MaestroHelper;
  * Implements hook_maestro_zero_user_notification().
  */
 function os2forms_maestro_webform_maestro_zero_user_notification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
-  Drupal::service(MaestroHelper::class)->maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType);
+  _os2forms_maestro_webform_helper()->maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType);
 }
 
 /**
@@ -107,12 +107,26 @@ function os2forms_maestro_webform_form_alter(&$form, FormStateInterface $form_st
  * sessions, login tokens, email addresses etc.
  */
 function os2forms_maestro_webform_maestro_can_user_execute_task_alter(&$returnValue, $queueID, $userID) {
-  Drupal::service(MaestroHelper::class)->maestroCanUserExecuteTaskAlter($returnValue, $queueID, $userID);
+  _os2forms_maestro_webform_helper()->maestroCanUserExecuteTaskAlter($returnValue, $queueID, $userID);
 }
 
 /**
  * Implements hook_mail().
  */
 function os2forms_maestro_webform_mail($key, &$message, $params) {
-  Drupal::service(MaestroHelper::class)->mail($key, $message, $params);
+  _os2forms_maestro_webform_helper()->mail($key, $message, $params);
+}
+
+/**
+ * Implements hook_preprocess_entity_print().
+ */
+function os2forms_maestro_webform_preprocess_entity_print(array &$variables) {
+  _os2forms_maestro_webform_helper()->preprocessEntityPrint($variables);
+}
+
+/**
+ * Get MaestroHelper.
+ */
+function _os2forms_maestro_webform_helper(): MaestroHelper {
+  return Drupal::service(MaestroHelper::class);
 }

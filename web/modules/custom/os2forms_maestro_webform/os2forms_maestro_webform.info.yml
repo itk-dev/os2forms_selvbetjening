@@ -5,3 +5,6 @@ package: OS2Forms
 type: module
 
 configure: os2forms_maestro_webform.settings
+
+dependencies:
+  - os2forms_attachment:os2forms_attachment
