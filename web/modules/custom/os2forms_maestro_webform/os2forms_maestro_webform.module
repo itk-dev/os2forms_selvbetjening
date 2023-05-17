@@ -109,3 +109,10 @@ function os2forms_maestro_webform_form_alter(&$form, FormStateInterface $form_st
 function os2forms_maestro_webform_maestro_can_user_execute_task_alter(&$returnValue, $queueID, $userID) {
   Drupal::service(MaestroHelper::class)->maestroCanUserExecuteTaskAlter($returnValue, $queueID, $userID);
 }
+
+/**
+ * Implements hook_mail().
+ */
+function os2forms_maestro_webform_mail($key, &$message, $params) {
+  Drupal::service(MaestroHelper::class)->mail($key, $message, $params);
+}
