@@ -2,9 +2,11 @@
 
 namespace Drupal\os2forms_maestro_webform;
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\os2forms_maestro_webform\Form\SettingsForm;
 use Drupal\os2forms_maestro_webform\Plugin\WebformHandler\NotificationHandler;
@@ -36,7 +38,8 @@ class MaestroHelper {
   public function __construct(
     EntityTypeManagerInterface $entityTypeManager,
     ConfigFactoryInterface $configFactory,
-    readonly private WebformTokenManagerInterface $tokenManager
+    readonly private WebformTokenManagerInterface $tokenManager,
+    readonly private MailManagerInterface $mailManager
   ) {
     $this->config = $configFactory->get(SettingsForm::SETTINGS);
     $this->webformSubmissionStorage = $entityTypeManager->getStorage('webform_submission');
@@ -161,7 +164,16 @@ class MaestroHelper {
    * Send notification email.
    */
   private function sendNotificationEmail(string $recipient, string $subject, string $content): void {
-    mail($recipient, $subject, $content);
+    $result = $this->mailManager->mail(
+      'os2forms_maestro_webform',
+      'notification',
+      $recipient,
+      '',
+      [
+        'subject' => $subject,
+        'body' => $content,
+      ]
+    );
   }
 
   /**
@@ -174,4 +186,13 @@ class MaestroHelper {
       $content);
   }
 
+  public function mail(string $key, array &$message, array $params)
+  {
+    switch ($key) {
+      case 'notification':
+        $message['subject'] = $params['subject'];
+        $message['body'][] = Html::escape($params['body']);
+        break;
+    }
+  }
 }

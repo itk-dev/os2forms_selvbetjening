@@ -4,3 +4,4 @@ services:
       - '@entity_type.manager'
       - '@config.factory'
       - '@webform.token_manager'
+      - '@plugin.manager.mail'
