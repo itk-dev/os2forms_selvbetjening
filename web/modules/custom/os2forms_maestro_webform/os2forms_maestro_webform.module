@@ -109,14 +109,3 @@ function os2forms_maestro_webform_form_alter(&$form, FormStateInterface $form_st
 function os2forms_maestro_webform_maestro_can_user_execute_task_alter(&$returnValue, $queueID, $userID) {
   Drupal::service(MaestroHelper::class)->maestroCanUserExecuteTaskAlter($returnValue, $queueID, $userID);
 }
-
-/**
- * Implements hook_theme().
- */
-function os2forms_maestro_webform_theme() {
-  return [
-    'webform_handler_os2forms_maestro_webform_notification_summary' => [
-      'variables' => ['settings' => NULL, 'handler' => [], 'status' => NULL],
-    ],
-  ];
-}
