@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Fix bug in login display where login link displayed on pages without login 
+  enabled.
+
 ## [2.2.1]
 
 * Opdaterede til [OS2Forms CPR Lookup
