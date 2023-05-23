@@ -224,3 +224,6 @@ config/sync/**/webform.webform.*
 config/sync/os2web_nemlogin.settings.yml
 # Ignore attachment components
 config/sync/os2forms_attachment.os2forms_attachment_component.*.yml
+
+# Ignore system site config
+config/sync/system.site.yml
