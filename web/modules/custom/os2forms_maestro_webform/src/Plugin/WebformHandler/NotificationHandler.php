@@ -109,7 +109,7 @@ final class NotificationHandler extends WebformHandlerBase {
    */
   public function getSummary() {
     return [
-      '#markup' => $this->t('<strong>Note</strong> This a not a real webform handler run when a submission is created, but run when Maestro sends out a notification. The notification will be sent to the person identified by the value of the %element element.', [
+      '#markup' => $this->t('Sends notification when triggered by Maestro. The notification will be sent to the person identified by the value of the %element element.', [
         '%element' => $this->configuration[self::NOTIFICATION][self::RECIPIENT_ELEMENT] ?? NULL,
       ]),
     ];
