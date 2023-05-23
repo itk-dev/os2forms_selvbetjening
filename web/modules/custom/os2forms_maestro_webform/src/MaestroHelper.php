@@ -58,14 +58,15 @@ class MaestroHelper {
       $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
       $taskType = $templateTask['tasktype'] ?? NULL;
       if (in_array($taskType, ['MaestroWebform', 'MaestroWebformInherit'], TRUE)) {
-        if ($processID = MaestroEngine::getProcessIdFromQueueId($queueID) ?: NULL) {
-          $entityIdentifiers = MaestroEngine::getAllEntityIdentifiersForProcess($processID);
-          foreach ($entityIdentifiers as $entityIdentifier) {
-            if ('webform_submission' === ($entityIdentifier['entity_type'] ?? NULL)) {
-              $submission = $this->webformSubmissionStorage->load($entityIdentifier['entity_id']);
-              if ($submission) {
-                $this->handleSubmissionNotification($submission, $templateTask, $queueID);
-              }
+        if ($processID = (MaestroEngine::getProcessIdFromQueueId($queueID) ?: NULL)) {
+          // Get webforn submissions in process.
+          $entityIdentifiers = self::getWebformSubmissionIdentifiersForProcess($processID);
+
+          // Process only the latest entity identifier.
+          if ($entityIdentifier = reset($entityIdentifiers)) {
+            $submission = $this->webformSubmissionStorage->load($entityIdentifier['entity_id']);
+            if ($submission) {
+              $this->handleSubmissionNotification($submission, $templateTask, $queueID);
             }
           }
         }
@@ -74,37 +75,44 @@ class MaestroHelper {
   }
 
   /**
+   * Get webform submission identifiers for a process.
+   *
+   * @param int $processID
+   *   The Maestro Process ID.
+   *
+   * @return array
+   *   The webform submission identifiers sorted ascendingly by creation time.
+   */
+  public static function getWebformSubmissionIdentifiersForProcess(int $processID): array {
+    // Get webform submissions in process.
+    $entityIdentifiers = array_filter(
+      MaestroEngine::getAllEntityIdentifiersForProcess($processID),
+      static fn (array $entityIdentifier) => 'webform_submission' === ($entityIdentifier['entity_type'] ?? NULL)
+    );
+
+    // Sort by entity ID.
+    uasort($entityIdentifiers, static fn (array $a, array $b) => ($b['entity_id'] ?? 0) <=> ($a['entity_id'] ?? 0));
+
+    return $entityIdentifiers;
+  }
+
+  /**
    * Implements hook_maestro_can_user_execute_task_alter().
    */
   public function maestroCanUserExecuteTaskAlter(bool &$returnValue, int $queueID, int $userID): void {
-
-    // Check if this is an anonymous user and we've been barred access already.
-    if ($userID == 0 && $returnValue === FALSE) {
-      // Load the template task and we'll determine if this has our "special"
-      // assignment to a known "anonymous" role.
+    // Perform our checks only if an anonymous user has been barred access.
+    if (0 === $userID && FALSE === $returnValue) {
       $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
       $assignments = explode(',', $templateTask['assigned']);
 
+      // Check if one of the assignments match our known anonymous roles.
       $knownAnonymousAssignments = array_map(
         static fn(string $role) => 'role:fixed:' . $role,
         array_filter($this->config->get('known_anonymous_roles') ?: [])
       );
 
-      // DEV NOTE!!!! We do NOTHING to ensure that this is a specific task type
-      // or even that this is in our desired workflows. This routine will run
-      // for each and every task execution test and only if we're anonymous.
-      // This should be streamlined and tightened up to check for more specific
-      // task types or process types... perhaps...
-      // In our very specific use case, we are assigning to a fixed role of
-      // Citizen.
-      // This could be a task config option to denote that regardless of what's
-      // in the assignment, we validate this task as executable one way or
-      // another.
-      // @todo Add in your own validation routines
       foreach ($assignments as $assignment) {
         if (in_array($assignment, $knownAnonymousAssignments, TRUE)) {
-          // This is our use case. Very rigid for now for prototyping/demo
-          // purposes.
           $returnValue = TRUE;
         }
       }
