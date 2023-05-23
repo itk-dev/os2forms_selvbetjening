@@ -2,21 +2,11 @@ uuid: 89651b3b-993b-4b66-b8a1-fa81a2ce5643
 langcode: da
 status: true
 dependencies:
-  config:
-    - node.type.webform
   module:
     - content_moderation
-    - workflow_participants
   enforced:
     module:
       - os2forms_forloeb
-third_party_settings:
-  workflow_participants:
-    editor_transitions:
-      unpublish: unpublish
-      republish: republish
-    reviewer_transitions:
-      republish: republish
 _core:
   default_config_hash: p3QtDEbkZg211Tn8B67GmDmFKPvdELm3IuEUS4_OcWg
 id: udgivelse_af_forlob_og_webformularer
@@ -66,7 +56,5 @@ type_settings:
         - published
       to: unpublished
       weight: 2
-  entity_types:
-    node:
-      - webform
+  entity_types: {  }
   default_moderation_state: draft

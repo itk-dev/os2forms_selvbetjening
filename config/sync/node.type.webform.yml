@@ -18,6 +18,6 @@ name: Formular
 type: webform
 description: 'A basic page with a webform attached.'
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
 display_submitted: false

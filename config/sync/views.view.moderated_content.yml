@@ -2,6 +2,8 @@ uuid: e39d4353-ed2c-47b4-aa33-6951ad7f0e54
 langcode: da
 status: true
 dependencies:
+  config:
+    - user.role.site_admin
   module:
     - node
     - user
@@ -434,9 +436,10 @@ display:
           sort_asc_label: Stigende
           sort_desc_label: Faldende
       access:
-        type: perm
+        type: role
         options:
-          perm: 'view any unpublished content'
+          role:
+            site_admin: site_admin
       cache:
         type: tag
         options: {  }
@@ -810,7 +813,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
   moderated_content:
     id: moderated_content
@@ -829,5 +832,5 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
