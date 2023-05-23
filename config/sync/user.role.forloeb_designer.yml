@@ -86,7 +86,6 @@ permissions:
   - 'use udgivelse_af_forlob_og_webformularer transition unpublish'
   - 'use udgivelse_af_forloeb transition create_new_draft'
   - 'use udgivelse_af_forloeb transition publish'
-  - 'view any unpublished content'
   - 'view any unpublished webform content'
   - 'view any webform submission'
   - 'view latest version'
