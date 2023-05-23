@@ -144,6 +144,7 @@ module:
   webform_templates: 0
   webform_translation_permissions: 0
   webform_ui: 0
+  webform_validation: 0
   workflow_participants: 0
   workflows: 0
   pathauto: 1

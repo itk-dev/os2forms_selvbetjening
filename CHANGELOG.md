@@ -13,7 +13,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   [View unpublished](https://www.drupal.org/project/view_unpublished)
 * Disable revisioning on webform nodes
 * Remove unused my_workflow view
-* Add config/sync/system.site.yml to .gitignore
+* Installerede `Webform Validation` modulet.
 
 ## [2.2.1]
 
