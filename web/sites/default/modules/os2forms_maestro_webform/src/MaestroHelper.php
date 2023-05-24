@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\os2forms_attachment\Element\AttachmentElement;
+use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
 use Drupal\os2forms_maestro_webform\Form\SettingsForm;
 use Drupal\os2forms_maestro_webform\Plugin\WebformHandler\NotificationHandler;
 use Drupal\webform\WebformSubmissionInterface;
@@ -52,21 +53,17 @@ class MaestroHelper {
    * Implements hook_maestro_zero_user_notification().
    */
   public function maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
-    // This only fires with a ZERO user-count on notifications. Use this as you
-    // see fit.
     if ('assignment' === $notificationType) {
+      // @todo Clean up and align with MaestroWebformInheritTask::webformSubmissionFormAlter().
       $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
-      $taskType = $templateTask['tasktype'] ?? NULL;
-      if (in_array($taskType, ['MaestroWebform', 'MaestroWebformInherit'], TRUE)) {
-        if ($processID = (MaestroEngine::getProcessIdFromQueueId($queueID) ?: NULL)) {
-          // Get webforn submissions in process.
-          $entityIdentifiers = self::getWebformSubmissionIdentifiersForProcess($processID);
-
-          // Process only the latest entity identifier.
-          if ($entityIdentifier = reset($entityIdentifiers)) {
-            $submission = $this->webformSubmissionStorage->load($entityIdentifier['entity_id']);
-            if ($submission) {
-              $this->handleSubmissionNotification($submission, $templateTask, $queueID);
+      if (MaestroWebformInheritTask::isWebformTask($templateTask)) {
+        if ($inheritWebformUniqueId = ($templateTask['data'][MaestroWebformInheritTask::INHERIT_WEBFORM_UNIQUE_ID] ?? NULL)) {
+          if ($processID = (MaestroEngine::getProcessIdFromQueueId($queueID) ?: NULL)) {
+            if ($entityIdentifier = (self::getWebformSubmissionIdentifiersForProcess($processID)[$inheritWebformUniqueId] ?? NULL)) {
+              $submission = $this->webformSubmissionStorage->load($entityIdentifier['entity_id']);
+              if ($submission) {
+                $this->handleSubmissionNotification($submission, $templateTask, $queueID);
+              }
             }
           }
         }
@@ -113,8 +110,8 @@ class MaestroHelper {
         );
 
         foreach ($assignments as $assignment) {
-          if (in_array($assignment, $knownAnonymousAssignments, true)) {
-            $returnValue = true;
+          if (in_array($assignment, $knownAnonymousAssignments, TRUE)) {
+            $returnValue = TRUE;
           }
         }
       }
