@@ -5,17 +5,12 @@
  * Install, update and uninstall functions for the os2forms_forloeb.
  */
 
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\webform\WebformInterface;
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\BubbleableMetadata;
-use Drupal\Core\Url;
 use Drupal\maestro\Engine\MaestroEngine;
-use Drupal\webform\Entity\WebformSubmission;
+use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
 use Drupal\user\Entity\User;
-use Drupal\os2forms_forloeb\Controller\ForloebTaskConsoleController;
+use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\WebformInterface;
 
 /**
  * Implements hook_maestro_interactive_handlers().
@@ -97,7 +92,7 @@ function os2forms_forloeb_workflow_maestro_reassign_form_submit(&$form, &$form_s
  */
 function os2forms_forloeb_maestro_batch_handlers() {
   return [
-    'end_notification_batch_function' => t('Batch function to send out flow completion notification to initiator.'),
+    'os2forms_forloeb_end_notification_batch_function' => t('Batch function to send out flow completion notification to initiator.'),
   ];
 }
 
@@ -109,7 +104,7 @@ function os2forms_forloeb_maestro_batch_handlers() {
  * @param int $queueID
  *   The Maestro queue ID.
  */
-function end_notification_batch_function($processID, $queueID) {
+function os2forms_forloeb_end_notification_batch_function($processID, $queueID) {
 
   /*
    * Pseudocode for handling this:
@@ -288,59 +283,8 @@ function os2forms_forloeb_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_token_info_alter().
+ * Implements hook_webform_submission_form_alter().
  */
-function os2forms_forloeb_token_info_alter(&$data) {
-  $data['tokens']['webform_submission']['os2forms_forloeb_execute_task'] = [
-    'name' => t('Execute task path for webform submission'),
-    'description' => t("The token that can be user to get path for webform submission redirect URL."),
-    'type' => 'webform_submission',
-  ];
-}
-
-/**
- * Implements hook_tokens().
- *
- * Provides token value for webform_submission:os2forms_forloeb_execute_task.
- */
-function os2forms_forloeb_tokens($type, array $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
-  $replacements = [];
-
-  if ($type === 'webform_submission' && !empty($data['webform_submission']) && isset($tokens['os2forms_forloeb_execute_task'])) {
-    $replacements[$tokens['os2forms_forloeb_execute_task']] = Url::fromRoute(
-      'os2forms_forloeb.forloeb_task_console_controller_execute',
-      [ForloebTaskConsoleController::WS_TOKEN_NAME => $data['webform_submission']->getToken()],
-      ['absolute' => TRUE]
-    )->toString(TRUE)->getGeneratedUrl();
-  }
-
-  return $replacements;
-}
-
-/**
- * Implements hook_entity_access().
- *
- * Allows requests with tokens to view the entity.
- */
-function os2forms_forloeb_entity_access(EntityInterface $entity, $operation, AccountInterface $account) {
-  if ($operation == 'update' && $entity instanceof WebformSubmission) {
-    $token = \Drupal::request()->query->get(ForloebTaskConsoleController::WS_TOKEN_NAME);
-    if ($token && $token === $entity->getToken()) {
-      return AccessResult::allowed();
-    }
-  }
-  return AccessResult::neutral();
-}
-
-/**
- * Implements hook_maestro_post_fetch_assigned_queue_tasks().
- */
-function os2forms_forloeb_maestro_post_fetch_assigned_queue_tasks($userID, &$queueIDs) {
-  $token = \Drupal::request()->query->get(ForloebTaskConsoleController::WS_TOKEN_NAME, '');
-  if ($token) {
-    $forloebTaskConsole = Drupal::service('os2forms_forloeb.task_console');
-    $queueRecord = $forloebTaskConsole->getQueueIdByWebformSubmissionToken($token);
-    $queueIDs[] = $queueRecord->id();
-    $queueIDs = array_unique($queueIDs);
-  }
+function os2forms_forloeb_webform_submission_form_alter(array &$form, FormStateInterface $formState, string $formId) {
+  MaestroWebformInheritTask::webformSubmissionFormAlter($form, $formState, $formId);
 }
