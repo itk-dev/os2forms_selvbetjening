@@ -5,7 +5,6 @@ namespace Drupal\os2forms_maestro_webform\Plugin\WebformHandler;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\maestro\Engine\MaestroEngine;
-use Drupal\os2forms_digital_post\Helper\WebformHelperSF1601;
 use Drupal\os2forms_maestro_webform\MaestroHelper;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformInterface;
@@ -48,7 +47,7 @@ final class WorkflowSubmissionElementValues extends WebformHandlerBase {
   /**
    * {@inheritdoc}
    */
-  public function alterElements(array &$elements, WebformInterface $webform) {
+  public function alterElementsHest(array &$elements, WebformInterface $webform) {
     $spec = $this->getSpec();
 
     $submissionValues = [];
@@ -75,11 +74,16 @@ final class WorkflowSubmissionElementValues extends WebformHandlerBase {
     }
   }
 
+  /**
+   * Get spec.
+   */
   private function getSpec(): array {
     $spec = [];
     try {
       $spec = Yaml::decode($this->configuration[self::SPEC]);
-    } catch (\Throwable) {}
+    }
+    catch (\Throwable) {
+    }
 
     return is_array($spec) ? $spec : [];
   }
