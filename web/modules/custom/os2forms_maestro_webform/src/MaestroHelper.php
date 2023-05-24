@@ -103,17 +103,19 @@ class MaestroHelper {
     // Perform our checks only if an anonymous user has been barred access.
     if (0 === $userID && FALSE === $returnValue) {
       $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
-      $assignments = explode(',', $templateTask['assigned']);
+      if (isset($templateTask['assigned'])) {
+        $assignments = explode(',', $templateTask['assigned']);
 
-      // Check if one of the assignments match our known anonymous roles.
-      $knownAnonymousAssignments = array_map(
-        static fn(string $role) => 'role:fixed:' . $role,
-        array_filter($this->config->get('known_anonymous_roles') ?: [])
-      );
+        // Check if one of the assignments match our known anonymous roles.
+        $knownAnonymousAssignments = array_map(
+          static fn(string $role) => 'role:fixed:' . $role,
+          array_filter($this->config->get('known_anonymous_roles') ?: [])
+        );
 
-      foreach ($assignments as $assignment) {
-        if (in_array($assignment, $knownAnonymousAssignments, TRUE)) {
-          $returnValue = TRUE;
+        foreach ($assignments as $assignment) {
+          if (in_array($assignment, $knownAnonymousAssignments, true)) {
+            $returnValue = true;
+          }
         }
       }
     }
