@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Installerede `Webform Validation` modulet.
+* Minor type fixes to FBS handler
 
 ## [2.2.1]
 

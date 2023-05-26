@@ -94,9 +94,9 @@ final class FBS {
         (bool) $json->patron->receivePostalMail,
         $json->patron->notificationProtocols,
         $json->patron->phoneNumber,
-        $json->patron->onHold,
+        is_null($json->patron->onHold) ? $json->patron->onHold : (array) $json->patron->onHold,
         $json->patron->preferredLanguage,
-        $json->patron->guardianVisibility,
+        (bool) $json->patron->guardianVisibility,
         $json->patron->emailAddress,
         (bool) $json->patron->receiveEmail,
         $json->patron->preferredPickupBranch
