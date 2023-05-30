@@ -3,7 +3,6 @@
 namespace Drupal\os2forms_maestro_webform\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\os2forms_digital_post\Helper\WebformHelperSF1601;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,6 +28,8 @@ final class NotificationHandler extends WebformHandlerBase {
   public const NOTIFICATION_CONTENT = 'notification_content';
   public const RECIPIENT_ELEMENT = 'recipient_element';
 
+  private const TOKEN_MAESTRO_TASK_URL = '[maestro:task-url]';
+
   /**
    * Maximum length of sender label.
    */
@@ -38,48 +39,6 @@ final class NotificationHandler extends WebformHandlerBase {
    * Maximum length of header label.
    */
   private const NOTIFICATION_SUBJECT_MAX_LENGTH = 128;
-
-  /**
-   * The token manager.
-   *
-   * @var \Drupal\webform\WebformTokenManagerInterface
-   */
-  protected $tokenManager;
-
-  /**
-   * The webform helper.
-   *
-   * @var \Drupal\os2forms_digital_post\WebformHelper
-   */
-  protected $webformHelper;
-
-  /**
-   * The template manager.
-   *
-   * @var \Drupal\os2forms_digital_post\Manager\TemplateManager
-   */
-  protected $templateManager;
-
-  /**
-   * The print service consumer.
-   *
-   * @var \Drupal\os2forms_digital_post\Consumer\PrintServiceConsumer
-   */
-  protected $printServiceConsumer;
-
-  /**
-   * The cpr service.
-   *
-   * @var \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface
-   */
-  protected $cprService;
-
-  /**
-   * The webform helper.
-   *
-   * @var \Drupal\os2forms_digital_post\Helper\WebformHelperSF1601
-   */
-  protected WebformHelperSF1601 $helper;
 
   /**
    * {@inheritdoc}
@@ -92,12 +51,6 @@ final class NotificationHandler extends WebformHandlerBase {
     $instance->renderer = $container->get('renderer');
     $instance->entityTypeManager = $container->get('entity_type.manager');
     $instance->conditionsValidator = $container->get('webform_submission.conditions_validator');
-    $instance->tokenManager = $container->get('webform.token_manager');
-    $instance->webformHelper = $container->get('os2forms_digital_post.webform_helper');
-    $instance->templateManager = $container->get('os2forms_digital_post.template_manager');
-    $instance->printServiceConsumer = $container->get('os2forms_digital_post.print_service_consumer');
-    $instance->cprService = $container->get('os2forms_cpr_lookup.service');
-    $instance->helper = $container->get(WebformHelperSF1601::class);
 
     $instance->setConfiguration($configuration);
 
@@ -154,9 +107,30 @@ final class NotificationHandler extends WebformHandlerBase {
       '#title' => $this->t('Notification text'),
       '#required' => TRUE,
       '#default_value' => $this->configuration[self::NOTIFICATION][self::NOTIFICATION_CONTENT] ?? NULL,
+      '#description' => $this->t('The actual notification content. Must contain the <code>@token_maestro_task_url</code> token which is the URL to the Maestro task.', [
+        '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
+      ]),
     ];
 
     return $this->setSettingsParents($form);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateConfigurationForm(array &$form, FormStateInterface $formState) {
+    parent::validateConfigurationForm($form, $formState);
+
+    $key = [self::NOTIFICATION, self::NOTIFICATION_CONTENT];
+    $content = $formState->getValue($key);
+    if (!str_contains($content, self::TOKEN_MAESTRO_TASK_URL)) {
+      $formState->setErrorByName(
+        implode('][', [self::NOTIFICATION, self::NOTIFICATION_CONTENT]),
+        $this->t('The notification content must contain the <code>@token_maestro_task_url</code> token', [
+          '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
+        ])
+      );
+    }
   }
 
   /**
