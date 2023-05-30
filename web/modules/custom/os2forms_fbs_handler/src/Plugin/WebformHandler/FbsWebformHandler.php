@@ -117,7 +117,7 @@ final class FbsWebformHandler extends WebformHandlerBase {
     ];
 
     $form['wrapper']['endpoint_url'] = [
-      '#type' => 'textfield',
+      '#type' => 'url',
       '#title' => $this->t('FBS endpoint URL', [], $translation_options),
       '#description' => $this->t('The URL for the FBS REST service, usually something like https://et.cicero-fbs.com/rest'),
       '#required' => TRUE,
