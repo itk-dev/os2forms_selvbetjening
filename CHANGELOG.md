@@ -5,6 +5,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Remove os2forms_permissions_by_term from custom modules (Added through
+  os2forms/os2forms_forloeb_profile)
+* Remove os2forms_webform_list from custom modules (Added through
+  os2forms/os2forms_forloeb_profile)
+* Add view unpublished module
+  [View unpublished](https://www.drupal.org/project/view_unpublished)
+* Disable revisioning on webform nodes
+* Remove unused my_workflow view
 * Installerede `Webform Validation` modulet.
 * Minor type fixes to FBS handler
 

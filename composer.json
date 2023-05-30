@@ -61,6 +61,7 @@
         "drupal/menu_link_attributes": "^1.2",
         "drupal/openid_connect": "^2.0",
         "drupal/system_status": "^2.9",
+        "drupal/view_unpublished": "^1.1",
         "drupal/webform_remote_select": "^1.0",
         "drupal/webform_translation_permissions": "^2.0",
         "drush/drush": "^10.6",
