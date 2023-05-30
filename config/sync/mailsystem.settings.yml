@@ -10,3 +10,7 @@ modules:
     none:
       sender: SMTPMailSystem
       formatter: webform_php_mail
+  os2forms_maestro_webform:
+    none:
+      sender: SMTPMailSystem
+      formatter: webform_php_mail
