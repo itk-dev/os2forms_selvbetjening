@@ -172,6 +172,7 @@ final class NotificationHandler extends WebformHandlerBase {
       'cpr_value_element',
       'cvr_element',
       'cvr_value_element',
+      'os2forms_person_lookup',
     ];
     $elements = array_filter(
       $elements,
