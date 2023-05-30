@@ -136,7 +136,12 @@ class MaestroHelper {
       $settings = $handler->getSettings();
       $notificationSetting = $settings[NotificationHandler::NOTIFICATION];
       $recipientElement = $notificationSetting[NotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
-      $recipient = $data[$recipientElement] ?? NULL;
+      $recipient =
+        // Handle os2forms_person_lookup element.
+        $data[$recipientElement]['cpr_number']
+        // Simple element.
+        ?? $data[$recipientElement]
+        ?? NULL;
       if (NULL !== $recipient) {
         // Lifted from MaestroEngine.
         $maestroTokenData = [
