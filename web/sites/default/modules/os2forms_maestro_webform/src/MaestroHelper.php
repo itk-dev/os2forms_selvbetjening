@@ -22,6 +22,10 @@ use Drupal\webform\WebformTokenManagerInterface;
 class MaestroHelper {
   private const OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION = 'os2forms_maestro_webform_is_notification';
   private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT = 'os2forms_maestro_webform_notification_content';
+  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_ASSIGNMENT = 'assignment';
+  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_REMINDER = 'reminder';
+  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_ESCALATION = 'escalation';
+
   /**
    * The config.
    *
@@ -53,7 +57,7 @@ class MaestroHelper {
    * Implements hook_maestro_zero_user_notification().
    */
   public function maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
-    if ('assignment' === $notificationType) {
+    if (self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_ASSIGNMENT === $notificationType) {
       // @todo Clean up and align with MaestroWebformInheritTask::webformSubmissionFormAlter().
       $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
       if (MaestroWebformInheritTask::isWebformTask($templateTask)) {
@@ -224,7 +228,7 @@ class MaestroHelper {
       self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT => $content,
     ]);
 
-    $content = AttachmentElement::getFileContent($element, $submission);
+    $pdfContent = AttachmentElement::getFileContent($element, $submission);
 
     // @todo Send real digital post
     $recipient .= '@digital-post.example.com';
@@ -240,7 +244,7 @@ class MaestroHelper {
         'body' => $content,
         'attachments' => [
           [
-            'filecontent' => $content,
+            'filecontent' => $pdfContent,
             'filename' => 'stuff.pdf',
             'filemime' => 'application/pdf',
           ],
