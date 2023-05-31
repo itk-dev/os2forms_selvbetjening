@@ -3,6 +3,10 @@ services:
     parent: logger.channel_base
     arguments: ['os2forms_forloeb']
 
+  logger.channel.os2forms_forloeb_submission:
+    parent: logger.channel_base
+    arguments: ['webform_submission']
+
   Drupal\os2forms_forloeb\MaestroHelper:
     arguments:
       - '@entity_type.manager'
@@ -11,3 +15,5 @@ services:
       - '@plugin.manager.mail'
       - '@language_manager'
       - '@webform.theme_manager'
+      - '@logger.channel.os2forms_forloeb'
+      - '@logger.channel.os2forms_forloeb_submission'
