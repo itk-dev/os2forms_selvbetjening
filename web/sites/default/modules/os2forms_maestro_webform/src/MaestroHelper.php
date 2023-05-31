@@ -2,18 +2,22 @@
 
 namespace Drupal\os2forms_maestro_webform;
 
-use Drupal\Component\Utility\Html;
+use Dompdf\Dompdf;
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\maestro\Engine\MaestroEngine;
-use Drupal\os2forms_attachment\Element\AttachmentElement;
+use Drupal\maestro\Utility\TaskHandler;
 use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
 use Drupal\os2forms_maestro_webform\Form\SettingsForm;
 use Drupal\os2forms_maestro_webform\Plugin\WebformHandler\NotificationHandler;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorageInterface;
+use Drupal\webform\WebformThemeManagerInterface;
 use Drupal\webform\WebformTokenManagerInterface;
 
 /**
@@ -47,7 +51,9 @@ class MaestroHelper {
     EntityTypeManagerInterface $entityTypeManager,
     ConfigFactoryInterface $configFactory,
     readonly private WebformTokenManagerInterface $tokenManager,
-    readonly private MailManagerInterface $mailManager
+    readonly private MailManagerInterface $mailManager,
+    readonly private LanguageManagerInterface $languageManager,
+    readonly private WebformThemeManagerInterface $webformThemeManager
   ) {
     $this->config = $configFactory->get(SettingsForm::SETTINGS);
     $this->webformSubmissionStorage = $entityTypeManager->getStorage('webform_submission');
@@ -160,24 +166,25 @@ class MaestroHelper {
           $submission,
           $maestroTokenData
         );
-        $content = $this->tokenManager->replace(
-          $notificationSetting[NotificationHandler::NOTIFICATION_CONTENT],
-          $submission,
-          $maestroTokenData
-        );
 
-        if (isset($templateTask['data']['webform_nodes_attached_to'])) {
-          $search = '[maestro:task:data:webform_nodes_attached_to]';
-          $replace = $templateTask['data']['webform_nodes_attached_to'];
-          $subject = str_replace($search, $replace, $subject);
-          $content = str_replace($search, $replace, $content);
+        $content = $notificationSetting[NotificationHandler::NOTIFICATION_CONTENT];
+        if (isset($content['value'])) {
+          // Process tokens in content.
+          $content['value'] = $this->tokenManager->replace(
+            $content['value'],
+            $submission,
+            $maestroTokenData
+          );
         }
+
+        $taskUrl = TaskHandler::getHandlerURL($queueID);
+        $actionLabel = $notificationSetting[NotificationHandler::NOTIFICATION_ACTION_LABEL];
 
         if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-          $this->sendNotificationEmail($recipient, $subject, $content, $submission);
+          $this->sendNotificationEmail($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
         }
         else {
-          $this->sendNotificationDigitalPost($recipient, $subject, $content, $submission);
+          $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
         }
       }
     }
@@ -189,18 +196,27 @@ class MaestroHelper {
   private function sendNotificationEmail(
     string $recipient,
     string $subject,
-    string $content,
+    array $content,
+    string $taskUrl,
+    string $actionLabel,
     WebformSubmissionInterface $submission
   ): void {
+    $body = $this->buildHtml('os2forms_maestro_webform_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
+
+    $message = [
+      'subject' => $subject,
+      'body' => $body,
+      'html' => TRUE,
+    ];
+
+    $langcode = $this->languageManager->getCurrentLanguage()->getId();
+
     $result = $this->mailManager->mail(
       'os2forms_maestro_webform',
       'notification',
       $recipient,
-      '',
-      [
-        'subject' => $subject,
-        'body' => $content,
-      ]
+      $langcode,
+      $message
     );
 
     if (!$result['result']) {
@@ -214,47 +230,77 @@ class MaestroHelper {
   private function sendNotificationDigitalPost(
     string $recipient,
     string $subject,
-    string $content,
+    array $content,
+    string $taskUrl,
+    string $actionLabel,
     WebformSubmissionInterface $submission
   ): void {
-    $element = [
-      // Cf. AttachmentElement::getFileContent().
-      '#view_mode' => 'html',
-      '#export_type' => 'pdf',
-    ];
-
-    $submission->setData($submission->getData() + [
-      self::OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION => TRUE,
-      self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT => $content,
-    ]);
-
-    $pdfContent = AttachmentElement::getFileContent($element, $submission);
+    $pdfBody = $this->buildHtml('os2forms_maestro_webform_notification_message_pdf_html', $subject, $content, $taskUrl, $actionLabel, $submission);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($pdfBody);
+    $dompdf->render();
+    $pdfContent = $dompdf->output();
 
     // @todo Send real digital post
     $recipient .= '@digital-post.example.com';
     $subject .= ' (digital post)';
 
+    $body = $this->buildHtml('os2forms_maestro_webform_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
+
+    $message = [
+      'subject' => $subject,
+      'body' => $body,
+      'html' => TRUE,
+      'attachments' => [
+        [
+          'filecontent' => $pdfContent,
+          'filename' => $subject . '.pdf',
+          'filemime' => 'application/pdf',
+        ],
+      ],
+    ];
+
+    $langcode = $this->languageManager->getCurrentLanguage()->getId();
+
     $result = $this->mailManager->mail(
       'os2forms_maestro_webform',
       'notification',
       $recipient,
-      '',
-      [
-        'subject' => $subject,
-        'body' => $content,
-        'attachments' => [
-          [
-            'filecontent' => $pdfContent,
-            'filename' => 'stuff.pdf',
-            'filemime' => 'application/pdf',
-          ],
-        ],
-      ]
+      $langcode,
+      $message
     );
 
     if (!$result['result']) {
       // @todo Log this error.
     }
+  }
+
+  /**
+   * Build HTML.
+   */
+  private function buildHtml(
+    string $theme,
+    string $subject,
+    array $content,
+    string $taskUrl,
+    string $actionLabel,
+    WebformSubmissionInterface $submission
+  ): string|MarkupInterface {
+    // Render body as HTML.
+    $build = [
+      '#theme' => $theme,
+      '#message' => [
+        'subject' => $subject,
+        'content' => $content,
+      ],
+      '#task_url' => $taskUrl,
+      '#action_label' => $actionLabel,
+      '#webform_submission' => $submission,
+      '#handler' => $this,
+    ];
+
+    return Markup::create(trim((string) $this->webformThemeManager->render($build)));
+
   }
 
   /**
@@ -264,13 +310,24 @@ class MaestroHelper {
     switch ($key) {
       case 'notification':
         $message['subject'] = $params['subject'];
-        $message['body'][] = Html::escape($params['body']);
+        $message['body'][] = $params['body'];
         if (isset($params['attachments'])) {
           foreach ($params['attachments'] as $attachment) {
             $message['params']['attachments'][] = $attachment;
           }
         }
         break;
+    }
+  }
+
+  /**
+   * Implements hook_mail_alter().
+   */
+  public function mailAlter(array &$message) {
+    if (str_starts_with($message['id'], 'os2forms_maestro_webform')) {
+      if (isset($message['params']['html']) && $message['params']['html']) {
+        $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+      }
     }
   }
 

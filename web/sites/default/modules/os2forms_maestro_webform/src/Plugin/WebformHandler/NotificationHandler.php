@@ -26,6 +26,7 @@ final class NotificationHandler extends WebformHandlerBase {
   public const SENDER_LABEL = 'sender_label';
   public const NOTIFICATION_SUBJECT = 'notification_subject';
   public const NOTIFICATION_CONTENT = 'notification_content';
+  public const NOTIFICATION_ACTION_LABEL = 'notification_action_label';
   public const RECIPIENT_ELEMENT = 'recipient_element';
 
   private const TOKEN_MAESTRO_TASK_URL = '[maestro:task-url]';
@@ -102,14 +103,26 @@ final class NotificationHandler extends WebformHandlerBase {
       '#maxlength' => self::NOTIFICATION_SUBJECT_MAX_LENGTH,
     ];
 
+    $content = $this->configuration[self::NOTIFICATION][self::NOTIFICATION_CONTENT] ?? NULL;
+    if (isset($content['value'])) {
+      $content = $content['value'];
+    }
     $form[self::NOTIFICATION][self::NOTIFICATION_CONTENT] = [
-      '#type' => 'textarea',
+      '#type' => 'text_format',
+      '#format' => 'restricted_html',
       '#title' => $this->t('Notification text'),
       '#required' => TRUE,
-      '#default_value' => $this->configuration[self::NOTIFICATION][self::NOTIFICATION_CONTENT] ?? NULL,
+      '#default_value' => $content,
       '#description' => $this->t('The actual notification content. Must contain the <code>@token_maestro_task_url</code> token which is the URL to the Maestro task.', [
         '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
       ]),
+    ];
+
+    $form[self::NOTIFICATION][self::NOTIFICATION_ACTION_LABEL] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Action label'),
+      '#default_value' => $this->configuration[self::NOTIFICATION][self::NOTIFICATION_ACTION_LABEL] ?? NULL,
+      '#description' => $this->t('Label of the action show in digital post'),
     ];
 
     return $this->setSettingsParents($form);
@@ -123,6 +136,9 @@ final class NotificationHandler extends WebformHandlerBase {
 
     $key = [self::NOTIFICATION, self::NOTIFICATION_CONTENT];
     $content = $formState->getValue($key);
+    if (isset($content['value'])) {
+      $content = $content['value'];
+    }
     if (!str_contains($content, self::TOKEN_MAESTRO_TASK_URL)) {
       $formState->setErrorByName(
         implode('][', [self::NOTIFICATION, self::NOTIFICATION_CONTENT]),
