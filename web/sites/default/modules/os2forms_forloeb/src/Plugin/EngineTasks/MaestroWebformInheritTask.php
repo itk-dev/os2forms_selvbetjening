@@ -5,6 +5,7 @@ namespace Drupal\os2forms_forloeb\Plugin\EngineTasks;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro_webform\Plugin\EngineTasks\MaestroWebformTask;
+use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
 
 /**
@@ -83,6 +84,37 @@ class MaestroWebformInheritTask extends MaestroWebformTask {
       '#required' => TRUE,
       '#empty_option' => $this->t('Select task'),
     ];
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getAssignmentsAndNotificationsForm(array $task, $templateMachineName) {
+    $form = parent::getAssignmentsAndNotificationsForm($task, $templateMachineName);
+
+    $webform = Webform::load($task['data']['webform_machine_name'] ?? NULL);
+    if (NULL !== $webform) {
+      $form['edit_task_notifications']['token_tree'] = [
+        '#markup' => $this->t('<a href=":webform_handlers_url">Add a Meastro notification handler to the %form_label form</a> to actually send out notifications.', [
+          ':webform_handlers_url' => $webform->url('handlers'),
+          '%form_label' => $webform->label(),
+        ]),
+      ];
+    }
+    else {
+      unset($form['edit_task_notifications']['token_tree']);
+    }
+
+    unset(
+      $form['edit_task_notifications']['notification_assignment_subject'],
+      $form['edit_task_notifications']['notification_assignment'],
+      $form['edit_task_notifications']['notification_reminder_subject'],
+      $form['edit_task_notifications']['notification_reminder'],
+      $form['edit_task_notifications']['notification_escalation_subject'],
+      $form['edit_task_notifications']['notification_escalation']
+    );
+
     return $form;
   }
 
