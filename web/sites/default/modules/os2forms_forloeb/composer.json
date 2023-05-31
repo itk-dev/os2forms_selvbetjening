@@ -17,6 +17,7 @@
   },
   "require": {
     "cweagans/composer-patches": "^1.6.5",
+    "dompdf/dompdf": "^2.0",
     "drupal/admin_toolbar": "^3.0",
     "drupal/chosen": "^2.10",
     "drupal/ckeditor_a11ychecker": "2.0.0-alpha1",
@@ -53,6 +54,9 @@
     "drupal/workflow_participants": "^2.4",
     "webmozart/path-util": "^2.3",
     "zaporylie/composer-drupal-optimizations": "^1.2"
+  },
+  "suggest": {
+      "itk-dev/os2forms_digital_post": "Send digital post"
   },
   "require-dev": {
     "drupal/coder": "^8.3",
