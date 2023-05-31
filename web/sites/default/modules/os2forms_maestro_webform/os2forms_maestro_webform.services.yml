@@ -5,3 +5,5 @@ services:
       - '@config.factory'
       - '@webform.token_manager'
       - '@plugin.manager.mail'
+      - '@language_manager'
+      - '@webform.theme_manager'

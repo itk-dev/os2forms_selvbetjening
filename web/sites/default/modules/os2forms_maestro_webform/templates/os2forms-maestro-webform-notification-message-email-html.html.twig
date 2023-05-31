@@ -1,0 +1,16 @@
+{#
+Template file for Maestro notification.
+
+  @var array message
+  @var task_url
+#}
+{# @see https://api.drupal.org/api/drupal/core%21modules%21filter%21filter.module/function/check_markup/9 #}
+<div class="notification-content">{{ {
+    '#type':   'processed_text',
+    '#text':    message.content.value,
+    '#format':  message.content.format,
+  } }}</div>
+
+{% if task_url|default(false) %}
+  <a class="task-url" href="{{ task_url }}" style="display: block; background: green; color: white; padding: 1em; text-decoration: none; text-align: center">{{ action_label|default('Go to your task'|t) }}</a>
+{% endif %}

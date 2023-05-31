@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\os2forms_maestro_webform\MaestroHelper;
 
 /**
@@ -14,67 +13,6 @@ use Drupal\os2forms_maestro_webform\MaestroHelper;
  */
 function os2forms_maestro_webform_maestro_zero_user_notification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
   _os2forms_maestro_webform_helper()->maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType);
-}
-
-/**
- * Implements hook_mail_alter().
- */
-function os2forms_maestro_webform_mail_alter(&$message) {
-  if ($message['id'] == 'maestro_assignment_notification') {
-    if (array_key_exists('queueID', $message['params'])) {
-      $queueID = intval($message['params']['queueID']);
-      $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
-
-      // This is very rigid.  This only looks for your Webform Inherit task type
-      // right now.
-      // This should probably be offloaded to some kind of mechanism to detect
-      // that an outgoing email needs to be sent via your API. Perhaps an
-      // additional field/checkbox on the tasks that allows you to signify this
-      // is an anonymous task?
-      if ($templateTask && $templateTask['tasktype'] == 'MaestroWebformInherit') {
-        // We should check if this task has an assignment that is sent to the
-        // anonymous Citizen role.
-        $assignments = explode(',', $templateTask['assigned']);
-        if (is_array($assignments)) {
-          foreach ($assignments as $assignment) {
-            // Very rigid for this example.
-            if ($assignment == 'role:fixed:citizen') {
-              $processID = MaestroEngine::getProcessIdFromQueueId($queueID);
-
-              // This is our use case.  We found the Citizen role
-              // You will fill in the blanks here to send out a proper
-              // email notification through your government-based mailer.
-              // @todo Create outgoing email notification via API
-              // @todo Think of a way to get the generic information of WHO to send this to from the webform.
-              $entityIdentifiers = MaestroEngine::getAllEntityIdentifiersForProcess($processID);
-              // $entityIdentifiers will be an array of arrays, keyed with the
-              // entity's unique identifier
-              // For example:  $entityIdentifiers['submission'] looks like this:
-              /*
-              submission:
-              unique_id: "submission"
-              entity_type: "webform_submission"
-              bundle: "internship_1_student"
-              entity_id: "11"
-               */
-
-              // You will probably want to use $templateTask to detect the
-              // configuraton of THIS task.
-              // That is: you will use something like
-              // $templateTask['data']['inherit_webform_unique_id'] to use the
-              // configured unique ID against the entityIdentifiers from above
-              // to fetch off any of the pertinent information.
-              // @todo Again, need a way to validate, verify and make this
-              // generic.
-              if ($entityIdentifiers) {
-                // …
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
 /**
@@ -118,10 +56,41 @@ function os2forms_maestro_webform_mail($key, &$message, $params) {
 }
 
 /**
+ * Implements hook_mail_alter().
+ */
+function os2forms_maestro_webform_mail_alter(&$message) {
+  _os2forms_maestro_webform_helper()->mailAlter($message);
+}
+
+/**
  * Implements hook_preprocess_entity_print().
  */
 function os2forms_maestro_webform_preprocess_entity_print(array &$variables) {
   _os2forms_maestro_webform_helper()->preprocessEntityPrint($variables);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function os2forms_maestro_webform_theme(array &$variables) {
+  $theme['os2forms_maestro_webform_notification_message_email_html'] = [
+    'variables' => [
+      'message' => [
+        'content' => [
+          'value' => NULL,
+          'format' => NULL,
+        ],
+      ],
+      'task_url' => NULL,
+      'action_label' => NULL,
+      'webform_submission' => NULL,
+      'handler' => NULL,
+    ],
+  ];
+
+  $theme['os2forms_maestro_webform_notification_message_pdf_html'] = $theme['os2forms_maestro_webform_notification_message_email_html'];
+
+  return $theme;
 }
 
 /**
