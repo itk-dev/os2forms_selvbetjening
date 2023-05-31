@@ -3,6 +3,8 @@
 namespace Drupal\os2forms_forloeb\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\RoleInterface;
@@ -25,7 +27,8 @@ class SettingsForm extends ConfigFormBase {
    */
   public function __construct(
     ConfigFactoryInterface $configFactory,
-    readonly private RoleStorageInterface $roleStorage
+    readonly private RoleStorageInterface $roleStorage,
+    readonly private EntityStorageInterface $queueStorage
   ) {
     parent::__construct($configFactory);
   }
@@ -37,6 +40,7 @@ class SettingsForm extends ConfigFormBase {
     return new static(
       $container->get('config.factory'),
       $container->get('entity_type.manager')->getStorage('user_role'),
+      $container->get('entity_type.manager')->getStorage('advancedqueue_queue'),
     );
   }
 
@@ -71,6 +75,28 @@ class SettingsForm extends ConfigFormBase {
       '#description' => $this->t('Roles that can act as “known anonymous”'),
     ];
 
+    $form['processing'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Processing'),
+      '#tree' => TRUE,
+    ];
+
+    $defaultValue = $config->get('processing')['queue'] ?? NULL;
+    $form['processing']['queue'] = [
+      '#type' => 'select',
+      '#required' => TRUE,
+      '#title' => $this->t('Queue'),
+      '#options' => array_map(
+        static fn(EntityInterface $queue) => $queue->label(),
+        $this->queueStorage->loadMultiple()
+      ),
+      '#default_value' => $defaultValue,
+      '#description' => $this->t("Queue for handling notification jobs. <a href=':queue_url'>The queue</a> must be run via Drupal's cron or via <code>drush advancedqueue:queue:process @queue</code> (in a cron job).", [
+        '@queue' => $defaultValue,
+        ':queue_url' => '/admin/config/system/queues/jobs/' . urlencode($defaultValue ?? ''),
+      ]),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -80,6 +106,7 @@ class SettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $formState) {
     $this->config(static::SETTINGS)
       ->set('known_anonymous_roles', $formState->getValue('known_anonymous_roles'))
+      ->set('processing', $formState->getValue('processing'))
       ->save();
 
     parent::submitForm($form, $formState);

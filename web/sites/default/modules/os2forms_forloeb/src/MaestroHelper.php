@@ -3,15 +3,22 @@
 namespace Drupal\os2forms_forloeb;
 
 use Dompdf\Dompdf;
+use Drupal\advancedqueue\Entity\QueueInterface;
+use Drupal\advancedqueue\Job;
+use Drupal\advancedqueue\JobResult;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
+use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro\Utility\TaskHandler;
+use Drupal\os2forms_forloeb\Exception\RuntimeException;
+use Drupal\os2forms_forloeb\Plugin\AdvancedQueue\JobType\SendMeastroNotification;
 use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
 use Drupal\os2forms_forloeb\Form\SettingsForm;
 use Drupal\os2forms_forloeb\Plugin\WebformHandler\NotificationHandler;
@@ -19,11 +26,15 @@ use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorageInterface;
 use Drupal\webform\WebformThemeManagerInterface;
 use Drupal\webform\WebformTokenManagerInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerTrait;
 
 /**
  * Maestro helper.
  */
-class MaestroHelper {
+class MaestroHelper implements LoggerInterface {
+  use LoggerTrait;
+
   private const OS2FORMS_FORLOEB_IS_NOTIFICATION = 'os2forms_forloeb_is_notification';
   private const OS2FORMS_FORLOEB_NOTIFICATION_CONTENT = 'os2forms_forloeb_notification_content';
   private const OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT = 'assignment';
@@ -45,6 +56,13 @@ class MaestroHelper {
   readonly private WebformSubmissionStorageInterface $webformSubmissionStorage;
 
   /**
+   * The queue storage.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface
+   */
+  readonly private EntityStorageInterface $queueStorage;
+
+  /**
    * Constructor.
    */
   public function __construct(
@@ -53,10 +71,13 @@ class MaestroHelper {
     readonly private WebformTokenManagerInterface $tokenManager,
     readonly private MailManagerInterface $mailManager,
     readonly private LanguageManagerInterface $languageManager,
-    readonly private WebformThemeManagerInterface $webformThemeManager
+    readonly private WebformThemeManagerInterface $webformThemeManager,
+    readonly private LoggerChannelInterface $logger,
+    readonly private LoggerChannelInterface $submissionLogger
   ) {
     $this->config = $configFactory->get(SettingsForm::SETTINGS);
     $this->webformSubmissionStorage = $entityTypeManager->getStorage('webform_submission');
+    $this->queueStorage = $entityTypeManager->getStorage('advancedqueue_queue');
   }
 
   /**
@@ -134,60 +155,157 @@ class MaestroHelper {
   private function handleSubmissionNotification(
     WebformSubmissionInterface $submission,
     array $templateTask,
-    int $queueID
-  ): void {
-    $data = $submission->getData();
-    $webform = $submission->getWebform();
-    $handlers = $webform->getHandlers('os2forms_forloeb_notification');
-    foreach ($handlers as $handler) {
-      if ($handler->isDisabled() || $handler->isExcluded()) {
-        continue;
-      }
-      $settings = $handler->getSettings();
-      $notificationSetting = $settings[NotificationHandler::NOTIFICATION];
-      $recipientElement = $notificationSetting[NotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
-      $recipient =
-        // Handle os2forms_person_lookup element.
-        $data[$recipientElement]['cpr_number']
-        // Simple element.
-        ?? $data[$recipientElement]
-        ?? NULL;
-      if (NULL !== $recipient) {
-        // Lifted from MaestroEngine.
-        $maestroTokenData = [
-          'maestro' => [
-            'task' => $templateTask,
-            'queueID' => $queueID,
-          ],
-        ];
+    int $maestroQueueID
+  ): ?Job {
+    $context = [
+      'webform_submission' => $submission,
+    ];
 
-        $subject = $this->tokenManager->replace(
-          $notificationSetting[NotificationHandler::NOTIFICATION_SUBJECT],
-          $submission,
-          $maestroTokenData
-        );
+    try {
+      $job = Job::create(SendMeastroNotification::class, [
+        'templateTask' => $templateTask,
+        'queueID' => $maestroQueueID,
+        'submissionID' => $submission->id(),
+        'webformID' => $submission->getWebform()->id(),
+      ]);
 
-        $content = $notificationSetting[NotificationHandler::NOTIFICATION_CONTENT];
-        if (isset($content['value'])) {
-          // Process tokens in content.
-          $content['value'] = $this->tokenManager->replace(
-            $content['value'],
+      $queue = $this->loadQueue();
+      $queue->enqueueJob($job);
+      $context['@queue'] = $queue->id();
+      $this->notice('Job for sending notification added to the queue @queue.', $context + [
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'notification queued for sending',
+      ]);
+
+      return $job;
+    }
+    catch (\Exception $exception) {
+      $this->error('Error creating job for sending notification: @message', $context + [
+        '@message' => $exception->getMessage(),
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'notification failed',
+        'exception' => $exception,
+      ]);
+
+      return NULL;
+    }
+  }
+
+  /**
+   * Process a job.
+   */
+  public function processJob(Job $job): JobResult {
+    $payload = $job->getPayload();
+    [
+      'templateTask' => $templateTask,
+      'queueID' => $maestroQueueID,
+      'submissionID' => $submissionID,
+    ] = $payload;
+
+    $submission = $this->webformSubmissionStorage->load($submissionID);
+
+    $this->sendNotification($submission, $templateTask, $maestroQueueID);
+
+    return JobResult::success();
+  }
+
+  /**
+   * Send notification.
+   */
+  private function sendNotification(
+    WebformSubmissionInterface $submission,
+    array $templateTask,
+    int $maestroQueueID
+  ) {
+    $context = [
+      'webform_submission' => $submission,
+    ];
+
+    try {
+      $data = $submission->getData();
+      $webform = $submission->getWebform();
+      $handlers = $webform->getHandlers('os2forms_forloeb_notification');
+      foreach ($handlers as $handler) {
+        if ($handler->isDisabled() || $handler->isExcluded()) {
+          continue;
+        }
+        $settings = $handler->getSettings();
+        $notificationSetting = $settings[NotificationHandler::NOTIFICATION];
+        $recipientElement = $notificationSetting[NotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
+        $recipient =
+          // Handle os2forms_person_lookup element.
+          $data[$recipientElement]['cpr_number']
+          // Simple element.
+          ?? $data[$recipientElement]
+          ?? NULL;
+        if (NULL !== $recipient) {
+          // Lifted from MaestroEngine.
+          $maestroTokenData = [
+            'maestro' => [
+              'task' => $templateTask,
+              'queueID' => $maestroQueueID,
+            ],
+          ];
+
+          $subject = $this->tokenManager->replace(
+            $notificationSetting[NotificationHandler::NOTIFICATION_SUBJECT],
             $submission,
             $maestroTokenData
           );
-        }
 
-        $taskUrl = TaskHandler::getHandlerURL($queueID);
-        $actionLabel = $notificationSetting[NotificationHandler::NOTIFICATION_ACTION_LABEL];
+          $content = $notificationSetting[NotificationHandler::NOTIFICATION_CONTENT];
+          if (isset($content['value'])) {
+            // Process tokens in content.
+            $content['value'] = $this->tokenManager->replace(
+              $content['value'],
+              $submission,
+              $maestroTokenData
+            );
+          }
 
-        if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-          $this->sendNotificationEmail($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
-        }
-        else {
-          $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
+          $taskUrl = TaskHandler::getHandlerURL($maestroQueueID);
+          $actionLabel = $notificationSetting[NotificationHandler::NOTIFICATION_ACTION_LABEL];
+
+          if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+            $this->sendNotificationEmail($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
+          }
+          else {
+            $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
+          }
         }
       }
     }
+    catch (\Exception $exception) {
+      $this->error('Error sending notification: @message', $context + [
+        '@message' => $exception->getMessage(),
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'notification failed',
+        'exception' => $exception,
+      ]);
+
+      return NULL;
+    }
+  }
+
+  /**
+   * Load advanced queue if any.
+   *
+   * @return \Drupal\advancedqueue\Entity\QueueInterface
+   *   The queue.
+   */
+  private function loadQueue(): QueueInterface {
+    $queueId = $this->config->get('processing')['queue'] ?? NULL;
+
+    if (NULL === $queueId) {
+      throw new RuntimeException('Cannot get queue ID');
+    }
+
+    $queue = $this->queueStorage->load($queueId);
+    if (NULL === $queue) {
+      throw new RuntimeException(sprintf('Cannot load queue %s', $queueId));
+    }
+
+    return $queue;
   }
 
   /**
@@ -220,8 +338,15 @@ class MaestroHelper {
     );
 
     if (!$result['result']) {
-      // @todo Log this error.
+      throw new RuntimeException(sprintf('Error sending notification email to %s', $recipient));
     }
+
+    $this->notice('Notification email sent to @recipient', [
+      'webform_submission' => $submission,
+      '@recipient' => $recipient,
+      'handler_id' => 'os2forms_forloeb',
+      'operation' => 'notification sent',
+    ]);
   }
 
   /**
@@ -271,8 +396,14 @@ class MaestroHelper {
     );
 
     if (!$result['result']) {
-      // @todo Log this error.
+      throw new RuntimeException(sprintf('Error sending notification digital post', $recipient));
     }
+
+    $this->notice('Digital post sent', [
+      'webform_submission' => $submission,
+      'handler_id' => 'os2forms_forloeb',
+      'operation' => 'notification sent',
+    ]);
   }
 
   /**
@@ -299,8 +430,7 @@ class MaestroHelper {
       '#handler' => $this,
     ];
 
-    return Markup::create(trim((string) $this->webformThemeManager->render($build)));
-
+    return Markup::create(trim((string) $this->webformThemeManager->renderPlain($build)));
   }
 
   /**
@@ -328,6 +458,17 @@ class MaestroHelper {
       if (isset($message['params']['html']) && $message['params']['html']) {
         $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
       }
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function log($level, $message, array $context = []): void {
+    $this->logger->log($level, $message, $context);
+    // @see https://www.drupal.org/node/3020595
+    if (isset($context['webform_submission']) && $context['webform_submission'] instanceof WebformSubmissionInterface) {
+      $this->submissionLogger->log($level, $message, $context);
     }
   }
 
