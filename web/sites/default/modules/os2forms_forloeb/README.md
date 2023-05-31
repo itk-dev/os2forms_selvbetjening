@@ -14,5 +14,6 @@ You can also install the module by using Drush:
 
 -------------------------------------------------------------------------------
 
-* Set “Known anonymous roles” on `/admin/config/system/os2forms_maestro_webform`.
-* Add a “Maestro notification” handler to the webform spawning a Maestro Workflow
+* Set “Known anonymous roles” on `/admin/config/system/os2forms_forloeb`.
+* Add a “Maestro notification” handler to the webform in spawning a Maestro
+  workflow or assigning a task in a workflow.

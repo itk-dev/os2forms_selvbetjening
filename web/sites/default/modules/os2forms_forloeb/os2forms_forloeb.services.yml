@@ -3,7 +3,7 @@ services:
     parent: logger.channel_base
     arguments: ['os2forms_forloeb']
 
-  Drupal\os2forms_maestro_webform\MaestroHelper:
+  Drupal\os2forms_forloeb\MaestroHelper:
     arguments:
       - '@entity_type.manager'
       - '@config.factory'

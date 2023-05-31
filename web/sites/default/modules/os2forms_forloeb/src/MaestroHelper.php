@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\os2forms_maestro_webform;
+namespace Drupal\os2forms_forloeb;
 
 use Dompdf\Dompdf;
 use Drupal\Component\Render\MarkupInterface;
@@ -13,8 +13,8 @@ use Drupal\Core\Render\Markup;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro\Utility\TaskHandler;
 use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
-use Drupal\os2forms_maestro_webform\Form\SettingsForm;
-use Drupal\os2forms_maestro_webform\Plugin\WebformHandler\NotificationHandler;
+use Drupal\os2forms_forloeb\Form\SettingsForm;
+use Drupal\os2forms_forloeb\Plugin\WebformHandler\NotificationHandler;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorageInterface;
 use Drupal\webform\WebformThemeManagerInterface;
@@ -24,11 +24,11 @@ use Drupal\webform\WebformTokenManagerInterface;
  * Maestro helper.
  */
 class MaestroHelper {
-  private const OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION = 'os2forms_maestro_webform_is_notification';
-  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT = 'os2forms_maestro_webform_notification_content';
-  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_ASSIGNMENT = 'assignment';
-  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_REMINDER = 'reminder';
-  private const OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_ESCALATION = 'escalation';
+  private const OS2FORMS_FORLOEB_IS_NOTIFICATION = 'os2forms_forloeb_is_notification';
+  private const OS2FORMS_FORLOEB_NOTIFICATION_CONTENT = 'os2forms_forloeb_notification_content';
+  private const OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT = 'assignment';
+  private const OS2FORMS_FORLOEB_NOTIFICATION_REMINDER = 'reminder';
+  private const OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION = 'escalation';
 
   /**
    * The config.
@@ -63,7 +63,7 @@ class MaestroHelper {
    * Implements hook_maestro_zero_user_notification().
    */
   public function maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
-    if (self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_ASSIGNMENT === $notificationType) {
+    if (self::OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT === $notificationType) {
       // @todo Clean up and align with MaestroWebformInheritTask::webformSubmissionFormAlter().
       $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
       if (MaestroWebformInheritTask::isWebformTask($templateTask)) {
@@ -138,7 +138,7 @@ class MaestroHelper {
   ): void {
     $data = $submission->getData();
     $webform = $submission->getWebform();
-    $handlers = $webform->getHandlers('os2forms_maestro_webform_notification');
+    $handlers = $webform->getHandlers('os2forms_forloeb_notification');
     foreach ($handlers as $handler) {
       if ($handler->isDisabled() || $handler->isExcluded()) {
         continue;
@@ -201,7 +201,7 @@ class MaestroHelper {
     string $actionLabel,
     WebformSubmissionInterface $submission
   ): void {
-    $body = $this->buildHtml('os2forms_maestro_webform_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
+    $body = $this->buildHtml('os2forms_forloeb_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
 
     $message = [
       'subject' => $subject,
@@ -212,7 +212,7 @@ class MaestroHelper {
     $langcode = $this->languageManager->getCurrentLanguage()->getId();
 
     $result = $this->mailManager->mail(
-      'os2forms_maestro_webform',
+      'os2forms_forloeb',
       'notification',
       $recipient,
       $langcode,
@@ -235,7 +235,7 @@ class MaestroHelper {
     string $actionLabel,
     WebformSubmissionInterface $submission
   ): void {
-    $pdfBody = $this->buildHtml('os2forms_maestro_webform_notification_message_pdf_html', $subject, $content, $taskUrl, $actionLabel, $submission);
+    $pdfBody = $this->buildHtml('os2forms_forloeb_notification_message_pdf_html', $subject, $content, $taskUrl, $actionLabel, $submission);
     $dompdf = new Dompdf();
     $dompdf->loadHtml($pdfBody);
     $dompdf->render();
@@ -245,7 +245,7 @@ class MaestroHelper {
     $recipient .= '@digital-post.example.com';
     $subject .= ' (digital post)';
 
-    $body = $this->buildHtml('os2forms_maestro_webform_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
+    $body = $this->buildHtml('os2forms_forloeb_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
 
     $message = [
       'subject' => $subject,
@@ -263,7 +263,7 @@ class MaestroHelper {
     $langcode = $this->languageManager->getCurrentLanguage()->getId();
 
     $result = $this->mailManager->mail(
-      'os2forms_maestro_webform',
+      'os2forms_forloeb',
       'notification',
       $recipient,
       $langcode,
@@ -324,47 +324,11 @@ class MaestroHelper {
    * Implements hook_mail_alter().
    */
   public function mailAlter(array &$message) {
-    if (str_starts_with($message['id'], 'os2forms_maestro_webform')) {
+    if (str_starts_with($message['id'], 'os2forms_forloeb')) {
       if (isset($message['params']['html']) && $message['params']['html']) {
         $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
       }
     }
-  }
-
-  /**
-   * Implements hook_preprocess_entity_print().
-   */
-  public function preprocessEntityPrint(array &$variables) {
-    $submission = $this->getWebformSubmission($variables);
-    if (NULL === $submission) {
-      return;
-    }
-    $data = $submission->getData();
-    if (TRUE !== ($data[self::OS2FORMS_MAESTRO_WEBFORM_IS_NOTIFICATION] ?? FALSE)) {
-      return;
-    }
-
-    $variables['content'] = [
-      '#markup' => $data[self::OS2FORMS_MAESTRO_WEBFORM_NOTIFICATION_CONTENT] ?? '',
-    ];
-  }
-
-  /**
-   * Dig for webform submission in variables.
-   */
-  private function getWebformSubmission(array $variables): ?WebformSubmissionInterface {
-    $iterator  = new \RecursiveArrayIterator($variables);
-    $recursive = new \RecursiveIteratorIterator(
-      $iterator,
-      \RecursiveIteratorIterator::SELF_FIRST
-    );
-    foreach ($recursive as $key => $value) {
-      if ('#webform_submission' === $key && $value instanceof WebformSubmissionInterface) {
-        return $value;
-      }
-    }
-
-    return NULL;
   }
 
 }

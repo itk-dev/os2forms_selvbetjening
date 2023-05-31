@@ -1,5 +1,0 @@
-os2forms_maestro_webform.settings:
-  title: OS2Forms maestro webform
-  description: Configure the OS2Forms maestro webform module
-  parent: system.admin_config_system
-  route_name: os2forms_maestro_webform.settings

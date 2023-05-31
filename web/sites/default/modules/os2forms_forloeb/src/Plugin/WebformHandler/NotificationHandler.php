@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\os2forms_maestro_webform\Plugin\WebformHandler;
+namespace Drupal\os2forms_forloeb\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
@@ -10,8 +10,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Maestro notification handler.
  *
  * @WebformHandler(
- *   id = "os2forms_maestro_webform_notification",
- *   label = @Translation("Maestro notification"),
+ *   id = "os2forms_forloeb_notification",
+ *   label = @Translation("OS2Forms forløb notification"),
  *   category = @Translation("Web services"),
  *   description = @Translation("Sends Meastro notfications to users."),
  *   cardinality = \Drupal\webform\Plugin\WebformHandlerInterface::CARDINALITY_UNLIMITED,

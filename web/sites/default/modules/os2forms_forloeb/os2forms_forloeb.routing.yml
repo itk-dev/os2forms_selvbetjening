@@ -1,0 +1,7 @@
+os2forms_forloeb.settings:
+  path: '/admin/config/system/os2forms_forloeb'
+  defaults:
+    _form: '\Drupal\os2forms_forloeb\Form\SettingsForm'
+    _title: 'OS2Forms forløb'
+  requirements:
+    _permission: 'administer site configuration'
