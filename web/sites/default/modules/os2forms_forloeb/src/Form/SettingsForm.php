@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\os2forms_maestro_webform\Form;
+namespace Drupal\os2forms_forloeb\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
@@ -10,7 +10,7 @@ use Drupal\user\RoleStorageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Settings for os2forms_maestro_webform.
+ * Settings for os2forms_forloeb.
  */
 class SettingsForm extends ConfigFormBase {
   /**
@@ -18,7 +18,7 @@ class SettingsForm extends ConfigFormBase {
    *
    * @var string
    */
-  const SETTINGS = 'os2forms_maestro_webform.settings';
+  const SETTINGS = 'os2forms_forloeb.settings';
 
   /**
    * {@inheritdoc}
@@ -44,7 +44,7 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'os2forms_maestro_webform_config';
+    return 'os2forms_forloeb_config';
   }
 
   /**

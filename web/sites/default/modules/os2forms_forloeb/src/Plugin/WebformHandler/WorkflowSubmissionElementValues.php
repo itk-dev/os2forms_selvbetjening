@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\os2forms_maestro_webform\Plugin\WebformHandler;
+namespace Drupal\os2forms_forloeb\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Serialization\Yaml;
 use Drupal\maestro\Engine\MaestroEngine;
-use Drupal\os2forms_maestro_webform\MaestroHelper;
+use Drupal\os2forms_forloeb\MaestroHelper;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Maestro notification handler.
  *
  * @WebformHandler(
- *   id = "os2forms_maestro_webform_workflow_submission_element",
+ *   id = "os2forms_forloeb_workflow_submission_element",
  *   label = @Translation("Maestro workflow submission element"),
  *   category = @Translation("Web services"),
  *   description = @Translation("Prefills form elements with values from workflow submissions."),
