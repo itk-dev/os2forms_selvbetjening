@@ -125,31 +125,6 @@ class MaestroHelper implements LoggerInterface {
   }
 
   /**
-   * Implements hook_maestro_can_user_execute_task_alter().
-   */
-  public function maestroCanUserExecuteTaskAlter(bool &$returnValue, int $queueID, int $userID): void {
-    // Perform our checks only if an anonymous user has been barred access.
-    if (0 === $userID && FALSE === $returnValue) {
-      $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
-      if (isset($templateTask['assigned'])) {
-        $assignments = explode(',', $templateTask['assigned']);
-
-        // Check if one of the assignments match our known anonymous roles.
-        $knownAnonymousAssignments = array_map(
-          static fn(string $role) => 'role:fixed:' . $role,
-          array_filter($this->config->get('known_anonymous_roles') ?: [])
-        );
-
-        foreach ($assignments as $assignment) {
-          if (in_array($assignment, $knownAnonymousAssignments, TRUE)) {
-            $returnValue = TRUE;
-          }
-        }
-      }
-    }
-  }
-
-  /**
    * Handle submission notification.
    */
   private function handleSubmissionNotification(
@@ -469,6 +444,31 @@ class MaestroHelper implements LoggerInterface {
     // @see https://www.drupal.org/node/3020595
     if (isset($context['webform_submission']) && $context['webform_submission'] instanceof WebformSubmissionInterface) {
       $this->submissionLogger->log($level, $message, $context);
+    }
+  }
+
+  /**
+   * Implements hook_maestro_can_user_execute_task_alter().
+   */
+  public function maestroCanUserExecuteTaskAlter(bool &$returnValue, int $queueID, int $userID): void {
+    // Perform our checks only if an anonymous user has been barred access.
+    if (0 === $userID && FALSE === $returnValue) {
+      $templateTask = MaestroEngine::getTemplateTaskByQueueID($queueID);
+      if (isset($templateTask['assigned'])) {
+        $assignments = explode(',', $templateTask['assigned']);
+
+        // Check if one of the assignments match our known anonymous roles.
+        $knownAnonymousAssignments = array_map(
+          static fn(string $role) => 'role:fixed:' . $role,
+          array_filter($this->config->get('known_anonymous_roles') ?: [])
+        );
+
+        foreach ($assignments as $assignment) {
+          if (in_array($assignment, $knownAnonymousAssignments, TRUE)) {
+            $returnValue = TRUE;
+          }
+        }
+      }
     }
   }
 
