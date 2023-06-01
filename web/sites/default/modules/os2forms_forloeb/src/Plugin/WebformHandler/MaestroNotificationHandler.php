@@ -10,16 +10,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Maestro notification handler.
  *
  * @WebformHandler(
- *   id = "os2forms_forloeb_notification",
- *   label = @Translation("OS2Forms forløb notification"),
+ *   id = "os2forms_forloeb_maestro_notification",
+ *   label = @Translation("Maestro notification"),
  *   category = @Translation("Web services"),
- *   description = @Translation("Sends Meastro notfications to users."),
+ *   description = @Translation("Sends Meastro notification to known anonymous user."),
  *   cardinality = \Drupal\webform\Plugin\WebformHandlerInterface::CARDINALITY_UNLIMITED,
  *   results = \Drupal\webform\Plugin\WebformHandlerInterface::RESULTS_IGNORED,
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_REQUIRED,
  * )
  */
-final class NotificationHandler extends WebformHandlerBase {
+final class MaestroNotificationHandler extends WebformHandlerBase {
   public const NOTIFICATION = 'notification';
 
   public const TYPE = 'type';
@@ -112,7 +112,7 @@ final class NotificationHandler extends WebformHandlerBase {
       '#format' => 'restricted_html',
       '#title' => $this->t('Notification text'),
       '#required' => TRUE,
-      '#default_value' => $content,
+      '#default_value' => $content ?? self::TOKEN_MAESTRO_TASK_URL,
       '#description' => $this->t('The actual notification content. Must contain the <code>@token_maestro_task_url</code> token which is the URL to the Maestro task.', [
         '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
       ]),

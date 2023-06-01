@@ -21,7 +21,7 @@ use Drupal\os2forms_forloeb\Exception\RuntimeException;
 use Drupal\os2forms_forloeb\Plugin\AdvancedQueue\JobType\SendMeastroNotification;
 use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
 use Drupal\os2forms_forloeb\Form\SettingsForm;
-use Drupal\os2forms_forloeb\Plugin\WebformHandler\NotificationHandler;
+use Drupal\os2forms_forloeb\Plugin\WebformHandler\MaestroNotificationHandler;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorageInterface;
 use Drupal\webform\WebformThemeManagerInterface;
@@ -224,14 +224,14 @@ class MaestroHelper implements LoggerInterface {
     try {
       $data = $submission->getData();
       $webform = $submission->getWebform();
-      $handlers = $webform->getHandlers('os2forms_forloeb_notification');
+      $handlers = $webform->getHandlers();
       foreach ($handlers as $handler) {
-        if ($handler->isDisabled() || $handler->isExcluded()) {
+        if (!($handler instanceof MaestroNotificationHandler) || $handler->isDisabled() || $handler->isExcluded()) {
           continue;
         }
         $settings = $handler->getSettings();
-        $notificationSetting = $settings[NotificationHandler::NOTIFICATION];
-        $recipientElement = $notificationSetting[NotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
+        $notificationSetting = $settings[MaestroNotificationHandler::NOTIFICATION];
+        $recipientElement = $notificationSetting[MaestroNotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
         $recipient =
           // Handle os2forms_person_lookup element.
           $data[$recipientElement]['cpr_number']
@@ -248,12 +248,12 @@ class MaestroHelper implements LoggerInterface {
           ];
 
           $subject = $this->tokenManager->replace(
-            $notificationSetting[NotificationHandler::NOTIFICATION_SUBJECT],
+            $notificationSetting[MaestroNotificationHandler::NOTIFICATION_SUBJECT],
             $submission,
             $maestroTokenData
           );
 
-          $content = $notificationSetting[NotificationHandler::NOTIFICATION_CONTENT];
+          $content = $notificationSetting[MaestroNotificationHandler::NOTIFICATION_CONTENT];
           if (isset($content['value'])) {
             // Process tokens in content.
             $content['value'] = $this->tokenManager->replace(
@@ -264,7 +264,7 @@ class MaestroHelper implements LoggerInterface {
           }
 
           $taskUrl = TaskHandler::getHandlerURL($maestroQueueID);
-          $actionLabel = $notificationSetting[NotificationHandler::NOTIFICATION_ACTION_LABEL];
+          $actionLabel = $notificationSetting[MaestroNotificationHandler::NOTIFICATION_ACTION_LABEL];
 
           if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
             $this->sendNotificationEmail($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
