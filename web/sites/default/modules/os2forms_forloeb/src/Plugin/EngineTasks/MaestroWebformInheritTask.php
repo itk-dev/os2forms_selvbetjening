@@ -7,6 +7,7 @@ use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro_webform\Plugin\EngineTasks\MaestroWebformTask;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\Utility\WebformArrayHelper;
 
 /**
  * Maestro Webform Task Plugin for Multiple Submissions.
@@ -94,25 +95,23 @@ class MaestroWebformInheritTask extends MaestroWebformTask {
     $form = parent::getAssignmentsAndNotificationsForm($task, $templateMachineName);
 
     $webform = Webform::load($task['data']['webform_machine_name'] ?? NULL);
-    if (NULL !== $webform) {
-      $form['edit_task_notifications']['token_tree'] = [
-        '#markup' => $this->t('<a href=":webform_handlers_url">Add a Meastro notification handler to the %form_label form</a> to actually send out notifications.', [
-          ':webform_handlers_url' => $webform->url('handlers'),
-          '%form_label' => $webform->label(),
-        ]),
-      ];
-    }
-    else {
-      unset($form['edit_task_notifications']['token_tree']);
-    }
+    $anonymousNotificationMessage = NULL !== $webform
+      ? $this->t('<a href=":webform_handlers_url">Add a Meastro notification handler to the %form_label webform</a> to actually send out notifications to anonymous users.', [
+        ':webform_handlers_url' => $webform->url('handlers'),
+        '%form_label' => $webform->label(),
+      ]
+      )
+      : $this->t('Add a Meastro notification handler to the task webform to actually send out notifications to anonymous users.');
 
-    unset(
-      $form['edit_task_notifications']['notification_assignment_subject'],
-      $form['edit_task_notifications']['notification_assignment'],
-      $form['edit_task_notifications']['notification_reminder_subject'],
-      $form['edit_task_notifications']['notification_reminder'],
-      $form['edit_task_notifications']['notification_escalation_subject'],
-      $form['edit_task_notifications']['notification_escalation']
+    WebformArrayHelper::insertBefore(
+      $form['edit_task_notifications'], 'token_tree',
+      'anonymous_notification_message',
+      [
+        '#theme' => 'status_messages',
+        '#message_list' => [
+          'status' => [$anonymousNotificationMessage],
+        ],
+      ]
     );
 
     return $form;
