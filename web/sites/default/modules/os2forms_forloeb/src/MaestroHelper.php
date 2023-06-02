@@ -2,6 +2,8 @@
 
 namespace Drupal\os2forms_forloeb;
 
+use DigitalPost\MeMo\Action;
+use DigitalPost\MeMo\EntryPoint;
 use Dompdf\Dompdf;
 use Drupal\advancedqueue\Entity\QueueInterface;
 use Drupal\advancedqueue\Job;
@@ -11,12 +13,15 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro\Utility\TaskHandler;
+use Drupal\os2forms_digital_post\Helper\DigitalPostHelper;
+use Drupal\os2forms_digital_post\Model\Document;
 use Drupal\os2forms_forloeb\Exception\RuntimeException;
 use Drupal\os2forms_forloeb\Plugin\AdvancedQueue\JobType\SendMeastroNotification;
 use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
@@ -26,6 +31,7 @@ use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorageInterface;
 use Drupal\webform\WebformThemeManagerInterface;
 use Drupal\webform\WebformTokenManagerInterface;
+use ItkDev\Serviceplatformen\Service\SF1601\SF1601;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
@@ -73,7 +79,9 @@ class MaestroHelper implements LoggerInterface {
     readonly private LanguageManagerInterface $languageManager,
     readonly private WebformThemeManagerInterface $webformThemeManager,
     readonly private LoggerChannelInterface $logger,
-    readonly private LoggerChannelInterface $submissionLogger
+    readonly private LoggerChannelInterface $submissionLogger,
+    readonly private ModuleHandlerInterface $moduleHandler,
+    readonly private DigitalPostHelper $digitalPostHelper
   ) {
     $this->config = $configFactory->get(SettingsForm::SETTINGS);
     $this->webformSubmissionStorage = $entityTypeManager->getStorage('webform_submission');
@@ -334,51 +342,63 @@ class MaestroHelper implements LoggerInterface {
     string $taskUrl,
     string $actionLabel,
     WebformSubmissionInterface $submission
-  ): void {
-    $pdfBody = $this->buildHtml('os2forms_forloeb_notification_message_pdf_html', $subject, $content, $taskUrl, $actionLabel, $submission);
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml($pdfBody);
-    $dompdf->render();
-    $pdfContent = $dompdf->output();
-
-    // @todo Send real digital post
-    $recipient .= '@digital-post.example.com';
-    $subject .= ' (digital post)';
-
-    $body = $this->buildHtml('os2forms_forloeb_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
-
-    $message = [
-      'subject' => $subject,
-      'body' => $body,
-      'html' => TRUE,
-      'attachments' => [
-        [
-          'filecontent' => $pdfContent,
-          'filename' => $subject . '.pdf',
-          'filemime' => 'application/pdf',
-        ],
-      ],
-    ];
-
-    $langcode = $this->languageManager->getCurrentLanguage()->getId();
-
-    $result = $this->mailManager->mail(
-      'os2forms_forloeb',
-      'notification',
-      $recipient,
-      $langcode,
-      $message
-    );
-
-    if (!$result['result']) {
-      throw new RuntimeException(sprintf('Error sending notification digital post', $recipient));
+  ): void
+  {
+    if (!$this->moduleHandler->moduleExists('os2forms_digital_post')) {
+      throw new RuntimeException('Cannot send digital post. Module os2forms_digital_post not installed.');
     }
 
-    $this->notice('Digital post sent', [
-      'webform_submission' => $submission,
-      'handler_id' => 'os2forms_forloeb',
-      'operation' => 'notification sent',
-    ]);
+    try {
+      $pdfBody = $this->buildHtml('os2forms_forloeb_notification_message_pdf_html', $subject, $content, $taskUrl,
+        $actionLabel, $submission);
+      $dompdf = new Dompdf();
+      $dompdf->loadHtml($pdfBody);
+      $dompdf->render();
+      $pdfContent = $dompdf->output();
+
+      $document = new Document(
+        $pdfContent,
+        Document::MIME_TYPE_PDF,
+        $subject . '.pdf'
+      );
+
+      $senderLabel = $subject;
+      $messageLabel = $subject;
+
+      $recipientLookupResult = $this->digitalPostHelper->lookupRecipient($recipient);
+      $actions = [
+        (new Action())
+          ->setActionCode(SF1601::ACTION_SELVBETJENING)
+          ->setEntryPoint((new EntryPoint())
+            ->setUrl($taskUrl)
+          )
+          ->setLabel($actionLabel)
+      ];
+
+      $message = $this->digitalPostHelper->getMeMoHelper()->buildMessage($recipientLookupResult, $senderLabel,
+        $messageLabel, $document, $actions);
+      $forsendelse = $this->digitalPostHelper->getForsendelseHelper()->buildForsendelse($recipientLookupResult,
+        $messageLabel, $document);
+      $this->digitalPostHelper->sendDigitalPost(
+        SF1601::TYPE_AUTOMATISK_VALG,
+        $message,
+        $forsendelse,
+        $submission
+      );
+
+      $this->notice('Digital post sent', [
+        'webform_submission' => $submission,
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'notification sent',
+      ]);
+    } catch (\Exception $exception) {
+      $this->error('Error sending digital post: @message', [
+        '@message' => $exception->getMessage(),
+        'webform_submission' => $submission,
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'failed sending notification',
+      ]);
+    }
   }
 
   /**

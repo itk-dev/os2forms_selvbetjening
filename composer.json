@@ -93,7 +93,7 @@
         "itk-dev/itkdev-booking": "^1.0.3",
         "itk-dev/os2forms_cpr_lookup": "^1.8.0",
         "itk-dev/os2forms_cvr_lookup": "^1.4",
-        "itk-dev/os2forms_digital_post": "dev-feature/FORMS-821-data-lookup",
+        "itk-dev/os2forms_digital_post": "dev-feature/FORMS-821-data-lookup-digital-post-api",
         "itk-dev/os2forms_failed_jobs": "^1.2",
         "itk-dev/os2forms_nemlogin_openid_connect": "^1.3",
         "itk-dev/os2forms_user_field_lookup": "^1.0",
