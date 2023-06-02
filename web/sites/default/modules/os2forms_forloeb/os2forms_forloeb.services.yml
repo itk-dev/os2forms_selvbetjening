@@ -17,3 +17,5 @@ services:
       - '@webform.theme_manager'
       - '@logger.channel.os2forms_forloeb'
       - '@logger.channel.os2forms_forloeb_submission'
+      - '@module_handler'
+      - '@Drupal\os2forms_digital_post\Helper\DigitalPostHelper'
