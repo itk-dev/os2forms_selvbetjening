@@ -1,0 +1,26 @@
+diff --git a/src/Engine/MaestroEngine.php b/src/Engine/MaestroEngine.php
+index 288736a..2781c37 100644
+--- a/src/Engine/MaestroEngine.php
++++ b/src/Engine/MaestroEngine.php
+@@ -3,6 +3,7 @@
+ namespace Drupal\maestro\Engine;
+ 
+ // Used in the dynamic task call for task execution.
++use Drupal\Core\Session\AccountInterface;
+ use Drupal\maestro\Engine\Exception\MaestroGeneralException;
+ use Drupal\maestro\Engine\Exception\MaestroSaveEntityException;
+ use Drupal\Core\Entity\EntityStorageException;
+@@ -638,6 +639,13 @@ class MaestroEngine {
+     $account = User::load($userID);
+     $userRoles = $account->getRoles(TRUE);
+ 
++    // An authenticated user does not actually have the role "authenticated",
++    // but we may be assigning tasks to authenticated users. Therefore we add
++    // the authenticated role to the list of roles to check for assignment.
++    if ($account->isAuthenticated()) {
++      $userRoles[] = AccountInterface::AUTHENTICATED_ROLE;
++    }
++
+     $query = \Drupal::entityQuery('maestro_production_assignments')
+       ->accessCheck(FALSE);
+ 
