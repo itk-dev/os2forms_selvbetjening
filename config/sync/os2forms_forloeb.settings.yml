@@ -12,3 +12,5 @@ known_anonymous_roles:
   leder: 0
   os2forms_rest_api_user: 0
   os2forms_rest_api_user_write: 0
+processing:
+  queue: os2forms_forloeb_notification
