@@ -4,6 +4,7 @@ namespace Drupal\os2forms_forloeb\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\os2forms_forloeb\MaestroHelper;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -112,35 +113,47 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
       '#maxlength' => self::SENDER_LABEL_MAX_LENGTH,
     ];
 
-    $form[self::NOTIFICATION][self::NOTIFICATION_SUBJECT] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Notification subject'),
-      '#required' => TRUE,
-      '#default_value' => $this->configuration[self::NOTIFICATION][self::NOTIFICATION_SUBJECT] ?? NULL,
-      '#maxlength' => self::NOTIFICATION_SUBJECT_MAX_LENGTH,
-    ];
+    foreach ([
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT => $this->t('Assignment'),
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_REMINDER => $this->t('Reminder'),
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION => $this->t('Escalation'),
+    ] as $notificationType => $label) {
+      $form[self::NOTIFICATION][$notificationType] = [
+        '#type' => 'fieldset',
+        '#title' => $label,
+      ];
 
-    $content = $this->configuration[self::NOTIFICATION][self::NOTIFICATION_CONTENT] ?? NULL;
-    if (isset($content['value'])) {
-      $content = $content['value'];
+      $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_SUBJECT] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Notification subject'),
+        '#required' => TRUE,
+        '#default_value' => $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_SUBJECT] ?? NULL,
+        '#maxlength' => self::NOTIFICATION_SUBJECT_MAX_LENGTH,
+      ];
+
+      $content = $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_CONTENT] ?? NULL;
+      if (isset($content['value'])) {
+        $content = $content['value'];
+      }
+      $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_CONTENT] = [
+        '#type' => 'text_format',
+        '#format' => 'restricted_html',
+        '#title' => $this->t('Notification text'),
+        '#required' => TRUE,
+        '#default_value' => $content ?? self::TOKEN_MAESTRO_TASK_URL,
+        '#description' => $this->t('The actual notification content. Must contain the <code>@token_maestro_task_url</code> token which is the URL to the Maestro task.',
+          [
+            '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
+          ]),
+      ];
+
+      $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ACTION_LABEL] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Action label'),
+        '#default_value' => $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ACTION_LABEL] ?? NULL,
+        '#description' => $this->t('Label of the action show in digital post'),
+      ];
     }
-    $form[self::NOTIFICATION][self::NOTIFICATION_CONTENT] = [
-      '#type' => 'text_format',
-      '#format' => 'restricted_html',
-      '#title' => $this->t('Notification text'),
-      '#required' => TRUE,
-      '#default_value' => $content ?? self::TOKEN_MAESTRO_TASK_URL,
-      '#description' => $this->t('The actual notification content. Must contain the <code>@token_maestro_task_url</code> token which is the URL to the Maestro task.', [
-        '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
-      ]),
-    ];
-
-    $form[self::NOTIFICATION][self::NOTIFICATION_ACTION_LABEL] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Action label'),
-      '#default_value' => $this->configuration[self::NOTIFICATION][self::NOTIFICATION_ACTION_LABEL] ?? NULL,
-      '#description' => $this->t('Label of the action show in digital post'),
-    ];
 
     return $this->setSettingsParents($form);
   }
@@ -151,18 +164,24 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
   public function validateConfigurationForm(array &$form, FormStateInterface $formState) {
     parent::validateConfigurationForm($form, $formState);
 
-    $key = [self::NOTIFICATION, self::NOTIFICATION_CONTENT];
-    $content = $formState->getValue($key);
-    if (isset($content['value'])) {
-      $content = $content['value'];
-    }
-    if (!str_contains($content, self::TOKEN_MAESTRO_TASK_URL)) {
-      $formState->setErrorByName(
-        implode('][', [self::NOTIFICATION, self::NOTIFICATION_CONTENT]),
-        $this->t('The notification content must contain the <code>@token_maestro_task_url</code> token', [
-          '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
-        ])
-      );
+    foreach ([
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT,
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_REMINDER,
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION,
+    ] as $notificationType) {
+      $key = [self::NOTIFICATION, $notificationType, self::NOTIFICATION_CONTENT];
+      $content = $formState->getValue($key);
+      if (isset($content['value'])) {
+        $content = $content['value'];
+      }
+      if (!str_contains($content, self::TOKEN_MAESTRO_TASK_URL)) {
+        $formState->setErrorByName(
+          implode('][', [self::NOTIFICATION, self::NOTIFICATION_CONTENT]),
+          $this->t('The notification content must contain the <code>@token_maestro_task_url</code> token', [
+            '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
+          ])
+        );
+      }
     }
   }
 

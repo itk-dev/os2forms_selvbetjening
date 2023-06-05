@@ -42,11 +42,9 @@ use Psr\Log\LoggerTrait;
 class MaestroHelper implements LoggerInterface {
   use LoggerTrait;
 
-  private const OS2FORMS_FORLOEB_IS_NOTIFICATION = 'os2forms_forloeb_is_notification';
-  private const OS2FORMS_FORLOEB_NOTIFICATION_CONTENT = 'os2forms_forloeb_notification_content';
-  private const OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT = 'assignment';
-  private const OS2FORMS_FORLOEB_NOTIFICATION_REMINDER = 'reminder';
-  private const OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION = 'escalation';
+  public const OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT = 'assignment';
+  public const OS2FORMS_FORLOEB_NOTIFICATION_REMINDER = 'reminder';
+  public const OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION = 'escalation';
 
   /**
    * The config.
@@ -93,17 +91,15 @@ class MaestroHelper implements LoggerInterface {
    * Implements hook_maestro_zero_user_notification().
    */
   public function maestroZeroUserNotification($templateMachineName, $taskMachineName, $queueID, $notificationType) {
-    if (self::OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT === $notificationType) {
-      // @todo Clean up and align with MaestroWebformInheritTask::webformSubmissionFormAlter().
-      $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
-      if (MaestroWebformInheritTask::isWebformTask($templateTask)) {
-        if ($inheritWebformUniqueId = ($templateTask['data'][MaestroWebformInheritTask::INHERIT_WEBFORM_UNIQUE_ID] ?? NULL)) {
-          if ($processID = (MaestroEngine::getProcessIdFromQueueId($queueID) ?: NULL)) {
-            if ($entityIdentifier = (self::getWebformSubmissionIdentifiersForProcess($processID)[$inheritWebformUniqueId] ?? NULL)) {
-              $submission = $this->webformSubmissionStorage->load($entityIdentifier['entity_id']);
-              if ($submission) {
-                $this->handleSubmissionNotification($submission, $templateTask, $queueID);
-              }
+    // @todo Clean up and align with MaestroWebformInheritTask::webformSubmissionFormAlter().
+    $templateTask = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskMachineName);
+    if (MaestroWebformInheritTask::isWebformTask($templateTask)) {
+      if ($inheritWebformUniqueId = ($templateTask['data'][MaestroWebformInheritTask::INHERIT_WEBFORM_UNIQUE_ID] ?? NULL)) {
+        if ($processID = (MaestroEngine::getProcessIdFromQueueId($queueID) ?: NULL)) {
+          if ($entityIdentifier = (self::getWebformSubmissionIdentifiersForProcess($processID)[$inheritWebformUniqueId] ?? NULL)) {
+            $submission = $this->webformSubmissionStorage->load($entityIdentifier['entity_id']);
+            if ($submission) {
+              $this->handleSubmissionNotification($notificationType, $submission, $templateTask, $queueID);
             }
           }
         }
@@ -137,6 +133,7 @@ class MaestroHelper implements LoggerInterface {
    * Handle submission notification.
    */
   private function handleSubmissionNotification(
+    string $notificationType,
     WebformSubmissionInterface $submission,
     array $templateTask,
     int $maestroQueueID
@@ -147,6 +144,7 @@ class MaestroHelper implements LoggerInterface {
 
     try {
       $job = Job::create(SendMeastroNotification::class, [
+        'notificationType' => $notificationType,
         'templateTask' => $templateTask,
         'queueID' => $maestroQueueID,
         'submissionID' => $submission->id(),
@@ -181,6 +179,7 @@ class MaestroHelper implements LoggerInterface {
   public function processJob(Job $job): JobResult {
     $payload = $job->getPayload();
     [
+      'notificationType' => $notificationType,
       'templateTask' => $templateTask,
       'queueID' => $maestroQueueID,
       'submissionID' => $submissionID,
@@ -188,7 +187,7 @@ class MaestroHelper implements LoggerInterface {
 
     $submission = $this->webformSubmissionStorage->load($submissionID);
 
-    $this->sendNotification($submission, $templateTask, $maestroQueueID);
+    $this->sendNotification($notificationType, $submission, $templateTask, $maestroQueueID);
 
     return JobResult::success();
   }
@@ -197,6 +196,7 @@ class MaestroHelper implements LoggerInterface {
    * Send notification.
    */
   private function sendNotification(
+    string $notificationType,
     WebformSubmissionInterface $submission,
     array $templateTask,
     int $maestroQueueID
@@ -219,7 +219,7 @@ class MaestroHelper implements LoggerInterface {
           $subject,
           $taskUrl,
           $actionLabel,
-        ] = $this->renderNotification($submission, $handler->getHandlerId(), $templateTask, $maestroQueueID);
+        ] = $this->renderNotification($submission, $handler->getHandlerId(), $notificationType, $templateTask, $maestroQueueID);
 
         if ('email' === $contentType) {
           $this->sendNotificationEmail($recipient, $subject, $content, $submission);
@@ -368,6 +368,8 @@ class MaestroHelper implements LoggerInterface {
    *   The submission.
    * @param string $handlerId
    *   The handler ID.
+   * @param string $notificationType
+   *   The notification type.
    * @param array $templateTask
    *   The Maestro template task.
    * @param int $maestroQueueID
@@ -385,13 +387,12 @@ class MaestroHelper implements LoggerInterface {
    *   - Task URL (for digital post)
    *   - Action label (for digital post)
    */
-  public function renderNotification(WebformSubmissionInterface $submission, string $handlerId, array $templateTask, int $maestroQueueID, string $contentType = NULL): array {
+  public function renderNotification(WebformSubmissionInterface $submission, string $handlerId, string $notificationType, array $templateTask, int $maestroQueueID, string $contentType = NULL): array {
     $handler = $submission->getWebform()->getHandler($handlerId);
     $settings = $handler->getSettings();
-    $notificationSetting = $settings[MaestroNotificationHandler::NOTIFICATION];
 
     $data = $submission->getData();
-    $recipientElement = $notificationSetting[MaestroNotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
+    $recipientElement = $settings[MaestroNotificationHandler::NOTIFICATION][MaestroNotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
     // Handle os2forms_person_lookup element.
     $recipient = $data[$recipientElement]['cpr_number']
       // Simple element.
@@ -406,6 +407,11 @@ class MaestroHelper implements LoggerInterface {
           'queueID' => $maestroQueueID,
         ],
       ];
+
+      $notificationSetting = $settings[MaestroNotificationHandler::NOTIFICATION][$notificationType] ?? NULL;
+      if (NULL === $notificationSetting) {
+        throw new RuntimeException(sprintf('Cannot get setting for %s notification', $notificationType));
+      }
 
       $processValue = static fn (string $value) => $value;
 

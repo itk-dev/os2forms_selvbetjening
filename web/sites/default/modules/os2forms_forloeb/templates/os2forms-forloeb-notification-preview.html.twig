@@ -10,6 +10,7 @@
   *   - next: Next submission preview URL (if any)
   * - webform: The webform
   * - handler: The handler ID
+  * - notification_type: The notification type (assignment, reminder, escalation)
   * - content_type: The content type (email, pdf)
   * - submission: The submission ID
   * - return_url: The return URL (to list of webform handlers)
@@ -21,6 +22,10 @@
     .os2forms-forloeb-notification-preview .navigation {
       display: flex;
       justify-content: space-between;
+    }
+
+    .os2forms-forloeb-notification-preview a.active {
+      font-weight: bold;
     }
 
     .os2forms-forloeb-notification-preview .preview {
@@ -39,9 +44,29 @@
       {% endif %}
     </div>
 
-    <div class="types">
-      {% for content_type in ['email', 'pdf'] %}
-        <a href="{{ url('os2forms_forloeb.meastro_notification.preview', {webform: webform.id, handler: handler, content_type: content_type, submission: submission}) }}">{{ content_type }}</a>
+    <div class="content-type">
+      {% for type in ['email', 'pdf'] %}
+        {% if not loop.first %} | {% endif %}
+        <a class="{{ content_type == type ? 'active' }}"
+           href="{{ url('os2forms_forloeb.meastro_notification.preview', {
+                    webform: webform.id,
+                    handler: handler,
+                    notification_type: notification_type,
+                    content_type: type,
+                    submission: submission}) }}">{{ type }}</a>
+      {% endfor %}
+    </div>
+
+    <div class="notification-type">
+      {% for type in ['assignment', 'reminder', 'escalation'] %}
+        {% if not loop.first %} | {% endif %}
+        <a class="{{ notification_type == type ? 'active' }}"
+           href="{{ url('os2forms_forloeb.meastro_notification.preview', {
+                    webform: webform.id,
+                    handler: handler,
+                    notification_type: type,
+                    content_type: content_type,
+                    submission: submission}) }}">{{ type }}</a>
       {% endfor %}
     </div>
 
