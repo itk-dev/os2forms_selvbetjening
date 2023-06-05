@@ -7,10 +7,11 @@ os2forms_forloeb.settings:
     _permission: 'administer site configuration'
 
 os2forms_forloeb.meastro_notification.preview:
-  path: '/admin/structure/webform/manage/{webform}/os2forms_forloeb/{handler}/preview/{content_type}'
+  path: '/admin/structure/webform/manage/{webform}/os2forms_forloeb/notification/{handler}/preview/{notification_type}/{content_type}'
   defaults:
     _controller: '\Drupal\os2forms_forloeb\Controller\MaestroNotificationController::preview'
     _title: 'Maestro notification preview'
+    notification_type: assignment
   options:
     parameters:
       webform:
@@ -19,7 +20,7 @@ os2forms_forloeb.meastro_notification.preview:
     _permission: 'view any webform submission'
 
 os2forms_forloeb.meastro_notification.preview_render:
-  path: '/admin/structure/webform/manage/{webform}/os2forms_forloeb/{handler}/preview/{content_type}/render/{submission}'
+  path: '/admin/structure/webform/manage/{webform}/os2forms_forloeb/notification/{handler}/preview/{notification_type}/{content_type}/render/{submission}'
   defaults:
     _controller: '\Drupal\os2forms_forloeb\Controller\MaestroNotificationController::previewRender'
     _title: 'Maestro notification render preview'

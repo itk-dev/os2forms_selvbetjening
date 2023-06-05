@@ -41,7 +41,7 @@ class MaestroNotificationController extends ControllerBase {
   /**
    * Preview action.
    */
-  public function preview(Request $request, WebformInterface $webform, string $handler, string $content_type, RouteMatchInterface $routeMatch) {
+  public function preview(Request $request, WebformInterface $webform, string $handler, string $notification_type, string $content_type, RouteMatchInterface $routeMatch) {
     $submissionIds = array_keys($this->webformSubmissionStorage->getQuery()
       ->condition('webform_id', $webform->id())
       ->sort('created', 'DESC')
@@ -71,6 +71,7 @@ class MaestroNotificationController extends ControllerBase {
       ? Url::fromRoute('os2forms_forloeb.meastro_notification.preview_render', [
         'webform' => $webform->id(),
         'handler' => $handler,
+        'notification_type' => $notification_type,
         'content_type' => $content_type,
         'submission' => $currentSubmission,
       ])
@@ -80,7 +81,8 @@ class MaestroNotificationController extends ControllerBase {
       '#theme' => 'os2forms_forloeb_notification_preview',
       '#webform' => $webform,
       '#handler' => $handler,
-      '#type' => $content_type,
+      '#notification_type' => $notification_type,
+      '#content_type' => $content_type,
       '#submission' => $currentSubmission,
       '#return_url' => $webform->toUrl('handlers'),
       '#render_url' => $renderUrl,
@@ -91,10 +93,10 @@ class MaestroNotificationController extends ControllerBase {
   /**
    * Render notification preview.
    */
-  public function previewRender(Request $request, WebformInterface $webform, string $handler, string $content_type, WebformSubmissionInterface $submission) {
+  public function previewRender(Request $request, WebformInterface $webform, string $handler, string $notification_type, string $content_type, WebformSubmissionInterface $submission) {
     $templateTask = [];
     $maestroQueueID = 0;
-    [$content, $contentType] = $this->maestroHelper->renderNotification($submission, $handler, $templateTask, $maestroQueueID, $content_type);
+    [$content, $contentType] = $this->maestroHelper->renderNotification($submission, $handler, $notification_type, $templateTask, $maestroQueueID, $content_type);
 
     $response = new Response($content);
     if ('pdf' === $contentType) {

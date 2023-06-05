@@ -5,6 +5,7 @@ namespace Drupal\os2forms_forloeb\Form;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\RoleInterface;
@@ -28,7 +29,8 @@ class SettingsForm extends ConfigFormBase {
   public function __construct(
     ConfigFactoryInterface $configFactory,
     readonly private RoleStorageInterface $roleStorage,
-    readonly private EntityStorageInterface $queueStorage
+    readonly private EntityStorageInterface $queueStorage,
+    readonly private ModuleExtensionList $moduleHandler
   ) {
     parent::__construct($configFactory);
   }
@@ -41,6 +43,7 @@ class SettingsForm extends ConfigFormBase {
       $container->get('config.factory'),
       $container->get('entity_type.manager')->getStorage('user_role'),
       $container->get('entity_type.manager')->getStorage('advancedqueue_queue'),
+      $container->get('extension.list.module'),
     );
   }
 
@@ -95,6 +98,31 @@ class SettingsForm extends ConfigFormBase {
         '@queue' => $defaultValue,
         ':queue_url' => '/admin/config/system/queues/jobs/' . urlencode($defaultValue ?? ''),
       ]),
+    ];
+
+    $form['templates'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Templates'),
+      '#tree' => TRUE,
+    ];
+
+    $templatePath = $this->moduleHandler->getPath('os2forms_forloeb') . '/templates/os2forms-forloeb-notification-message-email-html.html.twig';
+    $defaultTemplate = file_exists($templatePath) ? file_get_contents($templatePath) : NULL;
+    $form['templates']['notification_email'] = [
+      '#type' => 'textarea',
+      '#rows' => 10,
+      '#required' => TRUE,
+      '#title' => $this->t('Email template'),
+      '#default_value' => $config->get('templates')['notification_email'] ?? $defaultTemplate,
+      '#description' => $this->t('HTML template for email notifications. See @template_path'),
+    ];
+
+    $form['templates']['notification_pdf'] = [
+      '#type' => 'textarea',
+      '#required' => TRUE,
+      '#title' => $this->t('PDF template'),
+      '#default_value' => $config->get('templates')['notification_pdf'] ?? '',
+      '#description' => $this->t('HTML template for PDF notifications (digital post)'),
     ];
 
     return parent::buildForm($form, $form_state);
