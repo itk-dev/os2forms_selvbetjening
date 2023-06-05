@@ -3,6 +3,7 @@
 namespace Drupal\os2forms_forloeb\Plugin\WebformHandler;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -63,9 +64,25 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
    */
   public function getSummary() {
     return [
-      '#markup' => $this->t('Sends notification when triggered by Maestro. The notification will be sent to the person identified by the value of the %element element.', [
-        '%element' => $this->configuration[self::NOTIFICATION][self::RECIPIENT_ELEMENT] ?? NULL,
-      ]),
+      'info' => [
+        '#prefix' => '<div>',
+        '#suffix' => '</div>',
+        '#markup' => $this->t('Sends notification when triggered by Maestro. The notification will be sent to the person identified by the value of the %element element.', [
+          '%element' => $this->configuration[self::NOTIFICATION][self::RECIPIENT_ELEMENT] ?? NULL,
+        ]),
+      ],
+      'preview' => [
+        '#prefix' => '<div>',
+        '#suffix' => '</div>',
+      ]
+      + Link::createFromRoute(
+          $this->t('Preview notifications'),
+          'os2forms_forloeb.meastro_notification.preview', [
+            'webform' => $this->getWebform()->id(),
+            'handler' => $this->getHandlerId(),
+            'content_type' => 'email',
+          ]
+      )->toRenderable(),
     ];
   }
 

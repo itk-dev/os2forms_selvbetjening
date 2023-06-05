@@ -329,6 +329,22 @@ function os2forms_forloeb_mail_alter(&$message) {
  * Implements hook_theme().
  */
 function os2forms_forloeb_theme(array &$variables) {
+  $theme['os2forms_forloeb_notification_preview'] = [
+    'variables' => [
+      'webform' => NULL,
+      'handler' => NULL,
+      'type' => NULL,
+      'submission' => NULL,
+      'return_url' => NULL,
+      'render_url' => NULL,
+      'preview_urls' => [
+        'prev' => NULL,
+        'self' => NULL,
+        'next' => NULL,
+      ],
+    ],
+  ];
+
   $theme['os2forms_forloeb_notification_message_email_html'] = [
     'variables' => [
       'message' => [

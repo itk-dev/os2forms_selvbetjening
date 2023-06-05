@@ -18,6 +18,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Url;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro\Utility\TaskHandler;
 use Drupal\os2forms_digital_post\Helper\DigitalPostHelper;
@@ -205,56 +206,26 @@ class MaestroHelper implements LoggerInterface {
     ];
 
     try {
-      $data = $submission->getData();
-      $webform = $submission->getWebform();
-      $handlers = $webform->getHandlers();
+      $handlers = $submission->getWebform()->getHandlers();
       foreach ($handlers as $handler) {
         if (!($handler instanceof MaestroNotificationHandler) || $handler->isDisabled() || $handler->isExcluded()) {
           continue;
         }
-        $settings = $handler->getSettings();
-        $notificationSetting = $settings[MaestroNotificationHandler::NOTIFICATION];
-        $recipientElement = $notificationSetting[MaestroNotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
-        $recipient =
-          // Handle os2forms_person_lookup element.
-          $data[$recipientElement]['cpr_number']
-          // Simple element.
-          ?? $data[$recipientElement]
-          ?? NULL;
-        if (NULL !== $recipient) {
-          // Lifted from MaestroEngine.
-          $maestroTokenData = [
-            'maestro' => [
-              'task' => $templateTask,
-              'queueID' => $maestroQueueID,
-            ],
-          ];
 
-          $subject = $this->tokenManager->replace(
-            $notificationSetting[MaestroNotificationHandler::NOTIFICATION_SUBJECT],
-            $submission,
-            $maestroTokenData
-          );
+        [
+          $content,
+          $contentType,
+          $recipient,
+          $subject,
+          $taskUrl,
+          $actionLabel,
+        ] = $this->renderNotification($submission, $handler->getHandlerId(), $templateTask, $maestroQueueID);
 
-          $content = $notificationSetting[MaestroNotificationHandler::NOTIFICATION_CONTENT];
-          if (isset($content['value'])) {
-            // Process tokens in content.
-            $content['value'] = $this->tokenManager->replace(
-              $content['value'],
-              $submission,
-              $maestroTokenData
-            );
-          }
-
-          $taskUrl = TaskHandler::getHandlerURL($maestroQueueID);
-          $actionLabel = $notificationSetting[MaestroNotificationHandler::NOTIFICATION_ACTION_LABEL];
-
-          if (filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
-            $this->sendNotificationEmail($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
-          }
-          else {
-            $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
-          }
+        if ('email' === $contentType) {
+          $this->sendNotificationEmail($recipient, $subject, $content, $submission);
+        }
+        else {
+          $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
         }
       }
     }
@@ -297,13 +268,9 @@ class MaestroHelper implements LoggerInterface {
   private function sendNotificationEmail(
     string $recipient,
     string $subject,
-    array $content,
-    string $taskUrl,
-    string $actionLabel,
+    string $body,
     WebformSubmissionInterface $submission
   ): void {
-    $body = $this->buildHtml('os2forms_forloeb_notification_message_email_html', $subject, $content, $taskUrl, $actionLabel, $submission);
-
     $message = [
       'subject' => $subject,
       'body' => $body,
@@ -338,26 +305,18 @@ class MaestroHelper implements LoggerInterface {
   private function sendNotificationDigitalPost(
     string $recipient,
     string $subject,
-    array $content,
+    string $content,
     string $taskUrl,
     string $actionLabel,
     WebformSubmissionInterface $submission
-  ): void
-  {
+  ): void {
     if (!$this->moduleHandler->moduleExists('os2forms_digital_post')) {
       throw new RuntimeException('Cannot send digital post. Module os2forms_digital_post not installed.');
     }
 
     try {
-      $pdfBody = $this->buildHtml('os2forms_forloeb_notification_message_pdf_html', $subject, $content, $taskUrl,
-        $actionLabel, $submission);
-      $dompdf = new Dompdf();
-      $dompdf->loadHtml($pdfBody);
-      $dompdf->render();
-      $pdfContent = $dompdf->output();
-
       $document = new Document(
-        $pdfContent,
+        $content,
         Document::MIME_TYPE_PDF,
         $subject . '.pdf'
       );
@@ -371,8 +330,8 @@ class MaestroHelper implements LoggerInterface {
           ->setActionCode(SF1601::ACTION_SELVBETJENING)
           ->setEntryPoint((new EntryPoint())
             ->setUrl($taskUrl)
-          )
-          ->setLabel($actionLabel)
+        )
+          ->setLabel($actionLabel),
       ];
 
       $message = $this->digitalPostHelper->getMeMoHelper()->buildMessage($recipientLookupResult, $senderLabel,
@@ -391,7 +350,8 @@ class MaestroHelper implements LoggerInterface {
         'handler_id' => 'os2forms_forloeb',
         'operation' => 'notification sent',
       ]);
-    } catch (\Exception $exception) {
+    }
+    catch (\Exception $exception) {
       $this->error('Error sending digital post: @message', [
         '@message' => $exception->getMessage(),
         'webform_submission' => $submission,
@@ -402,10 +362,127 @@ class MaestroHelper implements LoggerInterface {
   }
 
   /**
+   * Render notification.
+   *
+   * @param \Drupal\webform\WebformSubmissionInterface $submission
+   *   The submission.
+   * @param string $handlerId
+   *   The handler ID.
+   * @param array $templateTask
+   *   The Maestro template task.
+   * @param int $maestroQueueID
+   *   The Maestro queue ID.
+   * @param string|null $contentType
+   *   Optional content type. If not set the content type will be compoted based
+   *   on the recipient.
+   *
+   * @return array
+   *   The rendered notification as a list
+   *   - Content
+   *   - Content type
+   *   - Recipient
+   *   - Subject
+   *   - Task URL (for digital post)
+   *   - Action label (for digital post)
+   */
+  public function renderNotification(WebformSubmissionInterface $submission, string $handlerId, array $templateTask, int $maestroQueueID, string $contentType = NULL): array {
+    $handler = $submission->getWebform()->getHandler($handlerId);
+    $settings = $handler->getSettings();
+    $notificationSetting = $settings[MaestroNotificationHandler::NOTIFICATION];
+
+    $data = $submission->getData();
+    $recipientElement = $notificationSetting[MaestroNotificationHandler::RECIPIENT_ELEMENT] ?? NULL;
+    // Handle os2forms_person_lookup element.
+    $recipient = $data[$recipientElement]['cpr_number']
+      // Simple element.
+      ?? $data[$recipientElement]
+      ?? NULL;
+
+    if (NULL !== $recipient) {
+      // Lifted from MaestroEngine.
+      $maestroTokenData = [
+        'maestro' => [
+          'task' => $templateTask,
+          'queueID' => $maestroQueueID,
+        ],
+      ];
+
+      $processValue = static fn (string $value) => $value;
+
+      // Handle a preview, i.e. not a real Maestro context.
+      if (empty($templateTask) || 0 === $maestroQueueID) {
+        $taskUrl = Url::fromRoute('os2forms_forloeb.meastro_notification.preview_message', ['message' => 'This is just a preview'])->toString(TRUE)->getGeneratedUrl();
+
+        $processValue = static function (string $value) use ($taskUrl) {
+          // Replace href="[maestro:task-url]" with href="«$taskUrl»".
+          $value = preg_replace('/href\s*=\s*["\']\[maestro:task-url\]["\']/', sprintf('href="%s"', htmlspecialchars($taskUrl)), $value);
+          $value = preg_replace('/\[(maestro:[^]]+)\]/', '&#91;\1&#93;', $value);
+
+          return $value;
+        };
+      }
+      else {
+        $taskUrl = TaskHandler::getHandlerURL($maestroQueueID);
+      }
+
+      $subject = $this->tokenManager->replace(
+        $processValue($notificationSetting[MaestroNotificationHandler::NOTIFICATION_SUBJECT]),
+        $submission,
+        $maestroTokenData
+      );
+
+      $content = $notificationSetting[MaestroNotificationHandler::NOTIFICATION_CONTENT];
+      if (isset($content['value'])) {
+        // Process tokens in content.
+        $content['value'] = $this->tokenManager->replace(
+          $processValue($content['value']),
+          $submission,
+          $maestroTokenData
+        );
+      }
+
+      $actionLabel = $this->tokenManager->replace($notificationSetting[MaestroNotificationHandler::NOTIFICATION_ACTION_LABEL], $submission);
+
+      if (NULL === $contentType) {
+        $contentType = filter_var($recipient, FILTER_VALIDATE_EMAIL) ? 'email' : 'pdf';
+      }
+
+      switch ($contentType) {
+        case 'email':
+          $content = $this->buildHtml($contentType, $subject, $content, $taskUrl, $actionLabel, $submission);
+          break;
+
+        case 'pdf':
+          $pdfContent = $this->buildHtml($contentType, $subject, $content, $taskUrl, $actionLabel, $submission);
+          $dompdf = new Dompdf();
+          $dompdf->loadHtml($pdfContent);
+          $dompdf->render();
+
+          $content = $dompdf->output();
+          break;
+
+        default:
+          throw new RuntimeException(sprintf('Invalid content type: %s', $contentType));
+      }
+
+      return [
+        $content,
+        $contentType,
+        $recipient,
+        $subject,
+        $taskUrl,
+        $actionLabel,
+      ];
+    }
+
+    throw new RuntimeException();
+  }
+
+  /**
    * Build HTML.
    */
   private function buildHtml(
-    string $theme,
+    string $type,
     string $subject,
     array $content,
     string $taskUrl,
@@ -413,6 +490,8 @@ class MaestroHelper implements LoggerInterface {
     WebformSubmissionInterface $submission
   ): string|MarkupInterface {
     // Render body as HTML.
+    $theme = sprintf('os2forms_forloeb_notification_message_%s_html', $type);
+
     $build = [
       '#theme' => $theme,
       '#message' => [
