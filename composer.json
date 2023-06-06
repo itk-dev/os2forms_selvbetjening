@@ -124,7 +124,7 @@
         },
         "patches": {
             "drupal/webform": {
-                "Allow filtering on category": "https://www.drupal.org/files/issues/2022-10-07/3313766-8.patch"
+                "Allow filtering on category (https://www.drupal.org/node/3313766)": "https://www.drupal.org/files/issues/2022-10-07/3313766-8.patch"
             },
             "drupal/webform_migrate": {
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
