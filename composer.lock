@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c23ceb14574cbcc68d65688dbb4632b",
+    "content-hash": "8ad64f76b768fd7258c720bf7fc29d49",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1725,7 +1725,7 @@
                     "datestamp": "1631389169",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -1735,8 +1735,8 @@
             ],
             "authors": [
                 {
-                    "name": "grahl",
-                    "homepage": "https://www.drupal.org/user/146040"
+                    "name": "bluegeek9",
+                    "homepage": "https://www.drupal.org/user/1286304"
                 },
                 {
                     "name": "johnbarclay",
