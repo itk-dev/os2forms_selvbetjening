@@ -94,14 +94,10 @@ class MaestroWebformInheritTask extends MaestroWebformTask {
   public function getAssignmentsAndNotificationsForm(array $task, $templateMachineName) {
     $form = parent::getAssignmentsAndNotificationsForm($task, $templateMachineName);
 
-    $webform = Webform::load($task['data']['webform_machine_name'] ?? NULL);
-    $anonymousNotificationMessage = NULL !== $webform
-      ? $this->t('<a href=":webform_handlers_url">Add a Meastro notification handler to the %form_label webform</a> to actually send out notifications to anonymous users.', [
-        ':webform_handlers_url' => $webform->url('handlers'),
-        '%form_label' => $webform->label(),
-      ]
-      )
-      : $this->t('Add a Meastro notification handler to the task webform to actually send out notifications to anonymous users.');
+    // @TODO Find task by unique_id = $task['data']['inherit_webform_unique_id'] and point to webform.
+    $anonymousNotificationMessage = $this->t('Add a Meastro notification handler to the webform for the task selected under %inherit_webform_from', [
+      '%inherit_webform_from' => $this->t('Inherit Webform from:'),
+    ]);
 
     WebformArrayHelper::insertBefore(
       $form['edit_task_notifications'], 'token_tree',
