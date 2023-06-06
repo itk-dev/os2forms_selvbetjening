@@ -7,6 +7,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Installerede `Webform Validation` modulet.
 * Minor type fixes to FBS handler
+* Tilføjede patch for at tillade filtrering af formularer på kategori
+  <https://www.drupal.org/files/issues/2022-10-07/3313766-8.patch>.
 
 ## [2.2.1]
 
