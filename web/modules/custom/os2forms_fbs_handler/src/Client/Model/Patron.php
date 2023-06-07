@@ -16,9 +16,9 @@ final class Patron {
     public readonly ?bool $receivePostalMail = FALSE,
     public readonly ?array $notificationProtocols = NULL,
     public readonly ?string $phoneNumber = NULL,
-    public readonly ?string $onHold = NULL,
+    public readonly ?array $onHold = NULL,
     public readonly ?string $preferredLanguage = NULL,
-    public readonly ?string $guardianVisibility = NULL,
+    public readonly ?bool $guardianVisibility = NULL,
     // Allow these properties below to be updatable.
     public ?string $emailAddress = NULL,
     public ?bool $receiveEmail = NULL,
