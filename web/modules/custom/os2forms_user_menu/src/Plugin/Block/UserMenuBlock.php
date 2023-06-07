@@ -146,8 +146,9 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
 
     $webformNemIdSettings = $webform->getThirdPartySetting('os2forms', 'os2forms_nemid');
 
-    // If nemlogin is not enabled show nothing.
-    if ($webformNemIdSettings && FALSE === $webformNemIdSettings['nemlogin_auto_redirect']) {
+    $nemloginAutoRedirect = (bool) ($webformNemIdSettings['nemlogin_auto_redirect'] ?? FALSE);
+
+    if (!$nemloginAutoRedirect) {
       return [];
     }
 

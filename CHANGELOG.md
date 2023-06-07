@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Fix bug in login display where login link displayed on pages without login
+  enabled.
 * Installerede `Webform Validation` modulet.
 * Minor type fixes to FBS handler
 * Tilføjede patch for at tillade filtrering af formularer på kategori
