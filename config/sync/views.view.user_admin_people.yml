@@ -2,6 +2,8 @@ uuid: a0c5b92b-50f4-4a07-89cf-d9fcc3aa93c0
 langcode: da
 status: true
 dependencies:
+  config:
+    - field.storage.user.field_name
   module:
     - user
 _core:
@@ -458,6 +460,69 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_name:
+          id: field_name
+          table: user__field_name
+          field: field_name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Navn user field'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: full
         options:
@@ -553,6 +618,17 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+              site_admin: '0'
+              flow_designer: '0'
+              forloeb_designer: '0'
+              sagsbehandler: '0'
+              medarbejder: '0'
+              leder: '0'
+              virksomhed: '0'
+              borger: '0'
+              os2forms_rest_api_user: '0'
+              os2forms_rest_api_user_write: '0'
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -568,6 +644,7 @@ display:
           fields:
             name: name
             mail: mail
+            field_name: field_name
         status:
           id: status
           table: users_field_data
@@ -891,7 +968,8 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.user.field_name'
   page_1:
     id: page_1
     display_title: Side
@@ -924,4 +1002,5 @@ display:
         - url
         - url.query_args
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.user.field_name'
