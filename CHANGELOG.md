@@ -12,6 +12,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede patch for at tillade filtrering af formularer på kategori
   <https://www.drupal.org/files/issues/2022-10-07/3313766-8.patch>.
 * Tilføjede mulighed for at søge på navne på brugerlisten.
+* Opdaterede til [OS2Forms sync
+  1.1.1](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.1).
 
 ## [2.2.1]
 
