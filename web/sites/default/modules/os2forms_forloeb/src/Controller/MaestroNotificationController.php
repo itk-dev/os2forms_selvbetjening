@@ -42,6 +42,7 @@ class MaestroNotificationController extends ControllerBase {
    * Preview action.
    */
   public function preview(Request $request, WebformInterface $webform, string $handler, string $notification_type, string $content_type, RouteMatchInterface $routeMatch) {
+    $handler = $webform->getHandler($handler);
     $submissionIds = array_keys($this->webformSubmissionStorage->getQuery()
       ->condition('webform_id', $webform->id())
       ->sort('created', 'DESC')
@@ -56,7 +57,7 @@ class MaestroNotificationController extends ControllerBase {
     $previewUrls = array_map(
       static fn ($submission) => Url::fromRoute('os2forms_forloeb.meastro_notification.preview', [
         'webform' => $webform->id(),
-        'handler' => $handler,
+        'handler' => $handler->getHandlerId(),
         'content_type' => $content_type,
         'submission' => $submission,
       ]),
@@ -70,18 +71,28 @@ class MaestroNotificationController extends ControllerBase {
     $renderUrl = NULL !== $currentSubmission
       ? Url::fromRoute('os2forms_forloeb.meastro_notification.preview_render', [
         'webform' => $webform->id(),
-        'handler' => $handler,
+        'handler' => $handler->getHandlerId(),
         'notification_type' => $notification_type,
         'content_type' => $content_type,
         'submission' => $currentSubmission,
       ])
     : NULL;
 
+    $submission = $this->webformSubmissionStorage->load($currentSubmission);
+    $templateTask = [];
+    $maestroQueueID = 0;
+    [,,
+      $recipient,
+      $subject,
+    ] = $this->maestroHelper->renderNotification($submission, $handler->getHandlerId(), $notification_type, $templateTask, $maestroQueueID, $content_type);
+
     return [
       '#theme' => 'os2forms_forloeb_notification_preview',
       '#webform' => $webform,
       '#handler' => $handler,
       '#notification_type' => $notification_type,
+      '#subject' => $subject,
+      '#recipient' => $recipient,
       '#content_type' => $content_type,
       '#submission' => $currentSubmission,
       '#return_url' => $webform->toUrl('handlers'),

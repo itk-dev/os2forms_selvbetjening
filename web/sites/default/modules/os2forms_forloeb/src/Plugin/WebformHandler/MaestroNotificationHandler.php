@@ -26,6 +26,8 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
 
   public const TYPE = 'type';
   public const SENDER_LABEL = 'sender_label';
+  public const NOTIFICATION_ENABLE = 'notification_enable';
+  public const NOTIFICATION_RECIPIENT = 'notification_recipient';
   public const NOTIFICATION_SUBJECT = 'notification_subject';
   public const NOTIFICATION_CONTENT = 'notification_content';
   public const NOTIFICATION_ACTION_LABEL = 'notification_action_label';
@@ -68,7 +70,8 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
       'info' => [
         '#prefix' => '<div>',
         '#suffix' => '</div>',
-        '#markup' => $this->t('Sends notification when triggered by Maestro. The notification will be sent to the person identified by the value of the %element element.', [
+        '#markup' => $this->t('Sends notification (@enabled_notification_types) when triggered by Maestro. The notification will be sent to the person identified by the value of the %element element.', [
+          '@enabled_notification_types' => implode(', ', $this->getEnabledNotifications()),
           '%element' => $this->configuration[self::NOTIFICATION][self::RECIPIENT_ELEMENT] ?? NULL,
         ]),
       ],
@@ -118,17 +121,48 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
       MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_REMINDER => $this->t('Reminder'),
       MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION => $this->t('Escalation'),
     ] as $notificationType => $label) {
+      $states = static function (bool $required = TRUE) use ($notificationType): array {
+        $states = [
+          'visible' => [
+            ':input[name="settings[notification][' . $notificationType . '][notification_enable]"]' => ['checked' => TRUE],
+          ],
+        ];
+
+        if ($required) {
+          $states['required'] = [
+            ':input[name="settings[notification][' . $notificationType . '][notification_enable]"]' => ['checked' => TRUE],
+          ];
+        }
+
+        return $states;
+      };
+
       $form[self::NOTIFICATION][$notificationType] = [
         '#type' => 'fieldset',
         '#title' => $label,
       ];
 
+      $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ENABLE] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Enable @type notification', ['@type' => $label]),
+        '#default_value' => $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ENABLE] ?? ($notificationType === MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT),
+      ];
+
+      if ($notificationType === MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION) {
+        $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_RECIPIENT] = [
+          '#type' => 'email',
+          '#title' => $this->t('@type recipient', ['@type' => $label]),
+          '#default_value' => $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_RECIPIENT] ?? NULL,
+          '#states' => $states(),
+        ];
+      }
+
       $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_SUBJECT] = [
         '#type' => 'textfield',
-        '#title' => $this->t('Notification subject'),
-        '#required' => TRUE,
+        '#title' => $this->t('Subject'),
         '#default_value' => $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_SUBJECT] ?? NULL,
         '#maxlength' => self::NOTIFICATION_SUBJECT_MAX_LENGTH,
+        '#states' => $states(),
       ];
 
       $content = $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_CONTENT] ?? NULL;
@@ -138,20 +172,21 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
       $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_CONTENT] = [
         '#type' => 'text_format',
         '#format' => 'restricted_html',
-        '#title' => $this->t('Notification text'),
-        '#required' => TRUE,
+        '#title' => $this->t('Message'),
         '#default_value' => $content ?? self::TOKEN_MAESTRO_TASK_URL,
         '#description' => $this->t('The actual notification content. Must contain the <code>@token_maestro_task_url</code> token which is the URL to the Maestro task.',
-          [
-            '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
-          ]),
+        [
+          '@token_maestro_task_url' => self::TOKEN_MAESTRO_TASK_URL,
+        ]),
+        '#states' => $states(),
       ];
 
       $form[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ACTION_LABEL] = [
         '#type' => 'textfield',
         '#title' => $this->t('Action label'),
         '#default_value' => $this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ACTION_LABEL] ?? NULL,
-        '#description' => $this->t('Label of the action show in digital post'),
+        '#description' => $this->t('Label of the action in digital post'),
+        '#states' => $states(required: FALSE),
       ];
     }
 
@@ -169,6 +204,11 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
       MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_REMINDER,
       MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION,
     ] as $notificationType) {
+      $key = [self::NOTIFICATION, $notificationType, self::NOTIFICATION_ENABLE];
+      $enabled = $formState->getValue($key);
+      if (!$enabled) {
+        break;
+      }
       $key = [self::NOTIFICATION, $notificationType, self::NOTIFICATION_CONTENT];
       $content = $formState->getValue($key);
       if (isset($content['value'])) {
@@ -219,6 +259,32 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
     parent::submitConfigurationForm($form, $formState);
 
     $this->configuration[self::NOTIFICATION] = $formState->getValue(self::NOTIFICATION);
+  }
+
+  /**
+   * Get all notification types.
+   */
+  public function getEnabledNotifications(): array {
+    $enabledNotificationTypes = [];
+
+    foreach ([
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ASSIGNMENT,
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_REMINDER,
+      MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION,
+    ] as $notificationType) {
+      if ($this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ENABLE] ?? FALSE) {
+        $enabledNotificationTypes[] = $notificationType;
+      }
+    }
+
+    return $enabledNotificationTypes;
+  }
+
+  /**
+   * Check if a notification type is enabled.
+   */
+  public function isNotificationEnabled(string $notificationType): bool {
+    return in_array($notificationType, $this->getEnabledNotifications(), TRUE);
   }
 
 }

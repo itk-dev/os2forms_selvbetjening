@@ -5,7 +5,6 @@ namespace Drupal\os2forms_forloeb\Plugin\EngineTasks;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro_webform\Plugin\EngineTasks\MaestroWebformTask;
-use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
 use Drupal\webform\Utility\WebformArrayHelper;
 
@@ -94,7 +93,7 @@ class MaestroWebformInheritTask extends MaestroWebformTask {
   public function getAssignmentsAndNotificationsForm(array $task, $templateMachineName) {
     $form = parent::getAssignmentsAndNotificationsForm($task, $templateMachineName);
 
-    // @TODO Find task by unique_id = $task['data']['inherit_webform_unique_id'] and point to webform.
+    // @todo Find task by unique_id = $task['data']['inherit_webform_unique_id'] and point to webform.
     $anonymousNotificationMessage = $this->t('Add a Meastro notification handler to the webform for the task selected under %inherit_webform_from', [
       '%inherit_webform_from' => $this->t('Inherit Webform from:'),
     ]);
