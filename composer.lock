@@ -9969,16 +9969,16 @@
         },
         {
             "name": "os2forms/os2forms_sync",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_sync.git",
-                "reference": "0948458a44bfa29f513f819c14d34359751e152a"
+                "reference": "4e28d2e9592882d8d3499f72a0a3053ad5f8c13e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/0948458a44bfa29f513f819c14d34359751e152a",
-                "reference": "0948458a44bfa29f513f819c14d34359751e152a",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/4e28d2e9592882d8d3499f72a0a3053ad5f8c13e",
+                "reference": "4e28d2e9592882d8d3499f72a0a3053ad5f8c13e",
                 "shasum": ""
             },
             "require": {
@@ -10006,9 +10006,9 @@
             "description": "OS2Forms sync",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_sync/issues",
-                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.1.0"
+                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.1.1"
             },
-            "time": "2023-02-03T12:12:37+00:00"
+            "time": "2023-06-12T11:34:01+00:00"
         },
         {
             "name": "os2forms/os2forms_webform_submission_log",
