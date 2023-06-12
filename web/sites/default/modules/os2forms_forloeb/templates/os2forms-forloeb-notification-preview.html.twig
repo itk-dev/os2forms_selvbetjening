@@ -19,7 +19,8 @@
   #}
 <div class="os2forms-forloeb-notification-preview">
   <style>
-    .os2forms-forloeb-notification-preview .navigation {
+    .os2forms-forloeb-notification-preview .navigation,
+    .os2forms-forloeb-notification-preview .header {
       display: flex;
       justify-content: space-between;
     }
@@ -50,7 +51,7 @@
         <a class="{{ content_type == type ? 'active' }}"
            href="{{ url('os2forms_forloeb.meastro_notification.preview', {
                     webform: webform.id,
-                    handler: handler,
+                    handler: handler.getHandlerId,
                     notification_type: notification_type,
                     content_type: type,
                     submission: submission}) }}">{{ type }}</a>
@@ -58,12 +59,12 @@
     </div>
 
     <div class="notification-type">
-      {% for type in ['assignment', 'reminder', 'escalation'] %}
+      {% for type in handler.getEnabledNotifications() %}
         {% if not loop.first %} | {% endif %}
         <a class="{{ notification_type == type ? 'active' }}"
            href="{{ url('os2forms_forloeb.meastro_notification.preview', {
                     webform: webform.id,
-                    handler: handler,
+                    handler: handler.getHandlerId,
                     notification_type: type,
                     content_type: content_type,
                     submission: submission}) }}">{{ type }}</a>
@@ -73,6 +74,11 @@
     <div class="return">
       <a href="{{ return_url }}">{{ 'Back to webform handlers'|t }}</a>
     </div>
+  </div>
+
+  <div class="header">
+    <div>{{ 'Subject'|t }}: {{ subject }}</div>
+    <div>{{ 'Recipient'|t }}: {{ recipient }}</div>
   </div>
 
   {% if render_url %}

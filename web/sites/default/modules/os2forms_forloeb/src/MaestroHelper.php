@@ -208,7 +208,11 @@ class MaestroHelper implements LoggerInterface {
     try {
       $handlers = $submission->getWebform()->getHandlers();
       foreach ($handlers as $handler) {
-        if (!($handler instanceof MaestroNotificationHandler) || $handler->isDisabled() || $handler->isExcluded()) {
+        if (!($handler instanceof MaestroNotificationHandler)
+        || $handler->isDisabled()
+        || $handler->isExcluded()
+        || !$handler->isNotificationEnabled($notificationType)
+        ) {
           continue;
         }
 
@@ -398,6 +402,10 @@ class MaestroHelper implements LoggerInterface {
       // Simple element.
       ?? $data[$recipientElement]
       ?? NULL;
+
+    if ($notificationType === self::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION) {
+      $recipient = $settings[MaestroNotificationHandler::NOTIFICATION][$notificationType][MaestroNotificationHandler::NOTIFICATION_RECIPIENT] ?? NULL;
+    }
 
     if (NULL !== $recipient) {
       // Lifted from MaestroEngine.
