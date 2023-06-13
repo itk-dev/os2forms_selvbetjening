@@ -120,6 +120,7 @@ class SettingsForm extends ConfigFormBase {
     ];
 
     $templatePath = $this->moduleHandler->getPath('os2forms_forloeb') . '/templates/os2forms-forloeb-notification-message-pdf-html.html.twig';
+    $defaultTemplate = file_exists($templatePath) ? file_get_contents($templatePath) : NULL;
     $form['templates']['notification_pdf'] = [
       '#type' => 'textarea',
       '#rows' => 20,
