@@ -4,7 +4,6 @@ namespace Drupal\os2forms_forloeb;
 
 use DigitalPost\MeMo\Action;
 use DigitalPost\MeMo\EntryPoint;
-use Dompdf\Dompdf;
 use Drupal\advancedqueue\Entity\QueueInterface;
 use Drupal\advancedqueue\Job;
 use Drupal\advancedqueue\JobResult;
@@ -19,14 +18,15 @@ use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
+use Drupal\entity_print\Plugin\EntityPrintPluginManagerInterface;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro\Utility\TaskHandler;
 use Drupal\os2forms_digital_post\Helper\DigitalPostHelper;
 use Drupal\os2forms_digital_post\Model\Document;
 use Drupal\os2forms_forloeb\Exception\RuntimeException;
+use Drupal\os2forms_forloeb\Form\SettingsForm;
 use Drupal\os2forms_forloeb\Plugin\AdvancedQueue\JobType\SendMeastroNotification;
 use Drupal\os2forms_forloeb\Plugin\EngineTasks\MaestroWebformInheritTask;
-use Drupal\os2forms_forloeb\Form\SettingsForm;
 use Drupal\os2forms_forloeb\Plugin\WebformHandler\MaestroNotificationHandler;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\WebformSubmissionStorageInterface;
@@ -80,6 +80,7 @@ class MaestroHelper implements LoggerInterface {
     readonly private LoggerChannelInterface $logger,
     readonly private LoggerChannelInterface $submissionLogger,
     readonly private ModuleHandlerInterface $moduleHandler,
+    readonly private EntityPrintPluginManagerInterface $entityPrintPluginManager,
     readonly private DigitalPostHelper $digitalPostHelper
   ) {
     $this->config = $configFactory->get(SettingsForm::SETTINGS);
@@ -217,19 +218,19 @@ class MaestroHelper implements LoggerInterface {
         }
 
         [
-          $content,
-          $contentType,
-          $recipient,
-          $subject,
-          $taskUrl,
-          $actionLabel,
+          'content' => $content,
+          'contentType' => $contentType,
+          'recipient' => $recipient,
+          'subject' => $subject,
+          'taskUrl' => $taskUrl,
+          'actionLabel' => $actionLabel,
         ] = $this->renderNotification($submission, $handler->getHandlerId(), $notificationType, $templateTask, $maestroQueueID);
 
         if ('email' === $contentType) {
-          $this->sendNotificationEmail($recipient, $subject, $content, $submission);
+          $this->sendNotificationEmail($recipient, $subject, $content, $submission, $notificationType);
         }
         else {
-          $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission);
+          $this->sendNotificationDigitalPost($recipient, $subject, $content, $taskUrl, $actionLabel, $submission, $notificationType);
         }
       }
     }
@@ -273,34 +274,47 @@ class MaestroHelper implements LoggerInterface {
     string $recipient,
     string $subject,
     string $body,
-    WebformSubmissionInterface $submission
+    WebformSubmissionInterface $submission,
+    string $notificationType
   ): void {
-    $message = [
-      'subject' => $subject,
-      'body' => $body,
-      'html' => TRUE,
-    ];
+    try {
+      $message = [
+        'subject' => $subject,
+        'body' => $body,
+        'html' => TRUE,
+      ];
 
-    $langcode = $this->languageManager->getCurrentLanguage()->getId();
+      $langcode = $this->languageManager->getCurrentLanguage()->getId();
 
-    $result = $this->mailManager->mail(
-      'os2forms_forloeb',
-      'notification',
-      $recipient,
-      $langcode,
-      $message
-    );
+      $result = $this->mailManager->mail(
+        'os2forms_forloeb',
+        'notification',
+        $recipient,
+        $langcode,
+        $message
+      );
 
-    if (!$result['result']) {
-      throw new RuntimeException(sprintf('Error sending notification email to %s', $recipient));
+      if (!$result['result']) {
+        throw new RuntimeException(sprintf('Error sending notification (%s) email to %s', $notificationType, $recipient));
+      }
+
+      $this->notice('Email notification (@type) sent to @recipient', [
+        '@type' => $notificationType,
+        'webform_submission' => $submission,
+        '@recipient' => $recipient,
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'notification sent',
+      ]);
     }
-
-    $this->notice('Notification email sent to @recipient', [
-      'webform_submission' => $submission,
-      '@recipient' => $recipient,
-      'handler_id' => 'os2forms_forloeb',
-      'operation' => 'notification sent',
-    ]);
+    catch (\Exception $exception) {
+      $this->error('Error sending email notification (@type): @message', [
+        '@type' => $notificationType,
+        '@message' => $exception->getMessage(),
+        'webform_submission' => $submission,
+        'handler_id' => 'os2forms_forloeb',
+        'operation' => 'failed sending notification',
+      ]);
+    }
   }
 
   /**
@@ -312,7 +326,8 @@ class MaestroHelper implements LoggerInterface {
     string $content,
     string $taskUrl,
     string $actionLabel,
-    WebformSubmissionInterface $submission
+    WebformSubmissionInterface $submission,
+    string $notificationType
   ): void {
     if (!$this->moduleHandler->moduleExists('os2forms_digital_post')) {
       throw new RuntimeException('Cannot send digital post. Module os2forms_digital_post not installed.');
@@ -349,14 +364,16 @@ class MaestroHelper implements LoggerInterface {
         $submission
       );
 
-      $this->notice('Digital post sent', [
+      $this->notice('Digital post notification sent (@type)', [
+        '@type' => $notificationType,
         'webform_submission' => $submission,
         'handler_id' => 'os2forms_forloeb',
         'operation' => 'notification sent',
       ]);
     }
     catch (\Exception $exception) {
-      $this->error('Error sending digital post: @message', [
+      $this->error('Error sending digital post notification (@type): @message', [
+        '@type' => $notificationType,
         '@message' => $exception->getMessage(),
         'webform_submission' => $submission,
         'handler_id' => 'os2forms_forloeb',
@@ -383,13 +400,13 @@ class MaestroHelper implements LoggerInterface {
    *   on the recipient.
    *
    * @return array
-   *   The rendered notification as a list
-   *   - Content
-   *   - Content type
-   *   - Recipient
-   *   - Subject
-   *   - Task URL (for digital post)
-   *   - Action label (for digital post)
+   *   The rendered notification with keys
+   *   - content
+   *   - contentType
+   *   - recipient
+   *   - subject
+   *   - taskUrl (for digital post)
+   *   - actionLabel (for digital post)
    */
   public function renderNotification(WebformSubmissionInterface $submission, string $handlerId, string $notificationType, array $templateTask, int $maestroQueueID, string $contentType = NULL): array {
     $handler = $submission->getWebform()->getHandler($handlerId);
@@ -463,16 +480,17 @@ class MaestroHelper implements LoggerInterface {
 
       switch ($contentType) {
         case 'email':
-          $content = $this->buildHtml($contentType, $subject, $content, $taskUrl, $actionLabel, $submission);
+          $content = $this->renderHtml($contentType, $subject, $content, $taskUrl, $actionLabel, $submission);
           break;
 
         case 'pdf':
-          $pdfContent = $this->buildHtml($contentType, $subject, $content, $taskUrl, $actionLabel, $submission);
-          $dompdf = new Dompdf();
-          $dompdf->loadHtml($pdfContent);
-          $dompdf->render();
+          $pdfContent = $this->renderHtml($contentType, $subject, $content, $taskUrl, $actionLabel, $submission);
 
-          $content = $dompdf->output();
+          // Get dompdf plugin from entity_print module.
+          /** @var \Drupal\entity_print\Plugin\EntityPrint\PrintEngine\PdfEngineBase $printer */
+          $printer = $this->entityPrintPluginManager->createInstance('dompdf');
+          $printer->addPage($pdfContent);
+          $content = $printer->getBlob();
           break;
 
         default:
@@ -480,12 +498,12 @@ class MaestroHelper implements LoggerInterface {
       }
 
       return [
-        $content,
-        $contentType,
-        $recipient,
-        $subject,
-        $taskUrl,
-        $actionLabel,
+        'content' => $content,
+        'contentType' => $contentType,
+        'recipient' => $recipient,
+        'subject' => $subject,
+        'taskUrl' => $taskUrl,
+        'actionLabel' => $actionLabel,
       ];
     }
 
@@ -495,7 +513,7 @@ class MaestroHelper implements LoggerInterface {
   /**
    * Build HTML.
    */
-  private function buildHtml(
+  private function renderHtml(
     string $type,
     string $subject,
     array $content,
@@ -503,19 +521,27 @@ class MaestroHelper implements LoggerInterface {
     string $actionLabel,
     WebformSubmissionInterface $submission
   ): string|MarkupInterface {
-    // Render body as HTML.
-    $theme = sprintf('os2forms_forloeb_notification_message_%s_html', $type);
+    $template = $this->config->get('templates')['notification_' . $type] ?? NULL;
+    if (file_exists($template)) {
+      $template = file_get_contents($template) ?: NULL;
+    }
+    if (NULL === $template) {
+      $template = 'Missing or invalid template';
+    }
 
     $build = [
-      '#theme' => $theme,
-      '#message' => [
-        'subject' => $subject,
-        'content' => $content,
+      '#type' => 'inline_template',
+      '#template' => $template,
+      '#context' => [
+        'message' => [
+          'subject' => $subject,
+          'content' => $content,
+        ],
+        'task_url' => $taskUrl,
+        'action_label' => $actionLabel,
+        'webform_submission' => $submission,
+        'handler' => $this,
       ],
-      '#task_url' => $taskUrl,
-      '#action_label' => $actionLabel,
-      '#webform_submission' => $submission,
-      '#handler' => $this,
     ];
 
     return Markup::create(trim((string) $this->webformThemeManager->renderPlain($build)));
