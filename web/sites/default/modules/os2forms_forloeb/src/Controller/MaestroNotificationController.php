@@ -81,9 +81,9 @@ class MaestroNotificationController extends ControllerBase {
     $submission = $this->webformSubmissionStorage->load($currentSubmission);
     $templateTask = [];
     $maestroQueueID = 0;
-    [,,
-      $recipient,
-      $subject,
+    [
+      'recipient' => $recipient,
+      'subject' => $subject,
     ] = $this->maestroHelper->renderNotification($submission, $handler->getHandlerId(), $notification_type, $templateTask, $maestroQueueID, $content_type);
 
     return [
@@ -107,7 +107,10 @@ class MaestroNotificationController extends ControllerBase {
   public function previewRender(Request $request, WebformInterface $webform, string $handler, string $notification_type, string $content_type, WebformSubmissionInterface $submission) {
     $templateTask = [];
     $maestroQueueID = 0;
-    [$content, $contentType] = $this->maestroHelper->renderNotification($submission, $handler, $notification_type, $templateTask, $maestroQueueID, $content_type);
+    [
+      'content' => $content,
+      'contentType' => $contentType,
+    ] = $this->maestroHelper->renderNotification($submission, $handler, $notification_type, $templateTask, $maestroQueueID, $content_type);
 
     $response = new Response($content);
     if ('pdf' === $contentType) {

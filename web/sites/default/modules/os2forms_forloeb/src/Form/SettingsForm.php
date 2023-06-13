@@ -110,19 +110,25 @@ class SettingsForm extends ConfigFormBase {
     $defaultTemplate = file_exists($templatePath) ? file_get_contents($templatePath) : NULL;
     $form['templates']['notification_email'] = [
       '#type' => 'textarea',
-      '#rows' => 10,
+      '#rows' => 20,
       '#required' => TRUE,
       '#title' => $this->t('Email template'),
       '#default_value' => $config->get('templates')['notification_email'] ?? $defaultTemplate,
-      '#description' => $this->t('HTML template for email notifications. See @template_path'),
+      '#description' => $this->t('HTML template for email notifications. If the template is a path, e.g. <code>@templatePath</code>, the template will be loaded from this path.', [
+        '@templatePath' => $templatePath,
+      ]),
     ];
 
+    $templatePath = $this->moduleHandler->getPath('os2forms_forloeb') . '/templates/os2forms-forloeb-notification-message-pdf-html.html.twig';
     $form['templates']['notification_pdf'] = [
       '#type' => 'textarea',
+      '#rows' => 20,
       '#required' => TRUE,
       '#title' => $this->t('PDF template'),
-      '#default_value' => $config->get('templates')['notification_pdf'] ?? '',
-      '#description' => $this->t('HTML template for PDF notifications (digital post)'),
+      '#default_value' => $config->get('templates')['notification_pdf'] ?? $defaultTemplate,
+      '#description' => $this->t('HTML template for PDF notifications (digital post). If the template is a path, e.g. <code>@templatePath</code>, the template will be loaded from this path.', [
+        '@templatePath' => $templatePath,
+      ]),
     ];
 
     return parent::buildForm($form, $form_state);
@@ -135,6 +141,7 @@ class SettingsForm extends ConfigFormBase {
     $this->config(static::SETTINGS)
       ->set('known_anonymous_roles', $formState->getValue('known_anonymous_roles'))
       ->set('processing', $formState->getValue('processing'))
+      ->set('templates', $formState->getValue('templates'))
       ->save();
 
     parent::submitForm($form, $formState);

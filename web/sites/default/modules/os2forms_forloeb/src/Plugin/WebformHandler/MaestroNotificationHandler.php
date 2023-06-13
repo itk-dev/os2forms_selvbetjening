@@ -273,7 +273,7 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
       MaestroHelper::OS2FORMS_FORLOEB_NOTIFICATION_ESCALATION,
     ] as $notificationType) {
       if ($this->configuration[self::NOTIFICATION][$notificationType][self::NOTIFICATION_ENABLE] ?? FALSE) {
-        $enabledNotificationTypes[] = $notificationType;
+        $enabledNotificationTypes[$notificationType] = $notificationType;
       }
     }
 
@@ -284,7 +284,7 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
    * Check if a notification type is enabled.
    */
   public function isNotificationEnabled(string $notificationType): bool {
-    return in_array($notificationType, $this->getEnabledNotifications(), TRUE);
+    return isset($this->getEnabledNotifications()[$notificationType]);
   }
 
 }
