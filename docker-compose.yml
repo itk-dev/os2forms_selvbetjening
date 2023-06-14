@@ -37,7 +37,7 @@ services:
       - DOCKER_HOST_DOMAIN=${COMPOSE_DOMAIN}
       - COMPOSER_VERSION=2
       - PHP_IDE_CONFIG=serverName=localhost
-      - PHP_SENDMAIL_PATH=/usr/local/bin/mhsendmail --smtp-addr="mailhog:1025"
+      - PHP_SENDMAIL_PATH=/usr/local/bin/mhsendmail --smtp-addr="mail:1025"
     depends_on:
       - mariadb
       - memcached
@@ -73,7 +73,7 @@ services:
     environment:
       - MEMCACHED_CACHE_SIZE=64
 
-  mailhog:
+  mail:
     image: itkdev/mailhog
     networks:
       - app
@@ -84,5 +84,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}Mailhog.rule=Host(`mailhog-${COMPOSE_DOMAIN}`)"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}Mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}Mail.rule=Host(`mail.${COMPOSE_DOMAIN}`)"
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}Mail.loadbalancer.server.port=8025"

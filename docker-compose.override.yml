@@ -2,12 +2,11 @@ services:
   phpfpm:
     build: .docker/development/phpfpm
     environment:
-      - PHP_SENDMAIL_PATH=/usr/local/bin/mailpit sendmail -S mailhog:1025
+      - PHP_SENDMAIL_PATH=/usr/local/bin/mailpit sendmail -S mail:1025
 
-  mailhog:
+  mail:
     image: axllent/mailpit
 
-services:
   node:
     image: node:16
     profiles:
