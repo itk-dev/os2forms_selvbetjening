@@ -1,4 +1,11 @@
-# https://github.com/Soluto/oidc-server-mock
+services:
+  phpfpm:
+    build: .docker/development/phpfpm
+    environment:
+      - PHP_SENDMAIL_PATH=/usr/local/bin/mailpit sendmail -S mailhog:1025
+
+  mailhog:
+    image: axllent/mailpit
 
 services:
   node:
