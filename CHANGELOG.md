@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede til [OS2Web Data lookup
+  1.6.0](https://github.com/OS2web/os2web_datalookup/releases/tag/1.6.0).
 * Fix bug in login display where login link displayed on pages without login
   enabled.
 * Installerede `Webform Validation` modulet.
