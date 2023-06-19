@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c23ceb14574cbcc68d65688dbb4632b",
+    "content-hash": "ca9078d5ce485b8958b18416b08227a1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1725,7 +1725,7 @@
                     "datestamp": "1631389169",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -1735,8 +1735,8 @@
             ],
             "authors": [
                 {
-                    "name": "grahl",
-                    "homepage": "https://www.drupal.org/user/146040"
+                    "name": "bluegeek9",
+                    "homepage": "https://www.drupal.org/user/1286304"
                 },
                 {
                     "name": "johnbarclay",
@@ -9969,16 +9969,16 @@
         },
         {
             "name": "os2forms/os2forms_sync",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_sync.git",
-                "reference": "0948458a44bfa29f513f819c14d34359751e152a"
+                "reference": "cb3385f22afb2340bdc5539fa05ac399fc27b300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/0948458a44bfa29f513f819c14d34359751e152a",
-                "reference": "0948458a44bfa29f513f819c14d34359751e152a",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/cb3385f22afb2340bdc5539fa05ac399fc27b300",
+                "reference": "cb3385f22afb2340bdc5539fa05ac399fc27b300",
                 "shasum": ""
             },
             "require": {
@@ -10006,9 +10006,9 @@
             "description": "OS2Forms sync",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_sync/issues",
-                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.1.0"
+                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.1.2"
             },
-            "time": "2023-02-03T12:12:37+00:00"
+            "time": "2023-06-13T10:18:01+00:00"
         },
         {
             "name": "os2forms/os2forms_webform_submission_log",
@@ -10053,16 +10053,16 @@
         },
         {
             "name": "os2web/os2web_datalookup",
-            "version": "1.5.3",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_datalookup.git",
-                "reference": "9021990d72c4d63c1099988dc1852b5dba0d3457"
+                "reference": "38e166b792a34e174b21cafb1234b809e554d1ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/9021990d72c4d63c1099988dc1852b5dba0d3457",
-                "reference": "9021990d72c4d63c1099988dc1852b5dba0d3457",
+                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/38e166b792a34e174b21cafb1234b809e554d1ec",
+                "reference": "38e166b792a34e174b21cafb1234b809e554d1ec",
                 "shasum": ""
             },
             "require": {
@@ -10076,9 +10076,9 @@
             "description": "Provides integration with Danish data lookup services such as Service platformen or Datafordeler.",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_datalookup/issues",
-                "source": "https://github.com/OS2web/os2web_datalookup/tree/1.5.3"
+                "source": "https://github.com/OS2web/os2web_datalookup/tree/1.6.0"
             },
-            "time": "2023-04-20T11:41:01+00:00"
+            "time": "2023-06-02T11:36:31+00:00"
         },
         {
             "name": "os2web/os2web_nemlogin",
