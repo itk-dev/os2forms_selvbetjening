@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.3.0]
+
 * Opdaterede til [OS2Web Data lookup
   1.6.0](https://github.com/OS2web/os2web_datalookup/releases/tag/1.6.0).
 * Fix bug in login display where login link displayed on pages without login
@@ -207,7 +209,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.0...HEAD
+[2.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.0.0...2.1.0
