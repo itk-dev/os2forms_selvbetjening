@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca9078d5ce485b8958b18416b08227a1",
+    "content-hash": "b2a363257f8efca8fee2cda87af996c9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1406,23 +1406,24 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v1.2.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "5031045d9640b38cfc14aac9667470df09c9e090"
+                "reference": "e8d2d5e37e8b0b30f0732a011295ab80680d7e85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/5031045d9640b38cfc14aac9667470df09c9e090",
-                "reference": "5031045d9640b38cfc14aac9667470df09c9e090",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/e8d2d5e37e8b0b30f0732a011295ab80680d7e85",
+                "reference": "e8d2d5e37e8b0b30f0732a011295ab80680d7e85",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "phenx/php-font-lib": "^0.5.4",
-                "phenx/php-svg-lib": "^0.3.3 || ^0.4.0",
+                "masterminds/html5": "^2.0",
+                "phenx/php-font-lib": ">=0.5.4 <1.0.0",
+                "phenx/php-svg-lib": ">=0.3.3 <1.0.0",
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
@@ -1453,25 +1454,17 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Ménager",
-                    "email": "fabien.menager@gmail.com"
-                },
-                {
-                    "name": "Brian Sweeney",
-                    "email": "eclecticgeek@gmail.com"
-                },
-                {
-                    "name": "Gabriel Bull",
-                    "email": "me@gabrielbull.com"
+                    "name": "The Dompdf Community",
+                    "homepage": "https://github.com/dompdf/dompdf/blob/master/AUTHORS.md"
                 }
             ],
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "support": {
                 "issues": "https://github.com/dompdf/dompdf/issues",
-                "source": "https://github.com/dompdf/dompdf/tree/v1.2.2"
+                "source": "https://github.com/dompdf/dompdf/tree/v2.0.3"
             },
-            "time": "2022-04-27T13:50:54+00:00"
+            "time": "2023-02-07T12:51:48+00:00"
         },
         {
             "name": "drupal/admin_audit_trail",
@@ -8573,20 +8566,20 @@
         },
         {
             "name": "itk-dev/os2forms_digital_post",
-            "version": "1.2.3",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "c0c011c2cc848a768f7bc5152d5b5f2af1a20677"
+                "reference": "f6fb684c6fcf8d54d914d4e434ec01990a692805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/c0c011c2cc848a768f7bc5152d5b5f2af1a20677",
-                "reference": "c0c011c2cc848a768f7bc5152d5b5f2af1a20677",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/f6fb684c6fcf8d54d914d4e434ec01990a692805",
+                "reference": "f6fb684c6fcf8d54d914d4e434ec01990a692805",
                 "shasum": ""
             },
             "require": {
-                "dompdf/dompdf": "~0.8.0 || ^1.0",
+                "dompdf/dompdf": "^2.0",
                 "drupal/webform": "^6.0",
                 "ext-soap": "*",
                 "http-interop/http-factory-guzzle": "^1.0.0",
@@ -8625,9 +8618,9 @@
             "description": "Provides integration to Print service provided by Serviceplatformen.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/1.2.3"
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.0"
             },
-            "time": "2023-05-03T13:23:39+00:00"
+            "time": "2023-06-23T06:51:15+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
