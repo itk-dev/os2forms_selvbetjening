@@ -5,6 +5,13 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.3.1]
+
+* Opdaterede til [OS2Forms Digital Post
+  2.0.0](https://github.com/itk-dev/os2forms_digital_post/releases/tag/2.0.0)
+* Opdaterede til [OS2Forms GetOrganized
+  1.1.2](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.2)
+
 ## [2.3.0]
 
 * Opdaterede til [OS2Web Data lookup
@@ -209,7 +216,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.1...HEAD
+[2.3.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.0...2.3.1
 [2.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.1.0...2.2.0
