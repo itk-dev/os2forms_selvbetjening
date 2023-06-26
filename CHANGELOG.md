@@ -5,6 +5,12 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.4.0]
+
+* Opdaterede til [OS2forms med Forløb installation profile
+1.12.0](https://github.com/OS2Forms/os2forms_forloeb_profile/releases/tag/1.12.0)
+og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
+
 ## [2.3.1]
 
 * Opdaterede til [OS2Forms Digital Post
@@ -216,7 +222,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.0...HEAD
+[2.4.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.1...2.4.0
 [2.3.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.0...2.3.1
 [2.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.0...2.2.1
