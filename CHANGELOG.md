@@ -5,6 +5,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.4.1]
+
+* Fjernede [REST UI](https://www.drupal.org/project/restui)-modulet
+
 ## [2.4.0]
 
 * Opdaterede til [OS2forms med Forløb installation profile
@@ -222,7 +226,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.1...HEAD
+[2.4.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.0...2.4.1
 [2.4.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.1...2.4.0
 [2.3.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.0...2.3.1
 [2.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.2.1...2.3.0
