@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94e6b52feccb30aeb3756fa22e9153d7",
+    "content-hash": "117f6d7f1ff7a9966fbd7d83babbf0e6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8512,16 +8512,16 @@
         },
         {
             "name": "itk-dev/openid-connect",
-            "version": "2.3.0",
+            "version": "dev-feature/authorization-code-flow",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/openid-connect.git",
-                "reference": "0ab19aa7a7a8534e38c70e5e8b105e9c964c3e57"
+                "reference": "e0521d4709429b8e9dbfbc945eda902eda748779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/0ab19aa7a7a8534e38c70e5e8b105e9c964c3e57",
-                "reference": "0ab19aa7a7a8534e38c70e5e8b105e9c964c3e57",
+                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/e0521d4709429b8e9dbfbc945eda902eda748779",
+                "reference": "e0521d4709429b8e9dbfbc945eda902eda748779",
                 "shasum": ""
             },
             "require": {
@@ -8529,14 +8529,16 @@
                 "ext-openssl": "*",
                 "firebase/php-jwt": "^5.2",
                 "league/oauth2-client": "^2.6",
-                "php": "^7.3|^8.0",
-                "psr/cache": "^1.0",
+                "php": "^7.4|^8.0|^8.1",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
+                "psr/http-client": "^1.0",
                 "robrichards/xmlseclibs": "^3.1"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "escapestudios/symfony2-coding-standard": "^3.12",
                 "mockery/mockery": "^1.4",
+                "phpunit/php-code-coverage": "^9.2",
                 "phpunit/phpunit": "^9.5",
                 "vimeo/psalm": "^4.7"
             },
@@ -8567,9 +8569,9 @@
             "description": "OpenID connect configuration package",
             "support": {
                 "issues": "https://github.com/itk-dev/openid-connect/issues",
-                "source": "https://github.com/itk-dev/openid-connect/tree/2.3.0"
+                "source": "https://github.com/itk-dev/openid-connect/tree/feature/authorization-code-flow"
             },
-            "time": "2021-12-07T12:11:13+00:00"
+            "time": "2023-05-12T13:37:31+00:00"
         },
         {
             "name": "itk-dev/os2forms_cpr_lookup",
@@ -8763,16 +8765,16 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "1.2.0",
+            "version": "dev-feature/authorization-code-flow",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "845b71f28fa837533e69cca7c6845ae439b46577"
+                "reference": "65e1882c893ac245a9cdbb55fd006f678f94fe9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/845b71f28fa837533e69cca7c6845ae439b46577",
-                "reference": "845b71f28fa837533e69cca7c6845ae439b46577",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/65e1882c893ac245a9cdbb55fd006f678f94fe9a",
+                "reference": "65e1882c893ac245a9cdbb55fd006f678f94fe9a",
                 "shasum": ""
             },
             "require": {
@@ -8796,9 +8798,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.2.0"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/feature/authorization-code-flow"
             },
-            "time": "2023-04-25T08:03:25+00:00"
+            "time": "2023-05-12T13:31:01+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -22115,9 +22117,25 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "itk-dev/openid-connect",
+            "version": "dev-feature/authorization-code-flow",
+            "alias": "2.3.0",
+            "alias_normalized": "2.3.0.0"
+        },
+        {
+            "package": "itk-dev/os2forms_nemlogin_openid_connect",
+            "version": "dev-feature/authorization-code-flow",
+            "alias": "1.2",
+            "alias_normalized": "1.2.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "itk-dev/openid-connect": 20,
+        "itk-dev/os2forms_nemlogin_openid_connect": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
