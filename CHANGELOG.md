@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede til [OS2Forms GetOrganized
+  1.1.3](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.3)
+
 ## [2.4.1]
 
 * Fjernede [REST UI](https://www.drupal.org/project/restui)-modulet
