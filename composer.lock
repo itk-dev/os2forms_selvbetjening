@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94e6b52feccb30aeb3756fa22e9153d7",
+    "content-hash": "6bf32a213f520a98ccaec60524c92b00",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8512,16 +8512,16 @@
         },
         {
             "name": "itk-dev/openid-connect",
-            "version": "2.3.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/openid-connect.git",
-                "reference": "0ab19aa7a7a8534e38c70e5e8b105e9c964c3e57"
+                "reference": "3d35c63c3bb9bc4424f93135f92973bd20750299"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/0ab19aa7a7a8534e38c70e5e8b105e9c964c3e57",
-                "reference": "0ab19aa7a7a8534e38c70e5e8b105e9c964c3e57",
+                "url": "https://api.github.com/repos/itk-dev/openid-connect/zipball/3d35c63c3bb9bc4424f93135f92973bd20750299",
+                "reference": "3d35c63c3bb9bc4424f93135f92973bd20750299",
                 "shasum": ""
             },
             "require": {
@@ -8529,14 +8529,16 @@
                 "ext-openssl": "*",
                 "firebase/php-jwt": "^5.2",
                 "league/oauth2-client": "^2.6",
-                "php": "^7.3|^8.0",
-                "psr/cache": "^1.0",
+                "php": "^8.1",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
+                "psr/http-client": "^1.0",
                 "robrichards/xmlseclibs": "^3.1"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "escapestudios/symfony2-coding-standard": "^3.12",
                 "mockery/mockery": "^1.4",
+                "phpunit/php-code-coverage": "^9.2",
                 "phpunit/phpunit": "^9.5",
                 "vimeo/psalm": "^4.7"
             },
@@ -8567,9 +8569,9 @@
             "description": "OpenID connect configuration package",
             "support": {
                 "issues": "https://github.com/itk-dev/openid-connect/issues",
-                "source": "https://github.com/itk-dev/openid-connect/tree/2.3.0"
+                "source": "https://github.com/itk-dev/openid-connect/tree/3.1.0"
             },
-            "time": "2021-12-07T12:11:13+00:00"
+            "time": "2023-07-03T13:49:54+00:00"
         },
         {
             "name": "itk-dev/os2forms_cpr_lookup",
@@ -8763,22 +8765,22 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "845b71f28fa837533e69cca7c6845ae439b46577"
+                "reference": "93590b5ae3bc76623e91e70ff542042f8f3a3fe3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/845b71f28fa837533e69cca7c6845ae439b46577",
-                "reference": "845b71f28fa837533e69cca7c6845ae439b46577",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/93590b5ae3bc76623e91e70ff542042f8f3a3fe3",
+                "reference": "93590b5ae3bc76623e91e70ff542042f8f3a3fe3",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
-                "itk-dev/openid-connect": "^2.1.0",
+                "itk-dev/openid-connect": "^3.1",
                 "os2web/os2web_nemlogin": "^1.2"
             },
             "require-dev": {
@@ -8796,9 +8798,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.2.0"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.3.0"
             },
-            "time": "2023-04-25T08:03:25+00:00"
+            "time": "2023-07-05T11:43:52+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
