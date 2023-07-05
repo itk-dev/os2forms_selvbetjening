@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede [OpenId Connect Server
   Mock](https://github.com/Soluto/oidc-server-mock) til test af OIDC-login under
   udvikling.
+* Installerede og aktiverede kortelement
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/170>)
 
 ## [2.4.2]
 
