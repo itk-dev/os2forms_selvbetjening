@@ -1,4 +1,0 @@
-# Ignore IntelliJ
-.idea/*
-composer.lock
-vendor/

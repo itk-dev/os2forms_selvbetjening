@@ -3,7 +3,6 @@
   <description>The coding standard.</description>
 
   <file>web/modules/custom/</file>
-  <file>web/sites/default/modules/os2forms_forloeb/</file>
   <exclude-pattern type="relative">vendor/</exclude-pattern>
 
   <!-- Show progress of the run -->
