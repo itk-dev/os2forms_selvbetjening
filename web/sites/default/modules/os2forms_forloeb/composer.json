@@ -41,7 +41,7 @@
     "drupal/r4032login": "^2.1",
     "drupal/simple_ldap": "1.0.0-alpha3",
     "drupal/simplesamlphp_auth": "^3.2",
-    "drupal/switch_page_theme": "1.x-dev#ac38137f43cc72a8efba04bc127b87fbf2c28e06",
+    "drupal/switch_page_theme": "^4.0",
     "drupal/telephone_validation": "^2.2",
     "drupal/ultimate_cron": "2.0.0-alpha5",
     "drupal/user_default_page": "^2.1",
