@@ -5,8 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-
 ## [2.4.3]
+
 * Opdaterede til [OS2Forms Os2forms
   3.8.0](https://github.com/OS2Forms/os2forms/releases/tag/3.8.0)
 * Tilføjede [OpenId Connect Server
