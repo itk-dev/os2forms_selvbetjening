@@ -77,7 +77,9 @@ function itkdev_openid_connect_openid_connect_claims_alter(array &$claims) {
  */
 function itkdev_openid_connect_openid_connect_userinfo_alter(array &$userinfo, array $context) {
   // Prefer email as Drupal user name.
-  $userinfo['preferred_username'] = $userinfo['email'];
+  if (isset($userinfo['email'])) {
+    $userinfo['preferred_username'] = $userinfo['email'];
+  }
 
   // Full person name.
   if (!isset($userinfo['full_name']) && isset($userinfo['given_name'], $userinfo['family_name'])) {
