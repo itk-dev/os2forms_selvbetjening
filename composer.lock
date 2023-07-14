@@ -8626,12 +8626,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "db3f09694c0c14c7c0ecc2a55c6e62462ea071fb"
+                "reference": "7cfa26c47257b6ea74009604055412e42fd7063b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/db3f09694c0c14c7c0ecc2a55c6e62462ea071fb",
-                "reference": "db3f09694c0c14c7c0ecc2a55c6e62462ea071fb",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/7cfa26c47257b6ea74009604055412e42fd7063b",
+                "reference": "7cfa26c47257b6ea74009604055412e42fd7063b",
                 "shasum": ""
             },
             "require": {
@@ -8680,7 +8680,7 @@
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/feature/FORMS-821-data-lookup-digital-post-api"
             },
-            "time": "2023-07-05T13:40:18+00:00"
+            "time": "2023-07-14T10:40:28+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
