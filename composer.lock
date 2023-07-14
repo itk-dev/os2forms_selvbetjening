@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6686a875af0e751ea7385cca661e86a8",
+    "content-hash": "b88dd7ae5126da596b5d71b0ee8f252a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4666,11 +4666,11 @@
         },
         {
             "name": "drupal/maestro",
-            "version": "dev-maestro_token",
+            "version": "dev-3.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/maestro.git",
-                "reference": "maestro_token"
+                "reference": "3.x"
             },
             "type": "drupal-module"
         },
@@ -22329,7 +22329,7 @@
     "aliases": [
         {
             "package": "drupal/maestro",
-            "version": "dev-maestro_token",
+            "version": "dev-3.x",
             "alias": "3.2",
             "alias_normalized": "3.2.0.0"
         },
