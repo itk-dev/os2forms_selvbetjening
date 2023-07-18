@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede selvbetjening tema's favicon.
+
 ## [2.4.3]
 
 * Opdaterede til [OS2Forms Os2forms
