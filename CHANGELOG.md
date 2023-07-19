@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Opdaterede selvbetjening tema's favicon.
+* Opdaterede til [OS2Forms Digital Post
+  2.0.1](https://github.com/itk-dev/os2forms_digital_post/releases/tag/2.0.1)
 
 ## [2.4.3]
 
