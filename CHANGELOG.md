@@ -5,6 +5,20 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.4.4]
+
+* Opdaterede selvbetjening tema's favicon.
+* Opdaterede til [OS2Forms Digital Post
+  2.0.1](https://github.com/itk-dev/os2forms_digital_post/releases/tag/2.0.1)
+
+## [2.4.3]
+
+* Opdaterede til [OS2Forms Os2forms
+  3.8.0](https://github.com/OS2Forms/os2forms/releases/tag/3.8.0)
+* Tilføjede [OpenId Connect Server
+  Mock](https://github.com/Soluto/oidc-server-mock) til test af OIDC-login under
+  udvikling.
+
 ## [2.4.2]
 
 * Opdaterede til [OS2Forms GetOrganized
@@ -231,7 +245,9 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.2...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.4...HEAD
+[2.4.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.3...2.4.4
+[2.4.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.2...2.4.3
 [2.4.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.1...2.4.2
 [2.4.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.0...2.4.1
 [2.4.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.3.1...2.4.0

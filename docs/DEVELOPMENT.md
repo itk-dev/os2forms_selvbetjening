@@ -6,6 +6,20 @@ We use [OpenId Connect Server Mock](https://github.com/Soluto/oidc-server-mock).
 script](https://github.com/itk-dev/devops_itkdev-docker#helper-scripts) is used
 for development.
 
+Start docker compose show with the `test`
+[profile](https://docs.docker.com/compose/profiles/):
+
+```sh
+docker compose --profile test up --detach
+```
+
+Remember to add `--profile test` when stopping (or downing) to stop (or down)
+all containers:
+
+```sh
+docker compose --profile test stop
+```
+
 ## "Medarbejderlogin"
 
 Configure [the OpenID Connect

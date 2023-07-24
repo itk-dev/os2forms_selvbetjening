@@ -1,10 +1,21 @@
 # https://github.com/Soluto/oidc-server-mock
 
 services:
+  node:
+    image: node:16
+    profiles:
+      - dev
+    networks:
+      - app
+    volumes:
+      - .:/app:delegated
+
   idp-admin:
     image: ghcr.io/soluto/oidc-server-mock:latest
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-admin.${COMPOSE_DOMAIN}
+    profiles:
+      - test
     networks:
       - app
       - frontend
@@ -104,6 +115,8 @@ services:
     image: ghcr.io/soluto/oidc-server-mock:latest
     # Let this container be accessible both internally and externally on the same domain.
     container_name: idp-citizen.${COMPOSE_DOMAIN}
+    profiles:
+      - test
     networks:
       - app
       - frontend
@@ -187,10 +200,22 @@ services:
           Claims:
             # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
           - Type: name
-            Value: Test Testersen
+            Value: Troels Bondetest
             ValueType: string
           - Type: cpr
             Value: '1705880000'
+            ValueType: string
+
+        - SubjectId: '2611740000'
+          Username: '2611740000'
+          Password: '2611740000'
+          Claims:
+            # Claims added here must be defined above in IDENTITY_RESOURCES_INLINE
+          - Type: name
+            Value: Betina Henningsentest
+            ValueType: string
+          - Type: cpr
+            Value: '2611740000'
             ValueType: string
 
         - SubjectId: '43486829'
