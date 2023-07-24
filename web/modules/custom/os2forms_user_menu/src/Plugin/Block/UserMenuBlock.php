@@ -172,15 +172,21 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
           $name = $this->t('Logged in');
         }
       }
-      else {
+      elseif ($cpr = $plugin->fetchValue('cpr')) {
         try {
-          $cprResponse = $this->cprService->search($plugin->fetchValue('cpr'));
+          $cprResponse = $this->cprService->search($plugin->fetchValue($cpr));
           $name = $cprResponse->getName();
         }
         catch (\Exception $e) {
           // If we could not get cpr information show nothing.
           $name = $this->t('Logged in');
         }
+      }
+      elseif ($plugin->fetchValue('name')) {
+        $name = $plugin->fetchValue('name');
+      }
+      else {
+        $name = $this->t('Logged in');
       }
     }
 
