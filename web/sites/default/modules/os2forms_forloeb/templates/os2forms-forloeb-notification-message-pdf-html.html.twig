@@ -6,7 +6,10 @@
  * Available variables:
  * - message: The notification message
  *   - subject: the notification subject
- *   - contect: the notification content. Must be rendered as `processed_text`, i.e.:
+ *   - header:  the notification header
+ *   - colophon: the notification colophon
+ *   - footer: the notification footer
+ *   - content: the notification content. Must be rendered as `processed_text`, i.e.:
  *     @code
  *       {{ {
  *       '#type':   'processed_text',
@@ -21,43 +24,90 @@
 #}
 <!doctype html>
 <html lang="da">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ message.subject }}</title>
-  <style>
-    @page {
-      size: a4 portrait;
-      margin: 40mm 20mm;
-    }
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ message.subject }}</title>
+    <style>
+      @page {
+        size: a4 portrait;
+        margin: 40mm 20mm;
+      }
 
-    header {
-      position: fixed;
-      top: -30mm;
-      left: 0;
-      right: 0;
-      height: 20mm;
-    }
+      header {
+        position: fixed;
+        top: -30mm;
+        left: 0;
+        right: 0;
+        height: 20mm;
+        font-size: 12px;
 
-    header img {
-      height: 100%;
-    }
-</style>
-</head>
-<body>
-  <header>
-    <img alt="Aarhus Kommune-logo" src="https://cdn.aarhus.dk/bundled/static/aak-logo.svg?hash=6780e75ca799a9b45bb0e51ff430010b" />
-  </header>
+      }
 
-  <main>
-    {# @see https://api.drupal.org/api/drupal/core%21modules%21filter%21filter.module/function/check_markup/9 #}
-    <div class="notification-content">
+      header img {
+        height: 100%;
+      }
+
+      footer {
+        position: fixed;
+        bottom: -20mm;
+        left: 0;
+        right: 0;
+        height: 20mm;
+        font-size: 12px;
+      }
+
+      footer img {
+        height: 100%;
+      }
+
+      .webform-entity-print-body {
+        float: left;
+        font-size: 14px;
+      }
+
+      .webform-entity-print-body-with-colophon {
+        float: left;
+        font-size: 14px;
+        width: 70%;
+      }
+
+      .webform-entity-print-colophon {
+        margin-top: 2px;
+        line-height: 1.4;
+        float:right;
+        width:27%;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    {% if message.header %}
+      <header>
+        {{ message.header }}
+      </header>
+    {% endif %}
+
+    {% if message.footer %}
+      <footer>
+        {{ message.footer }}
+      </footer>
+    {% endif %}
+
+    {% if message.colophon %}
+      <div class="webform-entity-print-colophon">
+        {{ message.colophon }}
+      </div>
+    {% endif %}
+
+    <main class="webform-entity-print-body{{ message.colophon ? '-with-colophon' : '' }}">
+      {# @see https://api.drupal.org/api/drupal/core%21modules%21filter%21filter.module/function/check_markup/9 #}
       {{ {
         '#type':   'processed_text',
         '#text':    message.content.value,
         '#format':  message.content.format,
-        } }}
-    </div>
-  </main>
-</body>
+      } }}
+    </main>
+
+  </body>
 </html>

@@ -21,6 +21,7 @@ use Drupal\Core\Url;
 use Drupal\entity_print\Plugin\EntityPrintPluginManagerInterface;
 use Drupal\maestro\Engine\MaestroEngine;
 use Drupal\maestro\Utility\TaskHandler;
+use Drupal\os2forms_attachment\Entity\AttachmentComponent;
 use Drupal\os2forms_digital_post\Helper\DigitalPostHelper;
 use Drupal\os2forms_digital_post\Model\Document;
 use Drupal\os2forms_forloeb\Exception\RuntimeException;
@@ -534,6 +535,9 @@ class MaestroHelper implements LoggerInterface {
       '#template' => $template,
       '#context' => [
         'message' => [
+          'header' => $this->getOs2formsComponentMarkup('os2form_header', $submission),
+          'footer' => $this->getOs2formsComponentMarkup('os2form_footer', $submission),
+          'colophon' => $this->getOs2formsComponentMarkup('os2form_colophon', $submission),
           'subject' => $subject,
           'content' => $content,
         ],
@@ -609,6 +613,30 @@ class MaestroHelper implements LoggerInterface {
         }
       }
     }
+  }
+
+  /**
+   * Gets OS2Forms attachment component markup.
+   */
+  private function getOs2formsComponentMarkup(string $componentSetting, WebformSubmissionInterface $submission): array|false {
+    $templateSettings = $submission->getWebform()->getThirdPartySetting('webform_entity_print', 'template') ?: [];
+
+    // Adding header.
+    $result = FALSE;
+    if (!empty($templateSettings[$componentSetting])) {
+      /** @var \Drupal\os2forms_attachment\Entity\AttachmentComponent $component */
+      $component = AttachmentComponent::load($templateSettings[$componentSetting]);
+
+      if ($component) {
+        $componentBody = $this->tokenManager->replace($component->getBody(), $submission);
+
+        $result = [
+          '#markup' => $componentBody,
+        ];
+      }
+    }
+
+    return $result;
   }
 
 }
