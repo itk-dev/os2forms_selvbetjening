@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede til [Beskedfordeler drupal
+  1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
+
 ## [2.4.4]
 
 * Opdaterede selvbetjening tema's favicon.
