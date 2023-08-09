@@ -8347,20 +8347,20 @@
         },
         {
             "name": "itk-dev/beskedfordeler-drupal",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/beskedfordeler-drupal.git",
-                "reference": "1e7763d1e70184d33b8b46f2435b5cac9b5f551b"
+                "reference": "8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/1e7763d1e70184d33b8b46f2435b5cac9b5f551b",
-                "reference": "1e7763d1e70184d33b8b46f2435b5cac9b5f551b",
+                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb",
+                "reference": "8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb",
                 "shasum": ""
             },
             "require": {
-                "drush/drush": "^10 || ^11"
+                "drush/drush": "^11 || ^12"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
@@ -8388,9 +8388,9 @@
             "description": "Beskedfordeler for Drupal",
             "support": {
                 "issues": "https://github.com/itk-dev/beskedfordeler-drupal/issues",
-                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.1.0"
+                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.1.1"
             },
-            "time": "2023-02-14T08:19:13+00:00"
+            "time": "2023-08-09T11:18:46+00:00"
         },
         {
             "name": "itk-dev/drupal_psr6_cache",
