@@ -5,6 +5,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede fra `itk-dev/os2forms_digital_post` `2.0.1`
+  til `os2forms/os2forms_digital_post` `2.0.2`.
+
 ## [2.4.4]
 
 * Opdaterede selvbetjening tema's favicon.

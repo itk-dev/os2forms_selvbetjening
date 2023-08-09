@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bf32a213f520a98ccaec60524c92b00",
+    "content-hash": "0f962388da25f27b531c0e194e05e333",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8663,64 +8663,6 @@
             "time": "2023-05-09T09:02:58+00:00"
         },
         {
-            "name": "itk-dev/os2forms_digital_post",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "3bd1a1dbe4d2ecf4eaef36a50cedade968931379"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/3bd1a1dbe4d2ecf4eaef36a50cedade968931379",
-                "reference": "3bd1a1dbe4d2ecf4eaef36a50cedade968931379",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "^2.0",
-                "drupal/webform": "^6.0",
-                "ext-soap": "*",
-                "http-interop/http-factory-guzzle": "^1.0.0",
-                "itk-dev/beskedfordeler-drupal": "^1.0",
-                "itk-dev/os2forms_cpr_lookup": "^1.6",
-                "itk-dev/serviceplatformen": "^1.2",
-                "os2forms/os2forms": "^3.0",
-                "php-http/guzzle6-adapter": "^2.0.1",
-                "symfony/options-resolver": "^5.4 || ^6.0",
-                "symfony/property-access": "^4.4",
-                "wsdltophp/packagebase": "^5.0"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4",
-                "phpunit/phpunit": "^9.5",
-                "wsdltophp/packagegenerator": "^4.0"
-            },
-            "type": "drupal-module",
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\os2forms_digital_post\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Steen Risom",
-                    "email": "lats@aarhus.dk"
-                }
-            ],
-            "description": "Provides integration to Print service provided by Serviceplatformen.",
-            "support": {
-                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.1"
-            },
-            "time": "2023-07-19T10:32:11+00:00"
-        },
-        {
             "name": "itk-dev/os2forms_failed_jobs",
             "version": "1.2.0",
             "source": {
@@ -9832,6 +9774,67 @@
                 "source": "https://github.com/OS2Forms/os2forms/tree/3.8.0"
             },
             "time": "2023-07-12T08:50:55+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_digital_post",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
+                "reference": "c8b72d0e8499243d26f068c4006e502167bcb508"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/c8b72d0e8499243d26f068c4006e502167bcb508",
+                "reference": "c8b72d0e8499243d26f068c4006e502167bcb508",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "^2.0",
+                "drupal/webform": "^6.0",
+                "ext-soap": "*",
+                "http-interop/http-factory-guzzle": "^1.0.0",
+                "itk-dev/beskedfordeler-drupal": "^1.0",
+                "itk-dev/os2forms_cpr_lookup": "^1.6",
+                "itk-dev/serviceplatformen": "^1.2",
+                "os2forms/os2forms": "^3.0",
+                "php-http/guzzle6-adapter": "^2.0.1",
+                "symfony/options-resolver": "^5.4 || ^6.0",
+                "symfony/property-access": "^4.4",
+                "wsdltophp/packagebase": "^5.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "wsdltophp/packagegenerator": "^4.0"
+            },
+            "type": "drupal-module",
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\os2forms_digital_post\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Steen Risom"
+                },
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "Provides integration to Print service provided by Serviceplatformen.",
+            "support": {
+                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.2"
+            },
+            "time": "2023-08-09T08:30:26+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
