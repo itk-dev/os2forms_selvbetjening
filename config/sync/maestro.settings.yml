@@ -7,3 +7,5 @@ maestro_orchestrator_development_mode: 0
 _core:
   default_config_hash: mCGD8kihnK7wqaQPAlYskypDDPWuP2VO502z-Wwg_RM
 langcode: da
+maestro_sitewide_token: task
+maestro_token_zero_user: 1

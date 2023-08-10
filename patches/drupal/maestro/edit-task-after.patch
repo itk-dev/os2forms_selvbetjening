@@ -1,0 +1,22 @@
+diff --git a/src/MaestroTaskTrait.php b/src/MaestroTaskTrait.php
+index 9aefd9e..38781ff 100644
+--- a/src/MaestroTaskTrait.php
++++ b/src/MaestroTaskTrait.php
+@@ -348,7 +348,7 @@ trait MaestroTaskTrait {
+ 
+     $form['edit_task_notifications']['reminder_after'] = [
+       '#type' => 'textfield',
+-      '#default_value' => '0',
++      '#default_value' => $task['notifications']['reminder_after'] ?? '0',
+       '#title' => $this->t('Reminder After (days)'),
+       '#required' => FALSE,
+       '#size' => 2,
+@@ -358,7 +358,7 @@ trait MaestroTaskTrait {
+ 
+     $form['edit_task_notifications']['escalation_after'] = [
+       '#type' => 'textfield',
+-      '#default_value' => '0',
++      '#default_value' => $task['notifications']['escalation_after'] ?? '0',
+       '#title' => $this->t('Escalation After (days)'),
+       '#required' => FALSE,
+       '#size' => 2,

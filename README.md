@@ -149,8 +149,8 @@ docker compose exec phpfpm composer coding-standards-check
 ```
 
 ```sh
-docker compose run node yarn --cwd /app install
-docker compose run node yarn --cwd /app coding-standards-check
+docker compose run --rm node yarn --cwd /app install
+docker compose run --rm node yarn --cwd /app coding-standards-check
 ```
 
 ## Testing

@@ -1,0 +1,9 @@
+uuid: b4026821-ce05-4a4d-9be2-ca1e2972d66e
+langcode: en
+status: true
+dependencies: {  }
+id: citizen
+label: borger
+weight: 3
+is_admin: null
+permissions: {  }

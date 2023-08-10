@@ -1,0 +1,17 @@
+diff --git a/modules/maestro_template_builder/src/Form/MaestroTemplateBuilderEditTask.php b/modules/maestro_template_builder/src/Form/MaestroTemplateBuilderEditTask.php
+index 8893251..2107961 100644
+--- a/modules/maestro_template_builder/src/Form/MaestroTemplateBuilderEditTask.php
++++ b/modules/maestro_template_builder/src/Form/MaestroTemplateBuilderEditTask.php
+@@ -141,6 +141,11 @@ class MaestroTemplateBuilderEditTask extends FormBase {
+    */
+   public function buildForm(array $form, FormStateInterface $form_state, $templateMachineName = '') {
+     $taskID = Xss::filter($_SESSION['maestro_template_builder']['maestro_editing_task']);
++    // Override taskID from query string
++    $request = $this->getRequest();
++    if ($request->query->has('taskid')) {
++      $taskID = $request->query->get('taskid');
++    }
+     $template = MaestroEngine::getTemplate($templateMachineName);
+     $task = MaestroEngine::getTemplateTaskByID($templateMachineName, $taskID);
+     $task['form_state'] = $form_state;
+

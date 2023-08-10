@@ -1,0 +1,31 @@
+diff --git a/src/Engine/MaestroEngine.php b/src/Engine/MaestroEngine.php
+index 2781c37..8037c52 100644
+--- a/src/Engine/MaestroEngine.php
++++ b/src/Engine/MaestroEngine.php
+@@ -1538,7 +1538,7 @@ class MaestroEngine {
+         $taskMachineName = $queueRecord->task_id->getString();
+         $templateMachineName = MaestroEngine::getTemplateIdFromProcessId($queueRecord->process_id->getString());
+         // Just days * seconds to get an offset.
+-        $reminderInterval = intval($queueRecord->reminder_interval->getString()) * 86400;
++        $reminderInterval = intval($queueRecord->reminder_interval->getString()) * 60;
+         // we're in here because we need a reminder.  So do it.
+         $this->doProductionAssignmentNotifications($templateMachineName, $taskMachineName, $queueID, 'reminder');
+         $queueRecord->set('next_reminder_time', $currentTime + $reminderInterval);
+@@ -1568,7 +1568,7 @@ class MaestroEngine {
+         $numberOfEscalationsSent = intval($queueRecord->num_escalations_sent->getString());
+         // First time through, numberOfEscalations is 0... second time it's 1 etc.
+         // that means that our interval needs to be numberOfEscalations +1 * the offset of the escalation in days.
+-        $escalationInterval = (1 + $numberOfEscalationsSent) * (intval($queueRecord->escalation_interval->getString()) * 86400);
++        $escalationInterval = (1 + $numberOfEscalationsSent) * (intval($queueRecord->escalation_interval->getString()) * 60);
+         if ($currentTime > ($createdTime + $escalationInterval)) {
+           // We need to send out an escalation.
+           $this->doProductionAssignmentNotifications($templateMachineName, $taskMachineName, $queueID, 'escalation');
+@@ -1837,7 +1837,7 @@ class MaestroEngine {
+     if (array_key_exists('notifications', $nextTask)) {
+       $reminderInterval = $nextTask['notifications']['reminder_after'];
+       if (intval($reminderInterval) > 0) {
+-        $nextReminderTime = $currentTime + (intval($reminderInterval) * 86400);
++        $nextReminderTime = $currentTime + (intval($reminderInterval) * 60);
+       }
+       $escalationInterval = $nextTask['notifications']['escalation_after'];
+     }
