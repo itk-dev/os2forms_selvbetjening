@@ -123,6 +123,9 @@
             "force-reset": true
         },
         "patches": {
+            "drupal/honeypot": {
+                "Fixes issue with clash between ajax and honeypot (https://www.drupal.org/project/honeypot/issues/2396193)": "patches/drupal/honeypot/honeypot-ajax.patch"
+            },
             "drupal/webform_migrate": {
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
             },
