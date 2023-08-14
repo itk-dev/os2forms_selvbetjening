@@ -7,6 +7,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede til [Beskedfordeler drupal
   1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
+* Tilføjede patch for at undgå honeypot og ajax issues.
 
 ## [2.4.4]
 
