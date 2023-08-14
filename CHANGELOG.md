@@ -5,8 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-* Opdaterede fra `itk-dev/os2forms_digital_post` `2.0.1`
-  til `os2forms/os2forms_digital_post` `2.0.2`.
+* Opdaterede til `os2forms/os2forms_digital_post` `3.0.1`.
+* Fjernede `itk-dev/os2forms_cpr_lookup` og `itk-dev/os2forms_cvr_lookup`
 * Opdaterede til [Beskedfordeler drupal
   1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
 * Tilføjede patch for at undgå honeypot og ajax issues.
