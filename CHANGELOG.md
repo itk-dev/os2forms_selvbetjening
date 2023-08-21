@@ -5,6 +5,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Aktiverede Webform `container` elementet.
+
 ## [2.4.5]
 
 * Opdaterede fra `itk-dev/itkdev-booking` `1.0.3`
