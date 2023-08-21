@@ -5,6 +5,16 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.4.5]
+
+* Opdaterede fra `itk-dev/itkdev-booking` `1.0.3`
+  til `os2forms/itkdev-booking` `1.0.5`.
+* Opdaterede fra `itk-dev/os2forms_digital_post` `2.0.1`
+  til `os2forms/os2forms_digital_post` `2.0.2`.
+* Opdaterede til [Beskedfordeler drupal
+  1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
+* Tilføjede patch for at undgå honeypot og ajax issues.
+
 ## [2.4.4]
 
 * Opdaterede selvbetjening tema's favicon.

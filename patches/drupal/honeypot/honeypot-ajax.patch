@@ -1,0 +1,17 @@
+diff --git a/src/HoneypotService.php b/src/HoneypotService.php
+index 1eeb6df..9a6f3a3 100644
+--- a/src/HoneypotService.php
++++ b/src/HoneypotService.php
+@@ -329,6 +329,12 @@ class HoneypotService implements HoneypotServiceInterface {
+       return;
+     }
+
++    // If the triggering element is using ajax behaviour
++    // then skip time restriction validation.
++    if (isset($triggering_element['#ajax'])) {
++        return;
++    }
++
+     // Get the time value.
+     $identifier = $form_state->getValue('honeypot_time', FALSE);
+     $honeypot_time = $this->keyValue->get($identifier, 0);

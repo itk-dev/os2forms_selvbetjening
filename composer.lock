@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bf32a213f520a98ccaec60524c92b00",
+    "content-hash": "f007e1fbc9ec783c5c0d9ce2d485b0aa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5447,6 +5447,10 @@
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
+                    "name": "Kristen Pol",
+                    "homepage": "https://www.drupal.org/user/8389"
+                },
+                {
                     "name": "pifagor",
                     "homepage": "https://www.drupal.org/user/2375692"
                 }
@@ -6285,7 +6289,7 @@
             ],
             "authors": [
                 {
-                    "name": "andr1yun",
+                    "name": "andriyun",
                     "homepage": "https://www.drupal.org/user/1277538"
                 },
                 {
@@ -6295,6 +6299,10 @@
                 {
                     "name": "jrockowitz",
                     "homepage": "https://www.drupal.org/user/371407"
+                },
+                {
+                    "name": "Ruslan Piskarov",
+                    "homepage": "https://www.drupal.org/user/424444"
                 },
                 {
                     "name": "sylus",
@@ -8347,20 +8355,20 @@
         },
         {
             "name": "itk-dev/beskedfordeler-drupal",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/beskedfordeler-drupal.git",
-                "reference": "1e7763d1e70184d33b8b46f2435b5cac9b5f551b"
+                "reference": "8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/1e7763d1e70184d33b8b46f2435b5cac9b5f551b",
-                "reference": "1e7763d1e70184d33b8b46f2435b5cac9b5f551b",
+                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb",
+                "reference": "8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb",
                 "shasum": ""
             },
             "require": {
-                "drush/drush": "^10 || ^11"
+                "drush/drush": "^11 || ^12"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
@@ -8388,9 +8396,9 @@
             "description": "Beskedfordeler for Drupal",
             "support": {
                 "issues": "https://github.com/itk-dev/beskedfordeler-drupal/issues",
-                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.1.0"
+                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.1.1"
             },
-            "time": "2023-02-14T08:19:13+00:00"
+            "time": "2023-08-09T11:18:46+00:00"
         },
         {
             "name": "itk-dev/drupal_psr6_cache",
@@ -8486,16 +8494,16 @@
         },
         {
             "name": "itk-dev/itkdev-booking",
-            "version": "1.0.3",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_webform_booking_module.git",
-                "reference": "011328fc6cce323000803adb5227e97f28d513f3"
+                "reference": "d144d9d150e34e0d2c0464694e49d25062fbd31a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_webform_booking_module/zipball/011328fc6cce323000803adb5227e97f28d513f3",
-                "reference": "011328fc6cce323000803adb5227e97f28d513f3",
+                "url": "https://api.github.com/repos/itk-dev/drupal_webform_booking_module/zipball/d144d9d150e34e0d2c0464694e49d25062fbd31a",
+                "reference": "d144d9d150e34e0d2c0464694e49d25062fbd31a",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -8506,9 +8514,9 @@
             "description": "Provides a webform element for creating bookings through the AAK booking service.",
             "support": {
                 "issues": "https://github.com/itk-dev/drupal_webform_booking_module/issues",
-                "source": "https://github.com/itk-dev/drupal_webform_booking_module/tree/1.0.3"
+                "source": "https://github.com/itk-dev/drupal_webform_booking_module/tree/1.0.5"
             },
-            "time": "2023-04-21T09:30:39+00:00"
+            "time": "2023-08-21T09:27:36+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
@@ -8661,64 +8669,6 @@
                 "source": "https://github.com/itk-dev/os2forms_cvr_lookup/tree/1.4.0"
             },
             "time": "2023-05-09T09:02:58+00:00"
-        },
-        {
-            "name": "itk-dev/os2forms_digital_post",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "3bd1a1dbe4d2ecf4eaef36a50cedade968931379"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/3bd1a1dbe4d2ecf4eaef36a50cedade968931379",
-                "reference": "3bd1a1dbe4d2ecf4eaef36a50cedade968931379",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "^2.0",
-                "drupal/webform": "^6.0",
-                "ext-soap": "*",
-                "http-interop/http-factory-guzzle": "^1.0.0",
-                "itk-dev/beskedfordeler-drupal": "^1.0",
-                "itk-dev/os2forms_cpr_lookup": "^1.6",
-                "itk-dev/serviceplatformen": "^1.2",
-                "os2forms/os2forms": "^3.0",
-                "php-http/guzzle6-adapter": "^2.0.1",
-                "symfony/options-resolver": "^5.4 || ^6.0",
-                "symfony/property-access": "^4.4",
-                "wsdltophp/packagebase": "^5.0"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4",
-                "phpunit/phpunit": "^9.5",
-                "wsdltophp/packagegenerator": "^4.0"
-            },
-            "type": "drupal-module",
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\os2forms_digital_post\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Steen Risom",
-                    "email": "lats@aarhus.dk"
-                }
-            ],
-            "description": "Provides integration to Print service provided by Serviceplatformen.",
-            "support": {
-                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.1"
-            },
-            "time": "2023-07-19T10:32:11+00:00"
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
@@ -9832,6 +9782,67 @@
                 "source": "https://github.com/OS2Forms/os2forms/tree/3.8.0"
             },
             "time": "2023-07-12T08:50:55+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_digital_post",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
+                "reference": "c8b72d0e8499243d26f068c4006e502167bcb508"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/c8b72d0e8499243d26f068c4006e502167bcb508",
+                "reference": "c8b72d0e8499243d26f068c4006e502167bcb508",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "^2.0",
+                "drupal/webform": "^6.0",
+                "ext-soap": "*",
+                "http-interop/http-factory-guzzle": "^1.0.0",
+                "itk-dev/beskedfordeler-drupal": "^1.0",
+                "itk-dev/os2forms_cpr_lookup": "^1.6",
+                "itk-dev/serviceplatformen": "^1.2",
+                "os2forms/os2forms": "^3.0",
+                "php-http/guzzle6-adapter": "^2.0.1",
+                "symfony/options-resolver": "^5.4 || ^6.0",
+                "symfony/property-access": "^4.4",
+                "wsdltophp/packagebase": "^5.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "wsdltophp/packagegenerator": "^4.0"
+            },
+            "type": "drupal-module",
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\os2forms_digital_post\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Steen Risom"
+                },
+                {
+                    "name": "Mikkel Ricky",
+                    "email": "rimi@aarhus.dk"
+                }
+            ],
+            "description": "Provides integration to Print service provided by Serviceplatformen.",
+            "support": {
+                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.2"
+            },
+            "time": "2023-08-09T08:30:26+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
