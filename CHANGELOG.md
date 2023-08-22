@@ -5,6 +5,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede webform options config ignore.
 * Opdaterede til `os2forms/os2forms_digital_post` `3.0.1`.
 * Fjernede `itk-dev/os2forms_cpr_lookup` og `itk-dev/os2forms_cvr_lookup`
 * Opdaterede til [Beskedfordeler drupal
