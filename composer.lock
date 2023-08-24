@@ -8494,16 +8494,16 @@
         },
         {
             "name": "itk-dev/itkdev-booking",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/drupal_webform_booking_module.git",
-                "reference": "3c1ae35b3016726694286a045964e1be3577d859"
+                "reference": "eb9ce7b3d8925791815c376665c0a01ad3a665d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_webform_booking_module/zipball/3c1ae35b3016726694286a045964e1be3577d859",
-                "reference": "3c1ae35b3016726694286a045964e1be3577d859",
+                "url": "https://api.github.com/repos/itk-dev/drupal_webform_booking_module/zipball/eb9ce7b3d8925791815c376665c0a01ad3a665d2",
+                "reference": "eb9ce7b3d8925791815c376665c0a01ad3a665d2",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -8514,9 +8514,9 @@
             "description": "Provides a webform element for creating bookings through the AAK booking service.",
             "support": {
                 "issues": "https://github.com/itk-dev/drupal_webform_booking_module/issues",
-                "source": "https://github.com/itk-dev/drupal_webform_booking_module/tree/1.0.6"
+                "source": "https://github.com/itk-dev/drupal_webform_booking_module/tree/1.0.7"
             },
-            "time": "2023-08-21T16:07:42+00:00"
+            "time": "2023-08-24T06:43:02+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
