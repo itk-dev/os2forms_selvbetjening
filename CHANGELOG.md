@@ -5,6 +5,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.4.7] 2023-08-24
+
+* Opdaterede fra `itk-dev/itkdev-booking` `1.0.6`
+  til `itk-dev/itkdev-booking` `1.0.7`.
+
 ## [2.4.6]
 
 * Opdaterede fra `itk-dev/itkdev-booking` `1.0.5`
