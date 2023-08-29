@@ -1,0 +1,123 @@
+{
+  "@context": "/contexts/BusyInterval",
+  "@id": "/v1/busy-intervals",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7CS1V8M84KR5FFB2G27",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7CS1V8M84KR5FFB2G27",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-15T11:30:00+00:00",
+      "endTime": "2022-06-15T12:00:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7CS1V8M84KR5FFB2G27",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7CS1V8M84KR5FFB2G27",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-15T13:30:00+00:00",
+      "endTime": "2022-06-15T16:00:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7CS1V8M84KR5FFB2G27",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7CS1V8M84KR5FFB2G27",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-15T06:30:00+00:00",
+      "endTime": "2022-06-15T07:30:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD616",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD616",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-02T15:00:00+00:00",
+      "endTime": "2022-06-02T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD617",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD617",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-03T15:00:00+00:00",
+      "endTime": "2022-06-03T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD618",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD618",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-09T15:00:00+00:00",
+      "endTime": "2022-06-09T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD619",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD619",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-10T15:00:00+00:00",
+      "endTime": "2022-06-10T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61A",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61A",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-16T15:00:00+00:00",
+      "endTime": "2022-06-16T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61B",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61B",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-16T15:30:00+00:00",
+      "endTime": "2022-06-16T18:20:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61C",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61C",
+      "resource": "DOKK1-Lokale-Test1@aarhus.dk",
+      "startTime": "2022-06-17T15:00:00+00:00",
+      "endTime": "2022-06-17T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61l",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61l",
+      "resource": "dokk1-lokale-test2@aarhus.dk",
+      "startTime": "2022-06-10T15:00:00+00:00",
+      "endTime": "2022-06-10T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61k",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61k",
+      "resource": "dokk1-lokale-test2@aarhus.dk",
+      "startTime": "2022-06-16T15:00:00+00:00",
+      "endTime": "2022-06-16T15:25:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61j",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61j",
+      "resource": "dokk1-lokale-test2@aarhus.dk",
+      "startTime": "2022-06-16T15:30:00+00:00",
+      "endTime": "2022-06-16T18:20:00+00:00"
+    },
+    {
+      "@id": "/v1/busy-intervals/01G4HMQ7G156ZAY081CW0AD61h",
+      "@type": "BusyInterval",
+      "id": "01G4HMQ7G156ZAY081CW0AD61h",
+      "resource": "dokk1-lokale-test2@aarhus.dk",
+      "startTime": "2022-06-17T15:00:00+00:00",
+      "endTime": "2022-06-17T15:25:00+00:00"
+    }
+  ],
+  "hydra:view": {
+    "@id": "/v1/busy-intervals?resources=DOKK1-Lokale-Test1%40aarhus.dk&dateStart=2022-05-30T17%3A32%3A28Z&dateEnd=2022-06-22T17%3A32%3A28Z",
+    "@type": "hydra:PartialCollectionView"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "name": "itk-dev/itkdev-booking",
+    "type": "drupal-module",
+    "description": "Provides a webform element for creating bookings through the AAK booking service.",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "GPL-2.0-or-later"
+}

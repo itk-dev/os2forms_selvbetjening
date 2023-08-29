@@ -5,6 +5,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.4.8] 2023-08-29
+
+* Moved itkdev_booking module into custom module folder
+* Aktiverede Webform `container` elementet.
+
 ## [2.4.7] 2023-08-24
 
 * Opdaterede fra `itk-dev/itkdev-booking` `1.0.6`

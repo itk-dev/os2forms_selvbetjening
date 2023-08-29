@@ -1,0 +1,87 @@
+{
+  "name": "booking",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "@drewbot/sass-flexbox-grid": "^2.0.7",
+    "@fullcalendar/core": "^5.11.0",
+    "@fullcalendar/daygrid": "^5.11.0",
+    "@fullcalendar/interaction": "^5.11.0",
+    "@fullcalendar/list": "^5.11.0",
+    "@fullcalendar/react": "^5.11.0",
+    "@fullcalendar/resource-common": "^5.11.0",
+    "@fullcalendar/resource-daygrid": "^5.11.0",
+    "@fullcalendar/resource-timegrid": "^5.11.0",
+    "@fullcalendar/resource-timeline": "^5.11.0",
+    "@fullcalendar/timegrid": "^5.11.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "dayjs": "^1.11.5",
+    "dompurify": "^3.0.3",
+    "html-react-parser": "^4.0.0",
+    "ol": "^7.1.0",
+    "proj4": "^2.8.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
+    "react-toastify": "^9.0.8",
+    "sass": "^1.54.8"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.3.6",
+    "eslint-plugin-jsx": "^0.1.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-only-warn": "^1.0.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.6",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-jsdoc": "^0.4.2",
+    "resolve-url-loader": "^5.0.0",
+    "stylelint": "^14.11.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended-scss": "^7.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "stylelint-scss": "^4.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint:js": "eslint --ext .js --ext .jsx ./src",
+    "lint:js:fix": "eslint --ext .js --ext .jsx --fix ./src",
+    "lint:scss": "stylelint \"./src/**/*.scss\"",
+    "lint:scss:fix": "stylelint --fix \"./src/**/*.scss\"",
+    "check-coding-standards": "npm run lint:js && npm run lint:scss",
+    "apply-coding-standards": "npm run lint:js:fix && npm run lint:scss:fix"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

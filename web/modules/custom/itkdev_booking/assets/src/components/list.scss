@@ -1,0 +1,87 @@
+.list-resource {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .image {
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+
+    img {
+      transform: translateY(-50%);
+      display: block;
+      width: 100%;
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
+    }
+  }
+
+  .list-resource-details {
+    display: flex;
+    flex-direction: column;
+
+    .details {
+      margin: 15px 0 auto 0;
+      display: flex;
+      flex-direction: row;
+      .location {
+        margin-right: 25px;
+        height: 25px;
+
+        .location-icon {
+          flex-direction: row;
+          justify-content: center;
+          margin: auto;
+          svg {
+            margin-right: 5px;
+          }
+        }
+      }
+      .facilities {
+        margin-right: 10px;
+        .facility-container {
+          display: flex;
+          flex-direction: row;
+          .facility-item {
+            margin-right: 10px;
+            height: 25px;
+            width: 50px;
+            .facility-icon {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              margin: auto;
+              svg {
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .headline {
+      margin: 0 0 0 0;
+    }
+
+    .description {
+      margin: 0 0 0 0;
+    }
+  }
+
+  .list-resource-actions {
+    display: flex;
+    flex-direction: column;
+    button {
+      margin: auto;
+    }
+  }
+}
