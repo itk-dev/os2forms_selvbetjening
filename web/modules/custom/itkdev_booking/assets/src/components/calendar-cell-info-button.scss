@@ -1,0 +1,9 @@
+.calendar-cell-info {
+  .calendar-cell-info-button {
+    all: unset;
+    cursor: pointer;
+  }
+  .calendar-cell-info-button > img {
+    margin-left: 5px;
+  }
+}

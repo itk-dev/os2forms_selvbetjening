@@ -1,0 +1,144 @@
+.resource-view {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  z-index: 999;
+}
+.resource-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #f1f1f1;
+
+  .resource-headline {
+    display: flex;
+    width: 100%;
+    background-color: #2d3e4f;
+    padding: 10px 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+
+    span {
+      margin: auto auto auto 15px;
+      color: #fff;
+      font-size: 22px;
+    }
+
+    button {
+      margin: auto 15px auto auto;
+    }
+  }
+
+  .resource-title {
+    display: flex;
+    padding: 20px 15px 5px 15px;
+
+    h2 {
+      font-weight: bold;
+    }
+  }
+  .resource-description {
+    padding: 15px;
+
+    > span {
+      font-weight: bold;
+    }
+
+    div {
+      padding: 10px 0 0 0;
+    }
+  }
+
+  .image-wrapper {
+    padding: 0 15px;
+
+    .image {
+      max-width: 500px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      height: 370px;
+      text-align: center;
+
+      img {
+        transform: translateY(-50%);
+        display: block;
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+        top: 50%;
+        min-height: 300px;
+        border: 1px solid;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  .resource-details {
+    display: flex;
+    flex-direction: row;
+
+    .location {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      padding: 0 15px;
+
+      div {
+        padding: 10px 0 0 0;
+      }
+    }
+
+    .facilities {
+      flex: 2;
+      padding: 0 15px;
+
+      span {
+        margin-bottom: 5px;
+      }
+
+      .facility-container {
+        display: flex;
+        flex-direction: column;
+
+        .facility-item {
+          display: flex;
+          padding: 10px 0 5px 0;
+
+          .facility-icon {
+            margin: auto 5px auto 0;
+            width: 30px;
+            height: 25px;
+
+            img {
+              margin: auto;
+            }
+          }
+
+          span {
+            margin: auto auto auto 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-container > .resource-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  z-index: 499;
+  top: 0;
+}
+
+.resource-details--title {
+  font-weight: bold;
+}

@@ -1,0 +1,222 @@
+.main-container {
+  .Calendar {
+    padding: 15px !important;
+    position: relative;
+
+    > div {
+      padding-top: 0;
+      > div {
+        padding-top: 0 !important;
+      }
+    }
+    table {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      tr {
+        background: unset !important;
+        &:hover {
+          background: inherit;
+        }
+      }
+    }
+    .fc-scrollgrid-sync-table {
+      td.fc-timeline-lane {
+        height: 0;
+      }
+    }
+    .fc-timegrid-slots > table {
+      background: #fff;
+    }
+    .fc .fc-timeline-bg {
+      z-index: 999 !important;
+    }
+    #calendar-back {
+      margin-right: 5px;
+    }
+    .fc .fc-resource-timeline {
+      border: 1px solid #eee;
+    }
+    .fc .fc-resource-timeline .fc-resource-group:not([rowspan]) {
+      background-color: #e9ecef !important;
+    }
+
+    .fc-timeline-slot-label {
+      background-color: #fff !important;
+    }
+
+    .fc-timeline-slot-frame {
+      a {
+        color: #000;
+      }
+    }
+    .fc-resource-group .fc-datagrid-cell-main {
+      font-weight: bold;
+      margin-left: 15px;
+      font-size: 15px;
+    }
+
+    th[role="columnheader"] .fc-datagrid-expander-placeholder {
+      display: none;
+    }
+
+    .fc-datagrid-expander-placeholder + .fc-datagrid-cell-main {
+      font-weight: 400;
+    }
+
+    .fc .fc-timeline-now-indicator-line {
+      pointer-events: none;
+    }
+
+    .resource-calendar-capacity-header > div > div {
+      margin: auto;
+    }
+
+    .resource-calendar-capacity-value > div > div {
+      text-align: right;
+    }
+
+    div.fc-highlight {
+      display: block;
+      border: 1px solid #84b6fc;
+      background-color: #84b6fc !important;
+    }
+
+    .fc-timegrid-event-short .fc-event-time:after {
+      display: none !important;
+    }
+
+    .fc-timegrid-event-harness > .fc-timegrid-event {
+      left: -2px !important;
+      right: -25px !important;
+    }
+
+    .fc .fc-timeline-now-indicator-container {
+      z-index: 1;
+    }
+    .datepicker {
+      text-align: center;
+    }
+
+    .calendar-nav {
+      text-align: right;
+    }
+
+    .fc-datagrid-cell {
+      height: auto;
+      background-color: #fff !important;
+    }
+    .fc-event-main-frame {
+      opacity: 0;
+    }
+    #calendar-selection-dot {
+      width: 13px;
+      height: 13px;
+      background-color: #000;
+      position: absolute;
+      right: 8px;
+      top: 12px;
+      border-radius: 13px;
+    }
+    #calendar-selection-line {
+      position: relative;
+      height: 50px;
+      width: 3px;
+      background-color: #000;
+      left: 5px;
+      right: 4px;
+      top: 5px;
+    }
+    #calendar-selection-container {
+      position: absolute;
+      width: 250px;
+      height: 166px;
+      right: 0;
+      bottom: 0;
+      left: -125px;
+      top: 45px;
+      background-color: #fff;
+      border: 2px solid #000;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 3px;
+      z-index: 9999 !important;
+      #calendar-selection-close {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        font-size: 12px;
+        padding: 5px;
+        width: 30px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+      #calendar-selection-choice {
+        margin-bottom: auto;
+      }
+      #calendar-selection-choice-title {
+        margin-bottom: auto;
+      }
+      span {
+        font-size: 14px;
+      }
+      #calendar-selection-choice-confirm {
+        background-color: #343a40;
+        color: #fff;
+        margin-top: auto;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 3px;
+        border: none;
+        padding: 10px 5px;
+        letter-spacing: 1.2px;
+      }
+    }
+    .fc-icon.fc-icon-plus-square {
+      height: 18px !important;
+    }
+    .fc-icon.fc-icon-plus-square.loading {
+      animation: loadingAnim 1s linear infinite;
+    }
+    .fc-icon.fc-icon-plus-square.loading:before {
+      content: "|";
+      margin: auto;
+    }
+    @keyframes loadingAnim {
+      from {
+        rotate: 0deg;
+      }
+      to {
+        rotate: 365deg;
+      }
+    }
+  }
+}
+
+.booking-btn-inv {
+  background-color: #fff;
+  color: #000;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  box-shadow: none !important;
+  border: none !important;
+  cursor: pointer;
+}
+.booking-btn {
+  background-color: #6c757d;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  box-shadow: none !important;
+  border: none !important;
+  cursor: pointer;
+}
+.booking-btn:hover {
+  background-color: #343a40;
+}

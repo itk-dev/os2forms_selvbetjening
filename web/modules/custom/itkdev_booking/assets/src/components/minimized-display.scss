@@ -1,0 +1,63 @@
+.minimized-display {
+  background: #fff;
+  display: inline-flex;
+  flex: 0 0 100%;
+  flex-direction: row;
+  border: 1px solid #dddddd;
+  padding: 30px;
+  margin: 0 0 1% 0;
+  min-height: 60px;
+}
+
+.minimized-display > div:first-child {
+  margin: auto;
+  font-size: 18px;
+  flex: 3;
+}
+
+.minimized-display > div:first-child span.location {
+  margin: auto;
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+}
+.minimized-display > div:first-child span.subject {
+  margin: auto;
+  font-size: 15px;
+  font-style: italic;
+  display: block;
+  margin-top: 5px;
+}
+
+.minimized-display > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+  text-align: center;
+  flex: 4;
+}
+
+.minimized-display > div:nth-child(2) span {
+  margin: 0 15px;
+}
+
+.minimized-display > div:nth-child(3) {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex: 5;
+  justify-content: flex-end;
+}
+
+.minimized-display > div:nth-child(3) button {
+  margin: auto 5px;
+  outline: none !important;
+}
+
+@media screen and (max-width: 1199px) {
+  .minimized-display {
+    flex: 0 0 100%;
+  }
+}

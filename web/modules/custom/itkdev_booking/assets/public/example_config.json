@@ -1,0 +1,15 @@
+{
+  "api_endpoint": "https://selvbetjening.local.itkdev.dk/da/",
+  "license_key": "",
+  "step_one": true,
+  "redirect_url": "http://bookingapp.local.itkdev.dk/",
+  "output_field_id": "submit-values",
+  "info_box_color": "#0C6EFD",
+  "info_box_header": "Bemærk Behandlingstid!",
+  "info_box_content": "Til godkendelse og nøgleudlevering. Det vil fremgå af lokalets information.",
+  "create_booking_mode": true,
+  "create_booking_url": "http://bookingapp.local.itkdev.dk/createbookingurl",
+  "change_booking_url": "http://bookingapp.local.itkdev.dk/changebookingurl",
+  "df_map_username": "",
+  "df_map_password": ""
+}

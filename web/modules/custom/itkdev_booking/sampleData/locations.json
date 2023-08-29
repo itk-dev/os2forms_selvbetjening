@@ -1,0 +1,17 @@
+{
+  "@context": "/contexts/Location",
+  "@id": "/v1/locations",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/v1/locations/LOCATION1",
+      "@type": "Location",
+      "name": "LOCATION1"
+    },
+    {
+      "@id": "/v1/locations/LOCATION2",
+      "@type": "Location",
+      "name": "LOCATION2"
+    }
+  ]
+}
