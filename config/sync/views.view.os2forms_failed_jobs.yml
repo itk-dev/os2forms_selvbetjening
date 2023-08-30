@@ -1,4 +1,4 @@
-uuid: 38d8dc7b-a50b-4a1a-a843-7112283c4f8b
+uuid: b77688a4-46fe-4c7c-98a7-e8690a789a10
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ dependencies:
     module:
       - os2forms_failed_jobs
 _core:
-  default_config_hash: e0p4pdUCpNB0rc-ixNe21FMsdA4hjMK5g-AUXgx96B4
+  default_config_hash: HSpzCDZMQy7B4Y3BQyKrRcZKU9TSQZO6HzluFWrBi5U
 id: os2forms_failed_jobs
 label: 'OS2forms failed jobs'
 module: views
@@ -26,8 +26,8 @@ display:
     display_options:
       title: 'OS2forms failed jobs'
       fields:
-        type:
-          id: type
+        type_1:
+          id: type_1
           table: advancedqueue
           field: type
           relationship: none
@@ -35,7 +35,7 @@ display:
           admin_label: ''
           plugin_id: advancedqueue_job_type
           label: 'Job type'
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -75,15 +75,261 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-        message:
-          id: message
+        webform_id:
+          id: webform_id
           table: advancedqueue
-          field: message
+          field: webform_id
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: standard
-          label: Meddelelse
+          plugin_id: advancedqueue_job_webform_id
+          label: 'Webform id'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        webform_submission_id:
+          id: webform_submission_id
+          table: advancedqueue
+          field: webform_submission_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: advancedqueue_job_webform_submission_id
+          label: 'Webform submission id'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        webform_submission_serial_id:
+          id: webform_submission_serial_id
+          table: advancedqueue
+          field: webform_submission_serial_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: advancedqueue_job_webform_submission_serial_id
+          label: 'Webform submission serial id'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        retry_operation:
+          id: retry_operation
+          table: advancedqueue
+          field: retry_operation
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: advancedqueue_job_retry_operation
+          label: 'Retry operation'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: aaa
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+        state:
+          id: state
+          table: advancedqueue
+          field: state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: advancedqueue_job_state
+          label: State
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          icon: false
+        advancedqueue_bulk_form:
+          id: advancedqueue_bulk_form
+          table: advancedqueue
+          field: advancedqueue_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: advancedqueue_bulk_form
+          label: 'Advanced queue operations bulk form'
           exclude: false
           alter:
             alter_text: false
@@ -124,6 +370,108 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          action_title: Handling
+          include_exclude: include
+          selected_actions:
+            - advancedqueue_queue_retry_action
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: 'Site wide id / Webform submission id'
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<a href="/admin/structure/webform/manage/{{ webform_id }}/submission/{{ webform_submission_id }}">{{ webform_submission_id }} / {{ webform_submission_serial_id }}</a>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: 'Related handler / Error message'
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<a class="use-ajax" data-dialog-options="{&quot;width&quot;:400}" data-dialog-type="modal" href="/os2forms_failed_jobs/{{ webform_id }}/jobs/{{ webform_submission_id }}/message">{{ type_1 }}</a>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
         processed:
           id: processed
           table: advancedqueue
@@ -132,7 +480,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: date
-          label: 'Processed date'
+          label: 'Last processed date'
           exclude: false
           alter:
             alter_text: false
@@ -176,19 +524,19 @@ display:
           date_format: fallback
           custom_date_format: ''
           timezone: ''
-        retry_operation:
-          id: retry_operation
-          table: advancedqueue
-          field: retry_operation
+        nothing_2:
+          id: nothing_2
+          table: views
+          field: nothing
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: advancedqueue_job_retry_operation
-          label: 'Retry operation'
+          plugin_id: custom
+          label: 'State / Action'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{% if state == 'Queued' %}\r\n{{ state }}\r\n{% else %}\r\n{{ retry_operation }}\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -221,10 +569,10 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
+          empty: aaa
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: true
+          hide_alter_empty: false
       pager:
         type: full
         options:
@@ -264,10 +612,10 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        available:
-          id: available
+        processed:
+          id: processed
           table: advancedqueue
-          field: available
+          field: processed
           relationship: none
           group_type: group
           admin_label: ''
@@ -325,6 +673,7 @@ display:
           plugin_id: in_operator
           operator: in
           value:
+            queued: queued
             failure: failure
           group: 1
           exposed: false
@@ -355,6 +704,57 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        webform_submission_serial_id:
+          id: webform_submission_serial_id
+          table: advancedqueue
+          field: webform_submission_serial_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: advancedqueue_job_submission_serial
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: webform_submission_serial_id_op
+            label: 'Webform submission id'
+            description: ''
+            use_operator: false
+            operator: webform_submission_serial_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: webform_submission_serial_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_admin: '0'
+              flow_designer: '0'
+              forloeb_designer: '0'
+              sagsbehandler: '0'
+              medarbejder: '0'
+              leder: '0'
+              virksomhed: '0'
+              borger: '0'
+              os2forms_rest_api_user: '0'
+              os2forms_rest_api_user_write: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: table
       row:
@@ -372,7 +772,7 @@ display:
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_interface'
         - url
@@ -386,7 +786,7 @@ display:
     display_options:
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_interface'
         - url
