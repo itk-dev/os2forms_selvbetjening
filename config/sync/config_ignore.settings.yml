@@ -5,6 +5,7 @@ ignored_config_entities:
   - 'maestro.maestro_template.*'
   - system.site
   - 'webform.webform.*'
+  - 'webform.webform_options.*'
   - os2web_nemlogin.settings
   - '# Ignore global header, colophon and footer settings'
   - 'webform.settings:third_party_settings.webform_entity_print.template'

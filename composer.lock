@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76b378044a7fd209c9f19826d63004aa",
+    "content-hash": "fbcb9fade1067e33af250121f82683bf",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1441,59 +1441,6 @@
                 "source": "https://github.com/dompdf/dompdf/tree/v2.0.3"
             },
             "time": "2023-02-07T12:51:48+00:00"
-        },
-        {
-            "name": "drupal/admin_audit_trail",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/admin_audit_trail.git",
-                "reference": "1.0.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_audit_trail-1.0.1.zip",
-                "reference": "1.0.1",
-                "shasum": "093b64a9328261335cfb3e555c245056953f5f2b"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10"
-            },
-            "require-dev": {
-                "drupal/redirect": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.1",
-                    "datestamp": "1665248355",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Vardot",
-                    "homepage": "https://www.drupal.org/vardot",
-                    "role": "Maintenance for D8 and D9 versions"
-                },
-                {
-                    "name": "Rajab Natshah",
-                    "homepage": "https://www.drupal.org/user/1414312"
-                }
-            ],
-            "description": "This module track logs of specific events that you'd like to review.",
-            "homepage": "https://www.drupal.org/project/admin_audit_trail",
-            "support": {
-                "source": "http://cgit.drupalcode.org/admin_audit_trail",
-                "issues": "https://www.drupal.org/project/issues/admin_audit_trail"
-            }
         },
         {
             "name": "drupal/admin_toolbar",
@@ -5158,6 +5105,10 @@
                     "email": "majmesku@publicplan.de"
                 },
                 {
+                    "name": "marcoliver",
+                    "homepage": "https://www.drupal.org/user/1529744"
+                },
+                {
                     "name": "niko-",
                     "homepage": "https://www.drupal.org/user/1409266"
                 },
@@ -8556,95 +8507,6 @@
             "time": "2023-07-03T13:49:54+00:00"
         },
         {
-            "name": "itk-dev/os2forms_cpr_lookup",
-            "version": "1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_cpr_lookup.git",
-                "reference": "1ef454b35a4624aabb3477e507d6f0cef2e732fe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_cpr_lookup/zipball/1ef454b35a4624aabb3477e507d6f0cef2e732fe",
-                "reference": "1ef454b35a4624aabb3477e507d6f0cef2e732fe",
-                "shasum": ""
-            },
-            "require": {
-                "drupal/admin_audit_trail": "^1.0@alpha",
-                "ext-soap": "*",
-                "http-interop/http-factory-guzzle": "^1.0.0",
-                "itk-dev/serviceplatformen": "^1.3",
-                "os2forms/os2forms": "^3.0",
-                "os2web/os2web_nemlogin": "^1.0",
-                "php-http/guzzle6-adapter": "^2.0.1",
-                "symfony/property-access": "^4.4"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3"
-            },
-            "type": "drupal-module",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Steen Risom",
-                    "email": "lats@aarhus.dk"
-                }
-            ],
-            "description": "Provides integration to CPR service provided by Serviceplatformen.",
-            "support": {
-                "issues": "https://github.com/itk-dev/os2forms_cpr_lookup/issues",
-                "source": "https://github.com/itk-dev/os2forms_cpr_lookup/tree/1.8.0"
-            },
-            "time": "2023-05-09T09:00:31+00:00"
-        },
-        {
-            "name": "itk-dev/os2forms_cvr_lookup",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_cvr_lookup.git",
-                "reference": "e718e489b091d0f97e5000450dd31dbdc2ac23af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_cvr_lookup/zipball/e718e489b091d0f97e5000450dd31dbdc2ac23af",
-                "reference": "e718e489b091d0f97e5000450dd31dbdc2ac23af",
-                "shasum": ""
-            },
-            "require": {
-                "ext-soap": "*",
-                "http-interop/http-factory-guzzle": "^1.0.0",
-                "itk-dev/serviceplatformen": "^1.3",
-                "php-http/guzzle6-adapter": "^2.0.1",
-                "symfony/property-access": "^4.4"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3"
-            },
-            "type": "drupal-module",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Steen Risom",
-                    "email": "lats@aarhus.dk"
-                }
-            ],
-            "description": "Provides integration to CVR service provided by Serviceplatformen.",
-            "support": {
-                "issues": "https://github.com/itk-dev/os2forms_cvr_lookup/issues",
-                "source": "https://github.com/itk-dev/os2forms_cvr_lookup/tree/1.4.0"
-            },
-            "time": "2023-05-09T09:02:58+00:00"
-        },
-        {
             "name": "itk-dev/os2forms_failed_jobs",
             "version": "1.2.0",
             "source": {
@@ -8764,16 +8626,16 @@
         },
         {
             "name": "itk-dev/serviceplatformen",
-            "version": "1.4.0",
+            "version": "dev-feature/guzzle6-adapter",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/serviceplatformen.git",
-                "reference": "2899873584bd7e28ca306b276c4224c4f876758f"
+                "reference": "7900ed97e7f3ea82b582c9a861713cda0105fabb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/2899873584bd7e28ca306b276c4224c4f876758f",
-                "reference": "2899873584bd7e28ca306b276c4224c4f876758f",
+                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/7900ed97e7f3ea82b582c9a861713cda0105fabb",
+                "reference": "7900ed97e7f3ea82b582c9a861713cda0105fabb",
                 "shasum": ""
             },
             "require": {
@@ -8816,6 +8678,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
+                    "Oio\\": "lib/Oio/",
                     "KleOnlineDk\\": "lib/KleOnlineDk/",
                     "WwwFormOnlineDk\\": "lib/WwwFormOnlineDk/",
                     "DigitalPost\\MeMo\\": "lib/DigitalPost/MeMo/",
@@ -8847,9 +8710,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/serviceplatformen/issues",
-                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.4.0"
+                "source": "https://github.com/itk-dev/serviceplatformen/tree/feature/guzzle6-adapter"
             },
-            "time": "2023-05-02T13:15:30+00:00"
+            "time": "2023-07-10T12:20:30+00:00"
         },
         {
             "name": "itk-dev/web_accessibility_statement",
@@ -9759,36 +9622,41 @@
         },
         {
             "name": "os2forms/os2forms_digital_post",
-            "version": "2.0.2",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "c8b72d0e8499243d26f068c4006e502167bcb508"
+                "reference": "cc54f3b21231dfd6c81d7fbe69adb20696ff7477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/c8b72d0e8499243d26f068c4006e502167bcb508",
-                "reference": "c8b72d0e8499243d26f068c4006e502167bcb508",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/cc54f3b21231dfd6c81d7fbe69adb20696ff7477",
+                "reference": "cc54f3b21231dfd6c81d7fbe69adb20696ff7477",
                 "shasum": ""
             },
             "require": {
                 "dompdf/dompdf": "^2.0",
+                "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.0",
+                "drush/drush": "^11 || ^12",
+                "ext-dom": "*",
                 "ext-soap": "*",
                 "http-interop/http-factory-guzzle": "^1.0.0",
                 "itk-dev/beskedfordeler-drupal": "^1.0",
-                "itk-dev/os2forms_cpr_lookup": "^1.6",
-                "itk-dev/serviceplatformen": "^1.2",
+                "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
                 "os2forms/os2forms": "^3.0",
-                "php-http/guzzle6-adapter": "^2.0.1",
+                "os2web/os2web_datalookup": "^1.5",
+                "php": "^8.1",
+                "php-http/guzzle6-adapter": "^2.0",
                 "symfony/options-resolver": "^5.4 || ^6.0",
-                "symfony/property-access": "^4.4",
                 "wsdltophp/packagebase": "^5.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "^1.1",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
                 "phpunit/phpunit": "^9.5",
                 "wsdltophp/packagegenerator": "^4.0"
             },
@@ -9811,12 +9679,12 @@
                     "email": "rimi@aarhus.dk"
                 }
             ],
-            "description": "Provides integration to Print service provided by Serviceplatformen.",
+            "description": "Provides integration to Afsend post service provided by Serviceplatformen.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/2.0.2"
+                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/3.0.1"
             },
-            "time": "2023-08-09T08:30:26+00:00"
+            "time": "2023-08-14T12:49:48+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -13376,6 +13244,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-sanitycheck/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-sanitycheck"
             },
+            "abandoned": true,
             "time": "2020-05-07T11:34:29+00:00"
         },
         {
@@ -22102,9 +21971,18 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "itk-dev/serviceplatformen",
+            "version": "dev-feature/guzzle6-adapter",
+            "alias": "1.5",
+            "alias_normalized": "1.5.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "itk-dev/serviceplatformen": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

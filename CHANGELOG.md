@@ -3,7 +3,11 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
-## [Under udvikling]
+## [2.4.9] 2023-09-06
+
+* Tilføjede webform options config ignore.
+* Opdaterede til `os2forms/os2forms_digital_post` `3.0.1`.
+* Fjernede `itk-dev/os2forms_cpr_lookup` og `itk-dev/os2forms_cvr_lookup`
 
 ## [2.4.8] 2023-08-29
 
