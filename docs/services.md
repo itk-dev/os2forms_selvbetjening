@@ -2,20 +2,17 @@
 
 ## CPR-opslag
 
-Konfiguration:
-<https://selvbetjening.aarhuskommune.dk/da/admin/config/system/os2web-datalookup/serviceplatformen-cpr-extended>
+[Konfiguration](/admin/config/system/os2web-datalookup/serviceplatformen-cpr-extended)
+- Uses certificates and tokens stored on the server.
 
 ## CVR-opslag
 
-Konfiguration:
-<https://selvbetjening.aarhuskommune.dk/da/admin/config/system/os2web-datalookup/datafordeler-cvr>
+[Konfiguration](/admin/config/system/os2web-datalookup/datafordeler-cvr)
 
 ## Organisation
 
-Konfiguration:
-<https://selvbetjening.aarhuskommune.dk/da/admin/os2forms_organisation/settings>
+[Konfiguration](/admin/os2forms_organisation/settings)
 
 ## GetOrganized
 
-Konfiguration:
-<https://selvbetjening.aarhuskommune.dk/da/admin/os2forms_get_organized/settings>
+[Konfiguration](/admin/os2forms_get_organized/settings)
