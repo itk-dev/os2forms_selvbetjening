@@ -10,7 +10,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Added retry action to error log
 * Changed failed jobs view
 * Opdaterede til [OS2forms failed jobs to
-1.3.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.0)
+1.3.1](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.1)
 * Opdaterede til [Beskedfordeler
 1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
 * Opdaterede til [Os2forms organisation
@@ -18,7 +18,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [Os2forms sync
 1.1.3](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.3)
 * Enable os2forms_webform_maps and related contrib modules
-
 
 ## [2.4.9] 2023-09-06
 
