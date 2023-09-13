@@ -4,6 +4,9 @@
 
   <file>web/modules/custom/</file>
 
+  <exclude-pattern>web/modules/custom/itkdev_booking/</exclude-pattern>
+  <exclude-pattern>web/modules/custom/itkdev_booking/assets/</exclude-pattern>
+
   <!-- Show progress of the run -->
   <arg value="p"/>
 
