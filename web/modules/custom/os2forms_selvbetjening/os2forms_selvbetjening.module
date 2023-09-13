@@ -23,7 +23,7 @@ function os2forms_selvbetjening_form_alter(array &$form, FormStateInterface $for
 function os2forms_selvbetjening_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
   // Add js-form-item class to webform_more element to expose them to form
   // states (element conditions).
-  if ('webform_more' === $element['#type']) {
+  if ('webform_more' === ($element['#type'] ?? NULL)) {
     $element['#attributes']['class'][] = 'js-form-item';
   }
 }
