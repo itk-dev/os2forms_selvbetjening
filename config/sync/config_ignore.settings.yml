@@ -22,3 +22,4 @@ ignored_config_entities:
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_passphrase'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_test'
+  - 'os2forms_forloeb.settings'
