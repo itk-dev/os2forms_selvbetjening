@@ -17,6 +17,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 1.3.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.0)
 * Opdaterede til [Os2forms sync
 1.1.3](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.3)
+* Enable os2forms_webform_maps and related contrib modules
 
 
 ## [2.4.9] 2023-09-06
