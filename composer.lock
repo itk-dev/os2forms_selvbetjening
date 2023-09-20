@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19ae21d139800cd382acfb2f85f33b7d",
+    "content-hash": "37746e447487a5acbbc2e853391672af",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9683,16 +9683,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.10.0",
+            "version": "dev-feature/maestro-anonymous-notifications-and-flows",
             "source": {
                 "type": "git",
-                "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "af1d24f5218016802d93cc25d9018474d5d07ed9"
+                "url": "https://github.com/itk-dev/os2forms.git",
+                "reference": "14ff976360a9d123947a562a8ed4845e3b98eb02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/af1d24f5218016802d93cc25d9018474d5d07ed9",
-                "reference": "af1d24f5218016802d93cc25d9018474d5d07ed9",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/14ff976360a9d123947a562a8ed4845e3b98eb02",
+                "reference": "14ff976360a9d123947a562a8ed4845e3b98eb02",
                 "shasum": ""
             },
             "require": {
@@ -9759,6 +9759,9 @@
                 "drupal/coder": "^8.3",
                 "drupal/maillog": "^1.0"
             },
+            "suggest": {
+                "os2forms/os2forms_digital_post": "Send Maestro notifications via digital post (see https://github.com/itk-dev/os2forms_digital_post/blob/main/README.md)"
+            },
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": false,
@@ -9781,16 +9784,28 @@
                     }
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "coding-standards-check/phpcs": [
+                    "phpcs --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/phpcs"
+                ],
+                "coding-standards-apply/phpcs": [
+                    "phpcbf --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/phpcs"
+                ]
+            },
             "license": [
                 "EUPL-1.2"
             ],
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
-                "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.10.0"
+                "source": "https://github.com/itk-dev/os2forms/tree/feature/maestro-anonymous-notifications-and-flows"
             },
-            "time": "2023-08-23T07:56:34+00:00"
+            "time": "2023-09-14T13:45:18+00:00"
         },
         {
             "name": "os2forms/os2forms_digital_post",
@@ -9857,109 +9872,6 @@
                 "source": "https://github.com/itk-dev/os2forms_digital_post/tree/3.0.1"
             },
             "time": "2023-08-14T12:49:48+00:00"
-        },
-        {
-            "name": "os2forms/os2forms_forloeb",
-            "version": "dev-feature/maestro-stuff",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_forloeb.git",
-                "reference": "9b473674d73d1e343d085ecd33c3e3190a86a8a0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_forloeb/zipball/9b473674d73d1e343d085ecd33c3e3190a86a8a0",
-                "reference": "9b473674d73d1e343d085ecd33c3e3190a86a8a0",
-                "shasum": ""
-            },
-            "require": {
-                "cweagans/composer-patches": "^1.6.5",
-                "dompdf/dompdf": "^2.0",
-                "drupal/admin_toolbar": "^3.0",
-                "drupal/chosen": "^2.10",
-                "drupal/ckeditor_a11ychecker": "2.0.0-alpha1",
-                "drupal/clientside_validation": "3.0.0-rc4",
-                "drupal/coc_forms_auto_export": "2.0.0-alpha1",
-                "drupal/config_entity_revisions": "^1.7.0",
-                "drupal/diff": "^1.0",
-                "drupal/embed": "^1.4",
-                "drupal/events_logging": "^1.5",
-                "drupal/header_and_footer_scripts": "^3.0",
-                "drupal/image_widget_crop": "^2.3",
-                "drupal/ldap": "^4.2",
-                "drupal/ldap_auth": "^1.17",
-                "drupal/libraries": "3.0.0-beta1",
-                "drupal/linkit": "^5.0",
-                "drupal/logging_alerts": "^2.0",
-                "drupal/maestro": "^3.1",
-                "drupal/masquerade": "2.0.0-beta4",
-                "drupal/queue_mail": "^1.4",
-                "drupal/queue_ui": "^2.1",
-                "drupal/r4032login": "^2.1",
-                "drupal/simple_ldap": "1.0.0-alpha3",
-                "drupal/simplesamlphp_auth": "^3.2",
-                "drupal/switch_page_theme": "^4.0",
-                "drupal/telephone_validation": "^2.2",
-                "drupal/ultimate_cron": "^2.0.0",
-                "drupal/user_default_page": "^2.1",
-                "drupal/webform_composite": "1.0-rc2",
-                "drupal/webform_node_element": "^1.2",
-                "drupal/webform_remote_handlers": "^1.6.0",
-                "drupal/webform_rest": "^4.0.0-beta2",
-                "drupal/webform_scheduled_tasks": "^2.0",
-                "drupal/webform_views": "^5.0@alpha",
-                "drupal/workflow_participants": "^2.4",
-                "os2forms/os2forms": "^3.7",
-                "os2forms/os2forms_digital_post": "^3.0",
-                "webmozart/path-util": "^2.3",
-                "zaporylie/composer-drupal-optimizations": "^1.2"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3"
-            },
-            "suggest": {
-                "itk-dev/os2forms_digital_post": "Send digital post"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "composer-exit-on-patch-failure": true,
-                "enable-patching": true,
-                "patches": {
-                    "drupal/user_default_page": {
-                        "Warning: in_array() expects parameter 2 to be array, null given in user_default_page_user_logout() (https://www.drupal.org/node/3246986)": "https://www.drupal.org/files/issues/2021-11-01/user_default_page-3246986-2.patch"
-                    },
-                    "drupal/coc_forms_auto_export": {
-                        "3240592 - Problem with phpseclib requirement in 2.x (https://www.drupal.org/project/coc_forms_auto_export/issues/3240592)": "https://www.drupal.org/files/issues/2021-10-04/requirement-namespace-3240592-1.patch"
-                    },
-                    "//": "Note: drupal/dynamic_entity_reference is required by drupal/workflow_participants",
-                    "drupal/dynamic_entity_reference": {
-                        "entityQuery reference JOINs should specify target_type (https://www.drupal.org/project/dynamic_entity_reference/issues/3120952#comment-14141038)": "https://www.drupal.org/files/issues/2021-06-22/entityquery-reference-joins-should-specify-target_type-3120952-24.patch"
-                    }
-                }
-            },
-            "scripts": {
-                "coding-standards-check/phpcs": [
-                    "phpcs --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-check": [
-                    "@coding-standards-check/phpcs"
-                ],
-                "coding-standards-apply/phpcs": [
-                    "phpcbf --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-apply": [
-                    "@coding-standards-apply/phpcs"
-                ]
-            },
-            "license": [
-                "EUPL-1.2"
-            ],
-            "description": "This module adds Maestro workflow engine and functionality to produce advanced workflows",
-            "support": {
-                "source": "https://github.com/itk-dev/os2forms_forloeb/tree/feature/maestro-stuff"
-            },
-            "time": "2023-09-12T07:47:07+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -22400,16 +22312,16 @@
             "alias_normalized": "1.5.0.0"
         },
         {
-            "package": "os2forms/os2forms_forloeb",
-            "version": "dev-feature/maestro-stuff",
-            "alias": "2.6",
-            "alias_normalized": "2.6.0.0"
+            "package": "os2forms/os2forms",
+            "version": "dev-feature/maestro-anonymous-notifications-and-flows",
+            "alias": "3.11",
+            "alias_normalized": "3.11.0.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
         "itk-dev/serviceplatformen": 20,
-        "os2forms/os2forms_forloeb": 20
+        "os2forms/os2forms": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
