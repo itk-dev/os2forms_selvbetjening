@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37746e447487a5acbbc2e853391672af",
+    "content-hash": "9769cdee87f807dc2c7a269bae70dfc6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9687,12 +9687,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms.git",
-                "reference": "14ff976360a9d123947a562a8ed4845e3b98eb02"
+                "reference": "6f0fa1573ec5d0bee9a614a63a4baa23ba325814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/14ff976360a9d123947a562a8ed4845e3b98eb02",
-                "reference": "14ff976360a9d123947a562a8ed4845e3b98eb02",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/6f0fa1573ec5d0bee9a614a63a4baa23ba325814",
+                "reference": "6f0fa1573ec5d0bee9a614a63a4baa23ba325814",
                 "shasum": ""
             },
             "require": {
@@ -9719,7 +9719,7 @@
                 "drupal/libraries": "^3.0@beta",
                 "drupal/linkit": "^5.0",
                 "drupal/logging_alerts": "^2.0",
-                "drupal/maestro": "^3.0",
+                "drupal/maestro": "^3.1",
                 "drupal/mailsystem": "^4.1",
                 "drupal/masquerade": "^2.0@RC",
                 "drupal/pathauto": "^1.5",
@@ -9805,7 +9805,7 @@
             "support": {
                 "source": "https://github.com/itk-dev/os2forms/tree/feature/maestro-anonymous-notifications-and-flows"
             },
-            "time": "2023-09-14T13:45:18+00:00"
+            "time": "2023-09-25T12:08:11+00:00"
         },
         {
             "name": "os2forms/os2forms_digital_post",
@@ -22314,8 +22314,8 @@
         {
             "package": "os2forms/os2forms",
             "version": "dev-feature/maestro-anonymous-notifications-and-flows",
-            "alias": "3.11",
-            "alias_normalized": "3.11.0.0"
+            "alias": "3.10",
+            "alias_normalized": "3.10.0.0"
         }
     ],
     "minimum-stability": "dev",

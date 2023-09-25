@@ -77,7 +77,7 @@
         "itk-dev/os2forms_user_field_lookup": "^1.0",
         "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
         "itk-dev/web_accessibility_statement": "^1.0",
-        "os2forms/os2forms": "dev-feature/maestro-anonymous-notifications-and-flows as 3.11",
+        "os2forms/os2forms": "dev-feature/maestro-anonymous-notifications-and-flows as 3.10",
         "os2forms/os2forms_digital_post": "^3.0",
         "os2forms/os2forms_forloeb_profile": "^1.12",
         "os2forms/os2forms_get_organized": "^1.1.2",
