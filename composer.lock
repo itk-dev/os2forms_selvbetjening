@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df9d8a40b2ae507137ad825a5872bc7d",
+    "content-hash": "9769cdee87f807dc2c7a269bae70dfc6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -636,16 +636,16 @@
         },
         {
             "name": "consolidation/output-formatters",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/output-formatters.git",
-                "reference": "f65524e9ecd2bd0021c4b18710005caaa6dcbd86"
+                "reference": "06711568b4cd169700ff7e8075db0a9a341ceb58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/f65524e9ecd2bd0021c4b18710005caaa6dcbd86",
-                "reference": "f65524e9ecd2bd0021c4b18710005caaa6dcbd86",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/06711568b4cd169700ff7e8075db0a9a341ceb58",
+                "reference": "06711568b4cd169700ff7e8075db0a9a341ceb58",
                 "shasum": ""
             },
             "require": {
@@ -684,9 +684,9 @@
             "description": "Format text by applying transformations provided by plug-in formatters.",
             "support": {
                 "issues": "https://github.com/consolidation/output-formatters/issues",
-                "source": "https://github.com/consolidation/output-formatters/tree/4.3.1"
+                "source": "https://github.com/consolidation/output-formatters/tree/4.3.2"
             },
-            "time": "2023-05-20T03:23:06+00:00"
+            "time": "2023-07-06T04:45:41+00:00"
         },
         {
             "name": "consolidation/robo",
@@ -1158,30 +1158,30 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.5.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b"
+                "reference": "c6222283fa3f4ac679f8b9ced9a4e23f163e80d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/0a0fa9780f5d4e507415a065172d26a98d02047b",
-                "reference": "0a0fa9780f5d4e507415a065172d26a98d02047b",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/c6222283fa3f4ac679f8b9ced9a4e23f163e80d0",
+                "reference": "c6222283fa3f4ac679f8b9ced9a4e23f163e80d0",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^11",
+                "doctrine/coding-standard": "^11",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^0.16 || ^1",
-                "phpstan/phpstan": "^1.4",
-                "phpstan/phpstan-phpunit": "^1",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "vimeo/psalm": "^4.30 || ^5.4"
+                "phpbench/phpbench": "^1.2",
+                "phpstan/phpstan": "^1.9.4",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpunit/phpunit": "^9.5.27",
+                "vimeo/psalm": "^5.4"
             },
             "type": "library",
             "autoload": {
@@ -1208,7 +1208,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/1.5.0"
+                "source": "https://github.com/doctrine/instantiator/tree/2.0.0"
             },
             "funding": [
                 {
@@ -1224,7 +1224,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-30T00:15:36+00:00"
+            "time": "2022-12-30T00:23:10+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -2175,17 +2175,17 @@
         },
         {
             "name": "drupal/clientside_validation",
-            "version": "3.0.1",
+            "version": "3.0.0-rc4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/clientside_validation.git",
-                "reference": "3.0.1"
+                "reference": "3.0.0-rc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/clientside_validation-3.0.1.zip",
-                "reference": "3.0.1",
-                "shasum": "a5064ff992f8924d83edfdb5b1cab2464b629c5a"
+                "url": "https://ftp.drupal.org/files/projects/clientside_validation-3.0.0-rc4.zip",
+                "reference": "3.0.0-rc4",
+                "shasum": "646ea754f3331bd2f6d7d29f798d033176b0474a"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9",
@@ -2198,11 +2198,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1660914342",
+                    "version": "3.0.0-rc4",
+                    "datestamp": "1592755000",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -4479,26 +4479,26 @@
         },
         {
             "name": "drupal/libraries",
-            "version": "3.0.0-beta3",
+            "version": "3.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/libraries.git",
-                "reference": "8.x-3.0-beta3"
+                "reference": "8.x-3.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/libraries-8.x-3.0-beta3.zip",
-                "reference": "8.x-3.0-beta3",
-                "shasum": "5feb776342d065a276c1409c1f0f306cf2834b53"
+                "url": "https://ftp.drupal.org/files/projects/libraries-8.x-3.0-beta1.zip",
+                "reference": "8.x-3.0-beta1",
+                "shasum": "7843870c52251cc5290e1cdca94524f71edbf016"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.0-beta3",
-                    "datestamp": "1679503579",
+                    "version": "8.x-3.0-beta1",
+                    "datestamp": "1618261123",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -4538,7 +4538,7 @@
             "description": "Allows version-dependent and shared usage of external libraries in Drupal.",
             "homepage": "http://drupal.org/project/libraries",
             "support": {
-                "source": "https://git.drupalcode.org/project/libraries",
+                "source": "http://cgit.drupalcode.org/libraries",
                 "issues": "http://drupal.org/project/issues/libraries",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             }
@@ -4670,17 +4670,17 @@
         },
         {
             "name": "drupal/maestro",
-            "version": "3.1.0-rc1",
+            "version": "3.1.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/maestro.git",
-                "reference": "3.1.0-rc1"
+                "reference": "3.1.0-rc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/maestro-3.1.0-rc1.zip",
-                "reference": "3.1.0-rc1",
-                "shasum": "a8ca32127f5d795a065ac38bd27aa487c5142251"
+                "url": "https://ftp.drupal.org/files/projects/maestro-3.1.0-rc2.zip",
+                "reference": "3.1.0-rc2",
+                "shasum": "c6365f6bc087a2daf434ed649fc437046b323e84"
             },
             "require": {
                 "drupal/core": "^9.4 || ^10"
@@ -4692,8 +4692,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.1.0-rc1",
-                    "datestamp": "1671216754",
+                    "version": "3.1.0-rc2",
+                    "datestamp": "1694466204",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -4790,26 +4790,26 @@
         },
         {
             "name": "drupal/masquerade",
-            "version": "2.0.0-rc4",
+            "version": "2.0.0-beta4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/masquerade.git",
-                "reference": "8.x-2.0-rc4"
+                "reference": "8.x-2.0-beta4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/masquerade-8.x-2.0-rc4.zip",
-                "reference": "8.x-2.0-rc4",
-                "shasum": "2d1da938f58ff539e945b5234e3c8b718cc93a51"
+                "url": "https://ftp.drupal.org/files/projects/masquerade-8.x-2.0-beta4.zip",
+                "reference": "8.x-2.0-beta4",
+                "shasum": "8ab6cf13239e92a787f373d83bd245b9d50f7e6b"
             },
             "require": {
-                "drupal/core": "^9.2 || ^10"
+                "drupal/core": "^8.7.7 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.0-rc4",
-                    "datestamp": "1691692361",
+                    "version": "8.x-2.0-beta4",
+                    "datestamp": "1591126607",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -6218,27 +6218,27 @@
         },
         {
             "name": "drupal/webform_composite",
-            "version": "1.0.0-rc3",
+            "version": "1.0.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform_composite.git",
-                "reference": "8.x-1.0-rc3"
+                "reference": "8.x-1.0-rc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform_composite-8.x-1.0-rc3.zip",
-                "reference": "8.x-1.0-rc3",
-                "shasum": "8f0f26d60a75b89332f9dc80eebfe90292a90c84"
+                "url": "https://ftp.drupal.org/files/projects/webform_composite-8.x-1.0-rc2.zip",
+                "reference": "8.x-1.0-rc2",
+                "shasum": "08d7c23d8b4014d066598ae4b7632682c05bcd83"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10",
+                "drupal/core": "^8 || ^9",
                 "drupal/webform": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc3",
-                    "datestamp": "1675311365",
+                    "version": "8.x-1.0-rc2",
+                    "datestamp": "1591213393",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -8680,16 +8680,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "fcc5c9740ec99d272cb8ef8b42e3032557643c1e"
+                "reference": "8ba210e294cbfdd2876952c2d4448bc2fc73478a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/fcc5c9740ec99d272cb8ef8b42e3032557643c1e",
-                "reference": "fcc5c9740ec99d272cb8ef8b42e3032557643c1e",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/8ba210e294cbfdd2876952c2d4448bc2fc73478a",
+                "reference": "8ba210e294cbfdd2876952c2d4448bc2fc73478a",
                 "shasum": ""
             },
             "require": {
@@ -8717,9 +8717,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.3.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.3.1"
             },
-            "time": "2023-08-31T10:36:34+00:00"
+            "time": "2023-09-13T11:08:09+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -8975,21 +8975,21 @@
         },
         {
             "name": "jms/serializer",
-            "version": "3.23.0",
+            "version": "3.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "ac0b16ee5317d1aacc41deb91c6c325eae97c176"
+                "reference": "bd18f0a6ee4d75515b33091afa3333e100e0be43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/ac0b16ee5317d1aacc41deb91c6c325eae97c176",
-                "reference": "ac0b16ee5317d1aacc41deb91c6c325eae97c176",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/bd18f0a6ee4d75515b33091afa3333e100e0be43",
+                "reference": "bd18f0a6ee4d75515b33091afa3333e100e0be43",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.13 || ^2.0",
-                "doctrine/instantiator": "^1.0.3",
+                "doctrine/instantiator": "^1.0.3 || ^2.0",
                 "doctrine/lexer": "^1.1 || ^2",
                 "jms/metadata": "^2.6",
                 "php": "^7.2||^8.0",
@@ -9005,7 +9005,7 @@
                 "ocramius/proxy-manager": "^1.0|^2.0",
                 "phpbench/phpbench": "^1.0",
                 "phpstan/phpstan": "^1.0.2",
-                "phpunit/phpunit": "^8.5.21||^9.0",
+                "phpunit/phpunit": "^8.5.21||^9.0||^10.0",
                 "psr/container": "^1.0|^2.0",
                 "symfony/dependency-injection": "^3.0|^4.0|^5.0|^6.0",
                 "symfony/expression-language": "^3.2|^4.0|^5.0|^6.0",
@@ -9059,7 +9059,7 @@
             ],
             "support": {
                 "issues": "https://github.com/schmittjoh/serializer/issues",
-                "source": "https://github.com/schmittjoh/serializer/tree/3.23.0"
+                "source": "https://github.com/schmittjoh/serializer/tree/3.24.0"
             },
             "funding": [
                 {
@@ -9067,7 +9067,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-17T17:40:48+00:00"
+            "time": "2023-06-04T20:28:00+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -9683,16 +9683,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.10.0",
+            "version": "dev-feature/maestro-anonymous-notifications-and-flows",
             "source": {
                 "type": "git",
-                "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "af1d24f5218016802d93cc25d9018474d5d07ed9"
+                "url": "https://github.com/itk-dev/os2forms.git",
+                "reference": "6f0fa1573ec5d0bee9a614a63a4baa23ba325814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/af1d24f5218016802d93cc25d9018474d5d07ed9",
-                "reference": "af1d24f5218016802d93cc25d9018474d5d07ed9",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/6f0fa1573ec5d0bee9a614a63a4baa23ba325814",
+                "reference": "6f0fa1573ec5d0bee9a614a63a4baa23ba325814",
                 "shasum": ""
             },
             "require": {
@@ -9719,7 +9719,7 @@
                 "drupal/libraries": "^3.0@beta",
                 "drupal/linkit": "^5.0",
                 "drupal/logging_alerts": "^2.0",
-                "drupal/maestro": "^3.0",
+                "drupal/maestro": "^3.1",
                 "drupal/mailsystem": "^4.1",
                 "drupal/masquerade": "^2.0@RC",
                 "drupal/pathauto": "^1.5",
@@ -9759,6 +9759,9 @@
                 "drupal/coder": "^8.3",
                 "drupal/maillog": "^1.0"
             },
+            "suggest": {
+                "os2forms/os2forms_digital_post": "Send Maestro notifications via digital post (see https://github.com/itk-dev/os2forms_digital_post/blob/main/README.md)"
+            },
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": false,
@@ -9781,16 +9784,28 @@
                     }
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "coding-standards-check/phpcs": [
+                    "phpcs --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/phpcs"
+                ],
+                "coding-standards-apply/phpcs": [
+                    "phpcbf --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/phpcs"
+                ]
+            },
             "license": [
                 "EUPL-1.2"
             ],
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
-                "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.10.0"
+                "source": "https://github.com/itk-dev/os2forms/tree/feature/maestro-anonymous-notifications-and-flows"
             },
-            "time": "2023-08-23T07:56:34+00:00"
+            "time": "2023-09-25T12:08:11+00:00"
         },
         {
             "name": "os2forms/os2forms_digital_post",
@@ -11616,16 +11631,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.18",
+            "version": "v0.11.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "4f00ee9e236fa6a48f4560d1300b9c961a70a7ec"
+                "reference": "0fa27040553d1d280a67a4393194df5228afea5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4f00ee9e236fa6a48f4560d1300b9c961a70a7ec",
-                "reference": "4f00ee9e236fa6a48f4560d1300b9c961a70a7ec",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0fa27040553d1d280a67a4393194df5228afea5b",
+                "reference": "0fa27040553d1d280a67a4393194df5228afea5b",
                 "shasum": ""
             },
             "require": {
@@ -11686,9 +11701,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.18"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.20"
             },
-            "time": "2023-05-23T02:31:11+00:00"
+            "time": "2023-07-31T14:32:22+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -16413,16 +16428,16 @@
         },
         {
             "name": "symfony/polyfill-uuid",
-            "version": "v1.27.0",
+            "version": "v1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-uuid.git",
-                "reference": "f3cf1a645c2734236ed1e2e671e273eeb3586166"
+                "reference": "9c44518a5aff8da565c8a55dbe85d2769e6f630e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/f3cf1a645c2734236ed1e2e671e273eeb3586166",
-                "reference": "f3cf1a645c2734236ed1e2e671e273eeb3586166",
+                "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/9c44518a5aff8da565c8a55dbe85d2769e6f630e",
+                "reference": "9c44518a5aff8da565c8a55dbe85d2769e6f630e",
                 "shasum": ""
             },
             "require": {
@@ -16437,7 +16452,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -16475,7 +16490,7 @@
                 "uuid"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-uuid/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-uuid/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -16491,7 +16506,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-26T09:26:14+00:00"
         },
         {
             "name": "symfony/process",
@@ -17244,16 +17259,16 @@
         },
         {
             "name": "symfony/uid",
-            "version": "v6.2.7",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/uid.git",
-                "reference": "d30c72a63897cfa043e1de4d4dd2ffa9ecefcdc0"
+                "reference": "01b0f20b1351d997711c56f1638f7a8c3061e384"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/uid/zipball/d30c72a63897cfa043e1de4d4dd2ffa9ecefcdc0",
-                "reference": "d30c72a63897cfa043e1de4d4dd2ffa9ecefcdc0",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/01b0f20b1351d997711c56f1638f7a8c3061e384",
+                "reference": "01b0f20b1351d997711c56f1638f7a8c3061e384",
                 "shasum": ""
             },
             "require": {
@@ -17298,7 +17313,7 @@
                 "uuid"
             ],
             "support": {
-                "source": "https://github.com/symfony/uid/tree/v6.2.7"
+                "source": "https://github.com/symfony/uid/tree/v6.3.0"
             },
             "funding": [
                 {
@@ -17314,7 +17329,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-14T08:44:56+00:00"
+            "time": "2023-04-08T07:25:02+00:00"
         },
         {
             "name": "symfony/validator",
@@ -22295,11 +22310,18 @@
             "version": "dev-feature/guzzle6-adapter",
             "alias": "1.5",
             "alias_normalized": "1.5.0.0"
+        },
+        {
+            "package": "os2forms/os2forms",
+            "version": "dev-feature/maestro-anonymous-notifications-and-flows",
+            "alias": "3.10",
+            "alias_normalized": "3.10.0.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20
+        "itk-dev/serviceplatformen": 20,
+        "os2forms/os2forms": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -22307,5 +22329,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

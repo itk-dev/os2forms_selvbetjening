@@ -6,6 +6,7 @@
 
   <exclude-pattern>web/modules/custom/itkdev_booking/</exclude-pattern>
   <exclude-pattern>web/modules/custom/itkdev_booking/assets/</exclude-pattern>
+  <exclude-pattern type="relative">vendor/</exclude-pattern>
 
   <!-- Show progress of the run -->
   <arg value="p"/>
