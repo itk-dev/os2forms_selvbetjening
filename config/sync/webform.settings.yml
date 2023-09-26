@@ -149,7 +149,6 @@ element:
   default_algolia_places_api_key: ''
   excluded_elements:
     color: color
-    container: container
     entity_autocomplete: entity_autocomplete
     item: item
     label: label

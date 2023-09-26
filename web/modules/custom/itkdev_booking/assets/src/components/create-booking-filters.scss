@@ -1,0 +1,39 @@
+.category-tabs {
+  display: flex;
+  flex-direction: row;
+}
+
+.category-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 24px 2px;
+  gap: 10px;
+
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: #dee2e6;
+
+  background: #e9ecef;
+}
+
+.category-tab.first {
+  border-top-left-radius: 3px;
+}
+
+.category-tab.last {
+  border-top-right-radius: 3px;
+}
+
+.category-button {
+  border: 0;
+  background: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.category-tab.active {
+  background: #ffffff;
+  border-color: #ffffff;
+}

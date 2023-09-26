@@ -8,8 +8,12 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\os2forms_cpr_lookup\Service\CprServiceInterface;
-use Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface;
+use Drupal\os2forms_digital_post\Exception\RuntimeException;
+use Drupal\os2web_datalookup\LookupResult\CompanyLookupResult;
+use Drupal\os2web_datalookup\LookupResult\CprLookupResult;
+use Drupal\os2web_datalookup\Plugin\DataLookupManager;
+use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DataLookupInterfaceCompany;
+use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DataLookupInterfaceCpr;
 use Drupal\os2web_nemlogin\Service\AuthProviderService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -35,16 +39,9 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
   /**
    * The OS2forms CVR service.
    *
-   * @var \Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface
+   * @var \Drupal\os2web_datalookup\Plugin\DataLookupManager
    */
-  protected CvrServiceInterface $cvrService;
-
-  /**
-   * The OS2forms CPR service.
-   *
-   * @var \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface
-   */
-  protected CprServiceInterface $cprService;
+  protected DataLookupManager $dataLookupManager;
 
   /**
    * The route match service.
@@ -71,20 +68,17 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
    *   Block plugin definition.
    * @param \Drupal\os2web_nemlogin\Service\AuthProviderService $authProvider
    *   The OS2Web Nemlogin authorization provider.
-   * @param \Drupal\os2forms_cvr_lookup\Service\CvrServiceInterface $cvrService
-   *   The OS2forms CVR service.
-   * @param \Drupal\os2forms_cpr_lookup\Service\CprServiceInterface $cprService
-   *   The OS2forms CPR service.
+   * @param \Drupal\os2web_datalookup\Plugin\DataLookupManager $dataLookupManager
+   *   The OS2forms Data lookup service.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The route match service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, AuthProviderService $authProvider, CvrServiceInterface $cvrService, CprServiceInterface $cprService, RouteMatchInterface $routeMatch, EntityTypeManagerInterface $entityTypeManager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, AuthProviderService $authProvider, DataLookupManager $dataLookupManager, RouteMatchInterface $routeMatch, EntityTypeManagerInterface $entityTypeManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->authProvider = $authProvider;
-    $this->cvrService = $cvrService;
-    $this->cprService = $cprService;
+    $this->dataLookupManager = $dataLookupManager;
     $this->routeMatch = $routeMatch;
     $this->entityTypeManager = $entityTypeManager;
   }
@@ -98,8 +92,7 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
       $plugin_id,
       $plugin_definition,
       $container->get('os2web_nemlogin.auth_provider'),
-      $container->get('os2forms_cvr_lookup.service'),
-      $container->get('os2forms_cpr_lookup.service'),
+      $container->get('plugin.manager.os2web_datalookup'),
       $container->get('current_route_match'),
       $container->get('entity_type.manager')
     );
@@ -164,7 +157,7 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
       // Use cvr name if one exists.
       if ($cvr = $plugin->fetchValue('cvr')) {
         try {
-          $cvrResponse = $this->cvrService->search($cvr);
+          $cvrResponse = $this->lookupCvr($cvr);
           $name = $cvrResponse->getName();
         }
         catch (\Exception $e) {
@@ -174,7 +167,7 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
       }
       elseif ($cpr = $plugin->fetchValue('cpr')) {
         try {
-          $cprResponse = $this->cprService->search($cpr);
+          $cprResponse = $this->lookupCpr($cpr);
           $name = $cprResponse->getName();
         }
         catch (\Exception $e) {
@@ -244,6 +237,38 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
       return NULL;
     }
     return $page_entity;
+  }
+
+  /**
+   * Look up CPR.
+   */
+  public function lookupCpr(string $cpr): CprLookupResult {
+    $instance = $this->dataLookupManager->createDefaultInstanceByGroup('cpr_lookup');
+    if (!($instance instanceof DataLookupInterfaceCpr)) {
+      throw new RuntimeException('Cannot get CPR data lookup instance');
+    }
+    $lookupResult = $instance->lookup($cpr);
+    if (!$lookupResult->isSuccessful()) {
+      throw new RuntimeException('Cannot lookup CPR');
+    }
+
+    return $lookupResult;
+  }
+
+  /**
+   * Look up CVR.
+   */
+  public function lookupCvr(string $cvr): CompanyLookupResult {
+    $instance = $this->dataLookupManager->createDefaultInstanceByGroup('cvr_lookup');
+    if (!($instance instanceof DataLookupInterfaceCompany)) {
+      throw new RuntimeException('Cannot get CVR data lookup instance');
+    }
+    $lookupResult = $instance->lookup($cvr);
+    if (!$lookupResult->isSuccessful()) {
+      throw new RuntimeException('Cannot lookup CVR');
+    }
+
+    return $lookupResult;
   }
 
 }

@@ -1,0 +1,169 @@
+#react-booking-app {
+  // Import flexbox grid similar to bootstrap 5 http://sassflexboxgrid.com/ for use in the app.
+  /* stylelint-disable */
+  @import "node_modules/@drewbot/sass-flexbox-grid/public/sass-flexbox/scss/main";
+  /* stylelint-enable */
+
+  .App {
+    margin-bottom: 1em;
+  }
+
+  .no-gutter {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // Helper class for padding.
+  .small-padding {
+    padding: 0.5rem;
+  }
+  .Toastify__toast-body > div:last-child {
+    white-space: pre-line;
+  }
+  .app-wrapper {
+    position: relative;
+    background: #e9ecef;
+    padding: 30px;
+
+    .filters-wrapper {
+      margin-bottom: 30px;
+      padding: 20px 15px;
+      background: #fff;
+      border-radius: 0 3px 3px 3px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+
+      div {
+        color: hsl(0, 0%, 20%);
+      }
+
+      div:nth-child(1) {
+        z-index: 6;
+      }
+      div:nth-child(2) {
+        z-index: 5;
+      }
+      div:nth-child(3) {
+        z-index: 4;
+      }
+      div:nth-child(4) {
+        z-index: 3;
+      }
+    }
+
+    .app-content {
+      .viewswapper-wrapper {
+        margin: 30px 0px 15px 0px;
+
+        .viewswapper-container {
+          .booking-btn {
+            margin-right: 5px;
+          }
+
+          .booking-btn.active {
+            background-color: #343a40;
+          }
+        }
+      }
+    }
+
+    .no-result-overlay {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      top: 20px;
+      bottom: 20px;
+      right: 20px;
+      left: 20px;
+      height: calc(100% - 40px);
+      width: calc(100% - 40px);
+      z-index: 2;
+      background-color: #dee2e6;
+
+      .no-initial-image {
+        margin: auto auto 15px auto;
+        width: 50%;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .no-result-image {
+        margin: auto auto 15px auto;
+        width: 25%;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .no-result-text {
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        margin: 10px auto auto auto;
+
+        span:first-child {
+          text-align: center;
+        }
+
+        span:last-child {
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .resourceview-visible {
+      height: 782px;
+      overflow: hidden;
+    }
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  .fc-scrollgrid {
+    border: none !important;
+  }
+
+  .main-container {
+    position: relative;
+    display: block;
+    background: #fff;
+    border-radius: 5px;
+  }
+
+  .app-wrapper .disable-wrapper {
+    pointer-events: none;
+    opacity: 0.4;
+    user-select: none;
+    cursor: not-allowed;
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-in-background {
+    opacity: 1;
+    top: 0;
+  }
+
+  .fade-in-content {
+    opacity: 1;
+    animation: fadeInContent 0.3s ease;
+  }
+
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}

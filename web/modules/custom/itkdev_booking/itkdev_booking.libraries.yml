@@ -1,0 +1,25 @@
+booking_calendar:
+  version: 1.x
+  css:
+    theme:
+      assets/dist/main.css: {}
+  js:
+    assets/dist/main.js: {}
+
+user_bookings:
+  version: 1.x
+  css:
+    theme:
+      assets/dist/userbookings.css: {}
+  js:
+    assets/dist/userbookings.js: {}
+
+booking_app:
+  version: 1.x
+  css:
+    theme:
+      assets/dist/main.css: {}
+  js:
+    assets/dist/main.js: {}
+  dependencies:
+    - core/drupalSettings

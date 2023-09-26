@@ -1,0 +1,16 @@
+uuid: b70d762d-aded-46a0-a214-505a80711892
+langcode: en
+status: true
+dependencies:
+  module:
+    - os2forms_failed_jobs
+  enforced:
+    module:
+      - os2forms_failed_jobs
+_core:
+  default_config_hash: pexPU9ftUC8P4KrPUZbAMG-riQDByKt2Y0_ap2QDhRE
+id: advancedqueue_queue_retry_action
+label: 'Retry processing'
+type: advancedqueue_queue
+plugin: advancedqueue_queue_retry_action
+configuration: {  }

@@ -216,9 +216,10 @@ private-files/
 node_modules/
 yarn-error.log
 
-# Ignore webforms and maestro templates including localized config.
+# Ignore webforms, webform options and maestro templates including localized config.
 config/sync/**/maestro.maestro_template.*
 config/sync/**/webform.webform.*
+config/sync/**/webform.webform_options.*
 
 # Ignore nemlogin settings
 config/sync/os2web_nemlogin.settings.yml

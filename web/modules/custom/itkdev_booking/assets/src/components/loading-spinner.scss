@@ -1,0 +1,30 @@
+div.loader {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  right: 20px;
+  left: 20px;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  background-color: #dee2e6;
+  display: flex;
+  z-index: 999;
+  pointer-events: none;
+}
+
+div.loader > img {
+  margin: auto;
+  display: inline-block;
+  animation: rotateloader 1.3s linear infinite;
+  height: 50px;
+  width: 50px;
+}
+@keyframes rotateloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

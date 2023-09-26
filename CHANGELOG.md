@@ -1,9 +1,55 @@
 <!-- markdownlint-disable MD024 -->
+
 # Changelog for selvbetjening.aarhuskommune.dk
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
-## [Under udvikling]
+## In develop
+
+* Fixed editing/deleting bookings errors in itkdev_booking.
+* Disable access to webform error log
+* Added retry action to error log
+* Changed failed jobs view
+* Opdaterede til [OS2forms failed jobs to
+1.3.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.0)
+* Opdaterede til [Beskedfordeler
+1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
+* Opdaterede til [Os2forms organisation
+1.3.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.0)
+* Opdaterede til [Os2forms sync
+1.1.3](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.3)
+* Enable os2forms_webform_maps and related contrib modules
+
+## [2.4.9] 2023-09-06
+
+* Tilføjede webform options config ignore.
+* Opdaterede til `os2forms/os2forms_digital_post` `3.0.1`.
+* Fjernede `itk-dev/os2forms_cpr_lookup` og `itk-dev/os2forms_cvr_lookup`
+* Opdaterede til [Beskedfordeler drupal
+  1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
+* Tilføjede patch for at undgå honeypot og ajax issues.
+
+## [2.4.8] 2023-08-29
+
+* Moved itkdev_booking module into custom module folder
+* Aktiverede Webform `container` elementet.
+
+## [2.4.7] 2023-08-24
+
+* Opdaterede fra `itk-dev/itkdev-booking` `1.0.6`
+  til `itk-dev/itkdev-booking` `1.0.7`.
+
+## [2.4.6]
+
+* Opdaterede fra `itk-dev/itkdev-booking` `1.0.5`
+  til `itk-dev/itkdev-booking` `1.0.6`.
+
+## [2.4.5]
+
+* Opdaterede fra `itk-dev/itkdev-booking` `1.0.3`
+  til `itk-dev/itkdev-booking` `1.0.5`.
+* Opdaterede fra `itk-dev/os2forms_digital_post` `2.0.1`
+  til `os2forms/os2forms_digital_post` `2.0.2`.
 
 * Opdaterede til [OS2Forms Organisation
   1.2.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.2.0)
