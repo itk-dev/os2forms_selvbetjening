@@ -68,13 +68,16 @@ export default class Api {
     });
   }
 
-  static async fetchUserBookings(apiEndpoint, search, page, pageSize) {
+  static async fetchUserBookings(apiEndpoint, search, sort, page, pageSize) {
+    let params = new URLSearchParams({
+      page,
+      pageSize
+    });
+    params.append('title', search);
+    params.append(Object.keys(sort)[0], Object.values(sort)[0]);
+
     return fetch(
-      `${apiEndpoint}itkdev_booking/user-bookings?${new URLSearchParams({
-        search,
-        page,
-        pageSize,
-      })}`
+      `${apiEndpoint}itkdev_booking/user-bookings?${params}`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);

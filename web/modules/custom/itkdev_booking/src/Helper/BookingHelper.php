@@ -253,7 +253,7 @@ class BookingHelper {
 
       $headers = $this->userHelper->attachUserToHeaders($request, $this->headers);
 
-      $response = $client->get("{$endpoint}v1/user-bookings", [
+      $response = $client->get("{$endpoint}v1/user-booking-cache-entries", [
         'query' => $query,
         'headers' => $headers,
       ]);
