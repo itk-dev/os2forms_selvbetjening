@@ -56,6 +56,7 @@
         "drupal/key_auth": "^2.1",
         "drupal/keyboard_shortcuts": "^1.1.1",
         "drupal/lang_dropdown": "^2.0",
+        "drupal/leaflet": "10.0.12",
         "drupal/maestro": "^3.0",
         "drupal/memcache": "^2.5",
         "drupal/menu_link_attributes": "^1.3",
