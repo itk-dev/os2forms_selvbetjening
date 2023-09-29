@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Opdaterede til [Os2forms GetOrganized
+  1.1.4](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.4)
 * Nedgraderede til `drupal/leaflet` `10.0.12`
 * Fixed editing/deleting bookings errors in itkdev_booking.
 * Disable access to webform error log
@@ -16,7 +18,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [Beskedfordeler
 1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
 * Opdaterede til [Os2forms organisation
-1.3.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.0)
+1.3.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.1)
 * Opdaterede til [Os2forms sync
 1.1.3](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.3)
 * Enable os2forms_webform_maps and related contrib modules
