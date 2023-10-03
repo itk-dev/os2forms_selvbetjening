@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5804f9171dd8f6e53ed280b667f9ffad",
+    "content-hash": "168386e5bb73b70d3921aa72fdc2c395",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9742,16 +9742,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.12.2",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "5a69f1118ba44a0206580e5340e6314a7b83f4b8"
+                "reference": "a682232ef66cbcc4a782a225641fa1b48c846db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/5a69f1118ba44a0206580e5340e6314a7b83f4b8",
-                "reference": "5a69f1118ba44a0206580e5340e6314a7b83f4b8",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/a682232ef66cbcc4a782a225641fa1b48c846db7",
+                "reference": "a682232ef66cbcc4a782a225641fa1b48c846db7",
                 "shasum": ""
             },
             "require": {
@@ -9807,20 +9807,31 @@
                 "drupal/webform_validation": "^2.0",
                 "drupal/webform_views": "^5.0@alpha",
                 "drupal/workflow_participants": "^2.4",
-                "os2web/os2web_datalookup": "^1.0",
+                "ext-dom": "*",
+                "ext-soap": "*",
+                "http-interop/http-factory-guzzle": "^1.0.0",
+                "itk-dev/beskedfordeler-drupal": "^1.0",
+                "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
+                "os2web/os2web_datalookup": "^1.5",
                 "os2web/os2web_nemlogin": "^1.0",
+                "php": "^8.1",
+                "php-http/guzzle6-adapter": "^2.0",
                 "phpoffice/phpword": "^0.18.2",
+                "symfony/options-resolver": "^5.4 || ^6.0",
                 "tecnickcom/tcpdf": "~6",
                 "webmozart/path-util": "^2.3",
+                "wsdltophp/packagebase": "^5.0",
                 "zaporylie/composer-drupal-optimizations": "^1.2"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
-                "drupal/maillog": "^1.0"
-            },
-            "suggest": {
-                "os2forms/os2forms_digital_post": "Send Maestro notifications via digital post (see https://github.com/itk-dev/os2forms_digital_post/blob/main/README.md)"
+                "drupal/maillog": "^1.0",
+                "mglaman/phpstan-drupal": "^1.1",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpunit/phpunit": "^9.5",
+                "wsdltophp/packagegenerator": "^4.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -9851,75 +9862,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.12.2"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.13.0"
             },
-            "time": "2023-10-03T09:19:25+00:00"
-        },
-        {
-            "name": "os2forms/os2forms_digital_post",
-            "version": "3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/os2forms_digital_post.git",
-                "reference": "cc54f3b21231dfd6c81d7fbe69adb20696ff7477"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_digital_post/zipball/cc54f3b21231dfd6c81d7fbe69adb20696ff7477",
-                "reference": "cc54f3b21231dfd6c81d7fbe69adb20696ff7477",
-                "shasum": ""
-            },
-            "require": {
-                "dompdf/dompdf": "^2.0",
-                "drupal/advancedqueue": "^1.0",
-                "drupal/webform": "^6.0",
-                "drush/drush": "^11 || ^12",
-                "ext-dom": "*",
-                "ext-soap": "*",
-                "http-interop/http-factory-guzzle": "^1.0.0",
-                "itk-dev/beskedfordeler-drupal": "^1.0",
-                "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
-                "os2forms/os2forms": "^3.0",
-                "os2web/os2web_datalookup": "^1.5",
-                "php": "^8.1",
-                "php-http/guzzle6-adapter": "^2.0",
-                "symfony/options-resolver": "^5.4 || ^6.0",
-                "wsdltophp/packagebase": "^5.0"
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "drupal/coder": "^8.3",
-                "mglaman/phpstan-drupal": "^1.1",
-                "phpstan/extension-installer": "^1.3",
-                "phpstan/phpstan-deprecation-rules": "^1.1",
-                "phpunit/phpunit": "^9.5",
-                "wsdltophp/packagegenerator": "^4.0"
-            },
-            "type": "drupal-module",
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\os2forms_digital_post\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lars Steen Risom"
-                },
-                {
-                    "name": "Mikkel Ricky",
-                    "email": "rimi@aarhus.dk"
-                }
-            ],
-            "description": "Provides integration to Afsend post service provided by Serviceplatformen.",
-            "support": {
-                "issues": "https://github.com/itk-dev/os2forms_digital_post/issues",
-                "source": "https://github.com/itk-dev/os2forms_digital_post/tree/3.0.1"
-            },
-            "time": "2023-08-14T12:49:48+00:00"
+            "time": "2023-10-11T10:08:18+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
