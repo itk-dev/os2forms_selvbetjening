@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Tilføjede drupal leaflet til config ignore.
 * Opdaterede til [Os2forms GetOrganized
   1.1.4](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.4)
 * Nedgraderede til `drupal/leaflet` `10.0.12`
