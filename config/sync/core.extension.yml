@@ -2,7 +2,6 @@ _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 langcode: da
 module:
-  admin_audit_trail: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   advancedqueue: 0
@@ -76,8 +75,6 @@ module:
   os2forms: 0
   os2forms_api_request_handler: 0
   os2forms_attachment: 0
-  os2forms_cpr_lookup: 0
-  os2forms_cvr_lookup: 0
   os2forms_dawa: 0
   os2forms_digital_post: 0
   os2forms_failed_jobs: 0
