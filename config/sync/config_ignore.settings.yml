@@ -22,3 +22,6 @@ ignored_config_entities:
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_passphrase'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_test'
+  - '# Ignore leaflet layers'
+  - 'leaflet_layers.map_bundle.*'
+  - 'leaflet_layers.map_layer.*'
