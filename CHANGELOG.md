@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Changed user bookings to use cached bookings.
 * Fixed editing/deleting bookings errors in itkdev_booking.
 * Disable access to webform error log
 * Added retry action to error log
