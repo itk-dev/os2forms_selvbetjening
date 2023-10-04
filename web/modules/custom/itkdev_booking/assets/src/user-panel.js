@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import dayjs from "dayjs";
 import * as PropTypes from "prop-types";
 import Api from "./util/api";
 import LoadingSpinner from "./components/loading-spinner";
-import { displayError } from "./util/display-toast";
+import {displayError} from "./util/display-toast";
 import UserBookingEdit from "./components/user-booking-edit";
 import UserBookingDelete from "./components/user-booking-delete";
 import "./user-panel.scss";
 import MainNavigation from "./components/main-navigation";
+import {string} from "prop-types";
 
 /**
  * @param {object} props Props.
@@ -24,6 +25,7 @@ function UserPanel({ config }) {
   const [dateSort, setDateSort] = useState('asc');
   const [sort, setSort] = useState({'order[start]': dateSort});
   const [page, setPage] = useState(1);
+  const [pendingBookings, setPendingBookings] = useState([]);
   const pageSize = 10;
 
   const onBookingChanged = (bookingId, start, end) => {
@@ -69,24 +71,21 @@ function UserPanel({ config }) {
       setLoading(true);
       Api.fetchUserBookings(config.api_endpoint, search, sort, page, pageSize)
         .then((loadedUserBookings) => {
-          console.log('1', loadedUserBookings['hydra:member'])
-          const updatedUserBookings = loadedUserBookings['hydra:member'].map((booking) => {
-            if (booking.status === 'AWAITING_APPROVAL' ) {
-              booking.status = null
-              Api.fetchUserBookings(config.api_endpoint, search, sort, page, pageSize)
-                .then(() => {
-                  console.log(booking.status);
-                }).catch((bookingStatusError) => {
-                  displayError("Der opstod en fejl. Prøv igen senere...", bookingStatusError);
-                }).finally(() => {
-                  booking.status = 'ACCEPTED'
-                });
+          let pending = [];
+          loadedUserBookings['hydra:member'] = loadedUserBookings['hydra:member'].map((booking) => {
+            if (booking.status === 'AWAITING_APPROVAL') {
+              booking.status = (<LoadingSpinner size="small" />);
+              pending.push(booking.exchangeId);
             }
+            return booking;
           });
-          console.log('2', updatedUserBookings);
-          console.log('3', loadedUserBookings);
           setUserBookings(loadedUserBookings);
-
+          return pending;
+        })
+        .then ((pending) => {
+          if (pending.length > 0) {
+            setPendingBookings(pending);
+          }
         })
         .catch((fetchUserBookingsError) => {
           displayError("Der opstod en fejl. Prøv igen senere...", fetchUserBookingsError);
@@ -112,16 +111,20 @@ function UserPanel({ config }) {
   const currentBookings = userBookings ? Object.values(userBookings["hydra:member"]) ?? [] : [];
 
   const getStatus = (status) => {
-    switch (status) {
-      case "ACCEPTED":
-        return "Godkendt";
-      case "DECLINED":
-        return "Afvist";
-      case "AWAITING_APPROVAL":
-        return "Afventer godkendelse";
-      default:
-        return "Ukendt status";
+    if (typeof status === 'string') {
+      switch (status) {
+        case "ACCEPTED":
+          return "Godkendt";
+        case "DECLINED":
+          return "Afvist";
+        case "AWAITING_APPROVAL":
+          return "Afventer godkendelse";
+        default:
+          return "Ukendt status";
+      }
     }
+
+    return status;
   };
 
   const onFilterChange = (event) => {
@@ -137,7 +140,7 @@ function UserPanel({ config }) {
   const addPage = (value) => {
     const newValue = page + value;
 
-    if (newValue < 0 || newValue > parseInt(userBookings["hydra:totalItems"] / pageSize, 10)) {
+    if (newValue < 1 || newValue > Math.ceil(userBookings["hydra:totalItems"] / pageSize)) {
       return;
     }
 
@@ -190,6 +193,28 @@ function UserPanel({ config }) {
     }
   }, [page]);
 
+  useEffect(() => {
+    if (pendingBookings.length > 0) {
+      Api.fetchBookingStatus(config.api_endpoint, pendingBookings)
+        .then((response) => {
+          const newUserBookings = {...userBookings}
+          newUserBookings['hydra:member'] = newUserBookings['hydra:member'].map((booking) => {
+            response.forEach((element) => {
+              if (element.exchangeId === booking.exchangeId) {
+                booking.status = element.status;
+              }
+            });
+            return booking;
+          });
+
+          setUserBookings(newUserBookings);
+
+        }).catch((bookingStatusError) => {
+        displayError("Der opstod en fejl. Prøv igen senere...", bookingStatusError);
+      });
+    }
+  }, [pendingBookings]);
+
   return (
     <div className="App">
       <div className="container-fluid">
@@ -216,7 +241,6 @@ function UserPanel({ config }) {
                   name="dateSort"
                   onChange={onDateSortChange}
                   value={dateSort}
-                  defaultValue="asc"
                 >
                   <option value="asc">Først kommende</option>
                   <option value="desc">Senest kommende</option>
@@ -256,7 +280,7 @@ function UserPanel({ config }) {
                       <button type="button" onClick={decrementPage} style={{ margin: "1em" }}>
                         ←
                       </button>
-                      Side {page} / {parseInt(userBookings["hydra:totalItems"] / pageSize, 10)}
+                      Side {page} / {Math.ceil(userBookings["hydra:totalItems"] / pageSize) }
                       <button type="button" onClick={incrementPage} style={{ margin: "1em" }}>
                         →
                       </button>
@@ -281,3 +305,5 @@ UserPanel.propTypes = {
 };
 
 export default UserPanel;
+
+

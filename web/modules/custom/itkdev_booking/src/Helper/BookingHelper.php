@@ -38,6 +38,8 @@ class BookingHelper {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function getLocations(Request $request): array {
     try {
@@ -67,8 +69,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Get locations failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get locations failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 
@@ -78,6 +78,8 @@ class BookingHelper {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function getResources(Request $request): array {
     try {
@@ -107,8 +109,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Get resources failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get resources failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 
@@ -118,6 +118,8 @@ class BookingHelper {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function getAllResources(Request $request): array {
     try {
@@ -149,8 +151,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Get all resources failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get all resources failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 
@@ -161,6 +161,8 @@ class BookingHelper {
    * @param string $resourceEmail
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function getResourceByEmail(Request $request, string $resourceEmail): array {
     try {
@@ -190,8 +192,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Get resource by id failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get resource by id failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
 
   }
@@ -202,6 +202,8 @@ class BookingHelper {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function getBusyIntervals(Request $request): array {
     try {
@@ -232,8 +234,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Get busy intervals failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get busy intervals failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 
@@ -243,6 +243,8 @@ class BookingHelper {
    * @param \Symfony\Component\HttpFoundation\Request $request
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function getUserBookings(Request $request): array {
     try {
@@ -265,14 +267,49 @@ class BookingHelper {
 
       return [
         'statusCode' => $statusCode,
-        'data' => $data,
+        'data' => $data
       ];
     } catch (ClientException $e) {
       throw new HttpException($e->getCode(), "Get user bookings failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get user bookings failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
+    }
+  }
+
+  /**
+   * Get updated value of pending user bookings.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $pendingBooking
+   *
+   * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   */
+  public function getPendingBookings(Request $request): array {
+    try {
+      $endpoint = $this->bookingApiEndpoint;
+      $client = new Client();
+      $headers = $this->userHelper->attachUserToHeaders($request, $this->headers);
+      $headers['content-type'] = 'application/json';
+      $response = $client->request("POST", "{$endpoint}v1/status-by-ids", [
+        'headers' => $headers,
+        'json' => json_decode($request->getContent())
+      ]);
+
+      $statusCode = $response->getStatusCode();
+      $content = $response->getBody()->getContents();
+
+      $data = json_decode($content, TRUE, 512, JSON_THROW_ON_ERROR);
+
+      return [
+        'statusCode' => $statusCode,
+        'data' => $data,
+      ];
+    } catch (ClientException $e) {
+      throw new HttpException($e->getCode(), "Get pending bookings failed.");
+    } catch (JsonException $e) {
+      throw new HttpException($e->getCode(), "Get pending user bookings failed. Could not decode response.");
     }
   }
 
@@ -283,6 +320,8 @@ class BookingHelper {
    * @param string $bookingId
    *
    * @return array
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
   public function deleteUserBooking(Request $request, string $bookingId): array {
     try {
@@ -305,8 +344,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Delete booking failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Delete booking failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 
@@ -344,8 +381,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Booking patch failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Booking patch failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 
@@ -384,8 +419,6 @@ class BookingHelper {
       throw new HttpException($e->getCode(), "Get booking details failed.");
     } catch (JsonException $e) {
       throw new HttpException($e->getCode(), "Get booking details failed. Could not decode response.");
-    } catch (Exception $e) {
-      throw new HttpException((int)$e->getCode(), $e->getMessage());
     }
   }
 

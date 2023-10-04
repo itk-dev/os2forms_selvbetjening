@@ -46,6 +46,14 @@ itkdev_booking.user_bookings:
   requirements:
     _access: 'TRUE'
 
+itkdev_booking.pending_bookings:
+  path: '/itkdev_booking/pending-bookings'
+  defaults:
+    _controller: '\Drupal\itkdev_booking\Controller\BookingController::getPendingBookings'
+  methods: [ POST ]
+  requirements:
+    _access: 'TRUE'
+
 itkdev_booking.user_bookings_delete:
   path: '/itkdev_booking/user-booking/{bookingId}'
   defaults:

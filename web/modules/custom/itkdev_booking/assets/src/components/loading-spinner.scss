@@ -12,6 +12,26 @@ div.loader {
   pointer-events: none;
 }
 
+div.small-loader {
+  position: relative;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  left: 10px;
+  height: 10px;
+  width: 10px;
+  display: flex;
+  pointer-events: none;
+
+  &  > img {
+    margin: auto;
+    display: inline-block;
+    animation: rotateloader 1.3s linear infinite;
+    height: 10px;
+    width: 10px;
+  }
+}
+
 div.loader > img {
   margin: auto;
   display: inline-block;

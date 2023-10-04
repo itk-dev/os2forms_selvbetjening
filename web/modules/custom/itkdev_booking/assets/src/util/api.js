@@ -123,4 +123,26 @@ export default class Api {
       return response.json();
     });
   }
+
+  static fetchBookingStatus(apiEndpoint, pendingBookings) {
+    return fetch(`${apiEndpoint}itkdev_booking/pending-bookings`,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({
+          ids: pendingBookings
+        })
+      }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`This is an HTTP error: The status is ${response.status}`);
+      }
+
+      return response.json();
+    });
+  }
 }
+
+
