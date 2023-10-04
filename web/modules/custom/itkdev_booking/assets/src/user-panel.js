@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import * as PropTypes from "prop-types";
 import Api from "./util/api";
 import LoadingSpinner from "./components/loading-spinner";
-import {displayError} from "./util/display-toast";
+import { displayError } from "./util/display-toast";
 import UserBookingEdit from "./components/user-booking-edit";
 import UserBookingDelete from "./components/user-booking-delete";
 import "./user-panel.scss";
 import MainNavigation from "./components/main-navigation";
-import {string} from "prop-types";
 
 /**
  * @param {object} props Props.
@@ -20,18 +19,15 @@ function UserPanel({ config }) {
   const [userBookings, setUserBookings] = useState(null);
   const [editBooking, setEditBooking] = useState(null);
   const [deleteBooking, setDeleteBooking] = useState(null);
-  const [changedBookingId, setChangedBookingId] = useState(null);
   const [search, setSearch] = useState("");
-  const [dateSort, setDateSort] = useState('asc');
-  const [sort, setSort] = useState({'order[start]': dateSort});
+  const [dateSort, setDateSort] = useState("asc");
+  const [sort, setSort] = useState({ "order[start]": dateSort });
   const [page, setPage] = useState(1);
   const [pendingBookings, setPendingBookings] = useState([]);
   const pageSize = 10;
 
   const onBookingChanged = (bookingId, start, end) => {
     setEditBooking(null);
-
-    setChangedBookingId(bookingId);
 
     const booking = userBookings["hydra:member"].find((el) => el.id === bookingId);
 
@@ -69,20 +65,29 @@ function UserPanel({ config }) {
   const fetchSearch = () => {
     if (config) {
       setLoading(true);
+
       Api.fetchUserBookings(config.api_endpoint, search, sort, page, pageSize)
         .then((loadedUserBookings) => {
-          let pending = [];
-          loadedUserBookings['hydra:member'] = loadedUserBookings['hydra:member'].map((booking) => {
-            if (booking.status === 'AWAITING_APPROVAL') {
-              booking.status = (<LoadingSpinner size="small" />);
-              pending.push(booking.exchangeId);
+          const pending = [];
+          const newLoadedUserBookings = { ...loadedUserBookings };
+
+          newLoadedUserBookings["hydra:member"] = newLoadedUserBookings["hydra:member"].map((booking) => {
+            const newBooking = booking;
+
+            if (newBooking.status === "AWAITING_APPROVAL") {
+              newBooking.status = <LoadingSpinner size="small" />;
+
+              pending.push(newBooking.exchangeId);
             }
-            return booking;
+
+            return newBooking;
           });
+
           setUserBookings(loadedUserBookings);
+
           return pending;
         })
-        .then ((pending) => {
+        .then((pending) => {
           if (pending.length > 0) {
             setPendingBookings(pending);
           }
@@ -100,6 +105,7 @@ function UserPanel({ config }) {
     event.preventDefault();
 
     event.stopPropagation();
+
     if (page !== 1) {
       // This automatically triggers a search.
       setPage(1);
@@ -111,7 +117,7 @@ function UserPanel({ config }) {
   const currentBookings = userBookings ? Object.values(userBookings["hydra:member"]) ?? [] : [];
 
   const getStatus = (status) => {
-    if (typeof status === 'string') {
+    if (typeof status === "string") {
       switch (status) {
         case "ACCEPTED":
           return "Godkendt";
@@ -132,8 +138,10 @@ function UserPanel({ config }) {
   };
 
   const onDateSortChange = (event) => {
-    setDateSort(event.target.value)
-    setSort({'order[start]': event.target.value});
+    setDateSort(event.target.value);
+
+    setSort({ "order[start]": event.target.value });
+
     fetchSearch();
   };
 
@@ -149,19 +157,24 @@ function UserPanel({ config }) {
 
   const decrementPage = (event) => {
     event.stopPropagation();
+
     event.preventDefault();
+
     addPage(-1);
   };
 
   const incrementPage = (event) => {
     event.stopPropagation();
+
     event.preventDefault();
+
     addPage(1);
   };
 
   const renderBooking = (booking) => {
     const now = new Date();
     const bookingEnd = new Date(booking.end);
+
     return (
       <div className={`user-booking${bookingEnd < now ? " expired" : ""}`} key={booking.exchangeId}>
         <div>
@@ -174,14 +187,14 @@ function UserPanel({ config }) {
           <span>{getFormattedDateTime(booking.end)}</span>
         </div>
         {bookingEnd >= now && (
-        <div>
-          <button type="button" onClick={() => setDeleteBooking(booking)}>
-            Anmod om sletning
-          </button>
-          <button type="button" onClick={() => setEditBooking(booking)}>
-            Anmod om ændring af tidspunkt
-          </button>
-        </div>
+          <div>
+            <button type="button" onClick={() => setDeleteBooking(booking)}>
+              Anmod om sletning
+            </button>
+            <button type="button" onClick={() => setEditBooking(booking)}>
+              Anmod om ændring af tidspunkt
+            </button>
+          </div>
         )}
       </div>
     );
@@ -197,21 +210,25 @@ function UserPanel({ config }) {
     if (pendingBookings.length > 0) {
       Api.fetchBookingStatus(config.api_endpoint, pendingBookings)
         .then((response) => {
-          const newUserBookings = {...userBookings}
-          newUserBookings['hydra:member'] = newUserBookings['hydra:member'].map((booking) => {
+          const newUserBookings = { ...userBookings };
+
+          newUserBookings["hydra:member"] = newUserBookings["hydra:member"].map((booking) => {
+            const newBooking = booking;
+
             response.forEach((element) => {
-              if (element.exchangeId === booking.exchangeId) {
-                booking.status = element.status;
+              if (element.exchangeId === newBooking.exchangeId) {
+                newBooking.status = element.status;
               }
             });
-            return booking;
+
+            return newBooking;
           });
 
           setUserBookings(newUserBookings);
-
-        }).catch((bookingStatusError) => {
-        displayError("Der opstod en fejl. Prøv igen senere...", bookingStatusError);
-      });
+        })
+        .catch((bookingStatusError) => {
+          displayError("Der opstod en fejl. Prøv igen senere...", bookingStatusError);
+        });
     }
   }, [pendingBookings]);
 
@@ -221,8 +238,8 @@ function UserPanel({ config }) {
         <MainNavigation config={config} />
         <div className="row">
           <div className="col no-padding">
-            <div className={"row filters-wrapper"}>
-              <div className={"col-md-3"}>
+            <div className="row filters-wrapper">
+              <div className="col-md-3">
                 <form onSubmit={submitSearch}>
                   <input
                     value={search}
@@ -236,12 +253,8 @@ function UserPanel({ config }) {
                   <button type="submit">Søg</button>
                 </form>
               </div>
-              <div className={"col-md-3"}>
-                <select
-                  name="dateSort"
-                  onChange={onDateSortChange}
-                  value={dateSort}
-                >
+              <div className="col-md-3">
+                <select name="dateSort" onChange={onDateSortChange} value={dateSort}>
                   <option value="asc">Først kommende</option>
                   <option value="desc">Senest kommende</option>
                 </select>
@@ -265,14 +278,9 @@ function UserPanel({ config }) {
           {!editBooking && !deleteBooking && (
             <div className="userpanel row">
               <div className="col no-padding">
-
                 {loading && <LoadingSpinner />}
 
-                {userBookings && (
-                  <div className="userbookings-container">
-                    {currentBookings.map(renderBooking)}
-                  </div>
-                )}
+                {userBookings && <div className="userbookings-container">{currentBookings.map(renderBooking)}</div>}
 
                 {userBookings && (
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -280,7 +288,7 @@ function UserPanel({ config }) {
                       <button type="button" onClick={decrementPage} style={{ margin: "1em" }}>
                         ←
                       </button>
-                      Side {page} / {Math.ceil(userBookings["hydra:totalItems"] / pageSize) }
+                      Side {page} / {Math.ceil(userBookings["hydra:totalItems"] / pageSize)}
                       <button type="button" onClick={incrementPage} style={{ margin: "1em" }}>
                         →
                       </button>
@@ -305,5 +313,3 @@ UserPanel.propTypes = {
 };
 
 export default UserPanel;
-
-

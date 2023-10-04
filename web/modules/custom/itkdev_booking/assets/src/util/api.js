@@ -69,16 +69,16 @@ export default class Api {
   }
 
   static async fetchUserBookings(apiEndpoint, search, sort, page, pageSize) {
-    let params = new URLSearchParams({
+    const params = new URLSearchParams({
       page,
-      pageSize
+      pageSize,
     });
-    params.append('title', search);
+
+    params.append("title", search);
+
     params.append(Object.keys(sort)[0], Object.values(sort)[0]);
 
-    return fetch(
-      `${apiEndpoint}itkdev_booking/user-bookings?${params}`
-    ).then((response) => {
+    return fetch(`${apiEndpoint}itkdev_booking/user-bookings?${params}`).then((response) => {
       if (!response.ok) {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);
       }
@@ -125,17 +125,16 @@ export default class Api {
   }
 
   static fetchBookingStatus(apiEndpoint, pendingBookings) {
-    return fetch(`${apiEndpoint}itkdev_booking/pending-bookings`,
-      {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({
-          ids: pendingBookings
-        })
-      }).then((response) => {
+    return fetch(`${apiEndpoint}itkdev_booking/pending-bookings`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        ids: pendingBookings,
+      }),
+    }).then((response) => {
       if (!response.ok) {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);
       }
@@ -144,5 +143,3 @@ export default class Api {
     });
   }
 }
-
-

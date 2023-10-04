@@ -1,12 +1,15 @@
 import React from "react";
+import * as PropTypes from "prop-types";
 import "./loading-spinner.scss";
 
 /**
  * Loading spinner component.
  *
+ * @param {object} props Props.
+ * @param {string} props.size Size of spinner.
  * @returns {JSX.Element} Loading spinner component.
  */
-function LoadingSpinner({size = 'default'}) {
+function LoadingSpinner({ size = "default" }) {
   return (
     <div className={`${size === "small" ? "small-loader" : "loader"}`}>
       {/* TODO: Replace with svg */}
@@ -17,5 +20,9 @@ function LoadingSpinner({size = 'default'}) {
     </div>
   );
 }
+
+LoadingSpinner.propTypes = {
+  size: PropTypes.string.isRequired,
+};
 
 export default LoadingSpinner;

@@ -23,7 +23,7 @@ div.small-loader {
   display: flex;
   pointer-events: none;
 
-  &  > img {
+  & > img {
     margin: auto;
     display: inline-block;
     animation: rotateloader 1.3s linear infinite;
