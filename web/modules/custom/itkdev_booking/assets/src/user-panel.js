@@ -31,7 +31,7 @@ function UserPanel({ config }) {
 
     setChangedBookingId(bookingId);
 
-    const booking = userBookings.find((el) => el.id === bookingId);
+    const booking = userBookings["hydra:member"].find((el) => el.id === bookingId);
 
     if (booking) {
       booking.start = start;
@@ -43,7 +43,8 @@ function UserPanel({ config }) {
   const onBookingDeleted = (bookingId) => {
     setDeleteBooking(null);
 
-    const newUserBookings = userBookings.filter((el) => el.id !== bookingId);
+    const newUserBookings = {...userBookings};
+    newUserBookings["hydra:member"] = newUserBookings["hydra:member"].filter((el) => el.id !== bookingId);
 
     setUserBookings(newUserBookings);
   };

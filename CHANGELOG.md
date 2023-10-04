@@ -1,7 +1,30 @@
 <!-- markdownlint-disable MD024 -->
+
 # Changelog for selvbetjening.aarhuskommune.dk
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
+
+## In develop
+
+## [2.5.0] 2023-10-04
+
+* Tilføjede drupal leaflet til config ignore.
+* Opdaterede til [Os2forms GetOrganized
+  1.1.4](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.4)
+* Nedgraderede til `drupal/leaflet` `10.0.12`
+* Fixed editing/deleting bookings errors in itkdev_booking.
+* Disable access to webform error log
+* Added retry action to error log
+* Changed failed jobs view
+* Opdaterede til [OS2forms failed jobs to
+1.3.1](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.1)
+* Opdaterede til [Beskedfordeler
+1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
+* Opdaterede til [Os2forms organisation
+1.3.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.1)
+* Opdaterede til [Os2forms sync
+1.1.3](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.3)
+* Enable os2forms_webform_maps and related contrib modules
 
 ## [2.4.9] 2023-09-06
 
@@ -274,7 +297,13 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.4...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.5.0...HEAD
+[2.5.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.9...2.5.0
+[2.4.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.8...2.4.9
+[2.4.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.7...2.4.8
+[2.4.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.6...2.4.7
+[2.4.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.5...2.4.6
+[2.4.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.4...2.4.5
 [2.4.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.3...2.4.4
 [2.4.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.2...2.4.3
 [2.4.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.1...2.4.2

@@ -17,6 +17,7 @@ dependencies:
     - honeypot
     - locale
     - node
+    - os2forms_failed_jobs
     - search
     - system
     - taxonomy
@@ -24,7 +25,6 @@ dependencies:
     - webform
     - webform_node
     - webform_revisions
-    - webform_submission_log
     - webform_templates
     - webform_translation_permissions
     - workflow_participants
@@ -44,8 +44,8 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
+  - 'access webform advanced queue overview'
   - 'access webform overview'
-  - 'access webform submission log'
   - 'access webform submission user'
   - 'administer block_content display'
   - 'administer block_content form display'

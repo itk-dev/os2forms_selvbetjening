@@ -15,12 +15,12 @@ dependencies:
     - maestro
     - maestro_taskconsole
     - node
+    - os2forms_failed_jobs
     - search
     - system
     - toolbar
     - webform
     - webform_node
-    - webform_submission_log
 _core:
   default_config_hash: jA-vZTVeFBc5q5-_Ukuh9YfLnjw8y0jijXonKSZ1weQ
 id: sagsbehandler
@@ -34,8 +34,8 @@ permissions:
   - 'access site in maintenance mode'
   - 'access toolbar'
   - 'access user profiles'
+  - 'access webform advanced queue overview'
   - 'access webform overview'
-  - 'access webform submission log'
   - 'access webform submission user'
   - 'administer block_content display'
   - 'administer block_content display'
