@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Opdaterede til [OS2Forms NemLogin OpenID Connect
+  2.0.0](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.0)
+
 ## [2.5.0] 2023-10-04
 
 * Tilføjede drupal leaflet til config ignore.
@@ -56,11 +59,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   til `itk-dev/itkdev-booking` `1.0.5`.
 * Opdaterede fra `itk-dev/os2forms_digital_post` `2.0.1`
   til `os2forms/os2forms_digital_post` `2.0.2`.
-
-* Opdaterede til [OS2Forms Organisation
-  1.2.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.2.0)
-* Opdaterede til [OS2Forms NemLogin OpenID Connect
-  2.0.0](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.0)
 
 ## [2.4.4]
 
