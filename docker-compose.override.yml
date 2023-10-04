@@ -90,6 +90,7 @@ services:
             # Add your custom claims here
             - name
             - groups
+            - nameidentifier
 
       USERS_CONFIGURATION_INLINE: |
         - SubjectId: administrator
@@ -106,6 +107,9 @@ services:
           - Type: groups
             Value: '["AD-administrator"]'
             ValueType: json
+          - Type: nameidentifier
+            Value: test12345
+            ValueType: string
 
   idp-citizen:
     image: ghcr.io/soluto/oidc-server-mock:latest
