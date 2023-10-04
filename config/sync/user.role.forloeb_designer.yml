@@ -14,13 +14,13 @@ dependencies:
     - filter
     - honeypot
     - node
+    - os2forms_failed_jobs
     - search
     - system
     - toolbar
     - webform
     - webform_node
     - webform_revisions
-    - webform_submission_log
     - webform_templates
     - webform_translation_permissions
     - workflow_participants
@@ -38,6 +38,7 @@ permissions:
   - 'access own webform configuration'
   - 'access site in maintenance mode'
   - 'access toolbar'
+  - 'access webform advanced queue overview'
   - 'access webform overview'
   - 'access webform submission user'
   - 'administer webform element access'
