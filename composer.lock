@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4869b2b8c9e73d8e894b637a6f2b0270",
+    "content-hash": "49d4174c1e92d2866c514b0cf6fb801a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1973,7 +1973,7 @@
             "extra": {
                 "drupal": {
                     "version": "1.0.2",
-                    "datestamp": "1687261951",
+                    "datestamp": "1695740655",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3965,10 +3965,6 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "ivnish",
-                    "homepage": "https://www.drupal.org/user/3547706"
-                },
-                {
                     "name": "jrockowitz",
                     "homepage": "https://www.drupal.org/user/371407"
                 },
@@ -4218,6 +4214,10 @@
             ],
             "authors": [
                 {
+                    "name": "bluegeek9",
+                    "homepage": "https://www.drupal.org/user/1286304"
+                },
+                {
                     "name": "dgtlmoon",
                     "homepage": "https://www.drupal.org/user/25027"
                 },
@@ -4324,6 +4324,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "bluegeek9",
+                    "homepage": "https://www.drupal.org/user/1286304"
+                },
                 {
                     "name": "dgtlmoon",
                     "homepage": "https://www.drupal.org/user/25027"
@@ -8723,23 +8727,24 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "1.3.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "93590b5ae3bc76623e91e70ff542042f8f3a3fe3"
+                "reference": "19753171b5cf94db99c1a068c9482169ddd71e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/93590b5ae3bc76623e91e70ff542042f8f3a3fe3",
-                "reference": "93590b5ae3bc76623e91e70ff542042f8f3a3fe3",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/19753171b5cf94db99c1a068c9482169ddd71e38",
+                "reference": "19753171b5cf94db99c1a068c9482169ddd71e38",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
                 "itk-dev/openid-connect": "^3.1",
-                "os2web/os2web_nemlogin": "^1.2"
+                "os2web/os2web_nemlogin": "^1.2",
+                "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
@@ -8756,9 +8761,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/1.3.0"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.0.0"
             },
-            "time": "2023-07-05T11:43:52+00:00"
+            "time": "2023-08-03T07:10:50+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -10204,7 +10209,7 @@
             "description": "Enhances integration with simplesamlphp_auth module, by force triggering SimpleSAML auth page redirect when certain criteria are met",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_simplesaml/issues",
-                "source": "https://github.com/OS2web/os2web_simplesaml/tree/8.x"
+                "source": "https://github.com/OS2web/os2web_simplesaml/tree/8.x-1.1"
             },
             "time": "2023-02-23T10:41:32+00:00"
         },
