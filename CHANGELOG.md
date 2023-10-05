@@ -7,6 +7,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## In develop
 
 * Changed user bookings to use cached bookings.
+* Opdaterede dependencies
 * Opdaterede til [OS2Forms NemLogin OpenID Connect
   2.0.0](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.0)
 
