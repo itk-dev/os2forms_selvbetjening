@@ -280,7 +280,6 @@ class BookingHelper {
    * Get updated value of pending user bookings.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
-   * @param $pendingBooking
    *
    * @return array
    *
