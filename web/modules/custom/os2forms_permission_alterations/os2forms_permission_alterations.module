@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Module file for the os2forms_permission_alterations module.
+ */
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function os2forms_permission_alterations_entity_type_alter(array &$entity_types) {
+
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+
+  if (isset($entity_types['map_layer'])) {
+    $entity_types['map_layer']->set('admin_permission', 'administer leaflet layers');
+  }
+
+  if (isset($entity_types['map_bundle'])) {
+    $entity_types['map_bundle']->set('admin_permission', 'administer leaflet layers');
+  }
+}
