@@ -18,6 +18,7 @@ dependencies:
     - locale
     - node
     - os2forms_failed_jobs
+    - os2forms_permission_alterations
     - search
     - system
     - taxonomy
@@ -51,6 +52,7 @@ permissions:
   - 'administer block_content form display'
   - 'administer content types'
   - 'administer display modes'
+  - 'administer leaflet layers'
   - 'administer node display'
   - 'administer node form display'
   - 'administer taxonomy_term display'
