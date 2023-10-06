@@ -156,6 +156,21 @@ class BookingController extends ControllerBase {
   }
 
   /**
+   * Get logged in user's pending booking.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   * @throws \JsonException
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   */
+  public function getPendingBookings(Request $request): JsonResponse {
+    $response = $this->bookingHelper->getPendingBookings($request);
+
+    return new JsonResponse($response['data'], $response['statusCode']);
+  }
+
+  /**
    * Delete booking with given bookingId.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
