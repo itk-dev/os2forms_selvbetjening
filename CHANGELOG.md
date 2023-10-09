@@ -14,6 +14,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   2.0.0](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.0)
 * Added missing config for updated `os2forms_forloab` module.
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/228>)
+* Opdaterede til [Os2forms organisation
+  1.3.2](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.2)
 
 ## [2.5.0] 2023-10-04
 
