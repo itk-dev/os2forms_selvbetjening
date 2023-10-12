@@ -68,14 +68,17 @@ export default class Api {
     });
   }
 
-  static async fetchUserBookings(apiEndpoint, search, page, pageSize) {
-    return fetch(
-      `${apiEndpoint}itkdev_booking/user-bookings?${new URLSearchParams({
-        search,
-        page,
-        pageSize,
-      })}`
-    ).then((response) => {
+  static async fetchUserBookings(apiEndpoint, search, sort, page, pageSize) {
+    const params = new URLSearchParams({
+      page,
+      pageSize,
+    });
+
+    params.append("title", search);
+
+    params.append(Object.keys(sort)[0], Object.values(sort)[0]);
+
+    return fetch(`${apiEndpoint}itkdev_booking/user-bookings?${params}`).then((response) => {
       if (!response.ok) {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);
       }
@@ -113,6 +116,25 @@ export default class Api {
 
   static async fetchUserInformation(apiEndpoint) {
     return fetch(`${apiEndpoint}itkdev_booking/user-information`).then((response) => {
+      if (!response.ok) {
+        throw new Error(`This is an HTTP error: The status is ${response.status}`);
+      }
+
+      return response.json();
+    });
+  }
+
+  static fetchBookingStatus(apiEndpoint, pendingBookings) {
+    return fetch(`${apiEndpoint}itkdev_booking/pending-bookings`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        ids: pendingBookings,
+      }),
+    }).then((response) => {
       if (!response.ok) {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);
       }
