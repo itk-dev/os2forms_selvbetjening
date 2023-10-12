@@ -1,0 +1,8 @@
+services:
+  Drupal\os2forms_selvbetjening\Command\WebformSubmissionCommands:
+    arguments:
+      - '@entity_type.manager'
+      - '@database'
+      - '@current_user'
+    tags:
+      - { name: drush.command }
