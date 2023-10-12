@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+## [2.5.0] 2023-10-12
+
 * Tilføjede custom modulet `os2forms_permission_alterations`.
 * Tilføjede `administer leaflet layers` permission til site admin rollen.
 * Changed user bookings to use cached bookings.
@@ -308,7 +310,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.5.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.0...HEAD
+[2.6.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.5.0...2.6.0
 [2.5.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.9...2.5.0
 [2.4.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.8...2.4.9
 [2.4.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.4.7...2.4.8
