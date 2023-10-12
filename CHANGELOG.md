@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
-## [2.5.0] 2023-10-12
+## [2.6.0] 2023-10-12
 
 * Tilføjede custom modulet `os2forms_permission_alterations`.
 * Tilføjede `administer leaflet layers` permission til site admin rollen.
