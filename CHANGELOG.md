@@ -8,7 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.6.1] 2023-10-13
 
-* Tilføjede patch til `maestro` token håndtering.
+* Tilføjede patch til Maestro-tokenhåndtering.
 
 ## [2.6.0] 2023-10-12
 
