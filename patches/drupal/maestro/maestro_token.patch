@@ -1,0 +1,13 @@
+diff --git a/modules/maestro_taskconsole/src/Controller/MaestroTaskConsoleController.php b/modules/maestro_taskconsole/src/Controller/MaestroTaskConsoleController.php
+index fea23b0..57192ac 100644
+--- a/modules/maestro_taskconsole/src/Controller/MaestroTaskConsoleController.php
++++ b/modules/maestro_taskconsole/src/Controller/MaestroTaskConsoleController.php
+@@ -94,7 +94,7 @@ class MaestroTaskConsoleController extends ControllerBase {
+       $link = 'Execute';
+       $use_modal = FALSE;
+       $sitewideToken = $config->get('maestro_sitewide_token');
+-      if($queueToken !== FALSE && $sitewideToken != '') {
++      if(!empty($queueToken) && $sitewideToken != '') {
+         $query_options = ['queueid_or_token' => $queueToken];
+       }
+       else {

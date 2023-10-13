@@ -144,6 +144,9 @@
             },
             "drupal/permissions_by_term": {
                 "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"
+            },
+            "drupal/maestro": {
+                "Disallow empty queueToken": "patches/drupal/maestro/maestro_token.patch"
             }
         },
         "patches-ignore": {
