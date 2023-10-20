@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Ændrede site-email til `noreply@aarhus.dk`
+
 ## [2.6.2] 2023-10-13
 
 * Opdaterede `composer.lock`-hash
