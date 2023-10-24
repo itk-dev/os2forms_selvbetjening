@@ -83,6 +83,7 @@ export default class Api {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);
       }
 
+      console.log('1', response.json());
       return response.json();
     });
   }
@@ -138,7 +139,7 @@ export default class Api {
       if (!response.ok) {
         throw new Error(`This is an HTTP error: The status is ${response.status}`);
       }
-
+      console.log('2', response.json());
       return response.json();
     });
   }

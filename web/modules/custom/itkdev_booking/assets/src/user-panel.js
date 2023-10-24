@@ -215,12 +215,13 @@ function UserPanel({ config }) {
           newUserBookings["hydra:member"] = newUserBookings["hydra:member"].map((booking) => {
             const newBooking = booking;
 
+            console.log('2.1', response);
             response.forEach((element) => {
               if (element.exchangeId === newBooking.exchangeId) {
                 newBooking.status = element.status;
               }
             });
-
+            console.log('2.2', newBooking);
             return newBooking;
           });
 
