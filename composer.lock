@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f060fed47dc05eac989c696ac6d8c2e",
+    "content-hash": "966eccb10ca784a71330547f12c87d2d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10056,16 +10056,16 @@
         },
         {
             "name": "os2forms/os2forms_rest_api",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
-                "reference": "f84e10fcc990a3961925a9f9de5886213a3f43a8"
+                "reference": "4b5c31b18526eabb56dd55ecd983631d263e79e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/f84e10fcc990a3961925a9f9de5886213a3f43a8",
-                "reference": "f84e10fcc990a3961925a9f9de5886213a3f43a8",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/4b5c31b18526eabb56dd55ecd983631d263e79e9",
+                "reference": "4b5c31b18526eabb56dd55ecd983631d263e79e9",
                 "shasum": ""
             },
             "require": {
@@ -10100,9 +10100,9 @@
             "description": "OS2Forms REST API",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
-                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/1.1.0"
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.0.0"
             },
-            "time": "2023-03-03T14:37:31+00:00"
+            "time": "2023-10-24T10:05:06+00:00"
         },
         {
             "name": "os2forms/os2forms_sync",
