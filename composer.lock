@@ -10011,16 +10011,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "bb8dc2649be24bb2b710be3f867b7c9a1f15c200"
+                "reference": "ef637aaa2391ee075e96e9e99beabd1c40701a3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/bb8dc2649be24bb2b710be3f867b7c9a1f15c200",
-                "reference": "bb8dc2649be24bb2b710be3f867b7c9a1f15c200",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/ef637aaa2391ee075e96e9e99beabd1c40701a3d",
+                "reference": "ef637aaa2391ee075e96e9e99beabd1c40701a3d",
                 "shasum": ""
             },
             "require": {
@@ -10050,9 +10050,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.3.2"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.3.3"
             },
-            "time": "2023-10-09T06:52:33+00:00"
+            "time": "2023-10-24T07:45:53+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
