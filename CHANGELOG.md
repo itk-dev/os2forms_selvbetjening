@@ -6,7 +6,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
-* Opdaterede til [Os2forms organisation
+* Opdaterede til [OS2Forms REST API
+  2.0.1](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.1)
+  * Tilføjede REST API endpoint til at hente liste af submissions på form.
+    Se [OS2Forms REST API endpoints](https://github.com/OS2Forms/os2forms_rest_api#endpoints).
+* Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
 
@@ -28,26 +32,26 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   2.0.0](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.0)
 * Added missing config for updated `os2forms_forloab` module.
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/228>)
-* Opdaterede til [Os2forms organisation
+* Opdaterede til [OS2Forms organisation
   1.3.2](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.2)
 
 ## [2.5.0] 2023-10-04
 
 * Tilføjede drupal leaflet til config ignore.
-* Opdaterede til [Os2forms GetOrganized
+* Opdaterede til [OS2Forms GetOrganized
   1.1.4](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.4)
 * Nedgraderede til `drupal/leaflet` `10.0.12`
 * Fixed editing/deleting bookings errors in itkdev_booking.
 * Disable access to webform error log
 * Added retry action to error log
 * Changed failed jobs view
-* Opdaterede til [OS2forms failed jobs to
+* Opdaterede til [OS2Forms failed jobs to
 1.3.1](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.1)
 * Opdaterede til [Beskedfordeler
 1.1.1](https://github.com/itk-dev/beskedfordeler-drupal/releases/tag/1.1.1)
-* Opdaterede til [Os2forms organisation
+* Opdaterede til [OS2Forms organisation
 1.3.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.1)
-* Opdaterede til [Os2forms sync
+* Opdaterede til [OS2Forms sync
 1.1.3](https://github.com/itk-dev/os2forms_sync/releases/tag/1.1.3)
 * Enable os2forms_webform_maps and related contrib modules
 
@@ -90,7 +94,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.4.3]
 
-* Opdaterede til [OS2Forms Os2forms
+* Opdaterede til [OS2Forms OS2Forms
   3.8.0](https://github.com/OS2Forms/os2forms/releases/tag/3.8.0)
 * Tilføjede [OpenId Connect Server
   Mock](https://github.com/Soluto/oidc-server-mock) til test af OIDC-login under
@@ -107,7 +111,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.4.0]
 
-* Opdaterede til [OS2forms med Forløb installation profile
+* Opdaterede til [OS2Forms med Forløb installation profile
 1.12.0](https://github.com/OS2Forms/os2forms_forloeb_profile/releases/tag/1.12.0)
 og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
@@ -255,7 +259,7 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 * Installerede [OS2Forms sync
   1.0.0](https://github.com/itk-dev/os2forms_sync/releases/tag/1.0.0).
 * Opgraderede til [PHP 8.1](https://www.php.net/releases/8.1/en.php).
-* Installerede [Os2forms Failed jobs
+* Installerede [OS2Forms Failed jobs
   1.0.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.0.0).
 * Tilføjede danske oversættelser.
 * Tilføjede patch
