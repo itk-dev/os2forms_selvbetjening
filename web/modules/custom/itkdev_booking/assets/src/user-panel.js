@@ -208,6 +208,7 @@ function UserPanel({ config }) {
 
   useEffect(() => {
     if (pendingBookings.length > 0) {
+      console.log(pendingBookings);
       Api.fetchBookingStatus(config.api_endpoint, pendingBookings)
         .then((element) => {
           const newUserBookings = { ...userBookings };
@@ -215,15 +216,18 @@ function UserPanel({ config }) {
           newUserBookings["hydra:member"] = newUserBookings["hydra:member"].map((booking) => {
             const newBooking = booking;
 
-            console.log('2.1', element);
             if (element.exchangeId === newBooking.exchangeId) {
               newBooking.status = element.status;
             }
 
+            /*
+            else {
+              newBooking.status =
+            }
+*/
             return newBooking;
           });
 
-          console.log('2.2', newUserBookings);
           setUserBookings(newUserBookings);
         })
         .catch((bookingStatusError) => {
