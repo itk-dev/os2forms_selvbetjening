@@ -208,7 +208,6 @@ function UserPanel({ config }) {
 
   useEffect(() => {
     if (pendingBookings.length > 0) {
-      console.log(pendingBookings);
       Api.fetchBookingStatus(config.api_endpoint, pendingBookings)
         .then((element) => {
           const newUserBookings = { ...userBookings };
@@ -220,11 +219,6 @@ function UserPanel({ config }) {
               newBooking.status = element.status;
             }
 
-            /*
-            else {
-              newBooking.status =
-            }
-*/
             return newBooking;
           });
 
