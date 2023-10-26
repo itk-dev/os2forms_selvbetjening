@@ -13,6 +13,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
+* Map improvements, rendering of resources, filtering on
+  map view [#237] (https://github.com/itk-dev/os2forms_selvbetjening/pull/237).
 
 ## [2.6.2] 2023-10-13
 
