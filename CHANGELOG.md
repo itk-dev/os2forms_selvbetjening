@@ -14,7 +14,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
 * Converted internal notation of business hours
-  for sunday from (7) to (0) [#128](https://github.com/itk-dev/drupal_webform_booking_module/pull/128)
+  for sunday from (7) to (0) [#236](https://github.com/itk-dev/os2forms_selvbetjening/pull/236)
 
 ## [2.6.2] 2023-10-13
 
