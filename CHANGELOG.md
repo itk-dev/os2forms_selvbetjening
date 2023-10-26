@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Fixed type error in booking handler
 * Converted internal notation of business hours
   for sunday from (7) to (0)
 
