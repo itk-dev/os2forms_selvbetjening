@@ -209,17 +209,15 @@ function UserPanel({ config }) {
   useEffect(() => {
     if (pendingBookings.length > 0) {
       Api.fetchBookingStatus(config.api_endpoint, pendingBookings)
-        .then((response) => {
+        .then((element) => {
           const newUserBookings = { ...userBookings };
 
           newUserBookings["hydra:member"] = newUserBookings["hydra:member"].map((booking) => {
             const newBooking = booking;
 
-            response.forEach((element) => {
-              if (element.exchangeId === newBooking.exchangeId) {
-                newBooking.status = element.status;
-              }
-            });
+            if (element.exchangeId === newBooking.exchangeId) {
+              newBooking.status = element.status;
+            }
 
             return newBooking;
           });
