@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Converted internal notation of business hours
+  for sunday from (7) to (0)
+
 ## [2.6.2] 2023-10-13
 
 * Opdaterede `composer.lock`-hash
