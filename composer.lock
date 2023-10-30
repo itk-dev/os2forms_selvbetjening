@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "966eccb10ca784a71330547f12c87d2d",
+    "content-hash": "00409c5fefa8d897b490961c9f3fe651",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5561,14 +5561,6 @@
             ],
             "authors": [
                 {
-                    "name": "John Franklin",
-                    "homepage": "https://www.drupal.org/user/683430"
-                },
-                {
-                    "name": "KarenS",
-                    "homepage": "https://www.drupal.org/user/45874"
-                },
-                {
                     "name": "blc",
                     "homepage": "https://www.drupal.org/user/727498"
                 },
@@ -5577,8 +5569,24 @@
                     "homepage": "https://www.drupal.org/user/550110"
                 },
                 {
+                    "name": "geekygnr",
+                    "homepage": "https://www.drupal.org/user/2775199"
+                },
+                {
                     "name": "jazzdrive3",
                     "homepage": "https://www.drupal.org/user/348785"
+                },
+                {
+                    "name": "John Franklin",
+                    "homepage": "https://www.drupal.org/user/683430"
+                },
+                {
+                    "name": "justafish",
+                    "homepage": "https://www.drupal.org/user/161058"
+                },
+                {
+                    "name": "KarenS",
+                    "homepage": "https://www.drupal.org/user/45874"
                 },
                 {
                     "name": "mtift",
