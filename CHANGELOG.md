@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Deaktiverede Attachment PDF-elementet.
 * Opdaterede til [OS2Forms REST API
   2.0.1](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.1)
   * Tilføjede REST API endpoint til at hente liste af submissions på form.
