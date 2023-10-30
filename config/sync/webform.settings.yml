@@ -164,6 +164,7 @@ element:
     webform_computed_token: webform_computed_token
     webform_email_multiple: webform_email_multiple
     webform_entity_checkboxes: webform_entity_checkboxes
+    'webform_entity_print_attachment:pdf': 'webform_entity_print_attachment:pdf'
     webform_entity_radios: webform_entity_radios
     webform_entity_select: webform_entity_select
     webform_height: webform_height
