@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0fd46b07016a5a879cf3ae104a84219",
+    "content-hash": "043019f063d5fd753fb9e33e409efa6c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8562,32 +8562,6 @@
                 "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.2.0"
             },
             "time": "2023-03-10T14:13:42+00:00"
-        },
-        {
-            "name": "itk-dev/itkdev-booking",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/drupal_webform_booking_module.git",
-                "reference": "eb9ce7b3d8925791815c376665c0a01ad3a665d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_webform_booking_module/zipball/eb9ce7b3d8925791815c376665c0a01ad3a665d2",
-                "reference": "eb9ce7b3d8925791815c376665c0a01ad3a665d2",
-                "shasum": ""
-            },
-            "type": "drupal-module",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Provides a webform element for creating bookings through the AAK booking service.",
-            "support": {
-                "issues": "https://github.com/itk-dev/drupal_webform_booking_module/issues",
-                "source": "https://github.com/itk-dev/drupal_webform_booking_module/tree/1.0.7"
-            },
-            "time": "2023-08-24T06:43:02+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
