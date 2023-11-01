@@ -9,6 +9,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [2.6.6] 2023-11-02
 
 * Fixed issue with pending bookings in itkdev-booking.
+* Removed itk-dev/itkdev-booking from composer.
 
 ## [2.6.5] 2023-10-30
 
