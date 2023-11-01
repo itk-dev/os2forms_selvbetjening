@@ -7,6 +7,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## In develop
 
 * Removed itk-dev/itkdev-booking from composer [#246](https://github.com/itk-dev/os2forms_selvbetjening/pull/246)
+* Fixed issue with pending bookings in itkdev-booking [#247](https://github.com/itk-dev/os2forms_selvbetjening/pull/247)
 * Deaktiverede Attachment PDF-elementet.
 * Opdaterede til [OS2Forms REST API
   2.0.1](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.1)

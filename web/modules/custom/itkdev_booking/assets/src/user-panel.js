@@ -72,7 +72,7 @@ function UserPanel({ config }) {
           const newLoadedUserBookings = { ...loadedUserBookings };
 
           newLoadedUserBookings["hydra:member"] = newLoadedUserBookings["hydra:member"].map((booking) => {
-            const newBooking = booking;
+            const newBooking = { ...booking };
 
             if (newBooking.status === "AWAITING_APPROVAL") {
               newBooking.status = <LoadingSpinner size="small" />;
@@ -83,7 +83,7 @@ function UserPanel({ config }) {
             return newBooking;
           });
 
-          setUserBookings(loadedUserBookings);
+          setUserBookings(newLoadedUserBookings);
 
           return pending;
         })
@@ -209,15 +209,17 @@ function UserPanel({ config }) {
   useEffect(() => {
     if (pendingBookings.length > 0) {
       Api.fetchBookingStatus(config.api_endpoint, pendingBookings)
-        .then((element) => {
+        .then((response) => {
           const newUserBookings = { ...userBookings };
 
           newUserBookings["hydra:member"] = newUserBookings["hydra:member"].map((booking) => {
-            const newBooking = booking;
+            const newBooking = { ...booking };
 
-            if (element.exchangeId === newBooking.exchangeId) {
-              newBooking.status = element.status;
-            }
+            response.forEach((element) => {
+              if (element.exchangeId === booking.exchangeId) {
+                newBooking.status = getStatus(element.status);
+              }
+            });
 
             return newBooking;
           });
