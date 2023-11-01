@@ -20,7 +20,7 @@ services:
       - '80'
     volumes:
       - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
-      - .:/app:delegated
+      - .:/app
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
@@ -35,4 +35,4 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./assets:/app:delegated
+      - ./assets:/app
