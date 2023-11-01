@@ -15,6 +15,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
+* Tilføjede praktiske CPR- og CVR-opslagskommandoer.
 
 ## [2.6.5] 2023-10-30
 
