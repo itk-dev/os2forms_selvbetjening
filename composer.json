@@ -67,7 +67,6 @@
         "drush/drush": "^11.6",
         "fig/http-message-util": "^1.1.5",
         "itk-dev/getorganized-api-client-php": "^1.2",
-        "itk-dev/itkdev-booking": "^1.0.3",
         "itk-dev/os2forms_cpr_lookup": "^1.8",
         "itk-dev/os2forms_cvr_lookup": "^1.4",
         "itk-dev/os2forms_failed_jobs": "^1.2",
