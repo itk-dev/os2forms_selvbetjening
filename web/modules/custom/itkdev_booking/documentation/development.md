@@ -22,7 +22,7 @@ To build the code for use in the drupal module.
 This will copy the compiled css and js to the library that drupal expects.
 
 ```shell
-./create-build.sh
+docker compose run --rm node bash -c './create-build.sh'
 ```
 
 ## Configuration within a drupal environment
