@@ -1,0 +1,59 @@
+diff --git a/modules/os2forms_forloeb/src/MaestroHelper.php b/modules/os2forms_forloeb/src/MaestroHelper.php
+index ce0b5fb..565ad23 100644
+--- a/modules/os2forms_forloeb/src/MaestroHelper.php
++++ b/modules/os2forms_forloeb/src/MaestroHelper.php
+@@ -466,6 +466,21 @@ class MaestroHelper implements LoggerInterface {
+       ?? $data[$recipientElement]
+       ?? NULL;
+ 
++    // Handle composite elements.
++    if ($recipient === NULL) {
++      if (str_contains($recipientElement, '__')) {
++        $keys = explode('__', $recipientElement);
++        $result = $data;
++        foreach ($keys as $key) {
++          if (array_key_exists($key, $result)) {
++            $result = $result[$key];
++          }
++        }
++
++        $recipient = $result;
++      }
++    }
++
+     if ($notificationType === self::NOTIFICATION_ESCALATION) {
+       $recipient = $settings[MaestroNotificationHandler::NOTIFICATION][$notificationType][MaestroNotificationHandler::NOTIFICATION_RECIPIENT] ?? NULL;
+     }
+diff --git a/modules/os2forms_forloeb/src/Plugin/WebformHandler/MaestroNotificationHandler.php b/modules/os2forms_forloeb/src/Plugin/WebformHandler/MaestroNotificationHandler.php
+index d0afc20..f907ba7 100644
+--- a/modules/os2forms_forloeb/src/Plugin/WebformHandler/MaestroNotificationHandler.php
++++ b/modules/os2forms_forloeb/src/Plugin/WebformHandler/MaestroNotificationHandler.php
+@@ -240,6 +240,28 @@ final class MaestroNotificationHandler extends WebformHandlerBase {
+       'cvr_value_element',
+       'os2forms_person_lookup',
+     ];
++
++    // Expand composite elements, NOT custom composite elements.
++    foreach ($elements as $key => $element) {
++      $orgElement = $this->getWebform()->getElement($key);
++
++      if (array_key_exists('#webform_composite_elements', $orgElement)) {
++        foreach ($orgElement['#webform_composite_elements'] as $compositeElement) {
++          // If composite element is not accessible ignore it.
++          if (array_key_exists('#access', $compositeElement) && !$compositeElement['#access']) {
++            continue;
++          }
++
++          if (in_array($compositeElement['#type'], $elementTypes, TRUE)) {
++            $elements[$compositeElement['#webform_composite_key']] = [
++              '#title' => (string) $compositeElement['#title'],
++              '#type' => $compositeElement['#type'],
++            ];
++          }
++        }
++      }
++    }
++
+     $elements = array_filter(
+       $elements,
+       static function (array $element) use ($elementTypes) {
