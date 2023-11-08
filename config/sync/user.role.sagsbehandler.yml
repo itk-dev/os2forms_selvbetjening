@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.full_html
+    - filter.format.restricted_html
   module:
     - block_content
     - content_moderation
@@ -63,6 +64,7 @@ permissions:
   - 'use advanced search'
   - 'use advanced search'
   - 'use text format full_html'
+  - 'use text format restricted_html'
   - 'view any unpublished content'
   - 'view any webform submission'
   - 'view forloebsside revisions'
