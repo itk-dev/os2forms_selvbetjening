@@ -18,6 +18,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
 
+## [2.6.7] 2023-11-08
+
+* Allowed composite elements in Maestro notification recipient.
+
 ## [2.6.6] 2023-11-02
 
 * Fixed issue with pending bookings in itkdev-booking.
@@ -349,7 +353,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.6...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.7...HEAD
+[2.6.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.6...2.6.7
 [2.6.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.5...2.6.6
 [2.6.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.4...2.6.5
 [2.6.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.3...2.6.4
