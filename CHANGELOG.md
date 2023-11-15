@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* itk-dev/itkdev-booking: Fixed issue with location name, edit/delete bookings.
+
 ## [2.6.7] 2023-11-08
 
 * Allowed composite elements in Maestro notification recipient.
