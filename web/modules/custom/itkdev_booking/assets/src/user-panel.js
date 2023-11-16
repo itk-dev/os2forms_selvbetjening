@@ -25,17 +25,23 @@ function UserPanel({ config }) {
   const [page, setPage] = useState(1);
   const [pendingBookings, setPendingBookings] = useState([]);
   const pageSize = 10;
+  const [changedBookingId, setChangedBookingId] = useState();
 
   const onBookingChanged = (bookingId, start, end) => {
     setEditBooking(null);
 
-    const booking = userBookings["hydra:member"].find((el) => el.id === bookingId);
+    setChangedBookingId(bookingId);
 
-    if (booking) {
-      booking.start = start;
+    const newUserBookings = { ...userBookings };
+    const bookingIndex = newUserBookings["hydra:member"].findIndex((el) => el.exchangeId === bookingId);
 
-      booking.end = end;
+    if (bookingIndex !== -1) {
+      newUserBookings["hydra:member"][bookingIndex].start = start;
+
+      newUserBookings["hydra:member"][bookingIndex].end = end;
     }
+
+    setUserBookings(newUserBookings);
   };
 
   const onBookingDeleted = (bookingId) => {
@@ -43,7 +49,7 @@ function UserPanel({ config }) {
 
     const newUserBookings = { ...userBookings };
 
-    newUserBookings["hydra:member"] = newUserBookings["hydra:member"].filter((el) => el.id !== bookingId);
+    newUserBookings["hydra:member"] = newUserBookings["hydra:member"].filter((el) => el.exchangeId !== bookingId);
 
     setUserBookings(newUserBookings);
   };
@@ -178,6 +184,10 @@ function UserPanel({ config }) {
     return (
       <div className={`user-booking${bookingEnd < now ? " expired" : ""}`} key={booking.exchangeId}>
         <div>
+          {booking.exchangeId === changedBookingId && <>Ændring gennemført.</>}
+          <span className="location">
+            {booking.resourceDisplayName ? booking.resourceDisplayName : booking.resource}
+          </span>
           <span className="subject">{booking.title}</span>
           <span className="status">{getStatus(booking.status)}</span>
         </div>
@@ -186,6 +196,9 @@ function UserPanel({ config }) {
           <span>→</span>
           <span>{getFormattedDateTime(booking.end)}</span>
         </div>
+
+        {bookingEnd < now && <div>Booking er udløbet</div>}
+
         {bookingEnd >= now && (
           <div>
             <button type="button" onClick={() => setDeleteBooking(booking)}>
@@ -217,7 +230,7 @@ function UserPanel({ config }) {
 
             response.forEach((element) => {
               if (element.exchangeId === booking.exchangeId) {
-                newBooking.status = getStatus(element.status);
+                newBooking.status = element.status;
               }
             });
 

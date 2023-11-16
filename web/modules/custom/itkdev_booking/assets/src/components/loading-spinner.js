@@ -21,8 +21,12 @@ function LoadingSpinner({ size = "default" }) {
   );
 }
 
+LoadingSpinner.defaultProps = {
+  size: "default",
+};
+
 LoadingSpinner.propTypes = {
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
 };
 
 export default LoadingSpinner;

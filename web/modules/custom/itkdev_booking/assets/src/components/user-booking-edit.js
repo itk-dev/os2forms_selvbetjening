@@ -73,19 +73,19 @@ function UserBookingEdit({ config, booking, onBookingChanged, close }) {
    */
   const requestDateChange = (bookingEdit, newStart, newEnd) => {
     const newData = {
-      id: bookingEdit.id,
+      id: bookingEdit.exchangeId,
       start: newStart.toISOString(),
       end: newEnd.toISOString(),
     };
 
-    if (bookingEdit?.id) {
+    if (bookingEdit?.exchangeId) {
       setLoading(true);
 
-      Api.patchBooking(config.api_endpoint, bookingEdit.id, newData)
+      Api.patchBooking(config.api_endpoint, bookingEdit.exchangeId, newData)
         .then((data) => {
           displaySuccess("Ændring af tidspunkt lykkedes");
 
-          onBookingChanged(bookingEdit.id, data.start, data.end);
+          onBookingChanged(bookingEdit.exchangeId, data.start, data.end);
         })
         .catch((err) => {
           displayError("Ændring af tidspunkt fejlede.", err);
@@ -194,7 +194,7 @@ function UserBookingEdit({ config, booking, onBookingChanged, close }) {
                 </div>
                 <div>
                   <strong>Titel på booking: </strong>
-                  {booking.subject}
+                  {booking.title}
                 </div>
                 <div>
                   <strong>Nuværende valg: </strong>
@@ -280,7 +280,7 @@ UserBookingEdit.propTypes = {
   booking: PropTypes.shape({
     id: PropTypes.string.isRequired,
     resourceDisplayName: PropTypes.string.isRequired,
-    subject: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     start: PropTypes.string.isRequired,
     end: PropTypes.string.isRequired,
     resourceMail: PropTypes.string.isRequired,
