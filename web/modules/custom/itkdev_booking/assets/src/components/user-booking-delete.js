@@ -22,7 +22,7 @@ function UserBookingDelete({ config, booking, onBookingDeleted, close }) {
    * @param {object} bookingToDelete Booking to request deletion of.
    */
   const requestDeletion = (bookingToDelete) => {
-    const bookingId = bookingToDelete.id;
+    const bookingId = bookingToDelete.exchangeId;
 
     if (bookingId) {
       setLoading(true);
@@ -67,7 +67,7 @@ function UserBookingDelete({ config, booking, onBookingDeleted, close }) {
                 </div>
                 <div>
                   <strong>Titel på booking: </strong>
-                  {booking.subject}
+                  {booking.title}
                 </div>
                 <div>
                   <strong>Tidspunkt: </strong>
@@ -100,7 +100,7 @@ UserBookingDelete.propTypes = {
   booking: PropTypes.shape({
     id: PropTypes.string.isRequired,
     resourceDisplayName: PropTypes.string.isRequired,
-    subject: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     start: PropTypes.string.isRequired,
     end: PropTypes.string.isRequired,
   }).isRequired,
