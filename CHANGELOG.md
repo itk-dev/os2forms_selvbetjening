@@ -8,7 +8,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Changed permissions to webform submisison log.
 * Opdaterede [OS2Forms failed jobs
-  1.3.2](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.2)
 * Deaktiverede Attachment PDF-elementet.
 * Opdaterede til [OS2Forms REST API
   2.0.1](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.1)
@@ -17,6 +16,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
+* Tilføjede praktiske CPR- og CVR-opslagskommandoer.
 
 ## [2.6.8] 2023-11-16
 
