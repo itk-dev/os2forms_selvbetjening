@@ -77,6 +77,7 @@
         "os2forms/os2forms_forloeb_profile": "^1.12",
         "os2forms/os2forms_get_organized": "^1.1.2",
         "os2forms/os2forms_organisation": "^1.2",
+        "os2forms/os2forms_payment": "dev-develop",
         "os2forms/os2forms_rest_api": "^2.0",
         "os2forms/os2forms_sync": "^1.1.2",
         "os2forms/os2forms_webform_submission_log": "^1.0"
