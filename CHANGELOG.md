@@ -7,6 +7,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## In develop
 
 * Tilføjede praktiske CPR- og CVR-opslagskommandoer.
+* Skiftede til digital post-modulet i OS2Forms
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/229>)
 
 ## [2.7.0] 2023-12-04
 
@@ -69,8 +71,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/228>)
 * Opdaterede til [OS2Forms organisation
   1.3.2](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.2)
-* Skiftede til digital post-modulet i OS2Forms
-  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/229>)
 
 ## [2.5.0] 2023-10-04
 
