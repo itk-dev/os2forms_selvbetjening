@@ -88,7 +88,7 @@ export function handleResources(value, currentCalendarDate) {
     const endTime = dayjs(v.close).format("HH:mm");
 
     const businessHours = {
-      daysOfWeek: [v.weekday],
+      daysOfWeek: [v.weekday === 7 ? 0 : v.weekday], // Sunday is internally defined as day 0, hence day 7 is converted to day 0 here.
       startTime: businessHoursOrNearestFifteenMinutes(startTime, currentCalendarDate, false),
       endTime,
     };

@@ -47,6 +47,7 @@ permissions:
   - 'access user profiles'
   - 'access webform advanced queue overview'
   - 'access webform overview'
+  - 'access webform submission log'
   - 'access webform submission user'
   - 'administer block_content display'
   - 'administer block_content form display'

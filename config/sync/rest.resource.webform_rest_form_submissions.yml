@@ -1,0 +1,22 @@
+uuid: ef991b2f-0395-4615-968f-a7fb599baf40
+langcode: da
+status: true
+dependencies:
+  module:
+    - os2forms_rest_api
+    - serialization
+  enforced:
+    module:
+      - os2forms_rest_api
+_core:
+  default_config_hash: Nhi0iuHZcu62XmQrmnTAQAq2wenU3gZLHoMZXUgBJmc
+id: webform_rest_form_submissions
+plugin_id: webform_rest_form_submissions
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - key_auth

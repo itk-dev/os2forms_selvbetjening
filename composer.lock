@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "168386e5bb73b70d3921aa72fdc2c395",
+    "content-hash": "577ba1bccf84193f0e4a842576f0b231",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5561,14 +5561,6 @@
             ],
             "authors": [
                 {
-                    "name": "John Franklin",
-                    "homepage": "https://www.drupal.org/user/683430"
-                },
-                {
-                    "name": "KarenS",
-                    "homepage": "https://www.drupal.org/user/45874"
-                },
-                {
                     "name": "blc",
                     "homepage": "https://www.drupal.org/user/727498"
                 },
@@ -5577,8 +5569,24 @@
                     "homepage": "https://www.drupal.org/user/550110"
                 },
                 {
+                    "name": "geekygnr",
+                    "homepage": "https://www.drupal.org/user/2775199"
+                },
+                {
                     "name": "jazzdrive3",
                     "homepage": "https://www.drupal.org/user/348785"
+                },
+                {
+                    "name": "John Franklin",
+                    "homepage": "https://www.drupal.org/user/683430"
+                },
+                {
+                    "name": "justafish",
+                    "homepage": "https://www.drupal.org/user/161058"
+                },
+                {
+                    "name": "KarenS",
+                    "homepage": "https://www.drupal.org/user/45874"
                 },
                 {
                     "name": "mtift",
@@ -5825,7 +5833,7 @@
             "extra": {
                 "drupal": {
                     "version": "1.3.1",
-                    "datestamp": "1691678388",
+                    "datestamp": "1696508009",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6728,16 +6736,20 @@
             ],
             "authors": [
                 {
-                    "name": "Sam152",
-                    "homepage": "https://www.drupal.org/user/1485048"
-                },
-                {
                     "name": "mattgill",
                     "homepage": "https://www.drupal.org/user/3539361"
                 },
                 {
+                    "name": "mohit_aghera",
+                    "homepage": "https://www.drupal.org/user/639098"
+                },
+                {
                     "name": "paul_senior",
                     "homepage": "https://www.drupal.org/user/3553075"
+                },
+                {
+                    "name": "Sam152",
+                    "homepage": "https://www.drupal.org/user/1485048"
                 }
             ],
             "description": "Schedule tasks to run on groups of webform submissions.",
@@ -8556,32 +8568,6 @@
             "time": "2023-03-10T14:13:42+00:00"
         },
         {
-            "name": "itk-dev/itkdev-booking",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/itk-dev/drupal_webform_booking_module.git",
-                "reference": "eb9ce7b3d8925791815c376665c0a01ad3a665d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/drupal_webform_booking_module/zipball/eb9ce7b3d8925791815c376665c0a01ad3a665d2",
-                "reference": "eb9ce7b3d8925791815c376665c0a01ad3a665d2",
-                "shasum": ""
-            },
-            "type": "drupal-module",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Provides a webform element for creating bookings through the AAK booking service.",
-            "support": {
-                "issues": "https://github.com/itk-dev/drupal_webform_booking_module/issues",
-                "source": "https://github.com/itk-dev/drupal_webform_booking_module/tree/1.0.7"
-            },
-            "time": "2023-08-24T06:43:02+00:00"
-        },
-        {
             "name": "itk-dev/openid-connect",
             "version": "3.1.0",
             "source": {
@@ -8735,16 +8721,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "8ba210e294cbfdd2876952c2d4448bc2fc73478a"
+                "reference": "c4b327e4363915836d3138829cadd79a318c0993"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/8ba210e294cbfdd2876952c2d4448bc2fc73478a",
-                "reference": "8ba210e294cbfdd2876952c2d4448bc2fc73478a",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/c4b327e4363915836d3138829cadd79a318c0993",
+                "reference": "c4b327e4363915836d3138829cadd79a318c0993",
                 "shasum": ""
             },
             "require": {
@@ -8772,9 +8758,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.3.1"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.3.2"
             },
-            "time": "2023-09-13T11:08:09+00:00"
+            "time": "2023-11-08T12:35:00+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -9955,16 +9941,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "bb8dc2649be24bb2b710be3f867b7c9a1f15c200"
+                "reference": "ef637aaa2391ee075e96e9e99beabd1c40701a3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/bb8dc2649be24bb2b710be3f867b7c9a1f15c200",
-                "reference": "bb8dc2649be24bb2b710be3f867b7c9a1f15c200",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/ef637aaa2391ee075e96e9e99beabd1c40701a3d",
+                "reference": "ef637aaa2391ee075e96e9e99beabd1c40701a3d",
                 "shasum": ""
             },
             "require": {
@@ -9994,22 +9980,22 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.3.2"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/1.3.3"
             },
-            "time": "2023-10-09T06:52:33+00:00"
+            "time": "2023-10-24T07:45:53+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
-            "version": "1.1.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
-                "reference": "f84e10fcc990a3961925a9f9de5886213a3f43a8"
+                "reference": "32fa7c145393cab5faed70e540405fb9b26bcc18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/f84e10fcc990a3961925a9f9de5886213a3f43a8",
-                "reference": "f84e10fcc990a3961925a9f9de5886213a3f43a8",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/32fa7c145393cab5faed70e540405fb9b26bcc18",
+                "reference": "32fa7c145393cab5faed70e540405fb9b26bcc18",
                 "shasum": ""
             },
             "require": {
@@ -10044,9 +10030,9 @@
             "description": "OS2Forms REST API",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
-                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/1.1.0"
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.0.1"
             },
-            "time": "2023-03-03T14:37:31+00:00"
+            "time": "2023-10-24T12:55:21+00:00"
         },
         {
             "name": "os2forms/os2forms_sync",
