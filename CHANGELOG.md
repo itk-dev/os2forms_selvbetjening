@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+## [2.7.0] 2023-12-04
+
 * Changed permissions to webform submisison log.
 * Opdaterede [OS2Forms failed jobs
   1.3.2](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.2)
@@ -357,7 +359,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.8...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...HEAD
+[2.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.8...2.7.0
 [2.6.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.7...2.6.8
 [2.6.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.6...2.6.7
 [2.6.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.5...2.6.6
