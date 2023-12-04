@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Tilføjede praktiske CPR- og CVR-opslagskommandoer.
+
 ## [2.7.0] 2023-12-04
 
 * Changed permissions to webform submisison log.
@@ -18,7 +20,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
-* Tilføjede praktiske CPR- og CVR-opslagskommandoer.
 
 ## [2.6.8] 2023-11-16
 
