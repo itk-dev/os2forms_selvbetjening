@@ -10,8 +10,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.7.0] 2023-12-04
 
-* Changed permissions to webform submisison log.
+* Changed permissions to webform submission log.
 * Opdaterede [OS2Forms failed jobs
+  1.3.2](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.2)
 * Deaktiverede Attachment PDF-elementet.
 * Opdaterede til [OS2Forms REST API
   2.0.1](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.1)
