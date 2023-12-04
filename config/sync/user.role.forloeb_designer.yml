@@ -40,6 +40,7 @@ permissions:
   - 'access toolbar'
   - 'access webform advanced queue overview'
   - 'access webform overview'
+  - 'access webform submission log'
   - 'access webform submission user'
   - 'administer webform element access'
   - 'administer webform revisions'
