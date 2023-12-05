@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Installerede [OS2Forms
   Payment](https://github.com/itk-dev/os2forms_payment).
+* Opdaterede til [OS2Forms
+  3.13.3](https://github.com/OS2Forms/os2forms/releases/tag/3.13.3).
 * Tilføjede praktiske CPR- og CVR-opslagskommandoer.
 * Skiftede til digital post-modulet i OS2Forms
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/229>)

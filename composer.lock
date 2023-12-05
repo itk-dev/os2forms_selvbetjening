@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "194fce72913309d128cd0d8a3f4b1179",
+    "content-hash": "68a7983eb80ec69d160114483f0491b1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9728,16 +9728,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.13.0",
+            "version": "3.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "a682232ef66cbcc4a782a225641fa1b48c846db7"
+                "reference": "ba54de8144c2d733bbba7d196f5adbdd25abd0a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/a682232ef66cbcc4a782a225641fa1b48c846db7",
-                "reference": "a682232ef66cbcc4a782a225641fa1b48c846db7",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/ba54de8144c2d733bbba7d196f5adbdd25abd0a7",
+                "reference": "ba54de8144c2d733bbba7d196f5adbdd25abd0a7",
                 "shasum": ""
             },
             "require": {
@@ -9848,9 +9848,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.13.0"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.13.3"
             },
-            "time": "2023-10-11T10:08:18+00:00"
+            "time": "2023-12-05T09:56:17+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -22341,7 +22341,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20
+        "itk-dev/serviceplatformen": 20,
+        "os2forms/os2forms_payment": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
