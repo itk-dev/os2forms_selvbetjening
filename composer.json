@@ -145,10 +145,6 @@
             },
             "drupal/maestro": {
                 "Disallow empty queueToken": "patches/drupal/maestro/maestro_token.patch"
-            },
-            "os2forms/os2forms": {
-                "Handle nested elements in webform inherit": "patches/drupal/os2forms/handle_nested_elements_in_webform_inherit.patch",
-                "Allow composite elements in Maestro notification recipient": "patches/drupal/os2forms/allow_composite_elements_in_maestro_notification_recipient.patch"
             }
         },
         "patches-ignore": {
