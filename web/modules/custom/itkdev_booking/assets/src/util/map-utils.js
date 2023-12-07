@@ -16,6 +16,7 @@ export function latlngToUTM(lat, long) {
 
 /**
  * @param {object} resources Resources array
+ * @param {boolean} useLocations Group resources as location
  * @returns {Array} Containing openLayer features and tooltip content
  */
 export function getFeatures(resources, useLocations = false) {
@@ -34,8 +35,11 @@ export function getFeatures(resources, useLocations = false) {
         const utmCoordinates = latlngToUTM(geoCoordinates[0], geoCoordinates[1]);
 
         features[value.location] = {
-          location: value.locationDisplayName ?? value.location,
-          locationId: value.location,
+          resourceName: value.resourceDisplayName ?? value.resourceName,
+          resourceId: value.id,
+          resourceMail: value.resourceMail,
+          location: value.location,
+          locationName: value.locationName,
           northing: utmCoordinates[0],
           easting: utmCoordinates[1],
           resource_count: 1,
@@ -47,15 +51,17 @@ export function getFeatures(resources, useLocations = false) {
       if (value.location === "" || value.geoCoordinates === "" || value.geoCoordinates === null) {
         return;
       }
-      const randomNorthing = Math.floor(Math.random() * (554220 - 573220 + 1)) + 573220;
-      const randomEasting = Math.floor(Math.random() * (6199604 - 6229304 + 1)) + 6229304;
+      const geoCoordinates = value.geoCoordinates.split(",");
+      const utmCoordinates = latlngToUTM(geoCoordinates[0], geoCoordinates[1]);
 
       features[value.id] = {
         resourceName: value.resourceDisplayName ?? value.resourceName,
         resourceId: value.id,
         resourceMail: value.resourceMail,
-        northing: randomNorthing,
-        easting: randomEasting,
+        location: value.location,
+        locationName: value.locationName,
+        northing: utmCoordinates[0],
+        easting: utmCoordinates[1],
       };
     });
   }
