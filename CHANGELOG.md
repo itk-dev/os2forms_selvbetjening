@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
-* Tilføjede 4xx page template med logout link 
+* Tilføjede 4xx page template med logout link
 (<https://github.com/itk-dev/os2forms_selvbetjening/pull/258>)
 * Opdaterede til [OS2Forms
   3.13.3](https://github.com/OS2Forms/os2forms/releases/tag/3.13.3).
