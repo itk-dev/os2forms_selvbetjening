@@ -5,7 +5,7 @@
   {{ page.content }}
   {% if logged_in %}
     <p>
-      Her er et forslag til hvad du kan gøre. Prøv at logge ud af <a href="/user/logout?destination={{ requestUri }}">{{ siteName }}</a>
+      {{ 'Here is a suggestion to what you can do. Try to log out of <a href="/user/logout?destination=@requestUri">@siteName</a>'|t({'@requestUri': requestUri, '@siteName': siteName}) }}
     </p>
   {% endif %}
 {% endblock %}

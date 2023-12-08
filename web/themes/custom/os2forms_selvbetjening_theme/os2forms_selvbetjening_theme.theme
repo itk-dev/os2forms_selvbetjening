@@ -7,6 +7,6 @@
  */
 function os2forms_selvbetjening_theme_preprocess_page(&$variables): void {
   $variables['site_logo'] = theme_get_setting('logo.url');
-  $variables['siteName'] =  \Drupal::config('system.site')->get('name');
+  $variables['siteName'] = \Drupal::config('system.site')->get('name');
   $variables['requestUri'] = \Drupal::service('request_stack')->getCurrentRequest()->getRequestUri();
 }
