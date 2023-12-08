@@ -1,0 +1,11 @@
+{% extends "page.html.twig" %}
+
+{# Content #}
+{% block page_content %}
+  {{ page.content }}
+  {% if logged_in %}
+    <p>
+      Her er et forslag til hvad du kan gøre. Prøv at logge ud af <a href="/user/logout?destination={{ requestUri }}">{{ siteName }}</a>
+    </p>
+  {% endif %}
+{% endblock %}
