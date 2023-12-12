@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3cc3d7a659af75d64f61aaa7c1d93563",
+    "content-hash": "36d30db6d4932ab438631e721a3e98aa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9941,16 +9941,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "dev-feature/FORMS-985-use-organisation-api",
+            "version": "dev-feature/fixes",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "ad6c278fc9d1c4975fa254d5492c80b658f83d25"
+                "reference": "98daab64b9cf1109550bc86d46fbc70f04654e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/ad6c278fc9d1c4975fa254d5492c80b658f83d25",
-                "reference": "ad6c278fc9d1c4975fa254d5492c80b658f83d25",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/98daab64b9cf1109550bc86d46fbc70f04654e25",
+                "reference": "98daab64b9cf1109550bc86d46fbc70f04654e25",
                 "shasum": ""
             },
             "require": {
@@ -9980,9 +9980,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/feature/FORMS-985-use-organisation-api"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/feature/fixes"
             },
-            "time": "2023-12-11T15:01:15+00:00"
+            "time": "2023-12-12T20:26:52+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
