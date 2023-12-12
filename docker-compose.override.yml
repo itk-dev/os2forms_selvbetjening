@@ -3,7 +3,7 @@
 networks:
   organisation_api:
     external: true
-    name: os2forms_organisation_api_default
+    name: serviceplatformen_organisation_api_app
 
 services:
   phpfpm:
