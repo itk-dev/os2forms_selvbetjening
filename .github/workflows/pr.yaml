@@ -129,6 +129,9 @@ jobs:
       - name: Setup docker network
         run: docker network create frontend
 
+      - name: Setup docker network
+        run: docker network create os2forms_organisation_api_default
+
       - name: Install build dependencies
         run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
 
@@ -143,6 +146,9 @@ jobs:
 
       - name: Setup docker network
         run: docker network create frontend
+
+      - name: Setup docker network
+        run: docker network create os2forms_organisation_api_default
 
       - name: Install build dependencies
         run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
@@ -162,6 +168,7 @@ jobs:
       - name: Install site
         run: |
           docker network create frontend
+          docker network create os2forms_organisation_api_default
           docker compose pull
           docker compose up --detach
 
