@@ -1,6 +1,15 @@
 # https://github.com/Soluto/oidc-server-mock
 
+networks:
+  organisation_api:
+    external: true
+    name: os2forms_organisation_api_default
+
 services:
+  phpfpm:
+    networks:
+      - organisation_api
+
   node:
     image: node:16
     profiles:

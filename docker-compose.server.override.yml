@@ -1,14 +1,20 @@
 version: "3"
 
 networks:
+  organisation_api:
+    external: true
+    name: os2forms_organisation_api_default
   frontend:
     external: true
   app:
     driver: bridge
     internal: false
 
+
 services:
   phpfpm:
+    networks:
+      - organisation_api
     environment:
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_MEMORY_LIMIT=512M
