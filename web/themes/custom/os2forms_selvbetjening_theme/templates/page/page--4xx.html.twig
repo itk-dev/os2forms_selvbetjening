@@ -5,7 +5,7 @@
   {{ page.content }}
   {% if logged_in %}
     <p>
-      {% set url = path('/user/logout', {destination: request_uri}) %}
+      {% set url = path('user.logout', {destination: request_uri}) %}
       {{ 'Here is a suggestion to what you can do. Try to log out of <a href=":url">@siteName</a>'|t({':url': url, '@siteName': site_name}) }}
     </p>
   {% endif %}
