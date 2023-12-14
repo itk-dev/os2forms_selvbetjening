@@ -16,31 +16,55 @@ export function latlngToUTM(lat, long) {
 
 /**
  * @param {object} resources Resources array
+ * @param {boolean} useLocations Group resources as location
  * @returns {Array} Containing openLayer features and tooltip content
  */
-export function getFeatures(resources) {
+export function getFeatures(resources, useLocations = false) {
   // Loop resources and build coordinates and tooltip content
-  const locations = [];
+  const features = [];
 
-  Object.values(resources).forEach((value) => {
-    if (value.location in locations) {
-      locations[value.location].resource_count += 1;
-    } else {
+  if (useLocations) {
+    Object.values(resources).forEach((value) => {
+      if (value.location in resources) {
+        features[value.location].resource_count += 1;
+      } else {
+        if (value.location === "" || value.geoCoordinates === "" || value.geoCoordinates === null) {
+          return;
+        }
+        const geoCoordinates = value.geoCoordinates.split(",");
+        const utmCoordinates = latlngToUTM(geoCoordinates[0], geoCoordinates[1]);
+
+        features[value.location] = {
+          resourceName: value.resourceDisplayName ?? value.resourceName,
+          resourceId: value.id,
+          resourceMail: value.resourceMail,
+          location: value.location,
+          locationName: value.locationName,
+          northing: utmCoordinates[0],
+          easting: utmCoordinates[1],
+          resource_count: 1,
+        };
+      }
+    });
+  } else {
+    Object.values(resources).forEach((value) => {
       if (value.location === "" || value.geoCoordinates === "" || value.geoCoordinates === null) {
         return;
       }
       const geoCoordinates = value.geoCoordinates.split(",");
       const utmCoordinates = latlngToUTM(geoCoordinates[0], geoCoordinates[1]);
 
-      locations[value.location] = {
-        location: value.locationDisplayName ?? value.location,
-        locationId: value.location,
+      features[value.id] = {
+        resourceName: value.resourceDisplayName ?? value.resourceName,
+        resourceId: value.id,
+        resourceMail: value.resourceMail,
+        location: value.location,
+        locationName: value.locationName,
         northing: utmCoordinates[0],
         easting: utmCoordinates[1],
-        resource_count: 1,
       };
-    }
-  });
+    });
+  }
 
-  return locations;
+  return features;
 }

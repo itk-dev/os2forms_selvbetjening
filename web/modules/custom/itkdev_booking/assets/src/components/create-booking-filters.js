@@ -232,6 +232,7 @@ function CreateBookingFilters({
               id="resource-filter"
               className="filter"
               defaultValue={resourceFilter}
+              value={resourceFilter}
               placeholder="Ressourcer..."
               placeholderClassName="dropdown-placeholder"
               closeMenuOnSelect={false}
