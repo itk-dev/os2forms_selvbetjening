@@ -93,3 +93,21 @@
     color: #232429;
   }
 }
+
+.button--outline--primary {
+  background-color: #fff;
+  border-color: #003ecc !important;
+  color: #003ecc;
+  cursor: pointer;
+  border-width: 2px !important;
+  border-radius: 5px;
+}
+
+.button--outline--primary:hover {
+  background-color: #003ecc;
+  border-color: #003ecc !important;
+  color: #fff;
+  cursor: pointer;
+  border-width: 2px !important;
+  border-radius: 5px;
+}
