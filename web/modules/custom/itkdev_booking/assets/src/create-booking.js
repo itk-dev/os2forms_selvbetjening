@@ -242,10 +242,13 @@ function CreateBooking({ config }) {
                       {activeTab === "map" && (
                         <div className="map">
                           <MapWrapper
+                            resources={resources}
                             allResources={allResources}
                             config={config}
                             setLocationFilter={setLocationFilter}
+                            setResourceFilter={setResourceFilter}
                             setBookingView={onTabChange}
+                            useLocations={false}
                           />
                         </div>
                       )}
