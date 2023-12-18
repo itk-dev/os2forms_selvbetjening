@@ -176,3 +176,39 @@ definitions:
     weight: -100
     expanded: false
     enabled: true
+  system__admin__os2forms_forloeb__config_import_export:
+    menu_name: admin
+    parent: system.admin
+    weight: 14
+    expanded: false
+    enabled: false
+  system__admin__os2forms_forloeb__translation:
+    menu_name: admin
+    parent: system.admin
+    weight: 15
+    expanded: false
+    enabled: false
+  system__admin__os2forms_forloeb__flows:
+    menu_name: admin
+    parent: system.admin
+    weight: 13
+    expanded: false
+    enabled: false
+  system__admin__os2forms_forloeb__webforms:
+    menu_name: admin
+    parent: system.admin
+    weight: 12
+    expanded: false
+    enabled: false
+  system__admin__os2forms_forloeb__content:
+    menu_name: admin
+    parent: system.admin
+    weight: 11
+    expanded: false
+    enabled: false
+  system__admin__os2forms_forloeb__task_console:
+    menu_name: admin
+    parent: system.admin
+    weight: 10
+    expanded: false
+    enabled: false
