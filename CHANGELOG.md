@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Skjulte duplikerede menu links.
 * Tilføjede 4xx page template med logout link
 (<https://github.com/itk-dev/os2forms_selvbetjening/pull/258>)
 * Opdaterede til [OS2Forms
