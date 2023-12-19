@@ -91,6 +91,44 @@ function CreateBookingFilters({
     }
 
     setResourceCategoryOptions(newResourceCategoryOptions);
+
+    // Add filtering based on filterParams
+    if (filterParams) {
+      const filterLocations = [];
+
+      let locationParam = "";
+
+      for (locationParam of filterParams["location[]"]) {
+        let aLocation = {};
+
+        for (aLocation of locations) {
+          if (aLocation.value === locationParam) {
+            filterLocations.push(aLocation);
+          }
+        }
+      }
+
+      setLocationFilter(filterLocations);
+
+      const filterResourceMails = [];
+
+      let resourceMailParam = "";
+
+      for (resourceMailParam of filterParams["resourceMail[]"]) {
+        let resource = {};
+
+        for (resource of allResources) {
+          if (resource.resourceMail === resourceMailParam) {
+            filterResourceMails.push({
+              value: resource.resourceMail,
+              label: resource.resourceDisplayName ?? resource.resourceName,
+            });
+          }
+        }
+
+        setResourceFilter(filterResourceMails);
+      }
+    }
   }, [allResources]);
 
   // Set location filter and resource dropdown options.
@@ -311,7 +349,10 @@ CreateBookingFilters.defaultProps = {
 };
 
 CreateBookingFilters.propTypes = {
-  filterParams: PropTypes.shape({}).isRequired,
+  filterParams: PropTypes.shape({
+    "location[]": PropTypes.arrayOf(PropTypes.string),
+    "resourceMail[]": PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
   setFilterParams: PropTypes.func.isRequired,
   allResources: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   disabled: PropTypes.bool.isRequired,
