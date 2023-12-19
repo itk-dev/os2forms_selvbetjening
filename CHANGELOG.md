@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Installerede [OS2Web logging](https://github.com/OS2web/os2web_logging).
 * Skjulte duplikerede menu links.
 * Tilføjede 4xx page template med logout link
 (<https://github.com/itk-dev/os2forms_selvbetjening/pull/258>)
