@@ -97,7 +97,7 @@ function CreateBooking({ config }) {
       const params = Object.fromEntries(currentUrl.searchParams);
 
       // If a list of urlParameters exist the display can be minimized.
-      if (UrlValidator.minimzable(params)) {
+      if (UrlValidator.minimizable(params)) {
         setValidUrlParams(params);
 
         setDisplayState("minimized");
