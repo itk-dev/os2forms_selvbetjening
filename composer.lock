@@ -9945,12 +9945,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "014ce500b0b6dfaa40b66ded0b61133503e78487"
+                "reference": "5ba6b08f08bb1bda1997df300ef259c313cb19c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/014ce500b0b6dfaa40b66ded0b61133503e78487",
-                "reference": "014ce500b0b6dfaa40b66ded0b61133503e78487",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/5ba6b08f08bb1bda1997df300ef259c313cb19c5",
+                "reference": "5ba6b08f08bb1bda1997df300ef259c313cb19c5",
                 "shasum": ""
             },
             "require": {
@@ -9983,7 +9983,7 @@
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
                 "source": "https://github.com/itk-dev/os2forms_organisation/tree/main"
             },
-            "time": "2023-12-15T14:05:24+00:00"
+            "time": "2023-12-20T10:52:14+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
