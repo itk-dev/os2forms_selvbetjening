@@ -96,38 +96,38 @@ function CreateBookingFilters({
     if (filterParams) {
       const filterLocations = [];
 
-      let locationParam = "";
-
-      for (locationParam of filterParams["location[]"]) {
-        let aLocation = {};
-
-        for (aLocation of locations) {
+      filterParams["location[]"].map((locationParam) => {
+        locations.map((aLocation) => {
           if (aLocation.value === locationParam) {
             filterLocations.push(aLocation);
           }
-        }
-      }
+
+          return filterLocations;
+        });
+
+        return locations;
+      });
 
       setLocationFilter(filterLocations);
 
       const filterResourceMails = [];
 
-      let resourceMailParam = "";
-
-      for (resourceMailParam of filterParams["resourceMail[]"]) {
-        let resource = {};
-
-        for (resource of allResources) {
+      filterParams["resourceMail[]"].map((resourceMailParam) => {
+        allResources.map((resource) => {
           if (resource.resourceMail === resourceMailParam) {
             filterResourceMails.push({
               value: resource.resourceMail,
               label: resource.resourceDisplayName ?? resource.resourceName,
             });
           }
-        }
 
-        setResourceFilter(filterResourceMails);
-      }
+          return filterResourceMails;
+        });
+
+        return allResources;
+      });
+
+      setResourceFilter(filterResourceMails);
     }
   }, [allResources]);
 
