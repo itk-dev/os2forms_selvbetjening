@@ -94,38 +94,28 @@ function CreateBookingFilters({
 
     // Add filtering based on filterParams
     if (filterParams) {
-      const filterLocations = [];
+      const filterLocations = filterParams["location[]"].reduce((carry, locationParam) => {
+        const foundLocations = locations.filter((aLocation) => aLocation.value === locationParam);
 
-      filterParams["location[]"].map((locationParam) => {
-        locations.map((aLocation) => {
-          if (aLocation.value === locationParam) {
-            filterLocations.push(aLocation);
-          }
+        foundLocations.forEach((foundLocation) => carry.push(foundLocation));
 
-          return filterLocations;
-        });
-
-        return locations;
-      });
+        return carry;
+      }, []);
 
       setLocationFilter(filterLocations);
 
-      const filterResourceMails = [];
+      const filterResourceMails = filterParams["resourceMail[]"].reduce((carry, resourceParam) => {
+        const foundResources = allResources.filter((resource) => resource.resourceMail === resourceParam);
 
-      filterParams["resourceMail[]"].map((resourceMailParam) => {
-        allResources.map((resource) => {
-          if (resource.resourceMail === resourceMailParam) {
-            filterResourceMails.push({
-              value: resource.resourceMail,
-              label: resource.resourceDisplayName ?? resource.resourceName,
-            });
-          }
+        foundResources.forEach((foundResource) =>
+          carry.push({
+            value: foundResource.resourceMail,
+            label: foundResource.resourceDisplayName ?? foundResource.resourceName,
+          })
+        );
 
-          return filterResourceMails;
-        });
-
-        return allResources;
-      });
+        return carry;
+      }, []);
 
       setResourceFilter(filterResourceMails);
     }
