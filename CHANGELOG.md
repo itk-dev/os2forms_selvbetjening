@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
-* Add filtering to booking widget 
+* Add filtering to booking widget
 (<https://github.com/itk-dev/os2forms_selvbetjening/pull/262>)
 * Skjulte duplikerede menu links.
 * Tilføjede 4xx page template med logout link
