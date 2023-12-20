@@ -3,7 +3,7 @@ import { hasOwnProperty } from "./helpers";
 
 /** Url validator. */
 export default class UrlValidator {
-  static valid(urlParams) {
+  static minimizable(urlParams) {
     if (
       !urlParams ||
       !hasOwnProperty(urlParams, "from") ||
