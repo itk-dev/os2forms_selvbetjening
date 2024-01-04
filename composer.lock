@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17c64c42f8bfd7c4941f0c369c75d8dc",
+    "content-hash": "0877a6ce4f3922ae6b4d5f151d332ff1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9898,22 +9898,23 @@
         },
         {
             "name": "os2forms/os2forms_get_organized",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_get_organized.git",
-                "reference": "8935f66a6ab532a647014dea115d45d18f14517a"
+                "reference": "c4707bc96ac133357156921784c13c08131379c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/8935f66a6ab532a647014dea115d45d18f14517a",
-                "reference": "8935f66a6ab532a647014dea115d45d18f14517a",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/c4707bc96ac133357156921784c13c08131379c5",
+                "reference": "c4707bc96ac133357156921784c13c08131379c5",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.1",
                 "itk-dev/getorganized-api-client-php": "^1.2",
+                "os2forms/os2forms": "^3.13",
                 "symfony/options-resolver": "^5.4"
             },
             "require-dev": {
@@ -9935,9 +9936,9 @@
             "description": "OS2Forms GetOrganized integration",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_get_organized/issues",
-                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.1.4"
+                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.1.5"
             },
-            "time": "2023-09-29T07:49:59+00:00"
+            "time": "2024-01-04T10:43:45+00:00"
         },
         {
             "name": "os2forms/os2forms_organisation",
