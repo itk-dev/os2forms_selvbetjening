@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede til [OS2Forms GetOrganized
   1.1.5](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.5)
+* Add filtering to booking widget
+(<https://github.com/itk-dev/os2forms_selvbetjening/pull/262>)
 * Skjulte duplikerede menu links.
 * Tilføjede 4xx page template med logout link
 (<https://github.com/itk-dev/os2forms_selvbetjening/pull/258>)
