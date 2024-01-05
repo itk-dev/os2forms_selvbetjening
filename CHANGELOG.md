@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Opdaterede til [OS2Forms failed jobs
+  1.4.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.4.0)
 * Opdaterede til [OS2Forms GetOrganized
   1.1.5](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.5)
 * Add filtering to booking widget
