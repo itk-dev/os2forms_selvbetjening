@@ -52,7 +52,6 @@ function MapWrapper({
   let tooltip = useRef();
 
   useEffect(() => {
-    console.log(filterParams);
     if (!useLocations) {
       if (Object.keys(filterParams).length === 0) {
         setMapData(getFeatures(allResources, useLocations));
@@ -402,7 +401,6 @@ function MapWrapper({
                 value,
                 label: dataResourceNameArray[index],
             }));
-            console.log(mergedArray);
             setFacilityFilter([]);
 
             //Settimeout to prevent filters being set at the same time.
