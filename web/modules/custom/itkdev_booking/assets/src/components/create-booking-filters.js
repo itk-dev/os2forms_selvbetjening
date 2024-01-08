@@ -36,9 +36,11 @@ function CreateBookingFilters({
   setResourceFilter,
   resourceCategoryFilter,
   setResourceCategoryFilter,
+  facilityFilter,
+  setFacilityFilter,
+  setAppParams
 }) {
   const [capacityFilter, setCapacityFilter] = useState([]);
-  const [facilityFilter, setFacilityFilter] = useState([]);
   const [hasWhitelist, setHasWhitelist] = useState(false);
   const [locationOptions, setLocationOptions] = useState([]);
   const [resourcesOptions, setResourcesOptions] = useState([]);
@@ -96,18 +98,30 @@ function CreateBookingFilters({
   // Set location filter and resource dropdown options.
   useEffect(() => {
     const locationValues = locationFilter.map(({ value }) => value);
-
-    setFilterParams({ ...filterParams, ...{ "location[]": locationValues } });
+    if (locationValues.length > 0) {
+      setFilterParams({ ...filterParams, ...{ "location[]": locationValues } });
+    } else {
+      delete filterParams["location[]"];
+      setFilterParams({
+        ...filterParams
+      });
+    }
   }, [locationFilter]);
 
   // Set resource filter.
   useEffect(() => {
     const resourceValues = resourceFilter.map(({ value }) => value);
-
-    setFilterParams({
-      ...filterParams,
-      ...{ "resourceMail[]": resourceValues },
-    });
+    if (resourceValues.length > 0) {
+      setFilterParams({
+        ...filterParams,
+        ...{ "resourceMail[]": resourceValues },
+      });
+    } else {
+      delete filterParams["resourceMail[]"];
+      setFilterParams({
+        ...filterParams
+      });
+    }
   }, [resourceFilter]);
 
   // Set only whitelisted filter.
@@ -179,7 +193,7 @@ function CreateBookingFilters({
 
   // Set resource category filter.
   useEffect(() => {
-    setFilterParams({ ...filterParams, resourceCategory: resourceCategoryFilter });
+    setAppParams({resourceCategory: resourceCategoryFilter });
   }, [resourceCategoryFilter]);
 
   return (
@@ -263,6 +277,7 @@ function CreateBookingFilters({
               onChange={(selectedFacilities) => {
                 setFacilityFilter(selectedFacilities);
               }}
+              value={facilityFilter}
               isMulti
             />
           </label>

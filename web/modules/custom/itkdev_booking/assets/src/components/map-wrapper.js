@@ -41,6 +41,8 @@ function MapWrapper({
   setResourceFilter,
   setBookingView,
   useLocations,
+  setFacilityFilter,
+  filterParams
 }) {
   const [map, setMap] = useState();
   const [vectorLayer, setVectorLayer] = useState(null);
@@ -50,12 +52,17 @@ function MapWrapper({
   let tooltip = useRef();
 
   useEffect(() => {
-    if (resources?.length > 0 && !useLocations) {
-      const features = getFeatures(resources, useLocations);
+    console.log(filterParams);
+    if (!useLocations) {
+      if (Object.keys(filterParams).length === 0) {
+        setMapData(getFeatures(allResources, useLocations));
+      } else {
+        const features = getFeatures(resources, useLocations);
 
-      setMapData(features);
+        setMapData(features);
 
-      tooltip.innerHTML = "";
+        tooltip.innerHTML = "";
+      }
     } else {
       setMapData(getFeatures(allResources, useLocations));
     }
@@ -394,9 +401,14 @@ function MapWrapper({
               const mergedArray = dataResourceMailArray.map((value, index) => ({
                 value,
                 label: dataResourceNameArray[index],
-              }));
+            }));
+            console.log(mergedArray);
+            setFacilityFilter([]);
 
+            //Settimeout to prevent filters being set at the same time.
+            setTimeout(() => {
               setResourceFilter(mergedArray);
+            }, 50)
             }
           } else {
             setResourceFilter([

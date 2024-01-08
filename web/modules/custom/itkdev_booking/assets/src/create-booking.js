@@ -33,6 +33,7 @@ function CreateBooking({ config }) {
   const [authorFields, setAuthorFields] = useState({ subject: "", email: "" });
   // Filter parameters, selected in CreateBookingFilters. An object containing
   // structured information about current filtering.
+  const [appParams, setAppParams] = useState({});
   const [filterParams, setFilterParams] = useState({});
   const [locationFilter, setLocationFilter] = useState([]);
   const [resourceFilter, setResourceFilter] = useState([]);
@@ -54,6 +55,7 @@ function CreateBooking({ config }) {
   const [loadingResources, setLoadingResources] = useState(true);
   const [loadingUserInformation, setLoadingUserInformation] = useState(true);
   const [loadingFiltering, setLoadingFiltering] = useState(false);
+  const [facilityFilter, setFacilityFilter] = useState([]);
 
   // Load all resources and current user information.
   useEffect(() => {
@@ -227,6 +229,9 @@ function CreateBooking({ config }) {
                       setResourceFilter={setResourceFilter}
                       resourceCategoryFilter={resourceCategoryFilter}
                       setResourceCategoryFilter={setResourceCategoryFilter}
+                      facilityFilter={facilityFilter}
+                      setFacilityFilter={setFacilityFilter}
+                      setAppParams={setAppParams}
                     />
 
                     {displayInfoBox && <InfoBox config={config} />}
@@ -249,6 +254,8 @@ function CreateBooking({ config }) {
                             setResourceFilter={setResourceFilter}
                             setBookingView={onTabChange}
                             useLocations={false}
+                            setFacilityFilter={setFacilityFilter}
+                            filterParams={filterParams}
                           />
                         </div>
                       )}
