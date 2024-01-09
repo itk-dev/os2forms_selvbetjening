@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Opdaterede OS2Forms Organisation.
+
 ## [2.7.1] 2024-01-09
 
 * Opdaterede til [OS2Forms failed jobs
