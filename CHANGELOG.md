@@ -38,7 +38,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
 
-
 ## [2.6.8] 2023-11-16
 
 * itk-dev/itkdev-booking: Fixed issue with location name, edit/delete bookings.
