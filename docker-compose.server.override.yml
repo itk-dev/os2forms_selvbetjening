@@ -1,6 +1,9 @@
 version: "3"
 
 networks:
+  organisation_api:
+    external: true
+    name: serviceplatformen_organisation_api_app
   frontend:
     external: true
   app:
@@ -10,6 +13,8 @@ networks:
 
 services:
   phpfpm:
+    networks:
+      - organisation_api
     environment:
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_MEMORY_LIMIT=512M
