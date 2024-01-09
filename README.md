@@ -116,14 +116,6 @@ We use [Webform REST](https://www.drupal.org/project/webform_rest) to expose a
 number of API endpoints. See [OS2Forms REST
 API](web/modules/custom/os2forms_rest_api/README.md) for details.
 
-### Organisation API
-
-Configure organisation API endpoint on `/admin/os2forms_organisation/settings` to
-
-```sh
-http://organisation_api:8080/api/v1/
-```
-
 ## Production
 
 ```sh
