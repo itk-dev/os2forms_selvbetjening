@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+## [2.7.1] 2024-01-09
+
 * Opdaterede til [OS2Forms failed jobs
   1.4.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.4.0)
 * Opdaterede til [OS2Forms GetOrganized
@@ -20,6 +22,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede praktiske CPR- og CVR-opslagskommandoer.
 * Skiftede til digital post-modulet i OS2Forms
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/229>)
+* Map improvements, rendering of resources, filtering on map view.
 
 ## [2.7.0] 2023-12-04
 
@@ -34,7 +37,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
-* Map improvements, rendering of resources, filtering on map view.
+
 
 ## [2.6.8] 2023-11-16
 
@@ -375,7 +378,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.1...HEAD
+[2.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...2.7.1
 [2.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.8...2.7.0
 [2.6.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.7...2.6.8
 [2.6.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.6...2.6.7
