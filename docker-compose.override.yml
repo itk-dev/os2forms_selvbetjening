@@ -1,15 +1,6 @@
 # https://github.com/Soluto/oidc-server-mock
 
-networks:
-  organisation_api:
-    external: true
-    name: serviceplatformen_organisation_api_app
-
 services:
-  phpfpm:
-    networks:
-      - organisation_api
-
   node:
     image: node:16
     profiles:
