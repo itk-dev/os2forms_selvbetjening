@@ -60,22 +60,19 @@ function CreateBooking({ config }) {
 
   // Load all resources and current user information.
   useEffect(() => {
-    setAllResources(DataTest);
+    Api.fetchAllResources(config.api_endpoint)
+      .then((loadedResources) => {
+        setAllResources(DataTest);
+        // setAllResources(loadedResources);
+      })
+      .catch((fetchAllResourcesError) => {
+        toast.error("Der opstod en fejl. Prøv igen senere.", fetchAllResourcesError);
 
-    setLoadingResources(false);
-    // Api.fetchAllResources(config.api_endpoint)
-    //   .then((loadedResources) => {
-    //     setAllResources(DataTest);
-    //     // setAllResources(loadedResources);
-    //   })
-    //   .catch((fetchAllResourcesError) => {
-    //     toast.error("Der opstod en fejl. Prøv igen senere.", fetchAllResourcesError);
-
-    //     setShowSystemFailure(true);
-    //   })
-    //   .finally(() => {
-    //     setLoadingResources(false);
-    //   });
+        setShowSystemFailure(true);
+      })
+      .finally(() => {
+        setLoadingResources(false);
+      });
 
     if (!config.step_one) {
       Api.fetchUserInformation(config.api_endpoint)
