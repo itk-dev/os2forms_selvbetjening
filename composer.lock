@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd6316dcda32da6100f3a900ef327b6b",
+    "content-hash": "c215b61606392eab0ee3ea9b8ad090cc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8721,16 +8721,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.3.2",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "c4b327e4363915836d3138829cadd79a318c0993"
+                "reference": "7d764e5823081e38168aa6356f4ae56dd56e6fee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/c4b327e4363915836d3138829cadd79a318c0993",
-                "reference": "c4b327e4363915836d3138829cadd79a318c0993",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/7d764e5823081e38168aa6356f4ae56dd56e6fee",
+                "reference": "7d764e5823081e38168aa6356f4ae56dd56e6fee",
                 "shasum": ""
             },
             "require": {
@@ -8758,9 +8758,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.3.2"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.4.0"
             },
-            "time": "2023-11-08T12:35:00+00:00"
+            "time": "2024-01-05T12:31:58+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -9898,22 +9898,23 @@
         },
         {
             "name": "os2forms/os2forms_get_organized",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_get_organized.git",
-                "reference": "8935f66a6ab532a647014dea115d45d18f14517a"
+                "reference": "c4707bc96ac133357156921784c13c08131379c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/8935f66a6ab532a647014dea115d45d18f14517a",
-                "reference": "8935f66a6ab532a647014dea115d45d18f14517a",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/c4707bc96ac133357156921784c13c08131379c5",
+                "reference": "c4707bc96ac133357156921784c13c08131379c5",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.1",
                 "itk-dev/getorganized-api-client-php": "^1.2",
+                "os2forms/os2forms": "^3.13",
                 "symfony/options-resolver": "^5.4"
             },
             "require-dev": {
@@ -9935,9 +9936,9 @@
             "description": "OS2Forms GetOrganized integration",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_get_organized/issues",
-                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.1.4"
+                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.1.5"
             },
-            "time": "2023-09-29T07:49:59+00:00"
+            "time": "2024-01-04T10:43:45+00:00"
         },
         {
             "name": "os2forms/os2forms_organisation",

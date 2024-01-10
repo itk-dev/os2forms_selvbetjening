@@ -106,19 +106,25 @@ function CreateBooking({ config }) {
       const currentUrl = new URL(window.location.href);
       const params = Object.fromEntries(currentUrl.searchParams);
 
-      if (UrlValidator.valid(params)) {
+      // If a list of urlParameters exist the display can be minimized.
+      if (UrlValidator.minimizable(params)) {
         setValidUrlParams(params);
 
-        const matchingResource = Object.values(allResources).filter((value) => {
-          return value.id === parseInt(params.resource, 10);
-        })[0];
-
-        if (matchingResource) {
-          setUrlResource(matchingResource);
-
-          setDisplayState("minimized");
-        }
+        setDisplayState("minimized");
       }
+
+      const matchingResource = Object.values(allResources).filter((value) => {
+        return value.id === parseInt(params.resource, 10);
+      })[0];
+
+      if (matchingResource) {
+        setUrlResource(matchingResource);
+      }
+
+      setFilterParams({
+        "location[]": currentUrl.searchParams.getAll("location[]"),
+        "resourceMail[]": currentUrl.searchParams.getAll("resourceMail[]"),
+      });
     }
   }, [allResources]);
 

@@ -6,6 +6,18 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
+* Booking resources filter adjustments to better fit map view state
+  (https://github.com/itk-dev/os2forms_selvbetjening/pull/264)
+
+## [2.7.1] 2024-01-09
+
+* Opdaterede til [OS2Forms failed jobs
+  1.4.0](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.4.0)
+* Opdaterede til [OS2Forms GetOrganized
+  1.1.5](https://github.com/OS2Forms/os2forms_get_organized/releases/tag/1.1.5)
+* Add filtering to booking widget
+(<https://github.com/itk-dev/os2forms_selvbetjening/pull/262>)
+* Skjulte duplikerede menu links.
 * Tilføjede 4xx page template med logout link
 (<https://github.com/itk-dev/os2forms_selvbetjening/pull/258>)
 * Opdaterede til [OS2Forms
@@ -13,13 +25,13 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede praktiske CPR- og CVR-opslagskommandoer.
 * Skiftede til digital post-modulet i OS2Forms
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/229>)
-* Booking resources filter adjustments to better fit map view state
-  (https://github.com/itk-dev/os2forms_selvbetjening/pull/264)
+* Map improvements, rendering of resources, filtering on map view.
 
 ## [2.7.0] 2023-12-04
 
-* Changed permissions to webform submisison log.
+* Changed permissions to webform submission log.
 * Opdaterede [OS2Forms failed jobs
+  1.3.2](https://github.com/itk-dev/os2forms_failed_jobs/releases/tag/1.3.2)
 * Deaktiverede Attachment PDF-elementet.
 * Opdaterede til [OS2Forms REST API
   2.0.1](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.1)
@@ -28,7 +40,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til [OS2Forms organisation
   1.3.3](https://github.com/itk-dev/os2forms_organisation/releases/tag/1.3.3)
 * Tilføjede beskrivelsestekst til email-handler.
-* Map improvements, rendering of resources, filtering on map view.
 
 ## [2.6.8] 2023-11-16
 
@@ -369,7 +380,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.1...HEAD
+[2.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...2.7.1
 [2.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.8...2.7.0
 [2.6.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.7...2.6.8
 [2.6.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.6...2.6.7
