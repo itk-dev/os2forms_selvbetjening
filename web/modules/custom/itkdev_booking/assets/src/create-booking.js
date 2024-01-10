@@ -62,8 +62,7 @@ function CreateBooking({ config }) {
   useEffect(() => {
     Api.fetchAllResources(config.api_endpoint)
       .then((loadedResources) => {
-        setAllResources(DataTest);
-        // setAllResources(loadedResources);
+        setAllResources(loadedResources);
       })
       .catch((fetchAllResourcesError) => {
         toast.error("Der opstod en fejl. Prøv igen senere.", fetchAllResourcesError);
