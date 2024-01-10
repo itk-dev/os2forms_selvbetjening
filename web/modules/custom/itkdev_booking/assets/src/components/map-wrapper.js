@@ -31,6 +31,8 @@ import "./map-wrapper.scss";
  * @param {object} props.setResourceFilter Setter for resource filter
  * @param {string} props.setBookingView Setter for booking view
  * @param {boolean} props.useLocations Whether to render locations or resources
+ * @param {Function} props.setFacilityFilter Set facility filter.
+ * @param {object} props.filterParams Filter params.
  * @returns {JSX.Element} MapWrapper component
  */
 function MapWrapper({
@@ -42,7 +44,7 @@ function MapWrapper({
   setBookingView,
   useLocations,
   setFacilityFilter,
-  filterParams
+  filterParams,
 }) {
   const [map, setMap] = useState();
   const [vectorLayer, setVectorLayer] = useState(null);
@@ -400,13 +402,14 @@ function MapWrapper({
               const mergedArray = dataResourceMailArray.map((value, index) => ({
                 value,
                 label: dataResourceNameArray[index],
-            }));
-            setFacilityFilter([]);
+              }));
 
-            //Settimeout to prevent filters being set at the same time.
-            setTimeout(() => {
-              setResourceFilter(mergedArray);
-            }, 50)
+              setFacilityFilter([]);
+
+              // Settimeout to prevent filters being set at the same time.
+              setTimeout(() => {
+                setResourceFilter(mergedArray);
+              }, 50);
             }
           } else {
             setResourceFilter([
@@ -446,6 +449,8 @@ MapWrapper.propTypes = {
   setResourceFilter: PropTypes.func.isRequired,
   setBookingView: PropTypes.func.isRequired,
   useLocations: PropTypes.bool.isRequired,
+  setFacilityFilter: PropTypes.func.isRequired,
+  filterParams: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 MapWrapper.defaultProps = {

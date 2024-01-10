@@ -18,6 +18,7 @@ import LoadingSpinner from "./components/loading-spinner";
 import { resourceLimit } from "./util/filter-utils";
 import ResourceDetails from "./components/resource-details";
 import SystemFailureScreen from "./system-failure-screen";
+import DataTest from "./data.json";
 
 /**
  * CreateBooking component.
@@ -59,18 +60,22 @@ function CreateBooking({ config }) {
 
   // Load all resources and current user information.
   useEffect(() => {
-    Api.fetchAllResources(config.api_endpoint)
-      .then((loadedResources) => {
-        setAllResources(loadedResources);
-      })
-      .catch((fetchAllResourcesError) => {
-        toast.error("Der opstod en fejl. Prøv igen senere.", fetchAllResourcesError);
+    setAllResources(DataTest);
 
-        setShowSystemFailure(true);
-      })
-      .finally(() => {
-        setLoadingResources(false);
-      });
+    setLoadingResources(false);
+    // Api.fetchAllResources(config.api_endpoint)
+    //   .then((loadedResources) => {
+    //     setAllResources(DataTest);
+    //     // setAllResources(loadedResources);
+    //   })
+    //   .catch((fetchAllResourcesError) => {
+    //     toast.error("Der opstod en fejl. Prøv igen senere.", fetchAllResourcesError);
+
+    //     setShowSystemFailure(true);
+    //   })
+    //   .finally(() => {
+    //     setLoadingResources(false);
+    //   });
 
     if (!config.step_one) {
       Api.fetchUserInformation(config.api_endpoint)
@@ -89,6 +94,9 @@ function CreateBooking({ config }) {
       setLoadingUserInformation(false);
     }
   }, []);
+
+  // @TODO: use app params when implementing new booking tab (lokale, transport etc.)
+  useEffect(() => {}, [appParams]);
 
   // When all resources have been loaded, check if parameters contain
   // selections.
