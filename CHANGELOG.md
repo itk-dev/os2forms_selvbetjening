@@ -6,7 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## In develop
 
-* Opdaterede OS2Forms Organisation.
+## [2.7.2] 2024-01-11
+
+* Opdaterede til [OS2Forms Organisation
+  2.0.0](https://github.com/itk-dev/os2forms_organisation/releases/tag/2.0.0).
 * Booking resources filter adjustments to better fit map view state
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/264>)
 
@@ -381,7 +384,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.2...HEAD
+[2.7.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.1...2.7.2
 [2.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...2.7.1
 [2.7.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.8...2.7.0
 [2.6.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.6.7...2.6.8
