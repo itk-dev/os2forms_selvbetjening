@@ -18,6 +18,7 @@ import LoadingSpinner from "./components/loading-spinner";
 import { resourceLimit } from "./util/filter-utils";
 import ResourceDetails from "./components/resource-details";
 import SystemFailureScreen from "./system-failure-screen";
+import DataTest from "./data.json";
 
 /**
  * CreateBooking component.
@@ -33,6 +34,7 @@ function CreateBooking({ config }) {
   const [authorFields, setAuthorFields] = useState({ subject: "", email: "" });
   // Filter parameters, selected in CreateBookingFilters. An object containing
   // structured information about current filtering.
+  const [appParams, setAppParams] = useState({});
   const [filterParams, setFilterParams] = useState({});
   const [locationFilter, setLocationFilter] = useState([]);
   const [resourceFilter, setResourceFilter] = useState([]);
@@ -54,6 +56,7 @@ function CreateBooking({ config }) {
   const [loadingResources, setLoadingResources] = useState(true);
   const [loadingUserInformation, setLoadingUserInformation] = useState(true);
   const [loadingFiltering, setLoadingFiltering] = useState(false);
+  const [facilityFilter, setFacilityFilter] = useState([]);
 
   // Load all resources and current user information.
   useEffect(() => {
@@ -87,6 +90,9 @@ function CreateBooking({ config }) {
       setLoadingUserInformation(false);
     }
   }, []);
+
+  // @TODO: use app params when implementing new booking tab (lokale, transport etc.)
+  useEffect(() => {}, [appParams]);
 
   // When all resources have been loaded, check if parameters contain
   // selections.
@@ -233,6 +239,9 @@ function CreateBooking({ config }) {
                       setResourceFilter={setResourceFilter}
                       resourceCategoryFilter={resourceCategoryFilter}
                       setResourceCategoryFilter={setResourceCategoryFilter}
+                      facilityFilter={facilityFilter}
+                      setFacilityFilter={setFacilityFilter}
+                      setAppParams={setAppParams}
                     />
 
                     {displayInfoBox && <InfoBox config={config} />}
@@ -255,6 +264,8 @@ function CreateBooking({ config }) {
                             setResourceFilter={setResourceFilter}
                             setBookingView={onTabChange}
                             useLocations={false}
+                            setFacilityFilter={setFacilityFilter}
+                            filterParams={filterParams}
                           />
                         </div>
                       )}

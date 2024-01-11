@@ -22,6 +22,9 @@ import "./create-booking-filters.scss";
  * @param {Function} props.setResourceFilter Set resource filters.
  * @param {string} props.resourceCategoryFilter Resource category filters.
  * @param {Function} props.setResourceCategoryFilter Set resource category filters.
+ * @param {Array} props.facilityFilter Facility filters.
+ * @param {Function} props.setFacilityFilter Set facility filters.
+ * @param {Function} props.setAppParams Set app params.
  * @returns {JSX.Element} Component.
  */
 function CreateBookingFilters({
@@ -36,9 +39,11 @@ function CreateBookingFilters({
   setResourceFilter,
   resourceCategoryFilter,
   setResourceCategoryFilter,
+  facilityFilter,
+  setFacilityFilter,
+  setAppParams,
 }) {
   const [capacityFilter, setCapacityFilter] = useState([]);
-  const [facilityFilter, setFacilityFilter] = useState([]);
   const [hasWhitelist, setHasWhitelist] = useState(false);
   const [locationOptions, setLocationOptions] = useState([]);
   const [resourcesOptions, setResourcesOptions] = useState([]);
@@ -125,17 +130,39 @@ function CreateBookingFilters({
   useEffect(() => {
     const locationValues = locationFilter.map(({ value }) => value);
 
-    setFilterParams({ ...filterParams, ...{ "location[]": locationValues } });
+    if (locationValues.length > 0) {
+      setFilterParams({ ...filterParams, ...{ "location[]": locationValues } });
+    } else {
+      // Define, clear and reassign copy
+      const filterParamsCopy = { ...filterParams };
+
+      delete filterParamsCopy["location[]"];
+
+      setFilterParams({
+        ...filterParamsCopy,
+      });
+    }
   }, [locationFilter]);
 
   // Set resource filter.
   useEffect(() => {
     const resourceValues = resourceFilter.map(({ value }) => value);
 
-    setFilterParams({
-      ...filterParams,
-      ...{ "resourceMail[]": resourceValues },
-    });
+    if (resourceValues.length > 0) {
+      setFilterParams({
+        ...filterParams,
+        ...{ "resourceMail[]": resourceValues },
+      });
+    } else {
+      // Define, clear and reassign copy
+      const filterParamsCopy = { ...filterParams };
+
+      delete filterParamsCopy["resourceMail[]"];
+
+      setFilterParams({
+        ...filterParamsCopy,
+      });
+    }
   }, [resourceFilter]);
 
   // Set only whitelisted filter.
@@ -207,7 +234,7 @@ function CreateBookingFilters({
 
   // Set resource category filter.
   useEffect(() => {
-    setFilterParams({ ...filterParams, resourceCategory: resourceCategoryFilter });
+    setAppParams({ resourceCategory: resourceCategoryFilter });
   }, [resourceCategoryFilter]);
 
   return (
@@ -291,6 +318,7 @@ function CreateBookingFilters({
               onChange={(selectedFacilities) => {
                 setFacilityFilter(selectedFacilities);
               }}
+              value={facilityFilter}
               isMulti
             />
           </label>
@@ -340,8 +368,8 @@ CreateBookingFilters.defaultProps = {
 
 CreateBookingFilters.propTypes = {
   filterParams: PropTypes.shape({
-    "location[]": PropTypes.arrayOf(PropTypes.string),
-    "resourceMail[]": PropTypes.arrayOf(PropTypes.string),
+    "location[]": PropTypes.arrayOf(PropTypes.string).isRequired,
+    "resourceMail[]": PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   setFilterParams: PropTypes.func.isRequired,
   allResources: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -353,6 +381,9 @@ CreateBookingFilters.propTypes = {
   setResourceFilter: PropTypes.func.isRequired,
   resourceCategoryFilter: PropTypes.string.isRequired,
   setResourceCategoryFilter: PropTypes.func.isRequired,
+  facilityFilter: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  setFacilityFilter: PropTypes.func.isRequired,
+  setAppParams: PropTypes.func.isRequired,
 };
 
 export default CreateBookingFilters;

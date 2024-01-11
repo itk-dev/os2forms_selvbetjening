@@ -31,6 +31,8 @@ import "./map-wrapper.scss";
  * @param {object} props.setResourceFilter Setter for resource filter
  * @param {string} props.setBookingView Setter for booking view
  * @param {boolean} props.useLocations Whether to render locations or resources
+ * @param {Function} props.setFacilityFilter Set facility filter.
+ * @param {object} props.filterParams Filter params.
  * @returns {JSX.Element} MapWrapper component
  */
 function MapWrapper({
@@ -41,6 +43,8 @@ function MapWrapper({
   setResourceFilter,
   setBookingView,
   useLocations,
+  setFacilityFilter,
+  filterParams,
 }) {
   const [map, setMap] = useState();
   const [vectorLayer, setVectorLayer] = useState(null);
@@ -50,12 +54,16 @@ function MapWrapper({
   let tooltip = useRef();
 
   useEffect(() => {
-    if (resources?.length > 0 && !useLocations) {
-      const features = getFeatures(resources, useLocations);
+    if (!useLocations) {
+      if (Object.keys(filterParams).length === 0) {
+        setMapData(getFeatures(allResources, useLocations));
+      } else {
+        const features = getFeatures(resources, useLocations);
 
-      setMapData(features);
+        setMapData(features);
 
-      tooltip.innerHTML = "";
+        tooltip.innerHTML = "";
+      }
     } else {
       setMapData(getFeatures(allResources, useLocations));
     }
@@ -396,7 +404,12 @@ function MapWrapper({
                 label: dataResourceNameArray[index],
               }));
 
-              setResourceFilter(mergedArray);
+              setFacilityFilter([]);
+
+              // Settimeout to prevent filters being set at the same time.
+              setTimeout(() => {
+                setResourceFilter(mergedArray);
+              }, 50);
             }
           } else {
             setResourceFilter([
@@ -436,6 +449,8 @@ MapWrapper.propTypes = {
   setResourceFilter: PropTypes.func.isRequired,
   setBookingView: PropTypes.func.isRequired,
   useLocations: PropTypes.bool.isRequired,
+  setFacilityFilter: PropTypes.func.isRequired,
+  filterParams: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 MapWrapper.defaultProps = {
