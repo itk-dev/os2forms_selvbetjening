@@ -7,6 +7,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## In develop
 
 * Opdaterede OS2Forms Organisation.
+* Booking resources filter adjustments to better fit map view state
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/264>)
 
 ## [2.7.1] 2024-01-09
 
