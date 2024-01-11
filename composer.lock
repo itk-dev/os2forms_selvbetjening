@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0877a6ce4f3922ae6b4d5f151d332ff1",
+    "content-hash": "2400870b678b61f21bf88655e2617892",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9942,16 +9942,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "dev-main",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "5ba6b08f08bb1bda1997df300ef259c313cb19c5"
+                "reference": "a1871a7c8f1ee9e1271f9f80dd43a6e8159ea8d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/5ba6b08f08bb1bda1997df300ef259c313cb19c5",
-                "reference": "5ba6b08f08bb1bda1997df300ef259c313cb19c5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/a1871a7c8f1ee9e1271f9f80dd43a6e8159ea8d8",
+                "reference": "a1871a7c8f1ee9e1271f9f80dd43a6e8159ea8d8",
                 "shasum": ""
             },
             "require": {
@@ -9967,7 +9967,6 @@
                 "mglaman/drupal-check": "^1.4",
                 "phpunit/phpunit": "^9.5"
             },
-            "default-branch": true,
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -9982,9 +9981,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/main"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.0"
             },
-            "time": "2023-12-20T10:52:14+00:00"
+            "time": "2024-01-11T12:42:32+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
@@ -22297,8 +22296,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20,
-        "os2forms/os2forms_organisation": 20
+        "itk-dev/serviceplatformen": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
