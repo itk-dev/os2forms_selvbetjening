@@ -9,7 +9,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Fix bug in booking params
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/267>)
 
-
 ## [2.7.1] 2024-01-09
 
 * Opdaterede til [OS2Forms failed jobs
