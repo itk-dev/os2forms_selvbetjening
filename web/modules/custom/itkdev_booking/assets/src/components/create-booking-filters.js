@@ -94,30 +94,34 @@ function CreateBookingFilters({
 
     // Add filtering based on filterParams
     if (filterParams) {
-      const filterLocations = filterParams["location[]"].reduce((carry, locationParam) => {
-        const foundLocations = locations.filter((aLocation) => aLocation.value === locationParam);
+      if (filterParams["location[]"]) {
+        const filterLocations = filterParams["location[]"].reduce((carry, locationParam) => {
+          const foundLocations = locations.filter((aLocation) => aLocation.value === locationParam);
 
-        foundLocations.forEach((foundLocation) => carry.push(foundLocation));
+          foundLocations.forEach((foundLocation) => carry.push(foundLocation));
 
-        return carry;
-      }, []);
+          return carry;
+        }, []);
 
-      setLocationFilter(filterLocations);
+        setLocationFilter(filterLocations);
+      }
 
-      const filterResourceMails = filterParams["resourceMail[]"].reduce((carry, resourceParam) => {
-        const foundResources = allResources.filter((resource) => resource.resourceMail === resourceParam);
+      if (filterParams["resourceMail[]"]) {
+        const filterResourceMails = filterParams["resourceMail[]"].reduce((carry, resourceParam) => {
+          const foundResources = allResources.filter((resource) => resource.resourceMail === resourceParam);
 
-        foundResources.forEach((foundResource) =>
-          carry.push({
-            value: foundResource.resourceMail,
-            label: foundResource.resourceDisplayName ?? foundResource.resourceName,
-          })
-        );
+          foundResources.forEach((foundResource) =>
+            carry.push({
+              value: foundResource.resourceMail,
+              label: foundResource.resourceDisplayName ?? foundResource.resourceName,
+            })
+          );
 
-        return carry;
-      }, []);
+          return carry;
+        }, []);
 
-      setResourceFilter(filterResourceMails);
+        setResourceFilter(filterResourceMails);
+      }
     }
   }, [allResources]);
 
