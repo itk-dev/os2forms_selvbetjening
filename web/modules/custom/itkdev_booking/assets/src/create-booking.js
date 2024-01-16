@@ -18,7 +18,6 @@ import LoadingSpinner from "./components/loading-spinner";
 import { resourceLimit } from "./util/filter-utils";
 import ResourceDetails from "./components/resource-details";
 import SystemFailureScreen from "./system-failure-screen";
-import DataTest from "./data.json";
 
 /**
  * CreateBooking component.
@@ -98,7 +97,7 @@ function CreateBooking({ config }) {
   // selections.
   useEffect(() => {
     // If existing booking data is set in url, start in minimized state.
-    if (allResources !== []) {
+    if (allResources.length > 0) {
       const currentUrl = new URL(window.location.href);
       const params = Object.fromEntries(currentUrl.searchParams);
 
@@ -116,6 +115,7 @@ function CreateBooking({ config }) {
       if (matchingResource) {
         setUrlResource(matchingResource);
       }
+
 
       setFilterParams({
         "location[]": currentUrl.searchParams.getAll("location[]"),
@@ -149,6 +149,7 @@ function CreateBooking({ config }) {
         ]);
       }
     }
+
     // Set filter params to trigger filtering of resources
     if (urlResource && urlResource.location && urlResource.resourceMail) {
       setFilterParams({
