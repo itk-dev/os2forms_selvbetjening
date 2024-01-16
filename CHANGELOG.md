@@ -4,6 +4,11 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+* Opdaterede til [OS2Forms REST API
+  2.0.3](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.3)
+  * Håndterede `OS2Forms Attachment`-elementet
+  * Opdaterede API adgangskontrol
+
 ## [2.7.3] 2024-01-16
 
 * Opdaterede til [OS2Forms Organisation
