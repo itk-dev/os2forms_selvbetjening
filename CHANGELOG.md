@@ -4,6 +4,10 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## [Under udvikling]
+
+* Opdaterede installationsguide.
+
 ## [2.7.3] 2024-01-16
 
 * Opdaterede til [OS2Forms Organisation

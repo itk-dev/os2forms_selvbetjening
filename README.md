@@ -14,6 +14,12 @@ local machine for development and testing purposes.
 
 ```sh
 docker network create frontend
+
+# Important: If there is no need for organisation data you must also create the following network.
+docker network create serviceplatformen_organisation_api_app
+# If you wish to use organisation
+# @see https://github.com/itk-dev/serviceplatformen_organisation_api?tab=readme-ov-file#using-the-api-from-another-docker-compose-setup
+
 docker compose pull
 docker compose up --detach
 
