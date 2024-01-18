@@ -4,6 +4,11 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## [under udvikling]
+
+* Applied Maestro notification patch
+  (<https://github.com/itk-dev/os2forms_selvbetjening/pull/270>)
+
 ## [2.7.3] 2024-01-16
 
 * Opdaterede til [OS2Forms Organisation
