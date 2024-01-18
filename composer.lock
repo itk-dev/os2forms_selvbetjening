@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2400870b678b61f21bf88655e2617892",
+    "content-hash": "b6bb0c74874b70c968cb591602d2de12",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4725,17 +4725,17 @@
         },
         {
             "name": "drupal/maestro",
-            "version": "3.1.0-rc3",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/maestro.git",
-                "reference": "3.1.0-rc3"
+                "reference": "3.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/maestro-3.1.0-rc3.zip",
-                "reference": "3.1.0-rc3",
-                "shasum": "74fd4a7d8b8bb5cf97f8e1f24151e29a6f5237da"
+                "url": "https://ftp.drupal.org/files/projects/maestro-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "1ea4557034fd69567e8facb113e7a7861b575bb8"
             },
             "require": {
                 "drupal/core": "^9.4 || ^10"
@@ -4747,11 +4747,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.1.0-rc3",
-                    "datestamp": "1695912922",
+                    "version": "3.1.0",
+                    "datestamp": "1704383150",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
