@@ -14,12 +14,6 @@ local machine for development and testing purposes.
 
 ```sh
 docker network create frontend
-
-# Important: If there is no need for organisation data you must also create the following network.
-docker network create serviceplatformen_organisation_api_app
-# If you wish to use organisation
-# @see https://github.com/itk-dev/serviceplatformen_organisation_api?tab=readme-ov-file#using-the-api-from-another-docker-compose-setup
-
 docker compose pull
 docker compose up --detach
 
@@ -38,6 +32,17 @@ docker compose run --rm node yarn --cwd web/themes/custom/os2forms_selvbetjening
 
 # Open the site
 open $(docker compose exec phpfpm vendor/bin/drush --uri=http://$(docker compose port nginx 8080) user:login)
+```
+
+The development setup depends on the `serviceplatformen_organisation_api_app`
+network which is used to access the API from
+[Serviceplatformen organisation API](https://github.com/itk-dev/serviceplatformen_organisation_api).
+If you start that project (cf. [Getting started](https://github.com/itk-dev/serviceplatformen_organisation_api/blob/develop/README.md#getting-started)),
+you're good to go. If you don't need the API during development,
+you can manually create the network by running
+
+```sh
+docker network create serviceplatformen_organisation_api_app
 ```
 
 ### Configuration
