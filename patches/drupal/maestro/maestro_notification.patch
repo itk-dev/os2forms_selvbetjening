@@ -1,0 +1,13 @@
+diff --git a/src/Engine/MaestroEngine.php b/src/Engine/MaestroEngine.php
+index 6f31157..0d0db30 100644
+--- a/src/Engine/MaestroEngine.php
++++ b/src/Engine/MaestroEngine.php
+@@ -1908,7 +1908,7 @@ class MaestroEngine {
+     $config = \Drupal::config('maestro.settings');
+     $templateTask = $this->getTemplateTaskByID($templateMachineName, $taskMachineName);
+     $notificationList = [];
+-    if (array_key_exists('notifications', $templateTask) && array_key_exists('notification_assignments', $templateTask['notifications'])) {
++    if (!empty($templateTask['notifications']['notification_assignments'])) {
+       $notifications = explode(',', $templateTask['notifications']['notification_assignments']);
+       foreach ($notifications as $notification) {
+         // We will assume that WE are the ones doing the notification.  Otherwise we're offloading to a different module to do so.
