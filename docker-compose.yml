@@ -1,4 +1,4 @@
-# itk-version: 3.0.0
+# itk-version: 3.1.1
 version: "3"
 
 networks:
@@ -38,7 +38,8 @@ services:
       - PHP_XDEBUG_MODE=${PHP_XDEBUG_MODE:-off}
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_MEMORY_LIMIT=512M
-      # - PHP_MAIL=1 # Uncomment to enable mailhog.
+      # Depending on the setup you may have to remove --read-envelope-from from msmtp (cf. https://marlam.de/msmtp/msmtp.html) or use SMTP to send mail
+      - PHP_SENDMAIL_PATH=/usr/bin/msmtp --host=mail --port=1025 --read-recipients --read-envelope-from
       - DOCKER_HOST_DOMAIN=${COMPOSE_DOMAIN}
       - COMPOSER_VERSION=2
       - PHP_IDE_CONFIG=serverName=localhost
@@ -77,8 +78,8 @@ services:
     environment:
       - MEMCACHED_CACHE_SIZE=64
 
-  mailhog:
-    image: itkdev/mailhog
+  mail:
+    image: axllent/mailpit
     networks:
       - app
       - frontend
@@ -88,5 +89,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}Mailhog.rule=Host(`mailhog-${COMPOSE_DOMAIN}`)"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}Mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}mail.rule=Host(`mail-${COMPOSE_DOMAIN}`)"
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}mail.loadbalancer.server.port=8025"
