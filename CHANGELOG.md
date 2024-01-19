@@ -4,8 +4,9 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
-## [under udvikling]
+## [Under udvikling]
 
+* Opdaterede installationsguide.
 * Applied Maestro notification patch
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/270>)
 
