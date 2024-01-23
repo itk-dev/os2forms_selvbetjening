@@ -8,5 +8,4 @@
 function os2forms_selvbetjening_theme_preprocess_page(&$variables): void {
   $variables['site_logo'] = theme_get_setting('logo.url');
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
-  $variables['request_uri'] = \Drupal::service('request_stack')->getCurrentRequest()->getRequestUri();
 }
