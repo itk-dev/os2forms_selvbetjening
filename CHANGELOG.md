@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede til [OS2Forms Organisation
   2.0.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/2.0.1).
+* Opdaterede 4xx page logout link
 
 ## [2.7.3] 2024-01-16
 
