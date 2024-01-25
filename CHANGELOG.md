@@ -10,6 +10,12 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Applied Maestro notification patch
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/270>)
 
+## [2.7.4] 2024-01-25
+
+* Opdaterede til [OS2Forms Organisation
+  2.0.1](https://github.com/itk-dev/os2forms_organisation/releases/tag/2.0.1).
+* Opdaterede 4xx page logout link
+
 ## [2.7.3] 2024-01-16
 
 * Opdaterede til [OS2Forms Organisation
@@ -393,7 +399,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.3...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.4...HEAD
+[2.7.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.3...2.7.4
 [2.7.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.2...2.7.3
 [2.7.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.1...2.7.2
 [2.7.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.0...2.7.1
