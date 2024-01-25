@@ -39,7 +39,7 @@ class FormHelper {
     }
 
     if ('maestro_interactive_form' === $form_id) {
-      if (isset($form['error'])) {
+      if (isset($form['error']['#markup'])) {
         $markup = $form['error']['#markup'];
         if ($markup instanceof TranslatableMarkup) {
           if ('You do not have access to this task.  The task has either been reassigned or is no longer valid.' === $markup->getUntranslatedString()) {
