@@ -4,6 +4,8 @@ namespace Drupal\os2forms_selvbetjening\Helper;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
 
 /**
  * Form Helper class, for altering forms.
@@ -35,6 +37,20 @@ class FormHelper {
     if ('webform_add_form' === $form_id) {
       $form['category']['#description'] = $webform_category_description;
     }
+
+    if ('maestro_interactive_form' === $form_id) {
+      if (isset($form['error'])) {
+        $markup = $form['error']['#markup'];
+        if ($markup instanceof TranslatableMarkup) {
+          if ('You do not have access to this task.  The task has either been reassigned or is no longer valid.' === $markup->getUntranslatedString()) {
+            $url = Url::fromRoute('<current>')->toString(TRUE)->getGeneratedUrl();
+            $logoutUrl = Url::fromRoute('user.logout', ['destination' => $url])->toString(TRUE)->getGeneratedUrl();
+            $form['error']['#markup'] = $this->t('You do not have access to this task. The task has either been reassigned or is no longer valid. Here is a suggestion to what you can do. Try <a href=":url">logging out</a>.', [':url' => $logoutUrl]);
+          }
+        }
+      }
+    }
+
   }
 
 }

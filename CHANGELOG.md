@@ -4,6 +4,8 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+* Tilføjede logout link på flow siden.
+
 ## [2.7.4] 2024-01-25
 
 * Opdaterede til [OS2Forms Organisation
