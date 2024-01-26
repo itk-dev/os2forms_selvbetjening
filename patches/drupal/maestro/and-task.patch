@@ -1,0 +1,19 @@
+diff --git a/src/Plugin/EngineTasks/MaestroAndTask.php b/src/Plugin/EngineTasks/MaestroAndTask.php
+index 2d27bbe..bbdc5ff 100644
+--- a/src/Plugin/EngineTasks/MaestroAndTask.php
++++ b/src/Plugin/EngineTasks/MaestroAndTask.php
+@@ -94,12 +94,10 @@ class MaestroAndTask extends PluginBase implements MaestroEngineTaskInterface {
+       ->condition('archived', '2', '!=')
+       ->condition('process_id', $this->processID);
+ 
+-    $orConditionGroup = $query->orConditionGroup();
+-    foreach ($pointers as $taskID) {
+-      $orConditionGroup->condition('task_id', $taskID);
++    if (!empty($pointers)) {
++      $andMainConditions->condition('task_id', $pointers, 'IN');
+     }
+ 
+-    $andMainConditions->condition($orConditionGroup);
+     $query->condition($andMainConditions);
+ 
+     $queueIdCount = $query->count()->execute();

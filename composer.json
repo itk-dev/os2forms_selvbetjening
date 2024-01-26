@@ -144,7 +144,8 @@
                 "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"
             },
             "drupal/maestro": {
-                "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch"
+                "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
+                "Fix task pointers query": "patches/drupal/maestro/and-task.patch"
             }
         },
         "patches-ignore": {
