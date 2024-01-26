@@ -48,7 +48,8 @@ class FormHelper {
       $form['category']['#description'] = $webform_category_description;
     }
 
-    // Add logout suggestion to logged-in users attempting to handle a maestro task.
+    // Add logout suggestion to logged-in users
+    // attempting to handle a maestro task.
     if ('maestro_interactive_form' === $form_id && isset($form['error']['#markup']) && $this->account->isAuthenticated()) {
       $markup = $form['error']['#markup'];
       if ($markup instanceof TranslatableMarkup) {
