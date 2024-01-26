@@ -1,5 +1,7 @@
 services:
   Drupal\os2forms_selvbetjening\Helper\FormHelper:
+    arguments:
+      - '@current_user'
 
   Drupal\os2forms_selvbetjening\EventSubscriber\ResponseSubscriber:
     arguments:
