@@ -8,7 +8,7 @@
   {% if logged_in %}
     <p>
       {% set url = path('user.logout') %}
-      {{ 'Here is a suggestion to what you can do. Try to log out of <a id="logout_suggestion" href=":url">@siteName</a>'|t({':url': url, '@siteName': site_name}) }}
+      {{ 'Here is a suggestion to what you can do. Try <a id="logout_suggestion" href=":url">logging out</a>.'|t({':url': url}) }}
     </p>
   {% endif %}
 {% endblock %}
