@@ -4,6 +4,8 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## [2.7.5] 2024-01-29
+
 * Tilføjede logout link på flow siden.
 
 ## [2.7.4] 2024-01-25
@@ -395,7 +397,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.4...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.5...HEAD
+[2.7.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.4...2.7.5
 [2.7.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.3...2.7.4
 [2.7.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.2...2.7.3
 [2.7.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.1...2.7.2
