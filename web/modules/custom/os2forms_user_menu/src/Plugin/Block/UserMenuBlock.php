@@ -115,7 +115,6 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
     if (empty($this->authProvider)) {
       return [];
     }
-    $plugin = $this->authProvider->getActivePlugin();
 
     // Determine if we have an entity to work with.
     $pageEntity = $this->getPageEntity();
@@ -145,15 +144,19 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
       return [];
     }
 
+    $sessionType = $webformNemIdSettings['session_type'] ?? NULL;
+
+    $plugin = $sessionType ? $this->authProvider->getPluginInstance($webformNemIdSettings['session_type']) : $this->authProvider->getActivePlugin();
+
     $name = NULL;
     $loginUrl = NULL;
     $logoutUrl = NULL;
 
     if (!$plugin->isAuthenticated()) {
-      $loginUrl = $this->authProvider->getLoginUrl();
+      $loginUrl = $this->authProvider->getLoginUrl([], $sessionType);
     }
     else {
-      $logoutUrl = $this->authProvider->getLogoutUrl();
+      $logoutUrl = $this->authProvider->getLogoutUrl([], $sessionType);
       // Use cvr name if one exists.
       if ($cvr = $plugin->fetchValue('cvr')) {
         try {
