@@ -146,7 +146,7 @@ final class UserMenuBlock extends BlockBase implements ContainerFactoryPluginInt
 
     $sessionType = $webformNemIdSettings['session_type'] ?? NULL;
 
-    $plugin = $sessionType ? $this->authProvider->getPluginInstance($webformNemIdSettings['session_type']) : $this->authProvider->getActivePlugin();
+    $plugin = $sessionType ? $this->authProvider->getPluginInstance($sessionType) : $this->authProvider->getActivePlugin();
 
     $name = NULL;
     $loginUrl = NULL;
