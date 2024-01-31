@@ -9,6 +9,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede installationsguide.
 * Applied Maestro notification patch
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/270>)
+* Brugte session type til at generere url'er.
 
 ## [2.7.5] 2024-01-29
 
