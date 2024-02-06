@@ -4,7 +4,7 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
-## [2.7.6] 2024-02-05
+## [2.7.6] 2024-02-06
 
 * Opdaterede flow opgave notifikationstilladelser.
 
