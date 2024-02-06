@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6bb0c74874b70c968cb591602d2de12",
+    "content-hash": "9bfbf8f7a9f128a0ef391d256da8e613",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4343,6 +4343,10 @@
                 {
                     "name": "gauravsood91",
                     "homepage": "https://www.drupal.org/user/3288491"
+                },
+                {
+                    "name": "shashank_thigale",
+                    "homepage": "https://www.drupal.org/user/3632808"
                 }
             ],
             "description": "Drupal LDAP / Active Directory Integration module allows your users to log in to your Drupal site using their LDAP / AD credentials. In addition to LDAP, this module also allows you to log in using NTLM and Kerberos",
@@ -5895,12 +5899,16 @@
             ],
             "authors": [
                 {
-                    "name": "Sam Hermans",
-                    "homepage": "https://www.drupal.org/user/1867966"
+                    "name": "AstonVictor",
+                    "homepage": "https://www.drupal.org/user/3466615"
                 },
                 {
                     "name": "jrreid",
                     "homepage": "https://www.drupal.org/user/70645"
+                },
+                {
+                    "name": "Sam Hermans",
+                    "homepage": "https://www.drupal.org/user/1867966"
                 },
                 {
                     "name": "wouters_f",
@@ -6073,10 +6081,6 @@
                 {
                     "name": "Berdir",
                     "homepage": "https://www.drupal.org/user/214652"
-                },
-                {
-                    "name": "Dane Powell",
-                    "homepage": "https://www.drupal.org/user/339326"
                 },
                 {
                     "name": "gielfeldt",
@@ -6689,6 +6693,10 @@
                 {
                     "name": "nsalves",
                     "homepage": "https://www.drupal.org/user/3557178"
+                },
+                {
+                    "name": "pmaiacar",
+                    "homepage": "https://www.drupal.org/user/3575425"
                 }
             ],
             "description": "Allows retrieving webform elements and submitting webforms via REST",
@@ -10714,6 +10722,7 @@
                 "issues": "https://github.com/php-http/guzzle6-adapter/issues",
                 "source": "https://github.com/php-http/guzzle6-adapter/tree/v2.0.2"
             },
+            "abandoned": "guzzlehttp/guzzle or php-http/guzzle7-adapter",
             "time": "2021-03-02T10:52:33+00:00"
         },
         {
@@ -21876,12 +21885,12 @@
             "version": "3.7.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
                 "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
                 "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879",
                 "shasum": ""
             },
@@ -21926,6 +21935,20 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
             "time": "2023-02-22T23:07:41+00:00"
         },
         {
