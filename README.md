@@ -159,7 +159,7 @@ environment, as its data contains personal data.
 
 If developers need an actual database for local development, the stg-environment
 can be made ready for download by ensuring that you delete all submissions and
-other informations that can have personal character, before downloading.
+other information that can have personal character, before downloading.
 
 ## Coding standards
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6bb0c74874b70c968cb591602d2de12",
+    "content-hash": "9bfbf8f7a9f128a0ef391d256da8e613",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2151,6 +2151,10 @@
                 {
                     "name": "pifagor",
                     "homepage": "https://www.drupal.org/user/2375692"
+                },
+                {
+                    "name": "RobLoach",
+                    "homepage": "https://www.drupal.org/user/61114"
                 }
             ],
             "description": "Adds the Accessibility Checker plugin to CKEditor.",
@@ -4343,6 +4347,10 @@
                 {
                     "name": "gauravsood91",
                     "homepage": "https://www.drupal.org/user/3288491"
+                },
+                {
+                    "name": "shashank_thigale",
+                    "homepage": "https://www.drupal.org/user/3632808"
                 }
             ],
             "description": "Drupal LDAP / Active Directory Integration module allows your users to log in to your Drupal site using their LDAP / AD credentials. In addition to LDAP, this module also allows you to log in using NTLM and Kerberos",
@@ -5895,12 +5903,16 @@
             ],
             "authors": [
                 {
-                    "name": "Sam Hermans",
-                    "homepage": "https://www.drupal.org/user/1867966"
+                    "name": "AstonVictor",
+                    "homepage": "https://www.drupal.org/user/3466615"
                 },
                 {
                     "name": "jrreid",
                     "homepage": "https://www.drupal.org/user/70645"
+                },
+                {
+                    "name": "Sam Hermans",
+                    "homepage": "https://www.drupal.org/user/1867966"
                 },
                 {
                     "name": "wouters_f",
@@ -6073,10 +6085,6 @@
                 {
                     "name": "Berdir",
                     "homepage": "https://www.drupal.org/user/214652"
-                },
-                {
-                    "name": "Dane Powell",
-                    "homepage": "https://www.drupal.org/user/339326"
                 },
                 {
                     "name": "gielfeldt",
@@ -9947,16 +9955,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "a1871a7c8f1ee9e1271f9f80dd43a6e8159ea8d8"
+                "reference": "052f29b636e9fcd9d240ee378a995e6afcd25ca5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/a1871a7c8f1ee9e1271f9f80dd43a6e8159ea8d8",
-                "reference": "a1871a7c8f1ee9e1271f9f80dd43a6e8159ea8d8",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/052f29b636e9fcd9d240ee378a995e6afcd25ca5",
+                "reference": "052f29b636e9fcd9d240ee378a995e6afcd25ca5",
                 "shasum": ""
             },
             "require": {
@@ -9986,9 +9994,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.0"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.1"
             },
-            "time": "2024-01-11T12:42:32+00:00"
+            "time": "2024-01-23T12:32:32+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
@@ -10720,6 +10728,7 @@
                 "issues": "https://github.com/php-http/guzzle6-adapter/issues",
                 "source": "https://github.com/php-http/guzzle6-adapter/tree/v2.0.2"
             },
+            "abandoned": "guzzlehttp/guzzle or php-http/guzzle7-adapter",
             "time": "2021-03-02T10:52:33+00:00"
         },
         {
@@ -11789,12 +11798,12 @@
             "version": "8.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+                "url": "https://github.com/MyIntervals/PHP-CSS-Parser.git",
                 "reference": "e41d2140031d533348b2192a83f02d8dd8a71d30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/e41d2140031d533348b2192a83f02d8dd8a71d30",
+                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/e41d2140031d533348b2192a83f02d8dd8a71d30",
                 "reference": "e41d2140031d533348b2192a83f02d8dd8a71d30",
                 "shasum": ""
             },
@@ -11832,8 +11841,8 @@
                 "stylesheet"
             ],
             "support": {
-                "issues": "https://github.com/sabberworm/PHP-CSS-Parser/issues",
-                "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
+                "issues": "https://github.com/MyIntervals/PHP-CSS-Parser/issues",
+                "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
         },
@@ -21882,12 +21891,12 @@
             "version": "3.7.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
                 "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ed8e00df0a83aa96acf703f8c2979ff33341f879",
                 "reference": "ed8e00df0a83aa96acf703f8c2979ff33341f879",
                 "shasum": ""
             },
@@ -21932,6 +21941,20 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
             "time": "2023-02-22T23:07:41+00:00"
         },
         {
