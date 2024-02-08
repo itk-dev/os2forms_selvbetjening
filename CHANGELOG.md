@@ -9,6 +9,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede installationsguide.
 * Applied Maestro notification patch
   (<https://github.com/itk-dev/os2forms_selvbetjening/pull/270>)
+* Opdaterede til [OS2Forms REST API
+  2.0.3](https://github.com/OS2Forms/os2forms_rest_api/releases/tag/2.0.3)
+  * Håndterede `OS2Forms Attachment`-elementet
+  * Opdaterede API adgangskontrol
 * Brugte session type til at generere url'er.
 
 ## [2.7.6] 2024-02-06

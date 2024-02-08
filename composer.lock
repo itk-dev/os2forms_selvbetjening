@@ -2151,6 +2151,10 @@
                 {
                     "name": "pifagor",
                     "homepage": "https://www.drupal.org/user/2375692"
+                },
+                {
+                    "name": "RobLoach",
+                    "homepage": "https://www.drupal.org/user/61114"
                 }
             ],
             "description": "Adds the Accessibility Checker plugin to CKEditor.",
@@ -6646,27 +6650,27 @@
         },
         {
             "name": "drupal/webform_rest",
-            "version": "4.0.3",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform_rest.git",
-                "reference": "4.0.3"
+                "reference": "4.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform_rest-4.0.3.zip",
-                "reference": "4.0.3",
-                "shasum": "31a11f9ccec1372cc297d01e254bab926d0b9dcf"
+                "url": "https://ftp.drupal.org/files/projects/webform_rest-4.1.0.zip",
+                "reference": "4.1.0",
+                "shasum": "ccdb351c28631b0edd284edfd5c4f58408645520"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9 || ^10",
-                "drupal/webform": "*"
+                "drupal/webform": "^6.1"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.3",
-                    "datestamp": "1684134659",
+                    "version": "4.1.0",
+                    "datestamp": "1702831078",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6679,30 +6683,31 @@
             ],
             "authors": [
                 {
-                    "name": "dgaspara",
-                    "homepage": "https://www.drupal.org/user/3557179"
+                    "name": "DÃ©bora Antunes (dgaspara)",
+                    "homepage": "https://www.drupal.org/u/dgaspara"
                 },
                 {
-                    "name": "imclean",
-                    "homepage": "https://www.drupal.org/user/112588"
+                    "name": "Ian McLean (imclean),",
+                    "homepage": "https://www.drupal.org/u/imclean"
                 },
                 {
-                    "name": "joaomarques736",
-                    "homepage": "https://www.drupal.org/user/3557181"
+                    "name": "JoÃ£o Marques (joaomarques736)",
+                    "homepage": "https://www.drupal.org/u/joaomarques736"
                 },
                 {
-                    "name": "nsalves",
-                    "homepage": "https://www.drupal.org/user/3557178"
+                    "name": "Nelson Alves (nsalves)",
+                    "homepage": "https://www.drupal.org/u/nsalves"
                 },
                 {
                     "name": "pmaiacar",
                     "homepage": "https://www.drupal.org/user/3575425"
                 }
             ],
-            "description": "Allows retrieving webform elements and submitting webforms via REST",
+            "description": "Retrieve and submit webforms via REST.",
             "homepage": "https://www.drupal.org/project/webform_rest",
             "support": {
-                "source": "https://git.drupalcode.org/project/webform_rest"
+                "source": "https://git.drupalcode.org/project/webform_rest",
+                "issues": "https://www.drupal.org/project/issues/webform_rest"
             }
         },
         {
@@ -9995,22 +10000,23 @@
         },
         {
             "name": "os2forms/os2forms_rest_api",
-            "version": "2.0.1",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
-                "reference": "32fa7c145393cab5faed70e540405fb9b26bcc18"
+                "reference": "1294b7040c21055e0930b1ed00071d05d478f962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/32fa7c145393cab5faed70e540405fb9b26bcc18",
-                "reference": "32fa7c145393cab5faed70e540405fb9b26bcc18",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/1294b7040c21055e0930b1ed00071d05d478f962",
+                "reference": "1294b7040c21055e0930b1ed00071d05d478f962",
                 "shasum": ""
             },
             "require": {
                 "cweagans/composer-patches": "^1.7",
                 "drupal/key_auth": "^2.0",
-                "drupal/webform_rest": "^4.0"
+                "drupal/webform_rest": "^4.1",
+                "os2forms/os2forms": "^3.13"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
@@ -10022,7 +10028,7 @@
                 "enable-patching": true,
                 "patches": {
                     "drupal/webform_rest": {
-                        "Added ability to modify response data sent from Webform Submission endpoint": "https://raw.githubusercontent.com/OS2Forms/os2forms_rest_api/1.1.0/patches/webform_rest_submission.patch"
+                        "Added ability to modify response data sent from Webform Submission endpoint": "https://raw.githubusercontent.com/OS2Forms/os2forms_rest_api/2.0.2/patches/webform_rest_submission.patch"
                     }
                 }
             },
@@ -10039,9 +10045,9 @@
             "description": "OS2Forms REST API",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
-                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.0.1"
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.0.3"
             },
-            "time": "2023-10-24T12:55:21+00:00"
+            "time": "2024-01-16T12:50:37+00:00"
         },
         {
             "name": "os2forms/os2forms_sync",
@@ -11792,12 +11798,12 @@
             "version": "8.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+                "url": "https://github.com/MyIntervals/PHP-CSS-Parser.git",
                 "reference": "e41d2140031d533348b2192a83f02d8dd8a71d30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/e41d2140031d533348b2192a83f02d8dd8a71d30",
+                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/e41d2140031d533348b2192a83f02d8dd8a71d30",
                 "reference": "e41d2140031d533348b2192a83f02d8dd8a71d30",
                 "shasum": ""
             },
@@ -11835,8 +11841,8 @@
                 "stylesheet"
             ],
             "support": {
-                "issues": "https://github.com/sabberworm/PHP-CSS-Parser/issues",
-                "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
+                "issues": "https://github.com/MyIntervals/PHP-CSS-Parser/issues",
+                "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
         },
