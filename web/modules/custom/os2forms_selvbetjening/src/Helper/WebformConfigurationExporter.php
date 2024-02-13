@@ -57,7 +57,6 @@ class WebformConfigurationExporter {
       $archived = $webformConfig->get('archive') ?? '';
       $template = $webformConfig->get('template') ?? '';
 
-
       $data[] = [
         'id' => $id,
         'title' => $title,
