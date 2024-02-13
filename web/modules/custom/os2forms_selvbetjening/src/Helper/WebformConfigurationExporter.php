@@ -46,19 +46,26 @@ class WebformConfigurationExporter {
     foreach ($webformConfigNames as $webformConfigName) {
       $webformConfig = $this->configFactory->get($webformConfigName);
 
+      $id = $webformConfig->get('id') ?? '';
+      $title = $webformConfig->get('title') ?? '';
       $author = $webformConfig->get('uid') ?? '';
       $category = $webformConfig->get('category') ?? '';
-      $title = $webformConfig->get('title') ?? '';
       $purgeDays =
         is_array($webformConfig->get('settings')) && isset($webformConfig->get('settings')['purge_days']) ?
           $webformConfig->get('settings')['purge_days']
           : '';
+      $archived = $webformConfig->get('archive') ?? '';
+      $template = $webformConfig->get('template') ?? '';
+
 
       $data[] = [
+        'id' => $id,
         'title' => $title,
         'author' => $author,
         'category' => $category,
         'purge_days' => $purgeDays,
+        'archived' => $archived,
+        'template' => $template,
       ];
     }
 
