@@ -1,0 +1,7 @@
+os2forms_selvbetjening.admin.settings:
+  path: '/admin/os2forms_selvbetjening/settings'
+  defaults:
+    _form: '\Drupal\os2forms_selvbetjening\Form\SettingsForm'
+    _title: 'Selvbetjening settings'
+  requirements:
+    _permission: 'access webform configuration export'
