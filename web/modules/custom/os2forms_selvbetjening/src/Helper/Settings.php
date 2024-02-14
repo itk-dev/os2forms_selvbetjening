@@ -34,10 +34,24 @@ final class Settings {
   }
 
   /**
-   * Get fasit api base url.
+   * Get webform export filename.
    */
   public function getWebformExportFilename(): string {
     return $this->get(SettingsForm::SELVBETJENING_WEBFORM_EXPORT_FILENAME, '');
+  }
+
+  /**
+   * Get webform export template option.
+   */
+  public function getIncludeTemplateWebforms(): bool {
+    return (bool) $this->get(SettingsForm::SELVBETJENING_WEBFORM_EXPORT_INCLUDE_TEMPLATES, TRUE);
+  }
+
+  /**
+   * Get webform export archived option.
+   */
+  public function getIncludeArchivedWebforms(): bool {
+    return (bool) $this->get(SettingsForm::SELVBETJENING_WEBFORM_EXPORT_INCLUDE_ARCHIVED, TRUE);
   }
 
   /**
@@ -83,6 +97,8 @@ final class Settings {
     return (new OptionsResolver())
       ->setDefaults([
         SettingsForm::SELVBETJENING_WEBFORM_EXPORT_FILENAME => '',
+        SettingsForm::SELVBETJENING_WEBFORM_EXPORT_INCLUDE_TEMPLATES => TRUE,
+        SettingsForm::SELVBETJENING_WEBFORM_EXPORT_INCLUDE_ARCHIVED => TRUE,
       ]);
   }
 
