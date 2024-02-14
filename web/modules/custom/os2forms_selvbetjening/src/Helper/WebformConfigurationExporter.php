@@ -30,11 +30,15 @@ class WebformConfigurationExporter {
    *
    * @param string $filename
    *   Filename for csv file.
+   * @param bool $includeTemplateWebforms
+   *   Should template webforms be included in export.
+   * @param bool $includeArchivedWebforms
+   *   Should archived webforms be included in export.
    *
    * @throws \Drupal\os2forms_selvbetjening\Exception\PermissionException
    *   Permission exception.
    */
-  public function extractWebformConfiguration(string $filename): void {
+  public function extractWebformConfiguration(string $filename, bool $includeTemplateWebforms, bool $includeArchivedWebforms): void {
     if (!$this->account->hasPermission('access webform configuration export')) {
       throw new PermissionException('Permission to webform configuration export denied.');
     }
@@ -45,6 +49,16 @@ class WebformConfigurationExporter {
     $data = [];
     foreach ($webformConfigNames as $webformConfigName) {
       $webformConfig = $this->configFactory->get($webformConfigName);
+
+      // Ignore template webforms.
+      if (!$includeTemplateWebforms && $webformConfig->get('template') === TRUE) {
+        continue;
+      }
+
+      // Ignore archived webforms.
+      if (!$includeArchivedWebforms && $webformConfig->get('archive') === TRUE) {
+        continue;
+      }
 
       $id = $webformConfig->get('id') ?? '';
       $title = $webformConfig->get('title') ?? '';
