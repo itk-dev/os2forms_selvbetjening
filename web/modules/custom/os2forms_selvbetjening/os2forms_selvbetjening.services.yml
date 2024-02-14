@@ -5,17 +5,12 @@ services:
       - '@config.factory'
       - '@current_user'
 
-  Drupal\os2forms_selvbetjening\Helper\Settings:
-    arguments:
-      - "@keyvalue"
-
   Drupal\os2forms_selvbetjening\Helper\FormHelper:
     arguments:
       - '@current_user'
 
   Drupal\Drupal\os2forms_selvbetjening\Form\SettingsForm:
     arguments:
-      - '@Drupal\os2forms_selvbetjening\Helper\Settings'
       - '@Drupal\os2forms_selvbetjening\Helper\WebformConfigurationExporter'
 
   Drupal\os2forms_selvbetjening\EventSubscriber\ResponseSubscriber:
