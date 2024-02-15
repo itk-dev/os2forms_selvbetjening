@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.7.7] 2024-02-08
+## [2.7.7] 2024-02-15
 
 * Opdaterede installationsguide.
 * Applied Maestro notification patch
