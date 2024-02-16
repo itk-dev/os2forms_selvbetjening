@@ -37,31 +37,45 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
     }
 
     $pattern = $this->configFactory->get('os2forms_email')->get('pattern');
-    $emailAddress = $message['to_mail'];
+    $emailAddresses = explode(',', $message['to_mail']);
 
-    if (!filter_var($emailAddress, FILTER_VALIDATE_EMAIL) || !preg_match($pattern, $emailAddress)) {
+    $validEmails = [];
 
-      $context = [
-        '@form' => $this->getWebform()->label(),
-        '@handler' => $this->label(),
-        '@email' => $emailAddress,
-        'link' => ($webform_submission->id()) ? $webform_submission->toLink($this->t('View'))->toString() : NULL,
-        'webform_submission' => $webform_submission,
-        'handler_id' => $this->getHandlerId(),
-        'operation' => 'failed sending email',
-      ];
+    foreach ($emailAddresses as $emailAddress) {
+      if (!filter_var($emailAddress, FILTER_VALIDATE_EMAIL) || !preg_match($pattern, $emailAddress)) {
 
-      if ($webform_submission->getWebform()->hasSubmissionLog()) {
-        // Log detailed message to the 'webform_submission' log.
-        $this->getLogger('webform_submission')->notice("Email not sent for '@handler' handler because the email (@email) is not valid.", $context);
+        $context = [
+          '@form' => $this->getWebform()->label(),
+          '@handler' => $this->label(),
+          '@email' => $emailAddress,
+          'link' => ($webform_submission->id()) ? $webform_submission->toLink($this->t('View'))->toString() : NULL,
+          'webform_submission' => $webform_submission,
+          'handler_id' => $this->getHandlerId(),
+          'operation' => 'failed sending email',
+        ];
+
+        if ($webform_submission->getWebform()->hasSubmissionLog()) {
+          // Log detailed message to the 'webform_submission' log.
+          $this->getLogger('webform_submission')->notice("Email not sent for '@handler' handler because the email (@email) is not valid.", $context);
+        }
+
+        $this->sendMessageToWebformAuthor($webform_submission, $message, $context);
+
+      }
+      else {
+        $validEmails[] = $emailAddress;
       }
 
-      $this->sendMessageToWebformAuthor($webform_submission, $message, $context);
-
-      return FALSE;
     }
 
-    return parent::sendMessage($webform_submission, $message);
+    if (!empty($validEmails)) {
+      $message['to_mail'] = implode(',', $validEmails);
+
+      return parent::sendMessage($webform_submission, $message);
+    }
+
+    return FALSE;
+
   }
 
   /**
