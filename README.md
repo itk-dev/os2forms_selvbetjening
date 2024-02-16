@@ -137,7 +137,8 @@ http://organisation_api:8080/api/v1/
 
 ### OS2Forms Email
 
-Overrides default webform email handler adding the opportunity for extra check on email recipient.
+Overrides default webform email handler
+adding the ability to do an extra check on email recipient.
 Allows for sending emails to webform owner if recipient email is not valid.
 
 By default, none of these extra steps are done.
