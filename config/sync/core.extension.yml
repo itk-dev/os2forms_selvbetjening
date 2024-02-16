@@ -77,6 +77,7 @@ module:
   os2forms_attachment: 0
   os2forms_dawa: 0
   os2forms_digital_post: 0
+  os2forms_email: 0
   os2forms_failed_jobs: 0
   os2forms_fasit: 0
   os2forms_fbs_handler: 0
