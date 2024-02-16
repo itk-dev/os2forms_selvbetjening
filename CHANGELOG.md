@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Installerede OS2Forms Payment (https://github.com/itk-dev/os2forms_payment)
+
 ## [2.7.7] 2024-02-15
 
 * Opdaterede installationsguide.
