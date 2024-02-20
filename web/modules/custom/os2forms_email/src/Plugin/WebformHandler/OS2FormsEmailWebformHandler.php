@@ -113,16 +113,16 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
     $errorMessage = $this->defaultConfiguration();
 
     $errorMessage['to_mail'] = $authorEmail;
-    $errorMessage['subject'] = $this->configFactory->get('os2forms_email')->get('error_message_subject');
+    $errorMessage['subject'] = $this->t('Sending email failed');
 
-    $body = sprintf(
-      "Email not sent for handler (%s) on formular (%s) because the email (%s) is not valid.",
-      $context['@handler'],
-      $context['@form'],
-      $context['@email']
-    );
+    $errorMessage['body'] = $this->t(
+      "<p>Dear @name</p><p>Email not sent for handler (@handler) on form (@form) because the email (@email) is not valid.</p>", [
+        '@name' => $webform_submission->getWebform()->getOwner()->getDisplayName(),
+        '@handler' => $context['@handler'] ?? '',
+        '@form' => $context['@form'] ?? '',
+        '@email' => $context['@email'] ?? '',
+      ]);
 
-    $errorMessage['body'] = sprintf('<p>Kære %s</p><p>%s</p>', $webform_submission->getWebform()->getOwner()->getDisplayName(), $body);
     $errorMessage['from_mail'] = $this->configFactory->get('os2forms_email')->get('error_message_from_email');
     $errorMessage['from_name'] = $this->configFactory->get('os2forms_email')->get('error_message_from_name');
     $errorMessage['webform_submission'] = $message['webform_submission'];

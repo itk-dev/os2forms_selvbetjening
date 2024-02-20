@@ -149,11 +149,11 @@ Enable and configure them by setting the following in `settings.local.php`:
 $config['os2forms_email']['pattern_enable'] = TRUE;
 $config['os2forms_email']['pattern'] = '/.*@aarhus\.dk$/';
 $config['os2forms_email']['error_message_enable'] = TRUE;
-$config['os2forms_email']['error_message_subject'] = 'Email forsendelse fejlet';
-$config['os2forms_email']['error_message_body'] = "<p>Kære @owner</p><p>@body</p>";
 $config['os2forms_email']['error_message_from_email'] = 'noreply@aarhus.dk';
 $config['os2forms_email']['error_message_from_name'] = 'Selvbetjening';
 ```
+
+Remember to translate the error message email subject and body.
 
 ## Production
 
