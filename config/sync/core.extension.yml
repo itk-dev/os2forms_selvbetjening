@@ -86,6 +86,7 @@ module:
   os2forms_nemlogin_openid_connect: 0
   os2forms_organisation: 0
   os2forms_organisation_openid_connect: 0
+  os2forms_payment: 0
   os2forms_permission_alterations: 0
   os2forms_permissions_by_term: 0
   os2forms_rest_api: 0

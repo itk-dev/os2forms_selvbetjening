@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bfbf8f7a9f128a0ef391d256da8e613",
+    "content-hash": "1359187d19e507848f386bb8ee737474",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9997,6 +9997,52 @@
                 "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.1"
             },
             "time": "2024-01-23T12:32:32+00:00"
+        },
+        {
+            "name": "os2forms/os2forms_payment",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/os2forms_payment.git",
+                "reference": "e37a59910dcba5d4b27579094c36ff5761040309"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/e37a59910dcba5d4b27579094c36ff5761040309",
+                "reference": "e37a59910dcba5d4b27579094c36ff5761040309",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/webform": "^6.1",
+                "drush/drush": "^11 || ^12",
+                "itk-dev/serviceplatformen": "^1.4",
+                "php": "^8.1",
+                "symfony/options-resolver": "^5.4 || ^6.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "drupal/coder": "^8.3",
+                "mglaman/drupal-check": "^1.4",
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeppe Julius Krogh",
+                    "email": "kjej@aarhus.dk"
+                }
+            ],
+            "description": "OS2Forms payment",
+            "support": {
+                "issues": "https://github.com/itk-dev/os2forms_payment/issues",
+                "source": "https://github.com/itk-dev/os2forms_payment/tree/develop"
+            },
+            "time": "2023-10-13T06:57:36+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
