@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Installerede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit)
+* Installerede [OS2Forms Payment](https://github.com/itk-dev/os2forms_payment)
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
 
