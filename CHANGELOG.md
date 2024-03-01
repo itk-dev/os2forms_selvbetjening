@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede patch på OS2Forms Nemid autentificeringstjek.
+
 ## [2.7.7] 2024-02-15
 
 * Opdaterede installationsguide.
