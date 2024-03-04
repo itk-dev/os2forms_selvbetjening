@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.7.8] 2024-02-26
 
+* Tilføjede patch på OS2Forms Nemid autentificeringstjek.
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
 

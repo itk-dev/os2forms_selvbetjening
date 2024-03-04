@@ -146,6 +146,9 @@
             "drupal/maestro": {
                 "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
                 "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch"
+            },
+            "os2forms/os2forms": {
+                "Authentication check fix": "patches/drupal/os2forms/os2forms_nemid_authentication_check_update.patch"
             }
         },
         "patches-ignore": {
