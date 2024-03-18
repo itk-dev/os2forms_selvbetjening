@@ -10,7 +10,6 @@ networks:
     driver: bridge
     internal: false
 
-
 services:
   phpfpm:
     networks:
@@ -24,3 +23,11 @@ services:
       - PHP_PM_TYPE=static
       - PHP_PM_MAX_CHILDREN=8
 
+  clamav:
+    image: clamav/clamav:1.2
+    restart: unless-stopped
+    networks:
+      - app
+    ports:
+      - '3310'
+      - '7357'
