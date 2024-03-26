@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
+* Opdaterede styling på maestro flow task menu.
 
 ## [2.7.8] 20-24-03-08
 
