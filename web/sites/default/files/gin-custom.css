@@ -59,3 +59,22 @@ ul.toolbar-menu {
   scrollbar-width: none;
   scroll-margin: 0px;
 }
+
+/*
+* Maestro - Task Menu close icon.
+*
+* Make it visible to the human eye.
+*/
+.ui-widget-content .ui-icon, .ui-widget-header .ui-icon {
+  background-image: url(../../../core/themes/claro/images/ui-icons-ffffff-256x240.png);
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#maestro-task-menu > div {
+  padding: 15px 15px 15px 15px;
+}
