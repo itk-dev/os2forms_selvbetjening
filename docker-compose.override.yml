@@ -18,6 +18,7 @@ services:
       - app
     volumes:
       - .:/app:delegated
+    working_dir: /app
 
   idp-admin:
     image: ghcr.io/soluto/oidc-server-mock:latest
