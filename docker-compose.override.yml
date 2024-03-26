@@ -18,6 +18,7 @@ services:
       - app
     volumes:
       - .:/app:delegated
+    working_dir: /app
 
   clamav:
     image: clamav/clamav:1.2
