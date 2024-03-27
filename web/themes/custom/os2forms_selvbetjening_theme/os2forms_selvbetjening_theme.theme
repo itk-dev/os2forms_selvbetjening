@@ -1,7 +1,5 @@
 <?php
 
-use Drupal\Core\Site\Settings;
-
 /**
  * Implements hook_preprocess_page().
  *
@@ -10,13 +8,4 @@ use Drupal\Core\Site\Settings;
 function os2forms_selvbetjening_theme_preprocess_page(&$variables): void {
   $variables['site_logo'] = theme_get_setting('logo.url');
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
-}
-
-/**
- * Implements hook_preprocess().
- *
- * Add 'base_url' variable to be used by templates.
- */
-function os2forms_selvbetjening_theme_preprocess(&$vars) {
-  $vars['base_url'] = Settings::get('base_url');
 }
