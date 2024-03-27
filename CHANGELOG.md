@@ -8,8 +8,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
+* Tilføjede Maestro notifikation pdf template.
 
-## [2.7.8] 20-24-03-08
+## [2.7.8] 2024-03-08
 
 * Opdaterede til [OS2Forms NemLogin OpenID Connect
   2.0.1](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.1)
