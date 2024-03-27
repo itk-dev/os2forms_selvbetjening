@@ -1,0 +1,76 @@
+{#
+  Use this to style Maestro PDF notifications.
+
+  Set it on '/admin/config/system/os2forms_forloeb' PDF template,
+  i.e. 'themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig'.
+
+  This is a composition of
+  os2forms_attachment, os2forms-attachment--webform-submission.html.twig, and
+  os2forms_forloeb, os2forms-forloeb-notification-message-pdf-html.html.twig.
+
+/**
+ * @file
+ * Template for Maestro notification PDF.
+ *
+ * Available variables:
+ * - message: The notification message
+ *   - subject: the notification subject
+ *   - content: the notification content. Must be rendered as `processed_text`, i.e.:
+ *     @code
+ *       {{ {
+ *       '#type':   'processed_text',
+ *       '#text':    message.content.value,
+ *       '#format':  message.content.format,
+ *       } }}
+ *     @endcode
+ * - notification_type: The type of notification ()
+ * - task_url: URL of the task.
+ * - action_label: Optional label for the task action.
+ */
+#}
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ message.subject }}</title>
+    <link rel="stylesheet" media="all" href="{{ base_url }}/themes/custom/os2forms_selvbetjening_theme/assets/pdf.css" />
+  </head>
+  <body>
+    <header>
+      <div class="webform-entity-print-header">
+        <p>
+          <img alt="Aarhus Kommune Logo" data-align="right" data-entity-type="" data-entity-uuid="" src="https://cdn.aarhus.dk/bundled/static/aak-logo.svg?hash=6780e75ca799a9b45bb0e51ff430010b" />
+          <br/>
+        </p>
+      </div>
+    </header>
+
+    <div class="page">
+      <div>
+        <div class="webform-entity-print-colophon" style="float:right;width:27%;margin-left:20px;word-wrap:break-word;">
+          <p>[webform_submission:completed:custom:d. F Y]</p>
+          <p><strong>Aarhus Kommune</strong><br />
+            Rådhuspladsen 2<br />
+            8000 Aarhus C</p>
+        </div>
+        <div class="webform-entity-print-body" style="width:70%;">
+          {# @see https://api.drupal.org/api/drupal/core%21modules%21filter%21filter.module/function/check_markup/9 #}
+          <div class="notification-content">
+            {{ {
+              '#type':   'processed_text',
+              '#text':    message.content.value,
+              '#format':  message.content.format,
+            } }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style>
+    fieldset legend {
+      margin-left: -12px;
+    }
+  </style>
+</html>
+
