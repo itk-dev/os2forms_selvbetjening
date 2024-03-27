@@ -8,8 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
-* Tilføjede templates til ændring af `os2forms_attachment` og maestro pdf
-  notifikationer i `os2forms_selvbetjening_theme` temaet.
+* Tilføjede templates til ændring af `os2forms_attachment` og maestro-pdf-notifikationer i `os2forms_selvbetjening_theme`-temaet.
 
 ## [2.7.8] 2024-03-08
 
