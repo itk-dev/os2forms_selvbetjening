@@ -804,7 +804,7 @@ $settings['config_sync_directory'] = '../config/sync';
 /**
  * Base url.
  *
- * Used to generate full path to stylesheets in os2forms_selvbetjening_theme.
+ * Used to generate full URL to stylesheets in os2forms_selvbetjening_theme.
  */
 $settings['base_url'] = 'http://nginx:8080';
 
