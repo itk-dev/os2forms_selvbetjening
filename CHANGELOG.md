@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.7.9] XXXX
 
+* Tilføjede `brugere_og_id` og `formularer_og_kategori` views.
+
 ## [2.7.8] 20-24-03-08
 
 * Opdaterede til [OS2Forms NemLogin OpenID Connect
