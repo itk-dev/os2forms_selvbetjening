@@ -9,7 +9,12 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
 
-## [2.7.8] 20-24-03-08
+## [2.7.9] 2024-04-04
+
+* Tilføjede `brugere_og_id` og `formularer_og_kategori` views.
+* Installerede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit/).
+
+## [2.7.8] 2024-03-08
 
 * Opdaterede til [OS2Forms NemLogin OpenID Connect
   2.0.1](https://github.com/itk-dev/os2forms_nemlogin_openid_connect/releases/tag/2.0.1)
@@ -422,7 +427,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.8...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.9...HEAD
+[2.7.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.8...2.7.9
 [2.7.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.7...2.7.8
 [2.7.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.6...2.7.7
 [2.7.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.5...2.7.6

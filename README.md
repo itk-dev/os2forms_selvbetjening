@@ -55,6 +55,7 @@ Take a look at the following modules on how to configure them:
 * [OS2Forms Digital Post](https://github.com/itk-dev/os2forms_digital_post)
 * [OS2Forms NemLogin OpenID Connect](https://github.com/itk-dev/os2forms_nemlogin_openid_connect)
 * [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized)
+* [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit/)
 
 #### CPR and CVR lookups
 
