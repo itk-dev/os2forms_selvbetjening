@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
+* Opdaterede Maestro flows user autocomplete til at søge på navn.
 
 ## [2.7.9] 2024-04-04
 

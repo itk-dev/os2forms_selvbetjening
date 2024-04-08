@@ -15,16 +15,16 @@ use Drupal\Core\Entity\Plugin\EntityReferenceSelection\DefaultSelection;
  *   weight = 1
  * )
  */
-class UserByNameSelection extends DefaultSelection
-{
+class UserByNameSelection extends DefaultSelection {
+
   /**
    * {@inheritdoc}
    *
-   * Heavily inspired by Drupal\user\Plugin\EntityReferenceSelection\UserSelection,
+   * Heavily inspired by
+   * Drupal\user\Plugin\EntityReferenceSelection\UserSelection,
    * with a slight modification to the field condition.
    */
-  protected function buildEntityQuery($match = NULL, $match_operator = 'CONTAINS')
-  {
+  protected function buildEntityQuery($match = NULL, $match_operator = 'CONTAINS') {
     $query = parent::buildEntityQuery($match_operator, $match_operator);
 
     $configuration = $this->getConfiguration();
@@ -52,4 +52,5 @@ class UserByNameSelection extends DefaultSelection
 
     return $query;
   }
+
 }
