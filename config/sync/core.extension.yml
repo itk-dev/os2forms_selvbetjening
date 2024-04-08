@@ -49,6 +49,7 @@ module:
   itkdev_openid_connect: 0
   jquery_ui: 0
   jquery_ui_datepicker: 0
+  key: 0
   key_auth: 0
   keyboard_shortcuts: 0
   lang_dropdown: 0
