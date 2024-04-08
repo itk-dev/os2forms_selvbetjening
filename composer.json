@@ -54,6 +54,7 @@
         "drupal/core-project-message": "^9.5.9",
         "drupal/core-recommended": "^9.5.9",
         "drupal/jquery_ui_datepicker": "^1.4",
+        "drupal/key": "^1.17",
         "drupal/key_auth": "^2.1",
         "drupal/keyboard_shortcuts": "^1.1.1",
         "drupal/lang_dropdown": "^2.0",
