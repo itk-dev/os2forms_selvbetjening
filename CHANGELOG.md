@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.7.10] XXXXX
+
 ## [2.7.9] 2024-04-04
 
 * Tilføjede `brugere_og_id` og `formularer_og_kategori` views.
@@ -424,7 +426,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.9...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.10...HEAD
+[2.7.10]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.9...2.7.10
 [2.7.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.8...2.7.9
 [2.7.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.7...2.7.8
 [2.7.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.6...2.7.7
