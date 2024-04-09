@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
+* Opdaterede docker-compose node setup.
 
 ## [2.7.9] 2024-04-04
 

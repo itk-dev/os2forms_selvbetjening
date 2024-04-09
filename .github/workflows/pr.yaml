@@ -133,10 +133,10 @@ jobs:
         run: docker network create serviceplatformen_organisation_api_app
 
       - name: Install build dependencies
-        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+        run: docker compose run --rm node yarn --cwd web/themes/custom/os2forms_selvbetjening_theme install
 
       - name: Check coding standards
-        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme check-coding-standards
+        run: docker compose run --rm node yarn --cwd web/themes/custom/os2forms_selvbetjening_theme check-coding-standards
 
   check-custom-theme-assets:
     name: Check custom theme assets are up to date
@@ -151,10 +151,10 @@ jobs:
         run: docker network create serviceplatformen_organisation_api_app
 
       - name: Install build dependencies
-        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+        run: docker compose run --rm node yarn --cwd web/themes/custom/os2forms_selvbetjening_theme install
 
       - name: Build theme assets
-        run: docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
+        run: docker compose run --rm node yarn --cwd web/themes/custom/os2forms_selvbetjening_theme build
 
       - name: Check for changes in built css
         run: git diff --diff-filter=ACMRT --exit-code web/themes/custom/os2forms_selvbetjening_theme/build
