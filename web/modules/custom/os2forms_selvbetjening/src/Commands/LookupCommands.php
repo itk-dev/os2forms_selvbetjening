@@ -80,7 +80,7 @@ class LookupCommands extends DrushCommands {
   ) {
     try {
       $instance = $this->dataLookupManager->createDefaultInstanceByGroup('cvr_lookup');
-      assert($instance instanceof DatafordelerCVR);
+      assert($instance instanceof DataLookupInterfaceCompany);
 
       if ($options['dump-configuration']) {
         $this->output()->writeln([
