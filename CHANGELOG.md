@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.7.10] XXXXX
 
+* Opdaterede Maestro flows user autocomplete til at søge på navn.
+
 ## [2.7.9] 2024-04-04
 
 * Tilføjede `brugere_og_id` og `formularer_og_kategori` views.

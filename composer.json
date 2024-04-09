@@ -146,7 +146,8 @@
             },
             "drupal/maestro": {
                 "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
-                "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch"
+                "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch",
+                "Maestro flow task entity autocomplete patch": "patches/drupal/maestro/maestro_entity_autocomplete.patch"
             }
         },
         "patches-ignore": {
