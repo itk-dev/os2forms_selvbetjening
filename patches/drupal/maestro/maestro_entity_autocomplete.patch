@@ -1,0 +1,20 @@
+diff --git a/src/MaestroTaskTrait.php b/src/MaestroTaskTrait.php
+index 9aefd9e..7dcf666 100644
+--- a/src/MaestroTaskTrait.php
++++ b/src/MaestroTaskTrait.php
+@@ -196,6 +196,7 @@ trait MaestroTaskTrait {
+       '#type' => 'entity_autocomplete',
+       '#target_type' => 'user',
+       '#default_value' => '',
++      '#selection_handler' => 'default:user_by_name',
+       '#selection_settings' => ['include_anonymous' => FALSE],
+       '#title' => $this->t('User'),
+       '#required' => FALSE,
+@@ -303,6 +304,7 @@ trait MaestroTaskTrait {
+       '#type' => 'entity_autocomplete',
+       '#target_type' => 'user',
+       '#default_value' => '',
++      '#selection_handler' => 'default:user_by_name',
+       '#selection_settings' => ['include_anonymous' => FALSE],
+       '#title' => $this->t('User'),
+       '#required' => FALSE,
