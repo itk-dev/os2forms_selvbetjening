@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Installed and enabled Key module
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
 * Opdaterede docker-compose node setup.
