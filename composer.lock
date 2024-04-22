@@ -9871,12 +9871,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "5dc9b0fe337a96536ad94ff1a453c1541a0efdfa"
+                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/5dc9b0fe337a96536ad94ff1a453c1541a0efdfa",
-                "reference": "5dc9b0fe337a96536ad94ff1a453c1541a0efdfa",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
                 "shasum": ""
             },
             "require": {
@@ -9907,9 +9907,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/develop"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
             },
-            "time": "2024-02-26T08:09:13+00:00"
+            "time": "2024-04-22T07:27:59+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -22418,7 +22418,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "itk-dev/serviceplatformen": 20,
-        "os2forms/os2forms_fasit": 20
+        "os2forms/os2forms_fasit": 20,
+        "os2forms/os2forms_payment": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
