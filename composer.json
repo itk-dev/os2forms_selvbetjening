@@ -148,6 +148,9 @@
                 "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
                 "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch",
                 "Maestro flow task entity autocomplete patch": "patches/drupal/maestro/maestro_entity_autocomplete.patch"
+            },
+            "os2forms/os2forms": {
+                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
             }
         },
         "patches-ignore": {
