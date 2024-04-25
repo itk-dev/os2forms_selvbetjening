@@ -10,6 +10,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede Maestro flows user autocomplete til at søge på navn.
 * Opdaterede styling på maestro flow task menu.
+* Opdaterede uploadgrænser i `docker-compose.server.override.yml`.
 
 ## [2.7.9] 2024-04-04
 
