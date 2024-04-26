@@ -23,11 +23,21 @@ ignored_config_entities:
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_test'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:mode_selector'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:serviceagreementuuid'
+  - 'os2web_datalookup.serviceplatformen_cpr_extended:wsdl'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:usersystemuuid'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:useruuid'
+  - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_passphrase'
+  - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile'
+  - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_test'
+  - '# Ignore leaflet layers'
+  - 'leaflet_layers.map_bundle.*'
+  - 'leaflet_layers.map_layer.*'
+  - os2forms_forloeb.settings
   - 'os2web_datalookup.serviceplatformen_cpr_extended:wsdl'
   - os2web_nemlogin.settings
   - system.site
   - 'webform.settings:third_party_settings.webform_entity_print.template'
   - 'webform.webform.*'
   - 'webform.webform_options.*'
+  - '# Ignore keys (https://www.drupal.org/project/key)'
+  - 'key.key.*'
