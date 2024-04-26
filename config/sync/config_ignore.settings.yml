@@ -26,5 +26,5 @@ ignored_config_entities:
   - 'leaflet_layers.map_bundle.*'
   - 'leaflet_layers.map_layer.*'
   - os2forms_forloeb.settings
-  - '# Ignore encryption key'
-  - 'key.key.webform'
+  - '# Ignore keys (https://www.drupal.org/project/key)'
+  - 'key.key.*'
