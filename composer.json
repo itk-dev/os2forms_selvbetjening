@@ -6,6 +6,14 @@
     "homepage": "https://github.com/itk-dev/os2forms_selvbetjening",
     "repositories": [
         {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms"
+        },
+        {
+            "type": "path",
+            "url": "web/sites/default/modules/os2web_key"
+        },
+        {
             "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9",
             "type": "package",
             "package": {
@@ -45,6 +53,7 @@
     ],
     "require": {
         "php": "^8.1",
+        "ext-openssl": "*",
         "composer/installers": "^1.12",
         "drupal/advancedqueue": "^1.0",
         "drupal/bootstrap": "^3.28",
@@ -54,7 +63,6 @@
         "drupal/core-project-message": "^9.5.9",
         "drupal/core-recommended": "^9.5.9",
         "drupal/jquery_ui_datepicker": "^1.4",
-        "drupal/key": "^1.17",
         "drupal/key_auth": "^2.1",
         "drupal/keyboard_shortcuts": "^1.1.1",
         "drupal/lang_dropdown": "^2.0",
@@ -77,6 +85,7 @@
         "itk-dev/os2forms_user_field_lookup": "^1.0",
         "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
         "itk-dev/web_accessibility_statement": "^1.0",
+        "os2forms/os2forms": "dev-feature/os2web_key as 3.14.0",
         "os2forms/os2forms_fasit": "^1.0",
         "os2forms/os2forms_forloeb_profile": "^1.12",
         "os2forms/os2forms_get_organized": "^1.1.5",
