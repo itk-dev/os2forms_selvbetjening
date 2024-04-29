@@ -24,3 +24,6 @@ services:
       - PHP_PM_TYPE=static
       - PHP_PM_MAX_CHILDREN=30
 
+  memcached:
+    environment:
+      - MEMCACHED_CACHE_SIZE=128
