@@ -60,6 +60,16 @@ server {
         return 404;
     }
 
+    location ~* \.(svg|ico|woff|woff2)$ {
+        expires max;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location ~* \.(css|js)$ {
+        expires 3600;
+        add_header Cache-Control "public, no-transform";
+    }
+
     location ~ '\.php$|^/update.php' {
         include fastcgi_params;
 
