@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Updated nginx configuration
+* Updated tecnickcom/tcpdf package version
+
 ## [2.7.9] 2024-04-04
 
 * Tilføjede `brugere_og_id` og `formularer_og_kategori` views.
