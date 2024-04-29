@@ -25,7 +25,6 @@ module:
   contextual: 0
   ctools: 0
   datetime: 0
-  dblog: 0
   diff: 0
   drupal_psr6_cache: 0
   dynamic_entity_reference: 0
@@ -57,6 +56,7 @@ module:
   libraries: 0
   link: 0
   locale: 0
+  log_stdout: 0
   maestro: 0
   maestro_taskconsole: 0
   maestro_template_builder: 0
@@ -114,6 +114,7 @@ module:
   simplesamlphp_auth: 0
   smtp: 0
   switch_page_theme: 0
+  syslog: 0
   system: 0
   taxonomy: 0
   telephone: 0

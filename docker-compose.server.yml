@@ -55,4 +55,4 @@ services:
     networks:
       - app
     environment:
-      - MEMCACHED_CACHE_SIZE=64
+      - MEMCACHED_CACHE_SIZE=128
