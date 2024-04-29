@@ -1,6 +1,4 @@
 # itk-version: 3.1.1
-version: "3"
-
 networks:
   frontend:
     external: true
@@ -59,8 +57,13 @@ services:
     ports:
       - '8080'
     volumes:
-      - ./.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./.docker/templates:/etc/nginx/templates:ro
       - .:/app
+    environment:
+      NGINX_FPM_SERVICE: ${COMPOSE_PROJECT_NAME}-phpfpm-1:9000
+      NGINX_WEB_ROOT: /app/web
+      NGINX_PORT: 8080
+      NGINX_MAX_BODY_SIZE: 305m
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"

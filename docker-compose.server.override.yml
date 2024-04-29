@@ -1,5 +1,3 @@
-version: "3"
-
 networks:
   organisation_api:
     external: true
