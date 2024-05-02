@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.7.11] XXXXX
+## [2.7.11] 2024-05-02
 
 * Opdaterede Maestro flows user autocomplete til at søge på navn.
 * Opdaterede styling på maestro flow task menu.
