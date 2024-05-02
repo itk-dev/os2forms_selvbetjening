@@ -8,7 +8,6 @@ networks:
     driver: bridge
     internal: false
 
-
 services:
   phpfpm:
     networks:
@@ -25,3 +24,12 @@ services:
   memcached:
     environment:
       - MEMCACHED_CACHE_SIZE=128
+
+  clamav:
+    image: clamav/clamav:1.2
+    restart: unless-stopped
+    networks:
+      - app
+    ports:
+      - '3310'
+      - '7357'
