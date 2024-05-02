@@ -48,6 +48,7 @@
         "composer/installers": "^1.12",
         "drupal/advancedqueue": "^1.0",
         "drupal/bootstrap": "^3.28",
+        "drupal/clamav": "^2.0",
         "drupal/config_ignore": "^2.4",
         "drupal/core-composer-scaffold": "^9.5.9",
         "drupal/core-project-message": "^9.5.9",
@@ -147,7 +148,8 @@
             },
             "drupal/maestro": {
                 "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
-                "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch"
+                "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch",
+                "Maestro flow task entity autocomplete patch": "patches/drupal/maestro/maestro_entity_autocomplete.patch"
             },
             "drupal/log_stdout": {
                 "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"

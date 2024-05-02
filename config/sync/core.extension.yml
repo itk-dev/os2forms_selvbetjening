@@ -12,6 +12,7 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
+  clamav: 0
   coc_forms_auto_export: 0
   color: 0
   comment: 0
@@ -25,6 +26,7 @@ module:
   contextual: 0
   ctools: 0
   datetime: 0
+  dblog: 0
   diff: 0
   drupal_psr6_cache: 0
   dynamic_entity_reference: 0

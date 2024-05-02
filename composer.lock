@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67b97e3e093ef340af6886ef30067b38",
+    "content-hash": "ccf5ad5bc62db1213aaae89f467e26d3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2229,6 +2229,62 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/ckeditor_balloonpanel",
                 "issues": "http://drupal.org/project/issues/ckeditor_balloonpanel"
+            }
+        },
+        {
+            "name": "drupal/clamav",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/clamav.git",
+                "reference": "2.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/clamav-2.0.2.zip",
+                "reference": "2.0.2",
+                "shasum": "298f63201af7a4b25760f574e5561c6c4696324d"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.2",
+                    "datestamp": "1692700952",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "adammalone",
+                    "homepage": "https://www.drupal.org/user/1295980"
+                },
+                {
+                    "name": "James Andres",
+                    "homepage": "https://www.drupal.org/user/33827"
+                },
+                {
+                    "name": "manarth",
+                    "homepage": "https://www.drupal.org/user/321496"
+                },
+                {
+                    "name": "mcdruid",
+                    "homepage": "https://www.drupal.org/user/255969"
+                }
+            ],
+            "description": "Integration with the ClamAV anti-virus scanner.",
+            "homepage": "https://www.drupal.org/project/clamav",
+            "support": {
+                "source": "https://git.drupalcode.org/project/clamav"
             }
         },
         {
@@ -9925,16 +9981,16 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "01f71037f9cbb0b70d1a919ac0e3dbbff3dfee78"
+                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/01f71037f9cbb0b70d1a919ac0e3dbbff3dfee78",
-                "reference": "01f71037f9cbb0b70d1a919ac0e3dbbff3dfee78",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
                 "shasum": ""
             },
             "require": {
@@ -9964,9 +10020,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.1"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
             },
-            "time": "2024-04-04T11:36:30+00:00"
+            "time": "2024-04-22T07:27:59+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
