@@ -11,6 +11,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede Maestro flows user autocomplete til at søge på navn.
 * Opdaterede styling på maestro flow task menu.
 * Opdaterede uploadgrænser i `docker-compose.server.override.yml`.
+* Tilføjet virus scanning af fil upload.
 * Opdaterede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit/) version.
 
 ## [2.7.10] 2024-04-29
