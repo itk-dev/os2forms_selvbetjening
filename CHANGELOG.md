@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-* Tilføjede `os2forms_fasit` kø konfiguration.
+* Tilføjede `os2forms_fasit`-kø-konfiguration.
 
 ## [2.7.11] 2024-05-02
 
