@@ -9,6 +9,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [2.7.12] XXXX
 
 * Tilføjede `os2forms_fasit`-kø-konfiguration.
+* Fjernede ekstra OS2Forms indstillingsfaneblad på formularer.
 
 ## [2.7.11] 2024-05-02
 
