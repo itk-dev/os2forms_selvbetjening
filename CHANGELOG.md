@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.7.12] XXXX
 
+* Tilføjede `os2forms_fasit`-kø-konfiguration.
+
 ## [2.7.11] 2024-05-02
 
 * Opdaterede Maestro flows user autocomplete til at søge på navn.
