@@ -9855,16 +9855,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.13.3",
+            "version": "3.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "ba54de8144c2d733bbba7d196f5adbdd25abd0a7"
+                "reference": "c9f9af54c778c764f6270977a09cf295c89107e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/ba54de8144c2d733bbba7d196f5adbdd25abd0a7",
-                "reference": "ba54de8144c2d733bbba7d196f5adbdd25abd0a7",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/c9f9af54c778c764f6270977a09cf295c89107e1",
+                "reference": "c9f9af54c778c764f6270977a09cf295c89107e1",
                 "shasum": ""
             },
             "require": {
@@ -9975,9 +9975,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.13.3"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.14.1"
             },
-            "time": "2023-12-05T09:56:17+00:00"
+            "time": "2024-01-17T08:33:13+00:00"
         },
         {
             "name": "os2forms/os2forms_fasit",
@@ -10294,16 +10294,16 @@
         },
         {
             "name": "os2web/os2web_datalookup",
-            "version": "1.9.0",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_datalookup.git",
-                "reference": "c57d0046b878b201ce26e4f646c81765ebeb0596"
+                "reference": "f0a39488237101a9e6871db631ba60b12e3890d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/c57d0046b878b201ce26e4f646c81765ebeb0596",
-                "reference": "c57d0046b878b201ce26e4f646c81765ebeb0596",
+                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/f0a39488237101a9e6871db631ba60b12e3890d7",
+                "reference": "f0a39488237101a9e6871db631ba60b12e3890d7",
                 "shasum": ""
             },
             "require": {
@@ -10317,9 +10317,9 @@
             "description": "Provides integration with Danish data lookup services such as Service platformen or Datafordeler.",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_datalookup/issues",
-                "source": "https://github.com/OS2web/os2web_datalookup/tree/1.9.0"
+                "source": "https://github.com/OS2web/os2web_datalookup/tree/1.11.3"
             },
-            "time": "2023-09-28T11:32:20+00:00"
+            "time": "2024-02-15T11:53:51+00:00"
         },
         {
             "name": "os2web/os2web_nemlogin",
