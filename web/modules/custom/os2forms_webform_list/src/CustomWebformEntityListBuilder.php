@@ -28,8 +28,7 @@ class CustomWebformEntityListBuilder extends WebformEntityListBuilder {
    * @return \Drupal\Core\Entity\Query\QueryInterface
    *   An entity query.
    */
-  protected function getQuery($keys = '', $category = '', $state = ''): QueryInterface
-  {
+  protected function getQuery($keys = '', $category = '', $state = ''): QueryInterface {
     $query = parent::getQuery($keys, $category, $state);
 
     // Setup a required condition for the list builder to respect webform update
