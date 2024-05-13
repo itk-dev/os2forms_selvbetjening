@@ -10,8 +10,8 @@
             "url": "https://github.com/itk-dev/os2forms"
         },
         {
-            "type": "path",
-            "url": "web/sites/default/modules/os2web_key"
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2web_datalookup"
         },
         {
             "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9",
