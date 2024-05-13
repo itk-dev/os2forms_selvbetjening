@@ -15,7 +15,7 @@
 
 * <http://selvbetjening.local.itkdev.dk/admin/os2forms_get_organized/settings>
 
-### OpenID Connect (Multivalue)
+### OpenID Connect (OIDC)
 
 * <http://selvbetjening.local.itkdev.dk/admin/config/system/os2web-nemlogin/openid-connect-nemlogin>
   * <http://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate/{id}>
@@ -66,3 +66,19 @@ putenv('KEY_DIGITAL_POST_CERTIFICATE_PASSWORD=digital_post');
 ## Questions
 
 <https://www.drupal.org/project/key>
+
+```mermaid
+flowchart LR
+  os2forms[os2forms/os2forms] -->|require| os2web_key[os2web/os2web_key]
+
+  os2forms_fasit[os2forms/os2forms_fasit]  -->|require| os2web_key
+
+  os2forms_get_organized[os2forms/os2forms_get_organized] -->|require| key[drupal/key]
+
+  os2web_datalookup[os2web/os2web_datalookup] -->|require| os2web_key
+
+  os2web_key -->|require| key
+
+  os2forms_nemlogin_openid_connect[itk-dev/os2forms_nemlogin_openid_connect] -->|require| os2web_key
+  %% os2forms_nemlogin_openid_connect -->|require| os2web_nemlogin[os2web/os2web_nemlogin]
+```

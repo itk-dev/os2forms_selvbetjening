@@ -1,5 +1,3 @@
-version: "3"
-
 # @see https://raw.githubusercontent.com/Infisical/infisical/main/docker-compose.prod.yml
 
 networks:
