@@ -13,10 +13,16 @@ The maestro notification pdf template should be configured on
 themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig
 ```
 
+or in `settings.local.php` as
+
+```sh
+$config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig';
+```
+
 whereas the os2forms attachment template automatically should be used.
 
 To allow usage of a common stylesheet in the two templates you
-must configure `base_url` in `settings.local.php`
+can configure `base_url` in `settings.local.php`
 
 ```php
 $settings['base_url'] = 'http://nginx:8080';
