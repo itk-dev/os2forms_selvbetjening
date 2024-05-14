@@ -1,0 +1,19 @@
+known_anonymous_roles:
+  borger: borger
+  anonymous: 0
+  authenticated: 0
+  administrator: 0
+  site_admin: 0
+  flow_designer: 0
+  forloeb_designer: 0
+  sagsbehandler: 0
+  medarbejder: 0
+  leder: 0
+  virksomhed: 0
+  os2forms_rest_api_user: 0
+  os2forms_rest_api_user_write: 0
+processing:
+  queue: os2forms_forloeb_notification
+templates:
+  notification_email: "{#\r\n/**\r\n * @file\r\n * Template for Maestro notification email.\r\n *\r\n * Available variables:\r\n * - message: The notification message\r\n *   - subject: the notification subject\r\n *   - contect: the notification content. Must be rendered as `processed_text`, i.e.:\r\n *     @code\r\n *       {{ {\r\n *       '#type':   'processed_text',\r\n *       '#text':    message.content.value,\r\n *       '#format':  message.content.format,\r\n *       } }}\r\n *     @endcode\r\n * - notification_type: The type of notification ()\r\n * - task_url: URL of the task.\r\n * - action_label: Optional label for the task action.\r\n */\r\n#}\r\n<main>\r\n  {# @see https://api.drupal.org/api/drupal/core%21modules%21filter%21filter.module/function/check_markup/9 #}\r\n  <div class=\"notification-content\">\r\n    {{ {\r\n      '#type':   'processed_text',\r\n      '#text':    message.content.value,\r\n      '#format':  message.content.format,\r\n      } }}\r\n  </div>\r\n\r\n  {% if task-url|default(false) %}\r\n    <a class=\"task-url\" href=\"{{ task-url }}\" style=\"display: block; background: green; color: white; padding: 1em; text-decoration: none; text-align: center\">{{ action_label|default('Go to your task'|t) }}</a>\r\n  {% endif %}\r\n</main>\r\n"
+  notification_pdf: themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig
