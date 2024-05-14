@@ -802,6 +802,13 @@ $databases['default']['default'] = [
 $settings['config_sync_directory'] = '../config/sync';
 
 /**
+ * Base url.
+ *
+ * Used to generate full URL to stylesheets in os2forms_selvbetjening_theme.
+ */
+$settings['base_url'] = 'http://nginx:8080';
+
+/**
  * Load local development override configuration, if available.
  *
  * Create a settings.local.php file to override variables on secondary (staging,

@@ -12,6 +12,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Fjernede ekstra OS2Forms indstillingsfaneblad på formularer.
 * Opdaterede [OS2Forms](https://github.com/os2forms/os2forms/) version.
 * Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
+* Tilføjede templates til ændring af `os2forms_attachment` og
+  maestro-pdf-notifikationer i `os2forms_selvbetjening_theme`-temaet.
 
 ## [2.7.11] 2024-05-02
 
