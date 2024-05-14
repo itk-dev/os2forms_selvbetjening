@@ -2,11 +2,9 @@
 
 ## PDF templates
 
-To override PDF templates sent via Digital Post, we have added
-`os2forms-attachment--webform-submission.html.twig` and
-`os2forms-selvbetjening-maestro-notification-pdf-html.html.twig`
-to overwrite os2forms attachment and maestro notification (pdf) html
-respectively.
+Two templates, `os2forms-attachment--webform-submission.html.twig` and
+`os2forms-selvbetjening-maestro-notification-pdf-html.html.twig`, are used to render os2forms attachment and maestro notification (pdf) html,
+respectively (the templates are used to render PDF files sent as Digital post).
 
 The maestro notification pdf template should be configured on
 `admin/config/system/os2forms_forloeb` as
