@@ -22,7 +22,7 @@ $config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'themes/
 whereas the os2forms attachment template automatically should be used.
 
 To allow usage of a common stylesheet in the two templates you
-can configure `base_url` in `settings.local.php`
+can override the default value (see `settings.php`) in `settings.local.php`:
 
 ```php
 $settings['base_url'] = 'http://nginx:8080';
