@@ -809,6 +809,15 @@ $settings['config_sync_directory'] = '../config/sync';
 $settings['base_url'] = 'http://nginx:8080';
 
 /**
+ * Flow notification pdf template.
+ *
+ * HTML template for PDF notifications (digital post). If the template is a path, e.g.
+ * themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig,
+ * the template will be loaded from this path.
+ */
+$config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig';
+
+/**
  * Load local development override configuration, if available.
  *
  * Create a settings.local.php file to override variables on secondary (staging,

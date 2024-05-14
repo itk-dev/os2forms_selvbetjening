@@ -6,20 +6,19 @@ Two templates, `os2forms-attachment--webform-submission.html.twig` and
 `os2forms-selvbetjening-maestro-notification-pdf-html.html.twig`, are used to render os2forms attachment and maestro notification (pdf) html,
 respectively (the templates are used to render PDF files sent as Digital post).
 
-The maestro notification pdf template should be configured on
-`admin/config/system/os2forms_forloeb` as
+The maestro notification pdf template is configured in `settings.php` as
 
 ```sh
 themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig
 ```
 
-or in `settings.local.php` as
+which you can override in `settings.local.php` as
 
 ```sh
-$config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig';
+$config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'path/to/template';
 ```
 
-whereas the os2forms attachment template automatically should be used.
+The os2forms attachment template should automatically be used.
 
 To allow usage of a common stylesheet in the two templates you
 can override the default value (see `settings.php`) in `settings.local.php`:
