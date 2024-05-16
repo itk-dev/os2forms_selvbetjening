@@ -21,8 +21,6 @@
   * <http://selvbetjening.local.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate/{id}>
   * <http://selvbetjening.local.itkdev.dk/admin/os2forms_nemlogin_openid_connect/settings>
 
-* FBS?!
-
 ## Not our modules
 
 * <http://selvbetjening.local.itkdev.dk/admin/config/people/openid-connect/generic/edit>
@@ -67,7 +65,16 @@ putenv('KEY_DIGITAL_POST_CERTIFICATE_PASSWORD=digital_post');
 
 ---
 
-<https://www.drupal.org/project/key>
+## Development
+
+| Pull request                                                          | Internally approved | Externally approved | Release version |
+|-----------------------------------------------------------------------|---------------------|---------------------|-----------------|
+| <https://github.com/OS2Forms/os2forms/pull/101>                       | yes                 |                     | 4.0.0           |
+| <https://github.com/OS2Forms/os2forms_get_organized/pull/14>          | yes                 |                     |                 |
+| <https://github.com/OS2web/os2web_datalookup/pull/13>                 | yes                 |                     |                 |
+| <https://github.com/itk-dev/os2forms_fasit/pull/7>                    | yes                 |                     |                 |
+| <https://github.com/itk-dev/os2forms_nemlogin_openid_connect/pull/20> | yes                 |                     |                 |
+
 
 ```mermaid
 flowchart LR
@@ -81,6 +88,63 @@ flowchart LR
 
   os2web_key -->|require| key
 
-  os2forms_nemlogin_openid_connect[<a href='https://github.com/itk-dev/os2forms_nemlogin_openid_connect'>itk-dev/os2forms_nemlogin_openid_connect</a>: <a href='https://github.com/itk-dev/os2forms_nemlogin_openid_connect/pull/19'>#19</a>] -->|require| os2web_key
+  os2forms_nemlogin_openid_connect[<a href='https://github.com/itk-dev/os2forms_nemlogin_openid_connect'>itk-dev/os2forms_nemlogin_openid_connect</a>: <a href='https://github.com/itk-dev/os2forms_nemlogin_openid_connect/pull/20'>#20</a>] -->|require| os2web_key
   %% os2forms_nemlogin_openid_connect -->|require| os2web_nemlogin[os2web/os2web_nemlogin]
+```
+
+### Test
+
+<https://os2form.dmzwebstgitk03.itkdev.dk/da/admin/config/system/keys>
+
+#### Certificate and passphrase
+
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/config/system/os2web-datalookup/datafordeler-cvr>
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/config/system/os2web-datalookup/serviceplatformen-cpr-extended>
+  * What about all the UUIDs?
+
+  ```shell
+  drush os2forms-selvbetjening:look-up:cpr 2611740000
+  ```
+
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/os2forms_digital_post/settings>
+
+  ```shell
+  drush os2forms-digital-post:test:send 2611740000
+  ```
+
+  (implicitly tests CPR lookup)
+
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/os2forms_fasit/settings>
+  * Is `Fasit API tenant` a secret?
+
+  ```shell
+  drush os2forms-fasit:test:api
+  ```
+
+#### Username and passphrase
+
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/os2forms_get_organized/settings>
+
+  ```shell
+  drush os2forms-get-organized:test:api
+  ```
+
+#### OpenID Connect (OIDC)
+
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/config/system/os2web-nemlogin/openid-connect-nemlogin>
+  * <https://os2form.dmzwebstgitk03.itkdev.dk/os2forms_nemlogin_openid_connect/authenticate/{id}>
+  * <https://os2form.dmzwebstgitk03.itkdev.dk/admin/os2forms_nemlogin_openid_connect/settings>
+
+#### Not our modules
+
+* <https://os2form.dmzwebstgitk03.itkdev.dk/admin/config/people/openid-connect/generic/edit>
+  * We can use the key module to inject `Client ID` and `Client secret`, cf.
+
+---
+
+
+
+```shell
+drush config:get openid_connect.client.generic
+drush config:get openid_connect.client.generic --include-overridden
 ```

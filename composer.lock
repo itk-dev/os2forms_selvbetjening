@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e70032a09bf4788ca25ddb5e15fa269",
+    "content-hash": "db669eeb8a52467598616d3259cc284e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9178,30 +9178,32 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "2.0.1",
+            "version": "dev-feature/os2web_key",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "dd71ea46dc751a2606109a9c62ee738f82017a10"
+                "reference": "f83fa34aedc3503d4175d0d6f50e68677ca31714"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/dd71ea46dc751a2606109a9c62ee738f82017a10",
-                "reference": "dd71ea46dc751a2606109a9c62ee738f82017a10",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/f83fa34aedc3503d4175d0d6f50e68677ca31714",
+                "reference": "f83fa34aedc3503d4175d0d6f50e68677ca31714",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
                 "itk-dev/openid-connect": "^3.1",
+                "os2web/os2web_key": "^1.0",
                 "os2web/os2web_nemlogin": "^1.2",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "drupal/coder": "^8.3",
-                "friendsoftwig/twigcs": "^6.0",
-                "mglaman/drupal-check": "^1.4"
+                "ergebnis/composer-normalize": "^2.42",
+                "mglaman/drupal-check": "^1.4",
+                "vincentlanglet/twig-cs-fixer": "^2.8"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -9212,9 +9214,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.0.1"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/feature/os2web_key"
             },
-            "time": "2024-03-07T14:02:25+00:00"
+            "time": "2024-05-17T08:36:12+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -10286,16 +10288,16 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.0.2",
+            "version": "dev-feature/os2web_key",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
+                "reference": "e57a82738c34eaf7b49b66943b25007e441b2ea3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/e57a82738c34eaf7b49b66943b25007e441b2ea3",
+                "reference": "e57a82738c34eaf7b49b66943b25007e441b2ea3",
                 "shasum": ""
             },
             "require": {
@@ -10303,13 +10305,17 @@
                 "drupal/webform": "^6.1",
                 "ext-dom": "*",
                 "os2forms/os2forms": "^3.13",
+                "os2web/os2web_key": "^1.0",
                 "php": "^8.1",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4"
+                "ergebnis/composer-normalize": "^2.42",
+                "mglaman/phpstan-drupal": "^1.2",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -10325,9 +10331,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/feature/os2web_key"
             },
-            "time": "2024-04-22T07:27:59+00:00"
+            "time": "2024-05-17T09:07:00+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -10375,20 +10381,21 @@
         },
         {
             "name": "os2forms/os2forms_get_organized",
-            "version": "1.1.5",
+            "version": "dev-feature/os2web_key",
             "source": {
                 "type": "git",
-                "url": "https://github.com/OS2Forms/os2forms_get_organized.git",
-                "reference": "c4707bc96ac133357156921784c13c08131379c5"
+                "url": "https://github.com/itk-dev/os2forms_get_organized.git",
+                "reference": "1887a704918cce6d2f90a376d3de141e6830b3cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/c4707bc96ac133357156921784c13c08131379c5",
-                "reference": "c4707bc96ac133357156921784c13c08131379c5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_get_organized/zipball/1887a704918cce6d2f90a376d3de141e6830b3cd",
+                "reference": "1887a704918cce6d2f90a376d3de141e6830b3cd",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
+                "drupal/key": "^1.17",
                 "drupal/webform": "^6.1",
                 "itk-dev/getorganized-api-client-php": "^1.2",
                 "os2forms/os2forms": "^3.13",
@@ -10397,10 +10404,31 @@
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "drupal/coder": "^8.3",
+                "ergebnis/composer-normalize": "^2.42",
                 "mglaman/drupal-check": "^1.4"
             },
             "type": "drupal-module",
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "code-analysis": [
+                    "@code-analysis/drupal-check"
+                ],
+                "code-analysis/drupal-check": [
+                    "# @see https://github.com/mglaman/drupal-check/issues/261#issuecomment-1030141772 for details on exclude-dir value",
+                    "drupal-check --deprecations --analysis --exclude-dir='vendor,*/Client/*' *.* src"
+                ],
+                "coding-standards-apply": [
+                    "@coding-standards-apply/phpcs"
+                ],
+                "coding-standards-apply/phpcs": [
+                    "vendor/bin/phpcbf --standard=phpcs.xml.dist"
+                ],
+                "coding-standards-check": [
+                    "@coding-standards-check/phpcs"
+                ],
+                "coding-standards-check/phpcs": [
+                    "vendor/bin/phpcs --standard=phpcs.xml.dist"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -10412,10 +10440,9 @@
             ],
             "description": "OS2Forms GetOrganized integration",
             "support": {
-                "issues": "https://github.com/OS2Forms/os2forms_get_organized/issues",
-                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.1.5"
+                "source": "https://github.com/itk-dev/os2forms_get_organized/tree/feature/os2web_key"
             },
-            "time": "2024-01-04T10:43:45+00:00"
+            "time": "2024-05-16T12:07:32+00:00"
         },
         {
             "name": "os2forms/os2forms_organisation",
@@ -22944,8 +22971,11 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "itk-dev/serviceplatformen": 20,
-        "os2forms/os2forms": 20
+        "os2forms/os2forms": 20,
+        "os2forms/os2forms_fasit": 20,
+        "os2forms/os2forms_get_organized": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
