@@ -8641,16 +8641,16 @@
         },
         {
             "name": "itk-dev/getorganized-api-client-php",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/getorganized-api-client-php.git",
-                "reference": "755927fd87d0718a7f69be8bd46eb94a9215fef9"
+                "reference": "416e89a09467fd3f69e696a7cd3d97ab7d10ffd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/755927fd87d0718a7f69be8bd46eb94a9215fef9",
-                "reference": "755927fd87d0718a7f69be8bd46eb94a9215fef9",
+                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/416e89a09467fd3f69e696a7cd3d97ab7d10ffd7",
+                "reference": "416e89a09467fd3f69e696a7cd3d97ab7d10ffd7",
                 "shasum": ""
             },
             "require": {
@@ -8690,9 +8690,9 @@
             "description": "PHP client for GetOrganized API",
             "support": {
                 "issues": "https://github.com/itk-dev/getorganized-api-client-php/issues",
-                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.2.0"
+                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.2.1"
             },
-            "time": "2023-03-10T14:13:42+00:00"
+            "time": "2023-12-18T08:25:24+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
