@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.7.12] XXXX
+## [2.7.13] XXXX
 
 * Tilføjede `os2forms_fasit`-kø-konfiguration.
 * Fjernede ekstra OS2Forms indstillingsfaneblad på formularer.
@@ -14,6 +14,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
 * Tilføjede templates til ændring af `os2forms_attachment` og
   maestro-pdf-notifikationer i `os2forms_selvbetjening_theme`-temaet.
+
+## [2.7.12] 2024-05-24
+
+* Opdaterede [GetOrganized API](https://github.com/itk-dev/getorganized-api-client-php/)
+  for at håndtere ikke tilladte tegn i filnavne.
 
 ## [2.7.11] 2024-05-02
 
