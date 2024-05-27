@@ -14,6 +14,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
 * Tilføjede templates til ændring af `os2forms_attachment` og
   maestro-pdf-notifikationer i `os2forms_selvbetjening_theme`-temaet.
+* Gav roller adgang til at se encrypted values.
 
 ## [2.7.12] 2024-05-24
 
