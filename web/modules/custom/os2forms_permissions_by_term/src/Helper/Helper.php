@@ -251,19 +251,21 @@ class Helper {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function webformSubmissionAccess(WebformRevisionsSubmission $webformRevisionsSubmission, $operation, AccountInterface $account) {
-    // 'view' operation allows viewing the submission,
-    // 'notes' operation allows writing notes, flagging and locking the submission,
-    // 'log' operation allows access to submission logs,
-    // the access check on these should be equivalent to 'submission_page' on webform.
-    // 'update_any' operation allows duplicating submissions and should have an access check
-    // equivalent to 'update' on webform.
+    // 'view' operation allows viewing the submission.
+    // 'notes' operation allows writing notes,
+    // flagging and locking the submission.
+    // 'log' operation allows access to submission logs.
+    // Checks on these should be equivalent to 'submission_page' on webform.
+    // 'update_any' operation allows duplicating submissions and
+    // should have an access check equivalent to 'update' on webform.
     if (in_array($operation, ['view', 'notes', 'view_any'])) {
       return $this->webformAccess($webformRevisionsSubmission->getWebform(), 'submission_page', $account);
-    } elseif ($operation === 'update_any') {
+    }
+    elseif ($operation === 'update_any') {
       return $this->webformAccess($webformRevisionsSubmission->getWebform(), 'update', $account);
     }
 
-    // other operations, 'delete', 'edit' etc., should have the same access as on the webform.
+    // Other operations should have the same access as on the webform.
     return $this->webformAccess($webformRevisionsSubmission->getWebform(), $operation, $account);
   }
 
