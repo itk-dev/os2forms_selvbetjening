@@ -12,6 +12,7 @@ use Drupal\node\NodeInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\webform\WebformInterface;
+use Drupal\webform_revisions\Entity\WebformRevisionsSubmission;
 
 /**
  * Implements hook_module_implements_alter().
@@ -65,6 +66,15 @@ function os2forms_permissions_by_term_form_node_form_alter(array &$form, FormSta
  */
 function os2forms_permissions_by_term_webform_access(WebformInterface $webform, string $operation, AccountInterface $account) {
   return \Drupal::service('os2forms_permissions_by_term.helper')->webformAccess($webform, $operation, $account);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access() for webform submission entities.
+ *
+ * Deny access to webform submissions based on permissions_by_term.
+ */
+function os2forms_permissions_by_term_webform_submission_access(WebformRevisionsSubmission $webformRevisionsSubmission, string $operation, AccountInterface $account) {
+  return \Drupal::service('os2forms_permissions_by_term.helper')->webformSubmissionAccess($webformRevisionsSubmission, $operation, $account);
 }
 
 /**

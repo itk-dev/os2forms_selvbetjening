@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede adgangstjek på indsendelser.
+
 ## [2.7.12] 2024-05-24
 
 * Opdaterede [GetOrganized API](https://github.com/itk-dev/getorganized-api-client-php/)
