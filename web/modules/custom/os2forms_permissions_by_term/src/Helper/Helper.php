@@ -238,7 +238,7 @@ class Helper {
    * Check access on webform revisions submission related operations.
    *
    * @param \Drupal\webform_revisions\Entity\WebformRevisionsSubmission $webformRevisionsSubmission
-   *   The webform we check access for.
+   *   The webform revision submission we check access for.
    * @param string $operation
    *   The operation being performed on the webform revisions submission.
    * @param \Drupal\Core\Session\AccountInterface $account
