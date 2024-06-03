@@ -10,6 +10,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede mulighed for ekstra tjek på email modtagere (@aarhus.dk).
 * Opdaterede docker-compose node setup.
 
+## [2.7.13] 2024-06-03
+
+* Tilføjede adgangstjek på indsendelser.
+
 ## [2.7.12] 2024-05-24
 
 * Opdaterede [GetOrganized API](https://github.com/itk-dev/getorganized-api-client-php/)
@@ -446,7 +450,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.12...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.13...HEAD
+[2.7.13]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.12...2.7.13
 [2.7.12]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.11...2.7.12
 [2.7.11]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.10...2.7.11
 [2.7.10]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.9...2.7.10

@@ -17,6 +17,7 @@ use Drupal\permissions_by_term\Service\AccessCheck;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\user\Entity\User;
 use Drupal\webform\WebformInterface;
+use Drupal\webform_revisions\Entity\WebformRevisionsSubmission;
 
 /**
  * Helper class for os2forms permissions by term.
@@ -204,6 +205,7 @@ class Helper {
     $user = $this->entityTypeManager->getStorage('user')->load($account->id());
     $userTerms = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
     $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
+
     switch ($operation) {
       case 'view':
         // We don't use permission by term to determine access to the actual
@@ -228,6 +230,43 @@ class Helper {
     }
 
     return AccessResult::neutral();
+  }
+
+  /**
+   * Implementation of hook_ENTITY_TYPE_access().
+   *
+   * Check access on webform revisions submission related operations.
+   *
+   * @param \Drupal\webform_revisions\Entity\WebformRevisionsSubmission $webformRevisionsSubmission
+   *   The webform revision submission we check access for.
+   * @param string $operation
+   *   The operation being performed on the webform revisions submission.
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *   The current user.
+   *
+   * @return \Drupal\Core\Access\AccessResult
+   *   The resulting access permission.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function webformSubmissionAccess(WebformRevisionsSubmission $webformRevisionsSubmission, $operation, AccountInterface $account) {
+    // 'view' operation allows viewing the submission.
+    // 'notes' operation allows writing notes,
+    // flagging and locking the submission.
+    // 'log' operation allows access to submission logs.
+    // Checks on these should be equivalent to 'submission_page' on webform.
+    // 'update_any' operation allows duplicating submissions and
+    // should have an access check equivalent to 'update' on webform.
+    if (in_array($operation, ['view', 'notes', 'view_any'])) {
+      return $this->webformAccess($webformRevisionsSubmission->getWebform(), 'submission_page', $account);
+    }
+    elseif ($operation === 'update_any') {
+      return $this->webformAccess($webformRevisionsSubmission->getWebform(), 'update', $account);
+    }
+
+    // Other operations should have the same access as on the webform.
+    return $this->webformAccess($webformRevisionsSubmission->getWebform(), $operation, $account);
   }
 
   /**
