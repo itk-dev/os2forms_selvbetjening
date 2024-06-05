@@ -136,6 +136,27 @@ Configure organisation API endpoint on `/admin/os2forms_organisation/settings` t
 http://organisation_api:8080/api/v1/
 ```
 
+### OS2Forms Email
+
+Overrides default webform email handler adding the option to send
+a notification to configured email if attachment size surpasses
+a configured value.
+
+By default, no notifiation is sent.
+Enable and configure notifications receivers on the webforms settings page.
+Configure file size threshold, from email
+and from name in `settings.local.php`:
+
+```php
+// OS2Forms email
+// File size threshold should be a positive integer followed by a unit.
+// Allowed units are KB, MB and GB.
+// Examples: 900KB, 3MB, 2GB.
+$config['os2forms_email']['notification_file_size_threshold'] = '10MB';
+$config['os2forms_email']['notification_message_from_email'] = 'noreply@aarhus.dk';
+$config['os2forms_email']['notification_message_from_name'] = 'Selvbetjening';
+```
+
 ## Production
 
 ```sh
