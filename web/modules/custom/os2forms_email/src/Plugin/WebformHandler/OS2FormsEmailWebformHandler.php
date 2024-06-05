@@ -33,7 +33,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   ];
 
   /**
-   * Sends extra notification based on attachment file size before sending message.
+   * Sends extra notification based on attachment file size.
    *
    * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
    *   A webform submission.
@@ -56,18 +56,15 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   /**
    * Handles attachment notification on submission.
    *
-   * @param WebformSubmissionInterface $webform_submission
+   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
    *   A webform submission.
    * @param array $message
    *   An array of message parameters.
    * @param string $emails
    *   A string of emails.
-   *
-   * @return void
    */
-  private function handleAttachmentNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): void
-  {
-    if ($this->isAttachmentFileSizeTresholdSurpassed($webform_submission)) {
+  private function handleAttachmentNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): void {
+    if ($this->isAttachmentFileSizeThresholdSurpassed($webform_submission)) {
       $this->sendFileSizeNotification($webform_submission, $message, $emails);
     }
   }
@@ -75,18 +72,18 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   /**
    * Checks whether file size threshold is surpassed by submission.
    *
-   * @param WebformSubmissionInterface $webform_submission
+   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
    *   A webform submission.
    *
    * @return bool
+   *   Whether threshold is surpassed or not.
    */
-  private function isAttachmentFileSizeTresholdSurpassed(WebformSubmissionInterface $webform_submission): bool
-  {
-    // Determine file size threshold in bytes
+  private function isAttachmentFileSizeThresholdSurpassed(WebformSubmissionInterface $webform_submission): bool {
+    // Determine file size threshold in bytes.
     $threshold = $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? '2MB';
     $threshold = $this->convertToBytes($threshold);
 
-    $fileElementIds = $this->getFileElementKeysFromSubmission($webform_submission);
+    $fileElementIds = $this->getFileIdsFromSubmission($webform_submission);
 
     $totalSize = 0;
     foreach ($fileElementIds as $fileElementId) {
@@ -98,14 +95,15 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   }
 
   /**
-   * Returns array of non-excluded file elements keys in submission.
+   * Gets array of file ids in submission.
    *
-   * @param WebformSubmissionInterface $submission
+   * @param \Drupal\webform\WebformSubmissionInterface $submission
    *   A webform submission.
    *
    * @return array
+   *   File ids.
    */
-  private function getFileElementKeysFromSubmission(WebformSubmissionInterface $submission): array {
+  private function getFileIdsFromSubmission(WebformSubmissionInterface $submission): array {
     $elements = $submission->getWebform()->getElementsDecodedAndFlattened();
 
     // Removed excluded elements.
@@ -144,16 +142,16 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
     return array_merge(...$fileIds);
   }
 
-
   /**
    * Get elements by type.
    *
    * @param string $type
    *   The type of elements wanted.
    * @param array $elements
-   *    Array of elements.
+   *   Array of elements.
    *
    * @return array
+   *   Available elements.
    */
   private function getAvailableElementsByType(string $type, array $elements): array {
     $attachmentElements = array_filter($elements, function ($element) use ($type) {
@@ -169,11 +167,12 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    * Converts threshold to bytes.
    *
    * @param string $threshold
+   *   File size threshold.
    *
    * @return int
+   *   Threshold in bytes.
    */
-  private function convertToBytes(string $threshold): int
-  {
+  private function convertToBytes(string $threshold): int {
     $units = ['KB', 'MB', 'GB'];
 
     preg_match("/(?<num>\d+)(?<units>kb|mb|gb)$/i", $threshold, $matches);
@@ -190,17 +189,14 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   /**
    * Sends file size notification message.
    *
-   * @param WebformSubmissionInterface $webform_submission
+   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
    *   A webform submission.
    * @param array $message
-   *   An array of message parameters
+   *   An array of message parameters.
    * @param string $emails
    *   A string of emails.
-   *
-   * @return void
    */
-  private function sendFileSizeNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): void
-  {
+  private function sendFileSizeNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): void {
     $emails = explode(PHP_EOL, $emails);
 
     foreach ($emails as $emailAddress) {
@@ -225,7 +221,8 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
           $this->getLogger('webform_submission')->notice("Email notification advising surpassed file sizes could not be sent to '@email'.", $context);
         }
 
-      } else {
+      }
+      else {
         $notificationMessage = $this->defaultConfiguration();
 
         $notificationMessage['to_mail'] = $emailAddress;
@@ -233,12 +230,12 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
 
         $notificationMessage['body'] = $this->t(
           "<p>Dear @name</p><p>Submission @submission attempted sending an email with a large total file size of attachments surpassing @threshold for handler (@handler) on form (@form).</p>", [
-          '@name' => $emailAddress,
-          '@submission' => $context['link'],
-          '@handler' => $context['@handler'],
-          '@form' => $context['@form'] ?? '',
-          '@threshold' => $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? '2MB',
-        ]);
+            '@name' => $emailAddress,
+            '@submission' => $context['link'],
+            '@handler' => $context['@handler'],
+            '@form' => $context['@form'] ?? '',
+            '@threshold' => $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? '2MB',
+          ]);
 
         $notificationMessage['from_mail'] = $this->configFactory->get('os2forms_email')->get('notification_message_from_email');
         $notificationMessage['from_name'] = $this->configFactory->get('os2forms_email')->get('notification_message_from_name');

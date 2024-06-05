@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede mulighed for at sende notifikation hvis
+  størrelse på email vedhæftninger overgår grænse.
+
 ## [2.7.13] 2024-06-03
 
 * Tilføjede adgangstjek på indsendelser.

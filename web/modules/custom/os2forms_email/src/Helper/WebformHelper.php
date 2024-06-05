@@ -30,8 +30,6 @@ class WebformHelper {
       '#tree' => TRUE,
     ];
 
-
-
     $form['third_party_settings']['os2forms']['os2forms_email']['enabled'] = [
       '#title' => $this->t('Enable'),
       '#type' => 'checkbox',
@@ -52,4 +50,5 @@ class WebformHelper {
       ],
     ];
   }
+
 }
