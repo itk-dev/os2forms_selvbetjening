@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\os2forms_email\Plugin\WebformHandler;
+namespace Drupal\os2forms_email_handler\Plugin\WebformHandler;
 
 use Drupal\file\Entity\File;
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
@@ -45,10 +45,10 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   public function sendMessage(WebformSubmissionInterface $webform_submission, array $message) {
 
     $webform = $webform_submission->getWebform();
-    $settings = $webform->getThirdPartySetting('os2forms', 'os2forms_email');
+    $settings = $webform->getThirdPartySetting('os2forms', 'os2forms_email_handler');
 
-    if ($settings['enabled'] && !empty($settings['emails'])) {
-      $this->handleAttachmentNotification($webform_submission, $message, $settings['emails']);
+    if ($settings['enabled'] && !empty($settings['email_recipients'])) {
+      $this->handleAttachmentNotification($webform_submission, $message, $settings['email_recipients']);
     }
 
     return parent::sendMessage($webform_submission, $message);
@@ -81,7 +81,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function isAttachmentFileSizeThresholdSurpassed(WebformSubmissionInterface $webform_submission): bool {
     // Determine file size threshold in bytes.
-    $threshold = $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
+    $threshold = $this->configFactory->get('os2forms_email_handler')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
     $thresholdInBytes = $this->convertToBytes($threshold);
 
     $fileElementIds = $this->getRelevantFileIdsFromSubmission($webform_submission);
@@ -156,7 +156,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function getAvailableElementsByType(string $type, array $elements): array {
     $attachmentElements = array_filter($elements, function ($element) use ($type) {
-      return $type === ($element['#type'] ?? NULL);
+      return $type === $element['#type'];
     });
 
     return array_map(function ($element) {
@@ -208,7 +208,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
         '@form' => $this->getWebform()->label(),
         '@handler' => $this->label(),
         '@email' => $emailAddress,
-        'link' => $webform_submission->id() ? $webform_submission->toLink($this->t('View'))->toString() : NULL,
+        'link' => ($webform_submission->id()) ? $webform_submission->toLink($this->t('View'))->toString() : NULL,
         'webform_submission' => $webform_submission,
         'handler_id' => $this->getHandlerId(),
         'operation' => 'notification email',
@@ -235,11 +235,11 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
             '@submission' => $context['link'],
             '@handler' => $context['@handler'],
             '@form' => $context['@form'] ?? '',
-            '@threshold' => $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
+            '@threshold' => $this->configFactory->get('os2forms_email_handler')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
           ]);
 
-        $notificationMessage['from_mail'] = $this->configFactory->get('os2forms_email')->get('notification_message_from_email');
-        $notificationMessage['from_name'] = $this->configFactory->get('os2forms_email')->get('notification_message_from_name');
+        $notificationMessage['from_mail'] = $this->configFactory->get('os2forms_email_handler')->get('notification_message_from_email');
+        $notificationMessage['from_name'] = $this->configFactory->get('os2forms_email_handler')->get('notification_message_from_name');
         $notificationMessage['webform_submission'] = $message['webform_submission'];
         $notificationMessage['handler'] = $message['handler'];
 
