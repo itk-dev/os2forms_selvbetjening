@@ -84,13 +84,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
     $threshold = $this->configFactory->get('os2forms_email_handler')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
     $thresholdInBytes = $this->convertToBytes($threshold);
 
-    $fileElementIds = $this->getRelevantFileIdsFromSubmission($webform_submission);
-
-    $totalSize = 0;
-    foreach ($fileElementIds as $fileElementId) {
-      $fileElement = File::load($fileElementId);
-      $totalSize += (int) $fileElement->getSize();
-    }
+    $totalSize = $this->getTotalAttachmentFileSize($webform_submission);
 
     return $totalSize > $thresholdInBytes;
   }
@@ -104,7 +98,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    * @return array
    *   File ids.
    */
-  private function getRelevantFileIdsFromSubmission(WebformSubmissionInterface $submission): array {
+  private function getFileIdsFromSubmission(WebformSubmissionInterface $submission): array {
     $elements = $submission->getWebform()->getElementsDecodedAndFlattened();
 
     // Removed excluded elements.
@@ -116,12 +110,12 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
       }
     }
 
-    $fileElements = [];
+    $fileElements = array_map(
+      fn ($type) => $this->getElementsByType($type, $elements),
+      self::FILE_ELEMENT_TYPES
+    );
 
-    foreach (self::FILE_ELEMENT_TYPES as $fileElementType) {
-      $fileElements[] = $this->getAvailableElementsByType($fileElementType, $elements);
-    }
-
+    // Flatten the array.
     // https://dev.to/klnjmm/never-use-arraymerge-in-a-for-loop-in-php-5go1
     $fileElements = array_merge(...$fileElements);
 
@@ -154,7 +148,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    * @return array
    *   Available elements.
    */
-  private function getAvailableElementsByType(string $type, array $elements): array {
+  private function getElementsByType(string $type, array $elements): array {
     $attachmentElements = array_filter($elements, function ($element) use ($type) {
       return $type === $element['#type'];
     });
@@ -174,16 +168,21 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *   Threshold in bytes.
    */
   private function convertToBytes(string $threshold): int {
+    // Allowed units
     $units = ['KB', 'MB', 'GB'];
 
+    // Get number of units and units from threshold.
     preg_match("/(?<num>\d+)(?<units>kb|mb|gb)$/i", $threshold, $matches);
 
     $size = (int) $matches['num'];
     $unit = strtoupper($matches['units']);
 
-    $unitExponentMultiplier = (int) array_search($unit, $units);
+    // Number of times 1024 should be multiplied on based on unit.
+    // KB, multiply by 1024 once
+    // MB, multiply by 1024 twice, etc.
+    $unitExponentMultiplier = ((int) array_search($unit, $units)) + 1;
 
-    return $size * (1024 ** ($unitExponentMultiplier + 1));
+    return $size * (1024 ** $unitExponentMultiplier);
 
   }
 
@@ -198,11 +197,9 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *   A string of emails.
    */
   private function sendFileSizeNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): void {
-    $emails = explode(PHP_EOL, $emails);
+    $emails = array_filter(array_map('trim', explode(PHP_EOL, $emails)));
 
     foreach ($emails as $emailAddress) {
-      // Remove potential whitespace.
-      $emailAddress = trim($emailAddress);
 
       $context = [
         '@form' => $this->getWebform()->label(),
@@ -252,6 +249,21 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
 
       }
     }
+  }
+
+  /**
+   * Gets total attachment file size.
+   *
+   * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
+   *   A webform submission.
+   */
+  private function getTotalAttachmentFileSize(WebformSubmissionInterface $webform_submission): int
+  {
+    $fileElementIds = $this->getFileIdsFromSubmission($webform_submission);
+
+    return array_reduce($fileElementIds, function ($carry, $item) {
+      return $carry + (int) File::load($item)->getSize();
+    });
   }
 
 }
