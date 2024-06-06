@@ -168,7 +168,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *   Threshold in bytes.
    */
   private function convertToBytes(string $threshold): int {
-    // Allowed units
+    // Allowed units.
     $units = ['KB', 'MB', 'GB'];
 
     // Get number of units and units from threshold.
@@ -257,8 +257,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
    *   A webform submission.
    */
-  private function getTotalAttachmentFileSize(WebformSubmissionInterface $webform_submission): int
-  {
+  private function getTotalAttachmentFileSize(WebformSubmissionInterface $webform_submission): int {
     $fileElementIds = $this->getFileIdsFromSubmission($webform_submission);
 
     return array_reduce($fileElementIds, function ($carry, $item) {
