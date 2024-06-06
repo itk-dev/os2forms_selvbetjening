@@ -2,6 +2,7 @@
 
 namespace Drupal\os2forms_email_handler\Plugin\WebformHandler;
 
+use Drupal\Core\Site\Settings;
 use Drupal\file\Entity\File;
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 use Drupal\webform\WebformSubmissionInterface;
@@ -81,7 +82,9 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function isAttachmentFileSizeThresholdSurpassed(WebformSubmissionInterface $webform_submission): bool {
     // Determine file size threshold in bytes.
-    $threshold = $this->configFactory->get('os2forms_email_handler')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
+
+    $settings = Settings::get('os2forms_email_handler');
+    $threshold = $settings['notification_file_size_threshold'] ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
     $thresholdInBytes = $this->convertToBytes($threshold);
 
     $totalSize = $this->getTotalAttachmentFileSize($webform_submission);
@@ -221,6 +224,8 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
 
       }
       else {
+
+        $settings = Settings::get('os2forms_email_handler');
         $notificationMessage = $this->defaultConfiguration();
 
         $notificationMessage['to_mail'] = $emailAddress;
@@ -232,11 +237,11 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
             '@submission' => $context['link'],
             '@handler' => $context['@handler'],
             '@form' => $context['@form'] ?? '',
-            '@threshold' => $this->configFactory->get('os2forms_email_handler')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
+            '@threshold' => $settings['notification_file_size_threshold'] ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
           ]);
 
-        $notificationMessage['from_mail'] = $this->configFactory->get('os2forms_email_handler')->get('notification_message_from_email');
-        $notificationMessage['from_name'] = $this->configFactory->get('os2forms_email_handler')->get('notification_message_from_name');
+        $notificationMessage['from_mail'] = $settings['notification_message_from_email'];
+        $notificationMessage['from_name'] = $settings['notification_message_from_name'];
         $notificationMessage['webform_submission'] = $message['webform_submission'];
         $notificationMessage['handler'] = $message['handler'];
 
