@@ -156,7 +156,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function getAvailableElementsByType(string $type, array $elements): array {
     $attachmentElements = array_filter($elements, function ($element) use ($type) {
-      return $type === $element['#type'];
+      return $type === ($element['#type'] ?? NULL);
     });
 
     return array_map(function ($element) {
