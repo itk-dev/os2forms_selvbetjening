@@ -142,8 +142,8 @@ Overrides default webform email handler adding the option to send
 a notification to configured email if attachment size surpasses
 a configured value.
 
-By default, no notifiation is sent.
-Enable and configure notifications receivers on the webforms settings page.
+By default, no notification is sent.
+Enable and configure notifications receivers on the webform settings page.
 Configure file size threshold, from email
 and from name in `settings.local.php`:
 

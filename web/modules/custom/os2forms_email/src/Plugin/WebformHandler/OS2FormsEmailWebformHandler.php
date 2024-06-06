@@ -32,6 +32,8 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
     'managed_file',
   ];
 
+  private const DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD = '2MB';
+
   /**
    * Sends extra notification based on attachment file size.
    *
@@ -43,7 +45,6 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   public function sendMessage(WebformSubmissionInterface $webform_submission, array $message) {
 
     $webform = $webform_submission->getWebform();
-
     $settings = $webform->getThirdPartySetting('os2forms', 'os2forms_email');
 
     if ($settings['enabled'] && !empty($settings['emails'])) {
@@ -80,10 +81,10 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function isAttachmentFileSizeThresholdSurpassed(WebformSubmissionInterface $webform_submission): bool {
     // Determine file size threshold in bytes.
-    $threshold = $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? '2MB';
-    $threshold = $this->convertToBytes($threshold);
+    $threshold = $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
+    $thresholdInBytes = $this->convertToBytes($threshold);
 
-    $fileElementIds = $this->getFileIdsFromSubmission($webform_submission);
+    $fileElementIds = $this->getRelevantFileIdsFromSubmission($webform_submission);
 
     $totalSize = 0;
     foreach ($fileElementIds as $fileElementId) {
@@ -91,11 +92,11 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
       $totalSize += (int) $fileElement->getSize();
     }
 
-    return $totalSize > $threshold;
+    return $totalSize > $thresholdInBytes;
   }
 
   /**
-   * Gets array of file ids in submission.
+   * Gets array of file ids in submission that are attached in email.
    *
    * @param \Drupal\webform\WebformSubmissionInterface $submission
    *   A webform submission.
@@ -103,7 +104,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    * @return array
    *   File ids.
    */
-  private function getFileIdsFromSubmission(WebformSubmissionInterface $submission): array {
+  private function getRelevantFileIdsFromSubmission(WebformSubmissionInterface $submission): array {
     $elements = $submission->getWebform()->getElementsDecodedAndFlattened();
 
     // Removed excluded elements.
@@ -234,7 +235,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
             '@submission' => $context['link'],
             '@handler' => $context['@handler'],
             '@form' => $context['@form'] ?? '',
-            '@threshold' => $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? '2MB',
+            '@threshold' => $this->configFactory->get('os2forms_email')->get('notification_file_size_threshold') ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
           ]);
 
         $notificationMessage['from_mail'] = $this->configFactory->get('os2forms_email')->get('notification_message_from_email');

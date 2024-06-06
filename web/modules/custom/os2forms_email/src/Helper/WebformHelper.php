@@ -13,8 +13,6 @@ class WebformHelper {
 
   /**
    * Implements hook_webform_third_party_settings_form_alter().
-   *
-   * @phpstan-param array<string, mixed> $form
    */
   public function webformThirdPartySettingsFormAlter(array &$form, FormStateInterface $form_state): void {
     /** @var \Drupal\Core\Entity\EntityForm $formObject */

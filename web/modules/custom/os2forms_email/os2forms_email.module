@@ -22,8 +22,6 @@ function os2forms_email_webform_handler_info_alter(array &$handlers): void {
  * Implements hook_webform_third_party_settings_form_alter().
  *
  * @see WebformHelper::webformThirdPartySettingsFormAlter()
- *
- * @phpstan-param array<string, mixed> $form
  */
 function os2forms_email_webform_third_party_settings_form_alter(array &$form, FormStateInterface $form_state): void {
   \Drupal::service(WebformHelper::class)->webformThirdPartySettingsFormAlter($form, $form_state);
