@@ -152,9 +152,9 @@ and from name in `settings.local.php`:
 // File size threshold should be a positive integer followed by a unit.
 // Allowed units are KB, MB and GB.
 // Examples: 900KB, 3MB, 2GB.
-$config['os2forms_email_handler']['notification_file_size_threshold'] = '10MB';
-$config['os2forms_email_handler']['notification_message_from_email'] = 'noreply@aarhus.dk';
-$config['os2forms_email_handler']['notification_message_from_name'] = 'Selvbetjening';
+$settings['os2forms_email_handler']['notification_file_size_threshold'] = '10MB';
+$settings['os2forms_email_handler']['notification_message_from_email'] = 'noreply@aarhus.dk';
+$settings['os2forms_email_handler']['notification_message_from_name'] = 'Selvbetjening';
 ```
 
 ## Production

@@ -4,6 +4,7 @@ namespace Drupal\os2forms_email_handler\Plugin\WebformHandler;
 
 use Drupal\Core\Site\Settings;
 use Drupal\file\Entity\File;
+use Drupal\os2forms_email_handler\Helper\WebformHelper;
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 use Drupal\webform\WebformSubmissionInterface;
 
@@ -46,7 +47,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   public function sendMessage(WebformSubmissionInterface $webform_submission, array $message) {
 
     $webform = $webform_submission->getWebform();
-    $settings = $webform->getThirdPartySetting('os2forms', 'os2forms_email_handler');
+    $settings = $webform->getThirdPartySetting('os2forms', WebformHelper::MODULE_NAME);
 
     if ($settings['enabled'] && !empty($settings['email_recipients'])) {
       $this->handleAttachmentNotification($webform_submission, $message, $settings['email_recipients']);
@@ -82,7 +83,6 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function isAttachmentFileSizeThresholdSurpassed(WebformSubmissionInterface $webform_submission): bool {
     // Determine file size threshold in bytes.
-
     $settings = Settings::get('os2forms_email_handler');
     $threshold = $settings['notification_file_size_threshold'] ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
     $thresholdInBytes = $this->convertToBytes($threshold);
@@ -169,6 +169,8 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *
    * @return int
    *   Threshold in bytes.
+   *
+   * @see https://stackoverflow.com/questions/11807115/php-convert-kb-mb-gb-tb-etc-to-bytes
    */
   private function convertToBytes(string $threshold): int {
     // Allowed units.
@@ -225,7 +227,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
       }
       else {
 
-        $settings = Settings::get('os2forms_email_handler');
+        $settings = Settings::get(WebformHelper::MODULE_NAME);
         $notificationMessage = $this->defaultConfiguration();
 
         $notificationMessage['to_mail'] = $emailAddress;
