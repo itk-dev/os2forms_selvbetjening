@@ -1,4 +1,4 @@
-name: 'OS2Forms email'
+name: 'OS2Forms email handler'
 type: module
 description: 'Overrides email handler adding extra checks and functionality'
 package: 'OS2Forms'
