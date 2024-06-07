@@ -35,6 +35,8 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   ];
 
   private const DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD = '2MB';
+  private const DEFAULT_FROM_EMAIL = 'noreply@aarhus.dk';
+  private const DEFAULT_FROM_NAME = 'Selvbetjening';
 
   /**
    * Sends extra notification based on attachment file size.
@@ -83,7 +85,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    */
   private function isAttachmentFileSizeThresholdSurpassed(WebformSubmissionInterface $webform_submission): bool {
     // Determine file size threshold in bytes.
-    $settings = Settings::get('os2forms_email_handler');
+    $settings = Settings::get(WebformHelper::MODULE_NAME);
     $threshold = $settings['notification_file_size_threshold'] ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD;
     $thresholdInBytes = $this->convertToBytes($threshold);
 
@@ -242,8 +244,8 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
             '@threshold' => $settings['notification_file_size_threshold'] ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
           ]);
 
-        $notificationMessage['from_mail'] = $settings['notification_message_from_email'];
-        $notificationMessage['from_name'] = $settings['notification_message_from_name'];
+        $notificationMessage['from_mail'] = $settings['notification_message_from_email'] ?? self::DEFAULT_FROM_EMAIL;
+        $notificationMessage['from_name'] = $settings['notification_message_from_name'] ?? self::DEFAULT_FROM_NAME;
         $notificationMessage['webform_submission'] = $message['webform_submission'];
         $notificationMessage['handler'] = $message['handler'];
 
