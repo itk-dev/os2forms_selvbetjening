@@ -153,6 +153,10 @@
             },
             "drupal/log_stdout": {
                 "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
+            },
+            "drupal/webform": {
+                "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
+                "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
             }
         },
         "patches-ignore": {
