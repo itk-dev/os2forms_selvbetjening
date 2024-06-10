@@ -65,7 +65,6 @@
 !/web/modules/custom/os2forms_user_menu
 !/web/modules/custom/os2forms_fbs_handler
 !/web/modules/custom/os2forms_permission_alterations
-!/web/modules/custom/os2forms_email
 
 # Ignore site specific modules.
 /web/sites/*/modules

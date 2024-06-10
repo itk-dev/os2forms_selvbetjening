@@ -1,7 +1,0 @@
-name: 'OS2Forms email'
-type: module
-description: 'Overrides email handler adding extra checks and functionality'
-package: 'OS2Forms'
-core_version_requirement: ^9
-dependencies:
-  - 'webform:webform'
