@@ -136,26 +136,6 @@ Configure organisation API endpoint on `/admin/os2forms_organisation/settings` t
 http://organisation_api:8080/api/v1/
 ```
 
-### OS2Forms Email
-
-Overrides default webform email handler
-adding the ability to do an extra check on email recipient.
-Allows for sending emails to webform owner if recipient email is not valid.
-
-By default, none of these extra steps are done.
-Enable and configure them by setting the following in `settings.local.php`:
-
-```php
-// OS2Forms email
-$config['os2forms_email']['pattern_enable'] = TRUE;
-$config['os2forms_email']['pattern'] = '/.*@aarhus\.dk$/';
-$config['os2forms_email']['error_message_enable'] = TRUE;
-$config['os2forms_email']['error_message_from_email'] = 'noreply@aarhus.dk';
-$config['os2forms_email']['error_message_from_name'] = 'Selvbetjening';
-```
-
-Remember to translate the error message email subject and body.
-
 ## Production
 
 ```sh
