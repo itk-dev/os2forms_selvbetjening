@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b69808d9b0648aa15e24011e37d0259b",
+    "content-hash": "1a4fe8dc2af338c3bd1dcc05aa9a57dd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10120,16 +10120,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.15.2",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "c360e61cb21e22228d88a21d5840b264a843147b"
+                "reference": "fabd526e7aad8768fd40d083dfec9ae473fa70fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/c360e61cb21e22228d88a21d5840b264a843147b",
-                "reference": "c360e61cb21e22228d88a21d5840b264a843147b",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/fabd526e7aad8768fd40d083dfec9ae473fa70fe",
+                "reference": "fabd526e7aad8768fd40d083dfec9ae473fa70fe",
                 "shasum": ""
             },
             "require": {
@@ -10213,6 +10213,7 @@
                 "phpunit/phpunit": "^9.5",
                 "wsdltophp/packagegenerator": "^4.0"
             },
+            "default-branch": true,
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": false,
@@ -10222,7 +10223,8 @@
                         "2733781 - Add Export to Word Support": "https://www.drupal.org/files/issues/2019-11-22/2733781-47.patch"
                     },
                     "drupal/webform": {
-                        "Unlock possibility of using Entity print module export to Word": "https://www.drupal.org/files/issues/2020-02-29/3096552-6.patch"
+                        "Unlock possibility of using Entity print module export to Word": "https://www.drupal.org/files/issues/2020-02-29/3096552-6.patch",
+                        "Webform computed element post save alter": "https://www.drupal.org/files/issues/2024-06-25/webform_computed_post_save_field_alter.patch"
                     },
                     "drupal/user_default_page": {
                         "Warning: in_array() expects parameter 2 to be array, null given in user_default_page_user_logout() (https://www.drupal.org/node/3246986)": "https://www.drupal.org/files/issues/2021-11-01/user_default_page-3246986-2.patch"
@@ -10246,9 +10248,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.15.2"
+                "source": "https://github.com/OS2Forms/os2forms/tree/develop"
             },
-            "time": "2024-05-27T08:55:53+00:00"
+            "time": "2024-06-26T07:55:06+00:00"
         },
         {
             "name": "os2forms/os2forms_fasit",
@@ -22961,11 +22963,18 @@
             "version": "dev-feature/guzzle6-adapter",
             "alias": "1.5",
             "alias_normalized": "1.5.0.0"
+        },
+        {
+            "package": "os2forms/os2forms",
+            "version": "dev-develop",
+            "alias": "3.15.4",
+            "alias_normalized": "3.15.4.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20
+        "itk-dev/serviceplatformen": 20,
+        "os2forms/os2forms": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
