@@ -10124,12 +10124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "fabd526e7aad8768fd40d083dfec9ae473fa70fe"
+                "reference": "34113563f9980bdcae2e9b0b38e740b113964430"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/fabd526e7aad8768fd40d083dfec9ae473fa70fe",
-                "reference": "fabd526e7aad8768fd40d083dfec9ae473fa70fe",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/34113563f9980bdcae2e9b0b38e740b113964430",
+                "reference": "34113563f9980bdcae2e9b0b38e740b113964430",
                 "shasum": ""
             },
             "require": {
@@ -10250,7 +10250,7 @@
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
                 "source": "https://github.com/OS2Forms/os2forms/tree/develop"
             },
-            "time": "2024-06-26T07:55:06+00:00"
+            "time": "2024-06-28T10:57:59+00:00"
         },
         {
             "name": "os2forms/os2forms_fasit",
