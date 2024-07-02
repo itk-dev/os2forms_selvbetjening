@@ -8,6 +8,7 @@ dependencies:
     - eu_cookie_compliance
     - filter
     - system
+    - webform_encrypt
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
@@ -18,3 +19,4 @@ permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
   - 'use text format restricted_html'
+  - 'view encrypted values'
