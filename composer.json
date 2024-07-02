@@ -153,6 +153,9 @@
             },
             "drupal/log_stdout": {
                 "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
+            },
+            "drupal/webform": {
+                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch"
             }
         },
         "patches-ignore": {
