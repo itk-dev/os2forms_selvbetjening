@@ -6,6 +6,7 @@ dependencies:
     - rest.resource.webform_rest_submit
   module:
     - rest
+    - webform_encrypt
   enforced:
     module:
       - os2forms_rest_api
@@ -17,3 +18,4 @@ weight: 2
 is_admin: null
 permissions:
   - 'restful post webform_rest_submit'
+  - 'view encrypted values'

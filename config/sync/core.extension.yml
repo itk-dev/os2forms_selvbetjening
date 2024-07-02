@@ -32,6 +32,7 @@ module:
   dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
+  encrypt: 0
   entity_print: 0
   events_logging: 0
   field: 0
@@ -49,6 +50,7 @@ module:
   itkdev_openid_connect: 0
   jquery_ui: 0
   jquery_ui_datepicker: 0
+  key: 0
   key_auth: 0
   keyboard_shortcuts: 0
   lang_dropdown: 0
@@ -115,6 +117,7 @@ module:
   shortcut: 0
   simplesamlphp_auth: 0
   smtp: 0
+  sodium: 0
   switch_page_theme: 0
   syslog: 0
   system: 0
@@ -132,6 +135,7 @@ module:
   webform_attachment: 0
   webform_composite: 0
   webform_embed: 0
+  webform_encrypt: 0
   webform_entity_print: 0
   webform_entity_print_attachment: 0
   webform_migrate: 0
@@ -157,6 +161,7 @@ module:
   views: 10
   os2forms_forloeb_profile: 1000
   eu_cookie_compliance: 1001
+  os2forms_encrypt: 9999
 theme:
   bootstrap: 0
   stable: 0

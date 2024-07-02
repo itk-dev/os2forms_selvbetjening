@@ -6,6 +6,16 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.8.0] XXXX
+
+* Tilføjede `os2forms_fasit`-kø-konfiguration.
+* Fjernede ekstra OS2Forms indstillingsfaneblad på formularer.
+* Opdaterede [OS2Forms](https://github.com/os2forms/os2forms/) version.
+* Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
+* Tilføjede templates til ændring af `os2forms_attachment` og
+  maestro-pdf-notifikationer i `os2forms_selvbetjening_theme`-temaet.
+* Gav roller adgang til at se encrypted values.
+
 ## [2.7.14] 2024-07-02
 
 * Tilføjede patch af `polyfill`
