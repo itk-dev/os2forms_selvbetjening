@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07708cd52b7439c020935b1474268e09",
+    "content-hash": "9d87fe2c9bcec585822ca77efc4bca5c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9975,16 +9975,16 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.0.2",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
+                "reference": "1d8b5d616b16c6844c7a5f91d459951fd004ca3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/1d8b5d616b16c6844c7a5f91d459951fd004ca3e",
+                "reference": "1d8b5d616b16c6844c7a5f91d459951fd004ca3e",
                 "shasum": ""
             },
             "require": {
@@ -10000,6 +10000,7 @@
                 "drupal/coder": "^8.3",
                 "mglaman/drupal-check": "^1.4"
             },
+            "default-branch": true,
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10014,9 +10015,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/develop"
             },
-            "time": "2024-04-22T07:27:59+00:00"
+            "time": "2024-06-28T10:20:39+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -22474,11 +22475,18 @@
             "version": "dev-feature/guzzle6-adapter",
             "alias": "1.5",
             "alias_normalized": "1.5.0.0"
+        },
+        {
+            "package": "os2forms/os2forms_fasit",
+            "version": "dev-develop",
+            "alias": "1.0.3",
+            "alias_normalized": "1.0.3.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20
+        "itk-dev/serviceplatformen": 20,
+        "os2forms/os2forms_fasit": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
