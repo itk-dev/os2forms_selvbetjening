@@ -1,0 +1,10 @@
+diff --git a/os2forms.routing.yml b/os2forms.routing.yml
+index 8f55e52..8b4074e 100644
+--- a/os2forms.routing.yml
++++ b/os2forms.routing.yml
+@@ -11,4 +11,5 @@ os2forms.entity.webform.settings_form:
+     _entity_form: webform.os2forms_settings
+     _title_callback: '\Drupal\webform\Controller\WebformEntityController::title'
+   requirements:
++    _access: 'FALSE'
+     _entity_access: 'webform.update'

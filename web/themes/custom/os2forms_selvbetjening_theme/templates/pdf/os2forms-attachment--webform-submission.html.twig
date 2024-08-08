@@ -1,0 +1,28 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="{{ title }}">
+  <meta name="keywords" content="Selvbetjening">
+  <meta name="author" content="{{ author }}">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" media="all" href="{{ base_url }}/themes/custom/os2forms_selvbetjening_theme/assets/pdf.css" />
+</head>
+<body>
+{% if header %}
+  <header>
+    {{ header }}
+  </header>
+{% endif %}
+
+{% if footer %}
+  <footer>
+    {{ footer }}
+  </footer>
+{% endif %}
+
+<div class="page">
+  {{ content }}
+</div>
+
+</body>
+</html>

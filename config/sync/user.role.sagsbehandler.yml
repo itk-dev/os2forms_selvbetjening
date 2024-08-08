@@ -22,6 +22,7 @@ dependencies:
     - toolbar
     - webform
     - webform_node
+    - webform_submission_log
 _core:
   default_config_hash: jA-vZTVeFBc5q5-_Ukuh9YfLnjw8y0jijXonKSZ1weQ
 id: sagsbehandler
