@@ -10118,12 +10118,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "9c7a3dbcad0109fe74510aa262de734a0f313380"
+                "reference": "1bf1b0653d30964c55d91ce10c727ab783d68d9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/9c7a3dbcad0109fe74510aa262de734a0f313380",
-                "reference": "9c7a3dbcad0109fe74510aa262de734a0f313380",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/1bf1b0653d30964c55d91ce10c727ab783d68d9f",
+                "reference": "1bf1b0653d30964c55d91ce10c727ab783d68d9f",
                 "shasum": ""
             },
             "require": {
@@ -10243,7 +10243,7 @@
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
                 "source": "https://github.com/OS2Forms/os2forms/tree/feature/encrypt-subelements"
             },
-            "time": "2024-08-09T08:21:05+00:00"
+            "time": "2024-08-09T08:53:30+00:00"
         },
         {
             "name": "os2forms/os2forms_fasit",
