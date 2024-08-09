@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c923b7d1ead409c10513dc6a717ccc51",
+    "content-hash": "bd54ae812f60245c1e593bcb6236930e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10114,16 +10114,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "dev-develop",
+            "version": "dev-feature/encrypt-subelements",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "34113563f9980bdcae2e9b0b38e740b113964430"
+                "reference": "9c7a3dbcad0109fe74510aa262de734a0f313380"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/34113563f9980bdcae2e9b0b38e740b113964430",
-                "reference": "34113563f9980bdcae2e9b0b38e740b113964430",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/9c7a3dbcad0109fe74510aa262de734a0f313380",
+                "reference": "9c7a3dbcad0109fe74510aa262de734a0f313380",
                 "shasum": ""
             },
             "require": {
@@ -10207,7 +10207,6 @@
                 "phpunit/phpunit": "^9.5",
                 "wsdltophp/packagegenerator": "^4.0"
             },
-            "default-branch": true,
             "type": "drupal-module",
             "extra": {
                 "composer-exit-on-patch-failure": false,
@@ -10242,9 +10241,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/develop"
+                "source": "https://github.com/OS2Forms/os2forms/tree/feature/encrypt-subelements"
             },
-            "time": "2024-06-28T10:57:59+00:00"
+            "time": "2024-08-09T08:21:05+00:00"
         },
         {
             "name": "os2forms/os2forms_fasit",
@@ -22960,7 +22959,7 @@
         },
         {
             "package": "os2forms/os2forms",
-            "version": "dev-develop",
+            "version": "dev-feature/encrypt-subelements",
             "alias": "3.15.4",
             "alias_normalized": "3.15.4.0"
         }

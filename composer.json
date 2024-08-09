@@ -76,7 +76,7 @@
         "itk-dev/os2forms_user_field_lookup": "^1.0",
         "itk-dev/serviceplatformen": "dev-feature/guzzle6-adapter as 1.5",
         "itk-dev/web_accessibility_statement": "^1.0",
-        "os2forms/os2forms": "dev-develop as 3.15.4",
+        "os2forms/os2forms": "dev-feature/encrypt-subelements as 3.15.4",
         "os2forms/os2forms_fasit": "^1.0",
         "os2forms/os2forms_forloeb_profile": "^1.12",
         "os2forms/os2forms_get_organized": "^1.1.5",
