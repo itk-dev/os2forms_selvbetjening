@@ -141,7 +141,8 @@
             "drupal/config_entity_revisions":  {
                 "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch",
                 "https://www.drupal.org/project/config_entity_revisions/issues/3260602": "https://www.drupal.org/files/issues/2022-03-15/content_entity_revisions-3260602-07.patch",
-                "webform_revisions_install called twice during site:install --existing-config": "patches/drupal/config_entity_revisions/webform_revisions.install.patch"
+                "webform_revisions_install called twice during site:install --existing-config": "patches/drupal/config_entity_revisions/webform_revisions.install.patch",
+                "Always set webform_revision to NULL on webform submissions": "patches/drupal/config_entity_revisions/WebformRevisionController.patch"
             },
             "drupal/permissions_by_term": {
                 "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"

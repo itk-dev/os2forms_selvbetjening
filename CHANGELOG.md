@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Opdaterede docker-compose node setup.
+* Sikrede at `webform_revision` på indsendelser altid er `NULL`.
 
 ## [2.7.14] 2024-07-02
 
