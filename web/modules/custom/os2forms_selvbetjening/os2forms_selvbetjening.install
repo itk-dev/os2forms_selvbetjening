@@ -15,9 +15,10 @@ use Drupal\os2forms_selvbetjening\Helper\InstallHelper;
  * This is done to avoid various issues we have encountered with
  * webform revisions e.g. stray submissions and repeated identical joins
  * during load of submissions.
- * Future submissions is handled by a patch ensuring it is always set to NULL,
- * @see patches/drupal/config_entity_revisions/WebformRevisionController.patch.
+ * Future submissions is handled by a patch ensuring it is always set to NULL.
+ *
+ * @see patches/drupal/config_entity_revisions/WebformRevisionController.patch
  */
 function os2forms_selvbetjening_update_9501() {
-  Drupal::service(InstallHelper::class)->nullifyExistingWebformSubmissionRevisions($form, $form_state, $form_id);
+  Drupal::service(InstallHelper::class)->nullifyExistingWebformSubmissionRevisions();
 }

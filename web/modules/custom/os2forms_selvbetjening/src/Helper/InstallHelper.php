@@ -27,8 +27,6 @@ class InstallHelper {
 
   /**
    * Nullify webform revision on existing webform submissions.
-   *
-   * @throws \Drupal\os2forms_selvbetjening\Exception\SelvbetjeningException
    */
   public function nullifyExistingWebformSubmissionRevisions() {
     if (!$this->moduleInstaller->moduleExists('webform_revisions')) {
