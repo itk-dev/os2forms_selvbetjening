@@ -1,0 +1,12 @@
+diff --git a/modules/webform_revisions/src/Controller/WebformRevisionsController.php b/modules/webform_revisions/src/Controller/WebformRevisionsController.php
+index f7dc1ef..273716d 100644
+--- a/modules/webform_revisions/src/Controller/WebformRevisionsController.php
++++ b/modules/webform_revisions/src/Controller/WebformRevisionsController.php
+@@ -90,6 +90,6 @@ class WebformRevisionsController extends ConfigEntityRevisionsControllerBase imp
+     /* @var $webform \Drupal\webform_revisions\Entity\WebformRevisions */
+     $webform = $entity->getWebform();
+ 
+-    $entity->set('webform_revision', $webform->getRevisionID());
++    $entity->set('webform_revision', NULL);
+   }
+ }

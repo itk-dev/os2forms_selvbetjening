@@ -18,3 +18,8 @@ services:
       - '@router.admin_context'
     tags:
       - { name: 'event_subscriber' }
+
+  Drupal\os2forms_selvbetjening\Helper\InstallHelper:
+    arguments:
+      - '@module_handler'
+      - '@database'
