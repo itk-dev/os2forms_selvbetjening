@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd54ae812f60245c1e593bcb6236930e",
+    "content-hash": "91174a270dd497b23f8436b4997da2ca",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10114,16 +10114,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "dev-feature/encrypt-subelements",
+            "version": "3.15.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "1bf1b0653d30964c55d91ce10c727ab783d68d9f"
+                "reference": "c06eb97a5b7f4a6ded6fa6dfdfb88666049da2c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/1bf1b0653d30964c55d91ce10c727ab783d68d9f",
-                "reference": "1bf1b0653d30964c55d91ce10c727ab783d68d9f",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/c06eb97a5b7f4a6ded6fa6dfdfb88666049da2c5",
+                "reference": "c06eb97a5b7f4a6ded6fa6dfdfb88666049da2c5",
                 "shasum": ""
             },
             "require": {
@@ -10241,9 +10241,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/feature/encrypt-subelements"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.15.7"
             },
-            "time": "2024-08-09T08:53:30+00:00"
+            "time": "2024-08-15T12:37:43+00:00"
         },
         {
             "name": "os2forms/os2forms_fasit",
@@ -22956,18 +22956,11 @@
             "version": "dev-feature/guzzle6-adapter",
             "alias": "1.5",
             "alias_normalized": "1.5.0.0"
-        },
-        {
-            "package": "os2forms/os2forms",
-            "version": "dev-feature/encrypt-subelements",
-            "alias": "3.15.4",
-            "alias_normalized": "3.15.4.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20,
-        "os2forms/os2forms": 20
+        "itk-dev/serviceplatformen": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
