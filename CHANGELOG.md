@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.8.0] XXXX
+## [2.8.0] 2024-08-19
 
 * Tilføjede `os2forms_fasit`-kø-konfiguration.
 * Fjernede ekstra OS2Forms indstillingsfaneblad på formularer.
@@ -460,7 +460,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.14...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.0...HEAD
+[2.7.14]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.14...2.8.0
 [2.7.14]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.13...2.7.14
 [2.7.13]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.12...2.7.13
 [2.7.12]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.11...2.7.12
