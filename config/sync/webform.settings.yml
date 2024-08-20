@@ -175,8 +175,8 @@ element:
     webform_telephone: webform_telephone
 html_editor:
   disabled: false
-  element_format: ''
-  mail_format: ''
+  element_format: webform_default
+  mail_format: webform_default
   tidy: true
   make_unused_managed_files_temporary: true
 file:
