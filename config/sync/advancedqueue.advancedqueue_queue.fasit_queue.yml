@@ -9,8 +9,8 @@ backend_configuration:
   lease_time: 300
 processor: daemon
 processing_time: 280
+locked: false
 threshold:
   type: 0
   limit: 0
   state: all
-locked: false
