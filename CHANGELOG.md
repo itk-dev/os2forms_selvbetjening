@@ -6,10 +6,13 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.8.1] 2024-08-20
+## [2.8.1] 2024-08-21
 
 * Oprydning af konfiguration.
 * Tilføjede manglende html editor konfiguration.
+* Installerede [CKEditor 5](https://www.drupal.org/docs/core-modules-and-themes/core-modules/ckeditor-5-module).
+* Installerede [Editor Advanced link](https://www.drupal.org/project/editor_advanced_link).
+* Tilføjede nyt `webform` tekstformat.
 
 ## [2.8.0] 2024-08-19
 
