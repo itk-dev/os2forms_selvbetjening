@@ -1,12 +1,12 @@
-uuid: 8b5ac96c-839b-4ef3-b996-c578a7bb9383
-langcode: en
+uuid: 431c4396-dad3-41cf-bd25-56c1712f9829
+langcode: da
 status: true
 dependencies:
   config:
-    - filter.format.webform_default
+    - filter.format.webform
   module:
     - ckeditor5
-format: webform_default
+format: webform
 editor: ckeditor5
 settings:
   toolbar:
@@ -20,13 +20,13 @@ settings:
       - '|'
       - specialCharacters
       - '|'
+      - link
+      - '|'
       - numberedList
       - bulletedList
       - '|'
-      - link
-      - '|'
-      - indent
       - outdent
+      - indent
       - '|'
       - blockQuote
       - '|'
@@ -39,9 +39,12 @@ settings:
         - heading4
         - heading5
         - heading6
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
     ckeditor5_list:
       reversed: true
       startIndex: true
-    ckeditor5_sourceEditing:
-      allowed_tags: {  }
+    editor_advanced_link_link:
+      enabled_attributes:
+        - target
 image_upload: {  }

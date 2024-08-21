@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.full_html
+    - filter.format.webform
     - node.type.webform
   module:
     - block_content
@@ -117,6 +118,7 @@ permissions:
   - 'translate interface'
   - 'use advanced search'
   - 'use text format full_html'
+  - 'use text format webform'
   - 'use udgivelse_af_forloeb transition create_new_draft'
   - 'use udgivelse_af_forloeb transition publish'
   - 'view any unpublished content'
