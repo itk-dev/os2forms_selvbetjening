@@ -21,6 +21,7 @@ settings:
       - specialCharacters
       - '|'
       - link
+      - drupalInsertImage
       - '|'
       - numberedList
       - bulletedList
@@ -44,7 +45,16 @@ settings:
     ckeditor5_list:
       reversed: true
       startIndex: true
+    ckeditor5_imageResize:
+      allow_resize: true
     editor_advanced_link_link:
       enabled_attributes:
         - target
-image_upload: {  }
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: 0
+    height: 0
