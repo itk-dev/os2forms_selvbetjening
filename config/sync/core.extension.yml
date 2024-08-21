@@ -32,6 +32,7 @@ module:
   dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
+  editor_advanced_link: 0
   encrypt: 0
   entity_print: 0
   events_logging: 0

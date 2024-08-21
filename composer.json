@@ -53,6 +53,7 @@
         "drupal/core-composer-scaffold": "^9.5.9",
         "drupal/core-project-message": "^9.5.9",
         "drupal/core-recommended": "^9.5.9",
+        "drupal/editor_advanced_link": "^2.2",
         "drupal/jquery_ui_datepicker": "^1.4",
         "drupal/key_auth": "^2.1",
         "drupal/keyboard_shortcuts": "^1.1.1",
