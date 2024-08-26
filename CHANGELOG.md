@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.8.1] 2024-08-21
+## [2.8.1] 2024-08-26
 
 * Oprydning af konfiguration.
 * Tilføjede manglende html editor konfiguration.
