@@ -1,8 +1,8 @@
-_core:
-  default_config_hash: Ec4va_HZl3RMttAflc8Oh7hFjwddLh1Jo4yTR9e80FE
 langcode: da
 settings:
   default_status: open
+  default_categories: {  }
+  default_page: true
   default_page_base_path: /form
   default_ajax: false
   default_ajax_progress_type: throbber
@@ -45,6 +45,7 @@ settings:
   default_draft_pending_multiple_message: 'You have pending drafts for this webform. <a href="#">View your pending drafts</a>.'
   default_confirmation_message: 'Ny besvarelse oprettet vedrørende [webform:title].'
   default_confirmation_back_label: 'Tilbage til formular'
+  default_confirmation_noindex: true
   default_limit_total_message: 'No more submissions are permitted.'
   default_limit_user_message: 'No more submissions are permitted.'
   default_submission_label: '[webform_submission:submitted-to]: Submission #[webform_submission:serial]'
@@ -89,6 +90,13 @@ settings:
   default_share: false
   default_share_node: false
   default_share_theme_name: ''
+  webform_bulk_form: true
+  webform_bulk_form_actions:
+    - webform_open_action
+    - webform_close_action
+    - webform_archive_action
+    - webform_unarchive_action
+    - webform_delete_action
   webform_submission_bulk_form: true
   webform_submission_bulk_form_actions:
     - webform_submission_delete_action
@@ -96,6 +104,8 @@ settings:
     - webform_submission_make_sticky_action
     - webform_submission_make_unlock_action
     - webform_submission_make_unsticky_action
+    - webform_submission_print_download_action
+    - webform_submission_print_download_action
   dialog: false
   dialog_options:
     narrow:
@@ -111,6 +121,7 @@ assets:
   css: ''
   javascript: ''
 form:
+  limit: 50
   filter_category: ''
   filter_state: ''
 element:
@@ -145,8 +156,6 @@ element:
   default_empty_option: true
   default_empty_option_required: ''
   default_empty_option_optional: ''
-  default_algolia_places_app_id: ''
-  default_algolia_places_api_key: ''
   excluded_elements:
     color: color
     entity_autocomplete: entity_autocomplete
@@ -177,14 +186,14 @@ element:
     webform_telephone: webform_telephone
 html_editor:
   disabled: false
-  element_format: ''
-  mail_format: ''
+  element_format: webform
+  mail_format: webform
   tidy: true
   make_unused_managed_files_temporary: true
 file:
   file_public: false
   file_private_redirect: true
-  file_private_redirect_message: 'Please login to access the uploaded file.'
+  file_private_redirect_message: '<p>Please login to access the uploaded file.</p>'
   default_max_filesize: ''
   default_managed_file_extensions: 'gif jpg jpeg png bmp eps tif pict psd txt rtf html odf pdf doc docx ppt pptx xls xlsx xml avi mov mp3 mp4 ogg wav bz2 dmg gz jar rar sit svg tar zip'
   default_image_file_extensions: 'gif jpg jpeg png'
@@ -237,6 +246,7 @@ export:
   options_multiple_format: compact
   options_item_format: label
   likert_answers_format: label
+  signature_format: status
   composite_element_item_format: label
   excluded_exporters: {  }
 handler:
@@ -368,6 +378,9 @@ third_party_settings:
         .page {
           padding: 0;
         }
+      os2form_header: aak_header
+      os2form_colophon: aak_kolofon
+      os2form_footer: empty
     export_types:
       pdf:
         enabled: true

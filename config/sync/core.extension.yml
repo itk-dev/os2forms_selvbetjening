@@ -12,6 +12,7 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
+  ckeditor5: 0
   clamav: 0
   coc_forms_auto_export: 0
   color: 0
@@ -32,6 +33,7 @@ module:
   dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
+  editor_advanced_link: 0
   encrypt: 0
   entity_print: 0
   events_logging: 0
