@@ -10,6 +10,7 @@ dependencies:
   module:
     - key_auth
     - rest
+    - webform_encrypt
   enforced:
     module:
       - os2forms_rest_api
@@ -25,3 +26,4 @@ permissions:
   - 'restful get webform_rest_form_submissions'
   - 'restful get webform_rest_submission'
   - 'use key authentication'
+  - 'view encrypted values'

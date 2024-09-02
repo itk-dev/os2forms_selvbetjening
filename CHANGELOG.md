@@ -6,7 +6,31 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.8.2] XXX
+
 * Tilføjede signatur-element patches.
+
+## [2.8.1] 2024-08-26
+
+* Oprydning af konfiguration.
+* Tilføjede manglende html editor konfiguration.
+* Installerede [CKEditor 5](https://www.drupal.org/docs/core-modules-and-themes/core-modules/ckeditor-5-module).
+* Installerede [Editor Advanced link](https://www.drupal.org/project/editor_advanced_link).
+* Tilføjede nyt `webform` tekstformat.
+
+## [2.8.0] 2024-08-19
+
+* Tilføjede `os2forms_fasit`-kø-konfiguration.
+* Fjernede ekstra OS2Forms indstillingsfaneblad på formularer.
+* Opdaterede [OS2Forms](https://github.com/os2forms/os2forms/) version.
+* Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
+* Tilføjede templates til ændring af `os2forms_attachment` og
+  maestro-pdf-notifikationer i `os2forms_selvbetjening_theme`-temaet.
+* Gav roller adgang til at se encrypted values.
+
+## [2.7.14] 2024-07-02
+
+* Tilføjede patch af `polyfill`
 
 ## [2.7.13] 2024-06-03
 
@@ -448,7 +472,11 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.13...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...HEAD
+[2.8.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.1...2.8.2
+[2.8.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.0...2.8.1
+[2.8.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.14...2.8.0
+[2.7.14]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.13...2.7.14
 [2.7.13]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.12...2.7.13
 [2.7.12]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.11...2.7.12
 [2.7.11]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.10...2.7.11

@@ -53,6 +53,7 @@
         "drupal/core-composer-scaffold": "^9.5.9",
         "drupal/core-project-message": "^9.5.9",
         "drupal/core-recommended": "^9.5.9",
+        "drupal/editor_advanced_link": "^2.2",
         "drupal/jquery_ui_datepicker": "^1.4",
         "drupal/key_auth": "^2.1",
         "drupal/keyboard_shortcuts": "^1.1.1",
@@ -154,7 +155,11 @@
             "drupal/log_stdout": {
                 "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
             },
+            "os2forms/os2forms": {
+                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
+            },
             "drupal/webform": {
+                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
                 "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
                 "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
             }
