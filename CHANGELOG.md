@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.8.2] XXX
 
+* Opdaterede [OS2Forms Organisation](https://github.com/itk-dev/os2forms_organisation) version.
 * Tilføjede signatur-element patches.
 * CKEditor 5 link standard `https` protocol.
 
