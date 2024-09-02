@@ -9,6 +9,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [2.8.2] XXX
 
 * Tilføjede signatur-element patches.
+* CKEditor 5 link standard `https` protocol.
 
 ## [2.8.1] 2024-08-26
 
