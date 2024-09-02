@@ -10299,16 +10299,16 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
+                "reference": "e19aac6993ef3023d18d55c853138821de231ea1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/e19aac6993ef3023d18d55c853138821de231ea1",
+                "reference": "e19aac6993ef3023d18d55c853138821de231ea1",
                 "shasum": ""
             },
             "require": {
@@ -10338,9 +10338,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.1.0"
             },
-            "time": "2024-04-22T07:27:59+00:00"
+            "time": "2024-09-02T13:22:22+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
