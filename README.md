@@ -140,7 +140,8 @@ http://organisation_api:8080/api/v1/
 
 Overrides default webform email handler adding the option to send
 a notification to configured email if attachment size surpasses
-a configured value.
+a configured value. If this size is surpassed only the notification
+email is sent.
 
 By default, no notification is sent.
 Enable and configure notifications receivers on the webform settings page.
