@@ -134,7 +134,8 @@
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
             },
             "drupal/core": {
-                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch"
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch",
+                "CKEditor 5 link default protocol https": "patches/drupal/core/ckeditor_5_link_default_https.patch"
             },
             "drupal/openid_connect": {
                 "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"

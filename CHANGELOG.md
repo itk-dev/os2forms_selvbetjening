@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* CKEditor 5 link standard `https` protocol.
+
 ## [2.8.1] 2024-08-26
 
 * Oprydning af konfiguration.
