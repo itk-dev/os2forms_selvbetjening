@@ -1,0 +1,13 @@
+diff --git a/src/Plugin/WebformElement/WebformSignature.php b/src/Plugin/WebformElement/WebformSignature.php
+index 6f28ab1d4..0881b299f 100644
+--- a/src/Plugin/WebformElement/WebformSignature.php
++++ b/src/Plugin/WebformElement/WebformSignature.php
+@@ -53,7 +53,7 @@ class WebformSignature extends WebformElementBase implements WebformElementFileD
+       // General settings.
+       'description' => $this->t('Sign above'),
+       'readonly' => FALSE,
+-      'uri_scheme' => 'public',
++      'uri_scheme' => 'private',
+     ] + parent::defineDefaultProperties();
+     unset(
+       $properties['format_items'],

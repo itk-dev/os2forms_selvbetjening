@@ -160,7 +160,9 @@
                 "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
             },
             "drupal/webform": {
-                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch"
+                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
+                "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
+                "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
             }
         },
         "patches-ignore": {
