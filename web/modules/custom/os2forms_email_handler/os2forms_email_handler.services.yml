@@ -1,0 +1,2 @@
+services:
+  Drupal\os2forms_email_handler\Helper\WebformHelper:

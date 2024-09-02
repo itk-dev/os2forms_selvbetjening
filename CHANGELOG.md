@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.8.2] XXX
 
+* Tilføjede mulighed for at sende notifikation hvis
+  størrelse på e-mailvedhæftninger overstiger grænse.
 * Opdaterede [OS2Forms Organisation](https://github.com/itk-dev/os2forms_organisation)
   version.
 * Tilføjede signatur-element patches.

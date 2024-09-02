@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Module file for the os2forms_email_handler module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\os2forms_email_handler\Helper\WebformHelper;
+use Drupal\os2forms_email_handler\Plugin\WebformHandler\OS2FormsEmailWebformHandler;
+
+/**
+ * Implements hook_ELEMENT_info_alter().
+ *
+ * Overrides default webform email handler with OS2FormsEmailWebformHandler.
+ */
+function os2forms_email_handler_webform_handler_info_alter(array &$handlers): void {
+  $handlers['email']['class'] = OS2FormsEmailWebformHandler::class;
+}
+
+/**
+ * Implements hook_webform_third_party_settings_form_alter().
+ *
+ * @see WebformHelper::webformThirdPartySettingsFormAlter()
+ */
+function os2forms_email_handler_webform_third_party_settings_form_alter(array &$form, FormStateInterface $form_state): void {
+  \Drupal::service(WebformHelper::class)->webformThirdPartySettingsFormAlter($form, $form_state);
+}
