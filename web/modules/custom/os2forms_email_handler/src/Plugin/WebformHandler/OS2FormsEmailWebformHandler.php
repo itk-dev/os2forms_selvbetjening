@@ -51,11 +51,13 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
     $webform = $webform_submission->getWebform();
     $settings = $webform->getThirdPartySetting('os2forms', WebformHelper::MODULE_NAME);
 
+    $sendOriginalMessage = TRUE;
+
     if ($settings['enabled'] && !empty($settings['email_recipients'])) {
-      $this->handleAttachmentNotification($webform_submission, $message, $settings['email_recipients']);
+      $sendOriginalMessage = !$this->handleAttachmentNotification($webform_submission, $message, $settings['email_recipients']);
     }
 
-    return parent::sendMessage($webform_submission, $message);
+    return $sendOriginalMessage ? parent::sendMessage($webform_submission, $message) : FALSE;
   }
 
   /**
@@ -67,11 +69,18 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *   An array of message parameters.
    * @param string $emails
    *   A string of emails.
+   *
+   * @return bool
+   *   Whether file size threshold was surpassed or not.
    */
-  private function handleAttachmentNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): void {
-    if ($this->isAttachmentFileSizeThresholdSurpassed($webform_submission)) {
+  private function handleAttachmentNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): bool {
+    $isFileSizeThresholdSurpassed = $this->isAttachmentFileSizeThresholdSurpassed($webform_submission);
+
+    if ($isFileSizeThresholdSurpassed) {
       $this->sendFileSizeNotification($webform_submission, $message, $emails);
     }
+
+    return $isFileSizeThresholdSurpassed;
   }
 
   /**
@@ -210,11 +219,12 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
 
       $context = [
         '@form' => $this->getWebform()->label(),
+        '@form_id' => $this->getWebform()->id(),
         '@handler' => $this->label(),
+        '@handler_id' => $this->getHandlerId(),
         '@email' => $emailAddress,
-        'link' => ($webform_submission->id()) ? $webform_submission->toLink($this->t('View'))->toString() : NULL,
+        'link' => ($webform_submission->id()) ? $webform_submission->toLink($this->t('view'))->toString() : NULL,
         'webform_submission' => $webform_submission,
-        'handler_id' => $this->getHandlerId(),
         'operation' => 'notification email',
       ];
 
@@ -236,11 +246,13 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
         $notificationMessage['subject'] = $this->t('File size submission warning');
 
         $notificationMessage['body'] = $this->t(
-          "<p>Dear @name</p><p>Submission @submission attempted sending an email with a large total file size of attachments surpassing @threshold for handler (@handler) on form (@form).</p>", [
+          "<p>Dear @name</p><p>Submission @submission attempted sending an email with a large total file size of attachments surpassing @threshold for handler @handler (@handler_id) on form @form (@form_id).</p>", [
             '@name' => $emailAddress,
             '@submission' => $context['link'],
             '@handler' => $context['@handler'],
-            '@form' => $context['@form'] ?? '',
+            '@handler_id' => $context['@handler_id'],
+            '@form' => $context['@form'],
+            '@form_id' => $context['@form_id'],
             '@threshold' => $settings['notification_file_size_threshold'] ?? self::DEFAULT_ATTACHMENT_FILE_SIZE_THRESHOLD,
           ]);
 
