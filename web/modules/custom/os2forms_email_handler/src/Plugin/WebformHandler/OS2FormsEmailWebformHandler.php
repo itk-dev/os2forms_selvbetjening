@@ -74,7 +74,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *   Whether file size threshold was surpassed or not.
    */
   private function handleAttachmentNotification(WebformSubmissionInterface $webform_submission, array $message, string $emails): bool {
-    if ($isFileSizeThresholdSurpassed = $this->isAttachmentFileSizeThresholdSurpassed($webform_submission))  {
+    if ($isFileSizeThresholdSurpassed = $this->isAttachmentFileSizeThresholdSurpassed($webform_submission)) {
       $this->sendFileSizeNotification($webform_submission, $message, $emails);
     }
 
