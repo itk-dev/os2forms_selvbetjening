@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.full_html
     - filter.format.restricted_html
+    - filter.format.webform
     - node.type.webform
     - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
@@ -22,6 +23,7 @@ dependencies:
     - system
     - toolbar
     - webform
+    - webform_encrypt
     - webform_node
 _core:
   default_config_hash: FuuYYl7dBxmUUArvRKKBSiWjGH8UJR6cxgF0OmOYHiQ
@@ -81,11 +83,13 @@ permissions:
   - 'use advanced search'
   - 'use text format full_html'
   - 'use text format restricted_html'
+  - 'use text format webform'
   - 'use udgivelse_af_forlob_og_webformularer transition create_new_draft'
   - 'use udgivelse_af_forlob_og_webformularer transition publish'
   - 'use udgivelse_af_forlob_og_webformularer transition republish'
   - 'use udgivelse_af_forlob_og_webformularer transition unpublish'
   - 'view any unpublished content'
+  - 'view encrypted values'
   - 'view latest version'
   - 'view maestro entity identifiers entities'
   - 'view maestro process entities'

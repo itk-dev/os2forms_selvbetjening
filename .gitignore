@@ -222,6 +222,8 @@ yarn-error.log
 config/sync/**/maestro.maestro_template.*
 config/sync/**/webform.webform.*
 config/sync/**/webform.webform_options.*
+config/sync/**/leaflet_layers.map_bundle.*
+config/sync/**/leaflet_layers.map_layer.*
 
 # Ignore nemlogin settings
 config/sync/os2web_nemlogin.settings.yml

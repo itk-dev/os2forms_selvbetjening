@@ -1,0 +1,15 @@
+diff --git a/core/modules/ckeditor5/ckeditor5.ckeditor5.yml b/core/modules/ckeditor5/ckeditor5.ckeditor5.yml
+index 0a19bdca90..140412e714 100644
+--- a/core/modules/ckeditor5/ckeditor5.ckeditor5.yml
++++ b/core/modules/ckeditor5/ckeditor5.ckeditor5.yml
+@@ -328,6 +328,10 @@ ckeditor5_link:
+   ckeditor5:
+     plugins:
+       - link.Link
++    config:
++      link:
++        # @see https://ckeditor.com/docs/ckeditor5/latest/features/link.html#adding-default-link-protocol-to-external-links
++        defaultProtocol: 'https://'
+   drupal:
+     label: Link
+     library: core/ckeditor5.link

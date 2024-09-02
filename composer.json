@@ -53,6 +53,7 @@
         "drupal/core-composer-scaffold": "^9.5.9",
         "drupal/core-project-message": "^9.5.9",
         "drupal/core-recommended": "^9.5.9",
+        "drupal/editor_advanced_link": "^2.2",
         "drupal/jquery_ui_datepicker": "^1.4",
         "drupal/key_auth": "^2.1",
         "drupal/keyboard_shortcuts": "^1.1.1",
@@ -133,7 +134,8 @@
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
             },
             "drupal/core": {
-                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch"
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch",
+                "CKEditor 5 link default protocol https": "patches/drupal/core/ckeditor_5_link_default_https.patch"
             },
             "drupal/openid_connect": {
                 "Revoking group access does not reflect on applied roles (https://www.drupal.org/project/openid_connect/issues/3224128)": "https://git.drupalcode.org/project/openid_connect/-/merge_requests/31.diff"
@@ -153,6 +155,14 @@
             },
             "drupal/log_stdout": {
                 "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
+            },
+            "os2forms/os2forms": {
+                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
+            },
+            "drupal/webform": {
+                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
+                "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
+                "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
             }
         },
         "patches-ignore": {

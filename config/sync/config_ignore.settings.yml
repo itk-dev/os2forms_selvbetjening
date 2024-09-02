@@ -26,3 +26,6 @@ ignored_config_entities:
   - 'leaflet_layers.map_bundle.*'
   - 'leaflet_layers.map_layer.*'
   - os2forms_forloeb.settings
+  - '# Ignore encryption key and os2forms_encrypt settings'
+  - key.key.webform
+  - os2forms_encrypt.settings
