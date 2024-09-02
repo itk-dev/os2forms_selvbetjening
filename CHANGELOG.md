@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.8.2] XXX
+
 * CKEditor 5 link standard `https` protocol.
 
 ## [2.8.1] 2024-08-26
@@ -470,7 +472,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...HEAD
+[2.8.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.1...2.8.2
 [2.8.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.0...2.8.1
 [2.8.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.14...2.8.0
 [2.7.14]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.13...2.7.14
