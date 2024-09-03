@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede start[after] filter til mine bookinger i itkdev_booking.
+
 ## [2.8.0] 2024-08-19
 
 * Tilføjede `os2forms_fasit`-kø-konfiguration.

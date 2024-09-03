@@ -72,6 +72,7 @@ export default class Api {
     const params = new URLSearchParams({
       page,
       pageSize,
+      'start[after]': new Date().toISOString(),
     });
 
     params.append("title", search);
