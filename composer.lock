@@ -10490,16 +10490,16 @@
         },
         {
             "name": "os2forms/os2forms_rest_api",
-            "version": "2.0.3",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
-                "reference": "1294b7040c21055e0930b1ed00071d05d478f962"
+                "reference": "df8a972ed0c71efac0f280d86e6cae3e50c7edc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/1294b7040c21055e0930b1ed00071d05d478f962",
-                "reference": "1294b7040c21055e0930b1ed00071d05d478f962",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/df8a972ed0c71efac0f280d86e6cae3e50c7edc3",
+                "reference": "df8a972ed0c71efac0f280d86e6cae3e50c7edc3",
                 "shasum": ""
             },
             "require": {
@@ -10535,9 +10535,9 @@
             "description": "OS2Forms REST API",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
-                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.0.3"
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.1.0"
             },
-            "time": "2024-01-16T12:50:37+00:00"
+            "time": "2024-09-06T08:46:36+00:00"
         },
         {
             "name": "os2forms/os2forms_sync",
