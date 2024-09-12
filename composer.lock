@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23005b744c6e28aacfcda451846a6764",
+    "content-hash": "e4ece42f8f754749b0929adafb3796e6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5347,32 +5347,32 @@
         },
         {
             "name": "drupal/openid_connect",
-            "version": "2.0.0-beta3",
+            "version": "3.0.0-alpha3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/openid_connect.git",
-                "reference": "2.0.0-beta3"
+                "reference": "3.0.0-alpha3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/openid_connect-2.0.0-beta3.zip",
-                "reference": "2.0.0-beta3",
-                "shasum": "6307b246f9364e93b00dcd337dea761a243b4c05"
+                "url": "https://ftp.drupal.org/files/projects/openid_connect-3.0.0-alpha3.zip",
+                "reference": "3.0.0-alpha3",
+                "shasum": "002616dc2bfeb6b23204297e77d1f7a5369e69b3"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9",
-                "drupal/externalauth": "*",
+                "drupal/core": "^9.3 || ^10",
+                "drupal/externalauth": "^2.0",
                 "ext-json": "*",
                 "php": ">=7.1.0"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-beta3",
-                    "datestamp": "1666251325",
+                    "version": "3.0.0-alpha3",
+                    "datestamp": "1710708951",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -8866,16 +8866,16 @@
         },
         {
             "name": "itk-dev/beskedfordeler-drupal",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/beskedfordeler-drupal.git",
-                "reference": "8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb"
+                "reference": "4967ca4aa8e36a721fa6fab843682671b51de56a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb",
-                "reference": "8fdab703b1bcfbc3ccc16b26ed98d9caa41994eb",
+                "url": "https://api.github.com/repos/itk-dev/beskedfordeler-drupal/zipball/4967ca4aa8e36a721fa6fab843682671b51de56a",
+                "reference": "4967ca4aa8e36a721fa6fab843682671b51de56a",
                 "shasum": ""
             },
             "require": {
@@ -8907,9 +8907,9 @@
             "description": "Beskedfordeler for Drupal",
             "support": {
                 "issues": "https://github.com/itk-dev/beskedfordeler-drupal/issues",
-                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.1.1"
+                "source": "https://github.com/itk-dev/beskedfordeler-drupal/tree/1.2.0"
             },
-            "time": "2023-08-09T11:18:46+00:00"
+            "time": "2024-06-04T07:15:53+00:00"
         },
         {
             "name": "itk-dev/drupal_psr6_cache",
@@ -9068,16 +9068,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "7d764e5823081e38168aa6356f4ae56dd56e6fee"
+                "reference": "26f08ca8c78657a96ab744812ff661bb4080c446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/7d764e5823081e38168aa6356f4ae56dd56e6fee",
-                "reference": "7d764e5823081e38168aa6356f4ae56dd56e6fee",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/26f08ca8c78657a96ab744812ff661bb4080c446",
+                "reference": "26f08ca8c78657a96ab744812ff661bb4080c446",
                 "shasum": ""
             },
             "require": {
@@ -9105,22 +9105,22 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.4.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.5.0"
             },
-            "time": "2024-01-05T12:31:58+00:00"
+            "time": "2024-07-05T09:01:54+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "dd71ea46dc751a2606109a9c62ee738f82017a10"
+                "reference": "3587d447f92379c43f9ef39f495312dee309ac8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/dd71ea46dc751a2606109a9c62ee738f82017a10",
-                "reference": "dd71ea46dc751a2606109a9c62ee738f82017a10",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/3587d447f92379c43f9ef39f495312dee309ac8b",
+                "reference": "3587d447f92379c43f9ef39f495312dee309ac8b",
                 "shasum": ""
             },
             "require": {
@@ -9145,9 +9145,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.0.1"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.1.0"
             },
-            "time": "2024-03-07T14:02:25+00:00"
+            "time": "2024-09-12T08:12:03+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -10357,26 +10357,26 @@
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
-            "version": "1.14.0",
+            "version": "dev-f/d10_readiness",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_forloeb_profile.git",
-                "reference": "e4d043923f7d27757fc7b388080d2b102e590440"
+                "reference": "bc75ab8c5b222a7e84b9f5f335af4b1121b3ae58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/e4d043923f7d27757fc7b388080d2b102e590440",
-                "reference": "e4d043923f7d27757fc7b388080d2b102e590440",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_forloeb_profile/zipball/bc75ab8c5b222a7e84b9f5f335af4b1121b3ae58",
+                "reference": "bc75ab8c5b222a7e84b9f5f335af4b1121b3ae58",
                 "shasum": ""
             },
             "require": {
                 "cweagans/composer-patches": "^1.6.5",
                 "drupal/cache_control_override": "^1.1|^2.0",
-                "drupal/core": "^9",
+                "drupal/core": "^9 || ^10",
                 "drupal/gin": "^3.0-rc",
-                "drush/drush": "^11.4",
-                "os2forms/os2forms": "^3.6",
-                "os2web/os2web_simplesaml": "8.x-dev"
+                "drush/drush": "^11.4 || ^12",
+                "os2forms/os2forms": "^3.6 || dev-f/d10_readiness",
+                "os2web/os2web_simplesaml": "8.x-dev || master"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
@@ -10395,22 +10395,22 @@
             "description": "This profile adds the configuration and initial install of OS2forms 2.1 med Forløb.",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_forloeb_profile/issues",
-                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/1.14.0"
+                "source": "https://github.com/OS2Forms/os2forms_forloeb_profile/tree/f/d10_readiness"
             },
-            "time": "2023-10-03T09:12:30+00:00"
+            "time": "2024-05-20T08:44:12+00:00"
         },
         {
             "name": "os2forms/os2forms_get_organized",
-            "version": "1.1.5",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_get_organized.git",
-                "reference": "c4707bc96ac133357156921784c13c08131379c5"
+                "reference": "96281f602c49c72b98667037af8c72c11de966f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/c4707bc96ac133357156921784c13c08131379c5",
-                "reference": "c4707bc96ac133357156921784c13c08131379c5",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/96281f602c49c72b98667037af8c72c11de966f3",
+                "reference": "96281f602c49c72b98667037af8c72c11de966f3",
                 "shasum": ""
             },
             "require": {
@@ -10439,22 +10439,22 @@
             "description": "OS2Forms GetOrganized integration",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_get_organized/issues",
-                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.1.5"
+                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.2.0"
             },
-            "time": "2024-01-04T10:43:45+00:00"
+            "time": "2024-09-12T08:08:42+00:00"
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "052f29b636e9fcd9d240ee378a995e6afcd25ca5"
+                "reference": "3e4b6ae4ede047799491f7703e445a5156735c7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/052f29b636e9fcd9d240ee378a995e6afcd25ca5",
-                "reference": "052f29b636e9fcd9d240ee378a995e6afcd25ca5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/3e4b6ae4ede047799491f7703e445a5156735c7d",
+                "reference": "3e4b6ae4ede047799491f7703e445a5156735c7d",
                 "shasum": ""
             },
             "require": {
@@ -10484,9 +10484,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.1"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.1.0"
             },
-            "time": "2024-01-23T12:32:32+00:00"
+            "time": "2024-09-12T08:14:27+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
@@ -10541,16 +10541,16 @@
         },
         {
             "name": "os2forms/os2forms_sync",
-            "version": "1.1.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_sync.git",
-                "reference": "641a043bd3b5d9ec825d6c84f3b19d82a6080823"
+                "reference": "6194b5101fd27a5a7023e7ddfcfbf96d1752ec6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/641a043bd3b5d9ec825d6c84f3b19d82a6080823",
-                "reference": "641a043bd3b5d9ec825d6c84f3b19d82a6080823",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_sync/zipball/6194b5101fd27a5a7023e7ddfcfbf96d1752ec6f",
+                "reference": "6194b5101fd27a5a7023e7ddfcfbf96d1752ec6f",
                 "shasum": ""
             },
             "require": {
@@ -10578,9 +10578,9 @@
             "description": "OS2Forms sync",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_sync/issues",
-                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.1.3"
+                "source": "https://github.com/itk-dev/os2forms_sync/tree/1.2.0"
             },
-            "time": "2023-08-31T09:07:10+00:00"
+            "time": "2024-05-21T08:54:29+00:00"
         },
         {
             "name": "os2forms/os2forms_webform_submission_log",
@@ -10654,16 +10654,16 @@
         },
         {
             "name": "os2web/os2web_nemlogin",
-            "version": "1.2.3",
+            "version": "1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_nemlogin.git",
-                "reference": "aaf8e7173bdc7917ad1feb1c4c850333bd4314c9"
+                "reference": "0e94852fd7337cae8fad4795efdbe4f5fd607d39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_nemlogin/zipball/aaf8e7173bdc7917ad1feb1c4c850333bd4314c9",
-                "reference": "aaf8e7173bdc7917ad1feb1c4c850333bd4314c9",
+                "url": "https://api.github.com/repos/OS2web/os2web_nemlogin/zipball/0e94852fd7337cae8fad4795efdbe4f5fd607d39",
+                "reference": "0e94852fd7337cae8fad4795efdbe4f5fd607d39",
                 "shasum": ""
             },
             "type": "drupal-module",
@@ -10674,9 +10674,9 @@
             "description": "Provide authentication via Nemlogin",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_nemlogin/issues",
-                "source": "https://github.com/OS2web/os2web_nemlogin/tree/1.2.3"
+                "source": "https://github.com/OS2web/os2web_nemlogin/tree/1.2.7"
             },
-            "time": "2023-08-02T10:05:38+00:00"
+            "time": "2024-05-10T12:56:29+00:00"
         },
         {
             "name": "os2web/os2web_simplesaml",
@@ -22921,7 +22921,9 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/serviceplatformen": 20
+        "drupal/openid_connect": 15,
+        "itk-dev/serviceplatformen": 20,
+        "os2forms/os2forms_forloeb_profile": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
