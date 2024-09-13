@@ -221,7 +221,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
         '@handler' => $this->label(),
         '@handler_id' => $this->getHandlerId(),
         '@email' => $emailAddress,
-        'link' => ($webform_submission->id()) ? $webform_submission->toLink($this->t('view'))->toString() : NULL,
+        'link' => ($webform_submission->id()) ? $webform_submission->toLink('#' . $webform_submission->serial())->toString() : NULL,
         'webform_submission' => $webform_submission,
         'operation' => 'notification email',
       ];
