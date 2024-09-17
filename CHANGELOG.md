@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [2.8.2] XXX
+## [2.8.2] 2024-09-17
 
 * Opdaterede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit)
   version.
