@@ -11,11 +11,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit)
   version.
 * Tilføjede mulighed for at sende notifikation hvis
-  størrelse på e-mailvedhæftninger overstiger grænse.
+  størrelse på e-mailvedhæftninger overstiger grænse. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/132)
 * Opdaterede [OS2Forms Organisation](https://github.com/itk-dev/os2forms_organisation)
-  version.
-* Tilføjede signatur-element patches.
-* CKEditor 5 link standard `https` protocol.
+  version. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/96)
+* Tilføjede signatur-element patches. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/133)
+* CKEditor 5 link standard `https` protocol. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/168)
 
 ## [2.8.1] 2024-08-26
 
