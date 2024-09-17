@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3736315ed29e65c0a492c205da805d6",
+    "content-hash": "a973a3917a96a820544206629a1fde90",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1963,7 +1963,7 @@
                     "homepage": "https://www.drupal.org/user/1305230"
                 },
                 {
-                    "name": "Dave Reid",
+                    "name": "dave reid",
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
@@ -10299,16 +10299,16 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.0.2",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
+                "reference": "ec72f95840164813dd7cd9c12a79eb95baf0e9f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/ec72f95840164813dd7cd9c12a79eb95baf0e9f5",
+                "reference": "ec72f95840164813dd7cd9c12a79eb95baf0e9f5",
                 "shasum": ""
             },
             "require": {
@@ -10338,9 +10338,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.1.1"
             },
-            "time": "2024-04-22T07:27:59+00:00"
+            "time": "2024-09-03T07:45:54+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -10432,16 +10432,16 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "052f29b636e9fcd9d240ee378a995e6afcd25ca5"
+                "reference": "465d64a6d1f9e79f409d8d400da2e5e59b29ec89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/052f29b636e9fcd9d240ee378a995e6afcd25ca5",
-                "reference": "052f29b636e9fcd9d240ee378a995e6afcd25ca5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/465d64a6d1f9e79f409d8d400da2e5e59b29ec89",
+                "reference": "465d64a6d1f9e79f409d8d400da2e5e59b29ec89",
                 "shasum": ""
             },
             "require": {
@@ -10471,9 +10471,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.1"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.0.2"
             },
-            "time": "2024-01-23T12:32:32+00:00"
+            "time": "2024-06-25T07:22:53+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
