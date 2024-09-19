@@ -83,6 +83,7 @@ module:
   os2forms_attachment: 0
   os2forms_dawa: 0
   os2forms_digital_post: 0
+  os2forms_email_handler: 0
   os2forms_failed_jobs: 0
   os2forms_fasit: 0
   os2forms_fbs_handler: 0
@@ -129,8 +130,6 @@ module:
   token: 0
   toolbar: 0
   ultimate_cron: 0
-  update: 0
-  upgrade_status: 0
   user: 0
   views_ui: 0
   web_accessibility_statement: 0
@@ -138,7 +137,6 @@ module:
   webform_access: 0
   webform_attachment: 0
   webform_composite: 0
-  webform_embed: 0
   webform_encrypt: 0
   webform_entity_print: 0
   webform_entity_print_attachment: 0
