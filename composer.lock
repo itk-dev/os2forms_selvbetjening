@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4ece42f8f754749b0929adafb3796e6",
+    "content-hash": "33b5ffbfb319afb094980a59cccfed14",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1959,11 +1959,11 @@
                     "homepage": "https://www.drupal.org/user/1305230"
                 },
                 {
-                    "name": "Dave Reid",
+                    "name": "dave reid",
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
-                    "name": "Hydra",
+                    "name": "hydra",
                     "homepage": "https://www.drupal.org/user/647364"
                 },
                 {
@@ -6845,7 +6845,7 @@
             ],
             "authors": [
                 {
-                    "name": "DanChadwick",
+                    "name": "danchadwick",
                     "homepage": "https://www.drupal.org/user/504278"
                 },
                 {
@@ -6853,7 +6853,7 @@
                     "homepage": "https://www.drupal.org/user/371407"
                 },
                 {
-                    "name": "Liam Morland",
+                    "name": "liam morland",
                     "homepage": "https://www.drupal.org/user/493050"
                 },
                 {
@@ -7270,7 +7270,7 @@
             ],
             "authors": [
                 {
-                    "name": "DanChadwick",
+                    "name": "danchadwick",
                     "homepage": "https://www.drupal.org/user/504278"
                 },
                 {
@@ -7278,7 +7278,7 @@
                     "homepage": "https://www.drupal.org/user/371407"
                 },
                 {
-                    "name": "Liam Morland",
+                    "name": "liam morland",
                     "homepage": "https://www.drupal.org/user/493050"
                 },
                 {
@@ -10312,16 +10312,16 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.0.2",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b"
+                "reference": "ec72f95840164813dd7cd9c12a79eb95baf0e9f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
-                "reference": "abd45a2e8edaf3a3fba837b0ceb7c754e6f7ba2b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/ec72f95840164813dd7cd9c12a79eb95baf0e9f5",
+                "reference": "ec72f95840164813dd7cd9c12a79eb95baf0e9f5",
                 "shasum": ""
             },
             "require": {
@@ -10351,9 +10351,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.0.2"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.1.1"
             },
-            "time": "2024-04-22T07:27:59+00:00"
+            "time": "2024-09-03T07:45:54+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",

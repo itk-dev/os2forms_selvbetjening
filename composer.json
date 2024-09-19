@@ -132,7 +132,8 @@
                 "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
             },
             "drupal/core": {
-                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch"
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch",
+                "CKEditor 5 link default protocol https": "patches/drupal/core/ckeditor_5_link_default_https.patch"
             },
             "drupal/config_entity_revisions":  {
                 "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch",
@@ -154,7 +155,9 @@
                 "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
             },
             "drupal/webform": {
-                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch"
+                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
+                "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
+                "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
             }
         },
         "patches-ignore": {
