@@ -1,48 +1,9 @@
 {
     "name": "itk-dev/selvbetjening",
     "description": "selvbetjening.aarhuskommune.dk",
-    "type": "project",
     "license": "GPL-2.0-or-later",
+    "type": "project",
     "homepage": "https://github.com/itk-dev/os2forms_selvbetjening",
-    "repositories": [
-        {
-            "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9",
-            "type": "package",
-            "package": {
-                "name": "drupal/webform_embed",
-                "//": "@see https://github.com/OS2Forms/os2forms/blob/master/composer.json#L27",
-                "version": "1.x-dev",
-                "type": "drupal-module",
-                "source": {
-                    "url": "https://git.drupalcode.org/issue/webform_embed-3149360.git",
-                    "type": "git",
-                    "reference": "3149360-automated-drupal-9"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "drupal/webform_permissions_by_term",
-                "version": "1.2.0",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://ftp.drupal.org/files/projects/webform_permissions_by_term-8.x-1.2.zip",
-                    "reference": "8.x-1.2",
-                    "shasum": "eabcfdbbbc850986fdd0d8b3a26cad8d6b5d675e"
-                },
-                "require": {
-                    "drupal/core": "~8.0 || ^9.0",
-                    "drupal/permissions_by_term": "*"
-                },
-                "type": "drupal-module"
-            }
-        },
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
     "require": {
         "php": "^8.1",
         "composer/installers": "^1.12",
@@ -95,27 +56,84 @@
     "conflict": {
         "drupal/drupal": "*"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_embed",
+                "type": "drupal-module",
+                "version": "1.x-dev",
+                "source": {
+                    "type": "git",
+                    "url": "https://git.drupalcode.org/issue/webform_embed-3149360.git",
+                    "reference": "3149360-automated-drupal-9"
+                },
+                "//": "@see https://github.com/OS2Forms/os2forms/blob/master/composer.json#L27"
+            },
+            "//": "https://git.drupalcode.org/issue/webform_embed-3149360/-/tree/3149360-automated-drupal-9"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_permissions_by_term",
+                "type": "drupal-module",
+                "version": "1.2.0",
+                "require": {
+                    "drupal/core": "~8.0 || ^9.0",
+                    "drupal/permissions_by_term": "*"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://ftp.drupal.org/files/projects/webform_permissions_by_term-8.x-1.2.zip",
+                    "reference": "8.x-1.2",
+                    "shasum": "eabcfdbbbc850986fdd0d8b3a26cad8d6b5d675e"
+                }
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "discard-changes": true,
-        "sort-packages": true,
         "allow-plugins": {
-            "simplesamlphp/composer-module-installer": true,
-            "cweagans/composer-patches": true,
-            "zaporylie/composer-drupal-optimizations": true,
             "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
             "phpstan/extension-installer": true,
-            "ergebnis/composer-normalize": true
-        }
+            "simplesamlphp/composer-module-installer": true,
+            "zaporylie/composer-drupal-optimizations": true
+        },
+        "discard-changes": true,
+        "sort-packages": true
     },
     "extra": {
         "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal/core": "-p2"
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/8/install",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://www.drupal.org/support",
+                "  * Get involved with the Drupal community:",
+                "      https://www.drupal.org/getting-involved",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
         },
         "drupal-scaffold": {
             "locations": {
@@ -123,53 +141,6 @@
             }
         },
         "enable-patching": true,
-        "patcher": {
-            "force-reset": true
-        },
-        "patches": {
-            "drupal/honeypot": {
-                "Fixes issue with clash between ajax and honeypot (https://www.drupal.org/project/honeypot/issues/2396193)": "patches/drupal/honeypot/honeypot-ajax.patch"
-            },
-            "drupal/webform_migrate": {
-                "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
-            },
-            "drupal/core": {
-                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch",
-                "CKEditor 5 link default protocol https": "patches/drupal/core/ckeditor_5_link_default_https.patch"
-            },
-            "drupal/config_entity_revisions":  {
-                "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch",
-                "https://www.drupal.org/project/config_entity_revisions/issues/3260602": "https://www.drupal.org/files/issues/2022-03-15/content_entity_revisions-3260602-07.patch",
-                "webform_revisions_install called twice during site:install --existing-config": "patches/drupal/config_entity_revisions/webform_revisions.install.patch"
-            },
-            "drupal/permissions_by_term": {
-                "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"
-            },
-            "drupal/maestro": {
-                "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
-                "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch",
-                "Maestro flow task entity autocomplete patch": "patches/drupal/maestro/maestro_entity_autocomplete.patch"
-            },
-            "drupal/log_stdout": {
-                "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
-            },
-            "os2forms/os2forms": {
-                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
-            },
-            "drupal/webform": {
-                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
-                "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
-                "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
-            }
-        },
-        "patches-ignore": {
-            "//": "@see https://github.com/cweagans/composer-patches/tree/1.x#ignoring-patches",
-            "os2forms/os2forms_forloeb": {
-                "drupal/smtp": {
-                    "(This patch does not apply anymore) Duplicated attachments in emails generated by Webform: (https://www.drupal.org/project/smtp/issues/2995290)": "https://www.drupal.org/files/issues/2021-11-02/smtp-2995290-23.patch"
-                }
-            }
-        },
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
@@ -196,52 +167,81 @@
                 "type:drupal-custom-theme"
             ]
         },
-        "drupal-core-project-message": {
-            "include-keys": [
-                "homepage",
-                "support"
-            ],
-            "post-create-project-cmd-message": [
-                "<bg=blue;fg=white>                                                         </>",
-                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
-                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
-                "<bg=blue;fg=white>                                                         </>",
-                "",
-                "<bg=yellow;fg=black>Next steps</>:",
-                "  * Install the site: https://www.drupal.org/docs/8/install",
-                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
-                "  * Get support: https://www.drupal.org/support",
-                "  * Get involved with the Drupal community:",
-                "      https://www.drupal.org/getting-involved",
-                "  * Remove the plugin that prints this message:",
-                "      composer remove drupal/core-project-message"
-            ]
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patcher": {
+            "force-reset": true
+        },
+        "patches": {
+            "drupal/config_entity_revisions": {
+                "Add check to see if entity revision actually exists(https://www.drupal.org/project/config_entity_revisions/issues/3277467)": "https://www.drupal.org/files/issues/2022-04-27/add-check-to-see-if-entity-revision-actually-exists-3277467-3.patch",
+                "https://www.drupal.org/project/config_entity_revisions/issues/3260602": "https://www.drupal.org/files/issues/2022-03-15/content_entity_revisions-3260602-07.patch",
+                "webform_revisions_install called twice during site:install --existing-config": "patches/drupal/config_entity_revisions/webform_revisions.install.patch"
+            },
+            "drupal/core": {
+                "Allow site install with profile containing hook_install (https://www.drupal.org/project/drupal/issues/2982052)": "https://www.drupal.org/files/issues/2022-05-19/2982052-80.patch",
+                "CKEditor 5 link default protocol https": "patches/drupal/core/ckeditor_5_link_default_https.patch"
+            },
+            "drupal/honeypot": {
+                "Fixes issue with clash between ajax and honeypot (https://www.drupal.org/project/honeypot/issues/2396193)": "patches/drupal/honeypot/honeypot-ajax.patch"
+            },
+            "drupal/log_stdout": {
+                "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
+            },
+            "drupal/maestro": {
+                "Fix check for task notifications": "patches/drupal/maestro/maestro_notification.patch",
+                "Maestro task notification permission patch": "patches/drupal/maestro/maestro_task_select_notification_role_permission.patch",
+                "Maestro flow task entity autocomplete patch": "patches/drupal/maestro/maestro_entity_autocomplete.patch"
+            },
+            "drupal/permissions_by_term": {
+                "Change check for node form": "patches/drupal/permissions_by_term/changeNodeCheck.patch"
+            },
+            "drupal/webform": {
+                "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
+                "Clean up temporary signature images from php tmp folder": "https://git.drupalcode.org/project/webform/-/merge_requests/451.diff",
+                "Webform signature private upload location default": "patches/drupal/webform/webform_signature_private_upload_location_default.patch"
+            },
+            "drupal/webform_migrate": {
+                "Set to support. Checkbox condition fixes": "https://raw.githubusercontent.com/OS2Forms/os2forms8/master/patches/setto-and-checkboxes-condition-fix-onlyD7.patch"
+            },
+            "os2forms/os2forms": {
+                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
+            }
+        },
+        "patches-ignore": {
+            "//": "@see https://github.com/cweagans/composer-patches/tree/1.x#ignoring-patches",
+            "os2forms/os2forms_forloeb": {
+                "drupal/smtp": {
+                    "(This patch does not apply anymore) Duplicated attachments in emails generated by Webform: (https://www.drupal.org/project/smtp/issues/2995290)": "https://www.drupal.org/files/issues/2021-11-02/smtp-2995290-23.patch"
+                }
+            }
         }
     },
     "scripts": {
         "post-install-cmd": [
             "@install-codestandards"
         ],
-        "install-codestandards": [
-            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        "code-analysis": [
+            "@code-analysis/phpstan"
         ],
         "code-analysis/phpstan": [
             "vendor/bin/phpstan analyse"
         ],
-        "code-analysis": [
-            "@code-analysis/phpstan"
-        ],
-        "coding-standards-check/phpcs": [
-            "vendor/bin/phpcs --standard=phpcs.xml.dist"
-        ],
-        "coding-standards-check": [
-            "@coding-standards-check/phpcs"
+        "coding-standards-apply": [
+            "@coding-standards-apply/phpcs"
         ],
         "coding-standards-apply/phpcs": [
             "vendor/bin/phpcbf --standard=phpcs.xml.dist"
         ],
-        "coding-standards-apply": [
-            "@coding-standards-apply/phpcs"
+        "coding-standards-check": [
+            "@coding-standards-check/phpcs"
+        ],
+        "coding-standards-check/phpcs": [
+            "vendor/bin/phpcs --standard=phpcs.xml.dist"
+        ],
+        "install-codestandards": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
         ]
     }
 }
