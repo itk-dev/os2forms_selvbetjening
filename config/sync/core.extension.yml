@@ -54,7 +54,6 @@ module:
   jquery_ui_datepicker: 0
   key: 0
   key_auth: 0
-  keyboard_shortcuts: 0
   lang_dropdown: 0
   language: 0
   leaflet: 0
@@ -166,9 +165,7 @@ module:
   os2forms_encrypt: 9999
 theme:
   bootstrap: 0
-  stable: 0
   custom_theme: 0
-  classy: 0
   claro: 0
   gin: 0
   olivero: 0

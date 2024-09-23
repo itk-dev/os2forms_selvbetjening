@@ -16,7 +16,6 @@
         "drupal/core-recommended": "^10.3",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/jquery_ui_datepicker": "^2.1",
-        "drupal/keyboard_shortcuts": "^1.1",
         "drupal/lang_dropdown": "^2.1",
         "drupal/log_stdout": "^1.5",
         "drupal/memcache": "^2.7",
@@ -70,7 +69,8 @@
             "php-http/discovery": true,
             "phpstan/extension-installer": true,
             "simplesamlphp/composer-module-installer": true,
-            "zaporylie/composer-drupal-optimizations": true
+            "zaporylie/composer-drupal-optimizations": true,
+            "simplesamlphp/composer-xmlprovider-installer": true
         },
         "discard-changes": true,
         "sort-packages": true

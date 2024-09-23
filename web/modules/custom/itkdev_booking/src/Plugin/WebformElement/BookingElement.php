@@ -3,10 +3,9 @@
 namespace Drupal\itkdev_booking\Plugin\WebformElement;
 
 use Drupal;
+use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Http\RequestStack;
 use Drupal\itkdev_booking\Helper\UserHelper;
-use Drupal\webform\Annotation\WebformElement;
 use Drupal\webform\Plugin\WebformElement\Hidden;
 use Drupal\Core\Site\Settings;
 use Drupal\webform\WebformInterface;
@@ -28,6 +27,9 @@ use Drupal\Core\Url;
 
 class BookingElement extends Hidden
 {
+
+  private ModuleExtensionList $extensionList;
+
   /**
    * {@inheritdoc}
    */
