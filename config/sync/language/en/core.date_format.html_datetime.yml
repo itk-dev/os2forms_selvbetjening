@@ -1,2 +1,2 @@
-label: 'HTML Datetime'
 pattern: 'Y-m-d\TH:i:sO'
+label: 'HTML Datetime'

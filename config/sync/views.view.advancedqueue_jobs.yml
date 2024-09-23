@@ -1,5 +1,5 @@
 uuid: a528b250-01a5-45ef-825e-abcbce21ef58
-langcode: en
+langcode: da
 status: true
 dependencies:
   module:
@@ -561,7 +561,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -582,6 +581,7 @@ display:
           path_case: none
           transform_dash: false
           break_phrase: false
+          default_argument_skip_url: false
       filters:
         type:
           id: type

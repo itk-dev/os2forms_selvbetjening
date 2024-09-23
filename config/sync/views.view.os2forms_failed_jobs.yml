@@ -1,5 +1,5 @@
 uuid: b77688a4-46fe-4c7c-98a7-e8690a789a10
-langcode: en
+langcode: da
 status: true
 dependencies:
   module:
@@ -694,7 +694,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options:
             base_path: ''
             count: true
@@ -711,6 +710,7 @@ display:
           validate_options: {  }
           break_phrase: true
           not: false
+          default_argument_skip_url: false
       filters:
         state:
           id: state

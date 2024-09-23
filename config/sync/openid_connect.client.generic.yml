@@ -6,8 +6,8 @@ id: generic
 label: Generic
 plugin: generic
 settings:
-  client_id: 'file:///settings.local.php#$config[''openid_connect.client.azureb2c''][''settings''][''client_id'']'
-  client_secret: 'file:///settings.local.php#$config[''openid_connect.client.azureb2c''][''settings''][''client_secret'']'
+  client_id: "file:///settings.local.php#$config['openid_connect.client.azureb2c']['settings']['client_id']"
+  client_secret: "file:///settings.local.php#$config['openid_connect.client.azureb2c']['settings']['client_secret']"
   iss_allowed_domains: ''
   issuer_url: ''
   authorization_endpoint: 'https://example.com/oauth2/'
