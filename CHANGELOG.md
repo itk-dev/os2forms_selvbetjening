@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [2.8.3] 2024-09-23
+
+* Tilføjede patch der fjerner adressebeskyttelse tekst på CPR elementer.
+
 ## [2.8.2] 2024-09-17
 
 * Opdaterede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit)
@@ -479,7 +483,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.3...HEAD
+[2.8.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...2.8.3
 [2.8.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.1...2.8.2
 [2.8.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.0...2.8.1
 [2.8.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.14...2.8.0
