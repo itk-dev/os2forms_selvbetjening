@@ -1,0 +1,13 @@
+diff --git a/modules/os2forms_nemid/src/Plugin/WebformElement/NemidCpr.php b/modules/os2forms_nemid/src/Plugin/WebformElement/NemidCpr.php
+index 9abd1f9..aa34826 100644
+--- a/modules/os2forms_nemid/src/Plugin/WebformElement/NemidCpr.php
++++ b/modules/os2forms_nemid/src/Plugin/WebformElement/NemidCpr.php
+@@ -29,7 +29,7 @@ class NemidCpr extends ServiceplatformenCprElementBase implements NemidElementPe
+   /**
+    * {@inheritdoc}
+    */
+-  public function appendNameAddressProtectedText(CprLookupResult $cprLookupResult) {
++  public function getNameAddressProtectedText(CprLookupResult $cprLookupResult) {
+     return '';
+   }
+ 

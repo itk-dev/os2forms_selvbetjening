@@ -9,16 +9,20 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Opdaterede docker-compose node setup.
 
+## [2.8.3] 2024-09-23
+
+* Tilføjede patch der fjerner adressebeskyttelse tekst på CPR elementer.
+
 ## [2.8.2] 2024-09-17
 
 * Opdaterede [OS2Forms Fasit](https://github.com/itk-dev/os2forms_fasit)
   version.
 * Tilføjede mulighed for at sende notifikation hvis
-  størrelse på e-mailvedhæftninger overstiger grænse. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/132)
+  størrelse på e-mailvedhæftninger overstiger grænse. (<https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/132>)
 * Opdaterede [OS2Forms Organisation](https://github.com/itk-dev/os2forms_organisation)
-  version. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/96)
-* Tilføjede signatur-element patches. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/133)
-* CKEditor 5 link standard `https` protocol. (https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/168)
+  version. (<https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/96>)
+* Tilføjede signatur-element patches. (<https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/133>)
+* CKEditor 5 link standard `https` protocol. (<https://os2forms-leantime.itkdev.dk/tickets/showKanban#/tickets/showTicket/168>)
 
 ## [2.8.1] 2024-08-26
 
@@ -482,7 +486,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.3...HEAD
+[2.8.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...2.8.3
 [2.8.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.1...2.8.2
 [2.8.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.0...2.8.1
 [2.8.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.7.14...2.8.0

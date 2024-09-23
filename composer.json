@@ -157,7 +157,8 @@
                 "Severities should not be translated in logs - 3432622": "https://git.drupalcode.org/project/log_stdout/-/merge_requests/8.diff"
             },
             "os2forms/os2forms": {
-                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
+                "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff",
+                "Avoid adressebeskyttelse text on CPR element (https://github.com/OS2Forms/os2forms/pull/133)": "patches/drupal/os2forms/hideAdresseBeskyttelseTextOnNemIdCprElements.patch"
             },
             "drupal/webform": {
                 "polyfill.io Library is no longer considered safe to use (https://www.drupal.org/project/webform/issues/3427662)": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch",
