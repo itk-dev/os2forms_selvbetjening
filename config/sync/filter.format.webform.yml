@@ -6,22 +6,6 @@ name: Webform
 format: webform
 weight: -10
 filters:
-  filter_url:
-    id: filter_url
-    provider: filter
-    status: true
-    weight: 0
-    settings:
-      filter_url_length: 72
-  filter_html:
-    id: filter_html
-    provider: filter
-    status: true
-    weight: -10
-    settings:
-      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <sub> <sup> <blockquote> <a href target="_blank"> <ul> <ol reversed start> <li> <img src alt height width data-align>'
-      filter_html_help: true
-      filter_html_nofollow: false
   filter_align:
     id: filter_align
     provider: filter
@@ -34,9 +18,25 @@ filters:
     status: true
     weight: 0
     settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <sub> <sup> <blockquote> <a href target="_blank"> <ul> <ol reversed start> <li> <img src alt height width data-align>'
+      filter_html_help: true
+      filter_html_nofollow: false
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
     weight: 10
     settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: 72

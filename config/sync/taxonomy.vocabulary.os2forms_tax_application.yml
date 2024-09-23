@@ -6,5 +6,6 @@ _core:
   default_config_hash: 2njj56hvwC9Ucer8Y1EyDebNJ6GP3fOHKSAfpovdQrk
 name: 'Webform application'
 vid: os2forms_tax_application
-description: ''
+description: null
 weight: 0
+new_revision: false

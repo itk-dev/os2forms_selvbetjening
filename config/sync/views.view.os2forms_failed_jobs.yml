@@ -626,6 +626,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 25
           total_pages: null
           id: 0
@@ -710,7 +711,6 @@ display:
           validate_options: {  }
           break_phrase: true
           not: false
-          default_argument_skip_url: false
       filters:
         state:
           id: state

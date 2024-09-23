@@ -6,5 +6,6 @@ _core:
   default_config_hash: jX5pnsbmEpSinc7HmGNj-eApPKebbiLSBW0pWhUi5RI
 name: 'Webform area'
 vid: os2forms_tax_area
-description: ''
+description: null
 weight: 0
+new_revision: false
