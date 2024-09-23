@@ -9,6 +9,8 @@ services:
   phpfpm:
     networks:
       - organisation_api
+    environment:
+      - PHP_MEMORY_LIMIT=512M
 
   node:
     image: node:16

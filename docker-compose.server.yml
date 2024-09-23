@@ -1,4 +1,4 @@
-# itk-version: 3.1.1
+# itk-version: 3.2.1
 networks:
   frontend:
     external: true
@@ -31,9 +31,6 @@ services:
       - frontend
     depends_on:
       - phpfpm
-    ports:
-      - '8080'
-    volumes:
     volumes:
       - ./.docker/templates:/etc/nginx/templates:ro
       - ./.docker/nginx.conf:/etc/nginx/nginx.conf:ro
