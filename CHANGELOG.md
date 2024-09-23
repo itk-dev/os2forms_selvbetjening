@@ -8,7 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [2.8.3] 2024-09-23
 
-* Tilføjede patch der fjerner adressebeskyttelse tekst på CPR elementer.
+* Tilføjede patch der fjerner adressebeskyttelsestekst på CPR-elementer.
 
 ## [2.8.2] 2024-09-17
 
