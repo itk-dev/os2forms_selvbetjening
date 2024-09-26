@@ -3,8 +3,8 @@
 namespace Drupal\os2forms_selvbetjening\Commands;
 
 use Drupal\os2web_datalookup\Plugin\DataLookupManager;
-use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DatafordelerCVR;
 use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DataLookupInterfaceCpr;
+use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DatafordelerCVR;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\Yaml\Yaml;
 
@@ -17,7 +17,7 @@ class LookupCommands extends DrushCommands {
    * Constructor.
    */
   public function __construct(
-    private readonly DataLookupManager $dataLookupManager
+    private readonly DataLookupManager $dataLookupManager,
   ) {
   }
 
@@ -32,9 +32,12 @@ class LookupCommands extends DrushCommands {
    * @command os2forms-selvbetjening:look-up:cpr
    * @usage os2forms-selvbetjening:look-up:cpr --help
    */
-  public function lookUpCpr(string $cpr, array $options = [
-    'dump-configuration' => FALSE,
-  ]) {
+  public function lookUpCpr(
+    string $cpr,
+    array $options = [
+      'dump-configuration' => FALSE,
+    ],
+  ) {
     try {
       $instance = $this->dataLookupManager->createDefaultInstanceByGroup('cpr_lookup');
       assert($instance instanceof DataLookupInterfaceCpr);
@@ -69,9 +72,12 @@ class LookupCommands extends DrushCommands {
    * @command os2forms-selvbetjening:look-up:cvr
    * @usage os2forms-selvbetjening:look-up:cvr --help
    */
-  public function lookUpCvr(string $cvr, array $options = [
-    'dump-configuration' => FALSE,
-  ]) {
+  public function lookUpCvr(
+    string $cvr,
+    array $options = [
+      'dump-configuration' => FALSE,
+    ],
+  ) {
     try {
       $instance = $this->dataLookupManager->createDefaultInstanceByGroup('cvr_lookup');
       assert($instance instanceof DatafordelerCVR);

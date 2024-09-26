@@ -27,7 +27,7 @@ final class FBS {
     private readonly string $endpoint,
     private readonly string $agencyId,
     private readonly string $username,
-    private readonly string $password
+    private readonly string $password,
   ) {
   }
 
