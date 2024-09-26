@@ -9499,24 +9499,24 @@
         },
         {
             "name": "os2forms/os2forms_fasit",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_fasit.git",
-                "reference": "ec72f95840164813dd7cd9c12a79eb95baf0e9f5"
+                "reference": "6c0fdd560230e92d0be1f88bdbdfefa329f762c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/ec72f95840164813dd7cd9c12a79eb95baf0e9f5",
-                "reference": "ec72f95840164813dd7cd9c12a79eb95baf0e9f5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_fasit/zipball/6c0fdd560230e92d0be1f88bdbdfefa329f762c5",
+                "reference": "6c0fdd560230e92d0be1f88bdbdfefa329f762c5",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.1",
                 "ext-dom": "*",
-                "os2forms/os2forms": "^3.13",
-                "php": "^8.1",
+                "os2forms/os2forms": "^3.16",
+                "php": "^8.3",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
@@ -9538,9 +9538,9 @@
             "description": "OS2Forms Fasit integration",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_fasit/issues",
-                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.1.1"
+                "source": "https://github.com/itk-dev/os2forms_fasit/tree/1.2.0"
             },
-            "time": "2024-09-03T07:45:54+00:00"
+            "time": "2024-09-26T11:56:13+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
