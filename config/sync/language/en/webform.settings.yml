@@ -50,7 +50,7 @@ file:
   file_private_redirect_message: 'Please log in to access the uploaded file.'
 mail:
   default_from_name: '[site:name]'
-  default_subject: '[webform_submission:source-title] (fra [site:name])'
+  default_subject: 'Webform submission from: [webform_submission:source-title]'
   default_body_text: |
     Submitted on [webform_submission:created]
     Submitted by: [webform_submission:user]
