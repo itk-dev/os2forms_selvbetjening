@@ -8386,28 +8386,29 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "26f08ca8c78657a96ab744812ff661bb4080c446"
+                "reference": "d70f0a6a0b9e3b852f346d824b1acbd1b773fb8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/26f08ca8c78657a96ab744812ff661bb4080c446",
-                "reference": "26f08ca8c78657a96ab744812ff661bb4080c446",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/d70f0a6a0b9e3b852f346d824b1acbd1b773fb8e",
+                "reference": "d70f0a6a0b9e3b852f346d824b1acbd1b773fb8e",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.0",
                 "drush/drush": "^11 || ^12",
-                "php": "^8.0"
+                "php": "^8.2"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4"
+                "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "~1.2.0"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -8423,9 +8424,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.5.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.5.1"
             },
-            "time": "2024-07-05T09:01:54+00:00"
+            "time": "2024-10-03T13:44:36+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
