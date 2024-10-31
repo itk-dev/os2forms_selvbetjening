@@ -163,8 +163,6 @@ module:
   eu_cookie_compliance: 1001
   os2forms_encrypt: 9999
 theme:
-  bootstrap: 0
-  custom_theme: 0
   claro: 0
   gin: 0
   olivero: 0
