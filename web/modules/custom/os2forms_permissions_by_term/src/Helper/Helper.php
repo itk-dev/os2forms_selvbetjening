@@ -289,7 +289,7 @@ class Helper {
       switch ($operation) {
         case 'view':
           // Deny access to node view if no permission by term is set.
-          $nodePermissionsByTerm = $node->field_os2forms_permissions->getValue();
+          $nodePermissionsByTerm = $node->get('field_os2forms_permissions')->getValue();
           if (empty($nodePermissionsByTerm)) {
             return AccessResult::forbidden();
           }
