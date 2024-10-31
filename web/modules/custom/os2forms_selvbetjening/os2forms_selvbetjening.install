@@ -8,8 +8,9 @@
 /**
  * Switch to minimal profile.
  *
- * Heavily inspired by the profile_switcher module
- * @see https://git.drupalcode.org/project/profile_switcher.
+ * Heavily inspired by the profile_switcher module.
+ *
+ * @see https://git.drupalcode.org/project/profile_switcher
  */
 function os2forms_selvbetjening_update_10001() {
   $profile_to_remove = \Drupal::installProfile();
