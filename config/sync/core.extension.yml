@@ -19,7 +19,6 @@ module:
   comment: 0
   config: 0
   config_entity_revisions: 0
-  config_filter: 0
   config_ignore: 0
   config_translation: 0
   contact: 0
@@ -140,7 +139,6 @@ module:
   webform_encrypt: 0
   webform_entity_print: 0
   webform_entity_print_attachment: 0
-  webform_migrate: 0
   webform_node: 0
   webform_node_element: 0
   webform_remote_handlers: 0
