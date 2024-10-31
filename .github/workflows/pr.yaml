@@ -176,7 +176,7 @@ jobs:
           docker compose exec --user root phpfpm composer install --no-interaction
 
           # Install the site
-          docker compose exec --user root phpfpm vendor/bin/drush site:install --existing-config --yes -vvv
+          docker compose exec --user root phpfpm vendor/bin/drush site:install --existing-config --yes
 
           # Download and install external libraries
           docker compose exec --user root phpfpm vendor/bin/drush webform:libraries:download
