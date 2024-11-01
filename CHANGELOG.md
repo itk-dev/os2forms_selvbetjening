@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede [Azure Key Vault](https://github.com/itk-dev/AzureKeyVaultPhp) for at rette "Cannot fetch SAML token"-fejl.
+
 ## [2.8.3] 2024-09-23
 
 * Tilføjede patch der fjerner adressebeskyttelsestekst på CPR-elementer.
