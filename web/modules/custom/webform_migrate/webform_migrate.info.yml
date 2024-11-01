@@ -3,10 +3,3 @@ type: module
 description: 'Deletable'
 core_version_requirement: ^8.8 || ^9 || ^10
 package: 'Migration'
-dependencies:
-  - drupal:field
-  - drupal:migrate
-  - drupal:migrate_drupal
-  - drupal:node
-  - webform:webform
-  - webform:webform_node
