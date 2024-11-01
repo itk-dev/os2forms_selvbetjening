@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '16' ]
+        node: [ '20' ]
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
