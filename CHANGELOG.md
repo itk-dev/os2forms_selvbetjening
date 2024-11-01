@@ -8,7 +8,16 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Opdaterede docker-compose node setup.
-* Opdaterede [Azure Key Vault](https://github.com/itk-dev/AzureKeyVaultPhp) for at rette "Cannot fetch SAML token"-fejl.
+* Opdaterede [Azure Key Vault](https://github.com/itk-dev/AzureKeyVaultPhp)
+  for at rette "Cannot fetch SAML token"-fejl.
+* Opdaterede docker-setup.
+* Opdaterede til PHP 8.3
+* Opdaterede til Drupal 10.
+  * Opdaterede konfiguration.
+  * Opdaterede custom moduler.
+* Opdaterede til OS2Forms 3.16.2.
+* Fjernede ubenyttede temaer.
+* Fjernede `keyboard_shortcuts`-modulet.
 
 ## [2.8.3] 2024-09-23
 
