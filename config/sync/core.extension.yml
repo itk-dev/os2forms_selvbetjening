@@ -19,7 +19,6 @@ module:
   comment: 0
   config: 0
   config_entity_revisions: 0
-  config_filter: 0
   config_ignore: 0
   config_translation: 0
   contact: 0
@@ -140,7 +139,6 @@ module:
   webform_encrypt: 0
   webform_entity_print: 0
   webform_entity_print_attachment: 0
-  webform_migrate: 0
   webform_node: 0
   webform_node_element: 0
   webform_remote_handlers: 0
@@ -161,14 +159,12 @@ module:
   content_translation: 10
   externalauth: 10
   views: 10
-  os2forms_forloeb_profile: 1000
   eu_cookie_compliance: 1001
   os2forms_encrypt: 9999
+  minimal: 1000
 theme:
-  bootstrap: 0
-  custom_theme: 0
   claro: 0
   gin: 0
   olivero: 0
   os2forms_selvbetjening_theme: 0
-profile: os2forms_forloeb_profile
+profile: minimal

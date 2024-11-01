@@ -26,7 +26,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.3
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -52,7 +52,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.3
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -99,7 +99,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.3
           extensions: ctype, dom, iconv, json, zip, gd, soap
           coverage: none
           tools: composer:v2
@@ -176,7 +176,7 @@ jobs:
           docker compose exec --user root phpfpm composer install --no-interaction
 
           # Install the site
-          docker compose exec --user root phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config --yes
+          docker compose exec --user root phpfpm vendor/bin/drush site:install --existing-config --yes
 
           # Download and install external libraries
           docker compose exec --user root phpfpm vendor/bin/drush webform:libraries:download
