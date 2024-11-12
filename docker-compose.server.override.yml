@@ -30,6 +30,3 @@ services:
     restart: unless-stopped
     networks:
       - app
-    ports:
-      - '3310'
-      - '7357'
