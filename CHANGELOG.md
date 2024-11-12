@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede [Beskedfordeler](https://github.com/itk-dev/beskedfordeler-drupal).
 * Håndterede ingen vedhæftede filer i forbindelse med
   tjek af for store filer i emails.
 
