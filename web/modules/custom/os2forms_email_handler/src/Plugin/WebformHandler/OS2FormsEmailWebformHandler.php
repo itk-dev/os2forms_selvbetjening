@@ -281,7 +281,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
 
     return array_reduce($fileElementIds, function ($carry, $item) {
       return $carry + (int) File::load($item)->getSize();
-    });
+    }, 0);
   }
 
 }
