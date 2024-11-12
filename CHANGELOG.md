@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Håndterede ingen vedhæftede filer i forbindelse med
+  tjek af for store filer i emails.
+
 ## [3.0.0] 2024-11-12
 
 * Tilføjede "Begrænset HTML (Maestro)"-tekstformat.
