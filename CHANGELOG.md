@@ -11,8 +11,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede "Begrænset HTML (Maestro)"-tekstformat.
 * Tilføjede mulighed for csv eksport af alle formular konfigurationer.
 * Opdaterede docker-compose node setup.
-* Opdaterede [Azure Key Vault](https://github.com/itk-dev/AzureKeyVaultPhp)
-  for at rette "Cannot fetch SAML token"-fejl.
 * Opdaterede docker-setup.
 * Opdaterede til PHP 8.3
 * Opdaterede til Drupal 10.
