@@ -279,6 +279,10 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   private function getTotalAttachmentFileSize(WebformSubmissionInterface $webform_submission): int {
     $fileElementIds = $this->getFileIdsFromSubmission($webform_submission);
 
+    if (empty($fileElementIds)) {
+      return 0;
+    }
+
     return array_reduce($fileElementIds, function ($carry, $item) {
       return $carry + (int) File::load($item)->getSize();
     });
