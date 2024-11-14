@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Håndterede ingen vedhæftede filer i forbindelse med
   tjek af for store filer i emails.
+* Tilføjede patch til vilkår baseret på computed twig.
 
 ## [3.0.0] 2024-11-12
 
