@@ -145,7 +145,8 @@
                 "webform_revisions_install called twice during site:install --existing-config": "patches/drupal/config_entity_revisions/webform_revisions.install.patch"
             },
             "drupal/core": {
-                "Get CKEditor 5 to work in (modal) dialogs (https://www.drupal.org/project/drupal/issues/3274937)": "https://www.drupal.org/files/issues/2024-07-02/3351603-30.patch"
+                "Get CKEditor 5 to work in (modal) dialogs (https://www.drupal.org/project/drupal/issues/3274937)": "https://www.drupal.org/files/issues/2024-07-02/3351603-30.patch",
+                "Allow conditionals based on computed twig": "https://www.drupal.org/files/issues/2024-11-05/revert-core-states.patch"
             },
             "drupal/honeypot": {
                 "Fixes issue with clash between ajax and honeypot (https://www.drupal.org/project/honeypot/issues/2396193)": "patches/drupal/honeypot/honeypot-ajax.patch"
