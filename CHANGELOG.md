@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [3.0.1] 2024-11-18
+
 * Håndterede ingen vedhæftede filer i forbindelse med
   tjek af for store filer i emails.
 * Tilføjede patch til vilkår baseret på computed twig.
@@ -503,7 +505,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.1...HEAD
+[3.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.3...3.0.0
 [2.8.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.2...2.8.3
 [2.8.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.1...2.8.2
