@@ -103,6 +103,7 @@ module:
   os2forms_webform_maps: 0
   os2forms_webform_submission_log: 0
   os2web_audit: 0
+  os2web_audit_user: 0
   os2web_datalookup: 0
   os2web_nemlogin: 0
   os2web_simplesaml: 0
