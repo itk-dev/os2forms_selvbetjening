@@ -3,7 +3,7 @@
 namespace Drupal\os2forms_selvbetjening\Commands;
 
 use Drupal\os2web_datalookup\Plugin\DataLookupManager;
-use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DataLookupInterfaceCpr;
+use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DataLookupCprInterface;
 use Drupal\os2web_datalookup\Plugin\os2web\DataLookup\DatafordelerCVR;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\Yaml\Yaml;
@@ -40,7 +40,7 @@ class LookupCommands extends DrushCommands {
   ) {
     try {
       $instance = $this->dataLookupManager->createDefaultInstanceByGroup('cpr_lookup');
-      assert($instance instanceof DataLookupInterfaceCpr);
+      assert($instance instanceof DataLookupCprInterface);
 
       if ($options['dump-configuration']) {
         $this->output()->writeln([

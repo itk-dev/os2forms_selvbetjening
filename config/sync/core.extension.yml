@@ -102,6 +102,7 @@ module:
   os2forms_webform_list: 0
   os2forms_webform_maps: 0
   os2forms_webform_submission_log: 0
+  os2web_audit: 0
   os2web_datalookup: 0
   os2web_nemlogin: 0
   os2web_simplesaml: 0
@@ -159,9 +160,9 @@ module:
   content_translation: 10
   externalauth: 10
   views: 10
+  minimal: 1000
   eu_cookie_compliance: 1001
   os2forms_encrypt: 9999
-  minimal: 1000
 theme:
   claro: 0
   gin: 0
