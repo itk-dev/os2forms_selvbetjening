@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede til OS2Forms 3.17.0
+  * Audit logging af CPR og CVR opslag
+  * Audit logging af login
+
 ## [3.0.1] 2024-11-18
 
 * Håndterede ingen vedhæftede filer i forbindelse med
