@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede max input vars i docker-setup.
+
 ## [3.1.0] 2024-11-22
 
 * Opdaterede til OS2Forms 3.17.0
