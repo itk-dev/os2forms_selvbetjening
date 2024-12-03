@@ -73,34 +73,22 @@ final class FBS {
    * @param string $cpr
    *   The users personal security number.
    *
-   * @return \Drupal\os2forms_fbs_handler\Client\Model\Patron|null
-   *   NULL if not else the Patron.
+   * @return string|null
+   *   NULL if not else the PatronId.
    *
    * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \JsonException
    */
-  public function doUserExists(string $cpr): ?Patron {
+  public function authenticatePatron(string $cpr): ?string {
     // Check if session have been created with FBS and if not create it.
     if (!$this->isLoggedIn()) {
       $this->login();
     }
 
-    // Try pre-authenticate the user/parent.
-    $json = $this->request('/external/{agency_id}/patrons/preauthenticated/v9', $cpr);
+    // Authenticate the patron.
+    $json = $this->request('/external/{agency_id}/patrons/preauthenticated/v10', $cpr);
     if ($json->authenticateStatus === 'VALID') {
-      return new Patron(
-        $json->patron->patronId,
-        (bool) $json->patron->receiveSms,
-        (bool) $json->patron->receivePostalMail,
-        $json->patron->notificationProtocols,
-        $json->patron->phoneNumber,
-        is_null($json->patron->onHold) ? $json->patron->onHold : (array) $json->patron->onHold,
-        $json->patron->preferredLanguage,
-        (bool) $json->patron->guardianVisibility,
-        $json->patron->emailAddress,
-        (bool) $json->patron->receiveEmail,
-        $json->patron->preferredPickupBranch
-      );
+      return $json->patronId;
     }
 
     return NULL;
@@ -121,17 +109,59 @@ final class FBS {
    * @throws \JsonException
    */
   public function createPatronWithGuardian(Patron $patron, Guardian $guardian) {
-    $uri = '/external/{agency_id}/patrons/withGuardian/v1';
+    $uri = '/external/{agency_id}/patrons/withGuardian/v4';
     $payload = [
-      'cprNumber' => $patron->cpr,
+      'personId' => $patron->personId,
       'pincode' => $patron->pincode,
       'preferredPickupBranch' => $patron->preferredPickupBranch,
       'name' => 'Unknown Name',
-      'email' => $patron->emailAddress,
+      'emailAddresses' => $patron->emailAddresses,
       'guardian' => $guardian->toArray(),
     ];
 
-    return $this->request($uri, $payload,);
+    return $this->request($uri, $payload);
+  }
+
+  /**
+   * Update patron information.
+   *
+   * @param string $patronId
+   *   The patron to update.
+   *
+   * @return \Drupal\os2forms_fbs_handler\Client\Model\Patron
+   *   Patron object
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   * @throws \JsonException
+   */
+  public function getPatron(string $patronId): ?Patron {
+    $uri = '/external/{agency_id}/patrons/' . $patronId . '/v4';
+
+    $json = $this->request($uri, [], RequestMethodInterface::METHOD_GET);
+
+    if ($json->authenticateStatus === "VALID") {
+      return new Patron(
+        $json->patron->patronId,
+        (bool) $json->patron->receiveSms,
+        (bool) $json->patron->receivePostalMail,
+        $json->patron->notificationProtocols,
+        $json->patron->phoneNumber,
+        is_null($json->patron->onHold) ? $json->patron->onHold : (array) $json->patron->onHold,
+        $json->patron->preferredLanguage,
+        (bool) $json->patron->guardianVisibility,
+        $json->patron->defaultInterestPeriod,
+        (bool) $json->patron->resident,
+        [
+          [
+            'emailAddress' => $json->patron->emailAddress,
+            'receiveNotification' => $json->patron->receiveEmail
+          ]
+        ],
+        (bool) $json->patron->receiveEmail,
+        $json->patron->preferredPickupBranch
+      );
+    }
+    return NULL;
   }
 
   /**
@@ -147,19 +177,21 @@ final class FBS {
    * @throws \JsonException
    */
   public function updatePatron(Patron $patron): bool {
-    $uri = '/external/{agency_id}/patrons/' . $patron->patronId . '/v6';
+    $uri = '/external/{agency_id}/patrons/' . $patron->patronId . '/v8';
     $payload = [
-      'patronid' => $patron->patronId,
-      'patron' => $patron->toArray(),
+      'patron' => [
+        'preferredPickupBranch' => $patron->preferredPickupBranch,
+        'emailAddresses' => $patron->emailAddresses,
+        'guardianVisibility' => $patron->guardianVisibility,
+        'receivePostalMail' => $patron->receiveEmail,
+      ],
       'pincodeChange' => [
         'pincode' => $patron->pincode,
-        'libraryCardNumber' => $patron->cpr,
+        'libraryCardNumber' => $patron->personId,
       ],
     ];
 
-    $json = $this->request($uri, $payload, RequestMethodInterface::METHOD_PUT);
-
-    return $json->authenticateStatus === 'VALID';
+    return $this->request($uri, $payload, RequestMethodInterface::METHOD_PUT);
   }
 
   /**
@@ -177,7 +209,7 @@ final class FBS {
    * @throws \JsonException
    */
   public function createGuardian(Patron $patron, Guardian $guardian): int {
-    $uri = '/external/{agency_id}/patrons/withGuardian/v1';
+    $uri = '/external/{agency_id}/patrons/withGuardian/v2';
     $payload = [
       'patronId' => $patron->patronId,
       'guardian' => $guardian->toArray(),
@@ -227,6 +259,10 @@ final class FBS {
     }
 
     $response = $this->client->request($method, $url, $options);
+
+    if ($response->getStatusCode() === 204) {
+      return TRUE;
+    }
 
     return json_decode($response->getBody(), FALSE, 512, JSON_THROW_ON_ERROR);
   }
