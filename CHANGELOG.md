@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede FBS handler til nyeste endpoints og operations.
+
 ## [3.1.1] 3024-11-25
 
 * Opdaterede max input vars i docker-setup.
