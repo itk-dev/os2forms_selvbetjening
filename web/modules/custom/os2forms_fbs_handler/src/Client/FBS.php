@@ -154,8 +154,8 @@ final class FBS {
         [
           [
             'emailAddress' => $json->patron->emailAddress,
-            'receiveNotification' => $json->patron->receiveEmail
-          ]
+            'receiveNotification' => $json->patron->receiveEmail,
+          ],
         ],
         (bool) $json->patron->receiveEmail,
         $json->patron->preferredPickupBranch

@@ -2,12 +2,12 @@
 
 namespace Drupal\os2forms_fbs_handler\Plugin\AdvancedQueue\JobType;
 
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\advancedqueue\Job;
 use Drupal\advancedqueue\JobResult;
 use Drupal\advancedqueue\Plugin\AdvancedQueue\JobType\JobTypeBase;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\os2forms_fbs_handler\Client\FBS;
 use Drupal\os2forms_fbs_handler\Client\Model\Guardian;
 use Drupal\os2forms_fbs_handler\Client\Model\Patron;
@@ -106,8 +106,8 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
             $patron->emailAddresses = [
               [
                 'emailAddress' => $data['barn_mail'],
-                'receiveNotification' => TRUE
-              ]
+                'receiveNotification' => TRUE,
+              ],
             ];
             $patron->receiveEmail = TRUE;
             $patron->pincode = $data['pinkode'];
@@ -123,8 +123,8 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
           $patron->emailAddresses = [
             [
               'emailAddress' => $data['barn_mail'],
-              'receiveNotification' => TRUE
-            ]
+              'receiveNotification' => TRUE,
+            ],
           ];
           $patron->receiveEmail = TRUE;
           $patron->personId = $data['barn_cpr'];
@@ -138,7 +138,6 @@ final class FbsCreateUser extends JobTypeBase implements ContainerFactoryPluginI
         return JobResult::success();
       }
       catch (\Exception | GuzzleException $e) {
-        $exception = $e->getResponse()->getBody()->getContents();
         $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
           '@serial' => $webformSubmission->serial(),
           '@message' => $e->getMessage(),
