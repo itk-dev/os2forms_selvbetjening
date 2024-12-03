@@ -53,4 +53,5 @@ final class Patron {
       'resident' => $this->resident,
     ];
   }
+
 }
