@@ -2,7 +2,6 @@
 
 namespace Drupal\os2forms_fbs_handler\Plugin\WebformHandler;
 
-
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
