@@ -184,6 +184,12 @@ final class FBS {
         'emailAddresses' => $patron->emailAddresses,
         'guardianVisibility' => $patron->guardianVisibility,
         'receivePostalMail' => $patron->receiveEmail,
+        'phoneNumbers' => [
+          [
+            'receiveNotification' => TRUE,
+            'phoneNumber' => $patron->phoneNumber,
+          ],
+        ],
       ],
       'pincodeChange' => [
         'pincode' => $patron->pincode,
