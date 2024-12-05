@@ -4,6 +4,9 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+* Opdaterede ckeditor konfiguration til
+  altid at vise værktøjslinje.
+
 ## [Under udvikling]
 
 * Tilføjede `os2forms_payment`-kø-konfiguration
