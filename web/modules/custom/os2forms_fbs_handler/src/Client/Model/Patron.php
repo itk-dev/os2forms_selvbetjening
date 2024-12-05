@@ -42,7 +42,7 @@ final class Patron {
       'receiveEmail' => $this->receiveEmail,
       'receiveSms' => $this->receiveSms,
       'receivePostalMail' => $this->receivePostalMail,
-      'emailAddress' => $this->emailAddresses,
+      'emailAddresses' => $this->emailAddresses,
       'notificationProtocols' => $this->notificationProtocols,
       'phoneNumber' => $this->phoneNumber,
       'preferredPickupBranch' => $this->preferredPickupBranch,
