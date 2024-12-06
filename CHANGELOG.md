@@ -12,6 +12,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede ckeditor konfiguration til
   altid at vise værktøjslinje.
 * Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
+* Opdaterede `os2forms_payment`.
 * Opdaterede til OS2Forms 3.19.0
   * Fasit handler
   * Audit logging af digital post

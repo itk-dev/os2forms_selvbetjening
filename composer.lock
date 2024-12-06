@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae0543ec41a234c8db3688a2851473b5",
+    "content-hash": "033d1c22d7bcc6ad3982c0039249f9d9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9517,16 +9517,16 @@
         },
         {
             "name": "os2forms/os2forms_payment",
-            "version": "0.1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_payment.git",
-                "reference": "ec52564fc671db2f6f1bed87f8fefc403fb858a2"
+                "reference": "0a880a4c7e3154f3c4ead5a2f9f82d3ca76cf51c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/ec52564fc671db2f6f1bed87f8fefc403fb858a2",
-                "reference": "ec52564fc671db2f6f1bed87f8fefc403fb858a2",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/0a880a4c7e3154f3c4ead5a2f9f82d3ca76cf51c",
+                "reference": "0a880a4c7e3154f3c4ead5a2f9f82d3ca76cf51c",
                 "shasum": ""
             },
             "require": {
@@ -9556,9 +9556,9 @@
             "description": "OS2Forms payment",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_payment/issues",
-                "source": "https://github.com/itk-dev/os2forms_payment/tree/0.1.0"
+                "source": "https://github.com/itk-dev/os2forms_payment/tree/1.0.0"
             },
-            "time": "2024-10-25T12:15:49+00:00"
+            "time": "2024-12-06T09:46:02+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
