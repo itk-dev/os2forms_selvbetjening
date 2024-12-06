@@ -4,10 +4,11 @@
 
 Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
+## [Under udvikling]
+
 * Opdaterede ckeditor konfiguration til
   altid at vise værktøjslinje.
-
-## [Under udvikling]
+* Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
 
 * Tilføjede `os2forms_payment`-kø-konfiguration
 
