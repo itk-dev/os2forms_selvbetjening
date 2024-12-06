@@ -7,6 +7,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Opdaterede FBS handler til nyeste endpoints og operations.
+* Opdaterede ckeditor konfiguration til
+  altid at vise værktøjslinje.
+* Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
 
 ## [3.1.1] 3024-11-25
 
