@@ -29,7 +29,6 @@
         "itk-dev/os2forms_user_field_lookup": "^1.1",
         "itk-dev/web_accessibility_statement": "^1.1",
         "os2forms/os2forms": "^3.16",
-        "os2forms/os2forms_fasit": "^1.1",
         "os2forms/os2forms_forloeb_profile": "dev-f/d10_readiness",
         "os2forms/os2forms_get_organized": "^1.2",
         "os2forms/os2forms_organisation": "^2.1",
