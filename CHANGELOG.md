@@ -6,7 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-* Opdaterede [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized) version.
+* Opdaterede
+  [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized) version.
 * Opdaterede FBS handler til nyeste endpoints og operations.
 * Opdaterede ckeditor konfiguration til
   altid at vise værktøjslinje.
