@@ -9472,29 +9472,30 @@
         },
         {
             "name": "os2forms/os2forms_get_organized",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_get_organized.git",
-                "reference": "96281f602c49c72b98667037af8c72c11de966f3"
+                "reference": "9547f4242014558f7571466307e798d8b0e540b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/96281f602c49c72b98667037af8c72c11de966f3",
-                "reference": "96281f602c49c72b98667037af8c72c11de966f3",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/9547f4242014558f7571466307e798d8b0e540b5",
+                "reference": "9547f4242014558f7571466307e798d8b0e540b5",
                 "shasum": ""
             },
             "require": {
-                "drupal/advancedqueue": "^1.0",
-                "drupal/webform": "^6.1",
+                "drupal/advancedqueue": "^1.2",
+                "drupal/webform": "^6.2",
                 "itk-dev/getorganized-api-client-php": "^1.2",
-                "os2forms/os2forms": "^3.13",
-                "symfony/options-resolver": "^5.4"
+                "os2forms/os2forms": "^3.17",
+                "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4"
+                "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "~1.2.0"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -9510,9 +9511,9 @@
             "description": "OS2Forms GetOrganized integration",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_get_organized/issues",
-                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.2.0"
+                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.3.0"
             },
-            "time": "2024-09-12T08:08:42+00:00"
+            "time": "2024-12-06T09:28:35+00:00"
         },
         {
             "name": "os2forms/os2forms_organisation",
