@@ -91,6 +91,7 @@ module:
   os2forms_nemlogin_openid_connect: 0
   os2forms_organisation: 0
   os2forms_organisation_openid_connect: 0
+  os2forms_payment: 0
   os2forms_permission_alterations: 0
   os2forms_permissions_by_term: 0
   os2forms_rest_api: 0
@@ -102,7 +103,6 @@ module:
   os2forms_webform_list: 0
   os2forms_webform_maps: 0
   os2forms_webform_submission_log: 0
-  os2forms_payment: 0
   os2web_audit: 0
   os2web_audit_user: 0
   os2web_datalookup: 0
