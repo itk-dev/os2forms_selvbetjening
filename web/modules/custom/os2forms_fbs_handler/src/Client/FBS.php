@@ -235,7 +235,7 @@ final class FBS {
    *   The type of request to send (Default: POST).
    *
    * @return mixed
-   *   Json response from FBS.
+   *   Json response from FBS or TRUE on updatePatron response.
    *
    * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \JsonException
