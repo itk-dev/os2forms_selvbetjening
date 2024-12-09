@@ -6,7 +6,25 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-* Added update site check to GitHub Actions.
+* Tilføjede update site tjek til GitHub Actions.
+* Opdaterede
+  [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized) version.
+* Opdaterede FBS handler til nyeste endpoints og operations.
+* Opdaterede ckeditor konfiguration til
+  altid at vise værktøjslinje.
+* Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
+* Opdaterede `os2forms_payment`.
+* Opdaterede til OS2Forms 3.20.0
+  * Fasit handler og audit logging
+  * Audit logging af digital post
+  * Audit logging af nemid felter
+  * Audit logging af FBS handler
+* Fjerende direkte requirement af `os2forms/os2forms_fasit`.
+  * Denne kommer nu gennem OS2Forms core.
+
+## [3.1.1] 3024-11-25
+
+* Opdaterede max input vars i docker-setup.
 
 ## [3.1.0] 2024-11-22
 
@@ -513,7 +531,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.1.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.1.1...HEAD
+[3.1.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.1...3.1.0
 [3.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/2.8.3...3.0.0

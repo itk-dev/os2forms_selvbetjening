@@ -20,6 +20,7 @@ services:
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=0
       - PHP_PM_TYPE=static
       - PHP_PM_MAX_CHILDREN=30
+      - PHP_MAX_INPUT_VARS=5000
 
   memcached:
     environment:
