@@ -46,17 +46,6 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler implements Contain
    * @var \Drupal\os2web_audit\Service\Logger
    */
   protected Logger $auditLogger;
-  // /**
-  //   * {@inheritdoc}
-  //   */
-  //  public function __construct(
-  //    array $configuration,
-  //    $plugin_id,
-  //    $plugin_definition,
-  //    private readonly Logger $auditLogger
-  //  ) {
-  //    parent::__construct($configuration, $plugin_id, $plugin_definition);
-  //  }
 
   /**
    * {@inheritdoc}
