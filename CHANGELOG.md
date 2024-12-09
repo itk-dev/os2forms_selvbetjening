@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede update site tjek til GitHub Actions.
 * Opdaterede
   [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized) version.
 * Opdaterede FBS handler til nyeste endpoints og operations.
