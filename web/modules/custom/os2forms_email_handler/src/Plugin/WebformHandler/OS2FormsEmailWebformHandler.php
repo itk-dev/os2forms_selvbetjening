@@ -2,11 +2,14 @@
 
 namespace Drupal\os2forms_email_handler\Plugin\WebformHandler;
 
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\file\Entity\File;
 use Drupal\os2forms_email_handler\Helper\WebformHelper;
+use Drupal\os2web_audit\Service\Logger;
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
 use Drupal\webform\WebformSubmissionInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Emails a webform submission.
@@ -21,8 +24,7 @@ use Drupal\webform\WebformSubmissionInterface;
  *   tokens = TRUE,
  * )
  */
-class OS2FormsEmailWebformHandler extends EmailWebformHandler {
-
+class OS2FormsEmailWebformHandler extends EmailWebformHandler implements ContainerFactoryPluginInterface {
   /**
    * File element types.
    */
@@ -39,6 +41,33 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
   private const DEFAULT_FROM_NAME = 'Selvbetjening';
 
   /**
+   * The audit logger.
+   *
+   * @var \Drupal\os2web_audit\Service\Logger
+   */
+  protected Logger $auditLogger;
+  // /**
+  //   * {@inheritdoc}
+  //   */
+  //  public function __construct(
+  //    array $configuration,
+  //    $plugin_id,
+  //    $plugin_definition,
+  //    private readonly Logger $auditLogger
+  //  ) {
+  //    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  //  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->auditLogger = $container->get('os2web_audit.logger');
+    return $instance;
+  }
+
+  /**
    * Sends extra notification based on attachment file size.
    *
    * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
@@ -47,7 +76,6 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
    *   An array of message parameters.
    */
   public function sendMessage(WebformSubmissionInterface $webform_submission, array $message) {
-
     $webform = $webform_submission->getWebform();
     $settings = $webform->getThirdPartySetting('os2forms', WebformHelper::MODULE_NAME);
 
@@ -57,7 +85,19 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
       $sendOriginalMessage = !$this->handleAttachmentNotification($webform_submission, $message, $settings['email_recipients']);
     }
 
-    return $sendOriginalMessage ? parent::sendMessage($webform_submission, $message) : FALSE;
+    if ($sendOriginalMessage) {
+      $result = parent::sendMessage($webform_submission, $message);
+
+      if ($result) {
+        $msg = sprintf('Email, %s, sent to %s. Webform id %s.', $message['subject'], $message['to_mail'], $webform_submission->getWebform()->id());
+        $this->auditLogger->info('Email', $msg);
+      }
+
+      return $result;
+    }
+    else {
+      return FALSE;
+    }
   }
 
   /**
@@ -260,6 +300,11 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler {
         $notificationMessage['handler'] = $message['handler'];
 
         $result = parent::sendMessage($webform_submission, $notificationMessage);
+
+        if ($result) {
+          $msg = sprintf('Email, %s, sent to %s. Webform id %s.', $notificationMessage['subject'], $notificationMessage['to_mail'], $webform_submission->getWebform()->id());
+          $this->auditLogger->info('Email', $msg);
+        }
 
         if ($webform_submission->getWebform()->hasSubmissionLog() && $result) {
           // Log detailed message to the 'webform_submission' log.
