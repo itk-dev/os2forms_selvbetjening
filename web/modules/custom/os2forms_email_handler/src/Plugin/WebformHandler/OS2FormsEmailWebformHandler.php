@@ -4,7 +4,6 @@ namespace Drupal\os2forms_email_handler\Plugin\WebformHandler;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
-use Drupal\file\Entity\File;
 use Drupal\os2forms_email_handler\Helper\WebformHelper;
 use Drupal\os2web_audit\Service\Logger;
 use Drupal\webform\Plugin\WebformHandler\EmailWebformHandler;
@@ -314,7 +313,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler implements Contain
     $fileElementIds = $this->getFileIdsFromSubmission($webform_submission);
 
     return array_reduce($fileElementIds, function ($carry, $item) {
-      return $carry + (int) File::load($item)->getSize();
+      return $carry + (int) $this->entityTypeManager->getStorage('file')->load($item)->getSize();
     }, 0);
   }
 
