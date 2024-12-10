@@ -8314,22 +8314,23 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "3587d447f92379c43f9ef39f495312dee309ac8b"
+                "reference": "bb0cf28357fbc6635b30f29898b9407bad422f67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/3587d447f92379c43f9ef39f495312dee309ac8b",
-                "reference": "3587d447f92379c43f9ef39f495312dee309ac8b",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/bb0cf28357fbc6635b30f29898b9407bad422f67",
+                "reference": "bb0cf28357fbc6635b30f29898b9407bad422f67",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
                 "itk-dev/openid-connect": "^3.1",
+                "os2forms/os2forms": "^3.17",
                 "os2web/os2web_nemlogin": "^1.2",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
@@ -8337,7 +8338,8 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
                 "friendsoftwig/twigcs": "^6.0",
-                "mglaman/drupal-check": "^1.4"
+                "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "~1.2.0"
             },
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -8348,9 +8350,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.1.0"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.2.0"
             },
-            "time": "2024-09-12T08:12:03+00:00"
+            "time": "2024-12-10T11:46:46+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
