@@ -9252,16 +9252,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.20.0",
+            "version": "3.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "254adf06cda918b907a3857cbf54d365ed2daa5e"
+                "reference": "b244c35288aad8795ce8b783db820cc4933c775e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/254adf06cda918b907a3857cbf54d365ed2daa5e",
-                "reference": "254adf06cda918b907a3857cbf54d365ed2daa5e",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/b244c35288aad8795ce8b783db820cc4933c775e",
+                "reference": "b244c35288aad8795ce8b783db820cc4933c775e",
                 "shasum": ""
             },
             "require": {
@@ -9377,9 +9377,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.20.0"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.20.1"
             },
-            "time": "2024-12-09T12:26:26+00:00"
+            "time": "2024-12-10T11:19:23+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
