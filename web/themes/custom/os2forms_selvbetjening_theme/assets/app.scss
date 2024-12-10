@@ -95,6 +95,11 @@
   }
 }
 
+/* Fix absolute positioning of hidden scale input causing unwanted scroll on click */
+.webform-scale-options > .webform-scale-option > div.form-item {
+  position: relative;
+}
+
 .button--outline--primary {
   background-color: #fff;
   border-color: #003ecc !important;

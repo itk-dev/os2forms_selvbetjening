@@ -7,6 +7,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Audit logging af e-mails.
+* Løst problem angående skalér scroller til top på klik.
+* Tilføjede patch der retter fejl angående æøå i webform søgning.
 * Tilføjede update site tjek til GitHub Actions.
 * Opdaterede
   [OS2Forms GetOrganized](https://github.com/OS2Forms/os2forms_get_organized) version.
@@ -15,7 +17,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   altid at vise værktøjslinje.
 * Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
 * Opdaterede `os2forms_payment`.
-* Opdaterede til OS2Forms 3.20.0
+* Opdaterede til OS2Forms 3.20.1
   * Fasit handler og audit logging
   * Audit logging af digital post
   * Audit logging af nemid felter
