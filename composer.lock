@@ -9474,22 +9474,24 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "3e4b6ae4ede047799491f7703e445a5156735c7d"
+                "reference": "12f1bd13a2e086f143673e6373cbc3fa0a9b625f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/3e4b6ae4ede047799491f7703e445a5156735c7d",
-                "reference": "3e4b6ae4ede047799491f7703e445a5156735c7d",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/12f1bd13a2e086f143673e6373cbc3fa0a9b625f",
+                "reference": "12f1bd13a2e086f143673e6373cbc3fa0a9b625f",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.1",
                 "drush/drush": "^11 || ^12",
                 "itk-dev/serviceplatformen": "^1.4",
+                "os2web/os2web_audit": "^0.1.1",
+                "os2web/os2web_nemlogin": "^1.2",
                 "php": "^8.1",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
@@ -9497,6 +9499,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
                 "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "~1.2.0",
                 "phpunit/phpunit": "^9.5"
             },
             "type": "drupal-module",
@@ -9513,9 +9516,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.1.0"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.2.0"
             },
-            "time": "2024-09-12T08:14:27+00:00"
+            "time": "2024-12-13T11:50:36+00:00"
         },
         {
             "name": "os2forms/os2forms_payment",

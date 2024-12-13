@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Audit logging af organisationsdata opslag.
 * Audit logging af OpenIDConnect autentificering.
 * Audit logging af e-mails.
 * Løst problem angående skalér scroller til top på klik.
