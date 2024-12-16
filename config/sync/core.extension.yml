@@ -165,6 +165,7 @@ module:
   minimal: 1000
   eu_cookie_compliance: 1001
   os2forms_encrypt: 9999
+  os2web_audit_entity: 19999
 theme:
   claro: 0
   gin: 0
