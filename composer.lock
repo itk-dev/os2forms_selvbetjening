@@ -9702,16 +9702,16 @@
         },
         {
             "name": "os2web/os2web_audit",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_audit.git",
-                "reference": "a86bce7dea89bc8e5f351b399014e6a74aadc4fc"
+                "reference": "db7f34f6b0d2f15fea7c1bc37575f9449c5455de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/a86bce7dea89bc8e5f351b399014e6a74aadc4fc",
-                "reference": "a86bce7dea89bc8e5f351b399014e6a74aadc4fc",
+                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/db7f34f6b0d2f15fea7c1bc37575f9449c5455de",
+                "reference": "db7f34f6b0d2f15fea7c1bc37575f9449c5455de",
                 "shasum": ""
             },
             "require": {
@@ -9740,9 +9740,9 @@
             ],
             "description": "Drupal OS2 module that provides audit logging for Danish Municipalities",
             "support": {
-                "source": "https://github.com/OS2web/os2web_audit/tree/0.1.3"
+                "source": "https://github.com/OS2web/os2web_audit/tree/0.1.4"
             },
-            "time": "2024-12-13T13:47:01+00:00"
+            "time": "2024-12-16T08:56:45+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
