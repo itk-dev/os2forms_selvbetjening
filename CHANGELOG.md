@@ -20,7 +20,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   altid at vise værktøjslinje.
 * Opdaterede [OS2Web Datalookup](https://github.com/OS2web/os2web_datalookup/) version.
 * Opdaterede `os2forms_payment`.
-* Opdaterede til OS2Forms 3.20.1
+* Opdaterede til OS2Forms 3.21.0
   * Fasit handler og audit logging
   * Audit logging af digital post
   * Audit logging af nemid felter
