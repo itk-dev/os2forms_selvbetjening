@@ -9522,16 +9522,16 @@
         },
         {
             "name": "os2forms/os2forms_payment",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_payment.git",
-                "reference": "9353c72c38e8866946e8789e678602bad93ce824"
+                "reference": "cec3d7e6c7014d0c312f97d0e346f313d3028262"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/9353c72c38e8866946e8789e678602bad93ce824",
-                "reference": "9353c72c38e8866946e8789e678602bad93ce824",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/cec3d7e6c7014d0c312f97d0e346f313d3028262",
+                "reference": "cec3d7e6c7014d0c312f97d0e346f313d3028262",
                 "shasum": ""
             },
             "require": {
@@ -9561,9 +9561,9 @@
             "description": "OS2Forms payment",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_payment/issues",
-                "source": "https://github.com/itk-dev/os2forms_payment/tree/1.0.1"
+                "source": "https://github.com/itk-dev/os2forms_payment/tree/1.1.0"
             },
-            "time": "2024-12-06T14:13:36+00:00"
+            "time": "2024-12-17T08:58:24+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
