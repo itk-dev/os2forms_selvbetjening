@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [3.2.0] 2024-12-17
+
 * Tilføjede `os2web_audit`-kø-konfiguration.
 * Audit logging af organisationsdata opslag.
 * Audit logging af OpenIDConnect autentificering.
@@ -28,7 +30,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Fjerende direkte requirement af `os2forms/os2forms_fasit`.
   * Denne kommer nu gennem OS2Forms core.
 
-## [3.1.1] 3024-11-25
+## [3.1.1] 2024-11-25
 
 * Opdaterede max input vars i docker-setup.
 
@@ -537,7 +539,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.1.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.0...HEAD
+[3.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.1.1...3.2.0
 [3.1.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.1...3.1.0
 [3.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.0.0...3.0.1
