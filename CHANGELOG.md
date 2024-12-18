@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede `os2forms_rest_api`
+  * Performance opdatering af `Webform Submissions`-endpointet.
+
 ## [3.2.0] 2024-12-17
 
 * Tilføjede `os2web_audit`-kø-konfiguration.

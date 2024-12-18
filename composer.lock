@@ -9568,16 +9568,16 @@
         },
         {
             "name": "os2forms/os2forms_rest_api",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_rest_api.git",
-                "reference": "df8a972ed0c71efac0f280d86e6cae3e50c7edc3"
+                "reference": "9070053b28eb9ef995a90db103e37e100dfc94c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/df8a972ed0c71efac0f280d86e6cae3e50c7edc3",
-                "reference": "df8a972ed0c71efac0f280d86e6cae3e50c7edc3",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_rest_api/zipball/9070053b28eb9ef995a90db103e37e100dfc94c5",
+                "reference": "9070053b28eb9ef995a90db103e37e100dfc94c5",
                 "shasum": ""
             },
             "require": {
@@ -9589,16 +9589,17 @@
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
                 "drupal/coder": "^8.3",
-                "mglaman/drupal-check": "^1.4"
+                "mglaman/drupal-check": "^1.4",
+                "mglaman/phpstan-drupal": "~1.2.0"
             },
             "type": "drupal-module",
             "extra": {
-                "enable-patching": true,
                 "patches": {
                     "drupal/webform_rest": {
                         "Added ability to modify response data sent from Webform Submission endpoint": "https://raw.githubusercontent.com/OS2Forms/os2forms_rest_api/2.0.2/patches/webform_rest_submission.patch"
                     }
-                }
+                },
+                "enable-patching": true
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -9613,9 +9614,9 @@
             "description": "OS2Forms REST API",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_rest_api/issues",
-                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.1.0"
+                "source": "https://github.com/OS2Forms/os2forms_rest_api/tree/2.2.0"
             },
-            "time": "2024-09-06T08:46:36+00:00"
+            "time": "2024-12-18T08:45:24+00:00"
         },
         {
             "name": "os2forms/os2forms_sync",
