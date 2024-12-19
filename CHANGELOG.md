@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Automatisk sletning af vellykkede audit logging jobs.
+
 ## [3.2.1] 2024-12-19
 
 * Opdaterede `os2forms_rest_api`
