@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede `os2forms_get_organized`.
+  * Normaliserer white spaces i filnavne.
+
 ## [3.2.2] 2024-12-19
 
 * Automatisk sletning af vellykkede audit logging jobs.

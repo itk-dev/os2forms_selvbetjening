@@ -8152,16 +8152,16 @@
         },
         {
             "name": "itk-dev/getorganized-api-client-php",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/getorganized-api-client-php.git",
-                "reference": "416e89a09467fd3f69e696a7cd3d97ab7d10ffd7"
+                "reference": "d2067dfd842e6bcd3c80c7200d71d497c5711b6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/416e89a09467fd3f69e696a7cd3d97ab7d10ffd7",
-                "reference": "416e89a09467fd3f69e696a7cd3d97ab7d10ffd7",
+                "url": "https://api.github.com/repos/itk-dev/getorganized-api-client-php/zipball/d2067dfd842e6bcd3c80c7200d71d497c5711b6a",
+                "reference": "d2067dfd842e6bcd3c80c7200d71d497c5711b6a",
                 "shasum": ""
             },
             "require": {
@@ -8201,9 +8201,9 @@
             "description": "PHP client for GetOrganized API",
             "support": {
                 "issues": "https://github.com/itk-dev/getorganized-api-client-php/issues",
-                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.2.1"
+                "source": "https://github.com/itk-dev/getorganized-api-client-php/tree/1.2.2"
             },
-            "time": "2023-12-18T08:25:24+00:00"
+            "time": "2024-12-19T11:36:43+00:00"
         },
         {
             "name": "itk-dev/openid-connect",
@@ -9430,22 +9430,22 @@
         },
         {
             "name": "os2forms/os2forms_get_organized",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms_get_organized.git",
-                "reference": "e6155c9f638526560cbfa90c85032d786df87884"
+                "reference": "53c7d8e9b3dafb4e1c8b46cc14c1050a031a4a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/e6155c9f638526560cbfa90c85032d786df87884",
-                "reference": "e6155c9f638526560cbfa90c85032d786df87884",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms_get_organized/zipball/53c7d8e9b3dafb4e1c8b46cc14c1050a031a4a2c",
+                "reference": "53c7d8e9b3dafb4e1c8b46cc14c1050a031a4a2c",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.2",
                 "drupal/webform": "^6.2",
-                "itk-dev/getorganized-api-client-php": "^1.2",
+                "itk-dev/getorganized-api-client-php": "^1.2.2",
                 "os2forms/os2forms": "^3.17",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
@@ -9469,9 +9469,9 @@
             "description": "OS2Forms GetOrganized integration",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms_get_organized/issues",
-                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.3.1"
+                "source": "https://github.com/OS2Forms/os2forms_get_organized/tree/1.4.0"
             },
-            "time": "2024-12-09T09:41:53+00:00"
+            "time": "2024-12-19T12:27:18+00:00"
         },
         {
             "name": "os2forms/os2forms_organisation",
