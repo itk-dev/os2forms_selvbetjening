@@ -26,6 +26,11 @@ footer {
   font-size: 12px;
 }
 
+.footer-content {
+  width: 70%;
+  display: inline-block;
+}
+
 details {
   border:1px solid #ccc;
   margin-top:1em;
@@ -132,6 +137,11 @@ details, .claro-details {
   break-inside: avoid;
 }
 
+/* Hide more link from more element. */
+.webform-element-more--link {
+  display: none;
+}
+
 .webform-entity-print-colophon {
   font-size: 12px;
   margin-top: -11px;
@@ -146,7 +156,12 @@ details, .claro-details {
 }
 
 .page-numbers {
+  position: absolute;
+  display: inline-block;
   text-align: right;
+  width: 27%;
+  right: 0;
+  bottom: 0;
 }
 
 .page-numbers .page-number:after {
