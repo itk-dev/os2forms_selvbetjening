@@ -17,12 +17,27 @@
 {% if footer %}
   <footer>
     {{ footer }}
+    <div class="page-numbers">
+      <span>{{ 'Page'|t }}</span>
+      <span class="page-number">
+        {# Page number inserted by css. #}
+      </span>
+      <span>{{ 'of'|t }}</span>
+      <span class="page-count">
+      {# String replace is done by by entity_print_module #}
+        {{ '@@PC' }}
+      </span>
+    </div>
   </footer>
 {% endif %}
 
 <div class="page">
-  {{ content }}
+  {{ submission_renderable }}
 </div>
+
+{% if debug %}
+  {{ dump() }}
+{% endif %}
 
 </body>
 </html>
