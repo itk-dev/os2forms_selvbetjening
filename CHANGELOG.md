@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Slog `NemID CPR Fetch data`-elementet fra.
 * Opdaterede `os2forms_get_organized`.
   * Normaliserer white spaces i filnavne.
 

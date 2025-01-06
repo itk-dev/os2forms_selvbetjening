@@ -161,6 +161,7 @@ element:
     entity_autocomplete: entity_autocomplete
     item: item
     label: label
+    os2forms_nemid_cpr_fetch_data: os2forms_nemid_cpr_fetch_data
     password: password
     password_confirm: password_confirm
     processed_text: processed_text
