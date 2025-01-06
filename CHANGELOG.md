@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* [PR-299](https://github.com/itk-dev/os2forms_selvbetjening/pull/299)
+  os2web_key
+
 ## [4.1.0] 2025-04-08
 
 * Ændrede PDF tabel visning [PR-404](https://github.com/itk-dev/os2forms_selvbetjening/pull/404)
