@@ -21,7 +21,7 @@ docker compose up --detach
 docker compose exec phpfpm composer install --no-interaction
 
 # Install the site
-docker compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config --yes
+docker compose exec phpfpm vendor/bin/drush site:install --existing-config --yes
 
 # Download and install external libraries
 docker compose exec phpfpm vendor/bin/drush webform:libraries:download

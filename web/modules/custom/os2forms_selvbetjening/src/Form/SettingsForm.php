@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 final class SettingsForm extends FormBase {
   use StringTranslationTrait;
 
-  private const SELVBETJENING_WEBFORM_EXPORT_FILENAME = 'selvbetjening_webform_export_filename';
+  public const SELVBETJENING_WEBFORM_EXPORT_FILENAME = 'selvbetjening_webform_export_filename';
   private const SELVBETJENING_WEBFORM_EXPORT_FILENAME_DEFAULT = 'webform_config.csv';
   private const SELVBETJENING_WEBFORM_EXPORT_INCLUDE_TEMPLATES = 'selvbetjening_webform_export_include_templates';
   private const SELVBETJENING_WEBFORM_EXPORT_INCLUDE_ARCHIVED = 'selvbetjening_webform_export_include_archived';

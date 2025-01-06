@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* [PR-299](https://github.com/itk-dev/os2forms_selvbetjening/pull/299)
+  os2web_key
 * Opdaterede `os2forms_get_organized`.
   * Normaliserer white spaces i filnavne.
 
