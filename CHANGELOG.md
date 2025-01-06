@@ -9,6 +9,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede `os2forms` core modulet.
   * Skiftede til FBS modulet i `os2forms` core.
   * Sikrede at Maestro notifikationshandleren gemmer besked format.
+* Slog `NemID CPR Fetch data`-elementet fra.
 * Opdaterede `os2forms_get_organized`.
   * Normaliserer white spaces i filnavne.
 
