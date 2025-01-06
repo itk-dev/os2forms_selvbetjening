@@ -4,4 +4,5 @@ description: 'Provides changes to webform email handler and elements.'
 package: 'OS2Forms'
 core_version_requirement: ^9 || ^10
 dependencies:
+  - 'os2web_datalookup:os2web_datalookup'
   - 'webform:webform'
