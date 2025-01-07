@@ -6,6 +6,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [3.2.4] 2025-01-07
+
+* Opdaterede `os2forms` core modulet.
+* Opdaterede `os2forms_fbs_handler` kø konfiguration.
+
 ## [3.2.3] 2025-01-07
 
 * Opdaterede `os2forms` core modulet.

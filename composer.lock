@@ -9254,16 +9254,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.21.1",
+            "version": "3.21.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "b6f79ec64c0c5b2794aa21dbb9b8728e1a25fa6b"
+                "reference": "8a550d94358b7ca871ae5680edb58febf68d12a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/b6f79ec64c0c5b2794aa21dbb9b8728e1a25fa6b",
-                "reference": "b6f79ec64c0c5b2794aa21dbb9b8728e1a25fa6b",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/8a550d94358b7ca871ae5680edb58febf68d12a3",
+                "reference": "8a550d94358b7ca871ae5680edb58febf68d12a3",
                 "shasum": ""
             },
             "require": {
@@ -9315,6 +9315,7 @@
                 "drupal/workflow_participants": "^3.0@RC",
                 "ext-dom": "*",
                 "ext-soap": "*",
+                "fig/http-message-util": "^1.1",
                 "http-interop/http-factory-guzzle": "^1.0.0",
                 "itk-dev/beskedfordeler-drupal": "^1.0",
                 "itk-dev/serviceplatformen": "^1.5",
@@ -9380,9 +9381,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.21.1"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.21.2"
             },
-            "time": "2025-01-06T10:11:14+00:00"
+            "time": "2025-01-07T12:45:14+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
