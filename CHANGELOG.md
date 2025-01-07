@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [3.2.3] 2025-01-06
+## [3.2.3] 2025-01-07
 
 * Opdaterede `os2forms` core modulet.
   * Skiftede til FBS modulet i `os2forms` core.
