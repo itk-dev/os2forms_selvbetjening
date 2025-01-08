@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Ændrede kort date/time format
+
 ## [3.2.4] 2025-01-07
 
 * Opdaterede `os2forms` core modulet.
