@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-* Ændrede PDF udseende  [PR-377](https://github.com/itk-dev/os2forms_selvbetjening/pull/377).
+* Ændrede PDF udseende [PR-377](https://github.com/itk-dev/os2forms_selvbetjening/pull/377).
 
 ## [3.2.4] 2025-01-07
 
