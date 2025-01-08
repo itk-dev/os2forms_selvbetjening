@@ -162,6 +162,9 @@
             },
             "os2forms/os2forms": {
                 "Hide additional os2forms webform settings page": "patches/drupal/os2forms/os2forms_hide_additional_settings_page.diff"
+            },
+            "drupal/entity_print": {
+              "Add page count https://www.drupal.org/project/entity_print/issues/2823430": "https://www.drupal.org/files/issues/2023-07-10/entity_print-dompdf_page_count-2823430-14.patch"
             }
         }
     },
