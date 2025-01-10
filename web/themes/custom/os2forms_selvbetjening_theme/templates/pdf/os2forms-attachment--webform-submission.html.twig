@@ -14,15 +14,32 @@
   </header>
 {% endif %}
 
-{% if footer %}
-  <footer>
-    {{ footer }}
-  </footer>
-{% endif %}
+<footer>
+  <div class="footer-content">
+    {% if footer %}
+      {{ footer }}
+    {% endif %}
+  </div>
+  <div class="page-numbers">
+    <span>{{ 'Page'|t }}</span>
+    <span class="page-number">
+      {# Page number inserted by css. #}
+    </span>
+    <span>{{ 'of'|t }}</span>
+    <span class="page-count">
+    {# String replace is done by by entity_print_module #}
+      {{ '@@PC' }}
+    </span>
+  </div>
+</footer>
 
 <div class="page">
-  {{ content }}
+  {{ submission_renderable }}
 </div>
+
+{% if debug %}
+  {{ dump() }}
+{% endif %}
 
 </body>
 </html>

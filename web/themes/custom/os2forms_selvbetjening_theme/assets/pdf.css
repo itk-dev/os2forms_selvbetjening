@@ -26,6 +26,11 @@ footer {
   font-size: 12px;
 }
 
+.footer-content {
+  width: 70%;
+  display: inline-block;
+}
+
 details {
   border:1px solid #ccc;
   margin-top:1em;
@@ -85,6 +90,10 @@ th {
   text-align: left;
 }
 
+.strong-text {
+  font-weight: bold;
+}
+
 details, .claro-details {
   border: none !important;
 }
@@ -102,8 +111,11 @@ details, .claro-details {
 
 .webform-submission-table th,
 .webform-submission-table td {
+  vertical-align: top;
+  font-size: 12px;
   text-align:left;
   padding:10px 12px;
+  word-break: break-word;
 }
 
 .webform-submission-table tr {
@@ -121,6 +133,13 @@ details, .claro-details {
   padding: 5px 0;
   margin: 5px 0;
   font-size: 12px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Hide more link from more element. */
+.webform-element-more--link {
+  display: none;
 }
 
 .webform-entity-print-colophon {
@@ -134,4 +153,17 @@ details, .claro-details {
 
 .table {
   width: 100%;
+}
+
+.page-numbers {
+  position: absolute;
+  display: inline-block;
+  text-align: right;
+  width: 27%;
+  right: 0;
+  bottom: 0;
+}
+
+.page-numbers .page-number:after {
+  content: counter(page);
 }
