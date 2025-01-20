@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f48296fda17cede1f0eec25fc2db98a7",
+    "content-hash": "7c1360c7030fab5595fbbf5948f1db63",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8565,6 +8565,62 @@
             "time": "2024-10-10T12:08:21+00:00"
         },
         {
+            "name": "itk-dev/vault",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itk-dev/vault-library.git",
+                "reference": "d5c4fbd58817dba495bd07dcd9a3b9865e7bc69b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itk-dev/vault-library/zipball/d5c4fbd58817dba495bd07dcd9a3b9865e7bc69b",
+                "reference": "d5c4fbd58817dba495bd07dcd9a3b9865e7bc69b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.1",
+                "psr/simple-cache": "^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.64",
+                "phpunit/phpunit": "^11.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ItkDev\\Vault\\": "src/Vault"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesper Kristensen",
+                    "email": "cableman@linuxdev.dk",
+                    "homepage": "https://linuxdev.dk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Library to communicate with Hashicorp Vault",
+            "homepage": "https://github.com/itk-dev",
+            "keywords": [
+                "approle",
+                "e",
+                "hashicorp",
+                "vault"
+            ],
+            "support": {
+                "issues": "https://github.com/itk-dev/vault-library/issues",
+                "source": "https://github.com/itk-dev/vault-library/tree/0.1.0"
+            },
+            "time": "2024-10-21T07:16:27+00:00"
+        },
+        {
             "name": "itk-dev/web_accessibility_statement",
             "version": "1.2.0",
             "source": {
@@ -11685,6 +11741,57 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
             "time": "2024-09-11T13:17:53+00:00"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865",
+                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
+            },
+            "time": "2021-10-29T13:26:27+00:00"
         },
         {
             "name": "psy/psysh",
