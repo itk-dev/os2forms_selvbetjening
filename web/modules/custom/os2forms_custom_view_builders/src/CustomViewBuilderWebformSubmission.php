@@ -17,7 +17,7 @@ use Drupal\webform\WebformSubmissionViewBuilder;
  *
  * @internal
  * This file is pretty much a copy and paste of the default view builder. The
- * few alterations are marked with "@internal Os2Forms changes start/end"
+ * few alterations are marked with "@internal OS2Forms changes start/end"
  * The file is ignored by phpstan because it is a copy of externally contributed
  * code.
  *
@@ -91,9 +91,9 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
           break;
 
         case 'table':
-          /* @internal Os2Forms changes start */
+          /* @internal OS2Forms changes start */
           $elements = $webform->getElementsInitializedAndFlattened();
-          /* @internal Os2Forms changes end */
+          /* @internal OS2Forms changes end */
           $build[$id]['data'] = $this->buildTable($elements, $webform_submission, $options);
           break;
 
@@ -132,7 +132,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
       $title = $element['#admin_title'] ?: $element['#title'] ?: '(' . $key . ')';
       // Note: Not displaying an empty message since empty values just render
       // an empty table cell.
-      /* @internal Os2Forms changes start */
+      /* @internal OS2Forms changes start */
       switch ($element['#type']) {
         case 'container':
           // Prevent row rendering.
@@ -152,7 +152,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
         default:
           $html = $webform_element->formatHtml($element, $webform_submission, $options);
       }
-      /* @internal Os2Forms changes end */
+      /* @internal OS2Forms changes end */
       $rows[$key] = [
         ['header' => TRUE, 'data' => $title],
         ['data' => (is_string($html)) ? ['#markup' => $html] : $html],
