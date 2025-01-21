@@ -79,6 +79,7 @@ module:
   os2forms: 0
   os2forms_api_request_handler: 0
   os2forms_attachment: 0
+  os2forms_custom_view_builders: 0
   os2forms_dawa: 0
   os2forms_digital_post: 0
   os2forms_email_handler: 0

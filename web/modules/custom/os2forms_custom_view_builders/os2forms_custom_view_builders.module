@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks related to OS2Forms custom view builders module.
+ */
+
+use Drupal\os2forms_custom_view_builders\CustomViewBuilderWebformSubmission;
+
+/**
+ * Implements hook_entity_type_alter().
+ *
+ * Change entity types.
+ */
+function os2forms_custom_view_builders_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  // Define new view builder classes.
+  $entity_types['webform_submission']->setViewBuilderClass(CustomViewBuilderWebformSubmission::class);
+}

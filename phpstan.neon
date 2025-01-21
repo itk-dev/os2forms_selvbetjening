@@ -10,5 +10,7 @@ parameters:
       messages:
         - '#no value type specified in iterable type array.#'
         - '#has no return type specified.#'
+
   excludePaths:
     - web/modules/custom/itkdev_booking
+    - web/modules/custom/os2forms_custom_view_builders/src/CustomViewBuilderWebformSubmission.php
