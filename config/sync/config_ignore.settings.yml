@@ -5,16 +5,21 @@ mode: simple
 ignored_config_entities:
   - '# Ignore encryption key and os2forms_encrypt settings'
   - '# Ignore global header, colophon and footer settings'
+  - '# Ignore keys (https://www.drupal.org/project/key)'
   - '# Ignore leaflet layers'
   - '# Ignore most settings on /admin/config/system/os2web-datalookup/datafordeler-cvr'
   - '# Ignore most settings on /admin/config/system/os2web-datalookup/serviceplatformen-cpr-extended'
+  - 'key.key.*'
   - key.key.webform
   - 'leaflet_layers.map_bundle.*'
   - 'leaflet_layers.map_layer.*'
   - 'maestro.maestro_template.*'
   - 'os2forms_attachment.os2forms_attachment_component.*'
+  - os2forms_digital_post.settings
   - os2forms_encrypt.settings
+  - os2forms_fasit.settings
   - os2forms_forloeb.settings
+  - os2forms_get_organized.settings
   - 'os2web_audit.*'
   - 'os2web_datalookup.datafordeler_cvr:cert_passphrase_live'
   - 'os2web_datalookup.datafordeler_cvr:cert_path_live'
@@ -23,21 +28,11 @@ ignored_config_entities:
   - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_test'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:mode_selector'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:serviceagreementuuid'
-  - 'os2web_datalookup.serviceplatformen_cpr_extended:wsdl'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:usersystemuuid'
   - 'os2web_datalookup.serviceplatformen_cpr_extended:useruuid'
-  - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_passphrase'
-  - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile'
-  - 'os2web_datalookup.serviceplatformen_cpr_extended:certfile_test'
-  - '# Ignore leaflet layers'
-  - 'leaflet_layers.map_bundle.*'
-  - 'leaflet_layers.map_layer.*'
-  - os2forms_forloeb.settings
   - 'os2web_datalookup.serviceplatformen_cpr_extended:wsdl'
   - os2web_nemlogin.settings
   - system.site
   - 'webform.settings:third_party_settings.webform_entity_print.template'
   - 'webform.webform.*'
   - 'webform.webform_options.*'
-  - '# Ignore keys (https://www.drupal.org/project/key)'
-  - 'key.key.*'
