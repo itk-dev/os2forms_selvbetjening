@@ -27,3 +27,12 @@ function os2forms_selvbetjening_webform_element_alter(array &$element, FormState
     $element['#attributes']['class'][] = 'js-form-item';
   }
 }
+
+function os2forms_selvbetjening_webform_create($webform) {
+  // webform id will only be null before the webform is created, ensuring we only execute this once.
+ if (is_null($webform->id())) {
+    $webform->setSetting('wizard_progress_bar', FALSE);
+    $webform->setSetting('confirmation_back', FALSE);
+  }
+
+}
