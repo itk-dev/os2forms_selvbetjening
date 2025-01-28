@@ -117,6 +117,12 @@ final class FBS {
       'name' => 'Unknown Name',
       'emailAddresses' => $patron->emailAddresses,
       'guardian' => $guardian->toArray(),
+      'phoneNumbers' => isset($patron->phoneNumber) && $patron->phoneNumber ? [
+        [
+          'receiveNotification' => TRUE,
+          'phoneNumber' => $patron->phoneNumber,
+        ],
+      ] : [],
     ];
 
     return $this->request($uri, $payload);
@@ -184,12 +190,12 @@ final class FBS {
         'emailAddresses' => $patron->emailAddresses,
         'guardianVisibility' => $patron->guardianVisibility,
         'receivePostalMail' => $patron->receiveEmail,
-        'phoneNumbers' => [
+        'phoneNumbers' => isset($patron->phoneNumber) && $patron->phoneNumber ? [
           [
             'receiveNotification' => TRUE,
             'phoneNumber' => $patron->phoneNumber,
           ],
-        ],
+        ] : [],
       ],
       'pincodeChange' => [
         'pincode' => $patron->pincode,
