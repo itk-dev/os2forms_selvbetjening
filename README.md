@@ -12,6 +12,19 @@ local machine for development and testing purposes.
 
 ### Installation
 
+Define [Private file system settings](https://www.drupal.org/docs/8/core/modules/file/overview#s-private-file-system-settings-in-drupal-8):
+
+``` php
+// web/sites/default/settings.local.php
+<?php
+
+// See https://www.drupal.org/docs/8/core/modules/file/overview#s-private-file-system-settings-in-drupal-8 for details.
+$settings['file_private_path'] = $app_root . '/../private';
+
+```
+
+Install the site using [exiting configuration](config/sync):
+
 ```sh name=site-install
 docker network create frontend || true
 docker network create serviceplatformen_organisation_api_app || true

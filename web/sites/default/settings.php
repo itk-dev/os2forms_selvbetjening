@@ -817,6 +817,13 @@ $settings['base_url'] = 'http://nginx:8080';
  */
 $config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig';
 
+// Exclude development modules from configuration synchronization
+// https://www.drupal.org/node/3079028
+$settings['config_exclude_modules'] = [
+  'masquerade',
+  'content_fixtures', 'os2forms_selvbetjening_fixtures',
+];
+
 /**
  * Load local development override configuration, if available.
  *

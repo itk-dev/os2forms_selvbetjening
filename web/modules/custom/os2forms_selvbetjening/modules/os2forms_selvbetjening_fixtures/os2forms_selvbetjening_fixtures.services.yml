@@ -1,0 +1,21 @@
+services:
+  # https://www.drupal.org/node/3284600
+  _defaults:
+    autowire: true
+    # public: true
+
+  Drupal\os2forms_selvbetjening_fixtures\Fixtures\UserAffiliationFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\os2forms_selvbetjening_fixtures\Fixtures\UserFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\os2forms_selvbetjening_fixtures\Fixtures\WebformFixture:
+    tags:
+      - { name: content_fixture }
+
+  Drupal\os2forms_selvbetjening_fixtures\Fixtures\WebformSubmissionFixture:
+    tags:
+      - { name: content_fixture }
