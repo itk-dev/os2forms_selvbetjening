@@ -139,3 +139,52 @@ docker compose up -d
 ```
 
 to reload the OIDC configuration.
+
+## Fixtures
+
+``` shell name=fixtures-load
+docker compose exec phpfpm vendor/bin/drush --yes pm:install os2forms_selvbetjening_fixtures
+# See https://www.drupal.org/project/content_fixtures
+docker compose exec phpfpm vendor/bin/drush --yes content-fixtures:load
+# Clean up
+docker compose exec phpfpm vendor/bin/drush --yes pm:uninstall content_fixtures
+```
+
+### Fixture groups
+
+It's possible to load only select fixtures based on [groups](https://www.drupal.org/project/content_fixtures). The groups available are
+
+* 'user'
+* 'webform'
+* 'webform_submission'
+
+To load the `webform` group only, run
+
+``` shell
+docker compose exec phpfpm vendor/bin/drush --yes content-fixtures:load --groups=webform
+```
+
+Note that the `user` group is also loaded since the webform fixtures depend on users.
+
+<details>
+<summary>Getting the list of groups</summary>
+
+``` shell
+grep -r 'GROUP = ' web/modules/custom/os2forms_selvbetjening/modules/os2forms_selvbetjening_fixtures/src/Fixtures
+```
+
+</details>
+
+When loading webform submission fixtures, you can limit the maximum number of submissions created for each webform by
+setting the `MAX_NUMBER_OF_SUBMISSIONS` environment variable, e.g.
+
+``` shell
+docker compose exec --env MAX_NUMBER_OF_SUBMISSIONS=10 phpfpm vendor/bin/drush --yes content-fixtures:load --groups=webform_submission
+```
+
+For more fine grained control, you can use an JSON object to set the maximum number of submission for individual
+webforms:
+
+``` shell
+docker compose exec --env MAX_NUMBER_OF_SUBMISSIONS='{"fixture_test_file_upload": 10}' phpfpm vendor/bin/drush --yes content-fixtures:load --groups=webform_submission
+```

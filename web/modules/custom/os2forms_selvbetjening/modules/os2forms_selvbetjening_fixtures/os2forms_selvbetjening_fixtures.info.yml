@@ -1,0 +1,8 @@
+name: 'Fixtures for OS2Forms Selvbetjening'
+type: module
+description: 'Fixtures for OS2Forms Selvbetjening'
+package: 'OS2Forms Selvbetjening'
+core_version_requirement: ^10
+
+dependencies:
+  - content_fixtures:content_fixtures
