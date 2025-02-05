@@ -12,16 +12,17 @@ local machine for development and testing purposes.
 
 ### Installation
 
-```sh
-docker network create frontend
+```sh name=site-install
+docker network create frontend || true
+docker network create serviceplatformen_organisation_api_app || true
 docker compose pull
-docker compose up --detach
+docker compose up --detach --wait
 
 # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
 docker compose exec phpfpm composer install --no-interaction
 
 # Install the site
-docker compose exec phpfpm vendor/bin/drush site:install os2forms_forloeb_profile --existing-config --yes
+docker compose exec phpfpm vendor/bin/drush site:install --existing-config --yes
 
 # Download and install external libraries
 docker compose exec phpfpm vendor/bin/drush webform:libraries:download
