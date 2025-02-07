@@ -38,7 +38,7 @@
         "os2forms/os2forms_rest_api": "^2.2",
         "os2forms/os2forms_sync": "^1.2",
         "os2forms/os2forms_webform_submission_log": "^1.1",
-        "os2web/os2web_datalookup": "dev-feature/os2web_key as 2.0.2"
+        "os2web/os2web_datalookup": "^2.0.4"
     },
     "require-dev": {
         "drupal/core-dev": "^10",
@@ -53,9 +53,14 @@
         "drupal/drupal": "*"
     },
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/itk-dev/os2forms" },
-        { "type": "vcs", "url": "https://github.com/itk-dev/os2forms_get_organized" },
-        { "type": "vcs", "url": "https://github.com/itk-dev/os2web_datalookup" },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2forms_get_organized"
+        },
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
