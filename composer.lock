@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e60c3b7aa499e6dc05998b9d7a20071a",
+    "content-hash": "95f611760ab73b86229858e1deb0b2e1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9215,16 +9215,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "dev-feature/os2web_key_digital_post",
+            "version": "dev-feature/os2web_key",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms.git",
-                "reference": "c6e6cb10c3d579cf8da5f6e9494439e2caacef1a"
+                "reference": "3ffd55b66ad2e005419cfc96b9d1bb53dc4b4e9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/c6e6cb10c3d579cf8da5f6e9494439e2caacef1a",
-                "reference": "c6e6cb10c3d579cf8da5f6e9494439e2caacef1a",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/3ffd55b66ad2e005419cfc96b9d1bb53dc4b4e9b",
+                "reference": "3ffd55b66ad2e005419cfc96b9d1bb53dc4b4e9b",
                 "shasum": ""
             },
             "require": {
@@ -9362,9 +9362,9 @@
             ],
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms/tree/feature/os2web_key_digital_post"
+                "source": "https://github.com/itk-dev/os2forms/tree/feature/os2web_key"
             },
-            "time": "2025-01-24T15:00:02+00:00"
+            "time": "2025-01-28T08:09:17+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -9751,52 +9751,38 @@
         },
         {
             "name": "os2web/os2web_datalookup",
-            "version": "dev-feature/os2web_key",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/itk-dev/os2web_datalookup.git",
-                "reference": "2ca5bd7e1b00f78f57b87aa88d57bf62d8840c5e"
+                "url": "https://github.com/OS2web/os2web_datalookup.git",
+                "reference": "acf22edcc2723fb5eb1f8611f2353308bb02da0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2web_datalookup/zipball/2ca5bd7e1b00f78f57b87aa88d57bf62d8840c5e",
-                "reference": "2ca5bd7e1b00f78f57b87aa88d57bf62d8840c5e",
+                "url": "https://api.github.com/repos/OS2web/os2web_datalookup/zipball/acf22edcc2723fb5eb1f8611f2353308bb02da0a",
+                "reference": "acf22edcc2723fb5eb1f8611f2353308bb02da0a",
                 "shasum": ""
             },
             "require": {
-                "ext-soap": "*",
-                "os2web/os2web_key": "^1.0"
+                "ext-soap": "*"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "drupal/coder": "^8.3",
-                "ergebnis/composer-normalize": "^2.45",
                 "os2web/os2web_audit": "^0.1",
                 "phpunit/phpunit": "^9.5"
             },
             "type": "drupal-module",
-            "scripts": {
-                "coding-standards-apply": [
-                    "@coding-standards-apply/phpcs"
-                ],
-                "coding-standards-apply/phpcs": [
-                    "phpcbf --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-check": [
-                    "@coding-standards-check/phpcs"
-                ],
-                "coding-standards-check/phpcs": [
-                    "phpcs --standard=phpcs.xml.dist"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "EUPL-1.2"
             ],
             "description": "Provides integration with Danish data lookup services such as Service platformen or Datafordeler.",
             "support": {
-                "source": "https://github.com/itk-dev/os2web_datalookup/tree/feature/os2web_key"
+                "issues": "https://github.com/OS2web/os2web_datalookup/issues",
+                "source": "https://github.com/OS2web/os2web_datalookup/tree/2.0.4"
             },
-            "time": "2024-12-20T14:08:31+00:00"
+            "time": "2025-01-29T18:23:08+00:00"
         },
         {
             "name": "os2web/os2web_key",
@@ -22761,23 +22747,16 @@
     "aliases": [
         {
             "package": "os2forms/os2forms",
-            "version": "dev-feature/os2web_key_digital_post",
-            "alias": "3.22.0",
-            "alias_normalized": "3.22.0.0"
-        },
-        {
-            "package": "os2web/os2web_datalookup",
             "version": "dev-feature/os2web_key",
-            "alias": "2.0.2",
-            "alias_normalized": "2.0.2.0"
+            "alias": "3.23.0",
+            "alias_normalized": "3.23.0.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
         "os2forms/os2forms": 20,
         "os2forms/os2forms_forloeb_profile": 20,
-        "os2forms/os2forms_get_organized": 20,
-        "os2web/os2web_datalookup": 20
+        "os2forms/os2forms_get_organized": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
