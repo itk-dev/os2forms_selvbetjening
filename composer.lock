@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36c1aea3098c8ed23400f12fa237b469",
+    "content-hash": "e60c3b7aa499e6dc05998b9d7a20071a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8223,74 +8223,45 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "dev-feature/allow-key-and-form-configuration",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "08d206be788eee9c720d411cb7db7db7d2899ab5"
+                "reference": "bb0cf28357fbc6635b30f29898b9407bad422f67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/08d206be788eee9c720d411cb7db7db7d2899ab5",
-                "reference": "08d206be788eee9c720d411cb7db7db7d2899ab5",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/bb0cf28357fbc6635b30f29898b9407bad422f67",
+                "reference": "bb0cf28357fbc6635b30f29898b9407bad422f67",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
                 "itk-dev/drupal_psr6_cache": "^1.0",
                 "itk-dev/openid-connect": "^3.1",
-                "os2web/os2web_audit": "^0.1",
-                "os2web/os2web_key": "^1.0",
+                "os2forms/os2forms": "^3.17",
                 "os2web/os2web_nemlogin": "^1.2",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
-                "ergebnis/composer-normalize": "^2.42",
+                "friendsoftwig/twigcs": "^6.0",
                 "mglaman/drupal-check": "^1.4",
-                "mglaman/phpstan-drupal": "~1.2.0",
-                "vincentlanglet/twig-cs-fixer": "^2.8"
+                "mglaman/phpstan-drupal": "~1.2.0"
             },
             "type": "drupal-module",
-            "scripts": {
-                "code-analysis": [
-                    "@code-analysis/drupal-check"
-                ],
-                "code-analysis/drupal-check": [
-                    "drupal-check --deprecations --analysis --exclude-dir=vendor *.* src"
-                ],
-                "coding-standards-apply": [
-                    "@coding-standards-apply/phpcbf",
-                    "@coding-standards-apply/twig-cs-fixer"
-                ],
-                "coding-standards-apply/phpcbf": [
-                    "phpcbf --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-apply/twig-cs-fixer": [
-                    "twig-cs-fixer --fix"
-                ],
-                "coding-standards-check": [
-                    "@coding-standards-check/phpcs",
-                    "@coding-standards-check/twigcs"
-                ],
-                "coding-standards-check/phpcs": [
-                    "phpcs --standard=phpcs.xml.dist"
-                ],
-                "coding-standards-check/twig-cs-fixer": [
-                    "twig-cs-fixer"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "os2forms_nemlogin_openid_connect",
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/feature/allow-key-and-form-configuration",
-                "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues"
+                "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.2.0"
             },
-            "time": "2025-01-23T18:59:24+00:00"
+            "time": "2024-12-10T11:46:46+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -9248,12 +9219,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms.git",
-                "reference": "e1e38abe6927159b3b24844dcd6f17116d733e4e"
+                "reference": "c6e6cb10c3d579cf8da5f6e9494439e2caacef1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/e1e38abe6927159b3b24844dcd6f17116d733e4e",
-                "reference": "e1e38abe6927159b3b24844dcd6f17116d733e4e",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/c6e6cb10c3d579cf8da5f6e9494439e2caacef1a",
+                "reference": "c6e6cb10c3d579cf8da5f6e9494439e2caacef1a",
                 "shasum": ""
             },
             "require": {
@@ -9311,7 +9282,7 @@
                 "itk-dev/serviceplatformen": "^1.5",
                 "mglaman/composer-drupal-lenient": "^1.0",
                 "os2web/os2web_audit": "^0.1.6",
-                "os2web/os2web_datalookup": "dev-feature/os2web_key as 2.0.0",
+                "os2web/os2web_datalookup": "^2.0",
                 "os2web/os2web_key": "^1.0",
                 "os2web/os2web_nemlogin": "^1.0",
                 "os2web/os2web_simplesaml": "dev-master",
@@ -9393,7 +9364,7 @@
             "support": {
                 "source": "https://github.com/itk-dev/os2forms/tree/feature/os2web_key_digital_post"
             },
-            "time": "2025-01-24T12:24:29+00:00"
+            "time": "2025-01-24T15:00:02+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -22803,7 +22774,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "os2forms/os2forms": 20,
         "os2forms/os2forms_forloeb_profile": 20,
         "os2forms/os2forms_get_organized": 20,

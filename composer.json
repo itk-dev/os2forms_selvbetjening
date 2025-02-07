@@ -26,7 +26,7 @@
         "drupal/webform_translation_permissions": "^2.0",
         "fig/http-message-util": "^1.1",
         "itk-dev/os2forms_failed_jobs": "^1.5",
-        "itk-dev/os2forms_nemlogin_openid_connect": "dev-feature/allow-key-and-form-configuration",
+        "itk-dev/os2forms_nemlogin_openid_connect": "^2.1",
         "itk-dev/os2forms_user_field_lookup": "^1.1",
         "itk-dev/vault": "^0.1.0",
         "itk-dev/web_accessibility_statement": "^1.1",
@@ -55,7 +55,6 @@
     "repositories": [
         { "type": "vcs", "url": "https://github.com/itk-dev/os2forms" },
         { "type": "vcs", "url": "https://github.com/itk-dev/os2forms_get_organized" },
-        { "type": "vcs", "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect" },
         { "type": "vcs", "url": "https://github.com/itk-dev/os2web_datalookup" },
         {
             "type": "composer",
