@@ -55,7 +55,6 @@
     "repositories": [
         { "type": "vcs", "url": "https://github.com/itk-dev/os2forms" },
         { "type": "vcs", "url": "https://github.com/itk-dev/os2forms_get_organized" },
-        { "type": "vcs", "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect" },
         { "type": "vcs", "url": "https://github.com/itk-dev/os2web_datalookup" },
         {
             "type": "composer",
