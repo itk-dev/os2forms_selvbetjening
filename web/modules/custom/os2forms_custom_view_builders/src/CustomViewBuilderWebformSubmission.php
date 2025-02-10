@@ -129,7 +129,6 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
         continue;
       }
 
-      $isHeader = FALSE;
       $title = $element['#admin_title'] ?: $element['#title'] ?: '(' . $key . ')';
 
       // Note: Not displaying an empty message since empty values just render
@@ -142,7 +141,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
 
         case 'webform_wizard_page':
           $submissionDisplay = $webform_element->getElementProperty($element, 'format');
-          $title = $submissionDisplay == 'header' ? '<h2>'. $title .'</h2>' : $title;
+          $title = $submissionDisplay == 'header' ? '<h2>' . $title . '</h2>' : $title;
           $html = [
             '#plain_text' => '',
           ];
@@ -150,7 +149,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
 
         case 'fieldset':
           $submissionDisplay = $webform_element->getElementProperty($element, 'format');
-          $title = $submissionDisplay == 'header' ? '<h3>'. $title .'</h3>' : $title;
+          $title = $submissionDisplay == 'header' ? '<h3>' . $title . '</h3>' : $title;
           $html = [
             '#plain_text' => '',
           ];
