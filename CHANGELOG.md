@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede `os2forms` core modulet.
+  * Telefonnummer håndtering i FBS.
 * Øgede tilladt hukommelsesforbrug.
 * Opdaterede installationsvejledning.
 
