@@ -7,6 +7,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Ændrede kort date/time format
+* Ændrede PDF headers [PR-386](https://github.com/itk-dev/os2forms_selvbetjening/pull/386).
 * Ændrede PDF udseende [PR-377](https://github.com/itk-dev/os2forms_selvbetjening/pull/377).
 * Tilføjede os2forms_custom_view_builders module [PR-379](https://github.com/itk-dev/os2forms_selvbetjening/pull/379).
 
