@@ -129,7 +129,9 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
         continue;
       }
 
+      $isHeader = FALSE;
       $title = $element['#admin_title'] ?: $element['#title'] ?: '(' . $key . ')';
+
       // Note: Not displaying an empty message since empty values just render
       // an empty table cell.
       /* @internal OS2Forms changes start */
@@ -138,7 +140,17 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
           // Prevent row rendering.
           continue 2;
 
+        case 'webform_wizard_page':
+          $submissionDisplay = $webform_element->getElementProperty($element, 'format');
+          $title = $submissionDisplay == 'header' ? '<h2>'. $title .'</h2>' : $title;
+          $html = [
+            '#plain_text' => '',
+          ];
+          break;
+
         case 'fieldset':
+          $submissionDisplay = $webform_element->getElementProperty($element, 'format');
+          $title = $submissionDisplay == 'header' ? '<h3>'. $title .'</h3>' : $title;
           $html = [
             '#plain_text' => '',
           ];
@@ -154,7 +166,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
       }
       /* @internal OS2Forms changes end */
       $rows[$key] = [
-        ['header' => TRUE, 'data' => $title],
+        ['header' => TRUE, 'data' => ['#markup' => $title]],
         ['data' => (is_string($html)) ? ['#markup' => $html] : $html],
       ];
     }
@@ -209,8 +221,9 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
 
     /* @internal Os2Forms changes start */
     $elementDisplayMode = $webform_element->getElementProperty($element, 'display_on');
+    $submissionDisplay = $webform_element->getElementProperty($element, 'format');
 
-    if ($elementDisplayMode == 'form') {
+    if ($elementDisplayMode == 'form' || $submissionDisplay == 'container') {
       return FALSE;
     }
     /* @internal Os2Forms changes end */
