@@ -9263,19 +9263,20 @@
         },
         {
             "name": "os2forms/os2forms_payment",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_payment.git",
-                "reference": "cec3d7e6c7014d0c312f97d0e346f313d3028262"
+                "reference": "778e112614db57cd31d0be825c824e26c184d842"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/cec3d7e6c7014d0c312f97d0e346f313d3028262",
-                "reference": "cec3d7e6c7014d0c312f97d0e346f313d3028262",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_payment/zipball/778e112614db57cd31d0be825c824e26c184d842",
+                "reference": "778e112614db57cd31d0be825c824e26c184d842",
                 "shasum": ""
             },
             "require": {
+                "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.1",
                 "drush/drush": "^11 || ^12",
                 "php": "^8.1",
@@ -9302,9 +9303,9 @@
             "description": "OS2Forms payment",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_payment/issues",
-                "source": "https://github.com/itk-dev/os2forms_payment/tree/1.1.0"
+                "source": "https://github.com/itk-dev/os2forms_payment/tree/1.1.1"
             },
-            "time": "2024-12-17T08:58:24+00:00"
+            "time": "2025-02-07T14:18:00+00:00"
         },
         {
             "name": "os2forms/os2forms_rest_api",
