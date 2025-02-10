@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Øgede tilladt hukommelsesforbrug.
 * Opdaterede installationsvejledning.
 
 ## [3.2.4] 2025-01-07
