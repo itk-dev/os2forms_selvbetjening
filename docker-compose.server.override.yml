@@ -14,7 +14,7 @@ services:
       - organisation_api
     environment:
       - PHP_MAX_EXECUTION_TIME=30
-      - PHP_MEMORY_LIMIT=512M
+      - PHP_MEMORY_LIMIT=1024M
       - PHP_POST_MAX_SIZE=305M
       - PHP_UPLOAD_MAX_FILESIZE=300M
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=0

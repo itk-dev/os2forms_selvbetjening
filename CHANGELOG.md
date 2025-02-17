@@ -8,6 +8,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tillod tabel elementer i `webform` tekstformat.
 
+## [3.2.5] 2025-02-11
+
+* Opdaterede `os2forms_payment`.
+* Opdaterede `os2forms` core modulet.
+  * Telefonnummer håndtering i FBS.
+* Øgede tilladt hukommelsesforbrug.
+* Opdaterede installationsvejledning.
+
 ## [3.2.4] 2025-01-07
 
 * Opdaterede `os2forms` core modulet.
@@ -564,7 +572,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.4...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.5...HEAD
+[3.2.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.4...3.2.5
 [3.2.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.3...3.2.4
 [3.2.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.2...3.2.3
 [3.2.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.1...3.2.2
