@@ -141,7 +141,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
 
         case 'webform_wizard_page':
           $submissionDisplay = $webform_element->getElementProperty($element, 'format');
-          $title = $submissionDisplay == 'header' ? '<h2>' . $title . '</h2>' : $title;
+          $title = $submissionDisplay === 'header' ? '<h2>' . $title . '</h2>' : $title;
           $html = [
             '#plain_text' => '',
           ];
@@ -149,7 +149,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
 
         case 'fieldset':
           $submissionDisplay = $webform_element->getElementProperty($element, 'format');
-          $title = $submissionDisplay == 'header' ? '<h3>' . $title . '</h3>' : $title;
+          $title = $submissionDisplay === 'header' ? '<h3>' . $title . '</h3>' : $title;
           $html = [
             '#plain_text' => '',
           ];
@@ -222,7 +222,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
     $elementDisplayMode = $webform_element->getElementProperty($element, 'display_on');
     $submissionDisplay = $webform_element->getElementProperty($element, 'format');
 
-    if ($elementDisplayMode == 'form' || $submissionDisplay == 'container') {
+    if ($elementDisplayMode === 'form' || $submissionDisplay === 'container') {
       return FALSE;
     }
     /* @internal Os2Forms changes end */
