@@ -24,7 +24,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <sub> <sup> <blockquote> <a href target="_blank"> <ul> <ol reversed start> <li> <img src alt height width data-align>'
+      allowed_html: '<br> <p> <h2> <h3> <h4> <h5> <h6> <strong> <em> <sub> <sup> <blockquote> <a href target="_blank"> <ul> <ol reversed start> <li> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <img src alt height width data-align>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
