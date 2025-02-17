@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [3.2.6] XXXX-XX-XX
+
 * Tilføjede patch der undgår container titler i e-mails
   når de ikke har underelementer.
 * Tillod tabel elementer i `webform` tekstformat.
@@ -574,7 +576,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.5...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.6...HEAD
+[3.2.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.5...3.2.6
 [3.2.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.4...3.2.5
 [3.2.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.3...3.2.4
 [3.2.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.2...3.2.3
