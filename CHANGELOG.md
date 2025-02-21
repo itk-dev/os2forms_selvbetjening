@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede ekstra tjek i OS2Forms email handler.
+
 ## [3.2.6] 2025-02-20
 
 * Opdaterede Drupal core og diverse andre pakker.
