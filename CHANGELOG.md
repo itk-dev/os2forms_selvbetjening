@@ -11,6 +11,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede patch der undgår container titler i e-mails
   når de ikke har underelementer.
 * Tillod tabel elementer i `webform` tekstformat.
+* Tilføjede styling af tabel elementer i webform udsendte e-mails.
 
 ## [3.2.6] 2025-02-20
 
