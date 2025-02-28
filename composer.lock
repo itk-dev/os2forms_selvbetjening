@@ -8994,16 +8994,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "3.22.1",
+            "version": "3.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "7ace38332357344358eca1935f43ae2a30c23fa4"
+                "reference": "c266dfb0329f4915a6b9e4a3c555cc537f810959"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/7ace38332357344358eca1935f43ae2a30c23fa4",
-                "reference": "7ace38332357344358eca1935f43ae2a30c23fa4",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/c266dfb0329f4915a6b9e4a3c555cc537f810959",
+                "reference": "c266dfb0329f4915a6b9e4a3c555cc537f810959",
                 "shasum": ""
             },
             "require": {
@@ -9059,7 +9059,7 @@
                 "itk-dev/beskedfordeler-drupal": "^1.0",
                 "itk-dev/serviceplatformen": "^1.5",
                 "mglaman/composer-drupal-lenient": "^1.0",
-                "os2web/os2web_audit": "^0.1.6",
+                "os2web/os2web_audit": "^1.0",
                 "os2web/os2web_datalookup": "^2.0",
                 "os2web/os2web_nemlogin": "^1.0",
                 "os2web/os2web_simplesaml": "dev-master",
@@ -9120,9 +9120,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/3.22.1"
+                "source": "https://github.com/OS2Forms/os2forms/tree/3.22.2"
             },
-            "time": "2025-02-10T13:40:07+00:00"
+            "time": "2025-02-28T11:37:46+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -9215,23 +9215,23 @@
         },
         {
             "name": "os2forms/os2forms_organisation",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_organisation.git",
-                "reference": "12f1bd13a2e086f143673e6373cbc3fa0a9b625f"
+                "reference": "1483199d3e7a9616939962add9100a96019c21b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/12f1bd13a2e086f143673e6373cbc3fa0a9b625f",
-                "reference": "12f1bd13a2e086f143673e6373cbc3fa0a9b625f",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_organisation/zipball/1483199d3e7a9616939962add9100a96019c21b5",
+                "reference": "1483199d3e7a9616939962add9100a96019c21b5",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.1",
                 "drush/drush": "^11 || ^12",
                 "itk-dev/serviceplatformen": "^1.4",
-                "os2web/os2web_audit": "^0.1.1",
+                "os2web/os2web_audit": "^1.0",
                 "os2web/os2web_nemlogin": "^1.2",
                 "php": "^8.1",
                 "symfony/options-resolver": "^5.4 || ^6.0"
@@ -9257,9 +9257,9 @@
             "description": "OS2Forms organisation",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_organisation/issues",
-                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.2.0"
+                "source": "https://github.com/itk-dev/os2forms_organisation/tree/2.2.1"
             },
-            "time": "2024-12-13T11:50:36+00:00"
+            "time": "2025-02-28T10:31:40+00:00"
         },
         {
             "name": "os2forms/os2forms_payment",
@@ -9445,21 +9445,21 @@
         },
         {
             "name": "os2web/os2web_audit",
-            "version": "0.1.6",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_audit.git",
-                "reference": "ae007ca0d1d36c6381f5c17784ca75c4453f6ae5"
+                "reference": "1e8ebfaedc0696ae940a546b18c22dad86696fc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/ae007ca0d1d36c6381f5c17784ca75c4453f6ae5",
-                "reference": "ae007ca0d1d36c6381f5c17784ca75c4453f6ae5",
+                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/1e8ebfaedc0696ae940a546b18c22dad86696fc9",
+                "reference": "1e8ebfaedc0696ae940a546b18c22dad86696fc9",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.2",
-                "drush/drush": "^11.5|^12.5",
+                "drush/drush": "^11|^12|^13",
                 "ext-curl": "*",
                 "php": "^8.1"
             },
@@ -9483,9 +9483,10 @@
             ],
             "description": "Drupal OS2 module that provides audit logging for Danish Municipalities",
             "support": {
-                "source": "https://github.com/OS2web/os2web_audit/tree/0.1.6"
+                "issues": "https://github.com/OS2web/os2web_audit/issues",
+                "source": "https://github.com/OS2web/os2web_audit/tree/1.0.0"
             },
-            "time": "2024-12-16T09:45:31+00:00"
+            "time": "2025-02-28T09:53:04+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
