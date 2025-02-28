@@ -38,9 +38,14 @@ class FormHelper {
 
     $webform_category_description = $this->t('Externally: Citizen. Internally: Employees');
 
-    // Add description to category choice in Webform Settings.
+    // Webform general settings form.
     if ('webform_settings_form' === $form_id) {
+      // Add description to category choice in Webform Settings.
       $form['general_settings']['category']['#description'] = $webform_category_description;
+      // Disable access to ajax settings for non administrator users.
+      if (!in_array('administrator', $this->account->getRoles())) {
+        $form['ajax_settings']['#disabled'] = TRUE;
+      }
     }
 
     // Add description to category choice when adding new Webform.
