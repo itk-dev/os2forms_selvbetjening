@@ -69,7 +69,7 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler implements Contain
 
     $sendOriginalMessage = TRUE;
 
-    if ($settings['enabled'] && !empty($settings['email_recipients'])) {
+    if (isset($settings['enabled']) && $settings['enabled'] && !empty($settings['email_recipients'])) {
       $sendOriginalMessage = !$this->handleAttachmentNotification($webform_submission, $message, $settings['email_recipients']);
     }
 

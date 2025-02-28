@@ -12,6 +12,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
   når de ikke har underelementer.
 * Tillod tabel elementer i `webform` tekstformat.
 * Tilføjede styling af tabel elementer i webform udsendte e-mails.
+* Tilføjede ekstra tjek i OS2Forms email handler.
 
 ## [3.2.6] 2025-02-20
 
