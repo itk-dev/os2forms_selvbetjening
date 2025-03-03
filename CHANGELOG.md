@@ -14,6 +14,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede styling af tabel elementer i webform udsendte e-mails.
 * Tilføjede ekstra tjek i OS2Forms email handler.
 * Opdaterede `os2web_audit` modulet.
+* Opdaterede `os2forms_payment` modulet.
 
 ## [3.2.6] 2025-02-20
 
