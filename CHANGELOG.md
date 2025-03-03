@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [3.2.7] XXXX-XX-XX
+## [3.2.7] 2025-03-03
 
 * Tilføjede patch der undgår container titler i e-mails
   når de ikke har underelementer.
