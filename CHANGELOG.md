@@ -6,6 +6,21 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [3.2.8] 2025-03-06
+
+* Opdaterede `os2web_audit` modulet.
+
+## [3.2.7] 2025-03-03
+
+* Tilføjede patch der undgår container titler i e-mails
+  når de ikke har underelementer.
+* Tillod tabel elementer i `webform` tekstformat.
+* Tilføjede styling af tabel elementer i webform udsendte e-mails.
+* Tilføjede ekstra tjek i OS2Forms email handler.
+* Opdaterede `os2web_audit` modulet.
+* Deaktiverede formular ajax muligheden.
+* Opdaterede `os2forms_payment` modulet.
+
 ## [3.2.6] 2025-02-20
 
 * Opdaterede Drupal core og diverse andre pakker.
@@ -574,7 +589,9 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.6...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.8...HEAD
+[3.2.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.7...3.2.8
+[3.2.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.6...3.2.7
 [3.2.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.5...3.2.6
 [3.2.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.4...3.2.5
 [3.2.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.3...3.2.4

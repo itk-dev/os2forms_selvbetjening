@@ -30,6 +30,13 @@ $settings['base_url'] = 'http://nginx:8080';
 and disable default css in the entity print module. This is done by
 unchecking `Enable Default CSS` on `admin/config/content/entityprint`.
 
+
+## Webform e-mail template
+
+We override the default webform email template to add table styling.
+
+See `templates/webform/webform-email-html.html.twig`.
+
 ## Theme usage
 
 ```sh
