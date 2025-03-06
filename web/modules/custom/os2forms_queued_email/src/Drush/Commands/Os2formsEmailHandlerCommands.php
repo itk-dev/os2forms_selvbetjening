@@ -32,6 +32,8 @@ final class Os2formsEmailHandlerCommands extends DrushCommands {
 
   /**
    * Command description here.
+   *
+   * @phpstan-param array<string, mixed> $options
    */
   #[CLI\Command(name: 'os2forms_email_handler:test-email')]
   #[CLI\Usage(name: 'os2forms_email_handler:test-email --recipient=jekua@aarhus.dk --message-subject="Some exiting subject"', description: 'Send email to a specific recipient.')]

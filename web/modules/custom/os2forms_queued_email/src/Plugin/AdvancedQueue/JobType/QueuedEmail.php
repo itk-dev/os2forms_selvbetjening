@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Queued Email"),
  * )
  */
-class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInterface {
+final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInterface {
 
   public const OS2FORMS_QUEUED_EMAIL_FILE_PATH = 'private://queued-email-files';
   public const OS2FORMS_QUEUED_EMAIL_CONFIG_NAME = 'os2forms_queued_email_file_path';

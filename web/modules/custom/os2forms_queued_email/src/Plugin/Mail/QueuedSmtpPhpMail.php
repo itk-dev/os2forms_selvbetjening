@@ -31,7 +31,7 @@ use Symfony\Component\Mime\MimeTypeGuesserInterface;
   label: new TranslatableMarkup('Queued SMTP PHP mailer'),
   description: new TranslatableMarkup("Queues a job to send the mail using SMTP mailer's format() method."),
 )]
-class QueuedSmtpPhpMail extends SMTPMailSystem {
+final class QueuedSmtpPhpMail extends SMTPMailSystem {
 
   /**
    * The submission logger.

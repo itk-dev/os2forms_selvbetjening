@@ -5,11 +5,11 @@
  * Module file for the os2forms_queued_email module.
  */
 
-use \Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsManagedFile;
-use \Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformAudioFile;
-use \Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformDocumentFile;
-use \Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformImageFile;
-use \Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformVideoFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsManagedFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformAudioFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformDocumentFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformImageFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformVideoFile;
 
 /**
  * Implements hook_webform_element_info_alter().
@@ -35,5 +35,3 @@ function os2forms_queued_email_webform_element_info_alter(array &$definitions) {
     $definitions['webform_video_file']['class'] = Os2FormsWebformVideoFile::class;
   }
 }
-
-
