@@ -8,6 +8,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [3.2.8] 2025-03-06
 
+* Opdaterede `os2web_audit` modulet.
+
 ## [3.2.7] 2025-03-03
 
 * Tilføjede patch der undgår container titler i e-mails
