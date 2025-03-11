@@ -8010,16 +8010,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "d70f0a6a0b9e3b852f346d824b1acbd1b773fb8e"
+                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/d70f0a6a0b9e3b852f346d824b1acbd1b773fb8e",
-                "reference": "d70f0a6a0b9e3b852f346d824b1acbd1b773fb8e",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/a12caf1deb35b7f89437b0c2545688f8e8e91650",
+                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650",
                 "shasum": ""
             },
             "require": {
@@ -8048,9 +8048,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.5.1"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.6.0"
             },
-            "time": "2024-10-03T13:44:36+00:00"
+            "time": "2025-03-11T12:39:47+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -9445,16 +9445,16 @@
         },
         {
             "name": "os2web/os2web_audit",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_audit.git",
-                "reference": "7ad98e848dda9f91f2d8d06385aefd75206acb17"
+                "reference": "ed84ada2aa52f1be4d9e06613b2d63c4e0defe91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/7ad98e848dda9f91f2d8d06385aefd75206acb17",
-                "reference": "7ad98e848dda9f91f2d8d06385aefd75206acb17",
+                "url": "https://api.github.com/repos/OS2web/os2web_audit/zipball/ed84ada2aa52f1be4d9e06613b2d63c4e0defe91",
+                "reference": "ed84ada2aa52f1be4d9e06613b2d63c4e0defe91",
                 "shasum": ""
             },
             "require": {
@@ -9484,9 +9484,9 @@
             "description": "Drupal OS2 module that provides audit logging for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_audit/issues",
-                "source": "https://github.com/OS2web/os2web_audit/tree/1.0.1"
+                "source": "https://github.com/OS2web/os2web_audit/tree/1.1.0"
             },
-            "time": "2025-03-06T10:05:02+00:00"
+            "time": "2025-03-11T12:45:11+00:00"
         },
         {
             "name": "os2web/os2web_datalookup",
