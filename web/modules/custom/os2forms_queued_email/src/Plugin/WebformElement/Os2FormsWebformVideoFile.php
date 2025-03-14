@@ -24,7 +24,7 @@ class Os2FormsWebformVideoFile extends WebformVideoFile {
   /**
    * {@inheritdoc}
    *
-   * OS2Forms managed file element.
+   * OS2Forms webform video file element.
    *
    * Copied from WebformManagedFileBase::getEmailAttachments.
    * Only change is that filecontent is not passed on.

@@ -24,7 +24,7 @@ class Os2FormsWebformDocumentFile extends WebformDocumentFile {
   /**
    * {@inheritdoc}
    *
-   * OS2Forms managed file element.
+   * OS2Forms webform document file element.
    *
    * Copied from WebformManagedFileBase::getEmailAttachments.
    * Only change is that filecontent is not passed on.

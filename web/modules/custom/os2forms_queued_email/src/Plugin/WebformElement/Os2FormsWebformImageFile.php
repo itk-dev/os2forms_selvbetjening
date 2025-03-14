@@ -24,7 +24,7 @@ class Os2FormsWebformImageFile extends WebformImageFile {
   /**
    * {@inheritdoc}
    *
-   * OS2Forms webform image file element plugin.
+   * OS2Forms webform image file element.
    *
    * Copied from WebformImageFile::getEmailAttachments.
    * Only change is that filecontent is not passed on.

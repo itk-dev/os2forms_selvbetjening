@@ -24,7 +24,7 @@ class Os2FormsWebformAudioFile extends WebformAudioFile {
   /**
    * {@inheritdoc}
    *
-   * OS2Forms managed file element.
+   * OS2Forms werbform audio file element.
    *
    * Copied from WebformManagedFileBase::getEmailAttachments.
    * Only change is that filecontent is not passed on.
