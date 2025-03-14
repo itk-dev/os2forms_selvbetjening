@@ -7,6 +7,9 @@ Adds an mail plugin (`Queued SMTP PHP mailer`) for queueing webform emails.
 Go to `/admin/config/system/mailsystem` and configure the Webform module to
 use `Queued SMTP PHP mailer` as Sender.
 
+Make sure the `private://queued-email-files/` directory exists
+and is writable. More information on this later.
+
 ## Details
 
 **Note** that the `Queued SMTP PHP mailer` builds upon `SMTP PHP mailer` and
@@ -20,6 +23,8 @@ on `filecontent`. This is added back during the process of the job.
 A copy of OS2Forms attachments is referenced and kept in the filesystem.
 This not only lightens job payload but also ensures that the content is
 consistent with submission data at sending time in case of any edits.
+For this make sure that the `private://queued-email-files/` directory exists
+and is writable.
 
 ## Queue
 
