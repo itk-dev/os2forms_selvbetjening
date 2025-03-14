@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede mulighed for mails gennem kø.
+
 * [3.2.9] 2025-03-12
 
 * Opdaterede `os2web_audit` modulet.

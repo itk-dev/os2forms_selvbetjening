@@ -8,7 +8,7 @@ defaults:
 modules:
   webform:
     none:
-      sender: SMTPMailSystem
+      sender: queued_smtp_php_mail
       formatter: webform_php_mail
   os2forms_forloeb:
     none:
