@@ -3,7 +3,6 @@
 namespace Drupal\os2forms_email_handler\Plugin\WebformHandler;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\Site\Settings;
 use Drupal\os2forms_email_handler\Helper\WebformHelper;
 use Drupal\os2web_audit\Service\Logger;
@@ -75,8 +74,14 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler implements Contain
     }
 
     if ($sendOriginalMessage) {
-      // Note that audit logging is not done here, since the e-mail is queued.
-      return $this->modifiedEmailWebformHandlerSendMessage($webform_submission, $message);
+      $result = parent::sendMessage($webform_submission, $message);
+
+      if ($result) {
+        $msg = sprintf('Email, %s, sent to %s. Webform id %s.', $message['subject'], $message['to_mail'], $webform_submission->getWebform()->id());
+        $this->auditLogger->info('Email', $msg);
+      }
+
+      return $result;
     }
     else {
       return FALSE;
@@ -310,77 +315,6 @@ class OS2FormsEmailWebformHandler extends EmailWebformHandler implements Contain
     return array_reduce($fileElementIds, function ($carry, $item) {
       return $carry + (int) $this->entityTypeManager->getStorage('file')->load($item)->getSize();
     }, 0);
-  }
-
-  /**
-   * Sends a webform message.
-   *
-   * Modified EmailWebformHandler::sendMessage(), to not log email as sent,
-   * as it is just queued.
-   *
-   * @see EmailWebformHandler::sendMessage()
-   */
-  public function modifiedEmailWebformHandlerSendMessage(WebformSubmissionInterface $webform_submission, array $message) {
-    // Validate message.
-    if (!$this->validateMessage($webform_submission, $message)) {
-      return FALSE;
-    }
-
-    $to = $message['to_mail'];
-    $from = $message['from_mail'];
-    $current_langcode = $this->languageManager->getCurrentLanguage()->getId();
-
-    // Render body using webform email message (wrapper) template.
-    $build = [
-      '#theme' => 'webform_email_message_' . (($this->configuration['html']) ? 'html' : 'text'),
-      '#message' => [
-        'body' => is_string($message['body']) ? Markup::create($message['body']) : $message['body'],
-      ] + $message,
-      '#webform_submission' => $webform_submission,
-      '#handler' => $this,
-    ];
-    $theme_name = $this->configuration['theme_name'];
-    $message['body'] = trim((string) $this->themeManager->renderPlain($build, $theme_name));
-
-    // Html body needs to be Markup so that relative URLs are converted
-    // to absolute.
-    // @see \Drupal\Core\Mail\MailManager::doMail
-    if ($this->configuration['html']) {
-      $message['body'] = Markup::create($message['body']);
-    }
-
-    // Send message.
-    $key = $this->getWebform()->id() . '_' . $this->getHandlerId();
-
-    // Remove webform_submission and handler to prevent memory limit
-    // issues during testing.
-    if (drupal_valid_test_ua()) {
-      unset($message['webform_submission'], $message['handler']);
-    }
-
-    // Append additional custom parameters.
-    if (!empty($this->configuration['parameters'])) {
-      $message += $this->replaceTokens($this->configuration['parameters'], $webform_submission);
-    }
-    // Remove parameters.
-    unset($message['parameters']);
-
-    $result = $this->mailManager->mail('webform', $key, $to, $current_langcode, $message, $from);
-
-    // Debug by displaying send email onscreen.
-    if ($this->configuration['debug']) {
-      $t_args = [
-        '%from_name' => $message['from_name'],
-        '%from_mail' => $message['from_mail'],
-        '%to_mail' => $message['to_mail'],
-        '%subject' => $message['subject'],
-      ];
-      $this->messenger()->addWarning($this->t("%subject sent to %to_mail from %from_name [%from_mail].", $t_args), TRUE);
-      $debug_message = $this->buildDebugMessage($webform_submission, $message);
-      $this->messenger()->addWarning($this->themeManager->renderPlain($debug_message), TRUE);
-    }
-
-    return $result['send'];
   }
 
 }
