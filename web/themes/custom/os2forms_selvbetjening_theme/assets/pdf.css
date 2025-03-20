@@ -142,6 +142,19 @@ details, .claro-details {
   display: none;
 }
 
+.webform-element-type-webform-table table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid lightgrey;
+}
+
+.webform-element-type-webform-table table th,
+.webform-element-type-webform-table table td {
+  padding: .25em;
+  border: 1px solid lightgrey;
+    overflow-wrap: anywhere;
+}
+
 .webform-entity-print-colophon {
   font-size: 12px;
   margin-top: -11px;
