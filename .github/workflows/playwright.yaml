@@ -2,11 +2,7 @@ on: pull_request
 name: Playwright Tests
 jobs:
   playwright:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
       - name: Install site
         run: |
