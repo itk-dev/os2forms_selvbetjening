@@ -4,6 +4,7 @@ jobs:
   playwright:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Install site
         run: |
           docker network create frontend
