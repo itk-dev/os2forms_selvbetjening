@@ -8,7 +8,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [3.2.10] 2025-03-25
 
-* [3.2.9] 2025-03-12
+* Deaktiverede login-formularen.
+
+## [3.2.9] 2025-03-12
 
 * Opdaterede `os2web_audit` modulet.
 * Opdaterede `os2form_failed_jobs` modulet.
