@@ -10,8 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+
       - name: Setup docker network
         run: docker network create frontend
+
+      - name: Setup docker network
+        run: docker network create serviceplatformen_organisation_api_app
+        
       - name: Install dependencies
         run: yarn install
       - name: Install Playwright Browsers
