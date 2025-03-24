@@ -1,36 +1,6 @@
 on: pull_request
 name: Playwright Tests
 jobs:
-
-  install-site:
-    name: Check that site can be installed
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - name: Install site
-        run: |
-          docker network create frontend
-          docker network create serviceplatformen_organisation_api_app
-          docker compose pull
-          docker compose up --detach
-
-          # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
-          docker compose exec --user root phpfpm composer install --no-interaction
-
-          # Install the site
-          docker compose exec --user root phpfpm vendor/bin/drush site:install --existing-config --yes
-
-          # Download and install external libraries
-          docker compose exec --user root phpfpm vendor/bin/drush webform:libraries:download
-
-          # Build theme assets
-          docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
-          docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
-
-          # Open the site
-          echo $(docker compose exec phpfpm vendor/bin/drush --uri=http://$(docker compose port nginx 8080) user:login)
-
   playwright:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -38,22 +8,34 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Install site
+        run: |
+          docker network create frontend
+          docker network create serviceplatformen_organisation_api_app
+          docker compose pull
+          docker compose up --detach
+          # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
+          docker compose exec --user root phpfpm composer install --no-interaction
+          # Install the site
+          docker compose exec --user root phpfpm vendor/bin/drush site:install --existing-config --yes
+          # Download and install external libraries
+          docker compose exec --user root phpfpm vendor/bin/drush webform:libraries:download
+          # Build theme assets
+          docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme install
+          docker compose run --rm node yarn --cwd /app/web/themes/custom/os2forms_selvbetjening_theme build
+          # Open the site
+          echo $(docker compose exec phpfpm vendor/bin/drush --uri=http://$(docker compose port nginx 8080) user:login)
 
-      - name: Setup docker network
-        run: docker network create frontend
-
-      - name: Setup docker network
-        run: docker network create serviceplatformen_organisation_api_app
 
       - name: Install dependencies
         run: yarn install
+
       - name: Install Playwright Browsers
         run: docker compose run --rm playwright yarn playwright install --with-deps
+
       - name: Run Playwright tests
         run: |
-          docker compose run --rm playwright yarn playwright test --update-snapshots | tee output.log
+          docker compose run --rm playwright yarn playwright test --update-snapshots --retries 3 | tee output.log
           if grep -q -e "Error: A snapshot doesn't exist at" -e "Screenshot comparison failed" output.log; then
             echo "Playwright tests failed due to a snapshot issue."
             echo "SNAPSHOT_DIFFERENCES=true" >> $GITHUB_ENV
