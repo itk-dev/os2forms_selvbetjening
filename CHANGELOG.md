@@ -9,6 +9,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [3.2.10] 2025-03-25
 
 * Deaktiverede login-formularen.
+* Opdaterede til `os2forms` 4.0.0.
+  * Opdaterede `os2forms_failed_jobs` modulet.
+  * Opdaterede `os2web_audit` modulet.
+  * Opdaterede `os2forms_nemlogin_openid_connect` modulet.
+  * Opdaterede `os2forms_user_field_lookup` modulet.
+  * Opdaterede `os2forms_forloeb_profile` modulet.
+  * Opdaterede `os2forms_forloeb_profile` modulet.
+  * Opdaterede `os2forms_rest_api` modulet.
 
 ## [3.2.9] 2025-03-12
 
