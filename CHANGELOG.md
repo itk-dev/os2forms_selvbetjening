@@ -6,6 +6,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [4.0.0] 2025-03-25
+
+* Følg `os2forms` core major version.
+* Indeholder det samme som `3.2.10`.
+
 ## [3.2.10] 2025-03-25
 
 * Deaktiverede login-formularen.
@@ -604,7 +609,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.10...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...HEAD
+[4.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.10...4.0.0
 [3.2.10]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.9...3.2.10
 [3.2.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.8...3.2.9
 [3.2.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.7...3.2.8
