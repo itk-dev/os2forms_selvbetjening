@@ -136,6 +136,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
       /* @internal OS2Forms changes start */
       switch ($element['#type']) {
         case 'container':
+        case 'webform_table_row':
           // Prevent row rendering.
           continue 2;
 
@@ -148,6 +149,7 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
           break;
 
         case 'fieldset':
+        case 'webform_table':
           $submissionDisplay = $webform_element->getElementProperty($element, 'format');
           $title = $submissionDisplay === 'header' ? '<h3>' . $title . '</h3>' : $title;
           $html = [
