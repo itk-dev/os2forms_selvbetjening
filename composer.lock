@@ -8150,16 +8150,16 @@
         },
         {
             "name": "itk-dev/serviceplatformen",
-            "version": "1.5.2",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/serviceplatformen.git",
-                "reference": "fe4a2d01677607c50c43d9a96a184963ec37da9b"
+                "reference": "141b4cf65dd868427b3b0f42273923d766c05706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/fe4a2d01677607c50c43d9a96a184963ec37da9b",
-                "reference": "fe4a2d01677607c50c43d9a96a184963ec37da9b",
+                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/141b4cf65dd868427b3b0f42273923d766c05706",
+                "reference": "141b4cf65dd868427b3b0f42273923d766c05706",
                 "shasum": ""
             },
             "require": {
@@ -8234,9 +8234,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/serviceplatformen/issues",
-                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.5.2"
+                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.6.1"
             },
-            "time": "2024-08-06T14:04:36+00:00"
+            "time": "2025-04-01T08:10:57+00:00"
         },
         {
             "name": "itk-dev/web_accessibility_statement",
