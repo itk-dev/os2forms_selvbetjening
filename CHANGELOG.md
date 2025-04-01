@@ -6,6 +6,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [4.0.0] 2025-04-01
+
+* [PR-409](https://github.com/itk-dev/os2forms_selvbetjening/pull/409)
+  Opdaterede `itk-dev/serviceplatformen` til at bruge nye api-endpoints.
+
 ## [4.0.0] 2025-03-25
 
 * Følg `os2forms` core major version.
