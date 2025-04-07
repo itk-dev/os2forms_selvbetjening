@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Overrides web/modules/contrib/webform/templates/webform-email-html.html.twig.
+ *
+ * @ingroup themeable
+ */
+#}
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+  <title>{{ subject }}</title>
+</head>
+<body>
+{{ body|raw }}
+</body>
+</html>
