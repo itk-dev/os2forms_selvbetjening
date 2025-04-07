@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [4.1.0] 2025-04-08
+
 * Changed PDF table display [PR-404](https://github.com/itk-dev/os2forms_selvbetjening/pull/404)
 * Ændrede kort date/time format
 * Ændrede PDF headers [PR-386](https://github.com/itk-dev/os2forms_selvbetjening/pull/386).
@@ -620,7 +622,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...HEAD
+[4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
 [4.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...4.0.1
 [4.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.10...4.0.0
 [3.2.10]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.9...3.2.10
