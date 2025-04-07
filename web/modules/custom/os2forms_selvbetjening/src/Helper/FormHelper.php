@@ -3,6 +3,8 @@
 namespace Drupal\os2forms_selvbetjening\Helper;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -38,9 +40,14 @@ class FormHelper {
 
     $webform_category_description = $this->t('Externally: Citizen. Internally: Employees');
 
-    // Add description to category choice in Webform Settings.
+    // Webform general settings form.
     if ('webform_settings_form' === $form_id) {
+      // Add description to category choice in Webform Settings.
       $form['general_settings']['category']['#description'] = $webform_category_description;
+      // Disable access to ajax settings for non administrator users.
+      if (!in_array('administrator', $this->account->getRoles())) {
+        $form['ajax_settings']['#disabled'] = TRUE;
+      }
     }
 
     // Add description to category choice when adding new Webform.
@@ -73,6 +80,25 @@ class FormHelper {
         }
       }
     }
+
+    // Important: We must check the actual form ID on the form here; the
+    // 'user_login_form' may have been replaced with 'openid_connect_login_form'
+    // in openid_connect_form_user_login_form_alter (which see for details).
+    if ('user_login_form' === $form['#form_id']) {
+      // Remove all children and select stuff from login form.
+      $keysToUnset = [
+        ...Element::children($form),
+        '#validate',
+        '#submit',
+      ];
+      foreach ($keysToUnset as $key) {
+        unset($form[$key]);
+      }
+      $form['message'] = [
+        'message' => Link::createFromRoute($this->t('Login form has been disabled'), 'user.login')->toRenderable(),
+      ];
+    }
+
   }
 
 }

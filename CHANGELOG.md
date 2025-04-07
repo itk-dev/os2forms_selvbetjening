@@ -12,6 +12,58 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Ændrede PDF udseende [PR-377](https://github.com/itk-dev/os2forms_selvbetjening/pull/377).
 * Tilføjede os2forms_custom_view_builders module [PR-379](https://github.com/itk-dev/os2forms_selvbetjening/pull/379).
 
+## [4.0.1] 2025-04-01
+
+* [PR-409](https://github.com/itk-dev/os2forms_selvbetjening/pull/409)
+  Opdaterede `itk-dev/serviceplatformen` til at bruge nye api-endpoints.
+
+## [4.0.0] 2025-03-25
+
+* Følg `os2forms` core major version.
+* Indeholder det samme som `3.2.10`.
+
+## [3.2.10] 2025-03-25
+
+* Deaktiverede login-formularen.
+* Opdaterede til `os2forms` 4.0.0.
+  * Opdaterede `os2forms_nemlogin_openid_connect` modulet.
+  * Opdaterede `os2forms_user_field_lookup` modulet.
+  * Opdaterede `os2forms_forloeb_profile` modulet.
+  * Opdaterede `os2forms_get_organized` modulet.
+  * Opdaterede `os2forms_rest_api` modulet.
+
+## [3.2.9] 2025-03-12
+
+* Opdaterede `os2web_audit` modulet.
+* Opdaterede `os2form_failed_jobs` modulet.
+
+## [3.2.8] 2025-03-06
+
+* Opdaterede `os2web_audit` modulet.
+
+## [3.2.7] 2025-03-03
+
+* Tilføjede patch der undgår container titler i e-mails
+  når de ikke har underelementer.
+* Tillod tabel elementer i `webform` tekstformat.
+* Tilføjede styling af tabel elementer i webform udsendte e-mails.
+* Tilføjede ekstra tjek i OS2Forms email handler.
+* Opdaterede `os2web_audit` modulet.
+* Deaktiverede formular ajax muligheden.
+* Opdaterede `os2forms_payment` modulet.
+
+## [3.2.6] 2025-02-20
+
+* Opdaterede Drupal core og diverse andre pakker.
+
+## [3.2.5] 2025-02-11
+
+* Opdaterede `os2forms_payment`.
+* Opdaterede `os2forms` core modulet.
+  * Telefonnummer håndtering i FBS.
+* Øgede tilladt hukommelsesforbrug.
+* Opdaterede installationsvejledning.
+
 ## [3.2.4] 2025-01-07
 
 * Opdaterede `os2forms` core modulet.
@@ -568,7 +620,15 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.4...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...HEAD
+[4.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...4.0.1
+[4.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.10...4.0.0
+[3.2.10]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.9...3.2.10
+[3.2.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.8...3.2.9
+[3.2.8]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.7...3.2.8
+[3.2.7]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.6...3.2.7
+[3.2.6]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.5...3.2.6
+[3.2.5]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.4...3.2.5
 [3.2.4]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.3...3.2.4
 [3.2.3]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.2...3.2.3
 [3.2.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.1...3.2.2
