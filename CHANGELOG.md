@@ -6,7 +6,15 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [4.0.0] 2025-04-01
+## [4.1.0] 2025-04-08
+
+* Ændrede PDF tabel visning [PR-404](https://github.com/itk-dev/os2forms_selvbetjening/pull/404)
+* Ændrede kort date/time format
+* Ændrede PDF headers [PR-386](https://github.com/itk-dev/os2forms_selvbetjening/pull/386).
+* Ændrede PDF udseende [PR-377](https://github.com/itk-dev/os2forms_selvbetjening/pull/377).
+* Tilføjede os2forms_custom_view_builders module [PR-379](https://github.com/itk-dev/os2forms_selvbetjening/pull/379).
+
+## [4.0.1] 2025-04-01
 
 * [PR-409](https://github.com/itk-dev/os2forms_selvbetjening/pull/409)
   Opdaterede `itk-dev/serviceplatformen` til at bruge nye api-endpoints.
@@ -614,7 +622,9 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...HEAD
+[4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
+[4.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...4.0.1
 [4.0.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.10...4.0.0
 [3.2.10]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.9...3.2.10
 [3.2.9]: https://github.com/itk-dev/os2forms_selvbetjening/compare/3.2.8...3.2.9

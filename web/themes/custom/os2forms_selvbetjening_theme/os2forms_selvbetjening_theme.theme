@@ -9,3 +9,16 @@ function os2forms_selvbetjening_theme_preprocess_page(&$variables): void {
   $variables['site_logo'] = theme_get_setting('logo.url');
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
 }
+
+/**
+ * Implements HOOK_preprocess_entity_print().
+ */
+function os2forms_selvbetjening_theme_preprocess_entity_print(array &$variables) {
+  $current_route = \Drupal::routeMatch();
+  $variables['debug'] = 'entity_print.view.debug' === $current_route->getRouteName();
+  if ($variables['debug']) {
+    $variables['base_url'] = \Drupal::requestStack()->getCurrentRequest()->getSchemeAndHttpHost();
+  }
+
+  $variables['submission_renderable'] = \Drupal::entityTypeManager()->getViewBuilder('webform_submission')->view($variables['webform_submission'], 'table');
+}
