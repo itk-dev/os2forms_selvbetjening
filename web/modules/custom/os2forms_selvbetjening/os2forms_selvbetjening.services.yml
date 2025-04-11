@@ -22,3 +22,8 @@ services:
   Drupal\os2forms_selvbetjening\Routing\RouteSubscriber:
     tags:
       - { name: 'event_subscriber' }
+
+  #@todo If it needs to be configurable see: https://www.specbee.com/blogs/overriding-custom-services-in-drupal
+  advancedqueue.processor:
+    class: Drupal\os2forms_selvbetjening\Service\AdvancedQueueProcessorOverride
+    arguments: ['@event_dispatcher', '@datetime.time', '@plugin.manager.advancedqueue_job_type', '@logger.channel.cron']
