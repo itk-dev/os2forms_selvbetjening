@@ -18,3 +18,7 @@ services:
       - '@router.admin_context'
     tags:
       - { name: 'event_subscriber' }
+
+  Drupal\os2forms_selvbetjening\Routing\RouteSubscriber:
+    tags:
+      - { name: 'event_subscriber' }

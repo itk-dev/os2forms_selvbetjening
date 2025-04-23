@@ -44,6 +44,17 @@
       <br/>
     </p>
   </div>
+  <div class="page-numbers">
+    <span>{{ 'Page'|t }}</span>
+    <span class="page-number">
+        {# Page number inserted by css. #}
+      </span>
+    <span>{{ 'of'|t }}</span>
+    <span class="page-count">
+      {# String replace is done by by entity_print_module #}
+      {{ '@@PC' }}
+      </span>
+  </div>
 </header>
 
 <div class="page">

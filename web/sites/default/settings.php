@@ -817,6 +817,17 @@ $settings['base_url'] = 'http://nginx:8080';
  */
 $config['os2forms_forloeb.settings']['templates']['notification_pdf'] = 'themes/custom/os2forms_selvbetjening_theme/templates/pdf/os2forms-selvbetjening-maestro-notification-pdf-html.html.twig';
 
+$settings['twig_sandbox_allowed_methods'] = [
+  // Defaults (cf. Drupal\Core\Template\TwigSandboxPolicy::__construct()).
+  'id',
+  'label',
+  'bundle',
+  'get',
+  '__toString',
+  'toString',
+  'createFileUrl'
+];
+
 /**
  * Load local development override configuration, if available.
  *
