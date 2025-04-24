@@ -9,8 +9,6 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
-use Drupal\maestro\Engine\MaestroEngine;
-use ReflectionFunction;
 
 /**
  * Form Helper class, for altering forms.
@@ -107,6 +105,23 @@ class FormHelper {
 
   }
 
+  /**
+   * Validates form input by checking a user-defined function.
+   *
+   * This method ensures that:
+   * - The specified function exists.
+   * - The number of provided parameters matches
+   * the defined function's requirements,
+   *   adjusted for additional parameters added during execution.
+   *
+   * @param array $form
+   *   The form structure.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   *
+   * @throws \ReflectionException
+   *   Function name specified cannot be reflected.
+   */
   public function validateByContentFunction(array &$form, FormStateInterface $form_state) {
     if ("bycontentfunction" === $form_state->getValue(['spv', 'method'])) {
 
@@ -130,7 +145,8 @@ class FormHelper {
       // Get the number of parameters for the defined function.
       $functionParamCount = (new \ReflectionFunction($functionName))->getNumberOfRequiredParameters();
 
-      // The maestro execute method always adds 2 parameters (queueID and processID) when handling the "bycontentfunction" case.
+      // The maestro execute method always adds 2 parameters
+      // (queueID and processID) when handling the "bycontentfunction" case.
       // @see MaestroSetProcessVariableTask::execute()
       $functionParamCount -= 2;
 
@@ -141,8 +157,19 @@ class FormHelper {
 
       // Check if the number of parameters matches.
       if ($paramCount !== $functionParamCount) {
-        $form_state->setError($form['spv'], $this->t('Function %function_name expects %function_parameter_count parameters. %parameter_defined_count given.', ['%function_name' => $functionName, '%function_parameter_count' => $functionParamCount, '%parameter_defined_count' => $paramCount]));
+        $form_state->setError(
+          $form['spv'],
+          $this->t(
+            'Function %function_name expects %function_parameter_count parameters. %parameter_defined_count given.',
+            [
+              '%function_name' => $functionName,
+              '%function_parameter_count' => $functionParamCount,
+              '%parameter_defined_count' => $paramCount,
+            ]
+          )
+        );
       }
     }
   }
+
 }
