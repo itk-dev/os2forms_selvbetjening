@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede maestro bycontentfunction validation [PR-413](https://github.com/itk-dev/os2forms_selvbetjening/pull/413).
+
 ## [4.1.0] 2025-04-08
 
 * Ændrede PDF tabel visning [PR-404](https://github.com/itk-dev/os2forms_selvbetjening/pull/404)
