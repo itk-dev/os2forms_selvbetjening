@@ -4,17 +4,23 @@ namespace Drupal\os2forms_selvbetjening\Helper;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerTrait;
 
 /**
  * Form Helper class, for altering forms.
  */
-class FormHelper {
+final class FormHelper implements LoggerInterface {
   use StringTranslationTrait;
+  use LoggerAwareTrait;
+  use LoggerTrait;
 
   /**
    * Constructor.
@@ -22,7 +28,8 @@ class FormHelper {
    * @param \Drupal\Core\Session\AccountInterface $account
    *   Current user.
    */
-  public function __construct(private readonly AccountInterface $account) {
+  public function __construct(private readonly AccountInterface $account, LoggerChannelInterface $logger,) {
+    $this->setLogger($logger);
   }
 
   /**
@@ -145,11 +152,11 @@ class FormHelper {
       catch (\ReflectionException $e) {
         $form_state->setError(
           $form['spv'],
-          $this->t('Unable to reflect function %function_name: @error', [
+          $this->t('Invalid function %function_name', [
             '%function_name' => $functionName,
-            '@error' => $e->getMessage(),
           ])
         );
+        $this->error($e->getMessage(), $e->getTrace());
         return;
       }
 
@@ -178,6 +185,17 @@ class FormHelper {
         );
       }
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @phpstan-param mixed $level
+   * @phpstan-param string $message
+   * @phpstan-param array<string, mixed> $context
+   */
+  public function log($level, $message, array $context = []): void {
+    $this->logger?->log($level, $message, $context);
   }
 
 }
