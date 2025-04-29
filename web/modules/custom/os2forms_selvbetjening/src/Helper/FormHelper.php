@@ -4,23 +4,18 @@ namespace Drupal\os2forms_selvbetjening\Helper;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerTrait;
 
 /**
  * Form Helper class, for altering forms.
  */
-final class FormHelper implements LoggerInterface {
+class FormHelper {
   use StringTranslationTrait;
-  use LoggerAwareTrait;
-  use LoggerTrait;
 
   /**
    * Constructor.
@@ -30,8 +25,7 @@ final class FormHelper implements LoggerInterface {
    * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
    *   Logger.
    */
-  public function __construct(private readonly AccountInterface $account, LoggerChannelInterface $logger) {
-    $this->setLogger($logger);
+  public function __construct(private readonly AccountInterface $account, private readonly LoggerChannel $logger) {
   }
 
   /**
@@ -147,6 +141,7 @@ final class FormHelper implements LoggerInterface {
         $form_state->setError($form['spv'], $this->t('Function %function_name does not exist', ['%function_name' => $functionName]));
         return;
       }
+      $this->logger->error('test hest error');
       // Get the number of parameters for the defined function.
       try {
         $functionParamCount = (new \ReflectionFunction($functionName))->getNumberOfRequiredParameters();
@@ -158,7 +153,7 @@ final class FormHelper implements LoggerInterface {
             '%function_name' => $functionName,
           ])
         );
-        $this->error($e->getMessage(), $e->getTrace());
+        $this->logger->error($e->getMessage(), $e->getTrace());
         return;
       }
 
@@ -187,17 +182,6 @@ final class FormHelper implements LoggerInterface {
         );
       }
     }
-  }
-
-  /**
-   * {@inheritdoc}
-   *
-   * @phpstan-param mixed $level
-   * @phpstan-param string $message
-   * @phpstan-param array<string, mixed> $context
-   */
-  public function log($level, $message, array $context = []): void {
-    $this->logger?->log($level, $message, $context);
   }
 
 }
