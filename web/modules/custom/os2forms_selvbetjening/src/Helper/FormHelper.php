@@ -22,7 +22,7 @@ class FormHelper {
    *
    * @param \Drupal\Core\Session\AccountInterface $account
    *   Current user.
-   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
+   * @param \Drupal\Core\Logger\LoggerChannel $logger
    *   Logger.
    */
   public function __construct(private readonly AccountInterface $account, private readonly LoggerChannel $logger) {
