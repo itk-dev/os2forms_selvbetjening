@@ -139,22 +139,3 @@ docker compose up -d
 ```
 
 to reload the OIDC configuration.
-
-## Infisical
-
-<https://infisical.com/docs/documentation/getting-started/introduction>
-
-```sh
-docker compose --profile infisical up --detach
-```
-
-```sh
-open "http://$(docker compose port infisical-backend 8080)"
-```
-
-<https://infisical.com/docs/cli/overview>
-
-```sh
-brew install infisical/get-cli/infisical
-infisical login --interactive --domain "http://$(docker compose port infisical-backend 8080)/api"
-```
