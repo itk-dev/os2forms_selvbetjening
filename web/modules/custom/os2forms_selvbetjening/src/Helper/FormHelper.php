@@ -27,8 +27,10 @@ final class FormHelper implements LoggerInterface {
    *
    * @param \Drupal\Core\Session\AccountInterface $account
    *   Current user.
+   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
+   *   Logger.
    */
-  public function __construct(private readonly AccountInterface $account, LoggerChannelInterface $logger,) {
+  public function __construct(private readonly AccountInterface $account, LoggerChannelInterface $logger) {
     $this->setLogger($logger);
   }
 
