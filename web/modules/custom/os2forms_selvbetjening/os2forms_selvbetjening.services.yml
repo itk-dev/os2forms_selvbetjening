@@ -8,6 +8,7 @@ services:
   Drupal\os2forms_selvbetjening\Helper\FormHelper:
     arguments:
       - '@current_user'
+      - '@logger.channel.default'
 
   Drupal\Drupal\os2forms_selvbetjening\Form\SettingsForm:
     arguments:
