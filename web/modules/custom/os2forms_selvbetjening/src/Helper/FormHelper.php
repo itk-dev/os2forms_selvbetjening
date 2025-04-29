@@ -102,7 +102,6 @@ class FormHelper {
     if ('template_edit_task' === $form_id) {
       $form['#validate'][] = [$this, "validateByContentFunction"];
     }
-
   }
 
   /**
