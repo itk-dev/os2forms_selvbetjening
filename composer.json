@@ -16,7 +16,6 @@
         "drupal/core-recommended": "^10.3",
         "drupal/editor_advanced_link": "^2.2",
         "drupal/jquery_ui_datepicker": "^2.1",
-        "drupal/key": "^1.19",
         "drupal/lang_dropdown": "^2.1",
         "drupal/log_stdout": "^1.5",
         "drupal/memcache": "^2.7",
@@ -28,7 +27,6 @@
         "itk-dev/os2forms_failed_jobs": "^1.5",
         "itk-dev/os2forms_nemlogin_openid_connect": "dev-feature/os2web_key as 2.3.0",
         "itk-dev/os2forms_user_field_lookup": "^1.1",
-        "itk-dev/vault": "^0.1.0",
         "itk-dev/web_accessibility_statement": "^1.1",
         "os2forms/os2forms": "dev-feature/os2web_key as 4.1.0",
         "os2forms/os2forms_forloeb_profile": "^1.15",
@@ -38,7 +36,7 @@
         "os2forms/os2forms_rest_api": "^2.2",
         "os2forms/os2forms_sync": "^1.2",
         "os2forms/os2forms_webform_submission_log": "^1.1",
-        "os2web/os2web_datalookup": "^2.0.4"
+        "os2web/os2web_datalookup": "dev-feature/os2web_key as 2.1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10",
@@ -60,6 +58,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/itk-dev/os2forms_get_organized"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/itk-dev/os2web_datalookup"
         },
         {
             "type": "composer",
