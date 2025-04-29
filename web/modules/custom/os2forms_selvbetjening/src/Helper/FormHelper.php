@@ -153,7 +153,12 @@ class FormHelper {
             '%function_name' => $functionName,
           ])
         );
-        $this->logger->error($e->getMessage(), $e->getTrace());
+        $this->logger->error('Error reflecting function %function_name: %message', [
+          '%function_name' => $functionName,
+           %message' => $e->getMessage(),
+           // Add the full exception to the context for future reference.
+           'exception' => $e,
+        ]);
         return;
       }
 
