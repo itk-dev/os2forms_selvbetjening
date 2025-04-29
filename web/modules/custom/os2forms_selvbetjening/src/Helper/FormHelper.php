@@ -141,7 +141,7 @@ class FormHelper {
         $form_state->setError($form['spv'], $this->t('Function %function_name does not exist', ['%function_name' => $functionName]));
         return;
       }
-      $this->logger->error('test hest error');
+      
       // Get the number of parameters for the defined function.
       try {
         $functionParamCount = (new \ReflectionFunction($functionName))->getNumberOfRequiredParameters();
