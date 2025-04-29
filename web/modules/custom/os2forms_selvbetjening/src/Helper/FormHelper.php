@@ -107,7 +107,7 @@ final class FormHelper implements LoggerInterface {
     }
 
     if ('template_edit_task' === $form_id) {
-      $form['#validate'][] = [$this, "validateByContentFunction"];
+      $form['#validate'][] = [$this, 'validateByContentFunction'];
     }
   }
 
@@ -126,7 +126,7 @@ final class FormHelper implements LoggerInterface {
    *   The current state of the form.
    */
   public function validateByContentFunction(array &$form, FormStateInterface $form_state): void {
-    if ("bycontentfunction" === $form_state->getValue(['spv', 'method'])) {
+    if ('bycontentfunction' === $form_state->getValue(['spv', 'method'])) {
 
       // Get function name and parameters defined in the flow task.
       $value = $form_state->getValue(['spv', 'variable_value']);
