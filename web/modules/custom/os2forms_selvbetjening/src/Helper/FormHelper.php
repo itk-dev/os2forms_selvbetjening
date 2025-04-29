@@ -180,8 +180,4 @@ class FormHelper {
     }
   }
 
-  function hestvest(): void {
-    die('f');
-  }
-
 }
