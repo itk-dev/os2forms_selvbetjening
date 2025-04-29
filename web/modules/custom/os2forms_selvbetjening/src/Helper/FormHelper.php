@@ -117,11 +117,8 @@ class FormHelper {
    *   The form structure.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
-   *
-   * @throws \ReflectionException
-   *   Function name specified cannot be reflected.
    */
-  public function validateByContentFunction(array &$form, FormStateInterface $form_state) {
+  public function validateByContentFunction(array &$form, FormStateInterface $form_state): void {
     if ("bycontentfunction" === $form_state->getValue(['spv', 'method'])) {
 
       // Get function name and parameters defined in the flow task.
@@ -142,7 +139,19 @@ class FormHelper {
         return;
       }
       // Get the number of parameters for the defined function.
-      $functionParamCount = (new \ReflectionFunction($functionName))->getNumberOfRequiredParameters();
+      try {
+        $functionParamCount = (new \ReflectionFunction($functionName))->getNumberOfRequiredParameters();
+      }
+      catch (\ReflectionException $e) {
+        $form_state->setError(
+          $form['spv'],
+          $this->t('Unable to reflect function %function_name: @error', [
+            '%function_name' => $functionName,
+            '@error' => $e->getMessage(),
+          ])
+        );
+        return;
+      }
 
       // The maestro execute method always adds 2 parameters
       // (queueID and processID) when handling the "bycontentfunction" case.
@@ -169,6 +178,10 @@ class FormHelper {
         );
       }
     }
+  }
+
+  function hestvest(): void {
+    die('f');
   }
 
 }
