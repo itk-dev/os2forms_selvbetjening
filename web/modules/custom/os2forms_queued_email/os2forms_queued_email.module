@@ -13,6 +13,10 @@ use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformVideoFile;
 
 /**
  * Implements hook_webform_element_info_alter().
+ *
+ * The only change to these elements is not passing along the file content
+ * when `getEmailAttachments` is called.
+ * See the Details section of the module README for more info.
  */
 function os2forms_queued_email_webform_element_info_alter(array &$definitions) {
   if (isset($definitions['managed_file'])) {

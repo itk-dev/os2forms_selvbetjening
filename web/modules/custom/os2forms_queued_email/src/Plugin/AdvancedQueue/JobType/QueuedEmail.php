@@ -132,7 +132,7 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
     }
     catch (\Exception $e) {
 
-      $submission = WebformSubmission::load($payload['submissionId']);
+      $submission = $payload['submissionId'] ? WebformSubmission::load($payload['submissionId']) : NULL;
 
       $logger_context = [
         'handler_id' => 'os2forms_queued_email',
@@ -142,7 +142,7 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
       ];
 
       $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
-        '@serial' => $submission->serial(),
+        '@serial' => $submission?->serial(),
         '@message' => $e->getMessage(),
       ]), $logger_context);
 
