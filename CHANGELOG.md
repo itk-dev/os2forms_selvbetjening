@@ -8,6 +8,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [4.2.0] XXXX-XX-XX
 
+* Tilpassede os2forms_custom_view_builders for at sikre underelementer
+  af container konfigurerede elementer bliver vist.
+
 ## [4.1.0] 2025-04-08
 
 * Ændrede PDF tabel visning [PR-404](https://github.com/itk-dev/os2forms_selvbetjening/pull/404)
