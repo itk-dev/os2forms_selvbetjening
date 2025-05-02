@@ -220,6 +220,9 @@ private-files/
 node_modules/
 yarn-error.log
 
+# Ignore keys
+config/sync/**/key.key.*
+
 # Ignore webforms, webform options and maestro templates including localized config.
 config/sync/**/maestro.maestro_template.*
 config/sync/**/webform.webform.*
