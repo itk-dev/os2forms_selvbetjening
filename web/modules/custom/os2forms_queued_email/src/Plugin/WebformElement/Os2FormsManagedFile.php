@@ -37,8 +37,8 @@ class Os2FormsManagedFile extends ManagedFile {
         'filecontent' => '',
         'filename' => $file->getFilename(),
         'filemime' => $file->getMimeType(),
-        // File URIs that are not supported return FALSE, when this happens
-        // still use the file's URI as the file's path.
+        // File URIs that are not supported return FALSE. When this happens,
+        // use the file's URI as the file's path.
         'filepath' => $this->fileSystem->realpath($file->getFileUri()) ?: $file->getFileUri(),
         // URI is used when debugging or resending messages.
         // @see \Drupal\webform\Plugin\WebformHandler\EmailWebformHandler::buildAttachments
