@@ -2,8 +2,6 @@
 
 namespace Drupal\os2forms_queued_email\Plugin\Mail;
 
-use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
-use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Component\Utility\EmailValidatorInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -15,7 +13,6 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\advancedqueue\Exception\DuplicateJobException;
 use Drupal\advancedqueue\Job;
 use Drupal\os2forms_queued_email\Plugin\AdvancedQueue\JobType\QueuedEmail;
 use Drupal\smtp\Plugin\Mail\SMTPMailSystem;
@@ -87,9 +84,9 @@ final class QueuedSmtpPhpMail extends SMTPMailSystem {
    */
   public function mail(array $message) {
 
-    $submission = $message['params']['webform_submission'];
-
     try {
+      $submission = $message['params']['webform_submission'];
+
       $path = QueuedEmail::OS2FORMS_QUEUED_EMAIL_FILE_PATH;
       $this->fileSystem->prepareDirectory($path);
 
@@ -136,17 +133,17 @@ final class QueuedSmtpPhpMail extends SMTPMailSystem {
       ]), $logger_context);
 
     }
-    catch (InvalidPluginDefinitionException | PluginNotFoundException | DuplicateJobException $e) {
+    catch (\Exception $e) {
 
       $logger_context = [
         'handler_id' => 'os2forms_queued_email',
         'channel' => 'webform_submission',
-        'webform_submission' => $submission,
+        'webform_submission' => $submission ?? NULL,
         'operation' => 'failed queueing submission',
       ];
 
       $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
-        '@serial' => $submission->serial(),
+        '@serial' => $submission?->serial(),
         '@message' => $e->getMessage(),
       ]), $logger_context);
 
