@@ -2,17 +2,25 @@
 
 namespace Drupal\os2forms_selvbetjening\Service;
 
+use Drupal\Core\Utility\Error;
 use Drupal\advancedqueue\Entity\QueueInterface;
 use Drupal\advancedqueue\Event\AdvancedQueueEvents;
 use Drupal\advancedqueue\Event\JobEvent;
 use Drupal\advancedqueue\Job;
 use Drupal\advancedqueue\JobResult;
 use Drupal\advancedqueue\Processor;
-use Drupal\Core\Utility\Error;
 
 /**
  * Custom processor for Advanced Queue with modified retry logic.
- * Looks for a retry_multiplier in the $jobTypePluginDefinition.
+ *
+ * Looks for a retry_multiplier in the $jobTypePluginDefinition. i.e.
+ * # @AdvancedQueueJobType(
+ * #   id = "Drupal\os2forms_api_request_handler\Plugin\AdvancedQueue\JobType\PostSubmission",
+ * #   label = @Translation("Post form submission to API endpoint"),
+ * #   max_retries = 5,
+ * #   retry_delay = 120,
+ * #   retry_multiplier = "2"
+ * # )
  */
 class AdvancedQueueProcessorOverride extends Processor {
 
@@ -53,7 +61,7 @@ class AdvancedQueueProcessorOverride extends Processor {
       $max_retries = !is_null($result->getMaxRetries()) ? $result->getMaxRetries() : $job_type->getMaxRetries();
       $retry_delay = !is_null($result->getRetryDelay()) ? $result->getRetryDelay() : $job_type->getRetryDelay();
       if ($job->getNumRetries() < $max_retries) {
-        $retry_delay = $job->getNumRetries()*$retryMultiplier*$retry_delay;
+        $retry_delay = $job->getNumRetries() * $retryMultiplier * $retry_delay;
         $queue_backend->retryJob($job, $retry_delay);
       }
       else {
@@ -63,4 +71,5 @@ class AdvancedQueueProcessorOverride extends Processor {
 
     return $result;
   }
+
 }
