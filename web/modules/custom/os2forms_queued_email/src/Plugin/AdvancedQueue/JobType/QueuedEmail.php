@@ -125,7 +125,7 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
         unlink($os2formsAttachmentFilename);
       }
 
-      $msg = sprintf('Email, %s, sent to %s. Webform id %s.', $message['subject'], $message['to'], $submission->getWebform()->id());
+      $msg = sprintf('Email, %s, sent to %s. Webform id: %s.', $message['subject'], $message['to'], $submission->getWebform()->id());
       $this->auditLogger->info('Email', $msg);
 
       return JobResult::success();
