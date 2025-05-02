@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* [PR-412](https://github.com/itk-dev/os2forms_selvbetjening/pull/412)
+  * Tilføjede tilpasset AdvancedQueueProcessor til os2forms selvbetjening
+  * Tilføjede personaliseret view til konfiguration
+
 ## [4.0.0] 2025-04-01
 
 * [PR-409](https://github.com/itk-dev/os2forms_selvbetjening/pull/409)
