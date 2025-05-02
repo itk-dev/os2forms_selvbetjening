@@ -8,7 +8,7 @@ Go to `/admin/config/system/mailsystem` and configure the Webform module to
 use `Queued SMTP PHP mailer` as Sender.
 
 Make sure the `private://queued-email-files/` directory exists
-and is writable. More information on this later.
+and is writable. See [Details](#details) for more information on this.
 
 ## Details
 
