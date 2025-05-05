@@ -1,5 +1,5 @@
 uuid: 66507432-9705-4d1e-b455-77231ec69100
-langcode: en
+langcode: da
 status: true
 dependencies:
   module:
@@ -182,7 +182,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_id
-          label: 'Webform id'
+          label: 'Formular id'
           exclude: true
           alter:
             alter_text: false
@@ -231,7 +231,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_submission_id
-          label: 'Webform submission id'
+          label: 'Formular indsendelsesid'
           exclude: true
           alter:
             alter_text: false
@@ -329,7 +329,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_submission_serial_id
-          label: 'Webform submission serial id'
+          label: 'Webformindsendelse seriel id'
           exclude: true
           alter:
             alter_text: false
@@ -530,7 +530,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_label
-          label: Webform
+          label: Formular
           exclude: false
           alter:
             alter_text: true
@@ -579,7 +579,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Site wide id / Webform submission id'
+          label: 'Site id / Formular indsendelse id'
           exclude: false
           alter:
             alter_text: true
@@ -628,7 +628,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Related handler / Error message'
+          label: 'Relateret handler / Fejlbesked'
           exclude: false
           alter:
             alter_text: true
@@ -677,7 +677,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: date
-          label: 'Last processed date'
+          label: 'Seneste processeringsdato'
           exclude: false
           alter:
             alter_text: false
@@ -729,7 +729,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_state
-          label: State
+          label: Tilstand
           exclude: false
           alter:
             alter_text: false
@@ -779,7 +779,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Retry status'
+          label: 'Gentagelsesstatus'
           exclude: false
           alter:
             alter_text: true
@@ -836,7 +836,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_queue_operations
-          label: 'Queue operations'
+          label: 'Handlinger'
           exclude: false
           alter:
             alter_text: false
@@ -1073,7 +1073,7 @@ display:
           exposed: true
           expose:
             operator_id: webform_label_filter_op
-            label: Webform
+            label: Formular
             description: ''
             use_operator: false
             operator: webform_label_filter_op
@@ -1124,7 +1124,7 @@ display:
           exposed: true
           expose:
             operator_id: webform_submission_serial_id_op
-            label: 'Webform submission id'
+            label: 'Formular indsendelsesid'
             description: ''
             use_operator: false
             operator: webform_submission_serial_id_op
@@ -1235,7 +1235,7 @@ display:
           exposed: true
           expose:
             operator_id: state_1_op
-            label: State
+            label: Tilstand
             description: ''
             use_operator: false
             operator: state_1_op
@@ -1290,7 +1290,7 @@ display:
           exposed: true
           expose:
             operator_id: processed_op
-            label: 'Processed date'
+            label: 'Processeringsdato'
             description: ''
             use_operator: false
             operator: processed_op
