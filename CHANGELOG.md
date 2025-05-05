@@ -10,6 +10,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilpassede os2forms_custom_view_builders for at sikre underelementer
   af container konfigurerede elementer bliver vist.
+* Tilføjede mulighed for mails gennem kø.
 
 ## [4.1.0] 2025-04-08
 
