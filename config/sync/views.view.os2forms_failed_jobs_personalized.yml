@@ -1272,6 +1272,63 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        processed:
+          id: processed
+          table: advancedqueue
+          field: processed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: between
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: processed_op
+            label: 'Processed date'
+            description: ''
+            use_operator: false
+            operator: processed_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: processed
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_admin: '0'
+              flow_designer: '0'
+              forloeb_designer: '0'
+              sagsbehandler: '0'
+              medarbejder: '0'
+              leder: '0'
+              virksomhed: '0'
+              borger: '0'
+              os2forms_rest_api_user: '0'
+              os2forms_rest_api_user_write: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
