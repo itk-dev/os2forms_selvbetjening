@@ -2,6 +2,7 @@
 
 namespace Drupal\os2forms_selvbetjening\Helper;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
@@ -97,6 +98,10 @@ class FormHelper {
       $form['message'] = [
         'message' => Link::createFromRoute($this->t('Login form has been disabled'), 'user.login')->toRenderable(),
       ];
+    }
+
+    if (isset($form['#id']) && 'views-exposed-form-os2forms-failed-jobs-personalized-block-1' === $form['#id']) {
+      $form['#attached']['library'][] = 'os2forms_selvbetjening/exposed-form-display';
     }
 
   }
