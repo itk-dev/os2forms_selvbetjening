@@ -1,5 +1,5 @@
 uuid: 66507432-9705-4d1e-b455-77231ec69100
-langcode: en
+langcode: da
 status: true
 dependencies:
   module:
@@ -22,7 +22,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Failed jobs on my forms'
+      title: 'Fejlede kø job på mine formularer'
       fields:
         job_id:
           id: job_id
@@ -182,7 +182,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_id
-          label: 'Webform id'
+          label: 'Formular id'
           exclude: true
           alter:
             alter_text: false
@@ -231,7 +231,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_submission_id
-          label: 'Webform submission id'
+          label: 'Formularbesvarelse id'
           exclude: true
           alter:
             alter_text: false
@@ -329,7 +329,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_submission_serial_id
-          label: 'Webform submission serial id'
+          label: 'Formularbesvarelse seriel id'
           exclude: true
           alter:
             alter_text: false
@@ -530,7 +530,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_label
-          label: Webform
+          label: Formular
           exclude: false
           alter:
             alter_text: true
@@ -579,7 +579,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Site wide id / Webform submission id'
+          label: 'Formularbesvarelse id tværgående / Formularbesvarelse id'
           exclude: false
           alter:
             alter_text: true
@@ -628,7 +628,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Related handler / Error message'
+          label: 'Relateret handler / Fejlbesked'
           exclude: false
           alter:
             alter_text: true
@@ -677,7 +677,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: date
-          label: 'Last processed date'
+          label: 'Seneste processeringsdato'
           exclude: false
           alter:
             alter_text: false
@@ -729,7 +729,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_state
-          label: State
+          label: Tilstand
           exclude: false
           alter:
             alter_text: false
@@ -779,7 +779,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Retry status'
+          label: Gentagelsesstatus
           exclude: false
           alter:
             alter_text: true
@@ -836,7 +836,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_queue_operations
-          label: 'Queue operations'
+          label: Handlinger
           exclude: false
           alter:
             alter_text: false
@@ -1073,7 +1073,7 @@ display:
           exposed: true
           expose:
             operator_id: webform_label_filter_op
-            label: Webform
+            label: Formular
             description: ''
             use_operator: false
             operator: webform_label_filter_op
@@ -1110,27 +1110,27 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        webform_submission_serial_id:
-          id: webform_submission_serial_id
+        webform_submission_id:
+          id: webform_submission_id
           table: advancedqueue
-          field: webform_submission_serial_id
+          field: webform_submission_id
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: advancedqueue_job_submission_serial
+          plugin_id: advancedqueue_job_submission_id
           operator: '='
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: webform_submission_serial_id_op
-            label: 'Webform submission id'
+            operator_id: webform_submission_id_op
+            label: 'Formularbesvarelse id tværgående'
             description: ''
             use_operator: false
-            operator: webform_submission_serial_id_op
+            operator: webform_submission_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: webform_submission_serial_id
+            identifier: webform_submission_id
             required: false
             remember: false
             multiple: false
@@ -1235,7 +1235,7 @@ display:
           exposed: true
           expose:
             operator_id: state_1_op
-            label: State
+            label: Tilstand
             description: ''
             use_operator: false
             operator: state_1_op
@@ -1260,6 +1260,63 @@ display:
               os2forms_rest_api_user: '0'
               os2forms_rest_api_user_write: '0'
             reduce: true
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        processed:
+          id: processed
+          table: advancedqueue
+          field: processed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date
+          operator: between
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: processed_op
+            label: 'Processeringsdato (Fra - Til)'
+            description: ''
+            use_operator: false
+            operator: processed_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: processed
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_admin: '0'
+              flow_designer: '0'
+              forloeb_designer: '0'
+              sagsbehandler: '0'
+              medarbejder: '0'
+              leder: '0'
+              virksomhed: '0'
+              borger: '0'
+              os2forms_rest_api_user: '0'
+              os2forms_rest_api_user_write: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''

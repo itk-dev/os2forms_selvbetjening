@@ -56,12 +56,16 @@ class AdvancedQueueProcessorOverride extends Processor {
       $queue_backend->onFailure($job);
     }
     elseif ($job->getState() == Job::STATE_FAILURE && $job_type) {
+      /* Customization - Look for retry multiplier in plugin definition */
       $jobTypePluginDefinition = $job_type->getPluginDefinition();
       $retryMultiplier = $jobTypePluginDefinition['retry_multiplier'] ?? 1;
+      /* Customization end. */
       $max_retries = !is_null($result->getMaxRetries()) ? $result->getMaxRetries() : $job_type->getMaxRetries();
       $retry_delay = !is_null($result->getRetryDelay()) ? $result->getRetryDelay() : $job_type->getRetryDelay();
       if ($job->getNumRetries() < $max_retries) {
+        /* Customization - Apply retry multiplier to retry delay */
         $retry_delay = $job->getNumRetries() * $retryMultiplier * $retry_delay;
+        /* Customization end. */
         $queue_backend->retryJob($job, $retry_delay);
       }
       else {

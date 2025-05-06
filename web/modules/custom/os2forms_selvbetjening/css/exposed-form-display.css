@@ -1,0 +1,37 @@
+.view-os2forms-failed-jobs-personalized {
+  .views-exposed-form {
+    #edit-processed-wrapper {
+      border: none;
+      box-shadow: none;
+      margin: 0;
+      margin-inline: 0 var(--space-xs);
+
+      .fieldset__wrapper {
+        margin: 0;
+      }
+
+      .fieldset__label {
+        padding-bottom: .5em;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .form-datetime-wrapper {
+        display: inline-block;
+        margin: 0;
+
+        .form-item {
+          margin-top: 0;
+        }
+      }
+
+      .form-datetime-wrapper #edit-processed-min:after {
+        content: "-";
+      }
+
+      .form-item__label {
+        display: none;
+      }
+    }
+  }
+}
