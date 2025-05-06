@@ -1,0 +1,8 @@
+name: OS2Forms deprecations
+description: Handler and element usage overview
+package: OS2Forms
+type: module
+core_version_requirement: ^9 || ^10
+
+dependencies:
+  - webform:webform
