@@ -90,28 +90,9 @@ final class QueuedSmtpPhpMail extends SMTPMailSystem {
       $path = QueuedEmail::OS2FORMS_QUEUED_EMAIL_FILE_PATH;
       $this->fileSystem->prepareDirectory($path);
 
-      $elements = $submission->getWebform()->getElementsDecodedAndFlattened();
-
-      $os2formsAttachmentElements = [];
-
-      foreach ($elements as $key => $element) {
-        if ($element['#type'] === 'os2forms_attachment') {
-          $os2formsAttachmentElements[] = $key;
-        }
-      }
-
       // Save a copy of OS2Forms attachment in filesystem.
       foreach ($message['params']['attachments'] as &$attachment) {
-        $shouldHandle = FALSE;
-
-        // Detect whether attachment is a OS2Forms attachment.
-        foreach ($os2formsAttachmentElements as $os2formsAttachmentElement) {
-          if (str_contains($attachment['_fileurl'], 'attachment/' . $os2formsAttachmentElement . '/')) {
-            $shouldHandle = TRUE;
-          }
-        }
-
-        if ($shouldHandle && !empty($attachment[QueuedEmail::FILECONTENT])) {
+        if (!isset($attachment[QueuedEmail::OS2FORMS_QUEUED_EMAIL_IS_STATIC_FILE])) {
           $newFilename = uniqid() . $attachment['filename'];
           $privateFilepath = $path . '/' . $newFilename;
           file_put_contents($privateFilepath, $attachment[QueuedEmail::FILECONTENT]);
