@@ -2,10 +2,7 @@
 
 namespace Drupal\os2forms_custom_view_builders;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Entity\EntityViewBuilder;
-use Drupal\webform\Plugin\WebformElementAttachmentInterface;
-use Drupal\webform\Plugin\WebformElementCompositeInterface;
 use Drupal\webform\Twig\WebformTwigExtension;
 use Drupal\webform\Utility\WebformElementHelper;
 use Drupal\webform\Utility\WebformYaml;
@@ -179,58 +176,6 @@ class CustomViewBuilderWebformSubmission extends WebformSubmissionViewBuilder {
         'class' => ['webform-submission-table'],
       ],
     ];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function isElementVisible(array $element, WebformSubmissionInterface $webform_submission, array $options) {
-    // Checked excluded elements.
-    if (isset($element['#webform_key']) && isset($options['excluded_elements'][$element['#webform_key']])) {
-      return FALSE;
-    }
-
-    // Checked excluded attachments, except from composite elements.
-    // @see \Drupal\webform\Plugin\WebformElement\WebformCompositeBase::formatComposite
-    if (!empty($options['exclude_attachments'])) {
-      /** @var \Drupal\webform\Plugin\WebformElementInterface $webform_element */
-      $webform_element = $this->elementManager->getElementInstance($element, $webform_submission);
-      if ($webform_element instanceof WebformElementAttachmentInterface
-        && !$webform_element instanceof WebformElementCompositeInterface) {
-        return FALSE;
-      }
-    }
-
-    // Check if the element is conditionally hidden.
-    if (!$this->conditionsValidator->isElementVisible($element, $webform_submission)) {
-      return FALSE;
-    }
-
-    // Check if ignore access is set.
-    // This is used email handlers to include administrative elements in emails.
-    if (!empty($options['ignore_access'])) {
-      return TRUE;
-    }
-
-    // Check the element's #access.
-    if (isset($element['#access']) && (($element['#access'] instanceof AccessResultInterface && $element['#access']->isForbidden()) || ($element['#access'] === FALSE))) {
-      return FALSE;
-    }
-
-    /** @var \Drupal\webform\Plugin\WebformElementInterface $webform_element */
-    $webform_element = $this->elementManager->getElementInstance($element, $webform_submission);
-
-    /* @internal Os2Forms changes start */
-    $elementDisplayMode = $webform_element->getElementProperty($element, 'display_on');
-    $submissionDisplay = $webform_element->getElementProperty($element, 'format');
-
-    if ($elementDisplayMode === 'form' || $submissionDisplay === 'container') {
-      return FALSE;
-    }
-    /* @internal Os2Forms changes end */
-
-    // Finally, check the element's 'view' access.
-    return $webform_element->checkAccessRules('view', $element) ? TRUE : FALSE;
   }
 
 }
