@@ -95,6 +95,7 @@ module:
   os2forms_payment: 0
   os2forms_permission_alterations: 0
   os2forms_permissions_by_term: 0
+  os2forms_queued_email: 0
   os2forms_rest_api: 0
   os2forms_sbsys: 0
   os2forms_selvbetjening: 0
