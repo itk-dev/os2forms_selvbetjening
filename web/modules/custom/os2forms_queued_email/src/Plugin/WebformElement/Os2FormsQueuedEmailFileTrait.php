@@ -5,7 +5,6 @@ namespace Drupal\os2forms_queued_email\Plugin\WebformElement;
 use Drupal\os2forms_queued_email\Plugin\AdvancedQueue\JobType\QueuedEmail;
 use Drupal\webform\WebformSubmissionInterface;
 
-
 /**
  * OS2Forms queued email file trait.
  *
