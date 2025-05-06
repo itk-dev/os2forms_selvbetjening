@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Module file for the os2forms_queued_email module.
+ */
+
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsManagedFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformAudioFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformDocumentFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformImageFile;
+use Drupal\os2forms_queued_email\Plugin\WebformElement\Os2FormsWebformVideoFile;
+
+/**
+ * Implements hook_webform_element_info_alter().
+ *
+ * The only change to these elements is not passing along the file content
+ * when `getEmailAttachments` is called.
+ * See the Details section of the module README for more info.
+ */
+function os2forms_queued_email_webform_element_info_alter(array &$definitions) {
+  if (isset($definitions['managed_file'])) {
+    $definitions['managed_file']['class'] = Os2FormsManagedFile::class;
+  }
+
+  if (isset($definitions['webform_audio_file'])) {
+    $definitions['webform_audio_file']['class'] = Os2FormsWebformAudioFile::class;
+  }
+
+  if (isset($definitions['webform_document_file'])) {
+    $definitions['webform_document_file']['class'] = Os2FormsWebformDocumentFile::class;
+  }
+
+  if (isset($definitions['webform_image_file'])) {
+    $definitions['webform_image_file']['class'] = Os2FormsWebformImageFile::class;
+  }
+
+  if (isset($definitions['webform_video_file'])) {
+    $definitions['webform_video_file']['class'] = Os2FormsWebformVideoFile::class;
+  }
+}
