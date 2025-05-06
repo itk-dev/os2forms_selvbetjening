@@ -633,7 +633,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...HEAD
+[4.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...4.2.1
 [4.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
 [4.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...4.0.1
