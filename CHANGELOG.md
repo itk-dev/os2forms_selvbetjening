@@ -9,6 +9,11 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede apostrof-regel til kodestandarder [PR-414](https://github.com/itk-dev/os2forms_selvbetjening/pull/414)
 * Tilføjede maestro bycontentfunction validation [PR-413](https://github.com/itk-dev/os2forms_selvbetjening/pull/413).
 
+## [4.2.1] 2025-05-06
+
+* Sikrede at OS2Forms attachment elementer bliver detekteret korrekt
+  i mails gennem kø.
+
 ## [4.2.0] 2025-05-06
 
 * Tilpassede os2forms_custom_view_builders for at sikre underelementer
@@ -631,7 +636,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...HEAD
+[4.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...4.2.1
 [4.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
 [4.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...4.0.1
