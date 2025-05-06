@@ -85,7 +85,6 @@ final class QueuedSmtpPhpMail extends SMTPMailSystem {
   public function mail(array $message) {
 
     try {
-      /** @var \Drupal\webform_revisions\Entity\WebformRevisionsSubmission $submission */
       $submission = $message['params']['webform_submission'];
 
       $path = QueuedEmail::OS2FORMS_QUEUED_EMAIL_FILE_PATH;
