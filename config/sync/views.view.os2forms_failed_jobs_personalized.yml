@@ -22,7 +22,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Failed jobs on my forms'
+      title: 'Fejlede kø job på mine formularer'
       fields:
         job_id:
           id: job_id
@@ -231,7 +231,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_submission_id
-          label: 'Formular indsendelsesid'
+          label: 'Formularbesvarelse id'
           exclude: true
           alter:
             alter_text: false
@@ -329,7 +329,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_webform_submission_serial_id
-          label: 'Webformindsendelse seriel id'
+          label: 'Formularbesvarelse seriel id'
           exclude: true
           alter:
             alter_text: false
@@ -579,7 +579,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: 'Site id / Formular indsendelse id'
+          label: 'Formularbesvarelse id tværgående / Formularbesvarelse id'
           exclude: false
           alter:
             alter_text: true
@@ -779,7 +779,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: numeric
-          label: 'Gentagelsesstatus'
+          label: Gentagelsesstatus
           exclude: false
           alter:
             alter_text: true
@@ -836,7 +836,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: advancedqueue_job_queue_operations
-          label: 'Handlinger'
+          label: Handlinger
           exclude: false
           alter:
             alter_text: false
@@ -1110,27 +1110,27 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        webform_submission_serial_id:
-          id: webform_submission_serial_id
+        webform_submission_id:
+          id: webform_submission_id
           table: advancedqueue
-          field: webform_submission_serial_id
+          field: webform_submission_id
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: advancedqueue_job_submission_serial
+          plugin_id: advancedqueue_job_submission_id
           operator: '='
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: webform_submission_serial_id_op
-            label: 'Formular indsendelsesid'
+            operator_id: webform_submission_id_op
+            label: 'Formularbesvarelse id tværgående'
             description: ''
             use_operator: false
-            operator: webform_submission_serial_id_op
+            operator: webform_submission_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: webform_submission_serial_id
+            identifier: webform_submission_id
             required: false
             remember: false
             multiple: false
@@ -1290,7 +1290,7 @@ display:
           exposed: true
           expose:
             operator_id: processed_op
-            label: 'Processeringsdato'
+            label: 'Processeringsdato (Fra - Til)'
             description: ''
             use_operator: false
             operator: processed_op
