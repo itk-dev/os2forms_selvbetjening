@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [4.2.0] XXXX-XX-XX
+## [4.2.0] 2025-05-06
 
 * Tilpassede os2forms_custom_view_builders for at sikre underelementer
   af container konfigurerede elementer bliver vist.
