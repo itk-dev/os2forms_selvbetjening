@@ -1,0 +1,18 @@
+langcode: da
+status: true
+dependencies:
+  enforced:
+    module:
+      - os2forms_queued_email
+id: os2forms_queued_email
+label: 'OS2forms queued e-mail'
+backend: database
+backend_configuration:
+  lease_time: 300
+processor: daemon
+processing_time: 280
+locked: false
+threshold:
+  type: 0
+  limit: 0
+  state: all
