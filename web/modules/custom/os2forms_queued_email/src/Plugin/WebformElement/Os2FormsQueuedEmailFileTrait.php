@@ -7,13 +7,13 @@ use Drupal\webform\WebformSubmissionInterface;
 
 /**
  * OS2Forms queued email file trait.
- *
- * Removes fileconent and adds flag static file flag.
  */
 trait Os2FormsQueuedEmailFileTrait {
 
   /**
    * {@inheritdoc}
+   *
+   * Removes file content and adds static file flag.
    */
   public function getEmailAttachments(array $element, WebformSubmissionInterface $webform_submission, array $options = []) {
     $attachments = parent::getEmailAttachments($element, $webform_submission, $options);
