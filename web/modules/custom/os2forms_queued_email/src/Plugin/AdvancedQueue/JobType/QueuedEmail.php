@@ -77,9 +77,6 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
       $payload = $job->getPayload();
       $message = json_decode($payload['message'], TRUE);
 
-      // Load the Webform submission entity by ID.
-      $submission = WebformSubmission::load($payload['submissionId']);
-
       // Gather filenames for os2forms attachments for deletion later.
       $os2formsAttachmentFilenames = [];
 
@@ -88,10 +85,15 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
         // Handle OS2Forms attachments.
         if (isset($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME])) {
           $os2formsAttachmentFilenames[] = $attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME];
+
+          if (FALSE === file_exists($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME])) {
+            throw new \Exception('OS2Forms attachment file not found: ' . $attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME]);
+          }
+
           $attachment[self::FILECONTENT] = file_get_contents($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME]);
 
           if (FALSE === $attachment[self::FILECONTENT]) {
-            throw new \Exception('OS2Forms attachment file not found: ' . $attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME]);
+            throw new \Exception('OS2Forms attachment file cannot be read: ' . $attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME]);
           }
 
           unset($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME]);
@@ -110,42 +112,56 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
 
       }
 
-      $this->mailManager->createInstance('SMTPMailSystem')->mail($message);
+      $result = $this->mailManager->createInstance('SMTPMailSystem')->mail($message);
 
-      $logger_context = [
-        'handler_id' => 'os2forms_queued_email',
-        'channel' => 'webform_submission',
-        'webform_submission' => $submission,
-        'operation' => 'email sent',
-      ];
+      // Logging of failed mail is handled in catch.
+      if (!$result) {
+        throw new \Exception('Failed sending email');
+      }
 
-      $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $submission->serial()]), $logger_context);
+      // Load the Webform submission entity by ID.
+      // Be aware that some webforms may be configured to NOT save submissions,
+      // submission may therefore be null.
+      $submission = WebformSubmission::load($payload['submissionId']);
+
+      if ($submission) {
+        $logger_context = [
+          'handler_id' => 'os2forms_queued_email',
+          'channel' => 'webform_submission',
+          'webform_submission' => $submission,
+          'operation' => 'email sent',
+        ];
+
+        $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $submission->serial()]), $logger_context);
+      }
 
       // Remove OS2Forms attachments.
       foreach ($os2formsAttachmentFilenames as $os2formsAttachmentFilename) {
         unlink($os2formsAttachmentFilename);
       }
 
-      $msg = sprintf('Email, %s, sent to %s. Webform id: %s.', $message['subject'], $message['to'], $submission->getWebform()->id());
+      $msg = sprintf('Email, %s, sent to %s. Webform id: %s.', $payload['subject'] ?? NULL, $payload['to'] ?? NULL, $payload['webformId'] ?? NULL);
       $this->auditLogger->info('Email', $msg);
 
       return JobResult::success();
     }
     catch (\Exception $e) {
 
-      $submission = $payload['submissionId'] ? WebformSubmission::load($payload['submissionId']) : NULL;
+      $submission = WebformSubmission::load($payload['submissionId']);
 
-      $logger_context = [
-        'handler_id' => 'os2forms_queued_email',
-        'channel' => 'webform_submission',
-        'webform_submission' => $submission,
-        'operation' => 'email failed',
-      ];
+      if ($submission) {
+        $logger_context = [
+          'handler_id' => 'os2forms_queued_email',
+          'channel' => 'webform_submission',
+          'webform_submission' => $submission,
+          'operation' => 'email failed',
+        ];
 
-      $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
-        '@serial' => $submission?->serial(),
-        '@message' => $e->getMessage(),
-      ]), $logger_context);
+        $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
+          '@serial' => $submission->serial(),
+          '@message' => $e->getMessage(),
+        ]), $logger_context);
+      }
 
       return JobResult::failure($e->getMessage());
     }

@@ -6,6 +6,12 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [4.2.2] 2025-05-07
+
+* OS2Forms kø emails
+  * Håndterede formularer der ikke gemmer indsendelser.
+  * Opdaterede fejlbeskeder.
+
 ## [4.2.1] 2025-05-06
 
 * Sikrede at OS2Forms attachment elementer bliver detekteret korrekt
@@ -633,7 +639,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.2...HEAD
+[4.2.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...4.2.2
 [4.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...4.2.1
 [4.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
