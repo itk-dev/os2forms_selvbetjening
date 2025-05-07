@@ -1,0 +1,4 @@
+exposed-form-display:
+  css:
+    theme:
+      css/exposed-form-display.css: { }

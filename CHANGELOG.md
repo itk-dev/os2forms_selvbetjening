@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede tilpasset AdvancedQueueProcessor til os2forms selvbetjening [PR-412](https://github.com/itk-dev/os2forms_selvbetjening/pull/412)
+* Tilføjede personaliseret view til konfiguration [PR-412](https://github.com/itk-dev/os2forms_selvbetjening/pull/412)
+
 * Tilføjede apostrof-regel til kodestandarder [PR-414](https://github.com/itk-dev/os2forms_selvbetjening/pull/414)
 * Tilføjede maestro bycontentfunction validation [PR-413](https://github.com/itk-dev/os2forms_selvbetjening/pull/413).
 
