@@ -2,7 +2,6 @@
 
 namespace Drupal\os2forms_selvbetjening\Helper;
 
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Logger\LoggerChannel;
