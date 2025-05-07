@@ -23,6 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInterface {
 
+  public const OS2FORMS_QUEUED_EMAIL_LOGGER_CHANNEL = 'os2forms_queued_email_info';
   public const OS2FORMS_QUEUED_EMAIL_IS_STATIC_FILE = 'OS2FORMS_QUEUED_EMAIL_IS_STATIC_FILE';
   public const OS2FORMS_QUEUED_EMAIL_FILE_PATH = 'private://queued-email-files';
   public const OS2FORMS_QUEUED_EMAIL_CONFIG_NAME = 'os2forms_queued_email_file_path';
@@ -35,6 +36,13 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
    * @var \Drupal\Core\Logger\LoggerChannelInterface
    */
   protected LoggerChannelInterface $submissionLogger;
+
+  /**
+   * The submission logger.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected LoggerChannelInterface $queuedEmailLogger;
 
   /**
    * {@inheritdoc}
@@ -51,6 +59,7 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->submissionLogger = $loggerFactory->get('webform_submission');
+    $this->queuedEmailLogger = $loggerFactory->get(self::OS2FORMS_QUEUED_EMAIL_LOGGER_CHANNEL);
   }
 
   /**
@@ -86,7 +95,7 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
         if (isset($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME])) {
           $os2formsAttachmentFilenames[] = $attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME];
 
-          if (FALSE === file_exists($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME])) {
+          if (!file_exists($attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME])) {
             throw new \Exception('OS2Forms attachment file not found: ' . $attachment[self::OS2FORMS_QUEUED_EMAIL_CONFIG_NAME]);
           }
 
@@ -119,20 +128,26 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
         throw new \Exception('Failed sending email');
       }
 
-      // Load the Webform submission entity by ID.
-      // Be aware that some webforms may be configured to NOT save submissions,
-      // submission may therefore be null.
-      $submission = WebformSubmission::load($payload['submissionId']);
+      try {
+        // Load the Webform submission entity by ID.
+        // Beware that some webforms may be configured to NOT save submissions,
+        // submission may therefore be null.
+        $submission = WebformSubmission::load($payload['submissionId']);
 
-      if ($submission) {
-        $logger_context = [
-          'handler_id' => 'os2forms_queued_email',
-          'channel' => 'webform_submission',
-          'webform_submission' => $submission,
-          'operation' => 'email sent',
-        ];
+        if ($submission) {
+          $logger_context = [
+            'handler_id' => 'os2forms_queued_email',
+            'channel' => 'webform_submission',
+            'webform_submission' => $submission,
+            'operation' => 'email sent',
+          ];
 
-        $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $submission->serial()]), $logger_context);
+          $this->submissionLogger->notice($this->t('The submission #@serial was successfully delivered', ['@serial' => $submission->serial()]), $logger_context);
+        }
+
+      }
+      catch (\Exception $e) {
+        $this->queuedEmailLogger->notice(sprintf('Failed logging to webform_submission logger: %s', $e->getMessage()));
       }
 
       // Remove OS2Forms attachments.
@@ -147,20 +162,26 @@ final class QueuedEmail extends JobTypeBase implements ContainerFactoryPluginInt
     }
     catch (\Exception $e) {
 
-      $submission = WebformSubmission::load($payload['submissionId']);
+      try {
+        $submission = WebformSubmission::load($payload['submissionId']);
 
-      if ($submission) {
-        $logger_context = [
-          'handler_id' => 'os2forms_queued_email',
-          'channel' => 'webform_submission',
-          'webform_submission' => $submission,
-          'operation' => 'email failed',
-        ];
+        if ($submission) {
+          $logger_context = [
+            'handler_id' => 'os2forms_queued_email',
+            'channel' => 'webform_submission',
+            'webform_submission' => $submission,
+            'operation' => 'email failed',
+          ];
 
-        $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
-          '@serial' => $submission->serial(),
-          '@message' => $e->getMessage(),
-        ]), $logger_context);
+          $this->submissionLogger->error($this->t('The submission #@serial failed (@message)', [
+            '@serial' => $submission->serial(),
+            '@message' => $e->getMessage(),
+          ]), $logger_context);
+        }
+
+      }
+      catch (\Exception $e) {
+        $this->queuedEmailLogger->notice(sprintf('Failed logging to webform_submission logger: %s', $e->getMessage()));
       }
 
       return JobResult::failure($e->getMessage());
