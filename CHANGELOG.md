@@ -11,6 +11,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * OS2Forms kø emails
   * Håndterede formularer der ikke gemmer indsendelser.
   * Opdaterede fejlbeskeder.
+* Opdaterede til nyeste version af kø-systemet,
+  [advancedqueue](https://www.drupal.org/project/advancedqueue).
 
 ## [4.2.1] 2025-05-06
 
