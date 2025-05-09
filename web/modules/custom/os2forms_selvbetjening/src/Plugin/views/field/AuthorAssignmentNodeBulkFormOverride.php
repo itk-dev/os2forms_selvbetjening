@@ -21,26 +21,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkForm {
 
   /**
-   * The current user.
-   *
-   * @var \Drupal\Core\Session\AccountProxyInterface
-   */
-  protected AccountProxyInterface $currentUser;
-
-
-  /**
    * The entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
-
-  /**
-   * Permissions by term access storage.
-   *
-   * @var \Drupal\permissions_by_term\Service\AccessStorage
-   */
-  protected AccessStorage $accessStorage;
 
   /**
    * The current language code.
@@ -53,21 +38,18 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    * Constructs a new AuthorAssignmentNodeBulkFormOverride instance.
    */
   public function __construct(
-    AccessStorage $access_storage,
+    private readonly AccessStorage $accessStorage,
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    EntityTypeManagerInterface $entity_type_manager,
+    EntityTypeManagerInterface $entityTypeManager,
     LanguageManagerInterface $language_manager,
     MessengerInterface $messenger,
     EntityRepositoryInterface $entity_repository,
-    AccountProxyInterface $current_user,
+    private readonly AccountProxyInterface $currentUser,
   ) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $language_manager, $messenger, $entity_repository);
-    $this->accessStorage = $access_storage;
-    $this->entityTypeManager = $entity_type_manager;
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $entityTypeManager, $language_manager, $messenger, $entity_repository);
     $this->langcode = $language_manager->getCurrentLanguage()->getId();
-    $this->currentUser = $current_user;
   }
 
   /**
