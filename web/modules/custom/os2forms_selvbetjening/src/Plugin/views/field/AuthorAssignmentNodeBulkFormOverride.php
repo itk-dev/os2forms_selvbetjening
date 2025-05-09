@@ -2,13 +2,13 @@
 
 namespace Drupal\os2forms_selvbetjening\Plugin\views\field;
 
-use Drupal\author_bulk_assignment\Plugin\views\field\AuthorAssignmentEntityBulkForm;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\author_bulk_assignment\Plugin\views\field\AuthorAssignmentEntityBulkForm;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -49,7 +49,6 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    */
   protected string $langcode;
 
-
   /**
    * Constructs a new AuthorAssignmentNodeBulkFormOverride instance.
    */
@@ -62,7 +61,7 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     LanguageManagerInterface $language_manager,
     MessengerInterface $messenger,
     EntityRepositoryInterface $entity_repository,
-    AccountProxyInterface $current_user
+    AccountProxyInterface $current_user,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $language_manager, $messenger, $entity_repository);
     $this->accessStorage = $access_storage;
@@ -88,7 +87,6 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     );
   }
 
-
   /**
    * Gets the taxonomy terms that the current user has access to.
    *
@@ -111,7 +109,8 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    *
    * @return array
    *   An associative array where the keys are user IDs and the values are
-   *   the display names of the users. Returns empty array if no users are found.
+   *   the display names of the users. Returns an empty array if no users
+   *   are found.
    */
   private function getUsersByTermId(array $userTermsIds): array {
     $users = [];
