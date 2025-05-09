@@ -3,7 +3,12 @@
 namespace Drupal\os2forms_selvbetjening\Plugin\views\field;
 
 use Drupal\author_bulk_assignment\Plugin\views\field\AuthorAssignmentEntityBulkForm;
+use Drupal\Core\Entity\EntityRepositoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,8 +23,10 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   /**
    * The current user.
    *
+   * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  protected Object|null $currentUser;
+  protected AccountProxyInterface $currentUser;
+
 
   /**
    * The entity type manager.
@@ -40,20 +47,47 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    *
    * @var string
    */
-  private string $languageCode = '';
+  protected string $langcode;
 
+
+  /**
+   * Constructs a new AuthorAssignmentNodeBulkFormOverride instance.
+   */
+  public function __construct(
+    AccessStorage $access_storage,
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    EntityTypeManagerInterface $entity_type_manager,
+    LanguageManagerInterface $language_manager,
+    MessengerInterface $messenger,
+    EntityRepositoryInterface $entity_repository,
+    AccountProxyInterface $current_user
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $language_manager, $messenger, $entity_repository);
+    $this->accessStorage = $access_storage;
+    $this->entityTypeManager = $entity_type_manager;
+    $this->langcode = $language_manager->getCurrentLanguage()->getId();
+    $this->currentUser = $current_user;
+  }
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
-    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
-    $instance->currentUser = $container->get('current_user');
-    $instance->entityTypeManager = $container->get('entity_type.manager');
-    $instance->languageCode = $container->get('language_manager')->getCurrentLanguage()->getId();
-    $instance->accessStorage = $container->get('permissions_by_term.access_storage');
-    return $instance;
+    return new static(
+      $container->get('permissions_by_term.access_storage'),
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+      $container->get('language_manager'),
+      $container->get('messenger'),
+      $container->get('entity.repository'),
+      $container->get('current_user')
+    );
   }
+
 
   /**
    * Gets the taxonomy terms that the current user has access to.
@@ -84,7 +118,7 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     if (!empty($userTermsIds)) {
       // Get all users that have access to these terms.
       foreach ($userTermsIds as $termId) {
-        $userIdsResult = $this->accessStorage->getAllowedUserIds($termId, $this->languageCode);
+        $userIdsResult = $this->accessStorage->getAllowedUserIds($termId, $this->langcode);
         foreach ($userIdsResult as $userId) {
           if (!isset($users[$userId])) {
             if ($user = User::load($userId)) {
