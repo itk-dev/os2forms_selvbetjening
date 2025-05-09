@@ -73,8 +73,9 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
-    return new static(
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
+    /** @var static */
+    return new self(
       $container->get('permissions_by_term.access_storage'),
       $configuration,
       $plugin_id,
