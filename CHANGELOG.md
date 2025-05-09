@@ -6,6 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede mulighed for ændring af ejerskab på node [PR-421](https://github.com/itk-dev/os2forms_selvbetjening/pull/421).
 * Tilføjede apostrof-regel til kodestandarder [PR-414](https://github.com/itk-dev/os2forms_selvbetjening/pull/414)
 * Tilføjede maestro bycontentfunction validation [PR-413](https://github.com/itk-dev/os2forms_selvbetjening/pull/413).
 
