@@ -114,6 +114,19 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     return $users;
   }
 
+  /**
+   * Filters users by their access to webform terms.
+   *
+   *
+   * @param array $users
+   *   An associative array of users where the key is the user ID and
+   *   the value is the username.
+   * @param array $terms
+   *   An array of terms or term groups defining access requirements.
+   *
+   * @return array
+   *   A filtered list of users who have access to the given terms.
+   */
   private function filterUsersByWebformAccess(array $users, array $terms): array {
     $mergedTerms = array_values($terms);
     $mergedTerms = !empty($mergedTerms) ? (is_array($mergedTerms[0]) ? array_merge(...$mergedTerms) : $mergedTerms) : [];
