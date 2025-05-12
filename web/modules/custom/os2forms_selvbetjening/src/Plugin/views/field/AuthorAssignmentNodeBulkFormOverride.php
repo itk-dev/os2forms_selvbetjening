@@ -182,11 +182,11 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
 
       if ($webform instanceof Webform) {
         $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
-        // Flatten, disregard duplicates, add results to the main array.
-        $webformPermissionsByTermArray = array_values(array_unique(array_merge(
+        $webformPermissionsByTermArray = $this->mergeUniquePermissions(
           $webformPermissionsByTermArray,
-          array_filter($webformPermissionsByTerm, fn($v, $k) => $v == $k, ARRAY_FILTER_USE_BOTH)
-        )));
+          $webformPermissionsByTerm
+        );
+
       }
       else {
         $form_state->setErrorByName('AuthorAssignmentNodeBulkFormError', $this->t('One or more of the selected nodes does not have a webform connected to it.'));
@@ -199,6 +199,29 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     if (!isset($filteredUsers[$selectedAssignee]) && $selectedAssignee != 0) {
       $form_state->setErrorByName('AuthorAssignmentNodeBulkFormError', $this->t('The selected user does not have access to one or more of the selected webforms.'));
     }
+  }
+
+  /**
+   * Merges unique permissions into the existing permissions array.
+   *
+   * @param array $existingPermissions
+   *   The current permissions array.
+   * @param array $newPermissions
+   *   Permissions to merge.
+   *
+   * @return array
+   *   The merged and filtered permissions array
+   */
+  private function mergeUniquePermissions(array $existingPermissions, array $newPermissions): array {
+    $uniquePermissions = array_filter(
+      $newPermissions,
+      fn($value, $key) => $value == $key,
+      ARRAY_FILTER_USE_BOTH
+    );
+
+    return array_values(array_unique(
+      array_merge($existingPermissions, $uniquePermissions)
+    ));
   }
 
 }
