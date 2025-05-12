@@ -182,7 +182,7 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
 
       if ($webform instanceof Webform) {
         $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
-        $webformPermissionsByTermArray = $this->mergeUniquePermissions(
+        $webformPermissionsByTermArray = $this->addUniquePermissions(
           $webformPermissionsByTermArray,
           $webformPermissionsByTerm
         );
@@ -202,7 +202,7 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   }
 
   /**
-   * Merges unique permissions into the existing permissions array.
+   * Adds unique permissions into the existing permissions array and disregards duplicates.
    *
    * @param array $existingPermissions
    *   The current permissions array.
@@ -212,7 +212,7 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    * @return array
    *   The merged and filtered permissions array
    */
-  private function mergeUniquePermissions(array $existingPermissions, array $newPermissions): array {
+  private function addUniquePermissions(array $existingPermissions, array $newPermissions): array {
     $uniquePermissions = array_filter(
       $newPermissions,
       fn($value, $key) => $value == $key,
