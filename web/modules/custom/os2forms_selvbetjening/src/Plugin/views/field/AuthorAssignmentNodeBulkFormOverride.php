@@ -9,7 +9,6 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\author_bulk_assignment\Plugin\views\field\AuthorAssignmentEntityBulkForm;
-use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -117,7 +116,6 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   /**
    * Filters users by their access to webform terms.
    *
-   *
    * @param array $users
    *   An associative array of users where the key is the user ID and
    *   the value is the username.
@@ -131,11 +129,11 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     $mergedTerms = array_values($terms);
     $mergedTerms = !empty($mergedTerms) ? (is_array($mergedTerms[0]) ? array_merge(...$mergedTerms) : $mergedTerms) : [];
 
-    return array_filter($users, function($userName, $userId) use ($mergedTerms) {
+    return array_filter($users, function ($userName, $userId) use ($mergedTerms) {
       $user = User::load($userId);
       $userTermsIds = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
 
-      // Check if all terms from $mergedTerms exist in $userTermsIds
+      // Check if all terms from $mergedTerms exist in $userTermsIds.
       return empty($mergedTerms) || count(array_intersect($userTermsIds, $mergedTerms)) === count($mergedTerms);
     }, ARRAY_FILTER_USE_BOTH);
   }
@@ -192,5 +190,6 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     if (!isset($filteredUsers[$selectedAssignee]) && $selectedAssignee != 0) {
       $form_state->setErrorByName('AuthorAssignmentNodeBulkFormError', $this->t('The selected user does not have access to one or more of the selected webforms.'));
     }
-}
+  }
+
 }
