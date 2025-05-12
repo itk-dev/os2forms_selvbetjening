@@ -9,8 +9,10 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\author_bulk_assignment\Plugin\views\field\AuthorAssignmentEntityBulkForm;
+use Drupal\node\NodeInterface;
 use Drupal\permissions_by_term\Service\AccessStorage;
 use Drupal\user\Entity\User;
+use Drupal\webform\Entity\Webform;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -156,7 +158,13 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   }
 
   /**
-   * {@inheritDoc}
+   * Validates the bulk form submission for assigning nodes.
+   *
+   * @param array &$form
+   *   An associative array containing the structure of the form.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   *
    */
   public function viewsFormValidate(&$form, FormStateInterface $form_state): void {
     parent::viewsFormValidate($form, $form_state);
@@ -167,11 +175,13 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     $webformPermissionsByTermArray = [];
 
     foreach ($selected as $bulk_form_key) {
+      $webform = NULL;
       $entity = $this->loadEntityFromBulkFormKey($bulk_form_key);
-      $webform_field = $entity->get('webform');
-      $webform = $webform_field->entity;
+      if ($entity instanceof NodeInterface && $entity->hasField('webform')) {
+        $webform = $entity->get('webform')->entity;
+      }
 
-      if ($webform) {
+      if ($webform instanceof Webform) {
         $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
         // Flatten, disregard duplicates, add results to the main array.
         $webformPermissionsByTermArray = array_values(array_unique(array_merge(
