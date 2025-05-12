@@ -4,7 +4,6 @@ namespace Drupal\os2forms_selvbetjening\Helper;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
-use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -22,10 +21,8 @@ class FormHelper {
    *
    * @param \Drupal\Core\Session\AccountInterface $account
    *   Current user.
-   * @param \Drupal\Core\Logger\LoggerChannel $logger
-   *   Logger.
    */
-  public function __construct(private readonly AccountInterface $account, private readonly LoggerChannel $logger) {
+  public function __construct(private readonly AccountInterface $account) {
   }
 
   /**
@@ -102,91 +99,6 @@ class FormHelper {
       ];
     }
 
-    if ('template_edit_task' === $form_id) {
-      $form['#validate'][] = [$this, 'validateByContentFunction'];
-    }
-  }
-
-  /**
-   * Validates form input by checking a user-defined function.
-   *
-   * This method ensures that:
-   * - The specified function exists.
-   * - The number of provided parameters matches
-   * the defined function's requirements,
-   *   adjusted for additional parameters added during execution.
-   *
-   * @param array $form
-   *   The form structure.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   */
-  public function validateByContentFunction(array &$form, FormStateInterface $form_state): void {
-    if ('bycontentfunction' === $form_state->getValue(['spv', 'method'])) {
-
-      // Get function name and parameters defined in the flow task.
-      $value = $form_state->getValue(['spv', 'variable_value']);
-
-      // Split function name and parameters (format: function:param1,param2).
-      $functionParts = explode(':', $value, 2);
-
-      // Get function name and parameters.
-      $functionName = $functionParts[0];
-      $functionParams = isset($functionParts[1]) ? explode(',', $functionParts[1]) : [];
-
-      // Get number of parameters.
-      $paramCount = count($functionParams);
-
-      if (!function_exists($functionName)) {
-        $form_state->setError($form['spv'], $this->t('Function %function_name does not exist', ['%function_name' => $functionName]));
-        return;
-      }
-
-      // Get the number of parameters for the defined function.
-      try {
-        $functionParamCount = (new \ReflectionFunction($functionName))->getNumberOfRequiredParameters();
-      }
-      catch (\ReflectionException $e) {
-        $form_state->setError(
-          $form['spv'],
-          $this->t('Invalid function %function_name', [
-            '%function_name' => $functionName,
-          ])
-        );
-        $this->logger->error('Error reflecting function %function_name: %message', [
-          '%function_name' => $functionName,
-          '%message' => $e->getMessage(),
-           // Add the full exception to the context for future reference.
-          'exception' => $e,
-        ]);
-        return;
-      }
-
-      // The maestro execute method always adds 2 parameters
-      // (queueID and processID) when handling the "bycontentfunction" case.
-      // @see MaestroSetProcessVariableTask::execute()
-      $functionParamCount -= 2;
-
-      if ($functionParamCount < 0) {
-        $form_state->setError($form['spv'], $this->t('Function %function_name is required to take at least 2 arguments.', ['%function_name' => $functionName]));
-        return;
-      }
-
-      // Check if the number of parameters matches.
-      if ($paramCount !== $functionParamCount) {
-        $form_state->setError(
-          $form['spv'],
-          $this->t(
-            'Function %function_name expects %function_parameter_count parameters. %parameter_defined_count given.',
-            [
-              '%function_name' => $functionName,
-              '%function_parameter_count' => $functionParamCount,
-              '%parameter_defined_count' => $paramCount,
-            ]
-          )
-        );
-      }
-    }
   }
 
 }
