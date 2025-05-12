@@ -202,8 +202,7 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   }
 
   /**
-   * Adds unique permissions into the existing permissions array
-   * and disregards duplicates.
+   * Adds unique permissions into the existing permissions array.
    *
    * @param array $existingPermissions
    *   The current permissions array.
