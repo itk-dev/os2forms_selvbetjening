@@ -164,7 +164,6 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    *   An associative array containing the structure of the form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
-   *
    */
   public function viewsFormValidate(&$form, FormStateInterface $form_state): void {
     parent::viewsFormValidate($form, $form_state);
