@@ -1891,7 +1891,7 @@
                 "shasum": "e1fc1c169cbfecfd84badf70796b54f22521afc7"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10 || ^11",
+                "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
                 "drupal/webform": "^6.0",
                 "drupal/webform_ui": "*",
                 "phpseclib/phpseclib": "~3"
@@ -5793,7 +5793,7 @@
                 "shasum": "c0512e9fe437cc5da7d0cd4750388da666b12a4b"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10 || ^11",
+                "drupal/core": "^8 || ^9 || ^10 || ^11 || ^12",
                 "drupal/webform": "*"
             },
             "type": "drupal-module",
@@ -9566,16 +9566,16 @@
         },
         {
             "name": "os2web/os2web_key",
-            "version": "1.0.0-rc4",
+            "version": "1.0.0-rc5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2web/os2web_key.git",
-                "reference": "ca96b75f19385f9d73aefbc500e7152dcc373c32"
+                "reference": "e88f0d03272613cd70b90aaa0ea5c4ceddde25d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2web/os2web_key/zipball/ca96b75f19385f9d73aefbc500e7152dcc373c32",
-                "reference": "ca96b75f19385f9d73aefbc500e7152dcc373c32",
+                "url": "https://api.github.com/repos/OS2web/os2web_key/zipball/e88f0d03272613cd70b90aaa0ea5c4ceddde25d4",
+                "reference": "e88f0d03272613cd70b90aaa0ea5c4ceddde25d4",
                 "shasum": ""
             },
             "require": {
@@ -9610,9 +9610,9 @@
             "description": "OS2Web key",
             "support": {
                 "issues": "https://github.com/OS2web/os2web_key/issues",
-                "source": "https://github.com/OS2web/os2web_key/tree/1.0.0-rc4"
+                "source": "https://github.com/OS2web/os2web_key/tree/1.0.0-rc5"
             },
-            "time": "2025-01-23T13:20:58+00:00"
+            "time": "2025-05-13T08:09:12+00:00"
         },
         {
             "name": "os2web/os2web_nemlogin",
