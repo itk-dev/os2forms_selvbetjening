@@ -5,6 +5,8 @@ os2forms_selvbetjening_deprecations.elements:
     _title: 'Elements'
   requirements:
     _permission: 'access webform overview'
+  options:
+    no_cache: TRUE
 
 os2forms_selvbetjening_deprecations.handlers:
   path: '/admin/os2forms_selvbetjening_deprecations/handlers'
@@ -13,3 +15,5 @@ os2forms_selvbetjening_deprecations.handlers:
     _title: 'Handlers'
   requirements:
     _permission: 'access webform overview'
+  options:
+    no_cache: TRUE

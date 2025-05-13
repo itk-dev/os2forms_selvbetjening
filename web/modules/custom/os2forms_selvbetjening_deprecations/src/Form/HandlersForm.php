@@ -12,6 +12,7 @@ use Drupal\webform\Plugin\WebformHandlerManagerInterface;
 use Drupal\webform\WebformEntityStorageInterface;
 use Drupal\webform\WebformInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Handlers form.
@@ -23,8 +24,8 @@ final class HandlersForm extends FormBase {
    * Constructor.
    */
   public function __construct(
-    readonly private WebformHandlerManagerInterface $webformHandlerManager,
-    readonly private WebformEntityStorageInterface $webformEntityStorage,
+    private readonly WebformHandlerManagerInterface $webformHandlerManager,
+    private readonly WebformEntityStorageInterface $webformEntityStorage,
   ) {
   }
 
@@ -52,10 +53,7 @@ final class HandlersForm extends FormBase {
    * @phpstan-return array<string, mixed>
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form_state->setMethod('GET');
-    $form['#cache'] = [
-      'max-age' => 0,
-    ];
+    $form_state->setMethod(Request::METHOD_GET);
     $form['#after_build'] = [$this->afterBuild(...)];
 
     $handlerOptions = array_map(
