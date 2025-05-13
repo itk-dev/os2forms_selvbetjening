@@ -1,7 +1,4 @@
 services:
-  logger.channel.os2forms_selvbetjening:
-    parent: logger.channel_base
-    arguments: [ 'os2forms_selvbetjening' ]
 
   Drupal\os2forms_selvbetjening\Helper\WebformConfigurationExporter:
     arguments:
@@ -11,7 +8,6 @@ services:
   Drupal\os2forms_selvbetjening\Helper\FormHelper:
     arguments:
       - '@current_user'
-      - '@logger.channel.os2forms_selvbetjening'
 
   Drupal\Drupal\os2forms_selvbetjening\Form\SettingsForm:
     arguments:
