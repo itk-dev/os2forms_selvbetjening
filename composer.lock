@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00b0a951a85c893f33bacaf6dd0d751b",
+    "content-hash": "7680794393fb476ec19f925823c69a1f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8087,34 +8087,44 @@
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
-            "version": "2.2.1",
+            "version": "dev-feature/os2web_key",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect.git",
-                "reference": "e66c2c6f41f3aa5e20cc927975a00cffbaf4f376"
+                "reference": "862dfa628e904d61e80225a4ed56957368bf9086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/e66c2c6f41f3aa5e20cc927975a00cffbaf4f376",
-                "reference": "e66c2c6f41f3aa5e20cc927975a00cffbaf4f376",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_nemlogin_openid_connect/zipball/862dfa628e904d61e80225a4ed56957368bf9086",
+                "reference": "862dfa628e904d61e80225a4ed56957368bf9086",
                 "shasum": ""
             },
             "require": {
                 "drupal/webform": "^6.0",
-                "itk-dev/drupal_psr6_cache": "^1.0",
+                "itk-dev/drupal_psr6_cache": "^1.1",
                 "itk-dev/openid-connect": "^3.1",
-                "os2forms/os2forms": "^3.17 || ^4.0",
+                "os2web/os2web_audit": "^1.0",
+                "os2web/os2web_key": "^1.0",
                 "os2web/os2web_nemlogin": "^1.2",
                 "symfony/options-resolver": "^5.4 || ^6.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "drupal/coder": "^8.3",
-                "friendsoftwig/twigcs": "^6.0",
-                "mglaman/drupal-check": "^1.4",
-                "mglaman/phpstan-drupal": "~1.2.0"
+                "ergebnis/composer-normalize": "^2.47",
+                "mglaman/drupal-check": "^1.5",
+                "mglaman/phpstan-drupal": "~1.2.0",
+                "vincentlanglet/twig-cs-fixer": "^3.5"
             },
             "type": "drupal-module",
+            "extra": {
+                "drupal-lenient": {
+                    "allowed-list": [
+                        "drupal/coc_forms_auto_export",
+                        "drupal/webform_node_element"
+                    ]
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -8123,9 +8133,9 @@
             "homepage": "https://www.drupal.org/project/os2forms_nemlogin_openid_connect",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/issues",
-                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/2.2.1"
+                "source": "https://github.com/itk-dev/os2forms_nemlogin_openid_connect/tree/feature/os2web_key"
             },
-            "time": "2025-03-12T17:56:51+00:00"
+            "time": "2025-05-16T07:53:04+00:00"
         },
         {
             "name": "itk-dev/os2forms_user_field_lookup",
@@ -22526,6 +22536,12 @@
     ],
     "aliases": [
         {
+            "package": "itk-dev/os2forms_nemlogin_openid_connect",
+            "version": "dev-feature/os2web_key",
+            "alias": "2.3.0",
+            "alias_normalized": "2.3.0.0"
+        },
+        {
             "package": "os2forms/os2forms",
             "version": "dev-feature/os2web_key",
             "alias": "4.1.0",
@@ -22540,6 +22556,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "itk-dev/os2forms_nemlogin_openid_connect": 20,
         "os2forms/os2forms": 20,
         "os2web/os2web_datalookup": 20
     },
