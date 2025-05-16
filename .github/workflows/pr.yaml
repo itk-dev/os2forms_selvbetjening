@@ -232,6 +232,13 @@ jobs:
           # Important: Use --no-interaction to make https://getcomposer.org/doc/06-config.md#discard-changes have effect.
           docker compose exec --user root phpfpm composer install --no-interaction
 
+      # https://github.com/mxschmitt/action-tmate?tab=readme-ov-file#manually-triggered-debug
+      # Enable tmate debugging if debug logging is enabled (cf.
+      # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#runner-context)
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: 1 == runner.debug
+
       - name: Update site
         run: |
           docker compose exec --user root phpfpm vendor/bin/drush deploy --yes
