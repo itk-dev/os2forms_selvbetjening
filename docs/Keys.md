@@ -72,15 +72,14 @@ putenv('KEY_DIGITAL_POST_CERTIFICATE_PASSWORD=digital_post');
 | <https://github.com/OS2Forms/os2forms/pull/101>                       | yes                 |                     | 4.0.0           |
 | <https://github.com/OS2Forms/os2forms_get_organized/pull/14>          | yes                 |                     |                 |
 | <https://github.com/OS2web/os2web_datalookup/pull/13>                 | yes                 |                     |                 |
-| <https://github.com/itk-dev/os2forms_fasit/pull/7>                    | yes                 |                     |                 |
 | <https://github.com/itk-dev/os2forms_nemlogin_openid_connect/pull/20> | yes                 |                     |                 |
 
+__Note__ that `os2forms_fasit` has been moved to `os2forms/os2forms` and the
+upgrade to allow keys is therefore included in the update of `os2forms/os2forms`.
 
 ```mermaid
 flowchart LR
   os2forms[<a href='https://github.com/OS2Forms/os2forms'>os2forms/os2forms</a>: <a href='https://github.com/OS2Forms/os2forms/pull/101'>#101</a>] -->|require| os2web_key[<a href='https://github.com/OS2web/os2web_key'>os2web/os2web_key</a>]
-
-  os2forms_fasit[<a href='https://github.com/itk-dev/os2forms_fasit'>os2forms/os2forms_fasit</a>: <a href='https://github.com/itk-dev/os2forms_fasit/pull/7'>#7</a>]  -->|require| os2web_key
 
   os2forms_get_organized[<a href='https://github.com/OS2Forms/os2forms_get_organized'>os2forms/os2forms_get_organized</a>: <a href='https://github.com/OS2Forms/os2forms_get_organized/pull/14'>#14</a>] -->|require| key[<a href='https://www.drupal.org/project/key'>drupal/key</a>]
 
