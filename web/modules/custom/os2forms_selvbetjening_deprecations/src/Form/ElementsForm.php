@@ -118,7 +118,7 @@ final class ElementsForm extends FormBase {
         $form['webforms'][$elementType] = [
           '#theme' => 'item_list',
           '#list_type' => 'ul',
-          '#title' => $this->getWebformElementLabel($element),
+          '#title' => $this->getWebformElementLabel($element) . ': ' . count($forms),
           '#items' => $forms
             ? array_map(
               static fn(WebformInterface $webform) => Link::fromTextAndUrl($webform->label(), $webform->toUrl('edit-form')),

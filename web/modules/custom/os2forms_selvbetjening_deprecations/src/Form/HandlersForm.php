@@ -119,7 +119,7 @@ final class HandlersForm extends FormBase {
         $form['webforms'][$handlerType] = [
           '#theme' => 'item_list',
           '#list_type' => 'ul',
-          '#title' => $this->getWebformHandlerLabel($handler),
+          '#title' => $this->getWebformHandlerLabel($handler) . ': ' . count($forms),
           '#items' => $forms
             ? array_map(
               static fn(WebformInterface $webform) => Link::createFromRoute($webform->label(), 'entity.webform.handlers', ['webform' => $webform->id()]),
