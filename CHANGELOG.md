@@ -14,7 +14,6 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Opdaterede til nyeste version af kø-systemet,
   [advancedqueue](https://www.drupal.org/project/advancedqueue).
 
-
 ## [4.2.1] 2025-05-06
 
 * Sikrede at OS2Forms attachment elementer bliver detekteret korrekt
