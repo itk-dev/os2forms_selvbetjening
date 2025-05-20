@@ -116,19 +116,19 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
   }
 
   /**
-   * Filters users by their access to webform terms.
+   * Filters users by their access to terms.
    *
    * @param array $users
    *   An associative array of users where the key is the user ID and
    *   the value is the username.
-   * @param array $terms
-   *   An array of terms or term groups defining access requirements.
+   * @param array $termArrays
+   *   An array of term arrays to check access against.
    *
    * @return array
    *   A filtered list of users who have access to the given terms.
    */
-  private function filterUsersByWebformAccess(array $users, array $terms): array {
-    $mergedTerms = array_values($terms);
+  private function filterUsersByTermArray(array $users, array $termArrays): array {
+    $mergedTerms = array_values($termArrays);
     $mergedTerms = !empty($mergedTerms) ? (is_array($mergedTerms[0]) ? array_merge(...$mergedTerms) : $mergedTerms) : [];
 
     return array_filter($users, function ($userName, $userId) use ($mergedTerms) {
@@ -171,33 +171,93 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     $users = $form_state->get('users');
     $user_input = $form_state->getUserInput();
     $selected = array_filter($user_input[$this->options['id']]);
+    $nodePermissionsByTermArray = [];
     $webformPermissionsByTermArray = [];
 
+    // Arrays to store inaccessible items.
+    $inaccessibleNodes = [];
+    $inaccessibleWebforms = [];
+
+    // Loop selected nodes and get entities.
     foreach ($selected as $bulk_form_key) {
       $webform = NULL;
       $entity = $this->loadEntityFromBulkFormKey($bulk_form_key);
+
+      // If node entity exists, get permissions and add to array.
       if ($entity instanceof NodeInterface && $entity->hasField('webform')) {
+        $nodePermissionsByTerm = $entity->hasField('field_os2forms_permissions') ? array_column($entity->get('field_os2forms_permissions')
+          ->getValue(), 'target_id') : [];
+        $nodePermissionsByTermArray = $this->addUniquePermissions($nodePermissionsByTermArray, $nodePermissionsByTerm);
         $webform = $entity->get('webform')->entity;
       }
 
+      // If webform exists, get permissions and add to array.
       if ($webform instanceof Webform) {
         $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
         $webformPermissionsByTermArray = $this->addUniquePermissions(
           $webformPermissionsByTermArray,
           $webformPermissionsByTerm
         );
-
       }
       else {
         $form_state->setErrorByName('AuthorAssignmentNodeBulkFormError', $this->t('One or more of the selected nodes does not have a webform connected to it.'));
       }
     }
 
-    $filteredUsers = $this->filterUsersByWebformAccess($users, $webformPermissionsByTermArray);
     $selectedAssignee = $form_state->getValue('assignee_uid');
 
-    if (!isset($filteredUsers[$selectedAssignee]) && $selectedAssignee != 0) {
-      $form_state->setErrorByName('AuthorAssignmentNodeBulkFormError', $this->t('The selected user does not have access to one or more of the selected webforms.'));
+    // Check node permissions.
+    $filteredUsersByNodePermission = $this->filterUsersByTermArray($users, $nodePermissionsByTermArray);
+
+    if (!isset($filteredUsersByNodePermission[$selectedAssignee]) && $selectedAssignee != 0) {
+      // Collect inaccessible nodes.
+      foreach ($selected as $bulk_form_key) {
+        $entity = $this->loadEntityFromBulkFormKey($bulk_form_key);
+        if ($entity instanceof NodeInterface) {
+          $nodePermissionsByTerm = $entity->hasField('field_os2forms_permissions') ?
+            array_column($entity->get('field_os2forms_permissions')->getValue(), 'target_id') : [];
+
+          // Check if user has access to this specific node's terms.
+          $userHasAccess = $this->filterUsersByTermArray([$selectedAssignee => ''], [$nodePermissionsByTerm]);
+          if (empty($userHasAccess)) {
+            $inaccessibleNodes[] = $entity->getTitle();
+          }
+        }
+      }
+
+      $nodesList = implode(', ', $inaccessibleNodes);
+      $form_state->setErrorByName(
+        'AuthorAssignmentNodeBulkFormError',
+        $this->t('The selected user does not have access to the following nodes: @nodes', ['@nodes' => $nodesList])
+      );
+    }
+
+    // Check webform permissions.
+    $filteredUsersByWebformPermission = $this->filterUsersByTermArray($users, $webformPermissionsByTermArray);
+
+    if (!isset($filteredUsersByWebformPermission[$selectedAssignee]) && $selectedAssignee != 0) {
+      // Collect inaccessible webforms.
+      foreach ($selected as $bulk_form_key) {
+        $entity = $this->loadEntityFromBulkFormKey($bulk_form_key);
+        if ($entity instanceof NodeInterface && $entity->hasField('webform')) {
+          $webform = $entity->get('webform')->entity;
+          if ($webform instanceof Webform) {
+            $webformPermissionsByTerm = $webform->getThirdPartySetting('os2forms_permissions_by_term', 'settings');
+
+            // Check if user has access to this specific webform's terms.
+            $userHasAccess = $this->filterUsersByTermArray([$selectedAssignee => ''], [$webformPermissionsByTerm]);
+            if (empty($userHasAccess)) {
+              $inaccessibleWebforms[] = $webform->label();
+            }
+          }
+        }
+      }
+
+      $webformsList = implode(', ', $inaccessibleWebforms);
+      $form_state->setErrorByName(
+        'AuthorAssignmentNodeBulkFormError',
+        $this->t('The selected user does not have access to the following webforms: @webforms', ['@webforms' => $webformsList])
+      );
     }
   }
 
@@ -213,14 +273,11 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
    *   The merged and filtered permissions array
    */
   private function addUniquePermissions(array $existingPermissions, array $newPermissions): array {
-    $uniquePermissions = array_filter(
-      $newPermissions,
-      fn($value, $key) => $value == $key,
-      ARRAY_FILTER_USE_BOTH
-    );
+    // Filter out any empty/null values.
+    $newPermissions = array_filter($newPermissions);
 
     return array_values(array_unique(
-      array_merge($existingPermissions, $uniquePermissions)
+      array_merge($existingPermissions, $newPermissions)
     ));
   }
 
