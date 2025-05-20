@@ -6,13 +6,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [4.2.2] 2025-05-07
+## [4.3.0] XXXX-XX-XX
 
 * OS2Forms kø emails
   * Håndterede formularer der ikke gemmer indsendelser.
   * Opdaterede fejlbeskeder.
 * Opdaterede til nyeste version af kø-systemet,
   [advancedqueue](https://www.drupal.org/project/advancedqueue).
+
 
 ## [4.2.1] 2025-05-06
 
@@ -641,8 +642,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.2...HEAD
-[4.2.2]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...4.2.2
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.3.0...HEAD
+[4.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...4.3.0
 [4.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...4.2.1
 [4.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
