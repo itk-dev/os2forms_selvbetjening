@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Opdaterede `os2forms`.
+  * Opdatering af`coc_forms_auto_export` og tillod dermed automatisk eksport
+    af indesendelser i form af csv.
+
 ## [4.2.1] 2025-05-06
 
 * Sikrede at OS2Forms attachment elementer bliver detekteret korrekt
