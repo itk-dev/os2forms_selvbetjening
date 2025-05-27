@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Små rettelser til ændring af ejerskab på node [PR-427](https://github.com/itk-dev/os2forms_selvbetjening/pull/427).
+
 ## [4.3.0] XXXX-XX-XX
 
 * Tilføjede mulighed for ændring af ejerskab på node [PR-421](https://github.com/itk-dev/os2forms_selvbetjening/pull/421).
