@@ -1,0 +1,5 @@
+author_bulk_assignment:
+  version: 1.x
+  css:
+    theme:
+      assets/css/author_bulk_assignment.css: {}
