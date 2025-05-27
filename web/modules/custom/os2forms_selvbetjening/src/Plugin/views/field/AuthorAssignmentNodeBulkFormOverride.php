@@ -135,8 +135,8 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
       $user = User::load($userId);
       $userTermsIds = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
 
-      // Check if all terms from $mergedTerms exist in $userTermsIds.
-      return empty($mergedTerms) || count(array_intersect($userTermsIds, $mergedTerms)) === count($mergedTerms);
+      // Check if user has access to at least one of the terms.
+      return empty($mergedTerms) || !empty(array_intersect($userTermsIds, $mergedTerms));
     }, ARRAY_FILTER_USE_BOTH);
   }
 
@@ -148,10 +148,15 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
 
     $form['header']['node_bulk_form']['assignee_uid']['#type'] = 'select';
     $form['header']['node_bulk_form']['assignee_uid']['#chosen'] = TRUE;
+    $form['header']['node_bulk_form']['assignee_uid']['#attributes']['class'][] = 'chosen-container-bulk';
+    $form['#attached']['library'][] = 'os2forms_selvbetjening/author_bulk_assignment';
+
     $form['header']['node_bulk_form']['action']['#options']['node_author_bulk_assignment_action'] = $this->t('Change ownership');
 
     $userTermsIds = $this->getUserTerms();
     $users = $this->getUsersByTermId($userTermsIds);
+    asort($users);
+
     $form_state->set('users', $users);
 
     $form['header']['node_bulk_form']['assignee_uid']['#options'] = $users;
