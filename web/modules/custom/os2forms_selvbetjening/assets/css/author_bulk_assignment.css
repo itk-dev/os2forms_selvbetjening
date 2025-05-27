@@ -1,0 +1,4 @@
+/* Opens chosen element dropdown above (instead of below) the select element - see github issue https://github.com/harvesthq/chosen/issues/86 */
+select.chosen-container-bulk + div.chosen-container > div.chosen-drop {
+  margin-top: -322px !important;
+}
