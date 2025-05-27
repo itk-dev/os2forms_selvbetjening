@@ -131,11 +131,11 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     $mergedTerms = array_values($termArrays);
     $mergedTerms = !empty($mergedTerms) ? (is_array($mergedTerms[0]) ? array_merge(...$mergedTerms) : $mergedTerms) : [];
 
-    return array_filter($users, function($userName, $userId) use ($mergedTerms) {
+    return array_filter($users, function ($userName, $userId) use ($mergedTerms) {
       $user = User::load($userId);
       $userTermsIds = $this->accessStorage->getPermittedTids($user->id(), $user->getRoles());
 
-      // Check if user has access to at least one of the terms
+      // Check if user has access to at least one of the terms.
       return empty($mergedTerms) || !empty(array_intersect($userTermsIds, $mergedTerms));
     }, ARRAY_FILTER_USE_BOTH);
   }
