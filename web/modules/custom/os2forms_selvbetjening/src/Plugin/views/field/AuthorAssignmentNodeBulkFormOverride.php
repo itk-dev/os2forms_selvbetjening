@@ -149,6 +149,8 @@ class AuthorAssignmentNodeBulkFormOverride extends AuthorAssignmentEntityBulkFor
     $form['header']['node_bulk_form']['assignee_uid']['#type'] = 'select';
     $form['header']['node_bulk_form']['assignee_uid']['#chosen'] = TRUE;
     $form['header']['node_bulk_form']['assignee_uid']['#attributes']['class'][] = 'chosen-container-bulk';
+    $form['#attached']['library'][] = 'os2forms_selvbetjening/author_bulk_assignment';
+
     $form['header']['node_bulk_form']['action']['#options']['node_author_bulk_assignment_action'] = $this->t('Change ownership');
 
     $userTermsIds = $this->getUserTerms();
