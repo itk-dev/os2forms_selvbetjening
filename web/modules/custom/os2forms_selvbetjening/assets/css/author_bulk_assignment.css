@@ -1,3 +1,4 @@
+/* Opens chosen element dropdown above (instead of below) the select element */
 select.chosen-container-bulk + div.chosen-container > div.chosen-drop {
   margin-top: -322px !important;
 }
