@@ -64,7 +64,7 @@ class AdvancedQueueProcessorOverride extends Processor {
       $retry_delay = !is_null($result->getRetryDelay()) ? $result->getRetryDelay() : $job_type->getRetryDelay();
       if ($job->getNumRetries() < $max_retries) {
         /* Customization - Apply retry multiplier to retry delay */
-        $retry_delay = $job->getNumRetries() * $retryMultiplier * $retry_delay;
+        $retry_delay = $retry_delay * ($retryMultiplier ** $job->getNumRetries());
         /* Customization end. */
         $queue_backend->retryJob($job, $retry_delay);
       }
