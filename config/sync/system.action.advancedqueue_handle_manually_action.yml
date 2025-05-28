@@ -10,5 +10,5 @@ dependencies:
 id: advancedqueue_handle_manually_action
 label: 'Håndtér manuelt'
 type: advancedqueue_queue
-plugin: advancedqueue_queue_handle_manually_action
+plugin: advancedqueue_handle_manually_action
 configuration: {  }
