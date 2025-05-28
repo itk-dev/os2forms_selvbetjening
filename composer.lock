@@ -9013,12 +9013,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms.git",
-                "reference": "1543425c9b23493b6f3aa513f452a047a89bf1bc"
+                "reference": "266d5deb855a16b22093fd216fbf2503563b3a46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/1543425c9b23493b6f3aa513f452a047a89bf1bc",
-                "reference": "1543425c9b23493b6f3aa513f452a047a89bf1bc",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/266d5deb855a16b22093fd216fbf2503563b3a46",
+                "reference": "266d5deb855a16b22093fd216fbf2503563b3a46",
                 "shasum": ""
             },
             "require": {
@@ -9157,7 +9157,7 @@
             "support": {
                 "source": "https://github.com/itk-dev/os2forms/tree/feature/os2web_key"
             },
-            "time": "2025-05-13T12:58:44+00:00"
+            "time": "2025-05-28T13:04:34+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
