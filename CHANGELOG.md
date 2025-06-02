@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede handler og element brug oversigt.
+* Tilføjede dokumentation af [elementer](docs/ELEMENTS.md) og
+  [handlers](docs/HANDLERS.md).
+
 ## [4.2.1] 2025-05-06
 
 * Sikrede at OS2Forms attachment elementer bliver detekteret korrekt
