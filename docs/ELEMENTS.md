@@ -7,7 +7,7 @@ As of May 2025 there were 739 webforms.
 
 Due to the amount of elements we attempt grouping them by their functionality.
 
-The danish names are listed followed by the machine name in parentheses.
+The Danish names are listed followed by the machine name in parentheses.
 
 ## Element configuration and usage
 
