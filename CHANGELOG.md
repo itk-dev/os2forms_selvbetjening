@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [4.3.0] XXXX-XX-XX
+## [4.3.0] 2025-06-03
 
 * Opdaterede `os2forms`.
   * Opdatering af`coc_forms_auto_export` og tillod dermed automatisk eksport
