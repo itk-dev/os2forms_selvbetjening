@@ -56,6 +56,7 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
+
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -72,6 +73,7 @@
             "phpstan/extension-installer": true,
             "simplesamlphp/composer-module-installer": true,
             "simplesamlphp/composer-xmlprovider-installer": true,
+            "tbachert/spi": true,
             "zaporylie/composer-drupal-optimizations": true
         },
         "discard-changes": true,

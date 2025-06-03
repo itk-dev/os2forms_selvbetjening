@@ -8,6 +8,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [4.3.0] XXXX-XX-XX
 
+* Opdaterede `os2forms`.
+  * Opdatering af`coc_forms_auto_export` og tillod dermed automatisk eksport
+    af indesendelser i form af csv.
 * Tilføjede mulighed for ændring af ejerskab på node [PR-421](https://github.com/itk-dev/os2forms_selvbetjening/pull/421).
 * OS2Forms kø emails
   * Håndterede formularer der ikke gemmer indsendelser.
