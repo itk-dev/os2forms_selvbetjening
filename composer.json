@@ -7,6 +7,8 @@
     "require": {
         "php": "^8.3",
         "composer/installers": "^2.0",
+        "drupal/author_bulk_assignment": "^2.0",
+        "drupal/chosen": "^5.0",
         "drupal/ckeditor": "^1.0",
         "drupal/clamav": "^2.0",
         "drupal/color": "^1.0",
@@ -54,6 +56,7 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
+
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -70,6 +73,7 @@
             "phpstan/extension-installer": true,
             "simplesamlphp/composer-module-installer": true,
             "simplesamlphp/composer-xmlprovider-installer": true,
+            "tbachert/spi": true,
             "zaporylie/composer-drupal-optimizations": true
         },
         "discard-changes": true,

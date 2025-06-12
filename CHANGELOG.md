@@ -9,8 +9,22 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 * Tilføjede tilpasset AdvancedQueueProcessor til os2forms selvbetjening [PR-412](https://github.com/itk-dev/os2forms_selvbetjening/pull/412)
 * Tilføjede personaliseret view til konfiguration [PR-412](https://github.com/itk-dev/os2forms_selvbetjening/pull/412)
 
-* Tilføjede apostrof-regel til kodestandarder [PR-414](https://github.com/itk-dev/os2forms_selvbetjening/pull/414)
-* Tilføjede maestro bycontentfunction validation [PR-413](https://github.com/itk-dev/os2forms_selvbetjening/pull/413).
+## [4.3.0] 2025-06-03
+
+* Opdaterede `os2forms`.
+  * Opdatering af`coc_forms_auto_export` og tillod dermed automatisk eksport
+    af indesendelser i form af csv.
+* Tilføjede mulighed for ændring af ejerskab på node [PR-421](https://github.com/itk-dev/os2forms_selvbetjening/pull/421).
+* OS2Forms kø emails
+  * Håndterede formularer der ikke gemmer indsendelser.
+  * Opdaterede fejlbeskeder.
+* Opdaterede til nyeste version af kø-systemet,
+  [advancedqueue](https://www.drupal.org/project/advancedqueue).
+
+## [4.2.1] 2025-05-06
+
+* Sikrede at OS2Forms attachment elementer bliver detekteret korrekt
+  i mails gennem kø.
 
 ## [4.2.0] 2025-05-06
 
@@ -634,7 +648,9 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.3.0...HEAD
+[4.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...4.3.0
+[4.2.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.0...4.2.1
 [4.2.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.1...4.1.0
 [4.0.1]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.0.0...4.0.1
