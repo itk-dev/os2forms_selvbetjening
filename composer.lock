@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52bb517fa2b75f3d3948bc7b68281f11",
+    "content-hash": "1380bf273490918f281ba81180b1994e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8206,23 +8206,23 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.6.0",
+            "version": "dev-feature/personalized-view",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650"
+                "reference": "4b26eb97d7777c48e9b5304fa8cde8e7a0db8476"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/a12caf1deb35b7f89437b0c2545688f8e8e91650",
-                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/4b26eb97d7777c48e9b5304fa8cde8e7a0db8476",
+                "reference": "4b26eb97d7777c48e9b5304fa8cde8e7a0db8476",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.0",
                 "drush/drush": "^11 || ^12",
-                "php": "^8.2"
+                "php": "^8.3"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
@@ -8244,9 +8244,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.6.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/feature/personalized-view"
             },
-            "time": "2025-03-11T12:39:47+00:00"
+            "time": "2025-06-10T10:27:57+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -22249,9 +22249,18 @@
             "time": "2024-03-03T12:36:25+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "itk-dev/os2forms_failed_jobs",
+            "version": "dev-feature/personalized-view",
+            "alias": "1.7",
+            "alias_normalized": "1.7.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "itk-dev/os2forms_failed_jobs": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
