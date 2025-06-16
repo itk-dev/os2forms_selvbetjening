@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2de54324c83dcd3b3d49fe7193b0afa5",
+    "content-hash": "1ad934bdcf6ea38cca0202beea9a6daa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8206,23 +8206,23 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650"
+                "reference": "77973ef41317a1866e8a5d6d31d27f421bfdff57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/a12caf1deb35b7f89437b0c2545688f8e8e91650",
-                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/77973ef41317a1866e8a5d6d31d27f421bfdff57",
+                "reference": "77973ef41317a1866e8a5d6d31d27f421bfdff57",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.0",
                 "drush/drush": "^11 || ^12",
-                "php": "^8.2"
+                "php": "^8.3"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
@@ -8244,9 +8244,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.6.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.7.0"
             },
-            "time": "2025-03-11T12:39:47+00:00"
+            "time": "2025-06-16T10:25:35+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
