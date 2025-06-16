@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1380bf273490918f281ba81180b1994e",
+    "content-hash": "1ad934bdcf6ea38cca0202beea9a6daa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8206,16 +8206,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "dev-feature/personalized-view",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "4b26eb97d7777c48e9b5304fa8cde8e7a0db8476"
+                "reference": "77973ef41317a1866e8a5d6d31d27f421bfdff57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/4b26eb97d7777c48e9b5304fa8cde8e7a0db8476",
-                "reference": "4b26eb97d7777c48e9b5304fa8cde8e7a0db8476",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/77973ef41317a1866e8a5d6d31d27f421bfdff57",
+                "reference": "77973ef41317a1866e8a5d6d31d27f421bfdff57",
                 "shasum": ""
             },
             "require": {
@@ -8244,9 +8244,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/feature/personalized-view"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.7.0"
             },
-            "time": "2025-06-10T10:27:57+00:00"
+            "time": "2025-06-16T10:25:35+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -22249,18 +22249,9 @@
             "time": "2024-03-03T12:36:25+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "itk-dev/os2forms_failed_jobs",
-            "version": "dev-feature/personalized-view",
-            "alias": "1.7",
-            "alias_normalized": "1.7.0.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "itk-dev/os2forms_failed_jobs": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
