@@ -7,6 +7,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Opdaterede fejlede jobs personaliseret view.
+* Fjernede ubrugt custom modul.
 
 ## [4.4.0] 2025-06-16
 
