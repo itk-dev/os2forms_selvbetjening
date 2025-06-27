@@ -8,7 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede fejlede jobs personaliseret view.
 * Fjernede ubrugt custom modul.
-* Opdaterede patch version af drupal core.
+* Pakke-opdateringer.
 
 ## [4.4.0] 2025-06-16
 
