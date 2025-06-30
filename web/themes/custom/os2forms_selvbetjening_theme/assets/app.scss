@@ -118,8 +118,9 @@
   border-radius: 5px;
 }
 
-/* Fix for webform flexbox. Overrides web/modules/contrib/webform/css/webform.element.flexbox.css */
+/* Adjustments for webform flexbox */
 @media (min-width: 768px) {
+  /* Allow potential wrapping. Overrides web/modules/contrib/webform/css/webform.element.flexbox.css */
   .webform-flex--container .form-type-checkbox,
   .webform-flex--container .form-type-radio {
     white-space: inherit;
