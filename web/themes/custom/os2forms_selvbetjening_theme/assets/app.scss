@@ -117,3 +117,16 @@
   border-width: 2px !important;
   border-radius: 5px;
 }
+
+/* Fix for webform flexbox. Overrides web/modules/contrib/webform/css/webform.element.flexbox.css */
+@media (min-width: 768px) {
+  .webform-flex--container .form-type-checkbox,
+  .webform-flex--container .form-type-radio {
+    white-space: inherit;
+  }
+
+  /* Add margin to align checkboxes inside flex layout. */
+  .webform-flexbox {
+    margin: 0 var(--space-l) calc(var(--space-m) + var(--space-s));
+  }
+}

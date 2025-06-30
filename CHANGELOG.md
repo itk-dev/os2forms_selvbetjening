@@ -8,6 +8,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede fejlede jobs personaliseret view.
 * Fjernede ubrugt custom modul.
+* Opdaterede styling i flexbox layout.
+  * Sikrede at checkbox labels og beskrivelser laver linjeskift.
+  * Tiljusterede placeringen af checkbox input felter.
 
 ## [4.4.0] 2025-06-16
 
