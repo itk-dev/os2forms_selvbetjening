@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [4.5.0] 2025-07-02
+
+* Tilføjede `site_status_message`-modulet.
+
 ## [4.4.0] 2025-06-16
 
 * Tilføjede tilpasset AdvancedQueueProcessor til os2forms selvbetjening [PR-412](https://github.com/itk-dev/os2forms_selvbetjening/pull/412)

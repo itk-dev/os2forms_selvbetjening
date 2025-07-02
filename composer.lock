@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ad934bdcf6ea38cca0202beea9a6daa",
+    "content-hash": "51d0f2cb89060993c6f426ed764f7536",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5233,6 +5233,52 @@
             "homepage": "https://www.drupal.org/project/simplesamlphp_auth",
             "support": {
                 "source": "https://git.drupalcode.org/project/simplesamlphp_auth"
+            }
+        },
+        {
+            "name": "drupal/site_status_message",
+            "version": "2.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/site_status_message.git",
+                "reference": "2.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/site_status_message-2.0.0-alpha1.zip",
+                "reference": "2.0.0-alpha1",
+                "shasum": "10213314f384c3927f0f3473000713550d611020"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha1",
+                    "datestamp": "1677252571",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Gideon Cresswell (DrupalGideon)",
+                    "homepage": "https://www.drupal.org/u/drupalgideon",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides a configurable message to display on the top of your site.",
+            "homepage": "https://www.drupal.org/project/site_status_message",
+            "support": {
+                "source": "https://git.drupalcode.org/project/site_status_message",
+                "issues": "https://www.drupal.org/project/issues/site_status_message"
             }
         },
         {
@@ -22251,7 +22297,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "drupal/site_status_message": 15
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
