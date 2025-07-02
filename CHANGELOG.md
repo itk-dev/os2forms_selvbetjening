@@ -6,7 +6,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
-## [4.5.0] 2025-07-02
+## [4.5.0] XXXX-XX-XX
 
 * Tilføjede `site_status_message`-modulet.
 
