@@ -9,6 +9,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [4.5.0] 2025-07-03
 
 * Tilføjede `site_status_message`-modulet.
+* Opdaterede fejlede jobs personaliseret view.
+* Fjernede ubrugt custom modul.
 
 ## [4.4.0] 2025-06-16
 

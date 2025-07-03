@@ -8252,16 +8252,16 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "77973ef41317a1866e8a5d6d31d27f421bfdff57"
+                "reference": "559091b66338d99ec43b40bb54d91768d5654932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/77973ef41317a1866e8a5d6d31d27f421bfdff57",
-                "reference": "77973ef41317a1866e8a5d6d31d27f421bfdff57",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/559091b66338d99ec43b40bb54d91768d5654932",
+                "reference": "559091b66338d99ec43b40bb54d91768d5654932",
                 "shasum": ""
             },
             "require": {
@@ -8290,9 +8290,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.7.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.7.1"
             },
-            "time": "2025-06-16T10:25:35+00:00"
+            "time": "2025-06-19T08:11:50+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
