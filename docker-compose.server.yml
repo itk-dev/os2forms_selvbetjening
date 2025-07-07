@@ -1,4 +1,4 @@
-# itk-version: 3.2.1
+# itk-version: 3.2.3
 networks:
   frontend:
     external: true
@@ -17,7 +17,8 @@ services:
     environment:
       - PHP_MAX_EXECUTION_TIME=30
       - PHP_MEMORY_LIMIT=128M
-      - COMPOSER_VERSION=2
+      # Let drush know the site uri (makes using --uri redundant)
+      - DRUSH_OPTIONS_URI=https://${COMPOSE_SERVER_DOMAIN}
     depends_on:
       - memcached
     volumes:
@@ -39,7 +40,7 @@ services:
       NGINX_FPM_SERVICE: ${COMPOSE_PROJECT_NAME}-phpfpm-1:9000
       NGINX_WEB_ROOT: /app/web
       NGINX_PORT: 8080
-      NGINX_MAX_BODY_SIZE: 305m
+      NGINX_MAX_BODY_SIZE: 5M
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=frontend"
@@ -51,9 +52,9 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
 
   memcached:
-    image: 'memcached:latest'
+    image: "memcached:latest"
     restart: unless-stopped
     networks:
       - app
     environment:
-      - MEMCACHED_CACHE_SIZE=128
+      - MEMCACHED_CACHE_SIZE=64
