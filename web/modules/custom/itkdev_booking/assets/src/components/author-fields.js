@@ -35,6 +35,14 @@ function AuthorFields({ authorFields, setAuthorFields }) {
               onChange={onChangeSubject}
               className="form-element"
             />
+            <div class="description form-item__description">
+              <div class="webform-element-description">
+                <p>
+                  <strong>Bemærk</strong>
+                  : Det ovenstående emne kan blive vist på en infoskærm. Angiv venligst ikke følsomme oplysninger i titlen på din booking.
+                </p>
+              </div>
+            </div>
           </label>
         </div>
         <div className="form-item">
