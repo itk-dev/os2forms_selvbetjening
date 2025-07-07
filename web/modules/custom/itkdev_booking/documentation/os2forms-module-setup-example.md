@@ -72,7 +72,7 @@ $settings['itkdev_booking_fullcalendar_license'] = '*** Get from 1password ***';
 Find the internal name of the "bookaarhus" nginx container.
 Something like `bookaarhus-nginx-1` and append `.frontend:8080/`.
 
-`$settings['itkdev_booking_api_key']` is the apikey created in step 3.
+`$settings['itkdev_booking_api_key']` is the apikey created in step 4.
 
 ## 6. Set up a webform
 
