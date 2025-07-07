@@ -25,11 +25,11 @@ function AuthorFields({ authorFields, setAuthorFields }) {
       <div className="webform-section-wrapper">
         <div className="form-item">
           <label htmlFor="subject-input" className="form-item__label">
-            <span className="form-item-label">Booking emne</span>
+            <span className="form-item-label">Booking titel</span>
             <input
               id="subject-input"
               type="text"
-              placeholder="Booking emne"
+              placeholder="Booking titel"
               required
               value={authorFields.subject}
               onChange={onChangeSubject}
@@ -39,7 +39,7 @@ function AuthorFields({ authorFields, setAuthorFields }) {
               <div class="webform-element-description">
                 <p>
                   <strong>Bemærk</strong>
-                  : Det ovenstående emne kan blive vist på en infoskærm. Angiv venligst ikke følsomme oplysninger i titlen på din booking.
+                  : Den ovenstående titel kan blive vist på en infoskærm. Angiv venligst ikke følsomme oplysninger i titlen på din booking.
                 </p>
               </div>
             </div>
