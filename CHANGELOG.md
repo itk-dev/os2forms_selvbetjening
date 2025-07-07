@@ -6,6 +6,9 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Booking opdateringer
+  * Opdaterede booking setup eksempel.
+
 ## [4.5.0] 2025-07-03
 
 * Tilføjede `site_status_message`-modulet.
