@@ -64,20 +64,20 @@ function List({ resources, setShowResourceDetails }) {
               </div>
             </div>
             <div className="list-resource-details col-md-10">
-              <span className="headline">
-                <b>{resources[key].resourceDisplayName ?? resources[key].resourceName}</b>
-              </span>
-              <div className="details">
-                <span className="location">
-                  <span className="location-icon">
-                    <IconArrow />
-                  </span>
+              <h2 className="headline">
+                {resources[key].resourceDisplayName ?? resources[key].resourceName}
+              </h2>
+              <div className="location">
+                <span className="location-icon">
+                  <IconArrow />
+                </span>
+                <span>
                   {resources[key].locationDisplayName ?? resources[key].location}, {resources[key].streetName}{" "}
                   {resources[key].postalCode} {resources[key].city}
                 </span>
-                <div className="facilities">{getFacilitiesList(resources[key])}</div>
               </div>
-              <span className="description">{sanitizedDescription}</span>
+              {getFacilitiesList(resources[key])}
+              <p className="description">{sanitizedDescription}</p>
             </div>
             <div className="list-resource-actions col-md-2">
               <button type="button" className="booking-btn" data-key={key} onClick={showResourceView}>
