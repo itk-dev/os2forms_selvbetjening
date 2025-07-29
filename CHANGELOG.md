@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Booking opdateringer
   * Opdaterede booking setup eksempel.
+  * Tilpasning af kalender ressourcenavn visning.
   * Tiljusterede liste-visningen af ressourcer.
   * Opdaterede filtre visninger.
 
