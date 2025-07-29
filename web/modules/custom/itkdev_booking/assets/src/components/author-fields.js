@@ -25,7 +25,7 @@ function AuthorFields({ authorFields, setAuthorFields }) {
       <div className="webform-section-wrapper">
         <div className="form-item">
           <label htmlFor="subject-input" className="form-item__label">
-            <span className="form-item-label">Booking titel</span>
+            <span className="form-item-label">Bookingtitel</span>
             <input
               id="subject-input"
               type="text"
