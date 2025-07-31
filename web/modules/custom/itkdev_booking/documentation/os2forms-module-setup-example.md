@@ -19,7 +19,7 @@ and follow step 1 and 3.
 
 ## 3. Create an Affiliation in os2forms selvbetjening
 
-@todo remove this step when a affiliation term is added as part
+@todo remove this step when an affiliation term is added as part
 of the os2forms_selvbetjening installation.
 
 ```text
