@@ -6,6 +6,7 @@ import parse from "html-react-parser";
 import getResourceFacilities from "../util/resource-utils";
 import { ReactComponent as IconChair } from "../assets/chair.svg";
 import { ReactComponent as IconArrow } from "../assets/arrow.svg";
+import { ReactComponent as IconAarhusKommune } from "../assets/aak-logo-1.svg";
 
 /**
  * @param {object} props Props.
@@ -60,7 +61,10 @@ function List({ resources, setShowResourceDetails }) {
           <div key={key} className="list-resource">
             <div className="image-wrapper">
               <div className="image">
-                <img alt={resources[key].resourceDisplayName} src={resources[key].resourceImage} />
+                {!resources[key]?.resourceImage && (<IconAarhusKommune />)}
+                {resources[key]?.resourceImage && (
+                  <img alt={resources[key].resourceDisplayName}
+                       src={resources[key].resourceImage}/>)}
               </div>
             </div>
             <div className="list-resource-details col-md-10">
