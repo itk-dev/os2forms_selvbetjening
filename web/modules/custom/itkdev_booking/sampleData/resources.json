@@ -7,7 +7,7 @@
     "resourceName":"DOKK1-Lokale-Test1",
     "resourceImage":"",
     "location":"LOCATION1",
-    "geoCoordinates":null,
+    "geoCoordinates": "56.154083203964056, 10.214307184076445",
     "capacity":10,
     "resourceDescription":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "wheelchairAccessible":true,
@@ -30,41 +30,41 @@
   },
   {
     "id":2,
-    "openHours":[
+    "openHours": [
       {
         "weekday": 1,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-04T08:00:00+02:00",
+        "close": "2025-08-04T23:00:00+02:00"
       },
       {
         "weekday": 2,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-05T08:00:00+02:00",
+        "close": "2025-08-05T23:00:00+02:00"
       },
       {
         "weekday": 3,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-04T08:00:00+02:00",
+        "close": "2025-08-04T23:00:00+02:00"
       },
       {
         "weekday": 4,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-04T08:00:00+02:00",
+        "close": "2025-08-04T23:00:00+02:00"
       },
       {
         "weekday": 5,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-04T08:00:00+02:00",
+        "close": "2025-08-04T23:00:00+02:00"
       },
       {
         "weekday": 6,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-04T08:00:00+02:00",
+        "close": "2025-08-04T23:00:00+02:00"
       },
       {
         "weekday": 7,
-        "open": "2025-07-08T08:00:00+02:00",
-        "close": "2025-07-08T15:00:00+02:00"
+        "open": "2025-08-04T08:00:00+02:00",
+        "close": "2025-08-04T23:00:00+02:00"
       }
     ],
     "holidayOpenHours":[],
@@ -113,12 +113,12 @@
     "hasHolidayOpen":null,
     "hasOpen":null,
     "hasWhitelist":false,
-    "displayName":"Dokk1 Lokale Test 1",
+    "displayName":"Dokk1 Lokale Test 3",
     "city":"Aarhus",
     "streetName":"Hack Kampmanns Pl. 2",
     "postalCode":8000,
     "resourceCategory":"Lokale",
-    "resourceDisplayName":"Dokk1 Lokale Test 1",
+    "resourceDisplayName":"Dokk1 Lokale Test 3",
     "locationDisplayName":"Location 3",
     "acceptConflict":true
   },
@@ -142,42 +142,13 @@
     "hasHolidayOpen":null,
     "hasOpen":null,
     "hasWhitelist":false,
-    "displayName":"Dokk1 Lokale Test 1",
+    "displayName":"Dokk1 Lokale Test 4",
     "city":"Aarhus",
     "streetName":"Hack Kampmanns Pl. 2",
     "postalCode":8000,
     "resourceCategory":"Lokale",
-    "resourceDisplayName":"Dokk1 Lokale Test 1",
+    "resourceDisplayName":"Dokk1 Lokale Test 4",
     "locationDisplayName":"Location 4",
-    "acceptConflict":true
-  },
-  {
-    "id":5,
-    "openHours":[],
-    "holidayOpenHours":[],
-    "resourceMail":"DOKK1-Lokale-Test5@aarhus.dk",
-    "resourceName":"DOKK1-Lokale-Test5",
-    "resourceImage":"",
-    "location":"LOCATION5",
-    "geoCoordinates":null,
-    "capacity":4,
-    "resourceDescription":"Consectetur adipiscing elit.",
-    "wheelchairAccessible":true,
-    "videoConferenceEquipment":false,
-    "monitorEquipment":false,
-    "acceptanceFlow":false,
-    "catering":false,
-    "formId":null,
-    "hasHolidayOpen":null,
-    "hasOpen":null,
-    "hasWhitelist":false,
-    "displayName":"Dokk1 Lokale Test 5",
-    "city":"Aarhus",
-    "streetName":"Hack Kampmanns Pl. 2",
-    "postalCode":8000,
-    "resourceCategory":"Lokale",
-    "resourceDisplayName":"Dokk1 Lokale Test 5",
-    "locationDisplayName":"Location 5",
     "acceptConflict":true
   },
   {
@@ -788,40 +759,5 @@
     "resourceDisplayName":"Dokk1 Lokale Test 25",
     "locationDisplayName":"Location 25",
     "acceptConflict":true
-  },
-  {
-    "ID": "197",
-    "ResourceMail": "DOKK1-Lokale-Test1@aarhus.dk",
-    "ResourceName": "DOKK1-Lokale-Test1",
-    "ResourceImage": "",
-    "ResourceEmailText": "",
-    "Location": "DOKK1",
-    "GeoCordinates": "56.154083203964056, 10.214307184076445",
-    "Capacity": "1",
-    "ResourceDescription": "",
-    "WheelChairAccessible": "False",
-    "VideoConferenceEquipment": "True",
-    "MonitorEquipment": "True",
-    "AcceptanceFlow": "False",
-    "Catering": "False",
-    "FormID": "https://selvbetjening.aarhuskommune.dk/da/content/booking-dokk1",
-    "HasHolidayOpen": "True",
-    "HasOpen": "True",
-    "HasWhiteList": "True",
-    "PermissionEmployee": "True",
-    "PermissionCitizen": "False",
-    "PermissionBusinessPartner": "False",
-    "UpdateTimeStamp": "6/8/2025 9:34:56 PM",
-    "DisplayName": "",
-    "City": "",
-    "StreetName": "",
-    "PostalCode": "",
-    "RessourceCategory": "",
-    "ResourceDisplayName": "DOKK1 - Lokale-Test1",
-    "LocationDisplayName": "DOKK1",
-    "AcceptConflict": "False",
-    "ShowinOS2Display": "True",
-    "Straksbookning": "False",
-    "IncludeinUI": "True"
   }
 ]
