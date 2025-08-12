@@ -115,7 +115,9 @@ final class QueuedSmtpPhpMail extends SMTPMailSystem {
         'key' => $message['key'],
         'to' => $message['to'],
         'subject' => $message['subject'],
+        // Note that submissions may not exist later when job is processed.
         'submissionId' => $submission->id(),
+        'webformId' => $submission->getWebform()->id(),
         'message' => json_encode($message),
       ]);
 

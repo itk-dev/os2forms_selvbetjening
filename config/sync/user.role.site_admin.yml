@@ -8,6 +8,7 @@ dependencies:
     - node.type.webform
     - workflows.workflow.udgivelse_af_forlob_og_webformularer
   module:
+    - author_bulk_assignment
     - block_content
     - content_moderation
     - contextual
@@ -21,6 +22,7 @@ dependencies:
     - os2forms_failed_jobs
     - os2forms_permission_alterations
     - search
+    - site_status_message
     - system
     - taxonomy
     - toolbar
@@ -59,6 +61,7 @@ permissions:
   - 'administer leaflet layers'
   - 'administer node display'
   - 'administer node form display'
+  - 'administer site status message'
   - 'administer taxonomy_term display'
   - 'administer taxonomy_term form display'
   - 'administer user display'
@@ -68,6 +71,7 @@ permissions:
   - 'administer webform revisions'
   - 'administer webform submission'
   - 'administer webform templates'
+  - 'assign author to selected content'
   - 'bypass entity print access'
   - 'bypass honeypot protection'
   - 'can be workflow participant'
