@@ -66,6 +66,7 @@ final class WebformsForm extends FormBase {
     $form['filters'] = [
       '#type' => 'details',
       '#title' => $this->t('Filters'),
+      '#description' => $this->t('Shows handlers and elements of selected webforms'),
       '#open' => empty($selectedWebforms),
     ];
 
@@ -82,7 +83,7 @@ final class WebformsForm extends FormBase {
 
     $form['filters']['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Show webforms with selected handlers'),
+      '#value' => $this->t('Show webforms'),
       '#attributes' => ['name' => ''],
     ];
 
