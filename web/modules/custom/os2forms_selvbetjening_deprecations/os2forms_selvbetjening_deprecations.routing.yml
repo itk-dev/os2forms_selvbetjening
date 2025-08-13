@@ -17,3 +17,14 @@ os2forms_selvbetjening_deprecations.handlers:
     _permission: 'access webform overview'
   options:
     no_cache: TRUE
+
+
+os2forms_selvbetjening_deprecations.webforms:
+  path: '/admin/os2forms_selvbetjening_deprecations/webforms'
+  defaults:
+    _form: '\Drupal\os2forms_selvbetjening_deprecations\Form\WebformsForm'
+    _title: 'Webforms'
+  requirements:
+    _permission: 'access webform overview'
+  options:
+    no_cache: TRUE
