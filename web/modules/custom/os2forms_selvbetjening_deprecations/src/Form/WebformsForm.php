@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- *
+ * Webforms form.
  */
 final class WebformsForm extends FormBase {
   use StringTranslationTrait;
@@ -60,8 +60,6 @@ final class WebformsForm extends FormBase {
     if (!is_array($selectedWebforms)) {
       $selectedWebforms = [];
     }
-
-
 
     $form['filters'] = [
       '#type' => 'details',
