@@ -6,6 +6,15 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Formular frontend rettelser
+  * Justerede formular knapper,`næste`, `forrige` og `indsend`.
+  * Justerede radioknapper og checkbokse.
+  * Tilføjede luft under labels.
+  * Ændrede tekststørrelser på `h`-elementer og standard tekst.
+  * Justerede organisationsdata søgeknappen.
+  * Justerede størrelsen af tekstområde-elementet.
+  * Justerede visningen af elementbeskrivelser.
+
 ## [4.5.0] 2025-07-03
 
 * Tilføjede `site_status_message`-modulet.
