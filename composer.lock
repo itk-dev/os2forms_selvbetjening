@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba4fba1f87c766ea7a46bfa629dbaaf0",
+    "content-hash": "51d0f2cb89060993c6f426ed764f7536",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1469,26 +1469,29 @@
         },
         {
             "name": "drupal/advancedqueue",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/advancedqueue.git",
-                "reference": "8.x-1.2"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/advancedqueue-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "373a6c823cbeb4483be2b7968f5dde9163b6e5e1"
+                "url": "https://ftp.drupal.org/files/projects/advancedqueue-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "9b408d9ad7e13fe1f2afa546a28de054b2abe586"
             },
             "require": {
-                "drupal/core": "^9.1 || ^10 || ^11"
+                "drupal/core": "^10.2 || ^11"
+            },
+            "require-dev": {
+                "drupal/plugin": "^2"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1725364658",
+                    "version": "8.x-1.4",
+                    "datestamp": "1745429711",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1546,6 +1549,52 @@
             "homepage": "https://www.drupal.org/project/advancedqueue",
             "support": {
                 "source": "https://git.drupalcode.org/project/advancedqueue"
+            }
+        },
+        {
+            "name": "drupal/author_bulk_assignment",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/author_bulk_assignment.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/author_bulk_assignment-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "c055a2e21e9bd592662bfc66ec0b9c5c6537212f"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1727438654",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fathima Asmat",
+                    "homepage": "https://www.drupal.org/u/fathimaasmat",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Author bulk assignment Drupal module",
+            "homepage": "https://www.drupal.org/project/author_bulk_assignment",
+            "support": {
+                "source": "https://git.drupalcode.org/project/author_bulk_assignment",
+                "issues": "https://www.drupal.org/project/issues/author_bulk_assignment"
             }
         },
         {
@@ -1656,6 +1705,149 @@
             "homepage": "https://www.drupal.org/project/cache_control_override",
             "support": {
                 "source": "https://git.drupalcode.org/project/cache_control_override"
+            }
+        },
+        {
+            "name": "drupal/chosen",
+            "version": "5.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/chosen.git",
+                "reference": "5.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/chosen-5.0.2.zip",
+                "reference": "5.0.2",
+                "shasum": "bda191e28f3461bfa36f63d12b6d14c346104840"
+            },
+            "require": {
+                "drupal/chosen_lib": "*",
+                "drupal/core": "^10.2 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "5.0.2",
+                    "datestamp": "1746293867",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "aidanlis",
+                    "homepage": "https://www.drupal.org/user/502018"
+                },
+                {
+                    "name": "Cyclodex",
+                    "homepage": "https://www.drupal.org/user/1305230"
+                },
+                {
+                    "name": "dave reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "hydra",
+                    "homepage": "https://www.drupal.org/user/647364"
+                },
+                {
+                    "name": "kalman.hosszu",
+                    "homepage": "https://www.drupal.org/user/267481"
+                },
+                {
+                    "name": "nagy.balint",
+                    "homepage": "https://www.drupal.org/user/1763952"
+                },
+                {
+                    "name": "pol",
+                    "homepage": "https://www.drupal.org/user/47194"
+                },
+                {
+                    "name": "shadcn",
+                    "homepage": "https://www.drupal.org/user/571032"
+                },
+                {
+                    "name": "supercabbageuk",
+                    "homepage": "https://www.drupal.org/user/235438"
+                }
+            ],
+            "description": "Makes select elements more user-friendly using <a href=\"https://github.com/noli42/chosen\">Chosen</a>.",
+            "homepage": "https://www.drupal.org/project/chosen",
+            "support": {
+                "source": "https://git.drupalcode.org/project/chosen"
+            }
+        },
+        {
+            "name": "drupal/chosen_lib",
+            "version": "5.0.2",
+            "require": {
+                "drupal/chosen": "^5",
+                "drupal/core": "^10.2 || ^11"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "5.0.2",
+                    "datestamp": "1746293867",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "aidanlis",
+                    "homepage": "https://www.drupal.org/user/502018"
+                },
+                {
+                    "name": "Cyclodex",
+                    "homepage": "https://www.drupal.org/user/1305230"
+                },
+                {
+                    "name": "dave reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "hydra",
+                    "homepage": "https://www.drupal.org/user/647364"
+                },
+                {
+                    "name": "kalman.hosszu",
+                    "homepage": "https://www.drupal.org/user/267481"
+                },
+                {
+                    "name": "nagy.balint",
+                    "homepage": "https://www.drupal.org/user/1763952"
+                },
+                {
+                    "name": "pol",
+                    "homepage": "https://www.drupal.org/user/47194"
+                },
+                {
+                    "name": "shadcn",
+                    "homepage": "https://www.drupal.org/user/571032"
+                },
+                {
+                    "name": "supercabbageuk",
+                    "homepage": "https://www.drupal.org/user/235438"
+                }
+            ],
+            "description": "Add <a href=\"https://github.com/noli42/chosen\">chosen</a> library definition.",
+            "homepage": "https://www.drupal.org/project/chosen",
+            "support": {
+                "source": "https://git.drupalcode.org/project/chosen"
             }
         },
         {
@@ -1873,17 +2065,17 @@
         },
         {
             "name": "drupal/coc_forms_auto_export",
-            "version": "2.0.0-alpha1",
+            "version": "3.0.0-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/coc_forms_auto_export.git",
-                "reference": "2.0.0-alpha1"
+                "reference": "3.0.0-alpha1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/coc_forms_auto_export-2.0.0-alpha1.zip",
-                "reference": "2.0.0-alpha1",
-                "shasum": "e1fc1c169cbfecfd84badf70796b54f22521afc7"
+                "url": "https://ftp.drupal.org/files/projects/coc_forms_auto_export-3.0.0-alpha1.zip",
+                "reference": "3.0.0-alpha1",
+                "shasum": "3b00842390459b77b59cd0d8ef373a30b0ae04e4"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10 || ^11",
@@ -1894,11 +2086,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-alpha1",
-                    "datestamp": "1632137967",
+                    "version": "3.0.0-alpha1",
+                    "datestamp": "1741694647",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -1919,6 +2111,10 @@
                 {
                     "name": "ozwebapps",
                     "homepage": "https://www.drupal.org/user/101029"
+                },
+                {
+                    "name": "welly",
+                    "homepage": "https://www.drupal.org/user/354705"
                 }
             ],
             "description": "Adds the ability to automate export of Webform results and email or SFTP generated CSV files.",
@@ -5040,6 +5236,52 @@
             }
         },
         {
+            "name": "drupal/site_status_message",
+            "version": "2.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/site_status_message.git",
+                "reference": "2.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/site_status_message-2.0.0-alpha1.zip",
+                "reference": "2.0.0-alpha1",
+                "shasum": "10213314f384c3927f0f3473000713550d611020"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha1",
+                    "datestamp": "1677252571",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Gideon Cresswell (DrupalGideon)",
+                    "homepage": "https://www.drupal.org/u/drupalgideon",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides a configurable message to display on the top of your site.",
+            "homepage": "https://www.drupal.org/project/site_status_message",
+            "support": {
+                "source": "https://git.drupalcode.org/project/site_status_message",
+                "issues": "https://www.drupal.org/project/issues/site_status_message"
+            }
+        },
+        {
             "name": "drupal/smtp",
             "version": "1.4.0",
             "source": {
@@ -8010,23 +8252,23 @@
         },
         {
             "name": "itk-dev/os2forms_failed_jobs",
-            "version": "1.6.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms_failed_jobs.git",
-                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650"
+                "reference": "559091b66338d99ec43b40bb54d91768d5654932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/a12caf1deb35b7f89437b0c2545688f8e8e91650",
-                "reference": "a12caf1deb35b7f89437b0c2545688f8e8e91650",
+                "url": "https://api.github.com/repos/itk-dev/os2forms_failed_jobs/zipball/559091b66338d99ec43b40bb54d91768d5654932",
+                "reference": "559091b66338d99ec43b40bb54d91768d5654932",
                 "shasum": ""
             },
             "require": {
                 "drupal/advancedqueue": "^1.0",
                 "drupal/webform": "^6.0",
                 "drush/drush": "^11 || ^12",
-                "php": "^8.2"
+                "php": "^8.3"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
@@ -8048,9 +8290,9 @@
             "description": "Provides list of failed jobs to each form.",
             "support": {
                 "issues": "https://github.com/itk-dev/os2forms_failed_jobs/issues",
-                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.6.0"
+                "source": "https://github.com/itk-dev/os2forms_failed_jobs/tree/1.7.1"
             },
-            "time": "2025-03-11T12:39:47+00:00"
+            "time": "2025-06-19T08:11:50+00:00"
         },
         {
             "name": "itk-dev/os2forms_nemlogin_openid_connect",
@@ -8995,16 +9237,16 @@
         },
         {
             "name": "os2forms/os2forms",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OS2Forms/os2forms.git",
-                "reference": "07d7aa29bdc80d6351fb1d4126d22b0d6bb9c56d"
+                "reference": "df6abddab509e6ac327ffd2efab76343f75823d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/07d7aa29bdc80d6351fb1d4126d22b0d6bb9c56d",
-                "reference": "07d7aa29bdc80d6351fb1d4126d22b0d6bb9c56d",
+                "url": "https://api.github.com/repos/OS2Forms/os2forms/zipball/df6abddab509e6ac327ffd2efab76343f75823d4",
+                "reference": "df6abddab509e6ac327ffd2efab76343f75823d4",
                 "shasum": ""
             },
             "require": {
@@ -9012,10 +9254,10 @@
                 "dompdf/dompdf": "^2.0",
                 "drupal/admin_toolbar": "^3.0",
                 "drupal/advancedqueue": "^1.0",
-                "drupal/cache_control_override": "^1.1|^2.0",
+                "drupal/cache_control_override": "^1.1 || ^2.0",
                 "drupal/clientside_validation": "^4.0",
-                "drupal/coc_forms_auto_export": "^2.0@alpha",
-                "drupal/config_entity_revisions": "dev-2.0.x",
+                "drupal/coc_forms_auto_export": "^3.0@alpha",
+                "drupal/config_entity_revisions": "2.0.x-dev",
                 "drupal/diff": "^1.0",
                 "drupal/embed": "^1.4",
                 "drupal/entity_print": "^2.1",
@@ -9031,7 +9273,7 @@
                 "drupal/mailsystem": "^4.1",
                 "drupal/masquerade": "^2.0@RC",
                 "drupal/pathauto": "^1.5",
-                "drupal/permissions_by_term": "^3.1 || ^2.25",
+                "drupal/permissions_by_term": "^2.25 || ^3.1",
                 "drupal/queue_mail": "^1.4",
                 "drupal/r4032login": "^2.1",
                 "drupal/redirect": "^1.4",
@@ -9075,6 +9317,7 @@
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "drupal/coder": "^8.3",
+                "ergebnis/composer-normalize": "^2.47",
                 "mglaman/phpstan-drupal": "^1.1",
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan-deprecation-rules": "^1.1",
@@ -9100,9 +9343,7 @@
                         "3290637 - Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2023-05-12/webform_node_element_d10-3290637-11.patch"
                     },
                     "drupal/coc_forms_auto_export": {
-                        "3259009 - PHP Warnings/Notices on Download Page": "https://git.drupalcode.org/project/coc_forms_auto_export/-/merge_requests/1.diff",
-                        "3286562 - Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2022-06-15/coc_forms_auto_export.2.0.x-dev.rector.patch",
-                        "3240592 - Problem with phpseclib requirement in 2.x (https://www.drupal.org/project/coc_forms_auto_export/issues/3240592)": "https://www.drupal.org/files/issues/2021-10-04/requirement-namespace-3240592-1.patch"
+                        "3256951: - Unable to receive attachments in emails sent": "https://git.drupalcode.org/project/coc_forms_auto_export/-/merge_requests/11.diff"
                     }
                 },
                 "drupal-lenient": {
@@ -9121,9 +9362,9 @@
             "description": "Drupal 8 OS2Form module provides advanced webform functionality for Danish Municipalities",
             "support": {
                 "issues": "https://github.com/OS2Forms/os2forms/issues",
-                "source": "https://github.com/OS2Forms/os2forms/tree/4.0.0"
+                "source": "https://github.com/OS2Forms/os2forms/tree/4.1.0"
             },
-            "time": "2025-03-06T08:55:17+00:00"
+            "time": "2025-06-03T07:55:56+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
@@ -22056,7 +22297,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "drupal/site_status_message": 15
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

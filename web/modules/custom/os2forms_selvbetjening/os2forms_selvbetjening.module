@@ -34,3 +34,14 @@ function os2forms_selvbetjening_webform_element_alter(array &$element, FormState
     $element['#attributes']['class'][] = 'js-form-item';
   }
 }
+
+/**
+ * Implements hook_views_plugins_field_alter().
+ */
+function os2forms_selvbetjening_views_plugins_field_alter(array &$plugins) {
+  if (array_key_exists('author_assignment_node_bulk_form', $plugins)) {
+    $plugins['author_assignment_node_bulk_form']['id'] .= '_override';
+    $plugins['author_assignment_node_bulk_form']['class'] = 'Drupal\os2forms_selvbetjening\Plugin\views\field\AuthorAssignmentNodeBulkFormOverride';
+    $plugins['author_assignment_node_bulk_form']['provider'] = 'os2forms_selvbetjening';
+  }
+}

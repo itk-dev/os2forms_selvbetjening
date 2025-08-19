@@ -5,3 +5,6 @@ package: 'OS2Forms'
 core_version_requirement: ^9 || ^10
 dependencies:
   - 'webform:webform'
+  - 'advancedqueue:advancedqueue'
+  - 'chosen:chosen'
+  - 'author_bulk_assignment:author_bulk_assignment'
