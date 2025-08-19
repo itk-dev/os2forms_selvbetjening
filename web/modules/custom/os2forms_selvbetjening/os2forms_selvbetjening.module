@@ -19,7 +19,7 @@ function os2forms_selvbetjening_form_alter(array &$form, FormStateInterface $for
   // Set out to edit maestro field edit ajax modal
   if ($form_id === 'template_edit_task') {
     if (isset($form['spv']['method']['#options']['bycontentfunction'])) {
-      $form['spv']['method']['#options']['bycontentfunction'] .= t('. Read more: ') . '<a href="https://os2forms.os2.eu/variabler-i-flow" target="_blank">https://os2forms.os2.eu/variabler-i-flow</a>';
+      $form['spv']['method']['#options']['bycontentfunction'] .= t('. Read more: <a href="https://os2forms.os2.eu/variabler-i-flow" target="_blank">https://os2forms.os2.eu/variabler-i-flow</a>');
     }
   }
 }
