@@ -7,6 +7,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 
@@ -14,6 +15,7 @@ use Drupal\Core\Url;
  * Form Helper class, for altering forms.
  */
 class FormHelper {
+  use StringTranslationTrait;
 
   /**
    * Constructor.
