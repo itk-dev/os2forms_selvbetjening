@@ -8,6 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Tilføjede apostrof-regel til kodestandarder [PR-423](https://github.com/itk-dev/os2forms_selvbetjening/pull/423).
 * Tilføjede maestro bycontentfunction validation [PR-423](https://github.com/itk-dev/os2forms_selvbetjening/pull/423).
+* Tilføjede oversætbar bycontentfunction hjælpetekst [PR-443](https://github.com/itk-dev/os2forms_selvbetjening/pull/443).
 
 ## [4.2.1] 2025-05-06
 
