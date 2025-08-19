@@ -7,7 +7,6 @@ use Drupal\Core\Link;
 use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 
@@ -15,7 +14,6 @@ use Drupal\Core\Url;
  * Form Helper class, for altering forms.
  */
 class FormHelper {
-  use StringTranslationTrait;
 
   /**
    * Constructor.
@@ -25,8 +23,7 @@ class FormHelper {
    * @param \Drupal\Core\Logger\LoggerChannel $logger
    *   Logger.
    */
-  public function __construct(private readonly AccountInterface $account, private readonly LoggerChannel $logger) {
-  }
+  public function __construct(private readonly AccountInterface $account, private readonly LoggerChannel $logger) {}
 
   /**
    * Allows altering of forms.
@@ -65,8 +62,12 @@ class FormHelper {
       if ($markup instanceof TranslatableMarkup) {
         $message = strtolower($markup->getUntranslatedString());
         if (str_contains($message, 'access') && str_contains($message, 'task')) {
-          $currentUrl = Url::fromRoute('<current>')->toString(TRUE)->getGeneratedUrl();
-          $logoutUrl = Url::fromRoute('user.logout', ['destination' => $currentUrl])->toString(TRUE)->getGeneratedUrl();
+          $currentUrl = Url::fromRoute('<current>')
+            ->toString(TRUE)
+            ->getGeneratedUrl();
+          $logoutUrl = Url::fromRoute('user.logout', ['destination' => $currentUrl])
+            ->toString(TRUE)
+            ->getGeneratedUrl();
 
           $form['error'] = [
             '#type' => 'container',
@@ -98,7 +99,8 @@ class FormHelper {
         unset($form[$key]);
       }
       $form['message'] = [
-        'message' => Link::createFromRoute($this->t('Login form has been disabled'), 'user.login')->toRenderable(),
+        'message' => Link::createFromRoute($this->t('Login form has been disabled'), 'user.login')
+          ->toRenderable(),
       ];
     }
 
@@ -123,7 +125,6 @@ class FormHelper {
    */
   public function validateByContentFunction(array &$form, FormStateInterface $form_state): void {
     if ('bycontentfunction' === $form_state->getValue(['spv', 'method'])) {
-
       // Get function name and parameters defined in the flow task.
       $value = $form_state->getValue(['spv', 'variable_value']);
 
@@ -156,7 +157,7 @@ class FormHelper {
         $this->logger->error('Error reflecting function %function_name: %message', [
           '%function_name' => $functionName,
           '%message' => $e->getMessage(),
-           // Add the full exception to the context for future reference.
+          // Add the full exception to the context for future reference.
           'exception' => $e,
         ]);
         return;
@@ -186,8 +187,9 @@ class FormHelper {
           )
         );
       }
-    if (isset($form['#id']) && 'views-exposed-form-os2forms-failed-jobs-personalized-block-1' === $form['#id']) {
-      $form['#attached']['library'][] = 'os2forms_selvbetjening/exposed-form-display';
+      if (isset($form['#id']) && 'views-exposed-form-os2forms-failed-jobs-personalized-block-1' === $form['#id']) {
+        $form['#attached']['library'][] = 'os2forms_selvbetjening/exposed-form-display';
+      }
     }
   }
 
