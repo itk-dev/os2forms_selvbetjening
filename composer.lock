@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "972b6bf216b949f6b12c8e1e9d7d73b3",
+    "content-hash": "824a85853495da11530f18bddb68cfa3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8425,16 +8425,16 @@
         },
         {
             "name": "itk-dev/serviceplatformen",
-            "version": "1.7.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/serviceplatformen.git",
-                "reference": "21c0a0371934849d7373410cf01e9a80b40f76cb"
+                "reference": "141b4cf65dd868427b3b0f42273923d766c05706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/21c0a0371934849d7373410cf01e9a80b40f76cb",
-                "reference": "21c0a0371934849d7373410cf01e9a80b40f76cb",
+                "url": "https://api.github.com/repos/itk-dev/serviceplatformen/zipball/141b4cf65dd868427b3b0f42273923d766c05706",
+                "reference": "141b4cf65dd868427b3b0f42273923d766c05706",
                 "shasum": ""
             },
             "require": {
@@ -8509,9 +8509,9 @@
             ],
             "support": {
                 "issues": "https://github.com/itk-dev/serviceplatformen/issues",
-                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.7.0"
+                "source": "https://github.com/itk-dev/serviceplatformen/tree/1.6.1"
             },
-            "time": "2025-08-20T10:19:47+00:00"
+            "time": "2025-04-01T08:10:57+00:00"
         },
         {
             "name": "itk-dev/web_accessibility_statement",
