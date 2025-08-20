@@ -49,7 +49,6 @@
         "phpstan/phpstan-deprecation-rules": "^1.1.3"
     },
     "conflict": {
-        "dealerdirect/phpcodesniffer-composer-installer": "1.1.0",
         "drupal/drupal": "*"
     },
     "repositories": [
