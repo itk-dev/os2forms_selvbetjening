@@ -8,9 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 * Opdaterede fejlede jobs personaliseret view.
 * Fjernede ubrugt custom modul.
-* Sikkerhedsopdateringer
-  * Opdaterede patch version af drupal core
-  * Opdaterede til nyeste version af eu_cookie_compliance modul
+* Pakke-opdateringer.
 
 ## [4.4.0] 2025-06-16
 
