@@ -4,6 +4,7 @@ namespace Drupal\os2forms_selvbetjening\Helper;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Logger\LoggerChannel;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -21,8 +22,10 @@ class FormHelper {
    *
    * @param \Drupal\Core\Session\AccountInterface $account
    *   Current user.
+   * @param \Drupal\Core\Logger\LoggerChannel $logger
+   *   Logger.
    */
-  public function __construct(private readonly AccountInterface $account) {}
+  public function __construct(private readonly AccountInterface $account, private readonly LoggerChannel $logger) {}
 
   /**
    * Allows altering of forms.
@@ -153,8 +156,7 @@ class FormHelper {
             '%function_name' => $functionName,
           ])
         );
-        $logger = \Drupal::service('logger.channel.os2forms_selvbetjening');
-        $logger->error('Error reflecting function %function_name: %message', [
+        $this->logger->error('Error reflecting function %function_name: %message', [
           '%function_name' => $functionName,
           '%message' => $e->getMessage(),
           // Add the full exception to the context for future reference.
