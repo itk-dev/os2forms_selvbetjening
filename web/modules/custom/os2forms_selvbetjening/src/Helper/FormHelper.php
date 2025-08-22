@@ -107,7 +107,7 @@ class FormHelper {
     }
 
     if ('template_edit_task' === $form_id) {
-      $form['#validate'][] = [$this, 'validateByContentFunction'];
+      $form['#validate'][] = '\Drupal\os2forms_selvbetjening\Helper\FormHelper::validateByContentFunction';
     }
   }
 
@@ -125,7 +125,7 @@ class FormHelper {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public function validateByContentFunction(array &$form, FormStateInterface $form_state): void {
+  public static function validateByContentFunction(array &$form, FormStateInterface $form_state): void {
     if ('bycontentfunction' === $form_state->getValue(['spv', 'method'])) {
       // Get function name and parameters defined in the flow task.
       $value = $form_state->getValue(['spv', 'variable_value']);
@@ -141,7 +141,7 @@ class FormHelper {
       $paramCount = count($functionParams);
 
       if (!function_exists($functionName)) {
-        $form_state->setError($form['spv'], $this->t('Function %function_name does not exist', ['%function_name' => $functionName]));
+        $form_state->setError($form['spv'], t('Function %function_name does not exist', ['%function_name' => $functionName]));
         return;
       }
 
@@ -152,16 +152,17 @@ class FormHelper {
       catch (\ReflectionException $e) {
         $form_state->setError(
           $form['spv'],
-          $this->t('Invalid function %function_name', [
+          t('Invalid function %function_name', [
             '%function_name' => $functionName,
           ])
         );
-        $this->logger->error('Error reflecting function %function_name: %message', [
-          '%function_name' => $functionName,
-          '%message' => $e->getMessage(),
-          // Add the full exception to the context for future reference.
-          'exception' => $e,
-        ]);
+        \Drupal::logger('os2forms_selvbetjening')
+          ->error('Error reflecting function %function_name: %message', [
+            '%function_name' => $functionName,
+            '%message' => $e->getMessage(),
+            // Add the full exception to the context for future reference.
+            'exception' => $e,
+          ]);
         return;
       }
 
@@ -171,7 +172,7 @@ class FormHelper {
       $functionParamCount -= 2;
 
       if ($functionParamCount < 0) {
-        $form_state->setError($form['spv'], $this->t('Function %function_name is required to take at least 2 arguments.', ['%function_name' => $functionName]));
+        $form_state->setError($form['spv'], t('Function %function_name is required to take at least 2 arguments.', ['%function_name' => $functionName]));
         return;
       }
 
@@ -179,7 +180,7 @@ class FormHelper {
       if ($paramCount !== $functionParamCount) {
         $form_state->setError(
           $form['spv'],
-          $this->t(
+          t(
             'Function %function_name expects %function_parameter_count parameters. %parameter_defined_count given.',
             [
               '%function_name' => $functionName,
