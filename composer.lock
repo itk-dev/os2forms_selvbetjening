@@ -9241,12 +9241,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/itk-dev/os2forms.git",
-                "reference": "7bd7041ad5af3a312d860aa763e5503d1f185ec3"
+                "reference": "a802c2f1e7e4d212cbe554c138c8e775fcef0bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/7bd7041ad5af3a312d860aa763e5503d1f185ec3",
-                "reference": "7bd7041ad5af3a312d860aa763e5503d1f185ec3",
+                "url": "https://api.github.com/repos/itk-dev/os2forms/zipball/a802c2f1e7e4d212cbe554c138c8e775fcef0bbe",
+                "reference": "a802c2f1e7e4d212cbe554c138c8e775fcef0bbe",
                 "shasum": ""
             },
             "require": {
@@ -9382,7 +9382,7 @@
             "support": {
                 "source": "https://github.com/itk-dev/os2forms/tree/feature/5189-memo-1.2"
             },
-            "time": "2025-08-20T13:32:02+00:00"
+            "time": "2025-08-22T09:21:14+00:00"
         },
         {
             "name": "os2forms/os2forms_forloeb_profile",
