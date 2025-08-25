@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede javascript til `DAWA adresse`-elementer så de håndterer kommaer.
+
 ## [4.5.0] 2025-07-03
 
 * Tilføjede `site_status_message`-modulet.
