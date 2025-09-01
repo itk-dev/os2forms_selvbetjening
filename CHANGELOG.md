@@ -6,6 +6,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+## [4.6.0] 2025-09-01
+
+* Opdaterede`os2web/os2web_datalookup` således at resultet af opslag benyttes
+  i stedet for det der blev slået op på.
+* Opgraderede til MeMo 1.2 ifb. digital post.
+* Fjernede ikke-tal fra modtager ifb. med Maestro digital post notifikationer.
+* Sikrede at fejl ifb. med Maestro digtial post notfikationer rapporteres.
+
 ## [4.5.0] 2025-07-03
 
 * Tilføjede `site_status_message`-modulet.
@@ -656,7 +664,8 @@ og [OS2Forms 3.7.0](https://github.com/OS2Forms/os2forms/releases/tag/3.7.0)
 
 * GO borgersager
 
-[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.5.0...HEAD
+[Under udvikling]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.6.0...HEAD
+[4.6.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.5.0...4.6.0
 [4.5.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.4.0...4.5.0
 [4.4.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.3.0...4.4.0
 [4.3.0]: https://github.com/itk-dev/os2forms_selvbetjening/compare/4.2.1...4.3.0
