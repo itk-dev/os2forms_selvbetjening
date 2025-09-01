@@ -8,7 +8,7 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [4.6.0] 2025-09-01
 
-* Opdaterede`os2web/os2web_datalookup` således at resultet af opslag benyttes
+* Opdaterede `os2web/os2web_datalookup` således at resultet af opslag benyttes
   i stedet for det der blev slået op på.
 * Opgraderede til MeMo 1.2 ifb. digital post.
 * Fjernede ikke-tal fra modtager ifb. med Maestro digital post notifikationer.
