@@ -6,6 +6,14 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Booking opdateringer
+  * Opdaterede booking setup eksempel.
+  * Tilføjede oplysningstekst til booking emne inputfeltet.
+  * Tilpasning af kalender ressourcenavn visning.
+  * Tiljusterede liste-visningen af ressourcer.
+  * Opdaterede filtre visninger.
+  * Tilføjede Aarhus Kommune logo fallback til ressourcer.
+  * Opdaterede resource test data.
 * Rettede henvisning til logo i notifikationsskabelon [PR-448](https://github.com/itk-dev/os2forms_selvbetjening/pull/448)
 
 ## [4.6.1] 2025-09-08
