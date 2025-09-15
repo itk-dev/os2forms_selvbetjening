@@ -31,7 +31,7 @@ _core:
   default_config_hash: oPL1IfV9McRYjNAICLwje0l5khmTZ2HSwYl3EfunVKA
 id: forloeb_designer
 label: Selvbetjeningsdesigner
-weight: -5
+weight: -4
 is_admin: null
 permissions:
   - 'access any webform configuration'

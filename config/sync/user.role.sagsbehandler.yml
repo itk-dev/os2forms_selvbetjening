@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - filter.format.full_html
-    - filter.format.restricted_html
     - filter.format.maestro_notification
+    - filter.format.restricted_html
     - filter.format.webform
   module:
     - block_content
@@ -29,7 +29,7 @@ _core:
   default_config_hash: jA-vZTVeFBc5q5-_Ukuh9YfLnjw8y0jijXonKSZ1weQ
 id: sagsbehandler
 label: Sagsbehandler
-weight: -4
+weight: -3
 is_admin: null
 permissions:
   - 'access administration pages'

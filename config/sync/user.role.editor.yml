@@ -1,0 +1,9 @@
+uuid: b8ffca47-4a68-4011-9895-0248fd935091
+langcode: da
+status: true
+dependencies: {  }
+id: editor
+label: Redaktør
+weight: -6
+is_admin: null
+permissions: {  }
