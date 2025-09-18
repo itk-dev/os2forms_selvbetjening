@@ -502,8 +502,8 @@ display:
           tags:
             next: ››
             previous: ‹‹
-            first: '« Første'
-            last: 'Sidste »'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Antal elementer'
@@ -556,7 +556,7 @@ display:
           exception:
             value: all
             title_enable: false
-            title: Alle
+            title: All
           title_enable: false
           title: ''
           default_argument_type: fixed
