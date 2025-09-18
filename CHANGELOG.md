@@ -7,6 +7,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 ## [Under udvikling]
 
 * Rettede henvisning til logo i notifikationsskabelon [PR-448](https://github.com/itk-dev/os2forms_selvbetjening/pull/448)
+* Tilføjede ny redaktør rolle [PR-451](https://github.com/itk-dev/os2forms_selvbetjening/pull/451)
+    * Ændrede permissions på eksisterende roller
+    * Tilføjede modul til styring af mere specifikke rettigheder i forms
+    * Tilføjede rolle "Redaktør"
 
 ## [4.6.1] 2025-09-08
 
