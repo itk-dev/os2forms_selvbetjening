@@ -19,3 +19,9 @@
 'access webform results clear tab':
   title: 'Access the webform results clear tab'
   description: 'Access the webform results clear tab.'
+'access webform submission_notes':
+  title: 'Access webform submission notes'
+  description: 'Access webform submission notes.'
+'access webform submission edit':
+  title: 'Access webform submission edit'
+  description: 'Access webform submission edit.'
