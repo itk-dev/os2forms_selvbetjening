@@ -554,7 +554,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Udfør
+          submit_button: Filtrér
           reset_button: false
           reset_button_label: Gendan
           exposed_sorts_label: 'Sortér efter'
