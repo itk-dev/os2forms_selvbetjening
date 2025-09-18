@@ -14,7 +14,7 @@ class RouteSubscriber extends RouteSubscriberBase {
    * {@inheritdoc}
    */
   protected function alterRoutes(RouteCollection $collection): void {
-    // Webform handler routes
+    // Webform handler routes.
     $handlerRoutes = [
       'entity.webform.handlers',
       'entity.webform.handler',
@@ -35,7 +35,7 @@ class RouteSubscriber extends RouteSubscriberBase {
       }
     }
 
-    // Webform references routes
+    // Webform references routes.
     if ($route = $collection->get('entity.webform.references')) {
       $route->addRequirements([
         '_permission' => 'access webform references tab',
@@ -47,14 +47,14 @@ class RouteSubscriber extends RouteSubscriberBase {
       ]);
     }
 
-    // Webform access route
+    // Webform access route.
     if ($route = $collection->get('entity.webform.settings_access')) {
       $route->addRequirements([
         '_permission' => 'access webform access tab',
       ]);
     }
 
-    // Webform export results routes
+    // Webform export results routes.
     if ($route = $collection->get('entity.webform.results_export')) {
       $route->addRequirements([
         '_permission' => 'access webform results download tab',
@@ -66,7 +66,7 @@ class RouteSubscriber extends RouteSubscriberBase {
       ]);
     }
 
-    // Webform import results routes
+    // Webform import results routes.
     if ($route = $collection->get('entity.node.webform.results_export')) {
       $route->addRequirements([
         '_permission' => 'access webform results download tab',
@@ -88,7 +88,7 @@ class RouteSubscriber extends RouteSubscriberBase {
       ]);
     }
 
-    // Webform clear results routes
+    // Webform clear results routes.
     if ($route = $collection->get('entity.webform.results_clear')) {
       $route->addRequirements([
         '_permission' => 'access webform results clear tab',
@@ -100,7 +100,7 @@ class RouteSubscriber extends RouteSubscriberBase {
       ]);
     }
 
-    // Webform submission routes
+    // Webform submission routes.
     if ($route = $collection->get('entity.webform_submission.notes_form')) {
       $route->addRequirements([
         '_permission' => 'access webform submission_notes',
@@ -119,7 +119,7 @@ class RouteSubscriber extends RouteSubscriberBase {
       'entity.webform_submission.edit_form.all',
       'entity.node.webform.user.submission.edit',
       'entity.node.webform_submission.edit_form',
-      'entity.node.webform_submission.edit_form.all'
+      'entity.node.webform_submission.edit_form.all',
     ];
 
     foreach ($webformSubmissionEditRoutes as $webformSubmissionEditRoute) {
@@ -130,4 +130,5 @@ class RouteSubscriber extends RouteSubscriberBase {
       }
     }
   }
+  
 }
