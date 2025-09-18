@@ -20,6 +20,7 @@ dependencies:
     - maestro_taskconsole
     - node
     - os2forms_failed_jobs
+    - os2forms_granular_permissions
     - search
     - system
     - toolbar
@@ -38,8 +39,17 @@ permissions:
   - 'access own webform configuration'
   - 'access site in maintenance mode'
   - 'access toolbar'
+  - 'access webform access tab'
   - 'access webform advanced queue overview'
+  - 'access webform css js tab'
+  - 'access webform handlers tab'
   - 'access webform overview'
+  - 'access webform references tab'
+  - 'access webform results clear tab'
+  - 'access webform results download tab'
+  - 'access webform results upload tab'
+  - 'access webform submission edit'
+  - 'access webform submission_notes'
   - 'add maestro entity identifiers entities'
   - 'add maestro process entities'
   - 'add maestro production assignment entities'

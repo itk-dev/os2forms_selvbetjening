@@ -19,6 +19,7 @@ dependencies:
     - maestro_taskconsole
     - node
     - os2forms_failed_jobs
+    - os2forms_granular_permissions
     - search
     - system
     - toolbar
@@ -40,8 +41,13 @@ permissions:
   - 'access user profiles'
   - 'access webform advanced queue overview'
   - 'access webform overview'
+  - 'access webform results clear tab'
+  - 'access webform results download tab'
+  - 'access webform results upload tab'
+  - 'access webform submission edit'
   - 'access webform submission log'
   - 'access webform submission user'
+  - 'access webform submission_notes'
   - 'administer block_content display'
   - 'administer block_content display'
   - 'administer maestro production assignment entities'
