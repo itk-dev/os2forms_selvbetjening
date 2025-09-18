@@ -39,7 +39,7 @@ class CustomWebformEntityListBuilder extends WebformEntityListBuilder {
     foreach ($webforms as $webform) {
       $access = $webform->access('update');
       if ($access) {
-        $webform_ids_permissions_by_term = $webform->id();
+        $webform_ids_permissions_by_term[] = $webform->id();
       }
     }
 

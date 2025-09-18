@@ -1,12 +1,12 @@
 <?php
 
-use Drupal\os2forms_webform_list\CustomMaestroTemplateEntityListBuilder;
-use Drupal\os2forms_webform_list\CustomWebformEntityListBuilder;
-
 /**
  * @file
  * Contains hooks related to OS2Forms webform list module.
  */
+
+use Drupal\os2forms_webform_list\CustomMaestroTemplateEntityListBuilder;
+use Drupal\os2forms_webform_list\CustomWebformEntityListBuilder;
 
 /**
  * Implements hook_entity_type_alter().
