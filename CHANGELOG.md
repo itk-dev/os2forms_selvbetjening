@@ -6,6 +6,10 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Tilføjede handler, element og taksonomi oversigter.
+* Tilføjede dokumentation af [elementer](docs/ELEMENTS.md) og
+  [handlers](docs/HANDLERS.md).
+
 ## [4.6.2] 2025-09-15
 
 * Tilføjede apostrof-regel til kodestandarder [PR-423](https://github.com/itk-dev/os2forms_selvbetjening/pull/423).
