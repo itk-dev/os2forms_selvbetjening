@@ -8,7 +8,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\webform\WebformEntityStorageInterface;
-use Drupal\webform\WebformInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -57,6 +56,7 @@ final class TaxonomyForm extends FormBase {
 
     $taxonomies = [];
     foreach ($vocabularies as $term) {
+      /** @var \Drupal\taxonomy\Entity\Term $term */
       $taxonomies[$term->id()] = [
         'name' => $term->getName(),
         'webforms' => [],
@@ -107,13 +107,6 @@ final class TaxonomyForm extends FormBase {
    * @phpstan-param array<string, mixed> $form
    */
   public function submitForm(array &$form, FormStateInterface $formState): void {
-  }
-
-  /**
-   * Get webform label.
-   */
-  private function getWebformLabel(WebformInterface $webform): string {
-    return sprintf('%s (%s)', $webform->label(), $webform->id());
   }
 
 }
