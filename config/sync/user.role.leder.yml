@@ -48,7 +48,6 @@ permissions:
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
-  - 'access webform access tab'
   - 'access webform css js tab'
   - 'access webform handlers tab'
   - 'access webform overview'

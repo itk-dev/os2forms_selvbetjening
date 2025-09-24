@@ -39,7 +39,6 @@ permissions:
   - 'access own webform configuration'
   - 'access site in maintenance mode'
   - 'access toolbar'
-  - 'access webform access tab'
   - 'access webform advanced queue overview'
   - 'access webform css js tab'
   - 'access webform handlers tab'
