@@ -125,7 +125,7 @@ class RouteSubscriber extends RouteSubscriberBase {
     foreach ($webformSubmissionEditRoutes as $webformSubmissionEditRoute) {
       if ($route = $collection->get($webformSubmissionEditRoute)) {
         $route->addRequirements([
-          '_permission' => 'access webform submission edit',
+          '_permission' => 'edit any webform submission',
         ]);
       }
     }
