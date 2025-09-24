@@ -47,7 +47,6 @@ permissions:
   - 'access webform results clear tab'
   - 'access webform results download tab'
   - 'access webform results upload tab'
-  - 'access webform submission edit'
   - 'access webform submission_notes'
   - 'add maestro entity identifiers entities'
   - 'add maestro process entities'
