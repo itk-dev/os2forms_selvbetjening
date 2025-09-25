@@ -22,8 +22,8 @@ function os2forms_granular_permissions_webform_submission_access(EntityInterface
     if (!$account->hasPermission('delete own webform submission') && !$account->hasPermission('delete any webform submission')) {
       return AccessResult::forbidden();
     }
-    return AccessResult::neutral();
 
+    return AccessResult::neutral();
   }
 
   return AccessResult::neutral();
