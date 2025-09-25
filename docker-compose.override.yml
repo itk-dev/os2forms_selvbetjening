@@ -1,14 +1,14 @@
 # https://github.com/Soluto/oidc-server-mock
 
-networks:
-  organisation_api:
-    external: true
-    name: serviceplatformen_organisation_api_app
+#networks:
+#  organisation_api:
+#    external: true
+#    name: serviceplatformen_organisation_api_app
 
 services:
   phpfpm:
-    networks:
-      - organisation_api
+#    networks:
+#      - organisation_api
     environment:
       - PHP_MEMORY_LIMIT=512M
 
@@ -22,13 +22,13 @@ services:
       - .:/app:delegated
     working_dir: /app
 
-  clamav:
-    image: clamav/clamav:1.2
-    networks:
-      - app
-    ports:
-      - '3310'
-      - '7357'
+#  clamav:
+#    image: clamav/clamav:1.2
+#    networks:
+#      - app
+#    ports:
+#      - '3310'
+#      - '7357'
 
   idp-admin:
     image: ghcr.io/soluto/oidc-server-mock:latest
