@@ -6,6 +6,8 @@ Nedenfor ses dato for release og beskrivelse af opgaver som er implementeret.
 
 ## [Under udvikling]
 
+* Removed os2forms_webform_list module
+
 ## [4.6.2] 2025-09-15
 
 * Tilføjede apostrof-regel til kodestandarder [PR-423](https://github.com/itk-dev/os2forms_selvbetjening/pull/423).
